@@ -1,2 +1,3 @@
 # Ignore configuration files that may contain sensitive information.
 .htaccess
+*.swp
