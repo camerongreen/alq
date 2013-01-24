@@ -5,19 +5,17 @@
 # eg :
 # /www/alq.test - parent directory
 # /www/alq.test/code - git repo with this file it in 
-# /www/alq.test/docs/settings.php
 #
-# Then run this script from the parent directory, eg ./code/scripts/create_site.sh
-# it will ask you for the db you've created's detailsn, create public_html
-# add drupal to it, then symlink the modules, themes etc
+# Then run this script from the parent directory, eg 
+#  DEFAULT_SITE_EMAIL="alq@whatever.org" ./code/scripts/create_site.sh
+# it will ask you for the db you've created's details, then create public_html
+# add drupal to it, symlink your custom modules, themes etc
 #
 
 SITE_NAME="Animal Liberation Queensland"
-DEFAULT_SITE_EMAIL="alq@camerongreen.org"
 
 GIT_DIR=code
 PUBLIC_DIR=public_html
-SETTINGS_FILE=docs/settings.php
 
 # this is the user who will own the files, so you 
 # can edit them etc
@@ -75,12 +73,19 @@ fi
 read -p "Site email [${DEFAULT_SITE_EMAIL}]:" SITE_EMAIL
 if [ -z $SITE_EMAIL ]
   then
-    SITE_EMAIL=$DEFAULT_SITE_EMAIL
+  if [ -z $DEFAULT_SITE_EMAIL ]
+    then
+      echo "Site needs an email, see the comments at the top of"
+      echo "this script for how to put a default one on command line"
+      exit 1
+  else 
+      SITE_EMAIL=$DEFAULT_SITE_EMAIL
+  fi
 fi
 
 drush make ${GIT_DIR}/scripts/drush.make $PUBLIC_DIR
-ln -s ${GIT_DIR}/modules ${PUBLIC_DIR}/sites/all/modules/custom
-ln -s ${GIT_DIR}/themes/alq ${PUBLIC_DIR}/sites/all/themes
+ln -s ${PWD}/${GIT_DIR}/modules ${PUBLIC_DIR}/sites/all/modules/custom
+ln -s ${PWD}/${GIT_DIR}/themes/alq ${PUBLIC_DIR}/sites/all/themes
 
 pushd $PUBLIC_DIR
 drush site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="$DB_PASSWD" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}"
