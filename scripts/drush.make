@@ -33,8 +33,6 @@ projects[drupal][version] = 7
   
 ; Modules
 ; --------
-projects[content_access][version] = 1.2-beta1
-projects[content_access][type] = "module"
 projects[admin][version] = 2.0-beta3
 projects[admin][type] = "module"
 projects[admin_menu][version] = 3.0-rc3
@@ -63,8 +61,6 @@ projects[google_analytics][version] = 1.3
 projects[google_analytics][type] = "module"
 projects[imageapi][version] = 1.x-dev
 projects[imageapi][type] = "module"
-projects[jquery_ui][version] = 1.x-dev
-projects[jquery_ui][type] = "module"
 projects[libraries][version] = 2.0
 projects[libraries][type] = "module"
 projects[omega][version] = 3.1
@@ -73,8 +69,6 @@ projects[omega_tools][version] = 3.0-rc4
 projects[omega_tools][type] = "module"
 projects[pathauto][version] = 1.2
 projects[pathauto][type] = "module"
-projects[service_links][version] = 2.1
-projects[service_links][type] = "module"
 projects[site_map][version] = 1.0
 projects[site_map][type] = "module"
 projects[strongarm][version] = 2.0

@@ -1,16 +1,15 @@
 #!/bin/bash
 # To run this script, you need the checked out git repository in the same directory
 # as your public_html dir will be to hold Drupal.
-# You will also need a settings.php file in another directory in the same place with
-# your db setup in it
 
 # eg :
 # /www/alq.test - parent directory
-# /www/alq.test/code - git repo  
+# /www/alq.test/code - git repo with this file it in 
 # /www/alq.test/docs/settings.php
 #
-# Then run this script from the parent directory, it will create public_html
-# add drupal to it, then symlink the modules, themes, settings file etc
+# Then run this script from the parent directory, eg ./code/scripts/create_site.sh
+# it will ask you for the db you've created's detailsn, create public_html
+# add drupal to it, then symlink the modules, themes etc
 #
 
 SITE_NAME="Animal Liberation Queensland"
@@ -44,6 +43,7 @@ if [ -z $DB_USER ]
     DB_USER=$DEFAULT_DB_USER
 fi
 read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
+# need a newline in the output here as -s swallows it
 echo ""
 if [ -z $DB_PASSWD ]
   then
@@ -88,3 +88,7 @@ popd
 
 chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
 chmod g+w ${PUBLIC_DIR}/sites/default/files
+
+pushd $PUBLIC_DIR
+drush en admin admin_menu module_filter module_filter ctools context date devel features email imce advanced_help entity googleanalytics imageapi libraries omega omega_tools pathauto site_map strongarm token imce_wysiwyg jquery_plugin jquery_update wysiwyg views webform xmlsitemap
+popd
