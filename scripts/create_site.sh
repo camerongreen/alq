@@ -95,5 +95,6 @@ chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
 chmod g+w ${PUBLIC_DIR}/sites/default/files
 
 pushd $PUBLIC_DIR
-drush en admin admin_menu module_filter module_filter ctools context date devel features email imce advanced_help entity googleanalytics imageapi libraries omega omega_tools pathauto site_map strongarm token imce_wysiwyg jquery_plugin jquery_update wysiwyg views webform xmlsitemap
+drush dis toolbar
+drush en admin admin_menu module_filter module_filter ctools context context_ui date delta delta_ui devel features email imce advanced_help entity googleanalytics imageapi libraries omega omega_tools pathauto site_map strongarm token imce_wysiwyg jquery_plugin jquery_update wysiwyg views views_ui webform xmlsitemap
 popd

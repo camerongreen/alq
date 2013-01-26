@@ -1,1 +1,58 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Verdana, Geneva, sans-serif;
+}
+
+.front h1.title,
+.block-user-menu h2, 
+.block-menu-footer-menu h2, 
+.block-menu-header-menu h2 {
+  display: none;
+}
+
+.block-user-menu ul.menu,
+.block-menu-header-menu ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+.block-user-menu ul.menu li,
+.block-menu-footer-menu ul.menu li,
+.block-menu-header-menu ul.menu li {
+  display: inline;
+  list-style-type: none;
+}
+
+
+.block-menu-header-menu ul.menu {
+  background-color: black;
+  margin-top: 1ex;
+  margin-bottom: 1ex;
+}
+
+.block-menu-header-menu ul.menu li a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 135%;
+}
+
+.block-menu-footer-menu ul.menu {
+  height: 80px;
+  background-color: #AAA;
+  margin-top: 1ex;
+  margin-bottom: 1ex;
+}
+
+.block-menu-footer-menu ul.menu li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+}
+
