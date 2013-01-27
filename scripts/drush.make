@@ -116,6 +116,9 @@ projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckedito
 projects[views][version] = 3.5
 projects[views][type] = "module"
 
+projects[views_slideshow][version] = 3.0
+projects[views_slideshow][type] = "module"
+
 projects[webform][version] = 3.18
 projects[webform][type] = "module"
 
@@ -141,3 +144,9 @@ libraries[ckeditor][download][type] = "get"
 libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.0.1/ckeditor_4.0.1_standard.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
+
+libraries[jquery.cycle][download][type] = "file"
+libraries[jquery.cycle][download][url] = "https://raw.github.com/malsup/cycle/master/jquery.cycle.all.latest.min.js"
+libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
+libraries[json2][download][type] = "file"
+libraries[json2][download][url] = "https://raw.github.com/douglascrockford/JSON-js/master/json2.js"
