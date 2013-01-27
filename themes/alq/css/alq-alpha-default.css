@@ -1,10 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
-body {
-  font-family: Verdana, Geneva, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, p {
   font-family: Arial, Verdana, Geneva, sans-serif;
 }
 
@@ -77,13 +73,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .view-slideshow {
+  border-bottom-color: #502c83;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
   margin-bottom: 1em;
 }
 
 .view-slideshow .views-field-title {
   position: absolute;
-  top: 230px;
-  right: 10px;
+  top: 200px;
+  left: 30px;
   background-color: rgba(66,66,66,0.6);
   padding: 1ex;
 }
@@ -95,24 +94,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-#views_slideshow_controls_text_pause_slideshow-block {
-  display: none;
-}
-
-#views_slideshow_controls_text_next_slideshow-block, 
-#views_slideshow_controls_text_previous_slideshow-block {
+.views-slideshow-controls-text span {
   position:absolute;
   top:120px;
   overflow:hidden;
-  z-index: 999;
+  z-index: 10;
   background-color: rgba(66,66,66,0.6);
   padding: 1ex;
   color: #fff;
   font-size: 20px;
+  display: none;
 }
 
-#views_slideshow_controls_text_next_slideshow-block a, 
-#views_slideshow_controls_text_previous_slideshow-block a {
+.views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
