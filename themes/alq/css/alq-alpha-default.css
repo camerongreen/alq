@@ -268,3 +268,23 @@ input[type=email] {
   padding-top: 20px; 
 }
 
+#section-home-childtree h2 {
+  margin-bottom: 5px;
+}
+
+#section-home-childtree ul {
+  list-style: none;
+  margin-left: 3em;
+  padding: 0;
+}
+
+#section-home-childtree ul li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 130%;
+  padding-left: 1em;
+}
+
+#section-home-childtree ul li:before {
+  content: "\25B6"
+}

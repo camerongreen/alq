@@ -11,10 +11,13 @@
  */
 function alq_section_home_blocks_block_info() {
   return array(
-      "alq_section_home_header" => array(
-        "info" => t("Section Home Header"),
-        ) 
-      ); 
+    "alq_section_home_header" => array(
+      "info" => t("Section Home Header"),
+    ), 
+    "alq_section_home_childtree" => array(
+      "info" => t("Section Home childtree"),
+    ), 
+  ); 
 }
 
 /**
@@ -27,6 +30,18 @@ function alq_section_home_blocks_block_view($delta = "") {
       if (user_access("access content")) {
         $image = alq_section_home_blocks_get_image();
         $block["content"] = theme("alq_section_home_header", array("image" => $image));
+      }
+      break;
+    case "alq_section_home_childtree":
+      $block["subject"] = t("Topics");
+      if (user_access("access content")) {
+        $node = menu_get_object();
+        $childtree = alq_section_home_blocks_get_childtree($node);
+        $block["content"] = theme("alq_section_home_childtree", array(
+            "title" => $node->title,
+            "childtree" => $childtree
+          )
+        );
       }
       break;
   }
@@ -43,9 +58,16 @@ function alq_section_home_blocks_theme() {
         "template" => "theme/section-home-header",
         "variables" => array(
           "image" => null
-          )
-        ),
-      );
+        )
+      ),
+      "alq_section_home_childtree" => array(
+        "template" => "theme/section-home-childtree",
+        "variables" => array(
+          "title" => null,
+          "childtree" => null
+        )
+      ),
+    );
 }
 
 /**
@@ -55,4 +77,22 @@ function alq_section_home_blocks_theme() {
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
   return $node->field_image[$node->language][0]["uri"];
+}
+
+/**
+ * Return the child images for the current node we are
+ * viewing
+ */
+function alq_section_home_blocks_get_childtree($node) {
+  $tree = menu_tree_all_data('menu-header-menu'); 
+
+  $childtree = array();
+  
+  foreach ($tree as $branch){
+    if ($branch['link']['title'] == $node->title){
+      $childtree = $branch['below'];
+      break;
+    }
+  }
+  return $childtree;
 }
