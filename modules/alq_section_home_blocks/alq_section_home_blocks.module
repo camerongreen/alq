@@ -1,0 +1,58 @@
+<?php
+/**
+ * @file
+ * Provides blocks for the content type section home
+ * initially the image display at the top and the list
+ * of related links at the left
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function alq_section_home_blocks_block_info() {
+  return array(
+      "alq_section_home_header" => array(
+        "info" => t("Section Home Header"),
+        ) 
+      ); 
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function alq_section_home_blocks_block_view($delta = "") {
+  switch ($delta) {
+    case "alq_section_home_header":
+      $block["subject"] = t("Header Image");
+      if (user_access("access content")) {
+        $image = alq_section_home_blocks_get_image();
+        $block["content"] = theme("alq_section_home_header", array("image" => $image));
+      }
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme();
+ */
+function alq_section_home_blocks_theme() {
+  return array(
+      "alq_section_home_header" => array(
+        "template" => "theme/section-home-header",
+        "variables" => array(
+          "image" => null
+          )
+        ),
+      );
+}
+
+/**
+ * Return the image for the current node we are
+ * viewing
+ */
+function alq_section_home_blocks_get_image() {
+  $node = menu_get_object();
+  return $node->field_image[$node->language][0]["uri"];
+}

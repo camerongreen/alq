@@ -1,0 +1,7 @@
+name = ALQ Section Home Blocks
+description = Exports blocks used on the ALQ Section Home content types
+core = 7.x
+package = ALQ
+php = 5.2.4
+version = 7.x-1.0
+project = alq_section_home_blocks
