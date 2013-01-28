@@ -293,3 +293,18 @@ input[type=email] {
 #section-home-childtree ul li:before {
   content: "\25B6"
 }
+
+.node-type-section-home .field-name-field-intro {
+  font-size: 140%;
+  color: #502c83;
+  font-style: italic;
+}
+
+/* Donate now block */
+.block-block-5,
+.block-block-5 a {
+  color: #f8931d;
+}
+.block-block-5 {
+  font-size: 200%;
+}
