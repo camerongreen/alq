@@ -73,8 +73,14 @@ projects[advanced_help][type] = "module"
 projects[entity][version] = 1.0
 projects[entity][type] = "module"
 
+projects[facebook_boxes][version] = 1.0
+projects[facebook_boxes][type] = "module"
+
 projects[google_analytics][version] = 1.3
 projects[google_analytics][type] = "module"
+
+projects[nice_menus][version] = 2.1
+projects[nice_menus][type] = "module"
 
 projects[imageapi][version] = 1.x-dev
 projects[imageapi][type] = "module"
@@ -99,6 +105,9 @@ projects[strongarm][type] = "module"
 
 projects[token][version] = 1.4
 projects[token][type] = "module"
+
+projects[token_filter][version] = 1.1
+projects[token_filter][type] = "module"
 
 projects[imce_wysiwyg][version] = 1.0
 projects[imce_wysiwyg][type] = "module"
