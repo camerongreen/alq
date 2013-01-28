@@ -101,7 +101,8 @@ ul.nice-menu li a {
   border-right-width: thin;
   padding-right: 10px;
 }
-.block-menu-footer-menu ul.menu > li:last-child {
+
+.block-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
@@ -239,6 +240,10 @@ span.views-slideshow-controls-text-next:after {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
   border: none;
+}
+
+#webform-client-form-114 input[type=email] {
+  width: 290px;
 }
 
 #webform-client-form-114 .form-item {
