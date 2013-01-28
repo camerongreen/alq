@@ -1,5 +1,5 @@
 <div id="section-home-childtree">
-<h2><?php echo $title; ?></h2>
+<h2 class="block-title"><?php echo $title; ?></h2>
 <ul>
 <?php 
   foreach ($childtree as $sapling) {
