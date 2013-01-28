@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ALQ News Feature feature.
+ */
+
+include_once 'alq_news_feature.features.inc';

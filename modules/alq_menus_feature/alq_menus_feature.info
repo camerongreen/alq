@@ -1,0 +1,11 @@
+name = ALQ Menus Feature
+description = Menus for the site
+core = 7.x
+package = ALQ
+version = 7.x-1.0
+project = alq_menus_feature
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:1
+features[menu_custom][] = menu-footer-menu
+features[menu_custom][] = menu-header-menu

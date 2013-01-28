@@ -96,5 +96,5 @@ chmod g+w ${PUBLIC_DIR}/sites/default/files
 
 pushd $PUBLIC_DIR
 drush dis toolbar
-drush en admin admin_menu contact ctools context context_ui date delta delta_ui devel features email imce advanced_help entity googleanalytics imageapi libraries module_filter nice_menus omega omega_tools pathauto site_map strongarm token token_filter imce_wysiwyg jquery_plugin jquery_update wysiwyg views views_ui views_slideshow views_slideshow_cycle webform xmlsitemap
+drush en admin admin_menu alq_news_feature alq_slideshow_feature contact ctools context context_ui date delta delta_ui devel features email imce advanced_help entity googleanalytics imageapi libraries module_filter nice_menus omega omega_tools pathauto site_map strongarm token token_filter imce_wysiwyg jquery_plugin jquery_update wysiwyg views views_ui views_slideshow views_slideshow_cycle webform xmlsitemap
 popd

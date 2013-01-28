@@ -1,0 +1,11 @@
+name = ALQ News Feature
+description = News
+core = 7.x
+package = ALQ
+version = 7.x-1.0
+project = alq_news_feature
+dependencies[] = ctools
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = news

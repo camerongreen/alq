@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ALQ Content Types Feature feature.
+ */
+
+include_once 'alq_content_types_feature.features.inc';

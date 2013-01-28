@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ALQ Slideshow Feature feature.
+ */
+
+include_once 'alq_slideshow_feature.features.inc';

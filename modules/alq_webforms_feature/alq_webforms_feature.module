@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ALQ Webforms Feature feature.
+ */
+
+include_once 'alq_webforms_feature.features.inc';
