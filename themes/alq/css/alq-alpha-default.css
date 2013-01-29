@@ -254,6 +254,7 @@ span.views-slideshow-controls-text-next:after {
   margin-top: 0;
 }
 
+select,
 input[type=text],
 input[type=email] {
   border-color: #CCC;
@@ -294,10 +295,27 @@ input[type=email] {
   content: "\25B6"
 }
 
+.node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   font-size: 140%;
   color: #502c83;
   font-style: italic;
+}
+
+.node-type-article .field-type-image {
+  width: 290px;
+  float: right;
+  margin: 1em;
+  border-color: #AAA;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 4px;
+  padding: 3px;
+  background-color: #EEE;
+}
+
+.node-type-article .field-type-image img {
+  width: 100%;
 }
 
 /* Donate now block */

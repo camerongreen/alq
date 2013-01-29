@@ -1,0 +1,6 @@
+name = ALQ Help
+description = Help for people using the ALQ site
+core = 7.x
+package = ALQ
+version = 7.x-1.0
+project = alq_help
