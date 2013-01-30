@@ -95,6 +95,9 @@ chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
 chmod g+w ${PUBLIC_DIR}/sites/default/files
 
 pushd $PUBLIC_DIR
-drush dis toolbar
-drush en admin admin_menu alq_content_types_feature alq_editor_role_feature alq_help alq_menus_feature alq_news_feature alq_section_home_blocks alq_slideshow_feature alq_webforms_feature contact ctools context context_ui date delta delta_ui devel features email imce advanced_help entity googleanalytics imageapi libraries module_filter nice_menus omega omega_tools pathauto site_map strongarm token token_filter imce_wysiwyg jquery_plugin jquery_update wysiwyg views views_ui views_slideshow views_slideshow_cycle webform xmlsitemap
+drush pm-disable toolbar
+drush pm-enable admin admin_menu alq_content_types_feature alq_editor_role_feature alq_help alq_menus_feature alq_news_feature alq_section_home_blocks alq_slideshow_feature alq_webforms_feature contact ctools context context_ui date delta delta_ui devel features email imce advanced_help entity googleanalytics imageapi libraries module_filter nice_menus omega omega_tools pathauto site_map strongarm token token_filter imce_wysiwyg jquery_plugin jquery_update wysiwyg views views_ui views_slideshow views_slideshow_cycle webform xmlsitemap
+
+# add any updates to the drush.make script
+drush pm-update
 popd

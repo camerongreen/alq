@@ -64,7 +64,7 @@ projects[features][type] = "module"
 projects[email][version] = 1.2
 projects[email][type] = "module"
 
-projects[imce][version] = 1.6
+projects[imce][version] = 1.7
 projects[imce][type] = "module"
 
 projects[advanced_help][version] = 1.0
