@@ -20,6 +20,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1em;
 }
 
+.region-sidebar-first-inner {
+  background: url("/sites/all/themes/alq/images/left-bg.jpg");
+  padding: 4px;
+}
+
 .region-sidebar-first-inner section {
   margin-bottom: 1.5em;
 }
@@ -230,7 +235,7 @@ span.views-slideshow-controls-text-next:after {
 }
 
 #search-block-form input[type=text] {
-  width: 210px;
+  width: 204px;
 }
 
 /* email subscribe form */
