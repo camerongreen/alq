@@ -1,3 +1,4 @@
+<?php if ($image) { ?>
 <div id="section-home-header">
 <?php 
   print theme_image_style(array(
@@ -8,3 +9,4 @@
   ));
 ?>
 </div>
+<?php } ?>

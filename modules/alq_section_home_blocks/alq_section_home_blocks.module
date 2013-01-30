@@ -73,10 +73,12 @@ function alq_section_home_blocks_theme() {
 /**
  * Return the image for the current node we are
  * viewing
+ *
+ * @return  mixed image path or false if no image
  */
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
-  return $node->field_image[$node->language][0]["uri"];
+  return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : false;
 }
 
 /**
