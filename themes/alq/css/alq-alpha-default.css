@@ -239,7 +239,7 @@ span.views-slideshow-controls-text-next:after {
 }
 
 /* email subscribe form */
-#webform-client-form-114 .form-submit {
+#mc-embedded-subscribe-form input[type=submit] {
   width: 96px;
   height: 43px;
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
@@ -247,16 +247,8 @@ span.views-slideshow-controls-text-next:after {
   border: none;
 }
 
-#webform-client-form-114 input[type=email] {
+#mc-embedded-subscribe-form input[type=email] {
   width: 290px;
-}
-
-#webform-client-form-114 .form-item {
-  margin-bottom: 0;
-}
-
-#webform-client-form-114 .form-actions {
-  margin-top: 0;
 }
 
 select,
