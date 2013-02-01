@@ -37,17 +37,17 @@ projects[drupal][version] = 7
 projects[admin_menu][version] = 3.0-rc3
 projects[admin_menu][type] = "module"
 
-projects[module_filter][version] = 1.7
-projects[module_filter][type] = "module"
-
 projects[ckeditor][version] = 1.12
 projects[ckeditor][type] = "module"
 
-projects[ctools][version] = 1.2
-projects[ctools][type] = "module"
+projects[colorbox][version] = 2.2
+projects[colorbox][type] = "module"
 
 projects[context][version] = 3.0-beta6
 projects[context][type] = "module"
+
+projects[ctools][version] = 1.2
+projects[ctools][type] = "module"
 
 projects[date][version] = 2.6
 projects[date][type] = "module"
@@ -63,6 +63,9 @@ projects[features][type] = "module"
 
 projects[email][version] = 1.2
 projects[email][type] = "module"
+
+projects[entity][version] = 1.0
+projects[entity][type] = "module"
 
 projects[imce][version] = 1.7
 projects[imce][type] = "module"
@@ -88,6 +91,12 @@ projects[imageapi][type] = "module"
 projects[libraries][version] = 2.0
 projects[libraries][type] = "module"
 
+projects[metatag][version] = 1.0-beta4
+projects[metatag][type] = "module"
+
+projects[module_filter][version] = 1.7
+projects[module_filter][type] = "module"
+
 projects[omega][version] = 3.1
 projects[omega][type] = "module"
 
@@ -96,6 +105,9 @@ projects[omega_tools][type] = "module"
 
 projects[pathauto][version] = 1.2
 projects[pathauto][type] = "module"
+
+projects[rules][version] = 2.2
+projects[rules][type] = "module"
 
 projects[site_map][version] = 1.0
 projects[site_map][type] = "module"
@@ -121,6 +133,9 @@ projects[jquery_update][type] = "module"
 projects[wysiwyg][version] = 2.2
 projects[wysiwyg][type] = "module"
 projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-73.patch"
+
+projects[ubercart][version] = 3.3
+projects[ubercart][type] = "module"
 
 projects[views][version] = 3.5
 projects[views][type] = "module"
@@ -157,5 +172,9 @@ libraries[ckeditor][destination] = "libraries"
 libraries[jquery.cycle][download][type] = "file"
 libraries[jquery.cycle][download][url] = "https://raw.github.com/malsup/cycle/master/jquery.cycle.all.latest.min.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
+
 libraries[json2][download][type] = "file"
 libraries[json2][download][url] = "https://raw.github.com/douglascrockford/JSON-js/master/json2.js"
+
+libraries[colorbox][download][type] = file
+libraries[colorbox][download][url] = http://colorpowered.com/colorbox/latest
