@@ -232,10 +232,11 @@ span.views-slideshow-controls-text-next:after {
   text-indent: -9999px;
   border: none;
   margin-top: 2px;
+  margin-right: 0;
 }
 
 #search-block-form input[type=text] {
-  width: 204px;
+  width: 210px;
 }
 
 /* email subscribe form */
@@ -248,7 +249,7 @@ span.views-slideshow-controls-text-next:after {
 }
 
 #mc-embedded-subscribe-form input[type=email] {
-  width: 95%;
+  width: 100%;
 }
 
 select,
@@ -330,4 +331,13 @@ input[type=email] {
 }
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
     width: 100% !important;
+}
+
+/* Shop stylings */
+.page-catalog table {
+  border: none;
+}
+
+.page-catalog table td {
+  text-align: center;
 }
