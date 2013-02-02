@@ -23,11 +23,6 @@
   right: 0px;
 }
 
-/* don't show home link in reduced mode */
-#nice-menu-1 > li.first {
-  display: none;
-}
-
 #twitter-link {
   margin-top: 2px;
 }
