@@ -1,2 +1,256 @@
-/* This file will hold styles for the mobile version of your website (mobile first). */
-/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: Arial, Verdana, Geneva, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #502c83;
+}
+
+.front h1.title {
+  display: none;
+}
+
+#region-branding {
+  background-color: #ececee;
+}
+
+.region-sidebar-first-inner {
+  background: url("/sites/all/themes/alq/images/left-bg.jpg");
+}
+
+.logo-img {
+  margin-left: 10px;
+}
+
+/* Social media block */
+.block-block-2 {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+.header-social-media-link {
+  display: block;
+  float: left;
+}
+
+.block-facebook-boxes {
+  display: none;
+}
+
+/* Header menu */
+.block-nice-menus-1 {
+  position: relative;
+}
+
+ul.nice-menu,
+ul.nice-menu ul,
+ul.nice-menu li,
+ul.nice-menu li a {
+  border: 0;
+  background-color: #ececee;
+  color: #502c83;
+  text-decoration: none;
+}
+
+.block-user-menu ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+#zone-footer {
+  color: #fff;
+  background-color: #502c83;
+}
+
+.block-user-menu ul.menu li,
+.block-menu-footer-menu ul.menu li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+}
+
+.block-menu-footer-menu ul.menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.block-menu-footer-menu ul.menu > li a {
+  border-right-style: solid;
+  border-right-color: #fff;
+  border-right-width: thin;
+}
+
+.block-menu-footer-menu ul.menu > li:last-child a {
+  border: none;
+}
+
+
+.view-news .views-field-title a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #502c83;
+}
+
+.view-news .views-field-field-image {
+  float: left;
+  border-color: #AAA;
+  border-style: solid;
+  border-width: thin;
+  background-color: #EEE;
+}
+
+.view-news .views-label-field-tags {
+  float: left;
+  margin-right: 1ex;
+  font-weight: bold;
+}
+
+
+#views_slideshow_cycle_teaser_section_slideshow-block,
+.view-slideshow .views-field-field-image img {
+  width: 700px !important;
+  height: 253px !important;
+}
+
+.view-slideshow .views-field-title {
+  top: 140px;
+  left: 30px;
+  padding: 1ex;
+}
+
+.views-slideshow-controls-text,
+.view-slideshow .views-field-view-node {
+  display: none;
+}
+
+
+#section-home-header,
+.view-slideshow {
+  border-bottom-color: #502c83;
+  border-bottom-style: solid;
+}
+
+.view-slideshow .views-field-title {
+  position: absolute;
+  background-color: rgba(66,66,66,0.6);
+}
+
+.view-slideshow .views-field-title a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.view-slideshow .views-field-view-node {
+  position: absolute;
+}
+
+.views-slideshow-controls-text span {
+  position:absolute;
+  overflow:hidden;
+  z-index: 10;
+  background-color: rgba(66,66,66,0.6);
+  color: #fff;
+  display: none;
+}
+
+.views-slideshow-controls-text span a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+span.views-slideshow-controls-text-previous:before {
+  content: "\25C0"
+}
+
+span.views-slideshow-controls-text-next:after {
+  content: "\25B6"
+}
+
+/* search form */
+#block-search-form h2 {
+  display: none;
+}
+
+#block-search-form .form-submit {
+  background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
+  text-indent: -9999px;
+  border: none;
+  margin-right: 0;
+  width: 78px;
+  height: 40px;
+  margin-top: 2px;
+}
+
+/* email subscribe form */
+#block-block-6 h2 {
+  display: none;
+}
+
+#mc-embedded-subscribe-form input[type=submit] {
+  background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
+  text-indent: -9999px;
+  border: none;
+  width: 96px;
+  height: 43px;
+}
+
+select,
+input[type=text],
+input[type=email] {
+  border-color: #CCC;
+  border-style: solid;
+  border-width: thin;
+}
+
+/* Voiceless box */
+#block-block-1 div p {
+  text-align: center; 
+}
+
+#section-home-childtree ul {
+  list-style: none;
+  padding: 0;
+}
+
+#section-home-childtree ul li a {
+  color: #000;
+  text-decoration: none;
+}
+
+#section-home-childtree ul li:before {
+  content: "\25B6"
+}
+
+.node-type-article .field-name-field-intro,
+.node-type-section-home .field-name-field-intro {
+  color: #502c83;
+  font-style: italic;
+}
+
+.node-type-article .field-type-image {
+  float: right;
+  border-color: #AAA;
+  border-style: solid;
+  border-width: thin;
+  background-color: #EEE;
+}
+
+/* Donate now block */
+.block-block-5,
+.block-block-5 a {
+  color: #f8931d;
+}
+
+/* Shop stylings */
+.page-catalog table {
+  border: none;
+}
+
+.page-catalog table td {
+  text-align: center;
+}
