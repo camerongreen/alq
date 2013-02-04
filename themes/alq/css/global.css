@@ -1,55 +1,77 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* line 5, ../scss/global.scss */
+body {
+  background-color: #fff;
+}
 
+/* line 9, ../scss/global.scss */
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: Arial, Verdana, Geneva, sans-serif;
 }
 
+/* line 13, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #502c83;
 }
 
+/* line 17, ../scss/global.scss */
 .front h1.title {
   display: none;
 }
 
+/* line 21, ../scss/global.scss */
 #region-branding {
   background-color: #ececee;
 }
 
+/* line 25, ../scss/global.scss */
 .region-sidebar-first-inner {
   background: url("/sites/all/themes/alq/images/left-bg.jpg");
 }
 
+/* line 29, ../scss/global.scss */
 .logo-img {
   margin-left: 10px;
 }
 
 /* Social media block */
+/* line 34, ../scss/global.scss */
 .block-block-2 {
   position: absolute;
   top: 0px;
   right: 10px;
 }
 
+/* line 40, ../scss/global.scss */
 .header-social-media-link {
   display: block;
   float: left;
 }
 
+/* line 45, ../scss/global.scss */
 .block-facebook-boxes {
   display: none;
 }
 
 /* Header menu */
+/* line 50, ../scss/global.scss */
 .block-nice-menus-1 {
   position: relative;
 }
 
+/* line 54, ../scss/global.scss */
+#zone-footer {
+  color: #fff;
+  background-color: #502c83;
+}
+
 /* don't show home link in reduced mode */
+/* line 60, ../scss/global.scss */
 #nice-menu-1 > li.first {
   display: none;
 }
 
+/* line 67, ../scss/global.scss */
 ul.nice-menu,
 ul.nice-menu ul,
 ul.nice-menu li,
@@ -60,16 +82,13 @@ ul.nice-menu li a {
   text-decoration: none;
 }
 
+/* line 74, ../scss/global.scss */
 .block-user-menu ul.menu {
   margin: 0;
   padding: 0;
 }
 
-#zone-footer {
-  color: #fff;
-  background-color: #502c83;
-}
-
+/* line 80, ../scss/global.scss */
 .block-user-menu ul.menu li,
 .block-menu-footer-menu ul.menu li {
   display: inline;
@@ -77,28 +96,29 @@ ul.nice-menu li a {
   padding: 0;
 }
 
+/* line 87, ../scss/global.scss */
 .block-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
-
+/* line 91, ../scss/global.scss */
 .block-menu-footer-menu ul.menu > li a {
   border-right-style: solid;
   border-right-color: #fff;
   border-right-width: thin;
 }
-
+/* line 96, ../scss/global.scss */
 .block-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
-
+/* line 103, ../scss/global.scss */
 .view-news .views-field-title a {
   font-weight: bold;
   text-decoration: none;
   color: #502c83;
 }
-
+/* line 108, ../scss/global.scss */
 .view-news .views-field-field-image {
   float: left;
   border-color: #AAA;
@@ -106,81 +126,89 @@ ul.nice-menu li a {
   border-width: thin;
   background-color: #EEE;
 }
-
+/* line 115, ../scss/global.scss */
 .view-news .views-label-field-tags {
   float: left;
   margin-right: 1ex;
   font-weight: bold;
 }
 
-
+/* line 124, ../scss/global.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 700px !important;
   height: 253px !important;
 }
 
+/* line 130, ../scss/global.scss */
+.views-slideshow-controls-text,
+.view-slideshow .views-field-view-node {
+  display: none;
+}
+
+/* line 139, ../scss/global.scss */
+#section-home-header {
+  border-bottom-color: #502c83;
+  border-bottom-style: solid;
+}
+
+/* line 143, ../scss/global.scss */
+.view-slideshow {
+  border-bottom-color: #502c83;
+  border-bottom-style: solid;
+}
+/* line 145, ../scss/global.scss */
+.view-slideshow .views-field-title {
+  position: absolute;
+  background-color: rgba(66, 66, 66, 0.6);
+}
+/* line 149, ../scss/global.scss */
+.view-slideshow .views-field-title a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 154, ../scss/global.scss */
+.view-slideshow .views-field-view-node {
+  position: absolute;
+}
+/* line 157, ../scss/global.scss */
 .view-slideshow .views-field-title {
   top: 140px;
   left: 30px;
   padding: 1ex;
 }
 
-.views-slideshow-controls-text,
-.view-slideshow .views-field-view-node {
-  display: none;
-}
-
-
-#section-home-header,
-.view-slideshow {
-  border-bottom-color: #502c83;
-  border-bottom-style: solid;
-}
-
-.view-slideshow .views-field-title {
-  position: absolute;
-  background-color: rgba(66,66,66,0.6);
-}
-
-.view-slideshow .views-field-title a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.view-slideshow .views-field-view-node {
-  position: absolute;
-}
-
+/* line 164, ../scss/global.scss */
 .views-slideshow-controls-text span {
-  position:absolute;
-  overflow:hidden;
+  position: absolute;
+  overflow: hidden;
   z-index: 10;
-  background-color: rgba(66,66,66,0.6);
+  background-color: rgba(66, 66, 66, 0.6);
   color: #fff;
   display: none;
 }
-
+/* line 171, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-
-span.views-slideshow-controls-text-previous:before {
-  content: "\25C0"
+/* line 176, ../scss/global.scss */
+.views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
+  content: "\25C0";
 }
-
-span.views-slideshow-controls-text-next:after {
-  content: "\25B6"
+/* line 179, ../scss/global.scss */
+.views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
+  content: "\25B6";
 }
 
 /* search form */
+/* line 186, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-
+/* line 189, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -192,10 +220,12 @@ span.views-slideshow-controls-text-next:after {
 }
 
 /* email subscribe form */
+/* line 201, ../scss/global.scss */
 #block-block-6 h2 {
   display: none;
 }
 
+/* line 205, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -204,6 +234,7 @@ span.views-slideshow-controls-text-next:after {
   height: 43px;
 }
 
+/* line 215, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -213,30 +244,34 @@ input[type=email] {
 }
 
 /* Voiceless box */
+/* line 222, ../scss/global.scss */
 #block-block-1 div p {
-  text-align: center; 
+  text-align: center;
 }
 
+/* line 226, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-
+/* line 229, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
 }
-
+/* line 233, ../scss/global.scss */
 #section-home-childtree ul li:before {
-  content: "\25B6"
+  content: "\25B6";
 }
 
+/* line 239, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
+/* line 244, ../scss/global.scss */
 .node-type-article .field-type-image {
   float: right;
   border-color: #AAA;
@@ -246,16 +281,18 @@ input[type=email] {
 }
 
 /* Donate now block */
+/* line 254, ../scss/global.scss */
 .block-block-5,
 .block-block-5 a {
   color: #f8931d;
 }
 
 /* Shop stylings */
+/* line 259, ../scss/global.scss */
 .page-catalog table {
   border: none;
 }
-
+/* line 261, ../scss/global.scss */
 .page-catalog table td {
   text-align: center;
 }

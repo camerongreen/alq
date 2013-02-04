@@ -1,7 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 
-
 /* Social media block */
 .block-block-2 {
   top: -10px;
@@ -42,14 +41,13 @@ ul.nice-menu li a {
   height: 340px !important;
 }
 
-
-
-.view-slideshow .views-field-title {
-  top: 180px;
-}
-
-.view-slideshow .views-field-view-node {
-  top: 240px;
+.view-slideshow {
+  .views-field-title {
+    top: 180px;
+  }
+  .views-field-view-node {
+    top: 240px;
+  }
 }
 
 .views-slideshow-controls-text span {
