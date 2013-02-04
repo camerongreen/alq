@@ -51,11 +51,6 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-#zone-footer {
-  color: #fff;
-  background-color: $alq-purple;
-}
-
 /* don't show home link in reduced mode */
 #nice-menu-1 > li.first {
   display: none;
@@ -76,25 +71,36 @@ ul.nice-menu li a {
   padding: 0;
 }
 
-.block-user-menu ul.menu li,
-.block-menu-footer-menu ul.menu li {
+.block-user-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
 
-.block-menu-footer-menu ul.menu {
-  li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  & > li a {
-    border-right-style: solid;
-    border-right-color: #fff;
-    border-right-width: thin;
-  }
-  & > li:last-child a {
-    border: none;
+#zone-footer {
+  color: #fff;
+  background-color: $alq-purple;
+  .block-menu-footer-menu ul.menu {
+    li ul {
+      display: none;
+    }
+    li {
+      display: inline;
+      list-style-type: none;
+      padding: 0;
+    }
+    li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    & > li a {
+      border-right-style: solid;
+      border-right-color: #fff;
+      border-right-width: thin;
+    }
+    & > li:last-child a {
+      border: none;
+    }
   }
 }
 
