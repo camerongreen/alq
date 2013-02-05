@@ -56,14 +56,18 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-ul.nice-menu,
-ul.nice-menu ul,
-ul.nice-menu li,
-ul.nice-menu li a {
-  border: 0;
-  background-color: $header-background-color;
-  color: $alq-purple;
-  text-decoration: none;
+ul.nice-menu {
+  ul,
+  li,
+  li a {
+    border: 0;
+    color: $alq-purple;
+    text-decoration: none;
+  }
+  li a:hover {
+    background-color: $alq-purple;
+    color: $header-background-color;
+  }
 }
 
 .block-user-menu ul.menu {
@@ -104,24 +108,42 @@ ul.nice-menu li a {
   }
 }
 
+#block-views-news-block {
+  margin-bottom: 1em;
+}
 
 .view-news {
-  .views-field-title a {
-    font-weight: bold;
-    text-decoration: none;
-    color: $alq-purple;
+  .views-row {
+    clear: both;
+    .views-field-title a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $alq-purple;
+    }
+    .views-field-field-image img {
+      border-color: #AAA;
+      border-style: solid;
+      border-width: thin;
+      background-color: #EEE;
+    }
+    .field-name-field-tags,
+    .views-label-field-tags {
+      float: left;
+      margin-right: 1ex;
+      font-weight: bold;
+    }
   }
-  .views-field-field-image {
-    float: left;
-    border-color: #AAA;
-    border-style: solid;
-    border-width: thin;
-    background-color: #EEE;
-  }
-  .views-label-field-tags {
-    float: left;
-    margin-right: 1ex;
-    font-weight: bold;
+  div.more-link {
+    text-align: center;
+    a {
+      font-weight: bold;
+      font-size: 150%;
+      text-decoration: none;
+      color: $alq-purple;
+    }
+    a:after {
+      content: "\25B6"
+    }
   }
 }
 

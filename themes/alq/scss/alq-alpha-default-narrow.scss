@@ -46,23 +46,25 @@
 
 .view-news .views-row {
   margin-bottom: 2em;
+  .views-row-details {
+    margin-left: 230px;
+  }
   .views-field-title a {
     font-size: 19px;
-  }
-  .views-field-view-node,
-  .views-field-body p {
-    margin-left: 240px;
   }
   .views-field-body p:last-child {
     margin-bottom: 1ex;
   }
   .views-field-field-image {
-    margin-right: 1em;
-    border-radius: 4px;
-    padding: 3px;
+    float: left;
+    width: 220px;
+    height: 100%;
   }
   .views-field-field-image img {
     border-radius: 4px;
+    padding: 3px;
+    border-radius: 4px;
+    width: 200px;
   }
 }
 
