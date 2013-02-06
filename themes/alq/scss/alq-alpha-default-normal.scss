@@ -9,21 +9,20 @@
 
 
 /* Header menu */
-.block-nice-menus-1 {
+#block-nice-menus-1 {
   top: 62px;
   right: 40px;
-}
-
-ul.nice-menu,
-ul.nice-menu ul,
-ul.nice-menu li,
-ul.nice-menu li a {
-  font-weight: bold;
-}
-
-/* don't show home link in reduced mode */
-#nice-menu-1 > li.first {
-  display: inherit;
+  ul.nice-menu {
+    ul,
+    li,
+    li a {
+      font-weight: bold;
+    }
+  }
+  /* don't show home link in reduced mode */
+  #nice-menu-1 > li.first {
+    display: inherit;
+  }
 }
 
 .logo-img {

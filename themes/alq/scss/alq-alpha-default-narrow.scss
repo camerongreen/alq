@@ -12,19 +12,33 @@
   margin-bottom: 1.5em;
 }
 
-.block-facebook-boxes {
-  display: inherit;
-}
-
 /* Header menu */
-.block-nice-menus-1 {
+#block-nice-menus-1 {
   position: absolute;
   top: 71px;
   right: 0px;
+  ul.nice-menu ul {
+    display: inherit !important;
+  }
+  ul.nice-menu-down .menuparent a {
+    padding-right: 15px;
+  }
+  ul.nice-menu-down li.menuparent {
+    background: url("/sites/all/modules/nice_menus/arrow-down.png") no-repeat scroll right center #EEEEEE;
+  }
+  ul.nice-menu-down li.menuparent:hover {
+    background: url("/sites/all/modules/nice_menus/arrow-down.png") no-repeat scroll right center #CCCCCC;
+  }
+  ul.nice-menu-down li li.menuparent {
+    background: url("/sites/all/modules/nice_menus/arrow-right.png") no-repeat scroll right center #EEEEEE;
+  }
+  ul.nice-menu-down li li.menuparent:hover {
+    background: url("/sites/all/modules/nice_menus/arrow-right.png") no-repeat scroll right center #CCCCCC;
+  }
 }
 
-#twitter-link {
-  margin-top: 2px;
+#donate-link {
+  display: inherit;
 }
 
 #zone-footer {
@@ -73,6 +87,7 @@
 .view-slideshow {
   border-bottom-width: 4px;
   margin-bottom: 1em;
+  margin-top: 0;
 }
 
 #section-home-header img {
@@ -137,7 +152,7 @@
   width: 100%;
 }
 
-#block-block-6 h2 {
+#block-block-6 {
   display: inherit;
 }
 
@@ -156,6 +171,7 @@ input[type=email] {
 #section-home-childtree {
   h2 {
     margin-bottom: 5px;
+    display: inherit;
   }
   ul {
     margin-left: 3em;
@@ -180,12 +196,16 @@ input[type=email] {
 
 /* Donate now block */
 .block-block-5 {
+  display: inherit;
   font-size: 200%;
 }
 
 /* Facebook widget, trying to make responsive */
-#block-facebook-boxes-fb-like iframe {
-  width: 100% !important;
+#block-facebook-boxes-fb-like {
+  display: inherit;
+  iframe {
+    width: 100% !important;
+  }
 }
 
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
