@@ -74,147 +74,146 @@ ul.nice-menu li a {
   text-decoration: none;
 }
 /* line 67, ../scss/global.scss */
-ul.nice-menu li a:hover {
-  background-color: #502c83;
-  color: #ececee;
+ul.nice-menu li:hover {
+  background-color: #ccc;
 }
 
-/* line 73, ../scss/global.scss */
+/* line 72, ../scss/global.scss */
 .block-user-menu ul.menu {
   margin: 0;
   padding: 0;
 }
 
-/* line 78, ../scss/global.scss */
+/* line 77, ../scss/global.scss */
 .block-user-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 84, ../scss/global.scss */
+/* line 83, ../scss/global.scss */
 #zone-footer {
   color: #fff;
   background-color: #502c83;
 }
-/* line 88, ../scss/global.scss */
+/* line 87, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li ul {
   display: none;
 }
-/* line 91, ../scss/global.scss */
+/* line 90, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
-/* line 96, ../scss/global.scss */
+/* line 95, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
-/* line 100, ../scss/global.scss */
+/* line 99, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li a {
   border-right-style: solid;
   border-right-color: #fff;
   border-right-width: thin;
 }
-/* line 105, ../scss/global.scss */
+/* line 104, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
-/* line 111, ../scss/global.scss */
+/* line 110, ../scss/global.scss */
 #block-views-news-block {
   margin-bottom: 1em;
 }
 
-/* line 116, ../scss/global.scss */
+/* line 115, ../scss/global.scss */
 .view-news .views-row {
   clear: both;
 }
-/* line 118, ../scss/global.scss */
+/* line 117, ../scss/global.scss */
 .view-news .views-row .views-field-title a {
   font-weight: bold;
   text-decoration: none;
   color: #502c83;
 }
-/* line 123, ../scss/global.scss */
+/* line 122, ../scss/global.scss */
 .view-news .views-row .views-field-field-image img {
   border-color: #AAA;
   border-style: solid;
   border-width: thin;
   background-color: #EEE;
 }
-/* line 130, ../scss/global.scss */
+/* line 129, ../scss/global.scss */
 .view-news .views-row .field-name-field-tags,
 .view-news .views-row .views-label-field-tags {
   float: left;
   margin-right: 1ex;
   font-weight: bold;
 }
-/* line 136, ../scss/global.scss */
+/* line 135, ../scss/global.scss */
 .view-news div.more-link {
   text-align: center;
 }
-/* line 138, ../scss/global.scss */
+/* line 137, ../scss/global.scss */
 .view-news div.more-link a {
   font-weight: bold;
   font-size: 150%;
   text-decoration: none;
   color: #502c83;
 }
-/* line 144, ../scss/global.scss */
+/* line 143, ../scss/global.scss */
 .view-news div.more-link a:after {
   content: "\25B6";
 }
 
-/* line 152, ../scss/global.scss */
+/* line 151, ../scss/global.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 700px !important;
   height: 253px !important;
 }
 
-/* line 158, ../scss/global.scss */
+/* line 157, ../scss/global.scss */
 .views-slideshow-controls-text,
 .view-slideshow .views-field-view-node {
   display: none;
 }
 
-/* line 167, ../scss/global.scss */
+/* line 166, ../scss/global.scss */
 #section-home-header {
   border-bottom-color: #502c83;
   border-bottom-style: solid;
 }
 
-/* line 171, ../scss/global.scss */
+/* line 170, ../scss/global.scss */
 .view-slideshow {
   border-bottom-color: #502c83;
   border-bottom-style: solid;
 }
-/* line 173, ../scss/global.scss */
+/* line 172, ../scss/global.scss */
 .view-slideshow .views-field-title {
   position: absolute;
   background-color: rgba(66, 66, 66, 0.6);
 }
-/* line 177, ../scss/global.scss */
+/* line 176, ../scss/global.scss */
 .view-slideshow .views-field-title a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
 }
-/* line 182, ../scss/global.scss */
+/* line 181, ../scss/global.scss */
 .view-slideshow .views-field-view-node {
   position: absolute;
 }
-/* line 185, ../scss/global.scss */
+/* line 184, ../scss/global.scss */
 .view-slideshow .views-field-title {
   top: 140px;
   left: 30px;
   padding: 1ex;
 }
 
-/* line 192, ../scss/global.scss */
+/* line 191, ../scss/global.scss */
 .views-slideshow-controls-text span {
   position: absolute;
   overflow: hidden;
@@ -223,27 +222,27 @@ ul.nice-menu li a:hover {
   color: #fff;
   display: none;
 }
-/* line 199, ../scss/global.scss */
+/* line 198, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-/* line 204, ../scss/global.scss */
+/* line 203, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
   content: "\25C0";
 }
-/* line 207, ../scss/global.scss */
+/* line 206, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
   content: "\25B6";
 }
 
 /* search form */
-/* line 214, ../scss/global.scss */
+/* line 213, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 217, ../scss/global.scss */
+/* line 216, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -255,12 +254,12 @@ ul.nice-menu li a:hover {
 }
 
 /* email subscribe form */
-/* line 229, ../scss/global.scss */
+/* line 228, ../scss/global.scss */
 #block-block-6 h2 {
   display: none;
 }
 
-/* line 233, ../scss/global.scss */
+/* line 232, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -269,7 +268,7 @@ ul.nice-menu li a:hover {
   height: 43px;
 }
 
-/* line 243, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -279,34 +278,34 @@ input[type=email] {
 }
 
 /* Voiceless box */
-/* line 250, ../scss/global.scss */
+/* line 249, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 254, ../scss/global.scss */
+/* line 253, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 257, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
 }
-/* line 261, ../scss/global.scss */
+/* line 260, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "\25B6";
 }
 
-/* line 267, ../scss/global.scss */
+/* line 266, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 272, ../scss/global.scss */
+/* line 271, ../scss/global.scss */
 .node-type-article .field-type-image {
   float: right;
   border-color: #AAA;
@@ -316,18 +315,18 @@ input[type=email] {
 }
 
 /* Donate now block */
-/* line 282, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 .block-block-5,
 .block-block-5 a {
   color: #f8931d;
 }
 
 /* Shop stylings */
-/* line 287, ../scss/global.scss */
+/* line 286, ../scss/global.scss */
 .page-catalog table {
   border: none;
 }
-/* line 289, ../scss/global.scss */
+/* line 288, ../scss/global.scss */
 .page-catalog table td {
   text-align: center;
 }

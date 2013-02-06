@@ -64,9 +64,8 @@ ul.nice-menu {
     color: $alq-purple;
     text-decoration: none;
   }
-  li a:hover {
-    background-color: $alq-purple;
-    color: $header-background-color;
+  li:hover {
+    background-color: #ccc;
   }
 }
 
