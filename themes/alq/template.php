@@ -10,3 +10,13 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
+
+/**
+ * Process variables for search-result.tpl.php.
+ *
+ * @see search-result.tpl.php
+ */
+function alq_preprocess_search_result(&$variables) {
+  // Remove user name and modification date from search results
+  $variables['info'] = '';
+} 
