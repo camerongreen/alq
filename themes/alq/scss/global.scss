@@ -22,10 +22,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: $header-background-color;
 }
 
-.region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-}
-
 .logo-img {
   margin-left: 10px;
 }
@@ -139,11 +135,17 @@ h1, h2, h3, h4, h5, h6 {
       text-decoration: none;
       color: $alq-purple;
     }
+    .views-field-field-image {
+      float: left;
+      width: 220px;
+      height: 100%;
+    }
     .views-field-field-image img {
       border-color: #AAA;
       border-style: solid;
       border-width: thin;
       background-color: #EEE;
+      width: 200px;
     }
     .field-name-field-tags,
     .views-label-field-tags {
@@ -173,8 +175,9 @@ h1, h2, h3, h4, h5, h6 {
 
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
-  width: 280px !important;
-  height: 120px !important;
+  width: 460px !important;
+  height: 165px !important;
+  margin: auto;
 }
 
 .views-slideshow-controls-text,
