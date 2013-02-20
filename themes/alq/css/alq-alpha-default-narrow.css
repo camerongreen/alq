@@ -233,20 +233,21 @@ input[type=email] {
 /* line 194, ../scss/alq-alpha-default-narrow.scss */
 .block-block-5 {
   display: inherit;
+  color: #f8931d;
   font-size: 200%;
 }
 
 /* Facebook widget, trying to make responsive */
-/* line 200, ../scss/alq-alpha-default-narrow.scss */
+/* line 201, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like {
   display: inherit;
 }
-/* line 202, ../scss/alq-alpha-default-narrow.scss */
+/* line 203, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like iframe {
   width: 100% !important;
 }
 
-/* line 207, ../scss/alq-alpha-default-narrow.scss */
+/* line 208, ../scss/alq-alpha-default-narrow.scss */
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }

@@ -352,19 +352,17 @@ input[type=email] {
 }
 
 /* Donate now block */
-/* line 311, ../scss/global.scss */
-.block-block-5,
-.block-block-5 a {
+/* line 310, ../scss/global.scss */
+.block-block-5 {
   display: none;
-  color: #f8931d;
 }
 
 /* Shop stylings */
-/* line 317, ../scss/global.scss */
+/* line 315, ../scss/global.scss */
 .page-catalog table {
   border: none;
 }
-/* line 319, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 .page-catalog table td {
   text-align: center;
 }
