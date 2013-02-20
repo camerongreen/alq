@@ -40,7 +40,7 @@ projects[admin_menu][type] = "module"
 projects[ckeditor][version] = 1.12
 projects[ckeditor][type] = "module"
 
-projects[colorbox][version] = 2.2
+projects[colorbox][version] = 2.3
 projects[colorbox][type] = "module"
 
 projects[context][version] = 3.0-beta6
@@ -127,7 +127,7 @@ projects[imce_wysiwyg][type] = "module"
 projects[jquery_plugin][version] = 1.0
 projects[jquery_plugin][type] = "module"
 
-projects[jquery_update][version] = 2.2
+projects[jquery_update][version] = 2.3
 projects[jquery_update][type] = "module"
 
 projects[wysiwyg][version] = 2.2
@@ -136,6 +136,9 @@ projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckedito
 
 projects[ubercart][version] = 3.3
 projects[ubercart][type] = "module"
+
+projects[uc_auspost_pac][version] = 1.x-dev
+projects[uc_auspost_pac][type] = "module"
 
 projects[views][version] = 3.5
 projects[views][type] = "module"
