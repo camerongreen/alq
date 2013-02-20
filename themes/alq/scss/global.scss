@@ -268,10 +268,12 @@ input[type=email] {
 }
 
 #section-home-header {
+  width: 460px !important;
+  margin: auto;
   @include header-image-border;
   img {
-    width: 280px;
-    height: 90px;
+    width: 460px !important;
+    height: 90px !important;
   }
 }
 

@@ -30,28 +30,32 @@
 }
 
 /* line 32, ../scss/alq-alpha-default-normal.scss */
+#section-home-header {
+  width: 940px !important;
+}
+/* line 34, ../scss/alq-alpha-default-normal.scss */
 #section-home-header img {
-  width: 940px;
-  height: 160px;
+  width: 940px !important;
+  height: 160px !important;
 }
 
-/* line 38, ../scss/alq-alpha-default-normal.scss */
+/* line 41, ../scss/alq-alpha-default-normal.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 940px !important;
   height: 340px !important;
 }
 
-/* line 44, ../scss/alq-alpha-default-normal.scss */
+/* line 47, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-title {
   top: 180px;
 }
-/* line 47, ../scss/alq-alpha-default-normal.scss */
+/* line 50, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-view-node {
   top: 240px;
 }
 
-/* line 52, ../scss/alq-alpha-default-normal.scss */
+/* line 55, ../scss/alq-alpha-default-normal.scss */
 .views-slideshow-controls-text span {
   top: 300px;
 }

@@ -29,9 +29,12 @@
   margin-left: 40px;
 }
 
-#section-home-header img {
-  width: 940px;
-  height: 160px;
+#section-home-header {
+  width: 940px !important;
+  img {
+    width: 940px !important;
+    height: 160px !important;
+  }
 }
 
 #views_slideshow_cycle_teaser_section_slideshow-block,

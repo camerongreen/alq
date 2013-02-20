@@ -86,9 +86,12 @@
   margin-top: 0;
 }
 
-#section-home-header img {
-  width: 700px;
-  height: 120px;
+#section-home-header {
+  width: 700px !important;
+  img {
+    width: 700px !important;
+    height: 120px !important;
+  }
 }
 
 #views_slideshow_cycle_teaser_section_slideshow-block,
