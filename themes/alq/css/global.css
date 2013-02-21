@@ -368,3 +368,9 @@ input[type=email] {
 .page-catalog table td {
   text-align: center;
 }
+
+/* Contact us form */
+/* line 325, ../scss/global.scss */
+body.page-contact ul {
+  list-style: none;
+}
