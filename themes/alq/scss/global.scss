@@ -314,7 +314,7 @@ input[type=email] {
 }
 
 /* Shop stylings */
-.page-catalog table {
+.page-catalog table:nth-child(1) {
   border: none;
   td {
     text-align: center;

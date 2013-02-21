@@ -361,11 +361,11 @@ input[type=email] {
 
 /* Shop stylings */
 /* line 317, ../scss/global.scss */
-.page-catalog table {
+.page-catalog table:nth-child(1) {
   border: none;
 }
 /* line 319, ../scss/global.scss */
-.page-catalog table td {
+.page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
