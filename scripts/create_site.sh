@@ -24,14 +24,34 @@ FILE_OWNER=$USER
 WEBSERVER_GROUP=www-data
 
 # default settings for DB
-DEFAULT_DB_USER=alq
-DEFAULT_DB_NAME=alq_db
+DEFAULT_DB_USER=alq_test
+DEFAULT_DB_NAME=alq_db_test
 DEFAULT_DB_HOST=localhost
+
+#
+# Output command status and exit if error
+#
+# $1 is message if command produced error
+# $2 (optional) is message if command succeeded
+function command_status {
+  if [ $? -ne 0 ]
+    then
+      printf $1
+      exit 1
+  else 
+    if [[ $2 ]]
+      then
+        printf $2
+    fi
+  fi
+}
+
+# go...
 
 if [ -e $PUBLIC_DIR ]
   then
     echo "$PUBLIC_DIR already exists";
-    exit 1
+    exit 1;
 fi
 
 # first set up the database
@@ -61,14 +81,7 @@ fi
 
 echo "SELECT 1;" | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD $DB_NAME > /dev/null
 
-if [ $? -ne 0 ]
-  then
-    echo "Unable to connect to database"
-    echo "Please ensure you have created $DB_NAME and granted access to $DB_USER@$DB_HOST"
-    exit 1
-else
-  echo "Connected to db"
-fi
+command_status "Unable to connect to database\nPlease ensure you have created $DB_NAME and granted access to $DB_USER@$DB_HOST" "Connected to db";
 
 read -p "Site email [${DEFAULT_SITE_EMAIL}]:" SITE_EMAIL
 if [ -z $SITE_EMAIL ]
@@ -84,6 +97,8 @@ if [ -z $SITE_EMAIL ]
 fi
 
 drush make ${GIT_DIR}/scripts/drush.make $PUBLIC_DIR
+command_status "Drush make failed";
+
 ln -s ${PWD}/${GIT_DIR}/modules ${PUBLIC_DIR}/sites/all/modules/custom
 ln -s ${PWD}/${GIT_DIR}/themes/alq ${PUBLIC_DIR}/sites/all/themes
 
@@ -102,3 +117,5 @@ drush -y pm-enable admin admin_menu alq_content_types_feature alq_editor_role_fe
 # and add to the drush.make script to save yourself time in the future
 drush pm-update
 popd
+
+

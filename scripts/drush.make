@@ -8,9 +8,9 @@
 ; Core version
 ; ------------
 ; Each makefile should begin by declaring the core version of Drupal that all
-; projects should be compatible with.
+; projects should be compatible with. 
   
-core = 7.x
+core = 7.20
   
 ; API version
 ; ------------
@@ -173,7 +173,7 @@ libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
 libraries[jquery.cycle][download][type] = "file"
-libraries[jquery.cycle][download][url] = "https://raw.github.com/malsup/cycle/master/jquery.cycle.all.latest.min.js"
+libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
 
 libraries[json2][download][type] = "file"
