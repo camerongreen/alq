@@ -2,6 +2,7 @@ name = ALQ Menus Feature
 description = Menus for the site
 core = 7.x
 package = ALQ
+php = 5.2.4
 version = 7.x-1.0
 project = alq_menus_feature
 dependencies[] = features

@@ -19,14 +19,14 @@ function alq_menus_feature_menu_default_menu_custom() {
   // Exported menu: menu-header-menu.
   $menus['menu-header-menu'] = array(
     'menu_name' => 'menu-header-menu',
-    'title' => 'Header Menu',
+    'title' => 'Site Navigation',
     'description' => 'This is the menu which is on every page under the AL Header',
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('Footer Menu');
-  t('Header Menu');
   t('Links at the bottom of each page');
+  t('Site Navigation');
   t('This is the menu which is on every page under the AL Header');
 
 

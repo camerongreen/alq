@@ -194,7 +194,7 @@ function alq_content_types_feature_field_default_fields() {
           'label' => 'above',
           'module' => 'file',
           'settings' => array(),
-          'type' => 'file_default',
+          'type' => 'file_table',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -266,8 +266,8 @@ function alq_content_types_feature_field_default_fields() {
           'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
-            'image_link' => '',
-            'image_style' => 'large',
+            'image_link' => 'file',
+            'image_style' => 'article_style',
           ),
           'type' => 'image',
           'weight' => '1',
@@ -938,7 +938,7 @@ function alq_content_types_feature_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_image',
       'label' => 'Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
