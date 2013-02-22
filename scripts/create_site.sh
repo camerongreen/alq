@@ -107,7 +107,8 @@ drush site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}
 popd
 
 chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
-chmod g+w ${PUBLIC_DIR}/sites/default/files
+chmod ug+w ${PUBLIC_DIR}/sites/default/
+chmod ug+w ${PUBLIC_DIR}/sites/default/files
 
 pushd $PUBLIC_DIR
 drush -y pm-disable toolbar
