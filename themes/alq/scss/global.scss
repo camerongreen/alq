@@ -52,10 +52,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Header menu */
 #block-nice-menus-1 {
   position: relative;
-  /* don't show home link in reduced mode */
-  #nice-menu-1 > li.first {
-    display: none;
-  }
   ul.nice-menu {
     ul,
     li,

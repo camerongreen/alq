@@ -134,7 +134,7 @@ projects[wysiwyg][version] = 2.2
 projects[wysiwyg][type] = "module"
 projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-73.patch"
 
-projects[ubercart][version] = 3.3
+projects[ubercart][version] = 3.4
 projects[ubercart][type] = "module"
 
 projects[uc_auspost_pac][version] = 1.x-dev

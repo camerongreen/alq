@@ -1,20 +1,20 @@
 #!/bin/bash
 # To run this script, you need the checked out git repository in the same directory
 # as your public_html dir will be to hold Drupal.
-
+#
 # eg :
-# /www/alq.test - parent directory
-# /www/alq.test/code - git repo with this file it in 
+# cd /www/alq.test - your parent directory
+# git clone https://github.com/camerongreen/alq.git
 #
 # Then run this script from the parent directory, eg 
-#  DEFAULT_SITE_EMAIL="alq@whatever.org" ./code/scripts/create_site.sh
+#  DEFAULT_SITE_EMAIL="alq@whatever.org" ./alq/scripts/create_site.sh
 # it will ask you for the db you've created's details, then create public_html
 # add drupal to it, symlink your custom modules, themes etc
 #
 
 SITE_NAME="Animal Liberation Queensland"
 
-GIT_DIR=code
+GIT_DIR=alq
 PUBLIC_DIR=public_html
 
 # this is the user who will own the files, so you 
