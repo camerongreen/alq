@@ -26,11 +26,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
 }
 
-/* Social media block */
-#donate-link {
-  display: none;
-}
-
 #twitter-link {
   margin-top: 2px;
 }
@@ -46,6 +41,10 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 
+/* Blocks we won't show on mobile version */
+#donate-link,
+.block-block-5, /* Donate now block */
+.block-block-1, /* Voiceless block */
 #block-facebook-boxes-fb-like {
   display: none;
 }
@@ -306,11 +305,6 @@ input[type=email] {
   border-style: solid;
   border-width: thin;
   background-color: #EEE;
-}
-
-/* Donate now block */
-.block-block-5 {
-  display: none;
 }
 
 /* Shop stylings */
