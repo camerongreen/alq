@@ -76,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 66, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul {
   display: none !important;
-  box-shadow: 2px 1px 2px #666666;
+  box-shadow: 2px 1px 2px #666;
 }
 /* line 71, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down .menuparent a {
@@ -219,16 +219,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* line 193, ../scss/global.scss */
 .view-slideshow .views-field-view-node {
+  display: none;
   position: absolute;
 }
-/* line 196, ../scss/global.scss */
+/* line 197, ../scss/global.scss */
 .view-slideshow .views-field-title {
+  display: none;
   top: 70px;
   left: 10px;
   padding: 2px;
 }
 
-/* line 203, ../scss/global.scss */
+/* line 205, ../scss/global.scss */
 .views-slideshow-controls-text span {
   position: absolute;
   overflow: hidden;
@@ -237,27 +239,27 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   display: none;
 }
-/* line 210, ../scss/global.scss */
+/* line 212, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-/* line 215, ../scss/global.scss */
+/* line 217, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
   content: "\25C0";
 }
-/* line 218, ../scss/global.scss */
+/* line 220, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
   content: "\25B6";
 }
 
 /* search form */
-/* line 225, ../scss/global.scss */
+/* line 227, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 228, ../scss/global.scss */
+/* line 230, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -269,12 +271,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* email subscribe form */
-/* line 240, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
 #block-block-6 {
   display: none;
 }
 
-/* line 244, ../scss/global.scss */
+/* line 246, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -283,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 43px;
 }
 
-/* line 254, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -293,51 +295,51 @@ input[type=email] {
 }
 
 /* Voiceless box */
-/* line 261, ../scss/global.scss */
+/* line 263, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 265, ../scss/global.scss */
+/* line 267, ../scss/global.scss */
 #section-home-header {
   width: 460px !important;
   margin: auto;
   border-bottom-color: #502c83;
   border-bottom-style: solid;
 }
-/* line 269, ../scss/global.scss */
+/* line 271, ../scss/global.scss */
 #section-home-header img {
   width: 460px !important;
   height: 90px !important;
 }
 
-/* line 276, ../scss/global.scss */
+/* line 278, ../scss/global.scss */
 #section-home-childtree h2 {
   display: none;
 }
-/* line 279, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 282, ../scss/global.scss */
+/* line 284, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
 }
-/* line 286, ../scss/global.scss */
+/* line 288, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "\25B6";
 }
 
-/* line 293, ../scss/global.scss */
+/* line 295, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 298, ../scss/global.scss */
+/* line 300, ../scss/global.scss */
 .node-type-article .field-type-image {
   float: right;
   border-color: #AAA;
@@ -347,17 +349,17 @@ input[type=email] {
 }
 
 /* Shop stylings */
-/* line 307, ../scss/global.scss */
+/* line 309, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 309, ../scss/global.scss */
+/* line 311, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
 /* Contact us form */
-/* line 315, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }

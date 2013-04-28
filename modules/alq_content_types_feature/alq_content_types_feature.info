@@ -1,5 +1,5 @@
 name = ALQ Content Types Feature
-description = Content types and their taxonomies used in site
+description = Content types and their axonomies used in site
 core = 7.x
 package = ALQ
 php = 5.2.4

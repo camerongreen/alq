@@ -138,7 +138,7 @@
 .view-slideshow .views-field-view-node {
   top: 200px;
   left: 30px;
-  display: inherit;
+  display: none;
 }
 
 /* line 119, ../scss/alq-alpha-default-narrow.scss */

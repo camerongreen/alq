@@ -191,9 +191,11 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
   }
   .views-field-view-node {
+    display: none;
     position: absolute;
   }
   .views-field-title {
+    display: none;
     top: 70px;
     left: 10px;
     padding: 2px;
