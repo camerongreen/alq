@@ -4,12 +4,15 @@
   padding: 1em;
 }
 
-.region-sidebar-first-inner {
-  padding: 4px;
-}
+.region-sidebar-first {
+  margin-right: 10px;
+  .region-sidebar-first-inner {
+    padding: 4px;
+  }
 
-.region-sidebar-first-inner section {
-  margin-bottom: 1.5em;
+  .region-sidebar-first-inner section {
+    margin-bottom: 1.5em;
+  }
 }
 
 /* Header menu */
@@ -57,21 +60,22 @@
   }
 }
 
-.view-news .views-row {
-  margin-bottom: 2em;
-  .views-row-details {
-    margin-left: 230px;
-  }
-  .views-field-title a {
-    font-size: 19px;
-  }
-  .views-field-body p:last-child {
-    margin-bottom: 1ex;
-  }
-  .views-field-field-image img {
-    border-radius: 4px;
-    border-radius: 4px;
-    width: 200px;
+.view-news {
+  .views-row {
+    margin-bottom: 30px;
+    overflow: auto;
+    .views-row-details {
+      margin-left: 220px;
+    }
+    .views-field-title a {
+      font-size: 17px;
+    }
+    .views-field-body p:last-child {
+      margin-bottom: 1ex;
+    }
+    .views-field-field-image img {
+      max-width: 200px;
+    }
   }
 }
 
@@ -153,6 +157,9 @@
 
 #block-block-6 {
   display: inherit;
+  div {
+    margin-bottom: 1ex;
+  }
 }
 
 select,
@@ -203,6 +210,11 @@ input[type=email] {
   display: inherit;
   color: #f8931d;
   font-size: 200%;
+  text-transform: uppercase;
+  font-weight: bold;
+  a {
+    color: #f8931d;
+  }
 }
 
 /* Facebook widget, trying to make responsive */

@@ -10,6 +10,9 @@
     if (!$("#block-facebook-boxes-fb-like:visible").length) {
     }
 
+
+    $(".view-news .views-field-field-image img").addClass("img-polaroid");
+
     // desktop
     if ($("#block-facebook-boxes-fb-like:visible").length) {
       $("body.front .view-slideshow").hover(function () {
