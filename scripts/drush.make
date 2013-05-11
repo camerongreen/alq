@@ -112,6 +112,9 @@ projects[rules][type] = "module"
 projects[site_map][version] = 1.0
 projects[site_map][type] = "module"
 
+projects[stage_file_proxy][version] = 1.3
+projects[stage_file_proxy][type] = "module"
+
 projects[strongarm][version] = 2.0
 projects[strongarm][type] = "module"
 

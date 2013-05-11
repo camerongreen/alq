@@ -4,11 +4,12 @@
 # it turns on the devel module etc.
 #
 # Run this script from the parent directory, eg 
-#   DEFAULT_SITE_EMAIL="alq@whatever.org" ./code/scripts/import_prod
+#   DEFAULT_SITE_EMAIL="alq@whatever.org" ./alq/scripts/import_prod
 # it will ask you for the db you've created's details, import the dump
 # file from prod you've downloaded into it, enable and disable some 
 # mods, set some values etc
 # 
+# Important: This does not currently change the paypal details, you will need to do that manually
 #
 
 DEFAULT_HOST=alq.test
@@ -29,19 +30,13 @@ DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=localhost
 DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/animalli_dev.sql
 
-if [ -e $PUBLIC_DIR ]
-  then
-    echo "$PUBLIC_DIR already exists";
-    exit 1
-fi
-
 # first set up the database
 read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
 if [ -z $DB_USER ]
   then
     DB_USER=$DEFAULT_DB_USER
 fi
-read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
+read -s -p "Database passwd:" DB_PASSWD
 # need a newline in the output here as -s swallows it
 echo ""
 if [ -z $DB_PASSWD ]
@@ -102,7 +97,7 @@ fi
 
 pushd ${SITE_BASE_URL}/${PUBLIC_DIR}
 
-drush -y pm-enable context_ui devel views_ui
+drush -y pm-enable context_ui devel views_ui stage_file_proxy
 drush -y pm-disable googleanalytics 
 drush vset site_mail ${DEFAULT_SITE_EMAIL}
 drush vset file_private_path ${SITE_BASE_URL}/private
