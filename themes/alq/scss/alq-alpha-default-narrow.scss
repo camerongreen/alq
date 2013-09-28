@@ -220,6 +220,9 @@ input[type=email] {
 /* Facebook widget, trying to make responsive */
 #block-facebook-boxes-fb-like {
   display: inherit;
+  h2 {
+    margin-bottom: 4px;
+  }
   iframe {
     width: 100% !important;
   }

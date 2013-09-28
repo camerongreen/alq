@@ -88,7 +88,7 @@ h2 {
 /* line 86, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul {
   display: none !important;
-  box-shadow: 2px 1px 2px #666;
+  box-shadow: 2px 1px 2px #666666;
 }
 /* line 91, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down .menuparent a {
@@ -175,7 +175,7 @@ h2 {
 .view-news .views-row .views-field-field-image img {
   padding: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -366,7 +366,7 @@ input[type=email] {
   float: right;
   padding: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
