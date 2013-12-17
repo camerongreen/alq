@@ -88,6 +88,15 @@ projects[nice_menus][type] = "module"
 projects[imageapi][version] = 1.x-dev
 projects[imageapi][type] = "module"
 
+projects[imce_wysiwyg][version] = 1.0
+projects[imce_wysiwyg][type] = "module"
+
+projects[jquery_plugin][version] = 1.0
+projects[jquery_plugin][type] = "module"
+
+projects[jquery_update][version] = 2.3
+projects[jquery_update][type] = "module"
+
 projects[libraries][version] = 2.0
 projects[libraries][type] = "module"
 
@@ -112,6 +121,9 @@ projects[rules][type] = "module"
 projects[site_map][version] = 1.0
 projects[site_map][type] = "module"
 
+projects[socialmedia][version] = 1.0-beta13
+projects[socialmedia][type] = "module"
+
 projects[stage_file_proxy][version] = 1.3
 projects[stage_file_proxy][type] = "module"
 
@@ -123,19 +135,6 @@ projects[token][type] = "module"
 
 projects[token_filter][version] = 1.1
 projects[token_filter][type] = "module"
-
-projects[imce_wysiwyg][version] = 1.0
-projects[imce_wysiwyg][type] = "module"
-
-projects[jquery_plugin][version] = 1.0
-projects[jquery_plugin][type] = "module"
-
-projects[jquery_update][version] = 2.3
-projects[jquery_update][type] = "module"
-
-projects[wysiwyg][version] = 2.2
-projects[wysiwyg][type] = "module"
-projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-73.patch"
 
 projects[ubercart][version] = 3.4
 projects[ubercart][type] = "module"
@@ -151,6 +150,13 @@ projects[views_slideshow][type] = "module"
 
 projects[webform][version] = 3.18
 projects[webform][type] = "module"
+
+projects[widgets][version] = 1.0-rc1
+projects[widgets][type] = "module"
+
+projects[wysiwyg][version] = 2.2
+projects[wysiwyg][type] = "module"
+projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-73.patch"
 
 projects[xmlsitemap][version] = 2.0-rc2
 projects[xmlsitemap][type] = "module"

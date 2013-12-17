@@ -147,7 +147,7 @@
 }
 
 #block-search-form input[type=text] {
-  width: 210px;
+  width: 100%;
 }
 
 /* email subscribe form */
@@ -222,9 +222,6 @@ input[type=email] {
   display: inherit;
   h2 {
     margin-bottom: 4px;
-  }
-  iframe {
-    width: 100% !important;
   }
 }
 

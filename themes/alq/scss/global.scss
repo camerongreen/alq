@@ -197,6 +197,11 @@ h2 {
   margin: auto;
 }
 
+span.views-slideshow-controls-text-next,
+span.views-slideshow-controls-text-previous {
+  text-decoration: none !important;
+}
+
 .views-slideshow-controls-text,
 .view-slideshow .views-field-view-node {
   display: none;

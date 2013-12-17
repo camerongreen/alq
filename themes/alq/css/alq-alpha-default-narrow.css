@@ -178,7 +178,7 @@
 
 /* line 149, ../scss/alq-alpha-default-narrow.scss */
 #block-search-form input[type=text] {
-  width: 210px;
+  width: 100%;
 }
 
 /* email subscribe form */
@@ -268,12 +268,8 @@ input[type=email] {
 #block-facebook-boxes-fb-like h2 {
   margin-bottom: 4px;
 }
-/* line 226, ../scss/alq-alpha-default-narrow.scss */
-#block-facebook-boxes-fb-like iframe {
-  width: 100% !important;
-}
 
-/* line 231, ../scss/alq-alpha-default-narrow.scss */
+/* line 228, ../scss/alq-alpha-default-narrow.scss */
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }
