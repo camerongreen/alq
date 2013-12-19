@@ -13,17 +13,19 @@ function alq_section_home_blocks_block_info() {
   return array(
     "alq_section_home_header" => array(
       "info" => t("Section Home Header"),
-    ), 
+    ),
     "alq_section_home_childtree" => array(
       "info" => t("Section Home childtree"),
-    ), 
-  ); 
+    ),
+  );
 }
 
 /**
  * Implements hook_block_view().
  */
 function alq_section_home_blocks_block_view($delta = "") {
+  $block = null;
+
   switch ($delta) {
     case "alq_section_home_header":
       $block["subject"] = t("Header Image");
@@ -33,15 +35,20 @@ function alq_section_home_blocks_block_view($delta = "") {
       }
       break;
     case "alq_section_home_childtree":
-      $block["subject"] = t("Topics");
       if (user_access("access content")) {
-        $node = menu_get_object();
-        $childtree = alq_section_home_blocks_get_childtree($node);
-        $block["content"] = theme("alq_section_home_childtree", array(
-            "title" => $node->title,
-            "childtree" => $childtree
-          )
-        );
+        $name = menu_get_active_title();
+        if ($name) {
+          $submenu = alq_section_home_blocks_get_childtree($name);
+
+          if (count($submenu["childtree"]) > 0) {
+            $block["subject"] = t("Topics");
+            $block["content"] = theme("alq_section_home_childtree", array(
+                "title" => $submenu["parent"],
+                "childtree" => $submenu["childtree"]
+              )
+            );
+          }
+        }
       }
       break;
   }
@@ -54,20 +61,20 @@ function alq_section_home_blocks_block_view($delta = "") {
  */
 function alq_section_home_blocks_theme() {
   return array(
-      "alq_section_home_header" => array(
-        "template" => "theme/section-home-header",
-        "variables" => array(
-          "image" => null
-        )
-      ),
-      "alq_section_home_childtree" => array(
-        "template" => "theme/section-home-childtree",
-        "variables" => array(
-          "title" => null,
-          "childtree" => null
-        )
-      ),
-    );
+    "alq_section_home_header" => array(
+      "template" => "theme/section-home-header",
+      "variables" => array(
+        "image" => NULL
+      )
+    ),
+    "alq_section_home_childtree" => array(
+      "template" => "theme/section-home-childtree",
+      "variables" => array(
+        "title" => NULL,
+        "childtree" => NULL
+      )
+    ),
+  );
 }
 
 /**
@@ -78,23 +85,38 @@ function alq_section_home_blocks_theme() {
  */
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
-  return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : false;
+  return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : FALSE;
 }
 
 /**
  * Return the child images for the current node we are
  * viewing
  */
-function alq_section_home_blocks_get_childtree($node) {
-  $tree = menu_tree_all_data('menu-header-menu'); 
+function alq_section_home_blocks_get_childtree($name) {
+  $tree = menu_tree_all_data('menu-header-menu');
 
   $childtree = array();
-  
-  foreach ($tree as $branch){
-    if ($branch['link']['title'] == $node->title){
+  $parent = "";
+
+  foreach ($tree as $branch) {
+    if (($branch['link']['title'] === $name) || _in_below($name, $branch['below'])) {
+      $parent = $branch['link']['title'];
       $childtree = $branch['below'];
       break;
     }
   }
-  return $childtree;
+
+  return array(
+    "childtree" => $childtree,
+    "parent" => $parent
+  );
+}
+
+function _in_below($needle, $haystack) {
+  foreach ($haystack as $hay) {
+    if ($hay['link']['title'] === $needle) {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
