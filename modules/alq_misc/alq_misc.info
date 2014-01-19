@@ -1,0 +1,6 @@
+name = ALQ Misc 
+description = Odd's and ends, random hooks etc
+core = 7.x
+package = ALQ
+php = 5.2.4
+version = 7.x-1.0
