@@ -4,7 +4,7 @@
 # it turns on the devel module etc.
 #
 # Run this script from the parent directory, eg 
-#   DEFAULT_SITE_EMAIL="alq@whatever.org" ./alq/scripts/import_prod
+#   DEFAULT_SITE_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
 # it will ask you for the db you've created's details, import the dump
 # file from prod you've downloaded into it, enable and disable some 
 # mods, set some values etc
