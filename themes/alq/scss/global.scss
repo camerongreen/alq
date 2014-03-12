@@ -26,12 +26,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2em;
 }
 
-.front h1.title {
-  display: none;
-}
-
 h1 {
   font-size: 30px; 
+}
+
+.front h1.title {
+  font-size: 18px;
+  margin-top: 6px;
 }
 
 h2 {
@@ -46,8 +47,8 @@ h2 {
   margin-left: 10px;
 }
 
-#twitter-link {
-  margin-top: 2px;
+#instagram-link {
+  margin-top: 1px;
 }
 
 .block-block-2 {

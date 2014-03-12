@@ -1,12 +1,20 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
-
 /* Social media block */
 .block-block-2 {
   top: -10px;
   right: 40px;
 }
 
+#facebook-link,
+#twitter-link,
+#instagram-link {
+  img {
+    margin-right: 2px;
+    margin-left: 4px;
+    margin-top: 4px;
+  }
+}
 
 /* Header menu */
 #block-nice-menus-1 {
@@ -53,6 +61,6 @@
 }
 
 .views-slideshow-controls-text span {
-  top:300px;
+  top: 300px;
 }
 
