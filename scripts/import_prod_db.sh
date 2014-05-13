@@ -3,7 +3,7 @@
 # This script is useful for pulling the production dbs across to development
 # it turns on the devel module etc.
 #
-# Run this script from the parent directory, eg 
+# Run this script from the drupal root directory, eg
 #   DEFAULT_SITE_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
 # it will ask you for the db you've created's details, import the dump
 # file from prod you've downloaded into it, enable and disable some 
@@ -28,7 +28,7 @@ WEBSERVER_GROUP=www-data
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=localhost
-DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/animalli_dev.sql
+DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/alq_latest.sql
 
 # first set up the database
 read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
