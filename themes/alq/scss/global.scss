@@ -2,6 +2,7 @@
 $alq-purple: #502c83;
 $header-background-color: #fff;
 $body-background-color: #fff;
+$menu-hover-color: #ddd;
 
 @mixin bootstrap-img-polaroid {
   padding: 4px;
@@ -14,7 +15,7 @@ $body-background-color: #fff;
 }
 
 body {
-  background-color: $body-background-color;
+  background-color: $body-background-color
 }
 
 body, h1, h2, h3, h4, h5, h6, p {
@@ -82,8 +83,13 @@ h2 {
       color: $alq-purple;
       text-decoration: none;
     }
-    li:hover {
-      background-color: #ccc;
+    li.menuparent,
+    li {
+      background-color: $header-background-color;
+    }
+    li.menuparent a:hover,
+    li a:hover {
+      background-color: $menu-hover-color;
     }
     ul {
       display: none !important;
@@ -94,10 +100,10 @@ h2 {
     padding-right: 0;
   }
   ul.nice-menu-down li.menuparent {
-    background: #EEEEEE;
+    background-color: $header-background-color;
   }
   ul.nice-menu-down li.menuparent:hover {
-    background: #CCCCCC;
+    background-color: $header-background-color;
   }
 
 }
