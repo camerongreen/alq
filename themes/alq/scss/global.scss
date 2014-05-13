@@ -1,6 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 $alq-purple: #502c83;
-$header-background-color: #ececee;
+$header-background-color: #fff;
+$body-background-color: #fff;
 
 @mixin bootstrap-img-polaroid {
   padding: 4px;
@@ -13,7 +14,7 @@ $header-background-color: #ececee;
 }
 
 body {
-  background-color: #fff;
+  background-color: $body-background-color;
 }
 
 body, h1, h2, h3, h4, h5, h6, p {
