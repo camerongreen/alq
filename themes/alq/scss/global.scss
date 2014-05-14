@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px; 
+  font-size: 30px;
 }
 
 .front h1.title {
@@ -38,7 +38,7 @@ h1 {
 }
 
 h2 {
-  font-size: 26px; 
+  font-size: 26px;
 }
 
 #region-branding {
@@ -93,7 +93,7 @@ h2 {
     }
     ul {
       display: none !important;
-      box-shadow: 2px 1px 2px #666; 
+      box-shadow: 2px 1px 2px #666;
     }
   }
   ul.nice-menu-down .menuparent a {
@@ -159,7 +159,7 @@ h2 {
       color: $alq-purple;
       text-transform: uppercase;
       line-height: 1.3em;
-      letter-spacing: -0.05em  
+      letter-spacing: -0.05em
     }
     .views-field-field-image {
       float: left;
@@ -214,12 +214,13 @@ span.views-slideshow-controls-text-previous {
 .view-slideshow .views-field-view-node {
   display: none;
 }
+
 .view-slideshow {
   @include header-image-border;
   margin-top: 1em;
   .views-field-title {
     position: absolute;
-    background-color: rgba(66,66,66,0.6);
+    background-color: rgba(66, 66, 66, 0.6);
   }
   .views-field-title a {
     color: #fff;
@@ -238,10 +239,10 @@ span.views-slideshow-controls-text-previous {
 }
 
 .views-slideshow-controls-text span {
-  position:absolute;
-  overflow:hidden;
+  position: absolute;
+  overflow: hidden;
   z-index: 10;
-  background-color: rgba(66,66,66,0.6);
+  background-color: rgba(66, 66, 66, 0.6);
   color: #fff;
   display: none;
   a {
@@ -297,7 +298,7 @@ input[type=email] {
 
 /* Voiceless box */
 #block-block-1 div p {
-  text-align: center; 
+  text-align: center;
 }
 
 #section-home-header {
@@ -339,10 +340,17 @@ input[type=email] {
 }
 
 /* Shop stylings */
-.page-catalog table:nth-child(1) {
-  border: none;
-  td {
-    text-align: center;
+.page-catalog {
+  div.region-content-inner {
+    padding-top: 175px;
+    background: url("/sites/all/themes/alq/images/alq_shop_banner.jpg") no-repeat left top;
+  }
+
+  table:nth-child(1) {
+    border: none;
+    td {
+      text-align: center;
+    }
   }
 }
 

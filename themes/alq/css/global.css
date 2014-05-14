@@ -235,28 +235,28 @@ span.views-slideshow-controls-text-previous {
   display: none;
 }
 
-/* line 217, ../scss/global.scss */
+/* line 218, ../scss/global.scss */
 .view-slideshow {
   border-bottom-color: #502c83;
   border-bottom-style: solid;
   margin-top: 1em;
 }
-/* line 220, ../scss/global.scss */
+/* line 221, ../scss/global.scss */
 .view-slideshow .views-field-title {
   position: absolute;
   background-color: rgba(66, 66, 66, 0.6);
 }
-/* line 224, ../scss/global.scss */
+/* line 225, ../scss/global.scss */
 .view-slideshow .views-field-title a {
   color: #fff;
   text-decoration: none;
 }
-/* line 228, ../scss/global.scss */
+/* line 229, ../scss/global.scss */
 .view-slideshow .views-field-view-node {
   display: none;
   position: absolute;
 }
-/* line 232, ../scss/global.scss */
+/* line 233, ../scss/global.scss */
 .view-slideshow .views-field-title {
   display: none;
   top: 70px;
@@ -264,7 +264,7 @@ span.views-slideshow-controls-text-previous {
   padding: 2px;
 }
 
-/* line 240, ../scss/global.scss */
+/* line 241, ../scss/global.scss */
 .views-slideshow-controls-text span {
   position: absolute;
   overflow: hidden;
@@ -273,27 +273,27 @@ span.views-slideshow-controls-text-previous {
   color: #fff;
   display: none;
 }
-/* line 247, ../scss/global.scss */
+/* line 248, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-/* line 252, ../scss/global.scss */
+/* line 253, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
   content: "\25C0";
 }
-/* line 255, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
   content: "\25B6";
 }
 
 /* search form */
-/* line 262, ../scss/global.scss */
+/* line 263, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 265, ../scss/global.scss */
+/* line 266, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -305,13 +305,13 @@ span.views-slideshow-controls-text-previous {
 }
 
 /* email subscribe form */
-/* line 277, ../scss/global.scss */
+/* line 278, ../scss/global.scss */
 #block-block-6 {
   display: none;
   margin-bottom: 0;
 }
 
-/* line 282, ../scss/global.scss */
+/* line 283, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -320,7 +320,7 @@ span.views-slideshow-controls-text-previous {
   height: 43px;
 }
 
-/* line 292, ../scss/global.scss */
+/* line 293, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -330,51 +330,51 @@ input[type=email] {
 }
 
 /* Voiceless box */
-/* line 299, ../scss/global.scss */
+/* line 300, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 303, ../scss/global.scss */
+/* line 304, ../scss/global.scss */
 #section-home-header {
   width: 460px !important;
   margin: auto;
   border-bottom-color: #502c83;
   border-bottom-style: solid;
 }
-/* line 307, ../scss/global.scss */
+/* line 308, ../scss/global.scss */
 #section-home-header img {
   width: 460px !important;
   height: 90px !important;
 }
 
-/* line 314, ../scss/global.scss */
+/* line 315, ../scss/global.scss */
 #section-home-childtree h2 {
   display: none;
 }
-/* line 317, ../scss/global.scss */
+/* line 318, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 320, ../scss/global.scss */
+/* line 321, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
 }
-/* line 324, ../scss/global.scss */
+/* line 325, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "\25B6";
 }
 
-/* line 331, ../scss/global.scss */
+/* line 332, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 336, ../scss/global.scss */
+/* line 337, ../scss/global.scss */
 .node-type-article .field-type-image {
   float: right;
   padding: 4px;
@@ -387,17 +387,22 @@ input[type=email] {
 }
 
 /* Shop stylings */
-/* line 342, ../scss/global.scss */
+/* line 344, ../scss/global.scss */
+.page-catalog div.region-content-inner {
+  padding-top: 175px;
+  background: url("/sites/all/themes/alq/images/alq_shop_banner.jpg") no-repeat left top;
+}
+/* line 349, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 344, ../scss/global.scss */
+/* line 351, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
 /* Contact us form */
-/* line 350, ../scss/global.scss */
+/* line 358, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }
