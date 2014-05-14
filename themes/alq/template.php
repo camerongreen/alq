@@ -19,4 +19,17 @@
 function alq_preprocess_search_result(&$variables) {
   // Remove user name and modification date from search results
   $variables['info'] = '';
-} 
+}
+
+
+/**
+ * Implements hook_breadcrumb().
+ */
+function alq_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
+  if (!empty($breadcrumb) && (count($breadcrumb) === 2)) {
+    $breadcrumb = preg_replace("/Catalog/", "Shop", $breadcrumb); // This line will search and replace text.
+    return '<div class="breadcrumb">'. implode(' &raquo; ', $breadcrumb) . '</div>';
+  }
+}

@@ -401,8 +401,14 @@ input[type=email] {
   text-align: center;
 }
 
+/* line 357, ../scss/global.scss */
+body[class*="page-catalog-"] div.region-content-inner {
+  padding-top: 0px;
+  background: none;
+}
+
 /* Contact us form */
-/* line 358, ../scss/global.scss */
+/* line 363, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }

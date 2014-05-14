@@ -354,6 +354,11 @@ input[type=email] {
   }
 }
 
+body[class*="page-catalog-"] div.region-content-inner {
+  padding-top: 0px;
+  background: none;
+}
+
 /* Contact us form */
 body.page-contact ul {
   list-style: none;
