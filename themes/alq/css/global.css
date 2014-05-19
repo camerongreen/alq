@@ -374,20 +374,21 @@ input[type=email] {
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
+  padding-left: 1ex;
 }
-/* line 335, ../scss/global.scss */
+/* line 336, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "\25B6";
 }
 
-/* line 342, ../scss/global.scss */
+/* line 343, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 347, ../scss/global.scss */
+/* line 348, ../scss/global.scss */
 .node-type-article .field-type-image {
   float: right;
   padding: 4px;
@@ -400,28 +401,28 @@ input[type=email] {
 }
 
 /* Shop stylings */
-/* line 354, ../scss/global.scss */
+/* line 355, ../scss/global.scss */
 .page-catalog div.region-content-inner {
   padding-top: 175px;
   background: url("/sites/all/themes/alq/images/alq_shop_banner.jpg") no-repeat left top;
 }
-/* line 359, ../scss/global.scss */
+/* line 360, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 361, ../scss/global.scss */
+/* line 362, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 367, ../scss/global.scss */
+/* line 368, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0px;
   background: none;
 }
 
 /* Contact us form */
-/* line 373, ../scss/global.scss */
+/* line 374, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }
