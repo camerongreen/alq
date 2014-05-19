@@ -20,8 +20,13 @@
   position: absolute;
   top: 71px;
   right: 0px;
-  ul.nice-menu ul {
+  ul.nice-menu {
+    a {
+    padding: 0.3em 5px 0.3em 5px
+    }
+    ul {
     display: inherit !important;
+    }
   }
   ul.nice-menu-down .menuparent a {
     padding-right: 15px;
@@ -36,7 +41,7 @@
     background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
   }
   ul.nice-menu-down li li.menuparent:hover {
-    background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right centerCCCCCC;
+    background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
   }
 }
 
@@ -46,18 +51,17 @@
 
 #zone-footer {
   height: 60px;
-  margin-top: 1.5em;
+}
+
+#zone-content {
+  padding-top: 1.5em;
 }
 
 .block-menu-footer-menu {
   padding-left: 40px;
-  padding-top: 1em;
   ul.menu {
     margin-top: 1ex;
     margin-bottom: 1ex;
-    & > li a {
-      padding-right: 10px;
-    }
   }
 }
 
@@ -81,7 +85,7 @@
 }
 
 .region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/lil_fiber.png");
+  background: url("/sites/all/themes/alq/images/left-bg.jpg");
 }
 
 #section-home-header,

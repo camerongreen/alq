@@ -24,85 +24,88 @@
   top: 71px;
   right: 0px;
 }
-/* line 23, ../scss/alq-alpha-default-narrow.scss */
+/* line 24, ../scss/alq-alpha-default-narrow.scss */
+#block-nice-menus-1 ul.nice-menu a {
+  padding: 0.3em 5px 0.3em 5px;
+}
+/* line 27, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu ul {
   display: inherit !important;
 }
-/* line 26, ../scss/alq-alpha-default-narrow.scss */
+/* line 31, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu-down .menuparent a {
   padding-right: 15px;
 }
-/* line 29, ../scss/alq-alpha-default-narrow.scss */
+/* line 34, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent {
   background: url("/sites/all/modules/nice_menus/images/arrow-down.png") no-repeat scroll right center;
 }
-/* line 32, ../scss/alq-alpha-default-narrow.scss */
+/* line 37, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
   background: url("/sites/all/modules/nice_menus/images/arrow-down.png") no-repeat scroll right center;
 }
-/* line 35, ../scss/alq-alpha-default-narrow.scss */
+/* line 40, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu-down li li.menuparent {
   background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
 }
-/* line 38, ../scss/alq-alpha-default-narrow.scss */
+/* line 43, ../scss/alq-alpha-default-narrow.scss */
 #block-nice-menus-1 ul.nice-menu-down li li.menuparent:hover {
-  background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right centerCCCCCC;
+  background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
 }
 
-/* line 43, ../scss/alq-alpha-default-narrow.scss */
+/* line 48, ../scss/alq-alpha-default-narrow.scss */
 #donate-link {
   display: inherit;
 }
 
-/* line 47, ../scss/alq-alpha-default-narrow.scss */
+/* line 52, ../scss/alq-alpha-default-narrow.scss */
 #zone-footer {
   height: 60px;
-  margin-top: 1.5em;
 }
 
-/* line 52, ../scss/alq-alpha-default-narrow.scss */
+/* line 56, ../scss/alq-alpha-default-narrow.scss */
+#zone-content {
+  padding-top: 1.5em;
+}
+
+/* line 60, ../scss/alq-alpha-default-narrow.scss */
 .block-menu-footer-menu {
   padding-left: 40px;
-  padding-top: 1em;
 }
-/* line 55, ../scss/alq-alpha-default-narrow.scss */
+/* line 62, ../scss/alq-alpha-default-narrow.scss */
 .block-menu-footer-menu ul.menu {
   margin-top: 1ex;
   margin-bottom: 1ex;
 }
-/* line 58, ../scss/alq-alpha-default-narrow.scss */
-.block-menu-footer-menu ul.menu > li a {
-  padding-right: 10px;
-}
 
-/* line 65, ../scss/alq-alpha-default-narrow.scss */
+/* line 69, ../scss/alq-alpha-default-narrow.scss */
 .view-news .views-row {
   margin-bottom: 30px;
   overflow: auto;
 }
-/* line 68, ../scss/alq-alpha-default-narrow.scss */
+/* line 72, ../scss/alq-alpha-default-narrow.scss */
 .view-news .views-row .views-row-details {
   margin-left: 220px;
 }
-/* line 71, ../scss/alq-alpha-default-narrow.scss */
+/* line 75, ../scss/alq-alpha-default-narrow.scss */
 .view-news .views-row .views-field-title a {
   font-size: 17px;
 }
-/* line 74, ../scss/alq-alpha-default-narrow.scss */
+/* line 78, ../scss/alq-alpha-default-narrow.scss */
 .view-news .views-row .views-field-body p:last-child {
   margin-bottom: 1ex;
 }
-/* line 77, ../scss/alq-alpha-default-narrow.scss */
+/* line 81, ../scss/alq-alpha-default-narrow.scss */
 .view-news .views-row .views-field-field-image img {
   max-width: 200px;
 }
 
-/* line 83, ../scss/alq-alpha-default-narrow.scss */
+/* line 87, ../scss/alq-alpha-default-narrow.scss */
 .region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/lil_fiber.png");
+  background: url("/sites/all/themes/alq/images/left-bg.jpg");
 }
 
-/* line 88, ../scss/alq-alpha-default-narrow.scss */
+/* line 92, ../scss/alq-alpha-default-narrow.scss */
 #section-home-header,
 .view-slideshow {
   border-bottom-width: 4px;
@@ -110,94 +113,94 @@
   margin-top: 0;
 }
 
-/* line 94, ../scss/alq-alpha-default-narrow.scss */
+/* line 98, ../scss/alq-alpha-default-narrow.scss */
 #section-home-header {
   width: 700px !important;
 }
-/* line 96, ../scss/alq-alpha-default-narrow.scss */
+/* line 100, ../scss/alq-alpha-default-narrow.scss */
 #section-home-header img {
   width: 700px !important;
   height: 120px !important;
 }
 
-/* line 103, ../scss/alq-alpha-default-narrow.scss */
+/* line 107, ../scss/alq-alpha-default-narrow.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 700px !important;
   height: 253px !important;
 }
 
-/* line 109, ../scss/alq-alpha-default-narrow.scss */
+/* line 113, ../scss/alq-alpha-default-narrow.scss */
 .view-slideshow .views-field-title {
   top: 140px;
   left: 30px;
   padding: 1ex;
 }
-/* line 113, ../scss/alq-alpha-default-narrow.scss */
+/* line 117, ../scss/alq-alpha-default-narrow.scss */
 .view-slideshow .views-field-title a {
   font-size: 25px;
 }
-/* line 117, ../scss/alq-alpha-default-narrow.scss */
+/* line 121, ../scss/alq-alpha-default-narrow.scss */
 .view-slideshow .views-field-view-node {
   top: 200px;
   left: 30px;
   display: none;
 }
 
-/* line 124, ../scss/alq-alpha-default-narrow.scss */
+/* line 128, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text {
   display: inherit;
 }
-/* line 126, ../scss/alq-alpha-default-narrow.scss */
+/* line 130, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text span {
   top: 20px;
   padding: 5px;
   font-size: 15px;
 }
-/* line 130, ../scss/alq-alpha-default-narrow.scss */
+/* line 134, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous {
   left: 4px;
 }
-/* line 133, ../scss/alq-alpha-default-narrow.scss */
+/* line 137, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous a {
   padding-left: 6px;
 }
-/* line 136, ../scss/alq-alpha-default-narrow.scss */
+/* line 140, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next {
   right: 4px;
 }
-/* line 139, ../scss/alq-alpha-default-narrow.scss */
+/* line 143, ../scss/alq-alpha-default-narrow.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next a {
   padding-right: 6px;
 }
 
 /* search form */
-/* line 146, ../scss/alq-alpha-default-narrow.scss */
+/* line 150, ../scss/alq-alpha-default-narrow.scss */
 #block-search-form h2 {
   display: inherit;
 }
 
-/* line 150, ../scss/alq-alpha-default-narrow.scss */
+/* line 154, ../scss/alq-alpha-default-narrow.scss */
 #block-search-form input[type=text] {
   width: 100%;
 }
 
 /* email subscribe form */
-/* line 155, ../scss/alq-alpha-default-narrow.scss */
+/* line 159, ../scss/alq-alpha-default-narrow.scss */
 #mc-embedded-subscribe-form input[type=email] {
   width: 100%;
 }
 
-/* line 159, ../scss/alq-alpha-default-narrow.scss */
+/* line 163, ../scss/alq-alpha-default-narrow.scss */
 #block-block-6 {
   display: inherit;
 }
-/* line 161, ../scss/alq-alpha-default-narrow.scss */
+/* line 165, ../scss/alq-alpha-default-narrow.scss */
 #block-block-6 div {
   margin-bottom: 1ex;
 }
 
-/* line 168, ../scss/alq-alpha-default-narrow.scss */
+/* line 172, ../scss/alq-alpha-default-narrow.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -206,33 +209,33 @@ input[type=email] {
 }
 
 /* Copyright box */
-/* line 174, ../scss/alq-alpha-default-narrow.scss */
+/* line 178, ../scss/alq-alpha-default-narrow.scss */
 #block-block-3 div p {
   padding-top: 20px;
 }
 
-/* line 179, ../scss/alq-alpha-default-narrow.scss */
+/* line 183, ../scss/alq-alpha-default-narrow.scss */
 #section-home-childtree h2 {
   margin-bottom: 5px;
   display: inherit;
 }
-/* line 183, ../scss/alq-alpha-default-narrow.scss */
+/* line 187, ../scss/alq-alpha-default-narrow.scss */
 #section-home-childtree ul {
   margin-left: 1em;
 }
-/* line 185, ../scss/alq-alpha-default-narrow.scss */
+/* line 189, ../scss/alq-alpha-default-narrow.scss */
 #section-home-childtree ul li a {
   font-size: 130%;
   padding-left: 1em;
 }
 
-/* line 193, ../scss/alq-alpha-default-narrow.scss */
+/* line 197, ../scss/alq-alpha-default-narrow.scss */
 .node-type-article article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   font-size: 140%;
 }
 
-/* line 197, ../scss/alq-alpha-default-narrow.scss */
+/* line 201, ../scss/alq-alpha-default-narrow.scss */
 .node-type-article article .field-type-image {
   width: 290px;
   margin: 1em;
@@ -241,13 +244,13 @@ input[type=email] {
 }
 
 /* Voiceless block */
-/* line 205, ../scss/alq-alpha-default-narrow.scss */
+/* line 209, ../scss/alq-alpha-default-narrow.scss */
 .block-block-1 {
   display: inherit;
 }
 
 /* Donate now block */
-/* line 210, ../scss/alq-alpha-default-narrow.scss */
+/* line 214, ../scss/alq-alpha-default-narrow.scss */
 .block-block-5 {
   display: inherit;
   color: #f8931d;
@@ -255,22 +258,22 @@ input[type=email] {
   text-transform: uppercase;
   font-weight: bold;
 }
-/* line 216, ../scss/alq-alpha-default-narrow.scss */
+/* line 220, ../scss/alq-alpha-default-narrow.scss */
 .block-block-5 a {
   color: #f8931d;
 }
 
 /* Facebook widget, trying to make responsive */
-/* line 222, ../scss/alq-alpha-default-narrow.scss */
+/* line 226, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like {
   display: inherit;
 }
-/* line 224, ../scss/alq-alpha-default-narrow.scss */
+/* line 228, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like h2 {
   margin-bottom: 4px;
 }
 
-/* line 229, ../scss/alq-alpha-default-narrow.scss */
+/* line 233, ../scss/alq-alpha-default-narrow.scss */
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }

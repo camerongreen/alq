@@ -15,7 +15,14 @@ $menu-hover-color: #ddd;
 }
 
 body {
-  background-color: $body-background-color
+  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
+  background-color: $body-background-color;
+
+  #zone-branding,
+  #zone-header,
+  div.zone-content {
+    background-color: $body-background-color;
+  }
 }
 
 body, h1, h2, h3, h4, h5, h6, p {
@@ -82,6 +89,7 @@ h2 {
       border: 0;
       color: $alq-purple;
       text-decoration: none;
+      padding: 0.3em 2px 0.3em 2px;
     }
     li.menuparent,
     li {
@@ -101,6 +109,7 @@ h2 {
   }
   ul.nice-menu-down li.menuparent {
     background-color: $header-background-color;
+    background-image: none;
   }
   ul.nice-menu-down li.menuparent:hover {
     background-color: $header-background-color;
@@ -123,6 +132,8 @@ h2 {
   color: #fff;
   background-color: $alq-purple;
   .block-menu-footer-menu ul.menu {
+    padding-top: 1em;
+    padding-bottom: 1ex;
     li ul {
       display: none;
     }
@@ -139,6 +150,7 @@ h2 {
       border-right-style: solid;
       border-right-color: #fff;
       border-right-width: thin;
+      padding-right: 10px;
     }
     & > li:last-child a {
       border: none;
@@ -198,11 +210,13 @@ h2 {
   border-bottom-style: solid;
 }
 
-#views_slideshow_cycle_teaser_section_slideshow-block,
+#views_slideshow_cycle_teaser_section_slideshow-block {
+  overflow: auto;
+}
+
 .view-slideshow .views-field-field-image img {
-  width: 460px !important;
-  height: 165px !important;
-  margin: auto;
+  width: 100% !important;
+  height: auto !important;
 }
 
 span.views-slideshow-controls-text-next,
@@ -302,12 +316,12 @@ input[type=email] {
 }
 
 #section-home-header {
-  width: 460px !important;
   margin: auto;
   @include header-image-border;
   img {
-    width: 460px !important;
-    height: 90px !important;
+    max-width: 100% !important;
+    height: auto;
+    display: block;
   }
 }
 
