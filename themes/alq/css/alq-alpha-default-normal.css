@@ -10,30 +10,29 @@
 #facebook-link img,
 #twitter-link img,
 #instagram-link img {
-  margin-right: 2px;
   margin-left: 4px;
   margin-top: 4px;
 }
 
 /* Header menu */
-/* line 20, ../scss/alq-alpha-default-normal.scss */
+/* line 19, ../scss/alq-alpha-default-normal.scss */
 #block-nice-menus-1 {
   top: 62px;
   right: 40px;
   /* don't show home link in reduced mode */
 }
-/* line 26, ../scss/alq-alpha-default-normal.scss */
+/* line 25, ../scss/alq-alpha-default-normal.scss */
 #block-nice-menus-1 ul.nice-menu ul,
 #block-nice-menus-1 ul.nice-menu li,
 #block-nice-menus-1 ul.nice-menu li a {
   font-weight: bold;
 }
-/* line 31, ../scss/alq-alpha-default-normal.scss */
+/* line 30, ../scss/alq-alpha-default-normal.scss */
 #block-nice-menus-1 #nice-menu-1 > li.first {
   display: inherit;
 }
 
-/* line 36, ../scss/alq-alpha-default-normal.scss */
+/* line 35, ../scss/alq-alpha-default-normal.scss */
 .logo-img {
   background: url("/sites/all/themes/alq/images/left-bg.jpg");
   background: url("/sites/all/themes/alq/images/left-bg.jpg");
@@ -102,33 +101,33 @@
   margin-left: 40px;
 }
 
-/* line 104, ../scss/alq-alpha-default-normal.scss */
+/* line 103, ../scss/alq-alpha-default-normal.scss */
 #section-home-header {
   width: 940px !important;
 }
-/* line 106, ../scss/alq-alpha-default-normal.scss */
+/* line 105, ../scss/alq-alpha-default-normal.scss */
 #section-home-header img {
   width: 940px !important;
   height: 160px !important;
 }
 
-/* line 113, ../scss/alq-alpha-default-normal.scss */
+/* line 112, ../scss/alq-alpha-default-normal.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 940px !important;
   height: 340px !important;
 }
 
-/* line 119, ../scss/alq-alpha-default-normal.scss */
+/* line 118, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-title {
   top: 180px;
 }
-/* line 122, ../scss/alq-alpha-default-normal.scss */
+/* line 121, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-view-node {
   top: 240px;
 }
 
-/* line 127, ../scss/alq-alpha-default-normal.scss */
+/* line 126, ../scss/alq-alpha-default-normal.scss */
 .views-slideshow-controls-text span {
   top: 300px;
 }

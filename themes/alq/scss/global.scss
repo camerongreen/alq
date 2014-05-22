@@ -15,7 +15,7 @@ $menu-hover-color: #ddd;
 }
 
 body {
-  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
+
   background-color: $body-background-color;
 
   #zone-branding,
@@ -75,6 +75,14 @@ h2 {
   display: none;
 }
 
+#facebook-link,
+#twitter-link,
+#instagram-link {
+  img {
+    margin-right: 2px;
+  }
+}
+
 /* Header menu */
 #block-nice-menus-1 {
   position: relative;
@@ -111,6 +119,19 @@ h2 {
     background-color: $header-background-color;
   }
 
+}
+
+.responsive-menus.responsified {
+  .responsive-menus-simple {
+    background-color: $alq-purple;
+  }
+  span.toggler {
+    background-color: $body-background-color;
+    color: $alq-purple;
+    box-shadow: none;
+    text-align: right;
+    margin-right: 2em;
+  }
 }
 
 .block-user-menu ul.menu {
@@ -346,17 +367,11 @@ input[type=email] {
 }
 
 .node-type-article .field-type-image {
-  float: right;
+  text-align: center;
   @include bootstrap-img-polaroid;
 }
 
-/* Shop stylings */
 .page-catalog {
-  div.region-content-inner {
-    padding-top: 175px;
-    background: url("/sites/all/themes/alq/images/alq_shop_banner.jpg") no-repeat left top;
-  }
-
   table:nth-child(1) {
     border: none;
     td {

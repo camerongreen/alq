@@ -1,7 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* line 17, ../scss/global.scss */
 body {
-  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
   background-color: white;
 }
 /* line 23, ../scss/global.scss */
@@ -71,12 +70,19 @@ h2 {
   display: none;
 }
 
+/* line 81, ../scss/global.scss */
+#facebook-link img,
+#twitter-link img,
+#instagram-link img {
+  margin-right: 2px;
+}
+
 /* Header menu */
-/* line 79, ../scss/global.scss */
+/* line 87, ../scss/global.scss */
 #block-nice-menus-1 {
   position: relative;
 }
-/* line 84, ../scss/global.scss */
+/* line 92, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul,
 #block-nice-menus-1 ul.nice-menu li,
 #block-nice-menus-1 ul.nice-menu li a {
@@ -85,95 +91,108 @@ h2 {
   text-decoration: none;
   padding: 0.3em 2px 0.3em 2px;
 }
-/* line 91, ../scss/global.scss */
+/* line 99, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu li.menuparent,
 #block-nice-menus-1 ul.nice-menu li {
   background-color: white;
 }
-/* line 95, ../scss/global.scss */
+/* line 103, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu li.menuparent a:hover,
 #block-nice-menus-1 ul.nice-menu li a:hover {
   background-color: #dddddd;
 }
-/* line 98, ../scss/global.scss */
+/* line 106, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul {
   display: none !important;
   box-shadow: 2px 1px 2px #666;
 }
-/* line 103, ../scss/global.scss */
+/* line 111, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down .menuparent a {
   padding-right: 0;
 }
-/* line 106, ../scss/global.scss */
+/* line 114, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent {
   background-color: white;
   background-image: none;
 }
-/* line 110, ../scss/global.scss */
+/* line 118, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
   background-color: white;
 }
 
-/* line 116, ../scss/global.scss */
+/* line 125, ../scss/global.scss */
+.responsive-menus.responsified .responsive-menus-simple {
+  background-color: #502c83;
+}
+/* line 128, ../scss/global.scss */
+.responsive-menus.responsified span.toggler {
+  background-color: white;
+  color: #502c83;
+  box-shadow: none;
+  text-align: right;
+  margin-right: 2em;
+}
+
+/* line 137, ../scss/global.scss */
 .block-user-menu ul.menu {
   margin: 0;
   padding: 0;
 }
 
-/* line 121, ../scss/global.scss */
+/* line 142, ../scss/global.scss */
 .block-user-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 127, ../scss/global.scss */
+/* line 148, ../scss/global.scss */
 #zone-footer {
   color: #fff;
   background-color: #502c83;
 }
-/* line 130, ../scss/global.scss */
+/* line 151, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu {
   padding-top: 1em;
   padding-bottom: 1ex;
 }
-/* line 133, ../scss/global.scss */
+/* line 154, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li ul {
   display: none;
 }
-/* line 136, ../scss/global.scss */
+/* line 157, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
-/* line 141, ../scss/global.scss */
+/* line 162, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
-/* line 145, ../scss/global.scss */
+/* line 166, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li a {
   border-right-style: solid;
   border-right-color: #fff;
   border-right-width: thin;
   padding-right: 10px;
 }
-/* line 151, ../scss/global.scss */
+/* line 172, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
-/* line 157, ../scss/global.scss */
+/* line 178, ../scss/global.scss */
 #block-views-news-block {
   margin-bottom: 1em;
 }
 
-/* line 162, ../scss/global.scss */
+/* line 183, ../scss/global.scss */
 .view-news .views-row {
   clear: both;
 }
-/* line 164, ../scss/global.scss */
+/* line 185, ../scss/global.scss */
 .view-news .views-row .views-field-title a {
   font-weight: bold;
   text-decoration: none;
@@ -182,13 +201,13 @@ h2 {
   line-height: 1.3em;
   letter-spacing: -0.05em;
 }
-/* line 172, ../scss/global.scss */
+/* line 193, ../scss/global.scss */
 .view-news .views-row .views-field-field-image {
   float: left;
   width: 220px;
   height: 100%;
 }
-/* line 176, ../scss/global.scss */
+/* line 197, ../scss/global.scss */
 .view-news .views-row .views-field-field-image img {
   padding: 4px;
   background-color: #fff;
@@ -198,78 +217,78 @@ h2 {
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-/* line 181, ../scss/global.scss */
+/* line 202, ../scss/global.scss */
 .view-news .views-row .field-name-field-tags,
 .view-news .views-row .views-label-field-tags {
   float: left;
   margin-right: 1ex;
   font-weight: bold;
 }
-/* line 186, ../scss/global.scss */
+/* line 207, ../scss/global.scss */
 .view-news .views-row .views-more-link {
   margin-top: 1ex;
 }
-/* line 190, ../scss/global.scss */
+/* line 211, ../scss/global.scss */
 .view-news div.more-link {
   text-align: center;
 }
-/* line 192, ../scss/global.scss */
+/* line 213, ../scss/global.scss */
 .view-news div.more-link a {
   font-weight: bold;
   font-size: 150%;
   text-decoration: none;
   color: #502c83;
 }
-/* line 198, ../scss/global.scss */
+/* line 219, ../scss/global.scss */
 .view-news div.more-link a:after {
   content: "\25B6";
 }
 
-/* line 209, ../scss/global.scss */
+/* line 230, ../scss/global.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block {
   overflow: auto;
 }
 
-/* line 213, ../scss/global.scss */
+/* line 234, ../scss/global.scss */
 .view-slideshow .views-field-field-image img {
   width: 100% !important;
   height: auto !important;
 }
 
-/* line 219, ../scss/global.scss */
+/* line 240, ../scss/global.scss */
 span.views-slideshow-controls-text-next,
 span.views-slideshow-controls-text-previous {
   text-decoration: none !important;
 }
 
-/* line 224, ../scss/global.scss */
+/* line 245, ../scss/global.scss */
 .views-slideshow-controls-text,
 .view-slideshow .views-field-view-node {
   display: none;
 }
 
-/* line 228, ../scss/global.scss */
+/* line 249, ../scss/global.scss */
 .view-slideshow {
   border-bottom-color: #502c83;
   border-bottom-style: solid;
   margin-top: 1em;
 }
-/* line 231, ../scss/global.scss */
+/* line 252, ../scss/global.scss */
 .view-slideshow .views-field-title {
   position: absolute;
   background-color: rgba(66, 66, 66, 0.6);
 }
-/* line 235, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 .view-slideshow .views-field-title a {
   color: #fff;
   text-decoration: none;
 }
-/* line 239, ../scss/global.scss */
+/* line 260, ../scss/global.scss */
 .view-slideshow .views-field-view-node {
   display: none;
   position: absolute;
 }
-/* line 243, ../scss/global.scss */
+/* line 264, ../scss/global.scss */
 .view-slideshow .views-field-title {
   display: none;
   top: 70px;
@@ -277,7 +296,7 @@ span.views-slideshow-controls-text-previous {
   padding: 2px;
 }
 
-/* line 251, ../scss/global.scss */
+/* line 272, ../scss/global.scss */
 .views-slideshow-controls-text span {
   position: absolute;
   overflow: hidden;
@@ -286,27 +305,27 @@ span.views-slideshow-controls-text-previous {
   color: #fff;
   display: none;
 }
-/* line 258, ../scss/global.scss */
+/* line 279, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-/* line 263, ../scss/global.scss */
+/* line 284, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
   content: "\25C0";
 }
-/* line 266, ../scss/global.scss */
+/* line 287, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
   content: "\25B6";
 }
 
 /* search form */
-/* line 273, ../scss/global.scss */
+/* line 294, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 276, ../scss/global.scss */
+/* line 297, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -318,13 +337,13 @@ span.views-slideshow-controls-text-previous {
 }
 
 /* email subscribe form */
-/* line 288, ../scss/global.scss */
+/* line 309, ../scss/global.scss */
 #block-block-6 {
   display: none;
   margin-bottom: 0;
 }
 
-/* line 293, ../scss/global.scss */
+/* line 314, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -333,7 +352,7 @@ span.views-slideshow-controls-text-previous {
   height: 43px;
 }
 
-/* line 303, ../scss/global.scss */
+/* line 324, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -343,54 +362,54 @@ input[type=email] {
 }
 
 /* Voiceless box */
-/* line 310, ../scss/global.scss */
+/* line 331, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 314, ../scss/global.scss */
+/* line 335, ../scss/global.scss */
 #section-home-header {
   margin: auto;
   border-bottom-color: #502c83;
   border-bottom-style: solid;
 }
-/* line 317, ../scss/global.scss */
+/* line 338, ../scss/global.scss */
 #section-home-header img {
   max-width: 100% !important;
   height: auto;
   display: block;
 }
 
-/* line 325, ../scss/global.scss */
+/* line 346, ../scss/global.scss */
 #section-home-childtree h2 {
   display: none;
 }
-/* line 328, ../scss/global.scss */
+/* line 349, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 331, ../scss/global.scss */
+/* line 352, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
   padding-left: 1ex;
 }
-/* line 336, ../scss/global.scss */
+/* line 357, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "\25B6";
 }
 
-/* line 343, ../scss/global.scss */
+/* line 364, ../scss/global.scss */
 .node-type-article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 348, ../scss/global.scss */
+/* line 369, ../scss/global.scss */
 .node-type-article .field-type-image {
-  float: right;
+  text-align: center;
   padding: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -400,29 +419,23 @@ input[type=email] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Shop stylings */
-/* line 355, ../scss/global.scss */
-.page-catalog div.region-content-inner {
-  padding-top: 175px;
-  background: url("/sites/all/themes/alq/images/alq_shop_banner.jpg") no-repeat left top;
-}
-/* line 360, ../scss/global.scss */
+/* line 375, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 362, ../scss/global.scss */
+/* line 377, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 368, ../scss/global.scss */
+/* line 383, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0px;
   background: none;
 }
 
 /* Contact us form */
-/* line 374, ../scss/global.scss */
+/* line 389, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }

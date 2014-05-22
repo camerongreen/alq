@@ -1,4 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+body {
+  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
+}
 
 .logo-img {
   margin-left: 10px;
@@ -206,6 +209,7 @@ input[type=email] {
   margin: 1em;
   border-radius: 4px;
   padding: 3px;
+  float: right;
 }
 
 /* Voiceless block */

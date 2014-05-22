@@ -85,7 +85,12 @@ function alq_section_home_blocks_theme() {
  */
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
-  return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : FALSE;
+  if (is_null($node)) {
+    // Only the shop page at the moment so return
+    return drupal_get_path('theme', 'alq') . '/images/alq_shop_banner.jpg';
+  } else {
+    return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : FALSE;
+  }
 }
 
 /**
