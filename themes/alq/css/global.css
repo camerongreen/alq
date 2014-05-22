@@ -407,7 +407,8 @@ input[type=email] {
   font-style: italic;
 }
 
-/* line 369, ../scss/global.scss */
+/* line 370, ../scss/global.scss */
+.node-type-page .field-type-image,
 .node-type-article .field-type-image {
   text-align: center;
   padding: 4px;
@@ -419,23 +420,23 @@ input[type=email] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 375, ../scss/global.scss */
+/* line 376, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 377, ../scss/global.scss */
+/* line 378, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 383, ../scss/global.scss */
+/* line 384, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0px;
   background: none;
 }
 
 /* Contact us form */
-/* line 389, ../scss/global.scss */
+/* line 390, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }

@@ -204,7 +204,8 @@ input[type=email] {
   font-size: 140%;
 }
 
-.node-type-article article .field-type-image {
+.node-type-page .field-type-image,
+.node-type-article .field-type-image {
   width: 290px;
   margin: 1em;
   border-radius: 4px;
