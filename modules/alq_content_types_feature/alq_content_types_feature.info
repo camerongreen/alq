@@ -5,6 +5,7 @@ package = ALQ
 php = 5.2.4
 version = 7.x-1.0
 project = alq_content_types_feature
+dependencies[] = colorbox
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = image
