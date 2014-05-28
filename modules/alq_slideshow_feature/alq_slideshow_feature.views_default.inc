@@ -78,17 +78,6 @@ function alq_slideshow_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => 'slideshow',
-    'image_link' => 'content',
-  );
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
@@ -105,6 +94,17 @@ function alq_slideshow_feature_views_default_views() {
   $handler->display->display_options['fields']['view_node']['alter']['text'] = '<a href="[path]" title="Read More"><img src="/sites/all/themes/alq/images/read-more.gif" alt="Read More"></a>';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Read More';
+  /* Field: Content: Slideshow Image */
+  $handler->display->display_options['fields']['field_slideshow_image']['id'] = 'field_slideshow_image';
+  $handler->display->display_options['fields']['field_slideshow_image']['table'] = 'field_data_field_slideshow_image';
+  $handler->display->display_options['fields']['field_slideshow_image']['field'] = 'field_slideshow_image';
+  $handler->display->display_options['fields']['field_slideshow_image']['label'] = '';
+  $handler->display->display_options['fields']['field_slideshow_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_slideshow_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_slideshow_image']['settings'] = array(
+    'image_style' => 'slideshow',
+    'image_link' => 'content',
+  );
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
