@@ -287,6 +287,7 @@ function alq_content_types_feature_field_default_fields() {
             'colorbox_image_style' => '',
             'colorbox_multivalue_index' => NULL,
             'colorbox_node_style' => 'article_style',
+            'colorbox_node_style_first' => '',
           ),
           'type' => 'colorbox',
           'weight' => '1',
@@ -305,30 +306,38 @@ function alq_content_types_feature_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_image',
       'label' => 'Image',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
-        'alt_field' => TRUE,
+        'alt_field' => 1,
         'default_image' => 0,
         'file_directory' => 'field/image',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
-        'title_field' => '',
+        'title_field' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'image',
         'settings' => array(
           'filefield_sources' => array(
-            'filefield_sources' => array(),
+            'filefield_sources' => array(
+              'attach' => 0,
+              'clipboard' => 0,
+              'imce' => 'imce',
+              'reference' => 0,
+              'remote' => 0,
+              'upload' => 'upload',
+            ),
             'source_attach' => array(
-              'absolute' => 0,
+              'absolute' => '0',
               'attach_mode' => 'move',
               'path' => 'file_attach',
             ),
             'source_imce' => array(
-              'imce_mode' => 0,
+              'imce_mode' => '1',
             ),
             'source_reference' => array(
               'autocomplete' => '0',
@@ -547,14 +556,21 @@ function alq_content_types_feature_field_default_fields() {
         'module' => 'image',
         'settings' => array(
           'filefield_sources' => array(
-            'filefield_sources' => array(),
+            'filefield_sources' => array(
+              'attach' => 0,
+              'clipboard' => 0,
+              'imce' => 'imce',
+              'reference' => 0,
+              'remote' => 0,
+              'upload' => 'upload',
+            ),
             'source_attach' => array(
-              'absolute' => 0,
+              'absolute' => '0',
               'attach_mode' => 'move',
               'path' => 'file_attach',
             ),
             'source_imce' => array(
-              'imce_mode' => 0,
+              'imce_mode' => '1',
             ),
             'source_reference' => array(
               'autocomplete' => '0',
@@ -849,6 +865,7 @@ function alq_content_types_feature_field_default_fields() {
             'colorbox_image_style' => '',
             'colorbox_multivalue_index' => NULL,
             'colorbox_node_style' => 'article_style',
+            'colorbox_node_style_first' => '',
           ),
           'type' => 'colorbox',
           'weight' => '0',
@@ -894,7 +911,7 @@ function alq_content_types_feature_field_default_fields() {
               'path' => 'file_attach',
             ),
             'source_imce' => array(
-              'imce_mode' => '0',
+              'imce_mode' => '1',
             ),
             'source_reference' => array(
               'autocomplete' => '0',
@@ -1059,7 +1076,7 @@ function alq_content_types_feature_field_default_fields() {
               'path' => 'file_attach',
             ),
             'source_imce' => array(
-              'imce_mode' => '0',
+              'imce_mode' => '1',
             ),
             'source_reference' => array(
               'autocomplete' => '0',
