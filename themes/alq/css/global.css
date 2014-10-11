@@ -465,3 +465,9 @@ body[class*="page-catalog-"] div.region-content-inner {
 body.page-contact ul {
   list-style: none;
 }
+
+/* line 416, ../scss/global.scss */
+#uc-coupon-form,
+#uc-cart-pane-coupon {
+  margin-bottom: 1em;
+}
