@@ -103,7 +103,7 @@ drush vset site_mail ${DEFAULT_SITE_EMAIL}
 drush vset file_private_path ${SITE_BASE_URL}/private
 drush vset file_temporary_path /tmp
 drush vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
-/drush -y vset preprocess_css 0
+drush -y vset preprocess_css 0
 drush -y vset preprocess_js 0 
 
 drush cc all
