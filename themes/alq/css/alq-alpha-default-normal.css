@@ -131,3 +131,11 @@
 .views-slideshow-controls-text span {
   top: 300px;
 }
+
+/* line 131, ../scss/alq-alpha-default-normal.scss */
+#block-views-media-releases-block,
+#block-views-media-releases-block-1 {
+  width: 40%;
+  float: left;
+  overflow: auto;
+}
