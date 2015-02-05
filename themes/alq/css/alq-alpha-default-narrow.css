@@ -238,14 +238,16 @@ input[type=email] {
   font-size: 130%;
 }
 
-/* line 203, ../scss/alq-alpha-default-narrow.scss */
+/* line 204, ../scss/alq-alpha-default-narrow.scss */
+.node-type-media-article article .field-name-field-intro,
 .node-type-article article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   font-size: 140%;
 }
 
-/* line 208, ../scss/alq-alpha-default-narrow.scss */
+/* line 210, ../scss/alq-alpha-default-narrow.scss */
 .node-type-page .field-type-image,
+.node-type-media-article .field-type-image,
 .node-type-article .field-type-image {
   width: 290px;
   margin: 1em;
@@ -255,13 +257,13 @@ input[type=email] {
 }
 
 /* Voiceless block */
-/* line 217, ../scss/alq-alpha-default-narrow.scss */
+/* line 219, ../scss/alq-alpha-default-narrow.scss */
 .block-block-1 {
   display: inherit;
 }
 
 /* Donate now block */
-/* line 222, ../scss/alq-alpha-default-narrow.scss */
+/* line 224, ../scss/alq-alpha-default-narrow.scss */
 .block-block-5 {
   display: inherit;
   color: #f8931d;
@@ -269,22 +271,22 @@ input[type=email] {
   text-transform: uppercase;
   font-weight: bold;
 }
-/* line 228, ../scss/alq-alpha-default-narrow.scss */
+/* line 230, ../scss/alq-alpha-default-narrow.scss */
 .block-block-5 a {
   color: #f8931d;
 }
 
 /* Facebook widget, trying to make responsive */
-/* line 234, ../scss/alq-alpha-default-narrow.scss */
+/* line 236, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like {
   display: inherit;
 }
-/* line 236, ../scss/alq-alpha-default-narrow.scss */
+/* line 238, ../scss/alq-alpha-default-narrow.scss */
 #block-facebook-boxes-fb-like h2 {
   margin-bottom: 4px;
 }
 
-/* line 241, ../scss/alq-alpha-default-narrow.scss */
+/* line 243, ../scss/alq-alpha-default-narrow.scss */
 .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }

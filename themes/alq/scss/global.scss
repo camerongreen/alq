@@ -362,6 +362,7 @@ input[type=email] {
   }
 }
 
+body.node-type-media-article .field-name-field-intro,
 body.node-type-article .field-name-field-intro,
 body.node-type-section-home .field-name-field-intro {
   color: $alq-purple;
@@ -369,11 +370,13 @@ body.node-type-section-home .field-name-field-intro {
 }
 
 body.node-type-page .field-type-image,
+body.node-type-media-article .field-type-image,
 body.node-type-article .field-type-image {
   text-align: center;
   @include bootstrap-img-polaroid;
 }
 
+body.node-type-media-article div.article-date,
 body.node-type-article div.article-date {
   font-weight: bold;
   padding-bottom: 1em;

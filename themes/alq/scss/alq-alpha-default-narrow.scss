@@ -199,12 +199,14 @@ input[type=email] {
   }
 }
 
+.node-type-media-article article .field-name-field-intro,
 .node-type-article article .field-name-field-intro,
 .node-type-section-home .field-name-field-intro {
   font-size: 140%;
 }
 
 .node-type-page .field-type-image,
+.node-type-media-article .field-type-image,
 .node-type-article .field-type-image {
   width: 290px;
   margin: 1em;

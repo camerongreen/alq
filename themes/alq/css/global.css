@@ -410,15 +410,17 @@ input[type=email] {
   content: "\25B6";
 }
 
-/* line 366, ../scss/global.scss */
+/* line 367, ../scss/global.scss */
+body.node-type-media-article .field-name-field-intro,
 body.node-type-article .field-name-field-intro,
 body.node-type-section-home .field-name-field-intro {
   color: #502c83;
   font-style: italic;
 }
 
-/* line 372, ../scss/global.scss */
+/* line 374, ../scss/global.scss */
 body.node-type-page .field-type-image,
+body.node-type-media-article .field-type-image,
 body.node-type-article .field-type-image {
   text-align: center;
   padding: 4px;
@@ -430,59 +432,60 @@ body.node-type-article .field-type-image {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 377, ../scss/global.scss */
+/* line 380, ../scss/global.scss */
+body.node-type-media-article div.article-date,
 body.node-type-article div.article-date {
   font-weight: bold;
   padding-bottom: 1em;
 }
 
-/* line 383, ../scss/global.scss */
+/* line 386, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 385, ../scss/global.scss */
+/* line 388, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 391, ../scss/global.scss */
+/* line 394, ../scss/global.scss */
 article div.field-name-field-tags {
   font-weight: bold;
   color: #666666;
   margin-bottom: 1ex;
 }
-/* line 394, ../scss/global.scss */
+/* line 397, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div {
   margin-right: 1ex;
 }
-/* line 396, ../scss/global.scss */
+/* line 399, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:after {
   content: ",";
 }
-/* line 400, ../scss/global.scss */
+/* line 403, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:last-child:after {
   content: "";
 }
 
-/* line 406, ../scss/global.scss */
+/* line 409, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0px;
   background: none;
 }
 
 /* Contact us form */
-/* line 412, ../scss/global.scss */
+/* line 415, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }
 
-/* line 417, ../scss/global.scss */
+/* line 420, ../scss/global.scss */
 #uc-coupon-form,
 #uc-cart-pane-coupon {
   margin-bottom: 1em;
 }
 
-/* line 422, ../scss/global.scss */
+/* line 425, ../scss/global.scss */
 #block-views-media-releases-block,
 #block-views-media-releases-block-1 {
   margin: 1em;
