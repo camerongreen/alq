@@ -35,106 +35,43 @@
 /* line 35, ../scss/alq-alpha-default-normal.scss */
 .logo-img {
   background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
   margin-left: 40px;
 }
 
-/* line 103, ../scss/alq-alpha-default-normal.scss */
+/* line 40, ../scss/alq-alpha-default-normal.scss */
 #section-home-header {
   width: 940px !important;
 }
-/* line 105, ../scss/alq-alpha-default-normal.scss */
+/* line 42, ../scss/alq-alpha-default-normal.scss */
 #section-home-header img {
   width: 940px !important;
   height: 160px !important;
 }
 
-/* line 112, ../scss/alq-alpha-default-normal.scss */
+/* line 49, ../scss/alq-alpha-default-normal.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 940px !important;
   height: 340px !important;
 }
 
-/* line 118, ../scss/alq-alpha-default-normal.scss */
+/* line 55, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-title {
   top: 180px;
 }
-/* line 121, ../scss/alq-alpha-default-normal.scss */
+/* line 58, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-view-node {
   top: 240px;
 }
 
-/* line 126, ../scss/alq-alpha-default-normal.scss */
+/* line 63, ../scss/alq-alpha-default-normal.scss */
 .views-slideshow-controls-text span {
   top: 300px;
 }
 
-/* line 131, ../scss/alq-alpha-default-normal.scss */
-#block-views-media-releases-block,
-#block-views-media-releases-block-1 {
+/* line 68, ../scss/alq-alpha-default-normal.scss */
+#block-media-views-block,
+#block-media-views-block-1 {
   width: 40%;
   float: left;
   overflow: auto;
