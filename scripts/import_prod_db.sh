@@ -3,16 +3,16 @@
 # This script is useful for pulling the production dbs across to development
 # it turns on the devel module etc.
 #
-# Run this script from the drupal root directory, eg
+# Step 1: Pull a gzipped version of the prod db somewhere
+# Step 2: Run this script from the drupal root directory, eg
 #   DEFAULT_SITE_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
-# it will ask you for the db you've created's details, import the dump
+# it will ask you for the drupal db details, import the dump
 # file from prod you've downloaded into it, enable and disable some 
 # mods, set some values etc
-# 
-# Important: This does not currently change the paypal details, you will need to do that manually
 #
 
 DEFAULT_HOST=alq.test
+DEFAULT_PROD_HOST=alq.org.au
 
 SITE_BASE_URL=/www/${DEFAULT_HOST}
 
@@ -28,7 +28,7 @@ WEBSERVER_GROUP=www-data
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=localhost
-DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/alq_latest.sql
+DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/alq_latest.sql.gz
 
 # first set up the database
 read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
@@ -79,13 +79,13 @@ if [ -z $SITE_EMAIL ]
   fi
 fi
 
-read -p "Database sql file [${DEFAULT_DB_FILE}]:" DB_FILE
+read -p "Database sql gzipped file [${DEFAULT_DB_FILE}]:" DB_FILE
 if [ -z $DB_FILE ]
   then
     DB_FILE=$DEFAULT_DB_FILE
 fi
 
-mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD $DB_NAME < $DB_FILE
+gunzip -c $DB_FILE | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD $DB_NAME
 
 if [ $? -ne 0 ]
   then
@@ -103,6 +103,7 @@ drush vset site_mail ${DEFAULT_SITE_EMAIL}
 drush vset file_private_path ${SITE_BASE_URL}/private
 drush vset file_temporary_path /tmp
 drush vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
+drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
 drush -y vset preprocess_css 0
 drush -y vset preprocess_js 0 
 
