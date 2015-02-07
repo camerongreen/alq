@@ -180,7 +180,8 @@ h2 {
   margin-bottom: 1em;
 }
 
-.view-media-views,
+body.page-in-the-news .view-media-views,
+body.page-media-views .view-media-views,
 .view-news {
   .views-row {
     clear: both;
