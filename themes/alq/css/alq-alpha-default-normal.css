@@ -70,9 +70,14 @@
 }
 
 /* line 68, ../scss/alq-alpha-default-normal.scss */
-#block-media-views-block,
-#block-media-views-block-1 {
+#block-views-media-views-block,
+#block-views-media-views-block-1 {
   width: 40%;
   float: left;
   overflow: auto;
+}
+/* line 72, ../scss/alq-alpha-default-normal.scss */
+#block-views-media-views-block .item-list li,
+#block-views-media-views-block-1 .item-list li {
+  list-style: initial;
 }

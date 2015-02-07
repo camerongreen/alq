@@ -470,7 +470,7 @@ article div.field-name-field-tags div.field-items div:last-child:after {
 /* line 409, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0px;
-  background: none;
+  background: nones;
 }
 
 /* Contact us form */
@@ -486,7 +486,7 @@ body.page-contact ul {
 }
 
 /* line 425, ../scss/global.scss */
-#block-views-media-releases-block,
-#block-views-media-releases-block-1 {
+#block-views-media-views-block,
+#block-views-media-views-block-1 {
   margin: 1em;
 }

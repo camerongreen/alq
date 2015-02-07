@@ -64,9 +64,12 @@
   top: 300px;
 }
 
-#block-media-views-block,
-#block-media-views-block-1 {
+#block-views-media-views-block,
+#block-views-media-views-block-1 {
   width: 40%;
   float: left;
   overflow: auto;
+  .item-list li {
+    list-style: initial;
+  }
 }
