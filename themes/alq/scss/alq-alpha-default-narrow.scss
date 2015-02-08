@@ -78,17 +78,17 @@ body.page-media-views .view-media-views,
   .views-row {
     margin-bottom: 30px;
     overflow: auto;
-    .views-row-details {
-      margin-left: 220px;
-    }
     .views-field-title a {
       font-size: 17px;
     }
     .views-field-body p:last-child {
       margin-bottom: 1ex;
     }
-    .views-field-field-image img {
-      max-width: 200px;
+    .views-field-field-image {
+      width: 220px;
+      img {
+        max-width: 200px;
+      }
     }
   }
 }
