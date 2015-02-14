@@ -16,13 +16,16 @@ $tags-color: #666;
 }
 
 body {
-
   background-color: $body-background-color;
 
   #zone-branding,
   #zone-header,
   div.zone-content {
     background-color: $body-background-color;
+  }
+  div.logo-img img {
+    height: 104px;
+    width: 200px
   }
 }
 
@@ -44,6 +47,7 @@ h1 {
   font-size: 18px;
   margin-top: 6px;
 }
+
 
 h2 {
   font-size: 26px;
