@@ -106,6 +106,7 @@ drush vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
 drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
 drush -y vset preprocess_css 0
 drush -y vset preprocess_js 0 
+drush -y vset error_level 2
 
 drush cc all
 
