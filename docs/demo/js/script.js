@@ -13,7 +13,7 @@ $(document).ready(function () {
   }
 
   function setMembershipOptions() {
-    if ($('#membership input').prop('checked')) {
+    if ($('#membership input').prop('checked') && (getAmount() > membershipEligibilityAmount)) {
       $('.membershipOptions').fadeIn();
       $('#membershipHeading').show();
       $('#informationHeading').hide();
@@ -35,11 +35,11 @@ $(document).ready(function () {
 
     if (getAmount() >= membershipEligibilityAmount) {
       $('#membership').fadeIn();
-      setMembershipOptions();
     } else {
       $('#membership').fadeOut();
-      $('.membershipOptions').fadeOut();
     }
+
+    setMembershipOptions();
   });
 
   $('#membership input').change(function () {
