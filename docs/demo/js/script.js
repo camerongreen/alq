@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var membershipEligibilityAmount = 50;
+  var membershipEligibilityAmount = 25;
 
   function getAmount() {
     var returnVal = 0;
@@ -44,5 +44,23 @@ $(document).ready(function () {
 
   $('#membership input').change(function () {
       setMembershipOptions();
+  });
+
+  $('#donationForm').formValidation({
+    framework: 'bootstrap',
+    icon: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      givenName: {
+        validators: {
+          notEmpty: {
+            message: 'Given Name is required'
+          }
+        }
+      }
+    }
   });
 });
