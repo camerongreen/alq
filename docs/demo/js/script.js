@@ -1,5 +1,16 @@
 $(document).ready(function () {
-  var membershipEligibilityAmount = 25;
+  var membershipEligibilityAmount = 50;
+
+  var requiredMembershipOptions = [
+    'givenName',
+    'familyName'
+  ];
+
+  var requiredMembershipOptionsPost = requiredMembershipOptions.slice(0);
+  requiredMembershipOptionsPost.push('address1', 'town', 'postcode');
+
+  var requiredMembershipOptionsEmail = requiredMembershipOptions.slice(0);
+  requiredMembershipOptionsEmail.push('email');
 
   function getAmount() {
     var returnVal = 0;
@@ -12,28 +23,87 @@ $(document).ready(function () {
     return returnVal;
   }
 
-  function setMembershipOptions() {
-    if ($('#membership input').prop('checked') && (getAmount() > membershipEligibilityAmount)) {
-      $('.membershipOptions').fadeIn();
-      $('#membershipHeading').show();
-      $('#informationHeading').hide();
+  function wantsMembership() {
+    return $('#membership input').prop('checked');
+  }
+
+  function newsletterType() {
+    return $('input[name="newsletter"]:checked').val();
+  }
+
+  function enableMembership () {
+    $('.membershipOptions').fadeIn();
+    $('#membershipHeading').show();
+    $('#informationHeading').hide();
+
+
+    if (newsletterType() == 'newsletterPDF') {
+      $(requiredMembershipOptionsPost).each(function (index, value) {
+          $('#' + value).parent().parent().removeClass('required');
+      });
+      $(requiredMembershipOptionsEmail).each(function (index, value) {
+        $('#' + value).parent().parent().addClass('required');
+      });
     } else {
-      $('.membershipOptions').fadeOut();
-      $('#membershipHeading').hide();
-      $('#informationHeading').show();
+      $(requiredMembershipOptionsEmail).each(function (index, value) {
+        $('#' + value).parent().parent().removeClass('required');
+      });
+      $(requiredMembershipOptionsPost).each(function (index, value) {
+        $('#' + value).parent().parent().addClass('required');
+      });
     }
   }
 
-  $('input[name="amount"], #amountOtherValue', '#donationForm').change(function () {
-    if ($('#amountOther').prop('checked')) {
-      $('#amountOtherValue').prop('disabled', '');
-      $('#amountOtherValue').removeClass('disabled');
+  function disableMembership() {
+    $('.membershipOptions').fadeOut();
+    $('#membershipHeading').hide();
+    $('#informationHeading').show();
+  }
+
+  function setMembershipOptions() {
+    if (wantsMembership() && eligibleForMembership()) {
+      enableMembership();
     } else {
-      $('#amountOtherValue').prop('disabled', 'disabled');
-      $('#amountOtherValue').addClass('disabled');
+      disableMembership();
+    }
+  }
+
+  function eligibleForMembership() {
+    return (getAmount() > membershipEligibilityAmount)
+    || ($('input[name="donationType"]:checked').val() === 'monthly');
+  }
+
+  function membershipRequired(value) {
+    return wantsMembership() ? value !== '': true;
+  }
+
+  function emailRequired(value) {
+    if (wantsMembership() && (newsletterType() === 'newsletterPDF')) {
+      return value !== '';
     }
 
-    if (getAmount() >= membershipEligibilityAmount) {
+    return true;
+  }
+
+  function addressRequired(value) {
+    if (wantsMembership() && (newsletterType() === 'newsletterPrint')) {
+      return value !== '';
+    }
+
+    return true;
+  }
+
+
+  // listen for changes on any of these values, and check if
+  // the current state is eligible for membership
+  $('input[name="amount"], #amountOtherValue, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
+    if ($('#amountOther').prop('checked')) {
+      $('#amountOtherValue').prop('disabled', '').removeClass('disabled');
+    } else {
+      $('#amountOtherValue').prop('disabled', 'disabled').addClass('disabled');
+    }
+
+    if (eligibleForMembership()) {
       $('#membership').fadeIn();
     } else {
       $('#membership').fadeOut();
@@ -48,6 +118,7 @@ $(document).ready(function () {
 
   $('#donationForm').formValidation({
     framework: 'bootstrap',
+    excluded: [':disabled', ':hidden', ':not(:visible)'],
     icon: {
       valid: 'glyphicon glyphicon-ok',
       invalid: 'glyphicon glyphicon-remove',
@@ -56,8 +127,49 @@ $(document).ready(function () {
     fields: {
       givenName: {
         validators: {
-          notEmpty: {
-            message: 'Given Name is required'
+          callback: {
+            message: 'Please specify your given name',
+            callback: membershipRequired
+          }
+        }
+      },
+      familyName: {
+        validators: {
+          callback: {
+            message: 'Please specify your family name',
+            callback: membershipRequired
+          }
+        }
+      },
+      email: {
+        validators: {
+          callback: {
+            message: 'Please specify your email for the newsletter',
+            callback: emailRequired
+          }
+        }
+      },
+      address1: {
+        validators: {
+          callback: {
+            message: 'Please specify your address for the newsletter',
+            callback: addressRequired
+          }
+        }
+      },
+      town: {
+        validators: {
+          callback: {
+            message: 'Please specify your town for the newsletter',
+            callback: addressRequired
+          }
+        }
+      },
+      postcode: {
+        validators: {
+          callback: {
+            message: 'Please specify your postcode for the newsletter',
+            callback: addressRequired
           }
         }
       }
