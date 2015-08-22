@@ -45,24 +45,28 @@ $(document).ready(function () {
     return returnVal;
   }
 
-  function enableMembership () {
+  function enableMembership() {
     $('.membershipOptions').fadeIn();
     $('#membershipHeading').show();
     $('#informationHeading').hide();
 
     if (newsletterType() == 'newsletterPDF') {
       $(requiredMembershipOptionsPost).each(function (index, value) {
-          $('#' + value).parent().parent().removeClass('required');
+        $('#' + value).parent().parent().removeClass('required');
+        $('#donationForm').data('formValidation').resetField($('#' + value));
       });
       $(requiredMembershipOptionsEmail).each(function (index, value) {
         $('#' + value).parent().parent().addClass('required');
+        $('#donationForm').data('formValidation').resetField($('#' + value));
       });
     } else {
       $(requiredMembershipOptionsEmail).each(function (index, value) {
         $('#' + value).parent().parent().removeClass('required');
+        $('#donationForm').data('formValidation').resetField($('#' + value));
       });
       $(requiredMembershipOptionsPost).each(function (index, value) {
         $('#' + value).parent().parent().addClass('required');
+        $('#donationForm').data('formValidation').resetField($('#' + value));
       });
     }
   }
@@ -74,10 +78,12 @@ $(document).ready(function () {
 
     $(requiredMembershipOptionsPost).each(function (index, value) {
       $('#' + value).parent().parent().removeClass('required');
+      $('#donationForm').data('formValidation').resetField($('#' + value));
     });
 
     $(requiredMembershipOptionsEmail).each(function (index, value) {
       $('#' + value).parent().parent().removeClass('required');
+      $('#donationForm').data('formValidation').resetField($('#' + value));
     });
   }
 
@@ -91,18 +97,18 @@ $(document).ready(function () {
 
   function eligibleForMembership() {
     return (getAmount() >= membershipEligibilityAmount)
-    || ($('input[name="donationType"]:checked').val() === 'monthly');
+      || ($('input[name="donationType"]:checked').val() === 'monthly');
   }
 
   function membershipRequired(value) {
-    return wantsMembership() ? value !== '': true;
+    return wantsMembership() ? value !== '' : true;
   }
 
   function emailRequired(value) {
     if (
       wantsSpam() ||
       (wantsMembership() && (newsletterType() === 'newsletterPDF'))
-      ) {
+    ) {
       return value !== '';
     }
 
