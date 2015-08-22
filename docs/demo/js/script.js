@@ -1,4 +1,8 @@
+/**
+ * Donation form with optional membership
+ */
 $(document).ready(function () {
+
   var membershipEligibilityAmount = 50;
 
   var requiredMembershipOptions = [
@@ -12,9 +16,27 @@ $(document).ready(function () {
   var requiredMembershipOptionsEmail = requiredMembershipOptions.slice(0);
   requiredMembershipOptionsEmail.push('email');
 
+  // Accessor functions
+
+  function wantsMembership() {
+    return $('#membership input').is(':checked');
+  }
+
+  function wantsSpam() {
+    return $('#spam').is(':checked');
+  }
+
+  function chosenOtherAmount() {
+    return $('#amountOther').is(':checked');
+  }
+
+  function newsletterType() {
+    return $('input[name="newsletter"]:checked').val();
+  }
+
   function getAmount() {
     var returnVal = 0;
-    if ($('#amountOther').prop('checked')) {
+    if (chosenOtherAmount()) {
       returnVal = parseInt($('#amountOtherValue').val(), 10);
     } else {
       returnVal = parseInt($('input[name="amount"]:checked', '#donationForm').val(), 10);
@@ -23,19 +45,10 @@ $(document).ready(function () {
     return returnVal;
   }
 
-  function wantsMembership() {
-    return $('#membership input').prop('checked');
-  }
-
-  function newsletterType() {
-    return $('input[name="newsletter"]:checked').val();
-  }
-
   function enableMembership () {
     $('.membershipOptions').fadeIn();
     $('#membershipHeading').show();
     $('#informationHeading').hide();
-
 
     if (newsletterType() == 'newsletterPDF') {
       $(requiredMembershipOptionsPost).each(function (index, value) {
@@ -58,6 +71,14 @@ $(document).ready(function () {
     $('.membershipOptions').fadeOut();
     $('#membershipHeading').hide();
     $('#informationHeading').show();
+
+    $(requiredMembershipOptionsPost).each(function (index, value) {
+      $('#' + value).parent().parent().removeClass('required');
+    });
+
+    $(requiredMembershipOptionsEmail).each(function (index, value) {
+      $('#' + value).parent().parent().removeClass('required');
+    });
   }
 
   function setMembershipOptions() {
@@ -69,7 +90,7 @@ $(document).ready(function () {
   }
 
   function eligibleForMembership() {
-    return (getAmount() > membershipEligibilityAmount)
+    return (getAmount() >= membershipEligibilityAmount)
     || ($('input[name="donationType"]:checked').val() === 'monthly');
   }
 
@@ -78,7 +99,10 @@ $(document).ready(function () {
   }
 
   function emailRequired(value) {
-    if (wantsMembership() && (newsletterType() === 'newsletterPDF')) {
+    if (
+      wantsSpam() ||
+      (wantsMembership() && (newsletterType() === 'newsletterPDF'))
+      ) {
       return value !== '';
     }
 
@@ -93,14 +117,21 @@ $(document).ready(function () {
     return true;
   }
 
+  function amountOtherValueValidator(value) {
+    if (chosenOtherAmount()) {
+      return /^\d+$/.test(value) && (value !== '0');
+    }
 
-  // listen for changes on any of these values, and check if
-  // the current state is eligible for membership
-  $('input[name="amount"], #amountOtherValue, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
+    return true;
+  }
+
+  // listen for changes on the form, and check that the state is correct
+  $('input[name="amount"], #amountOtherValue, #membership input, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
     if ($('#amountOther').prop('checked')) {
       $('#amountOtherValue').prop('disabled', '').removeClass('disabled');
     } else {
       $('#amountOtherValue').prop('disabled', 'disabled').addClass('disabled');
+      $('#donationForm').data('formValidation').resetField($('#amountOtherValue'));
     }
 
     if (eligibleForMembership()) {
@@ -112,19 +143,23 @@ $(document).ready(function () {
     setMembershipOptions();
   });
 
-  $('#membership input').change(function () {
-      setMembershipOptions();
-  });
-
   $('#donationForm').formValidation({
     framework: 'bootstrap',
-    excluded: [':disabled', ':hidden', ':not(:visible)'],
+    excluded: [':hidden', ':not(:visible)'],
     icon: {
       valid: 'glyphicon glyphicon-ok',
       invalid: 'glyphicon glyphicon-remove',
       validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
+      amountOtherValue: {
+        validators: {
+          callback: {
+            message: 'Please specify a number for amount',
+            callback: amountOtherValueValidator
+          }
+        }
+      },
       givenName: {
         validators: {
           callback: {
@@ -144,7 +179,7 @@ $(document).ready(function () {
       email: {
         validators: {
           callback: {
-            message: 'Please specify your email for the newsletter',
+            message: 'Please specify your email address',
             callback: emailRequired
           }
         }
