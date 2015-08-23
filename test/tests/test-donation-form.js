@@ -1,16 +1,16 @@
 /**
- * Donation form tests
+ * Donation form demo
  */
+var siteUrl = 'http://alq.test';
+
 module.exports = {
-  'Demo test Google' : function (browser) {
+  'Test membership options come up when monthly selected' : function (browser) {
     browser
-      .url('http://www.google.com')
+      .url(siteUrl + '/demo/index.html')
       .waitForElementVisible('body', 1000)
-      .setValue('input[type=text]', 'nightwatch')
-      .waitForElementVisible('button[name=btnG]', 1000)
-      .click('button[name=btnG]')
-      .pause(1000)
-      .assert.containsText('#main', 'Night Watch')
+      .click('#monthly')
+      .waitForElementVisible('#membership', 1000)
+      .assert.containsText('#membership', 'complimentary membership')
       .end();
   }
 };
