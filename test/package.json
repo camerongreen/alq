@@ -1,0 +1,28 @@
+{
+  "name": "alq_donation_form",
+  "version": "0.0.1",
+  "description": "ALQ Donation form demo",
+  "main": "index.html",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/camerongreen/alq"
+  },
+  "keywords": [
+    "donation",
+    "form",
+    "animal",
+    "liberation"
+  ],
+  "author": "Cameron Green <i@camerongreen.org>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/camerongreen/alq/issues"
+  },
+  "devDependencies": {
+    "selenium-webdriver": "~2.46.1",
+    "nightwatch": "~0.7.11"
+  }
+}
