@@ -13,7 +13,7 @@
     "host" : "localhost",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "/usr/local/bin/chromedriver",
+      "webdriver.chrome.driver" : "/usr/lib/chromium-browser/chromedriver",
       "webdriver.ie.driver" : ""
     }
   },
@@ -25,8 +25,8 @@
       "selenium_host"  : "localhost",
       "silent": true,
       "screenshots" : {
-        "enabled" : false,
-        "path" : "screenshots"
+        "enabled" : true,
+        "path" : "/tmp/screenshots"
       },
       "desiredCapabilities": {
         "browserName": "firefox",
