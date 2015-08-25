@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Provides misc functions, hooks etc
+ */
+
+/**
+ * Implements hook_block_info().
+ */
+function alq_forms_block_info() {
+  return array(
+    "alq_donation_form" => array(
+      "info" => t("ALQ Donation Form"),
+    )
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function alq_forms_block_view($delta = "") {
+  $block = null;
+
+  switch ($delta) {
+    case "alq_donation_form":
+      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
+      drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css', array('type' => 'external'));
+      drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
+
+      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
+      drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.js', array('type' => 'external'));
+      drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.js', array('type' => 'external'));
+      drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/donation-form.js');
+
+      $block["subject"] = t("Donations");
+      $block["content"] = theme("alq_donation_form", array());
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme();
+ */
+function alq_forms_theme() {
+  return array(
+    "alq_donation_form" => array(
+      "template" => "theme/donation-form",
+      "variables" => array(
+      )
+    ),
+  );
+}

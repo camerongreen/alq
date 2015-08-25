@@ -1,1 +1,13 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* line 3, ../scss/alq-alpha-default.scss */
+div.block-alq-donation-form h2 {
+  margin-top: 1ex;
+}
+/* line 7, ../scss/alq-alpha-default.scss */
+div.block-alq-donation-form #donationForm div.input-group {
+  margin-top: 0px;
+}
+/* line 9, ../scss/alq-alpha-default.scss */
+div.block-alq-donation-form #donationForm div.input-group span.input-group-addon {
+  font-size: 14px;
+}

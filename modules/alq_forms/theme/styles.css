@@ -1,0 +1,17 @@
+#membershipHeading,
+.membershipOptions {
+    display: none;
+}
+
+div.requiredLegend {
+    text-align: right;
+}
+
+div.requiredLegend span {
+    color: red;
+}
+
+.required label::after {
+    color: red;
+    content: '\2605';
+}

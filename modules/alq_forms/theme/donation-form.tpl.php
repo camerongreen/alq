@@ -1,28 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Donations</title>
-
-  <link rel="stylesheet" type="text/css"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"/>
-  <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css"/>
-  <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-
-  <script src="https://code.jquery.com/jquery-latest.js"></script>
-  <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.js"></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.js"></script>
-  <script src="js/donation-form.js"></script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<h1>Support us</h1>
-
 <div class="tabs-container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -48,9 +23,9 @@
       <form class="form-horizontal" id="donationForm">
 
         <div class="form-group">
-          <label for="donationType" class="col-sm-2">Donation type</label>
+          <label for="donationType" class="col-sm-3">Donation type</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-primary active" id="oneoff">
                 <input type="radio" name="donationType"
@@ -65,9 +40,9 @@
         </div>
 
         <div class="form-group">
-          <label for="amount" class="col-sm-2">Donation amount</label>
+          <label for="amount" class="col-sm-3">Donation amount</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <div class="form-inline">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active" id="amount1">
@@ -104,7 +79,7 @@
         </div>
 
         <div class="form-group" id="membership">
-          <div class="col-sm-offset-2 col-sm-10">
+          <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label>
                 <input type="checkbox"/>
@@ -125,18 +100,18 @@
           Required Fields <span>&#x2605;</span>
         </div>
         <div class="form-group">
-          <label for="givenName" class="col-sm-2">Given Name</label>
+          <label for="givenName" class="col-sm-3">Given Name</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="givenName"
                    name="givenName" placeholder="Given Name">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="familyName" class="col-sm-2">Family Name</label>
+          <label for="familyName" class="col-sm-3">Family Name</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="familyName"
                    name="familyName"
                    placeholder="Family Name">
@@ -144,27 +119,27 @@
         </div>
 
         <div class="form-group">
-          <label for="email" class="col-sm-2">Email</label>
+          <label for="email" class="col-sm-3">Email</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="email" name="email"
                    placeholder="Email"/>
           </div>
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="phone" class="col-sm-2">Phone</label>
+          <label for="phone" class="col-sm-3">Phone</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="phone" name="phone"
                    placeholder="Phone"/>
           </div>
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="address1" class="col-sm-2">Address 1</label>
+          <label for="address1" class="col-sm-3">Address 1</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="address1"
                    name="address1"
                    placeholder="Address Line 1"/>
@@ -172,9 +147,9 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="address2" class="col-sm-2">Address 2</label>
+          <label for="address2" class="col-sm-3">Address 2</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="address2"
                    name="address2"
                    placeholder="Address Line 2"/>
@@ -182,18 +157,18 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="town" class="col-sm-2">Town</label>
+          <label for="town" class="col-sm-3">Town</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="town" name="town"
                    placeholder="Town"/>
           </div>
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="postcode" class="col-sm-2">Postcode</label>
+          <label for="postcode" class="col-sm-3">Postcode</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="postcode"
                    name="postcode"
                    placeholder="Postcode"/>
@@ -201,9 +176,9 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="membershipType" class="col-sm-2">Membership Type</label>
+          <label for="membershipType" class="col-sm-3">Membership Type</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <select class="form-control" id="membershipType"
                     name="membershipType">
               <option value="individual">Individual</option>
@@ -214,9 +189,9 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="gender" class="col-sm-2">Gender</label>
+          <label for="gender" class="col-sm-3">Gender</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <div class="radio">
               <label>
                 <input type="radio" name="gender"
@@ -237,9 +212,9 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="gender" class="col-sm-2">Newsletter</label>
+          <label for="gender" class="col-sm-3">Newsletter</label>
 
-          <div class="col-sm-10">
+          <div class="col-sm-9">
             <div class="radio">
               <label id="newsletterPDF">
                 <input type="radio" name="newsletter"
@@ -255,7 +230,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
+          <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label id="spam">
                 <input type="checkbox" name="spam"/>
@@ -268,7 +243,7 @@
         </div>
 
         <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
+          <div class="col-sm-offset-3 col-sm-9">
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
@@ -286,5 +261,3 @@
     </div>
   </div>
 </div>
-</body>
-</html>
