@@ -22,7 +22,7 @@
   }
 
   function wantsSpam() {
-    return $('#spam').is(':checked');
+    return $('#spam input').is(':checked');
   }
 
   function chosenOtherAmount() {
