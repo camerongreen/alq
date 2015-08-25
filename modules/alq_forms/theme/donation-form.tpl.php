@@ -5,9 +5,9 @@
                                               aria-controls="online"
                                               role="tab" data-toggle="tab">Online</a>
     </li>
-    <li role="presentation"><a href="#bequest"
-                               aria-controls="bequest"
-                               role="tab" data-toggle="tab">Bequest</a>
+    <li role="presentation"><a href="#bequests"
+                               aria-controls="bequests"
+                               role="tab" data-toggle="tab">Bequests</a>
     </li>
     <li role="presentation"><a href="#donations"
                                aria-controls="donations"
@@ -250,14 +250,22 @@
       </form>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="bequest">
-      <h2>Bequest</h2>
-      <p>Please do x y an z</p>
+    <div role="tabpanel" class="tab-pane" id="bequests">
+      <h2>Bequests</h2>
+      <p>Talk about how helpful bequests are and we can give them personal assistance etc.</p>
+      <p>Link to any forms we can point them to or info.</p>
+      <h3>Acknowledgements</h3>
+      <p>Animal Liberation Qld gratefully acknowledges the following, whose bequests have been of great significance in helping our vital work.</a>
+      <ul class="list-group">
+        <li class="list-group-item">Persona Uno</li>
+        <li class="list-group-item">Persona Dos</li>
+        <li class="list-group-item">Persona Tres y familia</li>
+      </ul>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="donations">
       <h2>Other ways to donate</h2>
-      <p>Please do x y an z</p>
+        <p>We also accept donation by cheque which can be <a href="/contact">mailed to our PO Box</a>. For other donation options, please <a href="/contact">contact our office for further information</a>.</p>
     </div>
   </div>
 </div>
