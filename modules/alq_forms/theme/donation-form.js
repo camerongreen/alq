@@ -3,6 +3,7 @@
  */
 (function ($) {
   var membershipEligibilityAmount = 50;
+  var amountOtherMinimum = 5;
 
   var requiredMembershipOptions = [
     'givenName',
@@ -124,7 +125,7 @@
 
   function amountOtherValueValidator(value) {
     if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && (value !== '0');
+      return /^\d+$/.test(value) && (value > amountOtherMinimum);
     }
 
     return true;
@@ -141,9 +142,11 @@
       }
 
       if (eligibleForMembership()) {
+        $('#membershipInfo').hide();
         $('#membership').fadeIn();
       } else {
-        $('#membership').fadeOut();
+        $('#membership').hide();
+        $('#membershipInfo').fadeIn();
       }
 
       setMembershipOptions();
@@ -165,7 +168,7 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify a number for amount',
+              message: 'Please specify a number greater than ' + amountOtherMinimum + ' for amount',
               callback: amountOtherValueValidator
             }
           }

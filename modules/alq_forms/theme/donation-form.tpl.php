@@ -69,7 +69,7 @@
               <div class="input-group">
                 <span class="input-group-addon">$</span>
                 <input type="text" class="form-control disabled"
-                       id="amountOtherValue"
+                       id="amountOtherValue" autocomplete="off"
                        name="amountOtherValue" placeholder="Other amount"
                        disabled="disabled"
                   />
@@ -91,6 +91,12 @@
             </div>
           </div>
         </div>
+        <div class="form-group" id="membershipInfo">
+          <div class="col-sm-offset-3 col-sm-9">
+          All monthly donations and any single donations over $50 are eligible for a complimentary membership
+          </div>
+        </div>
+
 
         <h2 id="informationHeading">Optional information</h2>
 

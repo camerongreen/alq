@@ -525,8 +525,12 @@ div.block-alq-donation-form #donationForm div.input-group {
 div.block-alq-donation-form #donationForm div.input-group span.input-group-addon {
   font-size: 10px;
 }
+/* line 449, ../scss/global.scss */
+div.block-alq-donation-form #donationForm #membershipInfo {
+  display: none;
+}
 
-/* line 452, ../scss/global.scss */
+/* line 455, ../scss/global.scss */
 #block-addtoany-addtoany-button {
   margin-bottom: 1em;
 }
