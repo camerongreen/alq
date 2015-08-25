@@ -23,7 +23,7 @@ function alq_page_alter($page) {
       '#tag' => 'meta',
       '#attributes' => array(
         'property' => 'og:image',
-        'content' => $base_url . '/' . drupal_get_path('theme', 'alq') . '/images/alq.jpg'
+        'content' => $base_url . '/' . drupal_get_path('theme', 'alq') . '/images/screenshot.jpg'
       )
     );
 
