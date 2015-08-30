@@ -7,14 +7,11 @@
 
   var requiredMembershipOptions = [
     'givenName',
-    'familyName'
+    'familyName',
+    'address1',
+    'town',
+    'postcode'
   ];
-
-  var requiredMembershipOptionsPost = requiredMembershipOptions.slice(0);
-  requiredMembershipOptionsPost.push('address1', 'town', 'postcode');
-
-  var requiredMembershipOptionsEmail = requiredMembershipOptions.slice(0);
-  requiredMembershipOptionsEmail.push('email');
 
   // Accessor functions
 
@@ -50,25 +47,10 @@
     $('#membershipHeading').show();
     $('#informationHeading').hide();
 
-    if (newsletterType() == 'newsletterPDF') {
-      $(requiredMembershipOptionsPost).each(function (index, value) {
-        $('#' + value).parent().parent().removeClass('required');
-        $('#donationForm').data('formValidation').resetField($('#' + value));
-      });
-      $(requiredMembershipOptionsEmail).each(function (index, value) {
-        $('#' + value).parent().parent().addClass('required');
-        $('#donationForm').data('formValidation').resetField($('#' + value));
-      });
-    } else {
-      $(requiredMembershipOptionsEmail).each(function (index, value) {
-        $('#' + value).parent().parent().removeClass('required');
-        $('#donationForm').data('formValidation').resetField($('#' + value));
-      });
-      $(requiredMembershipOptionsPost).each(function (index, value) {
-        $('#' + value).parent().parent().addClass('required');
-        $('#donationForm').data('formValidation').resetField($('#' + value));
-      });
-    }
+    $(requiredMembershipOptions).each(function (index, value) {
+      $('#' + value).parent().parent().addClass('required');
+      $('#donationForm').data('formValidation').resetField($('#' + value));
+    });
   }
 
   function disableMembership() {
@@ -76,12 +58,7 @@
     $('#membershipHeading').hide();
     $('#informationHeading').show();
 
-    $(requiredMembershipOptionsPost).each(function (index, value) {
-      $('#' + value).parent().parent().removeClass('required');
-      $('#donationForm').data('formValidation').resetField($('#' + value));
-    });
-
-    $(requiredMembershipOptionsEmail).each(function (index, value) {
+    $(requiredMembershipOptions).each(function (index, value) {
       $('#' + value).parent().parent().removeClass('required');
       $('#donationForm').data('formValidation').resetField($('#' + value));
     });
@@ -154,6 +131,10 @@
 
     $('#oneoff, #monthly').click(function () {
       $('#donationType').val(this.id);
+    });
+
+    $('#donationForm').submit(function () {
+      console.log('timmy');
     });
 
     $('#donationForm').formValidation({

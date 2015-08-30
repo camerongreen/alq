@@ -4,10 +4,11 @@
  * Note to run these you will need to ln -s docs/demo . in the public_html directory
  */
 var siteUrl = 'http://alq.test';
+var pageUrl = siteUrl + '/donate-new';
 
 this.testAmountOther = function (browser) {
   browser
-    .url(siteUrl + '/demo/index.html')
+    .url(pageUrl)
     .waitForElementVisible('#amountOther', 1000);
   browser.expect.element('#amountOtherValue').to.not.be.enabled;
   browser.expect.element('#amountOther input').to.not.be.selected;
@@ -25,7 +26,7 @@ this.testAmountOther = function (browser) {
 // with all this bootstrap magic going on, test trivial things
 this.testClickMonthly = function (browser) {
   browser
-    .url(siteUrl + '/demo/index.html')
+    .url(pageUrl)
     .waitForElementVisible('#monthly', 1000);
 
   browser.expect.element('#oneoff input').to.be.selected;
@@ -38,7 +39,7 @@ this.testClickMonthly = function (browser) {
 
 this.testMembershipVisible = function (browser) {
   browser
-    .url(siteUrl + '/demo/index.html')
+    .url(pageUrl)
     .waitForElementVisible('#monthly', 1000)
     .click('#monthly')
     .waitForElementVisible('#membership', 1000)
@@ -48,7 +49,7 @@ this.testMembershipVisible = function (browser) {
 
 this.testAmountOtherMembershipEligible = function (browser) {
   browser
-    .url(siteUrl + '/demo/index.html')
+    .url(pageUrl)
     .waitForElementVisible('#amountOther', 1000)
     .click('#amountOther')
     .waitForElementVisible('#amountOtherValue', 1000);
@@ -64,7 +65,7 @@ this.testAmountOtherMembershipEligible = function (browser) {
 
 this.testAmountOtherMembershipIneligible = function (browser) {
   browser
-    .url(siteUrl + '/demo/index.html')
+    .url(pageUrl)
     .waitForElementVisible('#amountOther', 1000)
     .click('#amountOther')
     .waitForElementVisible('#amountOtherValue', 1000)

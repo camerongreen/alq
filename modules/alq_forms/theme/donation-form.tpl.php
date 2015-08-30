@@ -11,7 +11,8 @@
     </li>
     <li role="presentation"><a href="#donations"
                                aria-controls="donations"
-                               role="tab" data-toggle="tab">Other ways to donate</a>
+                               role="tab" data-toggle="tab">Other ways to
+        donate</a>
     </li>
   </ul>
 
@@ -93,7 +94,8 @@
         </div>
         <div class="form-group" id="membershipInfo">
           <div class="col-sm-offset-3 col-sm-9">
-          All monthly donations and any single donations over $50 are eligible for a complimentary membership
+            All monthly donations and any single donations over $50 are eligible
+            for a complimentary membership
           </div>
         </div>
 
@@ -163,11 +165,11 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="town" class="col-sm-3">Town</label>
+          <label for="town" class="col-sm-3">Town/Suburb</label>
 
           <div class="col-sm-9">
             <input type="text" class="form-control" id="town" name="town"
-                   placeholder="Town"/>
+                   placeholder="Town/Suburb"/>
           </div>
         </div>
 
@@ -180,6 +182,17 @@
                    placeholder="Postcode"/>
           </div>
         </div>
+
+        <div class="form-group membershipOptions">
+          <label for="occupation" class="col-sm-3">Occupation</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="occupation"
+                   name="occupation"
+                   placeholder="Occupation"/>
+          </div>
+        </div>
+
 
         <div class="form-group membershipOptions">
           <label for="membershipType" class="col-sm-3">Membership Type</label>
@@ -228,28 +241,44 @@
               </label>
               <label id="newsletterPrint">
                 <input type="radio" name="newsletter"
-                       value="newsletterPrint"/> Print by
-                post
+                       value="newsletterPrint"/> Printed newsletter by post
               </label>
             </div>
           </div>
         </div>
+
+        <div class="form-group membershipOptions">
+          <div class="col-sm-offset-3 col-sm-9">
+            <div class="checkbox">
+              <label id="volunteering">
+                <input type="checkbox" name="volunteering"/>
+                I am interested in finding out more about
+                volunteering
+              </label>
+            </div>
+          </div>
+        </div>
+
 
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label id="spam">
-                <input type="checkbox" name="spam"/>
+                <input type="checkbox" name="spam" checked="checked"/>
                 Would you like to join the Animal Liberation Queensland
-                mailing
-                list?
+                mailing list?
               </label>
             </div>
           </div>
         </div>
 
+
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">
+            <input type="hidden" name="on0" value="Form Information"/>
+            <input type="hidden" name="os0"/>
+            <input type="hidden" name="on1" value="Notes"/>
+            <input type="hidden" name="os1"/>
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
@@ -258,10 +287,16 @@
 
     <div role="tabpanel" class="tab-pane" id="bequests">
       <h2>Bequests</h2>
-      <p>Talk about how helpful bequests are and we can give them personal assistance etc.</p>
+
+      <p>Talk about how helpful bequests are and we can give them personal
+        assistance etc.</p>
+
       <p>Link to any forms we can point them to or info.</p>
+
       <h3>Acknowledgements</h3>
-      <p>Animal Liberation Qld gratefully acknowledges the following, whose bequests have been of great significance in helping our vital work.</a>
+
+      <p>Animal Liberation Qld gratefully acknowledges the following, whose
+        bequests have been of great significance in helping our vital work.</p>
       <ul class="list-group">
         <li class="list-group-item">Persona Uno</li>
         <li class="list-group-item">Persona Dos</li>
@@ -271,7 +306,10 @@
 
     <div role="tabpanel" class="tab-pane" id="donations">
       <h2>Other ways to donate</h2>
-        <p>We also accept donation by cheque which can be <a href="/contact">mailed to our PO Box</a>. For other donation options, please <a href="/contact">contact our office for further information</a>.</p>
+
+      <p>We also accept donation by cheque which can be <a href="/contact">mailed
+          to our PO Box</a>. For other donation options, please <a
+          href="/contact">contact our office for further information</a>.</p>
     </div>
   </div>
 </div>
