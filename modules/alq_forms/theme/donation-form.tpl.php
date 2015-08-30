@@ -41,29 +41,30 @@
         </div>
 
         <div class="form-group">
-          <label for="amount" class="col-sm-3">Donation amount</label>
+          <label for="amountChoice" class="col-sm-3">Donation amount</label>
+          <input type="hidden" name="amount" id="amount" />
 
           <div class="col-sm-9">
             <div class="form-inline">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active" id="amount1">
-                  <input type="radio" name="amount"
+                  <input type="radio" name="amountChoice"
                          value="250" checked="checked"/> $250
                 </label>
                 <label class="btn btn-primary" id="amount2">
-                  <input type="radio" name="amount"
+                  <input type="radio" name="amountChoice"
                          value="100"/> $100
                 </label>
                 <label class="btn btn-primary" id="amount3">
-                  <input type="radio" name="amount"
+                  <input type="radio" name="amountChoice"
                          value="50"/> $50
                 </label>
                 <label class="btn btn-primary" id="amount4">
-                  <input type="radio" name="amount"
+                  <input type="radio" name="amountChoice"
                          value="25"/> $25
                 </label>
                 <label class="btn btn-primary" id="amountOther">
-                  <input type="radio" name="amount"
+                  <input type="radio" name="amountChoice"
                          value="amountOther"/> Other
                 </label>
               </div>

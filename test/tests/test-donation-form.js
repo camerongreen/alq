@@ -17,7 +17,8 @@ this.testAmountOther = function (browser) {
   browser.expect.element('#amountOtherValue').to.be.enabled;
 
   browser.setValue('#amountOtherValue', '50')
-    .getValue('#amountOtherValue', function (result) {
+    .click('#amountOther')
+    .getValue('#amount', function (result) {
       this.assert.equal(result.value, '50')
     })
     .end();

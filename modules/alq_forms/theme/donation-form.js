@@ -32,14 +32,15 @@
   }
 
   function getAmount() {
-    var returnVal = 0;
-    if (chosenOtherAmount()) {
-      returnVal = parseInt($('#amountOtherValue').val(), 10);
-    } else {
-      returnVal = parseInt($('input[name="amount"]:checked', '#donationForm').val(), 10);
-    }
+    return parseInt($('#amountOtherValue').val(), 10);
+  }
 
-    return returnVal;
+  function setAmount() {
+    if (chosenOtherAmount()) {
+      $('#amount').val($('#amountOtherValue').val());
+    } else {
+      $('#amount').val($('input[name="amountChoice"]:checked', '#donationForm').val());
+    }
   }
 
   function enableMembership() {
@@ -109,8 +110,10 @@
   }
 
   $(document).ready(function () {
+    setAmount();
+
     // listen for changes on the form, and check that the state is correct
-    $('input[name="amount"], #amountOtherValue, #membership input, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
+    $('input[name="amountChoice"], #amountOtherValue, #membership input, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
       if ($('#amountOther input').prop('checked')) {
         $('#amountOtherValue').prop('disabled', '').removeClass('disabled');
       } else {
@@ -126,6 +129,7 @@
         $('#membershipInfo').fadeIn();
       }
 
+      setAmount();
       setMembershipOptions();
     });
 
