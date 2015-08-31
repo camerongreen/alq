@@ -135,6 +135,11 @@
 
     $('#oneoff, #monthly').click(function () {
       $('#donationType').val(this.id);
+      if (this.id === 'monthly') {
+        $('#cmd').val('_xclick-subscriptions');
+      } else {
+        $('#cmd').val('_donations');
+      }
     });
 
     $('#donationForm').submit(function () {

@@ -21,10 +21,11 @@
     <div role="tabpanel" class="tab-pane active" id="online">
       <h2>Online Donation</h2>
 
-      <form class="form-horizontal" id="donationForm">
+      <form class="form-horizontal" id="donationForm" action="<?= $action ?>">
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
+          <input type="hidden" name="cmd" id="cmd" value="_donations" />
 
           <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
