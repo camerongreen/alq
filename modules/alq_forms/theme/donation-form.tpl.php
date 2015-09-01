@@ -22,6 +22,7 @@
       <h2>Online Donation</h2>
 
       <form class="form-horizontal" id="donationForm" action="<?= $action ?>">
+        <input type="text" name="custom" id="custom"/>
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
@@ -31,11 +32,11 @@
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-primary active" id="oneoff">
                 <input type="radio" name="donationType"
-                       value="oneoff" checked="checked"/> Single
+                       value="One off" checked="checked"/> Single
               </label>
               <label class="btn btn-primary" id="monthly">
                 <input type="radio" name="donationType"
-                       value="monthly"/> Monthly
+                       value="Monthly"/> Monthly
               </label>
             </div>
           </div>
@@ -202,9 +203,9 @@
           <div class="col-sm-9">
             <select class="form-control" id="membershipType"
                     name="membershipType">
-              <option value="individual">Individual</option>
-              <option value="studentUnwaged">Student/Unwaged</option>
-              <option value="family">Family</option>
+              <option value="Individual">Individual</option>
+              <option value="Student/Unwaged">Student/Unwaged</option>
+              <option value="Family">Family</option>
             </select>
           </div>
         </div>
@@ -237,13 +238,13 @@
 
           <div class="col-sm-9">
             <div class="radio">
-              <label id="newsletterPDF">
-                <input type="radio" name="newsletter"
-                       value="newsletterPDF" checked="checked "/> PDF by email
+              <label id="newsletterEmail">
+                <input type="radio" name="newsletter" id="newsletterEmail"
+                       value="Email newsletter" checked="checked "/> Newsletter by email
               </label>
               <label id="newsletterPrint">
-                <input type="radio" name="newsletter"
-                       value="newsletterPrint"/> Printed newsletter by post
+                <input type="radio" name="newsletter" id="newsletterPrint"
+                       value="Printed newsletter"/> Printed newsletter by post
               </label>
             </div>
           </div>
