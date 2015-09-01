@@ -22,7 +22,7 @@
       <h2>Online Donation</h2>
 
       <form class="form-horizontal" id="donationForm" action="<?= $action ?>">
-        <input type="text" name="custom" id="custom"/>
+        <input type="hidden" name="custom" id="custom"/>
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
