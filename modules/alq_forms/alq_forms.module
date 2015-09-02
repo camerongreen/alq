@@ -33,7 +33,7 @@ function alq_forms_block_view($delta = "") {
       drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/donation-form.js');
 
       $block["subject"] = t("Donations");
-      $block["content"] = theme("alq_donation_form", array('action' => 'https://staging.paypal.com/cgi-bin/webscr'));
+      $block["content"] = theme("alq_donation_form", array('action' => 'https://www.sandbox.paypal.com/cgi-bin/webscr'));
       break;
   }
 

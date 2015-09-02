@@ -193,7 +193,7 @@
       custom.push('Amount: $' + $('#amount').val());
 
       $('#custom').val(custom.join(',\n'));
-      event.preventDefault();
+      //event.preventDefault();
     });
 
     $('#donationForm').formValidation({

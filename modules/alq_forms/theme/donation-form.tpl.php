@@ -291,20 +291,9 @@
     <div role="tabpanel" class="tab-pane" id="bequests">
       <h2>Bequests</h2>
 
-      <p>Talk about how helpful bequests are and we can give them personal
-        assistance etc.</p>
+      <p>Remembering the animals in your will is a wonderful way to leave a compassionate legacy.</p>
+      <p>Please <a href="/contact">contact our office</a> for further information.</p>
 
-      <p>Link to any forms we can point them to or info.</p>
-
-      <h3>Acknowledgements</h3>
-
-      <p>Animal Liberation Qld gratefully acknowledges the following, whose
-        bequests have been of great significance in helping our vital work.</p>
-      <ul class="list-group">
-        <li class="list-group-item">Persona Uno</li>
-        <li class="list-group-item">Persona Dos</li>
-        <li class="list-group-item">Persona Tres y familia</li>
-      </ul>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="donations">
