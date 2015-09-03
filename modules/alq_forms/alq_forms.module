@@ -36,7 +36,7 @@ function alq_forms_block_view($delta = "") {
       $block["subject"] = t("Donations");
 
       $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
-      if (stripos($paypalUrl, 'sandbox') === false) {
+      if (true || stripos($paypalUrl, 'sandbox') === false) {
         $url = 'https://www.paypal.com/cgi-bin/webscr';
         $business = $conf['paypal_id'];
       } else {

@@ -36,11 +36,14 @@
   }
 
   function setAmount() {
+    var amount = amountOtherMinimum;
     if (chosenOtherAmount()) {
-      $('#amount').val($('#amountOtherValue').val());
+      amount = $('#amountOtherValue').val();
     } else {
-      $('#amount').val($('input[name="amountChoice"]:checked').val());
+      amount = $('input[name="amountChoice"]:checked').val();
     }
+    $('#amount').val(amount);
+    $('#a3').val(amount); // for subscribe button
   }
 
   function enableMembership() {
