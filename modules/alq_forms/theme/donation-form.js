@@ -161,41 +161,43 @@
     // more information.  Otherwise we send very little
     $('#donationForm').submit(function (event) {
       var custom = [];
+      var invoice = [];
       if (wantsMembership()) {
-        custom.push('Given name: ' + $('#givenName').val());
-        custom.push('Family name: ' + $('#familyName').val());
-        custom.push('Email: ' + $('#email').val());
-        custom.push('Phone: ' + $('#phone').val());
-        custom.push('Address1: ' + $('#address1').val());
+        custom.push('Given:' + $('#givenName').val());
+        custom.push('Family:' + $('#familyName').val());
+        custom.push('Email:' + $('#email').val());
+        custom.push('Ph:' + $('#phone').val());
+        custom.push('Addr1:' + $('#address1').val());
         if ($('#address2').val()) {
-          custom.push('Address2: ' + $('#address2').val());
+          custom.push('Addr2:' + $('#address2').val());
         }
-        custom.push('Town/Suburb: ' + $('#town').val());
-        custom.push('Postcode: ' + $('#postcode').val());
+        custom.push('Town:' + $('#town').val());
+        custom.push('PC:' + $('#postcode').val());
         if ($('#occupation').val()) {
-          custom.push('Occupation: ' + $('#occupation').val());
+          custom.push('Occp:' + $('#occupation').val());
         }
-        custom.push('Type: ' + $('#membershipType').val());
-        custom.push('Gender: ' + $('input[name="gender"]:checked').val());
-        custom.push('Newsletter: ' + $('input[name="newsletter"]:checked').val());
-        custom.push('Volunteering: ' + ($('#volunteering input').is(':checked') ? 'Yes' : 'No'));
-        custom.push('Mailing list: ' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
+        custom.push('Sex:' + $('input[name="gender"]:checked').val());
+        invoice.push('Type:' + $('#membershipType').val());
+        invoice.push('Newsletter:' + $('input[name="newsletter"]:checked').val());
+        invoice.push('Volunteer:' + ($('#volunteering input').is(':checked') ? 'Yes' : 'No'));
+        invoice.push('Email list:' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
       } else {
         if ($('#givenName').val()) {
-          custom.push('Given name: ' + $('#givenName').val());
+          custom.push('Given:' + $('#givenName').val());
         }
         if ($('#familyName').val()) {
-          custom.push('Family name: ' + $('#familyName').val());
+          custom.push('Family:' + $('#familyName').val());
         }
         if ($('#email').val()) {
-          custom.push('Email: ' + $('#email').val());
-          custom.push('Mailing list: ' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
+          custom.push('Email:' + $('#email').val());
+          invoice.push('Email list:' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
         }
       }
-      custom.push('Donation type: ' + $('input[name="donationType"]:checked').val());
-      custom.push('Amount: $' + $('#amount').val());
+      invoice.push('Donation type:' + $('input[name="donationType"]:checked').val());
+      invoice.push('Amount:$' + $('#amount').val());
 
       $('#custom').val(custom.join(',\n'));
+      $('#invoice').val(invoice.join(',\n'));
       //event.preventDefault();
     });
 
