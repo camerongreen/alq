@@ -19,6 +19,7 @@ function alq_forms_block_info() {
  * Implements hook_block_view().
  */
 function alq_forms_block_view($delta = "") {
+  global $base_url, $conf;
   $block = null;
 
   switch ($delta) {
@@ -33,7 +34,20 @@ function alq_forms_block_view($delta = "") {
       drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/donation-form.js');
 
       $block["subject"] = t("Donations");
-      $block["content"] = theme("alq_donation_form", array('action' => 'https://www.sandbox.paypal.com/cgi-bin/webscr'));
+
+      $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
+      if (stripos($paypalUrl, 'sandbox') === false) {
+        $url = 'https://www.paypal.com/cgi-bin/webscr';
+        $business = $conf['paypal_id'];
+      } else {
+        $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+        $business = $conf['paypal_email'];
+      }
+
+      $redirect_url_cancel = $base_url . '/donate';
+      $redirect_url = $base_url . '/thanks';
+
+      $block["content"] = theme("alq_donation_form", array('action' => $url, 'business' => $business, 'redirect_url' => $redirect_url, 'redirect_url_cancel' => $redirect_url_cancel));
       break;
   }
 
@@ -48,7 +62,10 @@ function alq_forms_theme() {
     "alq_donation_form" => array(
       "template" => "theme/donation-form",
       "variables" => array(
-        'action' => null
+        'action' => null,
+        'business' => null,
+        'redirect_url' => null,
+        'redirect_url_cancel' => null
       )
     ),
   );

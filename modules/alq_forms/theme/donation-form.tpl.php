@@ -21,8 +21,24 @@
     <div role="tabpanel" class="tab-pane active" id="online">
       <h2>Online Donation</h2>
 
-      <form class="form-horizontal" id="donationForm" action="<?= $action ?>">
+      <form class="form-horizontal" id="donationForm" method="post" action="<?= $action ?>">
+        <!-- variables from paypal -->
+        <input type="hidden" name="business" value="<?= $business ?>" />
+        <input type="hidden" name="lc" value="AU" />
+        <input type="hidden" name="item_name" value="Animal Liberation Qld" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="rm" value="1" />
+        <input type="hidden" name="return" value="<?= $redirect_url ?>" />
+        <input type="hidden" name="cancel_return" value="<?= $redirect_url_cancel ?>" />
+        <input type="hidden" name="currency_code" value="AUD" />
+        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" />
+        <!-- /variables from paypal -->
+
+        <!-- pass-through variables paypal will send on -->
         <input type="hidden" name="custom" id="custom"/>
+        <input type="hidden" name="invoice" id="invoice"/>
+        <!-- /pass-through variables paypal will send on -->
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
@@ -49,13 +65,13 @@
           <div class="col-sm-9">
             <div class="form-inline">
               <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active" id="amount1">
+                <label class="btn btn-primary" id="amount1">
                   <input type="radio" name="amountChoice"
-                         value="250" checked="checked"/> $250
+                         value="250" /> $250
                 </label>
-                <label class="btn btn-primary" id="amount2">
+                <label class="btn btn-primary active" id="amount2">
                   <input type="radio" name="amountChoice"
-                         value="100"/> $100
+                         value="100" checked="checked"/> $100
                 </label>
                 <label class="btn btn-primary" id="amount3">
                   <input type="radio" name="amountChoice"
