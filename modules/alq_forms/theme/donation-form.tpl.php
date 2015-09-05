@@ -21,17 +21,19 @@
     <div role="tabpanel" class="tab-pane active" id="online">
       <h2>Online Donation</h2>
 
-      <form class="form-horizontal" id="donationForm" method="post" action="<?= $action ?>">
+      <form class="form-horizontal" id="donationForm" method="post"
+            action="<?= $action ?>">
         <!-- variables from paypal -->
-        <input type="hidden" name="business" value="<?= $business ?>" />
-        <input type="hidden" name="lc" value="AU" />
-        <input type="hidden" name="item_name" value="Animal Liberation Qld" />
-        <input type="hidden" name="no_note" value="1" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="rm" value="1" />
-        <input type="hidden" name="return" value="<?= $redirect_url ?>" />
-        <input type="hidden" name="cancel_return" value="<?= $redirect_url_cancel ?>" />
-        <input type="hidden" name="currency_code" value="AUD" />
+        <input type="hidden" name="business" value="<?= $business ?>"/>
+        <input type="hidden" name="lc" value="AU"/>
+        <input type="hidden" name="item_name" value="Animal Liberation Qld"/>
+        <input type="hidden" name="no_note" value="1"/>
+        <input type="hidden" name="no_shipping" value="1"/>
+        <input type="hidden" name="rm" value="1"/>
+        <input type="hidden" name="return" value="<?= $redirect_url ?>"/>
+        <input type="hidden" name="cancel_return"
+               value="<?= $redirect_url_cancel ?>"/>
+        <input type="hidden" name="currency_code" value="AUD"/>
         <input type="hidden" name="src" value="1">
         <input type="hidden" name="a3" id="a3" value="">
         <input type="hidden" name="p3" value="1">
@@ -41,12 +43,11 @@
 
         <!-- pass-through variables paypal will send on -->
         <input type="hidden" name="custom" id="custom"/>
-        <input type="hidden" name="invoice" id="invoice"/>
         <!-- /pass-through variables paypal will send on -->
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
-          <input type="hidden" name="cmd" id="cmd" value="_donations" />
+          <input type="hidden" name="cmd" id="cmd" value="_donations"/>
 
           <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
@@ -64,14 +65,14 @@
 
         <div class="form-group">
           <label for="amountChoice" class="col-sm-3">Donation amount</label>
-          <input type="hidden" name="amount" id="amount" />
+          <input type="hidden" name="amount" id="amount"/>
 
           <div class="col-sm-9">
             <div class="form-inline">
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary" id="amount1">
                   <input type="radio" name="amountChoice"
-                         value="250" /> $250
+                         value="250"/> $250
                 </label>
                 <label class="btn btn-primary active" id="amount2">
                   <input type="radio" name="amountChoice"
@@ -106,7 +107,7 @@
           <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label>
-                <input type="checkbox"/>
+                <input type="checkbox" name="membership"/>
                 Would you like a complimentary membership? <a
                   href="/content/membership-benefits" id="membershipBenefits"
                   target="_blank">Membership Benefits</a>
@@ -188,11 +189,11 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="town" class="col-sm-3">Town/Suburb</label>
+          <label for="town" class="col-sm-3">Suburb/Town</label>
 
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="town" name="town"
-                   placeholder="Town/Suburb"/>
+            <input type="text" class="form-control" id="suburb" name="suburb"
+                   placeholder="Suburb/Town"/>
           </div>
         </div>
 
@@ -260,7 +261,8 @@
             <div class="radio">
               <label id="newsletterEmail">
                 <input type="radio" name="newsletter" id="newsletterEmail"
-                       value="Email newsletter" checked="checked "/> Newsletter by email
+                       value="Email newsletter" checked="checked "/> Newsletter
+                by email
               </label>
               <label id="newsletterPrint">
                 <input type="radio" name="newsletter" id="newsletterPrint"
@@ -295,14 +297,14 @@
           </div>
         </div>
 
-
         <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-9">
-            <input type="hidden" name="on0" value="Form Information"/>
-            <input type="hidden" name="os0"/>
-            <input type="hidden" name="on1" value="Notes"/>
-            <input type="hidden" name="os1"/>
+          <div class="col-sm-offset-3 col-sm-5">
             <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col-sm-4" id="pp-logo">
+            <img
+              src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
+              alt="PayPal Acceptance Mark"/>
           </div>
         </div>
       </form>
@@ -311,8 +313,11 @@
     <div role="tabpanel" class="tab-pane" id="bequests">
       <h2>Bequests</h2>
 
-      <p>Remembering the animals in your will is a wonderful way to leave a compassionate legacy.</p>
-      <p>Please <a href="/contact">contact our office</a> for further information.</p>
+      <p>Remembering the animals in your will is a wonderful way to leave a
+        compassionate legacy.</p>
+
+      <p>Please <a href="/contact">contact our office</a> for further
+        information.</p>
 
     </div>
 

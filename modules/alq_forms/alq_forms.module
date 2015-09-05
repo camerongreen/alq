@@ -1,8 +1,108 @@
 <?php
 /**
  * @file
- * Provides misc functions, hooks etc
+ * Provides functions for the animal liberation donate form
  */
+function alq_forms_menu() {
+  $items['donate/submission'] = array(
+    'page callback' => 'alq_forms_donation',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+/**
+ * Callback handler for donate submission
+ */
+function alq_forms_donation() {
+  global $user;
+  $node = alq_forms_webform_loader('Donations form', 'webform');
+
+  try {
+    $data = alq_forms_parse_post_fields();
+
+    $submission = (object) array(
+      'nid' => $node->nid,
+      'uid' => $user->uid,
+      'submitted' => REQUEST_TIME,
+      'remote_addr' => ip_address(),
+      'is_draft' => FALSE,
+      'data' => $data,
+    );
+
+    module_load_include('inc', 'webform', 'includes/webform.submissions');
+    webform_submission_insert($node, $submission);
+    webform_submission_send_mail($node, $submission);
+    $returnVal['type'] = 'success';
+  } catch (Exception $e) {
+    $returnVal['type'] = 'error';
+    $returnVal['message'] = $e->getMessage();
+  }
+
+  return drupal_json_output($returnVal);
+}
+
+function alq_forms_webform_loader($title, $type) {
+  $query = new EntityFieldQuery();
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', $type)
+    ->propertyCondition('title', $title)
+    ->range(0,1)
+    ->execute();
+
+  if (!empty($entities['node'])) {
+    return node_load(array_shift(array_keys($entities['node'])));
+  }
+
+  return false;
+}
+
+function alq_forms_parse_post_fields() {
+  $data = array();
+
+  $fields = array(
+    'donationType',
+    'amount',
+    'membership',
+    'givenName',
+    'familyName',
+    'email',
+    'phone',
+    'address1',
+    'address2',
+    'postcode',
+    'suburb',
+    'occupation',
+    'membershipType',
+    'spam',
+    'gender',
+    'newsletterType',
+    'volunteering',
+  );
+
+  $required = array(
+    'donationType',
+    'amount',
+  );
+
+  for ($i = 0, $l = count($fields); $i < $l; $i++) {
+    $value = array_key_exists($fields[$i], $_POST) ? $_POST[$fields[$i]] : NULL;
+
+    if (in_array($fields[$i], $required) && ($value === NULL)) {
+      throw new Exception('Missing required field - ' . $fields[$i]);
+    }
+
+    $data[$i + 1] = array(
+      'value' => array(
+        $value
+      )
+    );
+  }
+
+  return $data;
+}
+
 
 /**
  * Implements hook_block_info().
@@ -20,7 +120,7 @@ function alq_forms_block_info() {
  */
 function alq_forms_block_view($delta = "") {
   global $base_url, $conf;
-  $block = null;
+  $block = NULL;
 
   switch ($delta) {
     case "alq_donation_form":
@@ -36,10 +136,11 @@ function alq_forms_block_view($delta = "") {
       $block["subject"] = t("Donations");
 
       $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
-      if (true || stripos($paypalUrl, 'sandbox') === false) {
+      if (TRUE || stripos($paypalUrl, 'sandbox') === FALSE) {
         $url = 'https://www.paypal.com/cgi-bin/webscr';
         $business = $conf['paypal_id'];
-      } else {
+      }
+      else {
         $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
         $business = $conf['paypal_email'];
       }
@@ -47,7 +148,12 @@ function alq_forms_block_view($delta = "") {
       $redirect_url_cancel = $base_url . '/donate';
       $redirect_url = $base_url . '/thanks';
 
-      $block["content"] = theme("alq_donation_form", array('action' => $url, 'business' => $business, 'redirect_url' => $redirect_url, 'redirect_url_cancel' => $redirect_url_cancel));
+      $block["content"] = theme("alq_donation_form", array(
+        'action' => $url,
+        'business' => $business,
+        'redirect_url' => $redirect_url,
+        'redirect_url_cancel' => $redirect_url_cancel
+      ));
       break;
   }
 
@@ -62,10 +168,10 @@ function alq_forms_theme() {
     "alq_donation_form" => array(
       "template" => "theme/donation-form",
       "variables" => array(
-        'action' => null,
-        'business' => null,
-        'redirect_url' => null,
-        'redirect_url_cancel' => null
+        'action' => NULL,
+        'business' => NULL,
+        'redirect_url' => NULL,
+        'redirect_url_cancel' => NULL
       )
     ),
   );

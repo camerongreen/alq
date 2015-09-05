@@ -9,7 +9,7 @@
     'givenName',
     'familyName',
     'address1',
-    'town',
+    'suburb',
     'postcode'
   ];
 
@@ -160,45 +160,36 @@
     // if the user is getting membership we send through
     // more information.  Otherwise we send very little
     $('#donationForm').submit(function (event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
       var custom = [];
-      var invoice = [];
       if (wantsMembership()) {
-        custom.push('Given:' + $('#givenName').val());
-        custom.push('Family:' + $('#familyName').val());
+        custom.push('GN:' + $('#givenName').val());
+        custom.push('FN:' + $('#familyName').val());
         custom.push('Email:' + $('#email').val());
         custom.push('Ph:' + $('#phone').val());
-        custom.push('Addr1:' + $('#address1').val());
-        if ($('#address2').val()) {
-          custom.push('Addr2:' + $('#address2').val());
-        }
-        custom.push('Town:' + $('#town').val());
-        custom.push('PC:' + $('#postcode').val());
-        if ($('#occupation').val()) {
-          custom.push('Occp:' + $('#occupation').val());
-        }
-        custom.push('Sex:' + $('input[name="gender"]:checked').val());
-        invoice.push('Type:' + $('#membershipType').val());
-        invoice.push('Newsletter:' + $('input[name="newsletter"]:checked').val());
-        invoice.push('Volunteer:' + ($('#volunteering input').is(':checked') ? 'Yes' : 'No'));
-        invoice.push('Email list:' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
       } else {
         if ($('#givenName').val()) {
-          custom.push('Given:' + $('#givenName').val());
+          custom.push('GN:' + $('#givenName').val());
         }
         if ($('#familyName').val()) {
-          custom.push('Family:' + $('#familyName').val());
+          custom.push('FN:' + $('#familyName').val());
         }
         if ($('#email').val()) {
           custom.push('Email:' + $('#email').val());
-          invoice.push('Email list:' + ($('#spam input').is(':checked') ? 'Yes' : 'No'));
         }
       }
-      invoice.push('Donation type:' + $('input[name="donationType"]:checked').val());
-      invoice.push('Amount:$' + $('#amount').val());
+      custom.push('Type:' + $('input[name="donationType"]:checked').val());
+      custom.push('Amount:$' + $('#amount').val());
 
-      $('#custom').val(custom.join(',\n'));
-      $('#invoice').val(invoice.join(',\n'));
-      //event.preventDefault();
+      $('#custom').val(custom.join(','));
+
+      $.post('/donate/submission', $('#donationForm').serialize())
+        .done(function () {
+          //$('#donationForm').submit();
+        }).fail(function () {
+          alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
+        });
     });
 
     $('#donationForm').formValidation({
@@ -248,15 +239,15 @@
         address1: {
           validators: {
             callback: {
-              message: 'Please specify your address for the newsletter',
+              message: 'Please specify your address',
               callback: addressValidator
             }
           }
         },
-        town: {
+        suburb: {
           validators: {
             callback: {
-              message: 'Please specify your town for the newsletter',
+              message: 'Please specify your suburb',
               callback: addressValidator
             }
           }
@@ -264,7 +255,7 @@
         postcode: {
           validators: {
             callback: {
-              message: 'Please specify your postcode for the newsletter',
+              message: 'Please specify your postcode',
               callback: addressValidator
             }
           }
