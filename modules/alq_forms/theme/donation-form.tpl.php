@@ -299,7 +299,7 @@
 
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-5">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="donationFormSubmit" class="btn btn-primary">Submit</button>
           </div>
           <div class="col-sm-4" id="pp-logo">
             <img

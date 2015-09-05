@@ -159,7 +159,7 @@
 
     // if the user is getting membership we send through
     // more information.  Otherwise we send very little
-    $('#donationForm').submit(function (event) {
+    $('#donationFormSubmit').click(function (event) {
       event.preventDefault();
       event.stopImmediatePropagation();
       var custom = [];
@@ -186,7 +186,7 @@
 
       $.post('/donate/submission', $('#donationForm').serialize())
         .done(function () {
-          //$('#donationForm').submit();
+          $('#donationForm').submit();
         }).fail(function () {
           alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
         });
