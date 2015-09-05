@@ -157,40 +157,6 @@
       }
     });
 
-    // if the user is getting membership we send through
-    // more information.  Otherwise we send very little
-    $('#donationFormSubmit').click(function (event) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      var custom = [];
-      if (wantsMembership()) {
-        custom.push('GN:' + $('#givenName').val());
-        custom.push('FN:' + $('#familyName').val());
-        custom.push('Email:' + $('#email').val());
-        custom.push('Ph:' + $('#phone').val());
-      } else {
-        if ($('#givenName').val()) {
-          custom.push('GN:' + $('#givenName').val());
-        }
-        if ($('#familyName').val()) {
-          custom.push('FN:' + $('#familyName').val());
-        }
-        if ($('#email').val()) {
-          custom.push('Email:' + $('#email').val());
-        }
-      }
-      custom.push('Type:' + $('input[name="donationType"]:checked').val());
-      custom.push('Amount:$' + $('#amount').val());
-
-      $('#custom').val(custom.join(','));
-
-      $.post('/donate/submission', $('#donationForm').serialize())
-        .done(function () {
-          $('#donationForm').submit();
-        }).fail(function () {
-          alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
-        });
-    });
 
     $('#donationForm').formValidation({
       framework: 'bootstrap',
@@ -228,7 +194,7 @@
         email: {
           validators: {
             emailAddress: {
-              message: 'Please specify a valid email address',
+              message: 'Please specify a valid email address'
             },
             callback: {
               message: 'Please specify your email address',
@@ -261,6 +227,48 @@
           }
         }
       }
+    }).on('success.form.fv', function (e) {
+      // Prevent form submission
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var $form = $(e.target),
+        fv = $(e.target).data('formValidation');
+
+      // submit for our records, if it is successful
+      // then pass onto paypal
+      $.post('/donate/submission', $form.serialize())
+        .done(function (data) {
+          // if the user is getting membership we send through
+          // more information.  Otherwise we send very little
+          var custom = [];
+
+          if (wantsMembership()) {
+            custom.push('GN:' + $('#givenName').val());
+            custom.push('FN:' + $('#familyName').val());
+            custom.push('Email:' + $('#email').val());
+            custom.push('Ph:' + $('#phone').val());
+          } else {
+            if ($('#givenName').val()) {
+              custom.push('GN:' + $('#givenName').val());
+            }
+            if ($('#familyName').val()) {
+              custom.push('FN:' + $('#familyName').val());
+            }
+            if ($('#email').val()) {
+              custom.push('Email:' + $('#email').val());
+            }
+          }
+          custom.push('Type:' + $('input[name="donationType"]:checked').val());
+          custom.push('Amount:$' + $('#amount').val());
+
+          custom.push(data.message);
+          $('#custom').val(custom.join(','));
+
+          fv.defaultSubmit();
+        }).fail(function () {
+          alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
+        });
     });
   });
 })(jQuery);

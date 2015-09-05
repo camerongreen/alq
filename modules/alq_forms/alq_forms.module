@@ -32,9 +32,10 @@ function alq_forms_donation() {
     );
 
     module_load_include('inc', 'webform', 'includes/webform.submissions');
-    webform_submission_insert($node, $submission);
+    $sid = webform_submission_insert($node, $submission);
     webform_submission_send_mail($node, $submission);
     $returnVal['type'] = 'success';
+    $returnVal['message'] = 'sid:' . $sid;
   } catch (Exception $e) {
     $returnVal['type'] = 'error';
     $returnVal['message'] = $e->getMessage();
@@ -77,7 +78,7 @@ function alq_forms_parse_post_fields() {
     'occupation',
     'membershipType',
     'gender',
-    'newsletterType',
+    'newsletter',
     'volunteering',
     'spam',
     'phone',
@@ -138,7 +139,7 @@ function alq_forms_block_view($delta = "") {
       $block["subject"] = t("Donations");
 
       $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
-      if (TRUE || stripos($paypalUrl, 'sandbox') === FALSE) {
+      if (stripos($paypalUrl, 'sandbox') === FALSE) {
         $url = 'https://www.paypal.com/cgi-bin/webscr';
         $business = $conf['paypal_id'];
       }
