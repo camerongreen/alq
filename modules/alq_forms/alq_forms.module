@@ -63,7 +63,7 @@ function alq_forms_parse_post_fields() {
   $data = array();
 
   // these need to be in the same order as the database table
-  // see - drush sqlq 'SELECT cid, name FROM webform_component WHERE nid = :webform_nid;'
+  // see - drush sqlq 'SELECT cid, form_key, name FROM webform_component WHERE nid = :webform_nid;'
   $fields = array(
     'donationType',
     'amount',
@@ -71,6 +71,7 @@ function alq_forms_parse_post_fields() {
     'givenName',
     'familyName',
     'email',
+    'phone',
     'address1',
     'address2',
     'suburb',
@@ -81,7 +82,6 @@ function alq_forms_parse_post_fields() {
     'newsletter',
     'volunteering',
     'spam',
-    'phone',
   );
 
   $required = array(
