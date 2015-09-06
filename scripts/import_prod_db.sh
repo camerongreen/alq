@@ -97,7 +97,8 @@ fi
 
 pushd ${SITE_BASE_URL}/${PUBLIC_DIR}
 
-drush -y pm-enable context_ui devel views_ui stage_file_proxy
+drush -y pm-download features_diff
+drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff
 drush -y pm-disable googleanalytics boost
 drush vset site_mail ${DEFAULT_SITE_EMAIL}
 drush vset file_private_path ${SITE_BASE_URL}/private
