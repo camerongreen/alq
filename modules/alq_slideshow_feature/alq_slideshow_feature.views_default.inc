@@ -136,6 +136,7 @@ function alq_slideshow_feature_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
     'page' => 'page',
+    'media_article' => 'media_article',
   );
   /* Filter criterion: Content: Slideshow (field_slideshow) */
   $handler->display->display_options['filters']['field_slideshow_value']['id'] = 'field_slideshow_value';

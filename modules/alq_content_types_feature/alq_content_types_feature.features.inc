@@ -22,7 +22,7 @@ function alq_content_types_feature_node_info() {
     'article' => array(
       'name' => t('Article'),
       'base' => 'node_content',
-      'description' => t('Use <em>articles</em> for time-sensitive content like news, press releases or blog posts.'),
+      'description' => t('Use <em>articles</em> for time-sensitive content like news or blog posts.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

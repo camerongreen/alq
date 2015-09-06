@@ -61,6 +61,9 @@ projects[devel][type] = "module"
 projects[features][version] = 1.0
 projects[features][type] = "module"
 
+projects[features_diff][version] = 1.0-beta2
+projects[features_diff][type] = "module"
+
 projects[email][version] = 1.2
 projects[email][type] = "module"
 
