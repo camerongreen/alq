@@ -150,6 +150,22 @@
           </div>
         </div>
 
+        <div class="form-group membershipOptions" id="title">
+          <label for="title" class="col-sm-3">Title</label>
+
+          <div class="col-sm-9">
+            <select name="title">
+              <option>Ms</option>
+              <option>Mrs</option>
+              <option>Miss</option>
+              <option>Mr</option>
+              <option>Dr</option>
+              <option>Professor</option>
+              <option>Mx</option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-group">
           <label for="email" class="col-sm-3">Email</label>
 
@@ -232,30 +248,7 @@
         </div>
 
         <div class="form-group membershipOptions">
-          <label for="gender" class="col-sm-3">Gender</label>
-
-          <div class="col-sm-9">
-            <div class="radio">
-              <label>
-                <input type="radio" name="gender"
-                       id="genderFemale" value="Female"/> Female
-              </label>
-              <label>
-                <input type="radio" name="gender"
-                       id="genderMale" value="Male"/> Male
-              </label>
-              <label>
-                <input type="radio" name="gender"
-                       id="genderOther" value="Other/Undisclosed"
-                       checked="checked"/>
-                Other/Undisclosed
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="gender" class="col-sm-3">Newsletter</label>
+          <label for="newsletter" class="col-sm-3">Newsletter</label>
 
           <div class="col-sm-9">
             <div class="radio">

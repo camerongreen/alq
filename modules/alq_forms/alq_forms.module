@@ -78,7 +78,7 @@ function alq_forms_parse_post_fields() {
     'postcode',
     'occupation',
     'membershipType',
-    'gender',
+    'title',
     'newsletter',
     'volunteering',
     'spam',
