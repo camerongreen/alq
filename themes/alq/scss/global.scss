@@ -64,16 +64,23 @@ h2 {
   margin-top: 1px;
 }
 
-.block-block-2 {
+div.block-block-2 {
   position: absolute;
   top: 0px;
   right: 10px;
+  /* override bootstrap style */
   div::before {
     display: block;
   }
 }
 
 /* override some bootstrap styles */
+body div.page div.zone-footer * {
+  box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+}
+
 div.breadcrumb {
   padding: 0;
   padding-bottom: 0.5em;
