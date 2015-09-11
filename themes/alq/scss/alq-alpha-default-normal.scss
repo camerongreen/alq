@@ -1,9 +1,16 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 /* Social media block */
-.block-block-2 {
+div.block-block-2 {
+  * {
+    display: block;
+    box-sizing: content-box;
+  }
   top: -10px;
   right: 40px;
+  height: 68px;
+  display: block;
+  box-sizing: content-box;
 }
 
 #facebook-link,

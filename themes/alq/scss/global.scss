@@ -68,6 +68,17 @@ h2 {
   position: absolute;
   top: 0px;
   right: 10px;
+  div::before {
+    display: block;
+  }
+}
+
+/* override some bootstrap styles */
+div.breadcrumb {
+  padding: 0;
+  padding-bottom: 0.5em;
+  margin-bottom: 0;
+  background-color: #fff;
 }
 
 .header-social-media-link {
