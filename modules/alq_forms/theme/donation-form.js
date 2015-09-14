@@ -3,7 +3,7 @@
  */
 (function ($) {
   var membershipEligibilityAmount = 50;
-  var amountOtherMinimum = 5;
+  var amountOtherMinimum = 2;
 
   var requiredMembershipOptions = [
     'givenName',
@@ -111,7 +111,7 @@
 
   function amountOtherValueValidator(value) {
     if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && (value > amountOtherMinimum);
+      return /^\d+$/.test(value) && (value >= amountOtherMinimum);
     }
 
     return true;
@@ -170,7 +170,7 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify a number greater than ' + amountOtherMinimum + ' for amount',
+              message: 'Please specify at least ' + amountOtherMinimum + ' for amount',
               callback: amountOtherValueValidator
             }
           }
