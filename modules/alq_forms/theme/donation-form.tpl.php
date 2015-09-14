@@ -128,6 +128,22 @@
 
         <h2 id="membershipHeading">Membership information</h2>
 
+        <div class="form-group membershipOptions" id="title">
+          <label for="title" class="col-sm-3">Title</label>
+
+          <div class="col-sm-9">
+            <select name="title">
+              <option>Ms</option>
+              <option>Mrs</option>
+              <option>Miss</option>
+              <option>Mr</option>
+              <option>Dr</option>
+              <option>Professor</option>
+              <option>Mx</option>
+            </select>
+          </div>
+        </div>
+
         <div class="requiredLegend membershipOptions">
           Required Fields <span>&#x2605;</span>
         </div>
@@ -147,22 +163,6 @@
             <input type="text" class="form-control" id="familyName"
                    name="familyName"
                    placeholder="Family Name">
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions" id="title">
-          <label for="title" class="col-sm-3">Title</label>
-
-          <div class="col-sm-9">
-            <select name="title">
-              <option>Ms</option>
-              <option>Mrs</option>
-              <option>Miss</option>
-              <option>Mr</option>
-              <option>Dr</option>
-              <option>Professor</option>
-              <option>Mx</option>
-            </select>
           </div>
         </div>
 
