@@ -128,6 +128,10 @@
 
         <h2 id="membershipHeading">Membership information</h2>
 
+        <div class="requiredLegend membershipOptions">
+          Required Fields <span>&#x2605;</span>
+        </div>
+
         <div class="form-group membershipOptions" id="title">
           <label for="title" class="col-sm-3">Title</label>
 
@@ -144,9 +148,6 @@
           </div>
         </div>
 
-        <div class="requiredLegend membershipOptions">
-          Required Fields <span>&#x2605;</span>
-        </div>
         <div class="form-group">
           <label for="givenName" class="col-sm-3">Given Name</label>
 
