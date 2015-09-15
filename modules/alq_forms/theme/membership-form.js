@@ -2,7 +2,7 @@
  * Membership form
  */
 (function ($) {
-  var membershipEligibilityAmountMinimums = {
+  var membershipEligibilityMinimums = {
     student: {
       annual: 25,
       monthly: 2
@@ -25,19 +25,7 @@
     }
   };
 
-  var requiredMembershipOptions = [
-    'givenName',
-    'familyName',
-    'address1',
-    'suburb',
-    'postcode'
-  ];
-
   // Accessor functions
-
-  function wantsMembership() {
-    return $('#membership input').is(':checked');
-  }
 
   function wantsSpam() {
     return $('#spam input').is(':checked');
@@ -49,6 +37,10 @@
 
   function newsletterType() {
     return $('input[name="newsletter"]:checked').id;
+  }
+
+  function membershipType() {
+    return $('input[name="membershipType"]:checked').parent().prop('id');
   }
 
   function getAmount() {
@@ -66,47 +58,14 @@
     $('#a3').val(amount); // for subscribe button
   }
 
-  function enableMembership() {
-    $('.membershipOptions').fadeIn();
-    $('#membershipHeading').show();
-    $('#informationHeading').hide();
-
-    $(requiredMembershipOptions).each(function (index, value) {
-      $('#' + value).parent().parent().addClass('required');
-      $('#membershipForm').data('formValidation').resetField($('#' + value));
-    });
-  }
-
-  function disableMembership() {
-    $('.membershipOptions').fadeOut();
-    $('#membershipHeading').hide();
-    $('#informationHeading').show();
-
-    $(requiredMembershipOptions).each(function (index, value) {
-      $('#' + value).parent().parent().removeClass('required');
-      $('#membershipForm').data('formValidation').resetField($('#' + value));
-    });
-  }
-
-  function setMembershipOptions() {
-    if (wantsMembership() && eligibleForMembership()) {
-      enableMembership();
-    } else {
-      disableMembership();
-    }
-  }
-
-  function paymentType() {
-    return $('input[name="paymentType"]:checked').parent().prop('id');
-  }
-
   function eligibleForMembership() {
-    return (getAmount() >= membershipEligibilityAmount)
-      || (paymentType() === 'monthly');
-  }
+    var amount = getAmount();
+    var paymentType = paymentType();
+    var membershipType = membershipType();
 
-  function membershipValidator(value) {
-    return wantsMembership() ? value !== '' : true;
+    var eligibleAmount = membershipEligibilityMinimums[membershipType][paymentType];
+
+    return amount >= eligibleAmount;
   }
 
   function emailValidator(value) {
@@ -118,11 +77,11 @@
   }
 
   function emailRequired() {
-    return wantsSpam() || (wantsMembership() && (newsletterType() === 'newsletterEmail'));
+    return wantsSpam() || (newsletterType() === 'newsletterEmail');
   }
 
   function addressValidator(value) {
-    if (wantsMembership() && (newsletterType() === 'newsletterPrint')) {
+    if (newsletterType() === 'newsletterPrint') {
       return value !== '';
     }
 
@@ -131,7 +90,7 @@
 
   function amountOtherValueValidator(value) {
     if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && (value >= amountOtherMinimum);
+      return /^\d+$/.test(value) && eligibleForMembership()
     }
 
     return true;
@@ -150,16 +109,6 @@
         $('#amountOtherValue').prop('disabled', 'disabled').addClass('disabled');
         $('#membershipForm').data('formValidation').resetField($('#amountOtherValue'));
       }
-
-      if (eligibleForMembership()) {
-        $('#membershipInfo').hide();
-        $('#membership').fadeIn();
-      } else {
-        $('#membership').hide();
-        $('#membershipInfo').fadeIn();
-      }
-
-      setMembershipOptions();
     });
 
     $('#spam input').change(function () {
@@ -197,17 +146,15 @@
         },
         givenName: {
           validators: {
-            callback: {
+            notEmpty: {
               message: 'Please specify your given name',
-              callback: membershipValidator
             }
           }
         },
         familyName: {
           validators: {
-            callback: {
+            notEmpty: {
               message: 'Please specify your family name',
-              callback: membershipValidator
             }
           }
         },
@@ -257,28 +204,16 @@
 
       // submit for our records, if it is successful
       // then pass onto paypal
-      $.post('/donate/submission', $form.serialize())
+      $.post('/membership/submission', $form.serialize())
         .done(function (data) {
           // if the user is getting membership we send through
           // more information.  Otherwise we send very little
           var custom = [];
 
-          if (wantsMembership()) {
-            custom.push('GN:' + $('#givenName').val());
-            custom.push('FN:' + $('#familyName').val());
-            custom.push('Email:' + $('#email').val());
-            custom.push('Ph:' + $('#phone').val());
-          } else {
-            if ($('#givenName').val()) {
-              custom.push('GN:' + $('#givenName').val());
-            }
-            if ($('#familyName').val()) {
-              custom.push('FN:' + $('#familyName').val());
-            }
-            if ($('#email').val()) {
-              custom.push('Email:' + $('#email').val());
-            }
-          }
+          custom.push('GN:' + $('#givenName').val());
+          custom.push('FN:' + $('#familyName').val());
+          custom.push('Email:' + $('#email').val());
+          custom.push('Ph:' + $('#phone').val());
           custom.push('Type:' + $('input[name="paymentType"]:checked').val());
           custom.push('Amount:$' + $('#amount').val());
 
