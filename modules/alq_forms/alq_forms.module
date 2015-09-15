@@ -5,7 +5,12 @@
  */
 function alq_forms_menu() {
   $items['donate/submission'] = array(
-    'page callback' => 'alq_forms_donation',
+    'page callback' => 'alq_forms_submission',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  $items['membership/submission'] = array(
+    'page callback' => 'alq_forms_submission',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK
   );
@@ -13,9 +18,9 @@ function alq_forms_menu() {
 }
 
 /**
- * Callback handler for donate submission
+ * Callback handler for form submission
  */
-function alq_forms_donation() {
+function alq_forms_submission() {
   global $user;
   $node = alq_forms_webform_loader('Donations form', 'webform');
 
@@ -43,6 +48,7 @@ function alq_forms_donation() {
 
   return drupal_json_output($returnVal);
 }
+
 
 function alq_forms_webform_loader($title, $type) {
   $query = new EntityFieldQuery();
@@ -114,7 +120,10 @@ function alq_forms_block_info() {
   return array(
     "alq_donation_form" => array(
       "info" => t("ALQ Donation Form"),
-    )
+    ),
+    "alq_membership_form" => array(
+    "info" => t("ALQ Membership Form"),
+  )
   );
 }
 
@@ -125,33 +134,47 @@ function alq_forms_block_view($delta = "") {
   global $base_url, $conf;
   $block = NULL;
 
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
+  drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css', array('type' => 'external'));
+  drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
+
+  drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.js', array('type' => 'external'));
+  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.js', array('type' => 'external'));
+
+  $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
+  if (stripos($paypalUrl, 'sandbox') === FALSE) {
+    $url = 'https://www.paypal.com/cgi-bin/webscr';
+    $business = $conf['paypal_id'];
+  }
+  else {
+    $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+    $business = $conf['paypal_email'];
+  }
+
   switch ($delta) {
     case "alq_donation_form":
-      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
-      drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css', array('type' => 'external'));
-      drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
-
-      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
-      drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.js', array('type' => 'external'));
-      drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.js', array('type' => 'external'));
       drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/donation-form.js');
-
       $block["subject"] = t("Donations");
-
-      $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
-      if (stripos($paypalUrl, 'sandbox') === FALSE) {
-        $url = 'https://www.paypal.com/cgi-bin/webscr';
-        $business = $conf['paypal_id'];
-      }
-      else {
-        $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
-        $business = $conf['paypal_email'];
-      }
 
       $redirect_url_cancel = $base_url . '/donate';
       $redirect_url = $base_url . '/thanks';
 
       $block["content"] = theme("alq_donation_form", array(
+        'action' => $url,
+        'business' => $business,
+        'redirect_url' => $redirect_url,
+        'redirect_url_cancel' => $redirect_url_cancel
+      ));
+      break;
+    case "alq_membership_form":
+      drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/membership-form.js');
+      $block["subject"] = t("Membership");
+
+      $redirect_url_cancel = $base_url . '/membership';
+      $redirect_url = $base_url . '/thanks';
+
+      $block["content"] = theme("alq_membership_form", array(
         'action' => $url,
         'business' => $business,
         'redirect_url' => $redirect_url,
@@ -170,6 +193,15 @@ function alq_forms_theme() {
   return array(
     "alq_donation_form" => array(
       "template" => "theme/donation-form",
+      "variables" => array(
+        'action' => NULL,
+        'business' => NULL,
+        'redirect_url' => NULL,
+        'redirect_url_cancel' => NULL
+      )
+    ),
+    "alq_membership_form" => array(
+      "template" => "theme/membership-form",
       "variables" => array(
         'action' => NULL,
         'business' => NULL,

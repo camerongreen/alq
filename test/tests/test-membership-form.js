@@ -1,10 +1,10 @@
 /**
- * Membership form demo
+ * Donation form demo
  *
  * Note to run these you will need to ln -s docs/demo . in the public_html directory
  */
 var siteUrl = 'http://alq.test';
-var pageUrl = siteUrl + '/donate';
+var pageUrl = siteUrl + '/donate-new';
 
 this.testAmountOther = function (browser) {
   browser
