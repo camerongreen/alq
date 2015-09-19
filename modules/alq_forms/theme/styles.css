@@ -1,28 +1,24 @@
-#donationForm {
-    #membershipHeading,
-    .membershipOptions {
-        display: none;
-    }
-}
+/* Styles for the alq forms */
+#donationForm #membershipHeading,
+#donationForm .membershipOptions {
+  display: none; }
+
+#amountOtherValue {
+  width: 130px; }
 
 div.requiredLegend {
-    text-align: right;
-}
+  text-align: right; }
 
 div.requiredLegend span {
-    color: red;
-}
+  color: red; }
 
 .required label::after {
-    color: red;
-    content: '\2605';
-}
+  color: red;
+  content: '\2605'; }
 
 #pp-logo > div {
-    text-align: right;
-}
+  text-align: right; }
 
 #pp-logo img {
-    width: 150px;
-    margin-top: -14px;
-}
+  width: 150px;
+  margin-top: -14px; }

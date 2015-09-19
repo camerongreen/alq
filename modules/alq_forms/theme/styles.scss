@@ -1,8 +1,13 @@
+/* Styles for the alq forms */
 #donationForm {
     #membershipHeading,
     .membershipOptions {
         display: none;
     }
+}
+
+#amountOtherValue {
+    width: 130px;
 }
 
 div.requiredLegend {

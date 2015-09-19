@@ -176,7 +176,7 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify at least $' + amountOtherMinimum + ' for single donations and $' + amountOtherMonthlyMinimum + ' amount',
+              message: 'Please specify at least $' + amountOtherMinimum + ' for single donations and $' + amountOtherMonthlyMinimum + ' for monthly donations',
               callback: amountOtherValueValidator
             }
           }
