@@ -3,6 +3,7 @@
  */
 (function ($) {
   var membershipEligibilityAmount = 50;
+  var amountOtherMonthlyMinimum = 5;
   var amountOtherMinimum = 2;
 
   var requiredMembershipOptions = [
@@ -35,8 +36,16 @@
     return parseInt($('#amount').val(), 10);
   }
 
+  function getMinimum() {
+    return donationType() === 'monthly' ? amountOtherMonthlyMinimum : amountOtherMinimum;
+  }
+
+  function donationType() {
+    return $('input[name="donationType"]:checked').parent().prop('id');
+  }
+
   function setAmount() {
-    var amount = amountOtherMinimum;
+    var amount = 0;
     if (chosenOtherAmount()) {
       amount = $('#amountOtherValue').val();
     } else {
@@ -76,10 +85,6 @@
     }
   }
 
-  function donationType() {
-    return $('input[name="donationType"]:checked').parent().prop('id');
-  }
-
   function eligibleForMembership() {
     return (getAmount() >= membershipEligibilityAmount)
       || (donationType() === 'monthly');
@@ -111,7 +116,7 @@
 
   function amountOtherValueValidator(value) {
     if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && (value >= amountOtherMinimum);
+      return /^\d+$/.test(value) && (value >= getMinimum());
     }
 
     return true;
@@ -126,6 +131,7 @@
 
       if ($('#amountOther input').is(':checked')) {
         $('#amountOtherValue').prop('disabled', '').removeClass('disabled');
+        $('#donationForm').formValidation('revalidateField', 'amountOtherValue');
       } else {
         $('#amountOtherValue').prop('disabled', 'disabled').addClass('disabled');
         $('#donationForm').data('formValidation').resetField($('#amountOtherValue'));
@@ -170,7 +176,7 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify at least ' + amountOtherMinimum + ' for amount',
+              message: 'Please specify at least $' + amountOtherMinimum + ' for single donations and $' + amountOtherMonthlyMinimum + ' amount',
               callback: amountOtherValueValidator
             }
           }

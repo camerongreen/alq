@@ -7,8 +7,6 @@ This is the code for the website http://alq.org.au
 
 To install, check out create_site.sh in the scripts directory.  Comments in the header should explain things.
 
-I'm thinking about making a docker image to do it all
-
 # Testing
 
 To run the tests:
