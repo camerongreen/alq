@@ -1,0 +1,36 @@
+#
+# Docker build for alq.org.au
+# Use 269 prefix for ports
+#
+# You will need a back up of the database in gz form before proceeding.
+#
+# run with:
+#   MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up -d
+#   where root password is anything you want, and mysql user/password/db is from your settings.php file
+#
+# Then get into the web container:
+#   docker exec -ti docker_web_1 bash
+#
+# Then run this which will ask for the mysql details and the location of the gz file:
+#   DEFAULT_SITE_EMAIL="alq@example.com" ../alq/scripts/import_prod_db.sh
+#
+
+web:
+    build: .
+    ports:
+        - "26980:80"
+    volumes:
+        - ../../public_html:/var/www/html
+        - ..:/var/www/alq
+    links:
+        - db:mysql
+db:
+    build: .
+    dockerfile: Dockerfile-db
+    environment:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_DATABASE
+        - MYSQL_USER
+        - MYSQL_PASSWORD
+    volumes:
+        - /var/lib/mysql
