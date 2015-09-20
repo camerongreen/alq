@@ -11,14 +11,9 @@
 # mods, set some values etc
 #
 
-DEFAULT_HOST=alq.test
 DEFAULT_PROD_HOST=alq.org.au
 
-SITE_BASE_URL=/www/${DEFAULT_HOST}
-
-PUBLIC_DIR=public_html
-
-# this is the user who will own the files, so you 
+# this is the user who will own the files, so you
 # can edit them etc
 FILE_OWNER=$USER
 # this is the webserver user so it can write stuff to directories etc
@@ -28,7 +23,7 @@ WEBSERVER_GROUP=www-data
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=localhost
-DEFAULT_DB_FILE=${SITE_BASE_URL}/sql/alq_latest.sql.gz
+DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
 
 # first set up the database
 read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
@@ -95,13 +90,11 @@ else
   echo "Imported db"
 fi
 
-pushd ${SITE_BASE_URL}/${PUBLIC_DIR}
-
 drush -y pm-download features_diff
 drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff
 drush -y pm-disable googleanalytics boost
 drush vset site_mail ${DEFAULT_SITE_EMAIL}
-drush vset file_private_path ${SITE_BASE_URL}/private
+drush vset file_private_path /tmp/private
 drush vset file_temporary_path /tmp
 drush vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
 drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
@@ -110,5 +103,3 @@ drush -y vset preprocess_js 0
 drush -y vset error_level 2
 
 drush cc all
-
-popd

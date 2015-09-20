@@ -22,6 +22,7 @@ web:
     volumes:
         - ../../public_html:/var/www/html
         - ..:/var/www/alq
+        - ../../sql:/var/www/sql
     links:
         - db:mysql
 db:
