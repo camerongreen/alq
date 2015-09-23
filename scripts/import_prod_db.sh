@@ -90,16 +90,20 @@ else
   echo "Imported db"
 fi
 
-drush -y pm-download features_diff
+# enable all your dev modules
 drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff
+
+# disable production modules
 drush -y pm-disable googleanalytics boost
-drush vset site_mail ${DEFAULT_SITE_EMAIL}
+
+# set site variables to development values
+drush vset site_mail ${SITE_EMAIL}
 drush vset file_private_path /tmp/private
 drush vset file_temporary_path /tmp
 drush vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
 drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
-drush -y vset preprocess_css 0
-drush -y vset preprocess_js 0 
-drush -y vset error_level 2
+drush vset preprocess_css 0
+drush vset preprocess_js 0
+drush vset error_level 2
 
 drush cc all

@@ -10,7 +10,7 @@
 ; Each makefile should begin by declaring the core version of Drupal that all
 ; projects should be compatible with. 
   
-core = 7.20
+core = 7.x
   
 ; API version
 ; ------------
@@ -34,147 +34,106 @@ projects[drupal][version] = 7
 ; Modules
 ; --------
 
-projects[admin_menu][version] = 3.0-rc4
-projects[admin_menu][type] = "module"
+projects[addtoany][version] = 4.9
 
-projects[ckeditor][version] = 1.12
-projects[ckeditor][type] = "module"
+projects[admin_menu][version] = 3.0-rc5
 
-projects[colorbox][version] = 2.3
-projects[colorbox][type] = "module"
+projects[advanced_help][version] = 1.3
 
-projects[context][version] = 3.0-beta6
-projects[context][type] = "module"
+projects[ckeditor][version] = 1.16
 
-projects[ctools][version] = 1.2
-projects[ctools][type] = "module"
+projects[ckeditor_link][version] = 1.16
 
-projects[date][version] = 2.6
-projects[date][type] = "module"
+projects[colorbox][version] = 2.9
 
-projects[delta][version] = 3.0-beta11 
-projects[delta][type] = "module"
+projects[context][version] = 3.6
 
-projects[devel][version] = 1.3
-projects[devel][type] = "module"
+projects[ctools][version] = 1.9
 
-projects[features][version] = 1.0
-projects[features][type] = "module"
+projects[date][version] = 2.8
 
-projects[email][version] = 1.2
-projects[email][type] = "module"
+projects[devel][version] = 1.5
 
-projects[entity][version] = 1.0
-projects[entity][type] = "module"
+projects[diff][version] = 3.23.2
 
-projects[imce][version] = 1.7
-projects[imce][type] = "module"
+projects[email][version] = 1.3
 
-projects[advanced_help][version] = 1.0
-projects[advanced_help][type] = "module"
-
-projects[entity][version] = 1.0
-projects[entity][type] = "module"
+projects[entity][version] = 1.6
 
 projects[facebook_boxes][version] = 1.0
-projects[facebook_boxes][type] = "module"
+
+projects[features][version] = 1.0
+
+projects[features_diff][version] = 1.0-beta2
+
+projects[filefield_sources][version] = 1.10
 
 projects[google_analytics][version] = 1.3
-projects[google_analytics][type] = "module"
-
-projects[nice_menus][version] = 2.1
-projects[nice_menus][type] = "module"
 
 projects[imageapi][version] = 1.x-dev
-projects[imageapi][type] = "module"
+
+projects[imce][version] = 1.9
 
 projects[imce_wysiwyg][version] = 1.0
-projects[imce_wysiwyg][type] = "module"
 
 projects[jquery_plugin][version] = 1.0
-projects[jquery_plugin][type] = "module"
 
-projects[jquery_update][version] = 2.3
-projects[jquery_update][type] = "module"
+projects[jquery_update][version] = 2.6
 
-projects[libraries][version] = 2.0
-projects[libraries][type] = "module"
+projects[libraries][version] = 2.2
 
-projects[metatag][version] = 1.0-beta4
-projects[metatag][type] = "module"
+projects[metatag][version] = 1.7
 
-projects[module_filter][version] = 1.7
-projects[module_filter][type] = "module"
+projects[module_filter][version] = 2.0
 
-projects[omega][version] = 3.1
-projects[omega][type] = "module"
+projects[nice_menus][version] = 3.x-dev
 
 projects[omega_tools][version] = 3.0-rc4
-projects[omega_tools][type] = "module"
 
 projects[pathauto][version] = 1.2
-projects[pathauto][type] = "module"
 
-projects[rules][version] = 2.2
-projects[rules][type] = "module"
+projects[responsive_menus][version] = 1.5
 
-projects[site_map][version] = 1.0
-projects[site_map][type] = "module"
+projects[rules][version] = 2.9
 
-projects[socialmedia][version] = 1.0-beta13
-projects[socialmedia][type] = "module"
+projects[site_map][version] = 1.3
 
-projects[stage_file_proxy][version] = 1.3
-projects[stage_file_proxy][type] = "module"
+projects[stage_file_proxy][version] = 1.7
 
 projects[strongarm][version] = 2.0
-projects[strongarm][type] = "module"
 
-projects[token][version] = 1.4
-projects[token][type] = "module"
+projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
-projects[token_filter][type] = "module"
 
 projects[ubercart][version] = 3.4
-projects[ubercart][type] = "module"
 
-projects[uc_auspost_pac][version] = 1.x-dev
-projects[uc_auspost_pac][type] = "module"
+projects[uc_coupon][version] = 2.1-alpha7
 
-projects[views][version] = 3.5
-projects[views][type] = "module"
+projects[views][version] = 3.11
 
-projects[views_slideshow][version] = 3.0
-projects[views_slideshow][type] = "module"
+projects[views_slideshow][version] = 3.1
 
-projects[webform][version] = 3.18
-projects[webform][type] = "module"
+projects[webform][version] = 3.24
 
-projects[widgets][version] = 1.0-rc1
-projects[widgets][type] = "module"
+projects[workbench][version] = 1.2
 
-projects[wysiwyg][version] = 2.2
-projects[wysiwyg][type] = "module"
-projects[wysiwyg][patch][] = "http://drupal.org/files/wysiwyg-support_v4_ckeditor-1853550-73.patch"
+projects[xmlsitemap][version] = 2.2
 
-projects[xmlsitemap][version] = 2.0-rc2
-projects[xmlsitemap][type] = "module"
-
-  
 
 ; Themes
 ; --------
 
+projects[omega][version] = 3.1
   
   
 ; Libraries
 ; ---------
 libraries[jquery][download][type] = "file"
-libraries[jquery][download][url] = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+libraries[jquery][download][url] = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 
 libraries[jqueryui][download][type] = "file"
-libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"
+libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"
 
 libraries[ckeditor][download][type] = "get"
 libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.0.1/ckeditor_4.0.1_standard.zip"
@@ -185,7 +144,7 @@ libraries[jquery.cycle][download][type] = "file"
 libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
 
-libraries[json2][download][type] = "file"
+;libraries[json2][download][type] = "file"
 libraries[json2][download][url] = "https://raw.github.com/douglascrockford/JSON-js/master/json2.js"
 
 libraries[colorbox][download][type] = file

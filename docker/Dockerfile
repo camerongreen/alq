@@ -6,7 +6,8 @@ FROM php:5.6-apache
 RUN apt-get update \
     && apt-get install -y vim git curl libpng12-dev libcurl3-dev mysql-client drush \
     && docker-php-ext-install pdo pdo_mysql json gd curl \
-    && pecl install xdebug
+    && pecl install xdebug \
+    && a2enmod rewrite
 
 # Allow php config to be overridden
 COPY config/php.ini /usr/local/etc/php/
