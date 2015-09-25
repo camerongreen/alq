@@ -22,7 +22,7 @@ WEBSERVER_GROUP=www-data
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=localhost
+DEFAULT_DB_HOST=docker_db_1
 DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
 
 # first set up the database

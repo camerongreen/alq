@@ -24,9 +24,9 @@ FILE_OWNER=$USER
 WEBSERVER_GROUP=www-data
 
 # default settings for DB
-DEFAULT_DB_USER=alq_test
-DEFAULT_DB_NAME=alq_db_test
-DEFAULT_DB_HOST=localhost
+DEFAULT_DB_USER=alq
+DEFAULT_DB_NAME=alq_db
+DEFAULT_DB_HOST=docker_db_1
 
 #
 # Output command status and exit if error
@@ -106,13 +106,68 @@ pushd $PUBLIC_DIR
 drush site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="$DB_PASSWD" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}"
 popd
 
-chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
+# Need to sort this out in docker container
+#chgrp -R ${WEBSERVER_GROUP} ${PUBLIC_DIR}/sites/default/files
 chmod ug+w ${PUBLIC_DIR}/sites/default/
 chmod ug+w ${PUBLIC_DIR}/sites/default/files
 
 pushd $PUBLIC_DIR
 drush -y pm-disable toolbar
-drush -y pm-enable admin admin_menu alq_content_types_feature alq_editor_role_feature alq_help alq_menus_feature alq_news_feature alq_section_home_blocks alq_slideshow_feature alq_webforms_feature colorbox contact ctools date devel features email entity entity_token imce advanced_help entity googleanalytics imageapi libraries metatag metatag_ui module_filter nice_menus omega omega_tools pathauto rules rules_admin site_map strongarm token token_filter imce_wysiwyg jquery_plugin jquery_update wysiwyg uc_auspost_pac uc_attribute uc_catalog uc_cart uc_order uc_payment uc_paypal uc_product uc_store views views_ui views_slideshow views_slideshow_cycle webform xmlsitemap xmlsitemap_engines xmlsitemap_menu xmlsitemap_node xmlsitemap_taxonomy
+# Don't enable google_analytics, boost
+drush -y pm-enable \
+admin \
+admin_menu \
+alq_content_types_feature \
+alq_editor_role_feature \
+alq_help \
+alq_menus_feature \
+alq_news_feature \
+alq_section_home_blocks \
+alq_slideshow_feature \
+alq_webforms_feature \
+addtoany \
+admin_menu \
+advanced_help \
+ckeditor \
+ckeditor_link \
+colorbox \
+context \
+ctools \
+date \
+devel \
+diff \
+email \
+entity \
+facebook_boxes \
+features \
+features_diff \
+filefield_sources \
+imageapi \
+imce \
+imce_wysiwyg \
+jquery_plugin \
+jquery_update \
+libraries \
+metatag \
+module_filter \
+nice_menus \
+omega_tools \
+pathauto \
+responsive_menus \
+rules \
+site_map \
+stage_file_proxy \
+strongarm \
+token \
+token_filter \
+ubercart \
+uc_coupon \
+views \
+views_slideshow \
+webform \
+workbench \
+xmlsitemap
+
 
 # I won't -y this as you should note any new additions 
 # and add to the drush.make script to save yourself time in the future

@@ -40,6 +40,8 @@ projects[admin_menu][version] = 3.0-rc5
 
 projects[advanced_help][version] = 1.3
 
+projects[boost][version] = 1.0
+
 projects[ckeditor][version] = 1.16
 
 projects[ckeditor_link][version] = 1.16
@@ -135,17 +137,9 @@ libraries[jquery][download][url] = "https://ajax.googleapis.com/ajax/libs/jquery
 libraries[jqueryui][download][type] = "file"
 libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"
 
-libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.0.1/ckeditor_4.0.1_standard.zip"
-libraries[ckeditor][directory_name] = "ckeditor"
-libraries[ckeditor][destination] = "libraries"
-
 libraries[jquery.cycle][download][type] = "file"
 libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
-
-;libraries[json2][download][type] = "file"
-libraries[json2][download][url] = "https://raw.github.com/douglascrockford/JSON-js/master/json2.js"
 
 libraries[colorbox][download][type] = file
 libraries[colorbox][download][url] = http://colorpowered.com/colorbox/latest
