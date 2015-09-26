@@ -28,7 +28,7 @@
     return $('#amountOther input').is(':checked');
   }
 
-  function newsletterType() {
+  function getNewsletterType() {
     return $('input[name="newsletter"]:checked').id;
   }
 
@@ -37,10 +37,10 @@
   }
 
   function getMinimum() {
-    return donationType() === 'monthly' ? amountOtherMonthlyMinimum : amountOtherMinimum;
+    return getDonationType() === 'monthly' ? amountOtherMonthlyMinimum : amountOtherMinimum;
   }
 
-  function donationType() {
+  function getDonationType() {
     return $('input[name="donationType"]:checked').parent().prop('id');
   }
 
@@ -87,7 +87,7 @@
 
   function eligibleForMembership() {
     return (getAmount() >= membershipEligibilityAmount)
-      || (donationType() === 'monthly');
+      || (getDonationType() === 'monthly');
   }
 
   function membershipValidator(value) {
@@ -103,11 +103,11 @@
   }
 
   function emailRequired() {
-    return wantsSpam() || (wantsMembership() && (newsletterType() === 'newsletterEmail'));
+    return wantsSpam() || (wantsMembership() && (getNewsletterType() === 'newsletterEmail'));
   }
 
   function addressValidator(value) {
-    if (wantsMembership() && (newsletterType() === 'newsletterPrint')) {
+    if (wantsMembership() && (getNewsletterType() === 'newsletterPrint')) {
       return value !== '';
     }
 

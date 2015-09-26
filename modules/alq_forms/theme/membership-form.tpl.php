@@ -16,7 +16,7 @@
   <input type="hidden" name="src" value="1">
   <input type="hidden" name="a3" id="a3" value="">
   <input type="hidden" name="p3" value="1">
-  <input type="hidden" name="t3" value="M">
+  <input type="hidden" id="t3" name="t3" value="M">
 
   <!-- /variables from paypal -->
 
@@ -24,11 +24,11 @@
   <input type="hidden" name="custom" id="custom"/>
   <!-- /pass-through variables paypal will send on -->
 
-  <div class="requiredLegend membershipOptions">
+  <div class="requiredLegend">
     Required Fields <span>&#x2605;</span>
   </div>
 
-  <div class="form-group membershipOptions" id="title">
+  <div class="form-group" id="title">
     <label for="title" class="col-sm-3">Title</label>
 
     <div class="col-sm-9">
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <label for="givenName" class="col-sm-3">Given Name</label>
 
     <div class="col-sm-9">
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <label for="familyName" class="col-sm-3">Family Name</label>
 
     <div class="col-sm-9">
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <label for="phone" class="col-sm-3">Phone</label>
 
     <div class="col-sm-9">
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group required">
     <label for="address1" class="col-sm-3">Address 1</label>
 
     <div class="col-sm-9">
@@ -91,7 +91,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <label for="address2" class="col-sm-3">Address 2</label>
 
     <div class="col-sm-9">
@@ -101,7 +101,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group required">
     <label for="town" class="col-sm-3">Suburb/Town</label>
 
     <div class="col-sm-9">
@@ -110,7 +110,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group required">
     <label for="postcode" class="col-sm-3">Postcode</label>
 
     <div class="col-sm-9">
@@ -120,7 +120,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <label for="occupation" class="col-sm-3">Occupation</label>
 
     <div class="col-sm-9">
@@ -130,61 +130,65 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <label for="membershipType" class="col-sm-3">Membership Type</label>
 
     <div class="col-sm-9">
       <select class="form-control" id="membershipType"
               name="membershipType">
-        <option value="Individual">Individual - $35</option>
-        <option value="Student/Unwaged">Student/Unwaged - $25</option>
-        <option value="Family">Family - $55</option>
-        <option value="Friend of ALQ">Friend of ALQ - $100 (includes t-shirt)</option>
-        <option value="Lifetime">Lifetime membership - $500 (one off payment)</option>
+        <option value="Individual">Individual</option>
+        <option value="Student/Unwaged">Student/Unwaged</option>
+        <option value="Family">Family</option>
+        <option value="Lifetime">Lifetime membership (one off payment)</option>
       </select>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="paymentType" class="col-sm-3">Payment type</label>
+    <label for="donationType" class="col-sm-3">Payment type</label>
     <input type="hidden" name="cmd" id="cmd" value="_donations"/>
 
     <div class="col-sm-9">
       <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-primary active" id="oneoff">
-          <input type="radio" name="paymentType"
-                 value="One off" checked="checked"/> Single
+          <input type="radio" name="donationType"
+                 value="One off" checked="checked"/> Annual
         </label>
         <label class="btn btn-primary" id="monthly">
-          <input type="radio" name="paymentType"
+          <input type="radio" name="donationType"
                  value="Monthly"/> Monthly
         </label>
       </div>
     </div>
   </div>
 
+
   <div class="form-group">
-    <label for="amountChoice" class="col-sm-3">Donation amount</label>
+    <label for="amountChoice" class="col-sm-3">Amount</label>
     <input type="hidden" name="amount" id="amount"/>
 
     <div class="col-sm-9">
       <div class="form-inline">
         <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary" id="amount1">
+          <label class="btn btn-primary active oneoffOption" id="oneoffAmount">
             <input type="radio" name="amountChoice"
-                   value="250"/> $250
+                   value="35"/> $<span>35</span>
           </label>
-          <label class="btn btn-primary active" id="amount2">
+          <label class="btn btn-primary monthlyOption" id="amount1">
             <input type="radio" name="amountChoice"
                    value="100" checked="checked"/> $100
           </label>
-          <label class="btn btn-primary" id="amount3">
+          <label class="btn btn-primary monthlyOption" id="amount2">
             <input type="radio" name="amountChoice"
                    value="50"/> $50
           </label>
-          <label class="btn btn-primary" id="amount4">
+          <label class="btn btn-primary monthlyOption" id="amount3">
             <input type="radio" name="amountChoice"
                    value="25"/> $25
+          </label>
+          <label class="btn btn-primary monthlyOption" id="amount4">
+            <input type="radio" name="amountChoice"
+                   value="15"/> $15
           </label>
           <label class="btn btn-primary" id="amountOther">
             <input type="radio" name="amountChoice"
@@ -199,11 +203,17 @@
                  disabled="disabled"
             />
         </div>
+        <div class="checkbox oneoffOption">
+          <label id="annual">
+            <input type="checkbox" name="annual"/>
+            Repeat annually
+          </label>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <label for="newsletter" class="col-sm-3">Newsletter</label>
 
     <div class="col-sm-9">
@@ -221,7 +231,7 @@
     </div>
   </div>
 
-  <div class="form-group membershipOptions">
+  <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
       <div class="checkbox">
         <label id="volunteering">

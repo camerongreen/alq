@@ -2,27 +2,12 @@
  * Membership form
  */
 (function ($) {
+  var monthlyMinimum = 5;
   var membershipEligibilityMinimums = {
-    student: {
-      annual: 25,
-      monthly: 2
-    },
-    single: {
-      annual: 35,
-      monthly: 3
-    },
-    family: {
-      annual: 55,
-      monthly: 5
-    },
-    friend: {
-      annual: 100,
-      monthly: 10
-    },
-    lifetime : {
-      annual: 500,
-      monthly: null
-    }
+    'Student/Unwaged': 25,
+    Individual: 35,
+    Family: 55,
+    Lifetime: 500
   };
 
   // Accessor functions
@@ -31,25 +16,33 @@
     return $('#spam input').is(':checked');
   }
 
-  function chosenOtherAmount() {
+  function wantsAnnual() {
+    return $('#annual input').is(':checked');
+  }
+
+  function hasChosenOtherAmount() {
     return $('#amountOther input').is(':checked');
   }
 
-  function newsletterType() {
+  function getNewsletterType() {
     return $('input[name="newsletter"]:checked').id;
   }
 
-  function membershipType() {
-    return $('input[name="membershipType"]:checked').parent().prop('id');
+  function getMembershipType() {
+    return $('#membershipType option:selected').val();
   }
 
   function getAmount() {
     return parseInt($('#amount').val(), 10);
   }
 
+  function getDonationType() {
+    return $('input[name="donationType"]:checked').parent().prop('id');
+  }
+
   function setAmount() {
-    var amount = amountOtherMinimum;
-    if (chosenOtherAmount()) {
+    var amount = 0;
+    if (hasChosenOtherAmount()) {
       amount = $('#amountOtherValue').val();
     } else {
       amount = $('input[name="amountChoice"]:checked').val();
@@ -58,12 +51,17 @@
     $('#a3').val(amount); // for subscribe button
   }
 
-  function eligibleForMembership() {
+  function validAmount() {
     var amount = getAmount();
-    var paymentType = paymentType();
-    var membershipType = membershipType();
+    var donationType = getDonationType();
+    var membershipType = getMembershipType();
+    var eligibleAmount = 0;
 
-    var eligibleAmount = membershipEligibilityMinimums[membershipType][paymentType];
+    if (donationType === 'monthly') {
+      eligibleAmount = monthlyMinimum;
+    } else {
+      eligibleAmount = membershipEligibilityMinimums[membershipType];
+    }
 
     return amount >= eligibleAmount;
   }
@@ -77,30 +75,49 @@
   }
 
   function emailRequired() {
-    return wantsSpam() || (newsletterType() === 'newsletterEmail');
-  }
-
-  function addressValidator(value) {
-    if (newsletterType() === 'newsletterPrint') {
-      return value !== '';
-    }
-
-    return true;
+    return wantsSpam() || (getNewsletterType() === 'newsletterEmail');
   }
 
   function amountOtherValueValidator(value) {
-    if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && eligibleForMembership()
+    // call this just to be sure we have the current amount
+    setAmount();
+    if (hasChosenOtherAmount()) {
+      return /^\d+$/.test(value) && validAmount()
     }
 
     return true;
+  }
+
+  function showMonthlyOptions() {
+    $('.monthlyOption').show();
+    $('.oneoffOption').hide();
+    // change the active marker if it isn't amount other
+    if (!hasChosenOtherAmount()) {
+      $('#amount2').click();
+    }
+  }
+
+  function showOneoffOptions() {
+    $('.monthlyOption').hide();
+    // and reset the active marker if it isn't amount other
+    $('.oneoffOption').show();
+    if (!hasChosenOtherAmount()) {
+      $('#oneoffAmount').click();
+    }
+  }
+
+  function setMembershipAmount() {
+    var oneoff = membershipEligibilityMinimums[getMembershipType()];
+    $('#oneoffAmount input').value = oneoff;
+    $('#oneoffAmount span').text(oneoff);
+    $('#membershipForm').data('formValidation').revalidateField($('#amountOtherValue'));
   }
 
   $(document).ready(function () {
     setAmount();
 
-    // listen for changes on the form, and check that the state is correct
-    $('input[name="amountChoice"], #amountOtherValue, #membership input, input[name="paymentType"], input[name="newsletter"]', '#membershipForm').change(function () {
+    // listen for most changes on the form, and check the state
+    $('input[name="amountChoice"], #amountOtherValue, #membership input, input[name="donationType"], input[name="annual"], input[name="newsletter"]', '#membershipForm').change(function () {
       setAmount();
 
       if ($('#amountOther input').is(':checked')) {
@@ -111,21 +128,26 @@
       }
     });
 
-    $('#spam input').change(function () {
-      if (!emailRequired()) {
-        $('#membershipForm').data('formValidation').resetField($('#email'));
-      }
+    $('#membershipType').change(function () {
+      setMembershipAmount();
     });
 
     $('#oneoff, #monthly').click(function () {
-      $('#paymentType').val(this.id);
+      $('#donationType').val(this.id);
       if (this.id === 'monthly') {
+        showMonthlyOptions();
         $('#cmd').val('_xclick-subscriptions');
+        $('#t3').val('M');
       } else {
-        $('#cmd').val('_donations');
+        showOneoffOptions();
+        if (wantsAnnual()) {
+          $('#cmd').val('_xclick-subscriptions');
+          $('#t3').val('Y');
+        } else {
+          $('#cmd').val('_donations');
+        }
       }
     });
-
 
     $('#membershipForm').formValidation({
       framework: 'bootstrap',
@@ -139,7 +161,7 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify at least ' + amountOtherMinimum + ' for amount',
+              message: 'Monthly minimum is $' + monthlyMinimum + ', for annual it is the amount shown to the left of "Other"',
               callback: amountOtherValueValidator
             }
           }
@@ -171,25 +193,22 @@
         },
         address1: {
           validators: {
-            callback: {
+            notEmpty: {
               message: 'Please specify your address',
-              callback: addressValidator
             }
           }
         },
         suburb: {
           validators: {
-            callback: {
+            notEmpty: {
               message: 'Please specify your suburb',
-              callback: addressValidator
             }
           }
         },
         postcode: {
           validators: {
-            callback: {
+            notEmpty: {
               message: 'Please specify your postcode',
-              callback: addressValidator
             }
           }
         }
@@ -214,7 +233,7 @@
           custom.push('FN:' + $('#familyName').val());
           custom.push('Email:' + $('#email').val());
           custom.push('Ph:' + $('#phone').val());
-          custom.push('Type:' + $('input[name="paymentType"]:checked').val());
+          custom.push('Type:' + $('input[name="donationType"]:checked').val());
           custom.push('Amount:$' + $('#amount').val());
 
           custom.push(data.message);

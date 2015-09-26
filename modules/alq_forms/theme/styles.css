@@ -3,6 +3,9 @@
 #donationForm .membershipOptions {
   display: none; }
 
+#membershipForm .monthlyOption {
+  display: none; }
+
 #amountOtherValue {
   width: 130px; }
 
@@ -22,3 +25,7 @@ div.requiredLegend span {
 #pp-logo img {
   width: 150px;
   margin-top: -14px; }
+
+#annual input {
+  float: left;
+  margin-right: 2px; }
