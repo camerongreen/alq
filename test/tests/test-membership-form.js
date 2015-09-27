@@ -6,6 +6,57 @@
 var siteUrl = 'http://docker_web_1';
 var pageUrl = siteUrl + '/membership';
 
+this.testOneoffAmountChanges = function (browser) {
+    browser
+        .url(pageUrl)
+        .waitForElementVisible('#oneoff', 1000);
+
+    browser.click('#oneoff');
+
+    var types = {
+       'Individual': 35,
+       'Student/Unwaged': 25,
+       'Family': 55,
+       'Lifetime': 500
+    };
+
+    for (var i in types) {
+        if (types.hasOwnProperty(i)) {
+            browser.click('select[id="membershipType"] option[value="' + i + '"]')
+            browser.expect.element('#membershipType').to.have.value.that.equals(i);
+            browser.expect.element('#oneoffAmount input').to.have.value.that.equals(types[i]);
+        }
+    }
+    browser.end();
+};
+
+/*
+this.testClickOneoffElements = function (browser) {
+    browser
+        .url(pageUrl)
+        .waitForElementVisible('#oneoff', 1000);
+
+    browser.click('#oneoff');
+    browser.expect.element('#oneoffAmount input').to.be.selected;
+    browser.expect.element('#amount1').to.not.be.visible;
+    browser.expect.element('#oneoffAmount').to.be.visible;
+    browser.expect.element('#annual').to.be.visible;
+    browser.end();
+};
+
+this.testClickMonthlyElements = function (browser) {
+  browser
+      .url(pageUrl)
+      .waitForElementVisible('#monthly', 1000);
+
+  browser.click('#monthly');
+  browser.expect.element('#amount2 input').to.be.selected;
+  browser.expect.element('#amount1').to.be.visible;
+  browser.expect.element('#oneoffAmount').to.not.be.visible;
+  browser.expect.element('#annual').to.not.be.visible;
+  browser.end();
+};
+
 this.testAmountOther = function (browser) {
   browser
     .url(pageUrl)
@@ -61,3 +112,4 @@ this.testAmountOtherMinimumFail = function (browser) {
     .assert.containsText('div.has-error', 'Monthly minimum is')
     .end();
 };
+*/

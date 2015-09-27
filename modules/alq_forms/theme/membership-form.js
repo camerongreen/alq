@@ -108,7 +108,7 @@
 
   function setMembershipAmount() {
     var oneoff = membershipEligibilityMinimums[getMembershipType()];
-    $('#oneoffAmount input').value = oneoff;
+    $('#oneoffAmount input').val(oneoff);
     $('#oneoffAmount span').text(oneoff);
     $('#membershipForm').data('formValidation').revalidateField($('#amountOtherValue'));
   }
