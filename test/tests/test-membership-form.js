@@ -30,7 +30,6 @@ this.testOneoffAmountChanges = function (browser) {
     browser.end();
 };
 
-/*
 this.testClickOneoffElements = function (browser) {
     browser
         .url(pageUrl)
@@ -112,4 +111,3 @@ this.testAmountOtherMinimumFail = function (browser) {
     .assert.containsText('div.has-error', 'Monthly minimum is')
     .end();
 };
-*/
