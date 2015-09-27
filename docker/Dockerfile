@@ -4,7 +4,7 @@ FROM php:5.6-apache
 
 # install libraries and utils needed
 RUN apt-get update \
-    && apt-get install -y vim git curl libpng12-dev libcurl3-dev mysql-client drush \
+    && apt-get install -y vim git curl libpng12-dev libcurl3-dev mysql-client drush nodejs nodejs-legacy npm \
     && docker-php-ext-install pdo pdo_mysql json gd curl \
     && pecl install xdebug \
     && a2enmod rewrite
