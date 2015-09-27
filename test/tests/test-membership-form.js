@@ -6,6 +6,20 @@
 var siteUrl = 'http://docker_web_1';
 var pageUrl = siteUrl + '/membership';
 
+this.testAnnualRepeat = function (browser) {
+    browser
+        .url(pageUrl)
+        .waitForElementVisible('#oneoff', 1000)
+        .getValue('#t3', function (result) {
+            this.assert.equal(result.value, 'M')
+        })
+        .click('#annual input')
+        .getValue('#t3', function (result) {
+            this.assert.equal(result.value, 'Y')
+        })
+        .end();
+};
+
 this.testOneoffAmountChanges = function (browser) {
     browser
         .url(pageUrl)

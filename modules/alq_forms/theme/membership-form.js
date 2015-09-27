@@ -132,17 +132,26 @@
       setMembershipAmount();
     });
 
+    $('#annual input').change(function () {
+      if (wantsAnnual()) {
+        $('#t3').val('Y');
+        $('#cmd').val('_xclick-subscriptions');
+      } else {
+        $('#t3').val('M');
+        $('#cmd').val('_donations');
+      }
+    });
+
+
     $('#oneoff, #monthly').click(function () {
       $('#donationType').val(this.id);
       if (this.id === 'monthly') {
         showMonthlyOptions();
         $('#cmd').val('_xclick-subscriptions');
-        $('#t3').val('M');
       } else {
         showOneoffOptions();
         if (wantsAnnual()) {
           $('#cmd').val('_xclick-subscriptions');
-          $('#t3').val('Y');
         } else {
           $('#cmd').val('_donations');
         }
