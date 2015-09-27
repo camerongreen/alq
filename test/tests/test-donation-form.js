@@ -76,14 +76,14 @@ this.testAmountOtherMembershipIneligible = function (browser) {
     .end();
 };
 
-this.testAmountOtherMinumum = function (browser) {
+this.testAmountOtherMinimum = function (browser) {
   browser
     .url(pageUrl)
     .waitForElementVisible('#amountOther', 1000)
     .click('#amountOther')
     .waitForElementVisible('#amountOtherValue', 1000)
-    .setValue('#amountOtherValue', '5')
+    .setValue('#amountOtherValue', '1')
     .click('#amountOther') // do this to move the focus
-    .assert.containsText('div.has-error', 'Please specify a number greater than')
+    .assert.containsText('div.has-error', 'Please specify at least')
     .end();
 };

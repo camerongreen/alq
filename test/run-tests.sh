@@ -5,6 +5,7 @@
 #
 NIGHTWATCH_MOD_BASE=./node_modules/nightwatch;
 
+# If we don't have nightwatch, means we haven't run npm install, so do it
 if [ ! -e  $NIGHTWATCH_MOD_BASE ]
 then
   npm install
