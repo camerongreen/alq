@@ -38,52 +38,26 @@ this.testClickMonthly = function (browser) {
   browser.end();
 };
 
-this.testMembershipVisible = function (browser) {
+this.testAmountOtherMinimum = function (browser) {
   browser
-    .url(pageUrl)
-    .waitForElementVisible('#monthly', 1000)
-    .click('#monthly')
-    .waitForElementVisible('#membership', 1000)
-    .assert.containsText('#membership', 'complimentary membership')
-    .end();
+      .url(pageUrl)
+      .waitForElementVisible('#amountOther', 1000)
+      .click('#amountOther')
+      .waitForElementVisible('#amountOtherValue', 1000)
+      .setValue('#amountOtherValue', '35')
+      .click('#amountOther') // do this to move the focus
+      .assert.elementNotPresent('div.has-error')
+      .end();
 };
 
-this.testAmountOtherMembershipEligible = function (browser) {
-  browser
-    .url(pageUrl)
-    .waitForElementVisible('#amountOther', 1000)
-    .click('#amountOther')
-    .waitForElementVisible('#amountOtherValue', 1000);
-
-  browser.expect.element('#amountOtherValue').to.be.enabled;
-
-  browser.setValue('#amountOtherValue', '50')
-    .click('#amountOther') // do this to move the focus
-    .waitForElementVisible('#membership', 1000)
-    .assert.containsText('#membership', 'complimentary membership')
-    .end();
-};
-
-this.testAmountOtherMembershipIneligible = function (browser) {
+this.testAmountOtherMinimumFail = function (browser) {
   browser
     .url(pageUrl)
     .waitForElementVisible('#amountOther', 1000)
     .click('#amountOther')
     .waitForElementVisible('#amountOtherValue', 1000)
-    .setValue('#amountOtherValue', '49')
+    .setValue('#amountOtherValue', '34')
     .click('#amountOther') // do this to move the focus
-    .assert.hidden('#membership')
-    .end();
-};
-
-this.testAmountOtherMinumum = function (browser) {
-  browser
-    .url(pageUrl)
-    .waitForElementVisible('#amountOther', 1000)
-    .click('#amountOther')
-    .waitForElementVisible('#amountOtherValue', 1000)
-    .setValue('#amountOtherValue', '5')
-    .click('#amountOther') // do this to move the focus
-    .assert.containsText('div.has-error', 'Please specify a number greater than')
+    .assert.containsText('div.has-error', 'Monthly minimum is')
     .end();
 };
