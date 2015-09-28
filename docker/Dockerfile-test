@@ -1,0 +1,9 @@
+# Docker build for alq.org.au
+FROM debian:jessie
+
+# install libraries and utils needed
+RUN apt-get update \
+    && apt-get install -y vim procps nodejs nodejs-legacy npm
+
+WORKDIR /var/www/test
+

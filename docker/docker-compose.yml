@@ -22,3 +22,16 @@ db:
         - MYSQL_PASSWORD
     volumes:
         - /var/lib/mysql
+selenium-fx:
+    image: selenium/standalone-firefox-debug:2.47.1
+    ports:
+        - "26944:4444"
+    restart: always
+test-runner:
+    build: .
+    dockerfile: Dockerfile-test
+    tty: true
+    volumes:
+        - ../test:/var/www/test
+    links:
+        - selenium-fx

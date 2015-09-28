@@ -17,9 +17,9 @@ First time run with the following, where root password is anything you want, and
 
     MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up
 
-Subsequently you don't need the db credentials so just the usual:
+After you've initialised everything then the usual:
 
-    docker-compose up
+    docker-compose up -d
 
 To create the empty site:
 
@@ -31,8 +31,7 @@ To population an existing ALQ database into the mysql container, copy your gzipp
 
 # Tests
 
-To run the nightwatch tests (I run them in FF because I develop on Chrome):
+To run the nightwatch tests:
 
-    docker run -d --name selenium-fx -p 26944:4444 selenium/standalone-firefox-debug:2.47.1
-    docker-compose run --rm web bash -c "cd ../alq/test;./run-tests.sh"
+    docker-compose run --rm test-runner bash -c "cd /var/www/test;./run-tests.sh"
 
