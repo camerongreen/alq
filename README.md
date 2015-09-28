@@ -33,5 +33,5 @@ To population an existing ALQ database into the mysql container, copy your gzipp
 
 To run the nightwatch tests:
 
-    docker-compose run --rm test-runner bash -c "cd /var/www/test;./run-tests.sh"
+    docker-compose run --rm test-runner bash -c ./run-tests.sh
 
