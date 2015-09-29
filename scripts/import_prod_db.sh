@@ -5,7 +5,7 @@
 #
 # Step 1: Pull a gzipped version of the prod db somewhere
 # Step 2: Run this script from the drupal root directory, eg
-#   DEFAULT_SITE_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
+#   ADMIN_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
 # it will ask you for the drupal db details, import the dump
 # file from prod you've downloaded into it, enable and disable some 
 # mods, set some values etc
@@ -61,16 +61,16 @@ else
   echo "Connected to db"
 fi
 
-read -p "Site email [${DEFAULT_SITE_EMAIL}]:" SITE_EMAIL
+read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
 if [ -z $SITE_EMAIL ]
   then
-  if [ -z $DEFAULT_SITE_EMAIL ]
+  if [ -z $ADMIN_EMAIL ]
     then
       echo "Site needs an email, see the comments at the top of"
       echo "this script for how to put a default one on command line"
       exit 1
   else 
-      SITE_EMAIL=$DEFAULT_SITE_EMAIL
+      SITE_EMAIL=$ADMIN_EMAIL
   fi
 fi
 
