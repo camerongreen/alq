@@ -23,11 +23,11 @@ After you've initialised everything then the usual:
 
 To create the empty site:
 
-    docker-compose run -e DEFAULT_SITE_EMAIL="alq@example.com" web ../alq/scripts/create_site.sh
+    docker-compose run --rm -e DEFAULT_SITE_EMAIL="alq@example.com" web ../alq/scripts/create_site.sh
 
 To population an existing ALQ database into the mysql container, copy your gzipped sql file into the sql directory as outlined in web volumes in the docker-compose.yml:
 
-    docker-compose run -e DEFAULT_SITE_EMAIL="alq@example.com" web ../alq/scripts/import_prod_db.sh
+    docker-compose run --rm -e DEFAULT_SITE_EMAIL="alq@example.com" web ../alq/scripts/import_prod_db.sh
 
 # Tests
 

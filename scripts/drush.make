@@ -36,6 +36,8 @@ projects[drupal][version] = 7
 
 projects[addtoany][version] = 4.9
 
+projects[admin][version] = 2.0-beta3
+
 projects[admin_menu][version] = 3.0-rc5
 
 projects[advanced_help][version] = 1.3
@@ -108,7 +110,7 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[ubercart][version] = 3.4
+projects[ubercart][version] = 3.8
 
 projects[uc_coupon][version] = 2.1-alpha7
 
@@ -119,6 +121,8 @@ projects[views_slideshow][version] = 3.1
 projects[webform][version] = 3.24
 
 projects[workbench][version] = 1.2
+
+projects[wysiwyg][version] = 2.2
 
 projects[xmlsitemap][version] = 2.2
 
