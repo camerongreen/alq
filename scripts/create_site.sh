@@ -117,6 +117,7 @@ drush -y pm-disable toolbar
 drush -y pm-enable \
 admin \
 admin_menu \
+alq \
 alq_content_types_feature \
 alq_editor_role_feature \
 alq_help \
@@ -160,7 +161,12 @@ stage_file_proxy \
 strongarm \
 token \
 token_filter \
-ubercart \
+uc_catalog \
+uc_flatrate \
+uc_googleanalytics \
+uc_paypal \
+uc_attribute \
+uc_ajax_admin \
 uc_coupon \
 views \
 views_slideshow \
@@ -168,10 +174,12 @@ webform \
 workbench \
 xmlsitemap
 
-
-# I won't -y this as you should note any new additions 
+# I won't -y this as you should note any new additions
 # and add to the drush.make script to save yourself time in the future
 drush pm-update
+
+# enable theme
+drush vset theme_default alq
 
 echo "Completed"
 

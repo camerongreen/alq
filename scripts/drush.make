@@ -54,7 +54,7 @@ projects[context][version] = 3.6
 
 projects[ctools][version] = 1.9
 
-projects[date][version] = 2.8
+projects[date][version] = 2.9
 
 projects[devel][version] = 1.5
 
@@ -72,7 +72,7 @@ projects[features_diff][version] = 1.0-beta2
 
 projects[filefield_sources][version] = 1.10
 
-projects[google_analytics][version] = 1.3
+projects[google_analytics][version] = 1.4
 
 projects[imageapi][version] = 1.x-dev
 
