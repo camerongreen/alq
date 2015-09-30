@@ -25,7 +25,7 @@ To create the empty site:
 
     docker exec -ti docker_web2_1 bash -c "ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
 
-To population an existing ALQ database into the mysql container, copy your gzipped sql file into the sql directory as outlined in web volumes in the docker-compose.yml:
+One you get a backup of an existing ALQ database into the mysql container, copy your gzipped sql file into the sql directory as outlined in web volumes in the docker-compose.yml:
 
     docker exec -ti docker_web2_1 bash -c "ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh"
 
@@ -33,5 +33,5 @@ To population an existing ALQ database into the mysql container, copy your gzipp
 
 To run the nightwatch tests:
 
-    docker-compose run --rm test-runner bash -c ./run-tests.sh
+    docker exec -ti docker_test-runner_1 bash -c ./run-tests.sh
 
