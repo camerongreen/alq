@@ -95,7 +95,7 @@ if [ -z ${SITE_EMAIL} ]
   fi
 fi
 
-drush make ${GIT_DIR}/scripts/drush.make .
+drush make -y ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
 ln -s ${GIT_DIR}/modules sites/all/modules/custom
@@ -103,9 +103,9 @@ ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
 echo "Site install commencing"
 
-echo 'y' | drush site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
+drush -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
 
-echo "Site install completed"
+command_status "Error installing site" "Site install completed";
 
 # Need to sort this out in docker container
 #chgrp -R ${WEBSERVER_GROUP} sites/default/files
@@ -113,20 +113,10 @@ chmod ug+w sites/default/
 chmod ug+w sites/default/files
 
 drush -y pm-disable toolbar
-# Don't enable google_analytics, boost
 drush -y pm-enable \
+addtoany \
 admin \
 admin_menu \
-alq \
-alq_content_types_feature \
-alq_editor_role_feature \
-alq_help \
-alq_menus_feature \
-alq_news_feature \
-alq_section_home_blocks \
-alq_slideshow_feature \
-alq_webforms_feature \
-addtoany \
 admin_menu \
 advanced_help \
 ckeditor \
@@ -161,18 +151,34 @@ stage_file_proxy \
 strongarm \
 token \
 token_filter \
-uc_catalog \
-uc_flatrate \
-uc_googleanalytics \
-uc_paypal \
-uc_attribute \
 uc_ajax_admin \
+uc_attribute \
+uc_catalog \
 uc_coupon \
+uc_flatrate \
+uc_paypal \
 views \
 views_slideshow \
 webform \
 workbench \
 xmlsitemap
+
+# not enabled prod modules
+# googleanalytics
+# uc_googleanalytics
+# boost
+
+# enable alq modules and features
+drush -y pm-enable \
+alq \
+alq_content_types_feature \
+alq_editor_role_feature \
+alq_help \
+alq_menus_feature \
+alq_news_feature \
+alq_section_home_blocks \
+alq_slideshow_feature \
+alq_webforms_feature
 
 # I won't -y this as you should note any new additions
 # and add to the drush.make script to save yourself time in the future
