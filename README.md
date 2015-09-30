@@ -15,9 +15,9 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 
 First time run with the following, where root password is anything you want, and mysql user/password/db is from your settings.php file:
 
-    MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up
+    MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up -d
 
-After you've initialised everything then the usual:
+Next time you run it you can ignore the MYSQL info and run with the usual:
 
     docker-compose up -d
 

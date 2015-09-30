@@ -180,9 +180,9 @@ alq_section_home_blocks \
 alq_slideshow_feature \
 alq_webforms_feature
 
-# I won't -y this as you should note any new additions
+# You should note any new additions
 # and add to the drush.make script to save yourself time in the future
-drush pm-update
+drush -y pm-update
 
 # enable theme
 drush vset theme_default alq
