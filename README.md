@@ -23,7 +23,7 @@ After you've initialised everything then the usual:
 
 To create the empty site:
 
-    docker-compose run --rm -a ADMIN=admin -e ADMIN_EMAIL="alq@example.com" web ../alq/scripts/create_site.sh
+    docker-compose run --rm -e ADMIN=admin -e ADMIN_EMAIL="alq@example.com" web ../alq/scripts/create_site.sh
 
 To population an existing ALQ database into the mysql container, copy your gzipped sql file into the sql directory as outlined in web volumes in the docker-compose.yml:
 
