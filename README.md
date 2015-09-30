@@ -23,11 +23,11 @@ Next time you run it you can ignore the MYSQL info and run with the usual:
 
 To create the empty site:
 
-    docker-compose run --rm -e ADMIN=admin -e ADMIN_EMAIL="alq@example.com" web ../alq/scripts/create_site.sh
+    docker exec -ti docker_web2_1 bash -c "ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
 
 To population an existing ALQ database into the mysql container, copy your gzipped sql file into the sql directory as outlined in web volumes in the docker-compose.yml:
 
-    docker-compose run --rm -e ADMIN_EMAIL="alq@example.com" web ../alq/scripts/import_prod_db.sh
+    docker exec -ti docker_web2_1 bash -c "ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh"
 
 # Tests
 

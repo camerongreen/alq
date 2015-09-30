@@ -168,6 +168,10 @@ xmlsitemap
 # uc_googleanalytics
 # boost
 
+# You should note any new additions
+# and add to the drush.make script to save yourself time in the future
+drush -y pm-update
+
 # enable alq modules and features
 drush -y pm-enable \
 alq \
@@ -179,10 +183,6 @@ alq_news_feature \
 alq_section_home_blocks \
 alq_slideshow_feature \
 alq_webforms_feature
-
-# You should note any new additions
-# and add to the drush.make script to save yourself time in the future
-drush -y pm-update
 
 # enable theme
 drush vset theme_default alq
