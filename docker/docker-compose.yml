@@ -3,6 +3,7 @@
 #
 
 web:
+    container_name: alq_web
     build: .
     ports:
         - "26980:80"
@@ -13,6 +14,7 @@ web:
     links:
         - db:mysql
 db:
+    container_name: alq_db
     build: .
     dockerfile: Dockerfile-db
     environment:
@@ -23,11 +25,13 @@ db:
     volumes:
         - /var/lib/mysql
 selenium-fx:
+    container_name: alq_selenium_fx
     image: selenium/standalone-firefox-debug:2.47.1
     ports:
         - "26944:4444"
     restart: always
 test-runner:
+    container_name: alq_test_runner
     build: .
     dockerfile: Dockerfile-test
     tty: true

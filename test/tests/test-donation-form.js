@@ -3,7 +3,7 @@
  *
  * Note to run these you will need to ln -s docs/demo . in the public_html directory
  */
-var siteUrl = 'http://docker_web_1';
+var siteUrl = 'http://alq_web';
 var pageUrl = siteUrl + '/donate';
 
 this.testAmountOther = function (browser) {

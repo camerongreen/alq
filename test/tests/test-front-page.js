@@ -1,7 +1,7 @@
 /**
  * Front page for ALQ
  */
-var siteUrl = 'http://docker_web_1';
+var siteUrl = 'http://alq_web';
 
 module.exports = {
   'Check footer year current' : function (browser) {

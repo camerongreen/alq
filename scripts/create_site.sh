@@ -25,7 +25,7 @@ WEBSERVER_GROUP=root
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=docker_db_1
+DEFAULT_DB_HOST=alq_db
 
 #
 # Output command status and exit if error
