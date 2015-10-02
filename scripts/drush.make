@@ -135,15 +135,27 @@ projects[omega][version] = 3.1
   
 ; Libraries
 ; ---------
+;libraries[civicrm][type] = "libraries"
+;libraries[civicrm][version] = 4.6.8
+;libraries[civicrm][download][type] = "file"
+;libraries[civicrm][download][url] = "https://download.civicrm.org/civicrm-4.6.8-drupal.tar.gz"
+;libraries[civicrm][destination] = "modules/contrib/civicrm"
+
+libraries[colorbox][type] = "libraries"
+libraries[colorbox][download][type] = "file"
+libraries[colorbox][download][url] = "https://github.com/jackmoore/colorbox/archive/1.x.zip"
+libraries[colorbox][directory_name] = "colorbox"
+libraries[colorbox][destination] = "libraries"
+
+libraries[jquery][type] = "libraries"
 libraries[jquery][download][type] = "file"
 libraries[jquery][download][url] = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 
+libraries[jqueryui][type] = "libraries"
 libraries[jqueryui][download][type] = "file"
 libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"
 
+libraries[jquery.cycle][type] = "libraries"
 libraries[jquery.cycle][download][type] = "file"
 libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
-
-libraries[colorbox][download][type] = file
-libraries[colorbox][download][url] = http://colorpowered.com/colorbox/latest

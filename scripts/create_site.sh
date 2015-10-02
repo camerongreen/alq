@@ -25,7 +25,7 @@ WEBSERVER_GROUP=root
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=alq_db
+DEFAULT_DB_HOST=alqc_db
 
 #
 # Output command status and exit if error
@@ -95,11 +95,14 @@ if [ -z ${SITE_EMAIL} ]
   fi
 fi
 
-drush make -y ${GIT_DIR}/scripts/drush.make .
+drush -y make ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
-ln -s ${GIT_DIR}/modules sites/all/modules/custom
-ln -s ${GIT_DIR}/themes/alq sites/all/themes
+if [ ! -e sites/all/modules/custom ]
+then
+  ln -s ${GIT_DIR}/modules sites/all/modules/custom
+  ln -s ${GIT_DIR}/themes/alq sites/all/themes
+fi
 
 echo "Site install commencing"
 
@@ -116,7 +119,6 @@ drush -y pm-disable toolbar
 drush -y pm-enable \
 addtoany \
 admin \
-admin_menu \
 admin_menu \
 advanced_help \
 ckeditor \
@@ -188,4 +190,5 @@ alq_webforms_feature
 drush vset theme_default alq
 
 echo "Completed"
+echo "Please run /sites/all/modules/civicrm/install/index.php"
 
