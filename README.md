@@ -14,6 +14,7 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 
 * Ensure you have docker and docker-compose installed
 * Create an alq_db database with an alq user in mysql
+* Create a alq_civicrm_db database with the same user or another if you prefer
 * mkdir alq.test
 * cd !$
 * mkdir sql
@@ -30,6 +31,16 @@ Start the docker environment by running the following (sudo the docker commands 
 Create the empty site:
 
     docker exec -ti alq_web bash -c "ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
+
+## Installing civicrm
+
+Go to:
+
+http://localhost:26980/sites/all/modules/civicrm/install/index.php
+
+Fill in all the things.
+    
+# Importing production database into development
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml:
 

@@ -20,7 +20,7 @@ GIT_DIR=/var/www/alq
 # can edit them etc
 FILE_OWNER=root
 # this is the webserver user so it can write stuff to directories etc
-WEBSERVER_GROUP=root
+WEBSERVER_GROUP=www-data
 
 # default settings for DB
 DEFAULT_DB_USER=alq
@@ -111,7 +111,7 @@ drush -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HO
 command_status "Error installing site" "Site install completed";
 
 # Need to sort this out in docker container
-#chgrp -R ${WEBSERVER_GROUP} sites/default/files
+chgrp -R ${WEBSERVER_GROUP} sites/default
 chmod ug+w sites/default/
 chmod ug+w sites/default/files
 

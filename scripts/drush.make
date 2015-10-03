@@ -135,11 +135,10 @@ projects[omega][version] = 3.1
   
 ; Libraries
 ; ---------
-;libraries[civicrm][type] = "libraries"
-;libraries[civicrm][version] = 4.6.8
-;libraries[civicrm][download][type] = "file"
-;libraries[civicrm][download][url] = "https://download.civicrm.org/civicrm-4.6.8-drupal.tar.gz"
-;libraries[civicrm][destination] = "modules/contrib/civicrm"
+libraries[civicrm][type] = "libraries"
+libraries[civicrm][version] = 4.6.8
+libraries[civicrm][download][type] = "file"
+libraries[civicrm][download][url] = "https://download.civicrm.org/civicrm-4.6.8-drupal.tar.gz"
 
 libraries[colorbox][type] = "libraries"
 libraries[colorbox][download][type] = "file"
