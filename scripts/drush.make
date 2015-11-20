@@ -44,6 +44,8 @@ projects[advanced_help][version] = 1.3
 
 projects[boost][version] = 1.0
 
+projects[captcha][version] = 1.3
+
 projects[ckeditor][version] = 1.16
 
 projects[ckeditor_link][version] = 1.16

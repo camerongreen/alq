@@ -13,7 +13,6 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 # Installation
 
 * Ensure you have docker and docker-compose installed
-* Create an alq_db database with an alq user in mysql
 * mkdir alq.test
 * cd !$
 * mkdir sql
