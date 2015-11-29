@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <label for="email" class="col-sm-3">Email</label>
 
     <div class="col-sm-9">
