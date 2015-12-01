@@ -87,6 +87,7 @@ function alq_forms_parse_post_fields() {
     'title',
     'newsletter',
     'volunteering',
+    'subject',
     'spam',
   );
 
