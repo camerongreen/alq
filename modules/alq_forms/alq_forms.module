@@ -93,6 +93,7 @@ function alq_forms_parse_post_fields() {
   $required = array(
     'donationType',
     'amount',
+    'subject',
   );
 
   for ($i = 0, $l = count($fields); $i < $l; $i++) {
@@ -122,8 +123,8 @@ function alq_forms_block_info() {
       "info" => t("ALQ Donation Form"),
     ),
     "alq_membership_form" => array(
-    "info" => t("ALQ Membership Form"),
-  )
+      "info" => t("ALQ Membership Form"),
+    )
   );
 }
 

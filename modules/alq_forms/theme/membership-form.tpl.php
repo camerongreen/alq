@@ -13,11 +13,12 @@
   <input type="hidden" name="cancel_return"
          value="<?= $redirect_url_cancel ?>"/>
   <input type="hidden" name="currency_code" value="AUD"/>
-  <input type="hidden" name="src" value="1">
-  <input type="hidden" name="a3" id="a3" value="">
-  <input type="hidden" name="p3" value="1">
-  <input type="hidden" name="membership" value="on">
-  <input type="hidden" id="t3" name="t3" value="M">
+  <input type="hidden" name="src" value="1"/>
+  <input type="hidden" name="a3" id="a3" value=""/>
+  <input type="hidden" name="p3" value="1"/>
+  <input type="hidden" name="membership" value="on"/>
+  <input type="hidden" id="t3" name="t3" value="M"/>
+  <input type="hidden" name="subject" value="Membership"/>
 
   <!-- /variables from paypal -->
 
