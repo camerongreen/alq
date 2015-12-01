@@ -106,4 +106,11 @@ drush vset preprocess_css 0
 drush vset preprocess_js 0
 drush vset error_level 2
 
+# Now anonymise the users
+drush sqlq "UPDATE user SET mail='${SITE_EMAIL}'"
+
+chmod 755 ./scripts/password-hash.sh
+DB_PASSWD_HASH=$(./scripts/password-hash.sh "${DB_PASSWD}" | awk '{print $4;}')
+drush sqlq "UPDATE user SET pass='${DB_PASSWD_HASH}'"
+
 drush cc all
