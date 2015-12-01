@@ -45,5 +45,11 @@ Once the initialisation code has been run the first time, from then on you can v
 
 To run the nightwatch tests:
 
-    docker exec -ti alq-test-runner_1 bash -c ./run-tests.sh
+    docker exec -ti alq_test_runner_1 bash -c ./run-tests.sh
+    
+You can inspect the running tests, by using VNC.  For me that involved:
+
+* Installing remmima and the VNC plugin via aptitude
+* Creating a new VNC connection to the exposed port, by setting the server to 0.0.0.0:26959
+
 

@@ -2,17 +2,6 @@
 # Docker build for alq.org.au
 #
 
-web:
-    container_name: alq_web
-    build: .
-    ports:
-        - "26980:80"
-    volumes:
-        - ../../public_html:/var/www/html
-        - ..:/var/www/alq
-        - ../../sql:/var/www/sql
-    links:
-        - db:mysql
 db:
     container_name: alq_db
     build: .
@@ -24,12 +13,26 @@ db:
         - MYSQL_PASSWORD
     volumes:
         - /var/lib/mysql
+web:
+    container_name: alq_web
+    build: .
+    ports:
+        - "26980:80"
+    volumes:
+        - ../../public_html:/var/www/html
+        - ..:/var/www/alq
+        - ../../sql:/var/www/sql
+    links:
+        - db:mysql
 selenium-fx:
     container_name: alq_selenium_fx
-    image: selenium/standalone-firefox-debug:2.47.1
+    image: selenium/standalone-firefox-debug:2.48.2
     ports:
         - "26944:4444"
+        - "26959:5900"
     restart: always
+    links:
+        - web
 test-runner:
     container_name: alq_test_runner
     build: .
