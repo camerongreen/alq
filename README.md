@@ -32,7 +32,7 @@ Create the empty site:
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml:
 
-    docker exec -ti alq_web bash -c "ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh"
+    docker exec -ti alq_web bash -c 'ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
     
 # Running
     
@@ -43,13 +43,15 @@ Once the initialisation code has been run the first time, from then on you can v
 
 # Tests
 
-To run the nightwatch tests:
+To run the nightwatch tests, from the docker directory:
 
-    docker exec -ti alq_test_runner_1 bash -c ./run-tests.sh
+    docker exec -ti alq_test_runner bash -c ./run-tests.sh
     
 You can inspect the running tests, by using VNC.  For me that involved:
 
 * Installing remmima and the VNC plugin via aptitude
 * Creating a new VNC connection to the exposed port, by setting the server to 0.0.0.0:26959
 
+If you want to drush etc, in the docker directory:
 
+    docker exec -ti alq_web bash -c 'drush cc all'

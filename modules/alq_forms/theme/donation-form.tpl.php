@@ -138,6 +138,7 @@
 
           <div class="col-sm-9">
             <select name="title">
+              <option value="">-- Select --</option>
               <option>Ms</option>
               <option>Mrs</option>
               <option>Miss</option>
@@ -298,8 +299,8 @@
           </div>
           <div class="col-sm-4" id="pp-logo">
             <img
-              src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
-              alt="PayPal Acceptance Mark"/>
+              src="/<?= drupal_get_path('theme', 'alq') ?>/images/paypal.jpg"
+              alt="PayPal"/>
           </div>
         </div>
       </form>
