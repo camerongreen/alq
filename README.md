@@ -24,8 +24,6 @@ Start the docker environment by running the following (sudo the docker commands 
 
     MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up -d
 
-* cd ../../public_html
-
 Create the empty site:
 
     docker exec -ti alq_web bash -c "ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"

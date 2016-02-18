@@ -6,6 +6,8 @@ db:
     container_name: alq_db
     build: .
     dockerfile: Dockerfile-db
+    ports:
+        - "26906:3306"
     environment:
         - MYSQL_ROOT_PASSWORD
         - MYSQL_DATABASE
@@ -13,6 +15,7 @@ db:
         - MYSQL_PASSWORD
     volumes:
         - /var/lib/mysql
+
 web:
     container_name: alq_web
     build: .
@@ -24,6 +27,7 @@ web:
         - ../../sql:/var/www/sql
     links:
         - db:mysql
+
 selenium-fx:
     container_name: alq_selenium_fx
     image: selenium/standalone-firefox-debug:2.48.2
@@ -33,6 +37,7 @@ selenium-fx:
     restart: always
     links:
         - web
+
 test-runner:
     container_name: alq_test_runner
     build: .

@@ -98,6 +98,9 @@ fi
 drush make -y ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
+# remove link if it exists
+rm sites/all/modules/custom
+
 ln -s ${GIT_DIR}/modules sites/all/modules/custom
 ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
