@@ -75,7 +75,7 @@ function alq_content_types_feature_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -273,7 +273,7 @@ function alq_content_types_feature_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -341,7 +341,7 @@ function alq_content_types_feature_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '2',
+        'weight' => '1',
       ),
     ),
   );
@@ -386,7 +386,7 @@ function alq_content_types_feature_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -580,7 +580,75 @@ function alq_content_types_feature_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-article-field_thumbnail_only'.
+  $fields['node-article-field_thumbnail_only'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_thumbnail_only',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'article',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If selected, image will not be displayed on article, rather only as thumbnail',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_thumbnail_only',
+      'label' => 'Thumbnail only',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '5',
       ),
     ),
   );
@@ -1328,6 +1396,7 @@ function alq_content_types_feature_field_default_fields() {
   t('Enter a comma-separated list of words to describe your content.');
   t('Files');
   t('Have this appear in the slidehow.');
+  t('If selected, image will not be displayed on article, rather only as thumbnail');
   t('Image');
   t('Intro');
   t('Larger text which appears at top of section home in purple');
@@ -1335,6 +1404,7 @@ function alq_content_types_feature_field_default_fields() {
   t('Slideshow Image');
   t('Tags');
   t('This text will appear in purple at the top of the article');
+  t('Thumbnail only');
   t('Upload an image to go with this article.');
 
   return $fields;

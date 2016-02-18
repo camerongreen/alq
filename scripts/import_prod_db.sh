@@ -94,7 +94,7 @@ fi
 drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff
 
 # disable production modules
-drush -y pm-disable googleanalytics boost
+drush -y pm-disable googleanalytics boost captcha
 
 # set site variables to development values
 drush vset site_mail ${SITE_EMAIL}

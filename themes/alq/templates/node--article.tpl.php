@@ -17,6 +17,10 @@
       hide($content['comments']);
       hide($content['links']);
       print '<div class="article-date">' . date('j F Y', $node->created) . '</div>';
+      if ($node->field_thumbnail_only[$node->language][0]['value'] === "1") {
+        // hide image if they only want to display as thumbnail
+        hide($content['field_image']);
+      }
       print render($content);
     ?>
   </div>
