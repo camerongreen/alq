@@ -4,132 +4,15 @@
  * Installation details for the ALQ MPs module
  */
 
-define('ALQ_MPS_TABLE', 'alq_mps');
-define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
-define('ALQ_ELECTORATE_POSTCODES_TABLE', 'alq_electorate_postcodes');
-define('ALQ_MPS_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_QLD_Members_List.csv');
-define('ALQ_ELECTORATES_POSTCODES_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_State_Federal_Locality_Postcodes.csv');
-
 /**
  * Implements hook_install()
  */
 function alq_mps_install() {
-  alq_insert_electorate_postcodes();
-  //$mps = alq_get_mps();
-  //$mps_parsed = alq_parse_mps($mps, $electorates);
+  alq_mps_insert_electorates();
+  alq_mps_insert();
+  //alq_insert_offices();
 }
 
-/**
- * Turn the electorates CSV into a keyed hash
- *
- * @return  array[array]
- */
-function alq_insert_electorate_postcodes() {
-  if (($handle = fopen(ALQ_ELECTORATES_POSTCODES_FILE, "r")) === FALSE) {
-    die('Unable to open ' . ALQ_ELECTORATES_POSTCODES_FILE);
-  }
-
-  // ignore header row
-  $first = TRUE;
-  $electorates = [];
-  $electorateFields = [
-    'id' => NULL,
-    'lga_council' => 0,
-    'lga_division' => 1,
-    'state_district' => 2,
-    'federal_district' => 3,
-    'locality' => 4,
-    'postcode' => 5,
-  ];
-
-  $query = db_insert(ALQ_ELECTORATE_POSTCODES_TABLE)->fields(array_keys($electorateFields));
-
-  while (($electorate = fgetcsv($handle)) !== FALSE) {
-    if ($first) {
-      $first = FALSE;
-    }
-    else {
-      $electorateInsert = [];
-
-      foreach ($electorateFields as $field => $index) {
-        if ($index === NULL) {
-          $electorateInsert[$field] = $index;
-        }
-        else {
-          $electorateInsert[$field] = $electorate[$index];
-        }
-      }
-
-      $query->values($electorateInsert);
-    }
-  }
-
-  if (!$query->execute()) {
-    die('Unable to insert electorates - ' . var_dump($electorates, TRUE));
-  }
-}
-
-/**
- * Turn the mps CSV into a keyed hash
- *
- * @return  array[array]
- */
-function alq_mps_get() {
-  if (($handle = fopen(ALQ_MPS_FILE, "r")) === FALSE) {
-    die('Unable to open ' . ALQ_MPS_FILE);
-  }
-  $mps = fgetcsv($handle, 'r');
-
-  // get headers
-  $headers = array_shift($mps);
-
-  $return_val = [];
-
-  $l = count($headers);
-
-  $mp_buffer = [];
-
-  foreach ($mps as $mp) {
-    if (alq_mps_empty_row($mp)) {
-      $return_val[] = $mp_buffer;
-    }
-    else {
-      for ($i = 0; $i < $l; $i++) {
-        if (empty($mp_buffer)) {
-          $mp_buffer[$headers[$i]] = $mp[$i];
-        }
-        else {
-          $mp_buffer[$headers[$i]] .= "\n" . $mp[$i];
-        }
-      }
-    }
-  }
-
-  return $return_val;
-}
-
-/**
- * Turn the mps and electorates data into something
- * sensible
- *
- * @param array [object] $mps
- * @param array [object] $electorates
- * @return  array[array]
- */
-function alq_parse_mps($mps, $electorates) {
-  $return_val = [];
-  return $return_val;
-}
-
-/**
- * Check if a csv row is empty
- *
- * @param $csv
- * @return bool
- */
-function alq_mps_empty_row($csv) {
-  return str_replace([' ', ','], '', $csv) === '';
-}
 
 /**
  * Implements hook_schema()
@@ -150,50 +33,49 @@ function alq_mps_schema() {
         'description' => 'The name of this MP.',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE,
-        'default' => ''
+        'not null' => TRUE
       ),
       'family_name' => array(
         'description' => 'The family name of this MP.',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE,
-        'default' => ''
+        'not null' => FALSE,
+        'default' => null
       ),
       'given_names' => array(
         'description' => 'The given names of this MP.',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE,
-        'default' => ''
+        'not null' => FALSE,
+        'default' => null
       ),
       'preferred_name' => array(
         'description' => 'The nick name/preferred name of this MP.',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE,
-        'default' => ''
+        'not null' => FALSE,
+        'default' => null
       ),
       'title' => array(
         'description' => 'The title of this MP, Mr, Ms, Honourable etc.',
         'type' => 'varchar',
         'length' => 512,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'qualifications' => array(
         'description' => 'The qualifications of this MP, DipEd, BiT etc.',
         'type' => 'varchar',
         'length' => 512,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'position' => array(
         'description' => 'Ministerial position, Minister for Graft etc.',
         'type' => 'varchar',
         'length' => 512,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'party' => array(
         'description' => 'Political party.',
@@ -232,8 +114,8 @@ function alq_mps_schema() {
       'changed' => array(
         'description' => 'The Unix timestamp when the row was most recently saved.',
         'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
+        'not null' => FALSE,
+        'default' => null,
       ),
     ),
     'indexes' => array(
@@ -242,7 +124,7 @@ function alq_mps_schema() {
     'primary key' => array('id'),
   );
 
-  $schema[ALQ_ELECTORATES_TABLE] = array(
+  $schema[ALQ_ELECTORAL_OFFICES_TABLE] = array(
     'description' => t('Table to list electorates for parliament.'),
     'fields' => array(
       'id' => array(
@@ -354,7 +236,7 @@ function alq_mps_schema() {
     'primary key' => array('id'),
   );
 
-  $schema[ALQ_ELECTORATE_POSTCODES_TABLE] = array(
+  $schema[ALQ_ELECTORATES_TABLE] = array(
     'description' => t('Table to list postcodes for electorates.'),
     'fields' => array(
       'id' => array(

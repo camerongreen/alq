@@ -4,3 +4,241 @@
  * Provides the ability to store, administer and email members of parliament
  */
 
+define('ALQ_MPS_TABLE', 'alq_mps');
+define('ALQ_ELECTORAL_OFFICES_TABLE', 'alq_electoral_offices');
+define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+define('ALQ_MPS_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_QLD_Members_List.csv');
+define('ALQ_ELECTORATES_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_State_Federal_Locality_Postcodes.csv');
+
+// Friendly names for fields for the mps CVS file
+$GLOBALS['mpsCvsFields'] = [
+  'member' => 'MEMBER',
+  'electorate' => 'ELECTORATE',
+  'party' => 'PARTY',
+  'address' => 'ELECTORATE/MINISTERIAL ADDRESS',
+  'phone' => 'TELEPHONE/FAX NOS.',
+];
+
+/**
+ * Turn the electorates CSV into a keyed hash
+ *
+ * @return  array[array]
+ */
+function alq_mps_insert_electorates() {
+  if (($handle = fopen(ALQ_ELECTORATES_FILE, "r")) === FALSE) {
+    die('Unable to open ' . ALQ_ELECTORATES_FILE);
+  }
+
+  // ignore header row
+  $first = TRUE;
+  $electorates = [];
+  $electorateFields = [
+    'id' => NULL,
+    'lga_council' => 0,
+    'lga_division' => 1,
+    'state_district' => 2,
+    'federal_district' => 3,
+    'locality' => 4,
+    'postcode' => 5,
+  ];
+
+  $query = db_insert(ALQ_ELECTORATES_TABLE)->fields(array_keys($electorateFields));
+
+  while (($electorate = fgetcsv($handle)) !== FALSE) {
+    if ($first) {
+      $first = FALSE;
+    }
+    else {
+      $electorateInsert = [];
+
+      foreach ($electorateFields as $field => $index) {
+        if ($index === NULL) {
+          $electorateInsert[$field] = $index;
+        }
+        else {
+          $electorateInsert[$field] = $electorate[$index];
+        }
+      }
+
+      $query->values($electorateInsert);
+    }
+  }
+
+  if (!$query->execute()) {
+    die('Unable to insert electorates - ' . var_dump($electorates, TRUE));
+  }
+}
+
+/**
+ * Turn the electorates CSV into a keyed hash
+ *
+ * @return  array[array]
+ */
+function alq_mps_insert() {
+  $mpsFields = [
+    'id' => NULL,
+    'name' => NULL,
+    'family_name' => NULL,
+    'given_names' => NULL,
+    'preferred_name' => NULL,
+    'title' => NULL,
+    'qualifications' => NULL,
+    'position' => NULL,
+    'party' => NULL,
+    'ministerial_address' => NULL,
+    'ministerial_postcode' => NULL,
+    'ministerial_email' => NULL,
+    'created' => NULL,
+    'changed' => NULL,
+  ];
+
+  $mps = alq_mps_get();
+
+  $query = db_insert(ALQ_MPS_TABLE)->fields(array_keys($mpsFields));
+
+  foreach ($mps as $mp) {
+    // make a copy of array
+    $mpInsert = $mpsFields;
+    foreach ($GLOBALS['mpsCvsFields'] as $name => $cvsName) {
+      // fields which have new lines in them
+      if (in_array($name, ['member', 'address'])) {
+        $rawValues = explode("\n", $mp[$GLOBALS['mpsCvsFields'][$name]]);
+        if ($name === 'member') {
+          // first row is raw name
+          $mpInsert['name'] = array_shift($rawValues);
+          $mpInsert['position'] = implode('\n', $rawValues);
+        }
+        else {
+          if ($name === 'address') {
+            $ministerialDetails = alq_mps_parse_ministerial_details($rawValues);
+            if ($ministerialDetails) {
+              $mpInsert['ministerial_address'] = $ministerialDetails['address'];
+              $mpInsert['ministerial_email'] = $ministerialDetails['email'];
+            }
+          }
+        }
+      }
+      // fields which just translate straight across
+      else {
+        if (in_array($name, ['party', 'electorate'])) {
+          $mpInsert[$name] = $mp[$GLOBALS['mpsCvsFields'][$name]];
+        }
+      }
+    }
+    $mpInsert['created'] = time();
+    $query->values($mpInsert);
+  }
+
+  if (!$query->execute()) {
+    die('Unable to insert mps - ' . var_dump($mps, TRUE));
+  }
+}
+
+/**
+ * Parse for ministerial details, if not present return false
+ *
+ * @param $rawValues
+ * @return array|false
+ */
+function alq_mps_parse_ministerial_details($rawValues) {
+  $email = [];
+  $address = [];
+
+  $found_details = FALSE;
+  $found_email = FALSE;
+
+  foreach ($rawValues as $value) {
+    $parts = explode(":", $value);
+
+    if ((count($parts) === 2) && (trim($parts[0]) === 'Ministerial')) {
+      $found_details = TRUE;
+      $address[] = trim($parts[1]);
+    }
+    else {
+      if ($found_details) {
+        if ((count($parts) === 2) && (trim($parts[0]) === 'Email')) {
+          $found_email = true;
+          $email[] = trim($parts[1]);
+        }
+        else {
+          if ($found_email) {
+            $email[] = trim($parts[0]);
+          } else {
+            $address[] = trim($parts[0]);
+          }
+        }
+      }
+    }
+  }
+
+  if ($found_details) {
+    return [
+      'address' => implode("\n", $address),
+      'email' => implode(',', $email),
+    ];
+  }
+
+  return FALSE;
+}
+
+/**
+ * Gets the raw data from the CSV, adding columns together
+ * to finish with one mp per row
+ *
+ * @return array[array]
+ */
+function alq_mps_get() {
+  if (($handle = fopen(ALQ_MPS_FILE, "r")) === FALSE) {
+    die('Unable to open ' . ALQ_MPS_FILE);
+  }
+
+  $headers = NULL;
+  $return_val = [];
+  $mp_buffer = [];
+
+  while (($mp = fgetcsv($handle)) !== FALSE) {
+    if (is_null($headers)) {
+      $headers = $mp;
+    }
+    else {
+      if (alq_mps_empty_row($mp)) {
+        $return_val[] = $mp_buffer;
+        $mp_buffer = [];
+      }
+      else {
+        for ($i = 0; $i < count($headers); $i++) {
+          $value = trim($mp[$i]);
+          if ($value !== '') {
+            if (array_key_exists($headers[$i], $mp_buffer)) {
+              $mp_buffer[$headers[$i]] .= "\n" . $value;
+            }
+            else {
+              $mp_buffer[$headers[$i]] = $value;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (!empty($mp_buffer)) {
+    $return_val[] = $mp_buffer;
+  }
+
+  return $return_val;
+}
+
+/**
+ * Check if a csv row is empty
+ *
+ * @param $csvArray
+ * @return bool
+ */
+function alq_mps_empty_row($csvArray) {
+  foreach ($csvArray as $field) {
+    if (trim($field) !== '') {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
