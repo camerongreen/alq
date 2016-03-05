@@ -89,5 +89,5 @@ function alq_mps_details($electorate) {
 
   $result = $query->execute();
 
-  return drupal_json_output($result->fetchAll());
+  return drupal_json_output($result->fetch());
 }
