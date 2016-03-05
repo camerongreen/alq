@@ -9,3 +9,41 @@ include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 define('ALQ_MPS_TABLE', 'alq_mps');
 define('ALQ_ELECTORAL_OFFICES_TABLE', 'alq_electoral_offices');
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+
+/**
+ * Implements hook menu
+ */
+function alq_mps_menu() {
+  $items['alq-mps'] = array(
+    'page callback' => 'alq_mps_search',
+    'access callback' => TRUE,
+  );
+  return $items;
+}
+
+/**
+ * Menu callback for mps search
+ */
+function alq_mps_search($search) {
+  $query = db_select(ALQ_MPS_TABLE, 'mps');
+  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
+  $query->join(ALQ_ELECTORATES_TABLE, 'ele', 'mps.electorate = ele.state_district');
+  $query->condition(
+    db_or()
+      ->condition('ele.locality', '%' . db_like($search) . '%', 'LIKE')
+      ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
+  )
+    ->fields('mps', [
+      'electorate',
+    ])
+    ->fields('ele', [
+      'locality',
+      'postcode'
+    ]);
+  $query->orderBy('ele.locality', 'ASC');
+  $query->orderBy('ele.postcode', 'ASC');
+
+  $result = $query->execute();
+
+  return drupal_json_output($result->fetchAll());
+}
