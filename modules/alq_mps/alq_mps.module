@@ -16,13 +16,34 @@ define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 function alq_mps_menu() {
   $items['alq-mps'] = array(
     'page callback' => 'alq_mps_search',
-    'access callback' => TRUE,
+    'access callback' => 'user_access',
+    'access arguments' => array('access email campaigns'),
   );
   $items['alq-mps/details'] = array(
     'page callback' => 'alq_mps_details',
-    'access callback' => TRUE,
+    'access callback' => 'user_access',
+    'access arguments' => array('access email campaigns'),
+  );
+  $items['admin/alq-mps'] = array(
+    'page callback' => 'alq_mps_admin',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer email campaigns'),
   );
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function alq_mps_permission() {
+  return array(
+    'administer email campaigns' => array(
+      'title' => t('Administer the email campaigns'),
+    ),
+    'access email campaigns' => array(
+      'title' => t('Access email campaigns'),
+    ),
+  );
 }
 
 /**

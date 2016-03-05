@@ -1,0 +1,10 @@
+name = ALQ MPs feature
+core = 7.x
+package = ALQ
+version = 7.x-1.0
+project = alq_mps_feature
+dependencies[] = alq_mps
+dependencies[] = features
+features[features_api][] = api:1
+features[user_permission][] = access email campaigns
+features[user_permission][] = administer email campaigns
