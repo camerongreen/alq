@@ -99,15 +99,21 @@ function alq_mps_details($id) {
 function alq_mps_admin() {
   // get the mps
   $query = db_select(ALQ_MPS_TABLE, 'mps');
+  $num_rows = $query->countQuery()->execute()->fetchField();
+  $num_per_page = 20;
+  $page = pager_default_initialize($num_rows, $num_per_page);
+  $offset = $num_per_page * $page;
+
   $query->fields('mps');
   $query->orderBy('mps.name', 'ASC');
+  $query->range($offset, $num_per_page);
   $result = $query->execute();
 
   // output them in a paged table
-  $output = [];
+  $rows = [];
 
   foreach ($result as $mp) {
-    $output[] = [
+    $rows[] = [
      $mp->id,
      $mp->name,
      $mp->party,
@@ -115,8 +121,12 @@ function alq_mps_admin() {
     ];
   }
 
-  return theme('table', [
+  $output = theme('table', [
     'header' => ['ID', 'Name', 'Party', 'Electorate'],
-    'rows' => $output
+    'rows' => $rows
   ]);
+
+  $output .= theme('pager');
+
+  return $output;
 }
