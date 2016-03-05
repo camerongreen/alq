@@ -18,6 +18,10 @@ function alq_mps_menu() {
     'page callback' => 'alq_mps_search',
     'access callback' => TRUE,
   );
+  $items['alq-mps/details'] = array(
+    'page callback' => 'alq_mps_details',
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
@@ -42,6 +46,25 @@ function alq_mps_search($search) {
     ]);
   $query->orderBy('ele.locality', 'ASC');
   $query->orderBy('ele.postcode', 'ASC');
+
+  $result = $query->execute();
+
+  return drupal_json_output($result->fetchAll());
+}
+
+/**
+ * Menu callback for mps details
+ */
+function alq_mps_details($electorate) {
+  $query = db_select(ALQ_MPS_TABLE, 'mps');
+  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
+  $query->condition(
+    db_or()
+      ->condition('mps.electorate', $electorate, '=')
+  )
+    ->fields('mps')
+    ->fields('off');
+  $query->orderBy('off.address', 'ASC');
 
   $result = $query->execute();
 
