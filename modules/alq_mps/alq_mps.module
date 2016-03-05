@@ -100,15 +100,22 @@ function alq_mps_insert() {
     // make a copy of array
     $mpInsert = $mpsFields;
     foreach ($GLOBALS['mpsCvsFields'] as $name => $cvsName) {
+      $value = $mp[$cvsName];
       // fields which have new lines in them
       if (in_array($name, ['member', 'address'])) {
-        $rawValues = explode("\n", $mp[$GLOBALS['mpsCvsFields'][$name]]);
         if ($name === 'member') {
+          $title = alq_mps_parse_title($value);
+          if ($title) {
+            $value = preg_replace('/\s*\[[^\]]+\]/', '', $value);
+          }
+          $rawValues = explode("\n", $value);
           // first row is raw name
           $mpInsert['name'] = array_shift($rawValues);
-          $mpInsert['position'] = implode('\n', $rawValues);
+          $mpInsert['position'] = count($rawValues) > 0 ? implode('\n', $rawValues) : null;
+          $mpInsert['title'] = $title;
         }
         else {
+          $rawValues = explode("\n", $value);
           if ($name === 'address') {
             $ministerialDetails = alq_mps_parse_ministerial_details($rawValues);
             if ($ministerialDetails) {
@@ -121,7 +128,7 @@ function alq_mps_insert() {
       // fields which just translate straight across
       else {
         if (in_array($name, ['party', 'electorate'])) {
-          $mpInsert[$name] = $mp[$GLOBALS['mpsCvsFields'][$name]];
+          $mpInsert[$name] = $value;
         }
       }
     }
@@ -132,6 +139,20 @@ function alq_mps_insert() {
   if (!$query->execute()) {
     die('Unable to insert mps - ' . var_dump($mps, TRUE));
   }
+}
+
+/**
+ * Parse for ministerial details, if not present return false
+ *
+ * @param $value
+ * @return string|null
+ */
+function alq_mps_parse_title($value) {
+  $matches = null;
+  if (preg_match('/\[([^\]]+)\]/', $value, $matches)) {
+    return $matches[1];
+  }
+  return 'Mr';
 }
 
 /**
