@@ -10,7 +10,6 @@
 function alq_mps_install() {
   alq_mps_insert_electorates();
   alq_mps_insert();
-  //alq_insert_offices();
 }
 
 
@@ -82,28 +81,20 @@ function alq_mps_schema() {
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
-      'ministerial_address' => array(
-        'description' => 'Ministerial office address.',
+      'electorate' => array(
+        'description' => 'Electorate',
         'type' => 'varchar',
-        'length' => 512,
+        'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
-      'ministerial_postcode' => array(
-        'description' => 'Ministerial office postcode.',
-        'type' => 'char',
-        'length' => 5,
+      'comments' => array(
+        'description' => 'Comments',
+        'type' => 'text',
         'not null' => FALSE,
-        'default' => NULL
-      ),
-      'ministerial_email' => array(
-        'description' => 'Ministerial email address.',
-        'type' => 'varchar',
-        'length' => 512,
-        'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'created' => array(
         'description' => 'The Unix timestamp when the row was created.',
@@ -120,6 +111,7 @@ function alq_mps_schema() {
     ),
     'indexes' => array(
       'name_index' => array(array('name', 100)),
+      'mp_electorate_index' => array('electorate'),
     ),
     'primary key' => array('id'),
   );
@@ -133,33 +125,32 @@ function alq_mps_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE
       ),
-      'name' => array(
+      'electorate' => array(
         'description' => 'The name of this electorate.',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE,
-        'default' => ''
+        'not null' => TRUE
       ),
       'state' => array(
-        'description' => 'State or Territory.',
-        'type' => 'char',
-        'length' => 3,
+        'description' => 'The state for this electorate.',
+        'type' => 'varchar',
+        'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null,
       ),
       'type' => array(
         'description' => 'State/Territory, Federal etc.',
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'address' => array(
         'description' => 'Office address.',
         'type' => 'varchar',
         'length' => 512,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'postcode' => array(
         'description' => 'Office postcode.',
@@ -173,49 +164,28 @@ function alq_mps_schema() {
         'type' => 'varchar',
         'length' => 512,
         'not null' => FALSE,
-        'default' => ''
-      ),
-      'address_2' => array(
-        'description' => 'Second office address.',
-        'type' => 'varchar',
-        'length' => 512,
-        'not null' => FALSE,
-        'default' => ''
-      ),
-      'postcode_2' => array(
-        'description' => 'Second office postcode.',
-        'type' => 'char',
-        'length' => 5,
-        'not null' => FALSE,
-        'default' => NULL
-      ),
-      'email_2' => array(
-        'description' => 'Second email address.',
-        'type' => 'varchar',
-        'length' => 512,
-        'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'phone' => array(
         'description' => 'Office phone number.',
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'toll_free_phone' => array(
         'description' => 'Toll free office number for electorate members.',
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'fax' => array(
         'description' => 'Office facsimile number.',
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
-        'default' => ''
+        'default' => null
       ),
       'created' => array(
         'description' => 'The Unix timestamp when the row was created.',
@@ -226,12 +196,12 @@ function alq_mps_schema() {
       'changed' => array(
         'description' => 'The Unix timestamp when the row was most recently saved.',
         'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
+        'not null' => FALSE,
+        'default' => null,
       ),
     ),
     'indexes' => array(
-      'name_index' => array(array('name', 100)),
+      'office_electorate_index' => array(array('electorate', 100)),
     ),
     'primary key' => array('id'),
   );
@@ -290,6 +260,7 @@ function alq_mps_schema() {
     ),
     'indexes' => array(
       'postcode_index' => array('postcode'),
+      'state_district_index' => array('state_district'),
     ),
     'primary key' => array('id'),
   );

@@ -70,7 +70,7 @@ function alq_mps_insert_electorates() {
 }
 
 /**
- * Turn the electorates CSV into a keyed hash
+ * Parse the mps data and insert into db
  *
  * @return  array[array]
  */
@@ -85,9 +85,23 @@ function alq_mps_insert() {
     'qualifications' => NULL,
     'position' => NULL,
     'party' => NULL,
-    'ministerial_address' => NULL,
-    'ministerial_postcode' => NULL,
-    'ministerial_email' => NULL,
+    'electorate' => NULL,
+    'comments' => NULL,
+    'created' => NULL,
+    'changed' => NULL,
+  ];
+
+  $officeFields = [
+    'id' => NULL,
+    'electorate' => NULL,
+    'state' => 'QLD', // hard code for time being
+    'type' => NULL,
+    'address' => NULL,
+    'postcode' => NULL,
+    'email' => NULL,
+    'phone' => NULL,
+    'toll_free_phone' => NULL,
+    'fax' => NULL,
     'created' => NULL,
     'changed' => NULL,
   ];
@@ -96,42 +110,43 @@ function alq_mps_insert() {
 
   $query = db_insert(ALQ_MPS_TABLE)->fields(array_keys($mpsFields));
 
+  $officeQuery = db_insert(ALQ_ELECTORAL_OFFICES_TABLE)->fields(array_keys($officeFields));
+
   foreach ($mps as $mp) {
-    // make a copy of array
     $mpInsert = $mpsFields;
-    foreach ($GLOBALS['mpsCvsFields'] as $name => $cvsName) {
-      $value = $mp[$cvsName];
-      // fields which have new lines in them
-      if (in_array($name, ['member', 'address'])) {
-        if ($name === 'member') {
-          $title = alq_mps_parse_title($value);
-          if ($title) {
-            $value = preg_replace('/\s*\[[^\]]+\]/', '', $value);
-          }
-          $rawValues = explode("\n", $value);
-          // first row is raw name
-          $mpInsert['name'] = array_shift($rawValues);
-          $mpInsert['position'] = count($rawValues) > 0 ? implode('\n', $rawValues) : null;
-          $mpInsert['title'] = $title;
-        }
-        else {
-          $rawValues = explode("\n", $value);
-          if ($name === 'address') {
-            $ministerialDetails = alq_mps_parse_ministerial_details($rawValues);
-            if ($ministerialDetails) {
-              $mpInsert['ministerial_address'] = $ministerialDetails['address'];
-              $mpInsert['ministerial_email'] = $ministerialDetails['email'];
-            }
-          }
-        }
-      }
-      // fields which just translate straight across
-      else {
-        if (in_array($name, ['party', 'electorate'])) {
-          $mpInsert[$name] = $value;
-        }
+
+    // simple fields that can be passed straight through
+    foreach (['electorate', 'party'] as $field) {
+      $mpInsert[$field] = $mp[$GLOBALS['mpsCvsFields'][$field]];
+      if ($field === 'electorate') {
+        $officeFields['electorate'] = $mpInsert[$field];
       }
     }
+
+    // parse name, title etc from member details
+    $member = $mp[$GLOBALS['mpsCvsFields']['member']];
+
+    $title = alq_mps_parse_title($member);
+    if ($title) {
+      $member = preg_replace('/\s*\[[^\]]+\]/', '', $member);
+    }
+
+    $rawValues = explode("\n", $member);
+
+    $mpInsert['name'] = array_shift($rawValues);
+    $mpInsert['position'] = count($rawValues) > 0 ? implode('\n', $rawValues) : NULL;
+    $mpInsert['title'] = $title;
+
+    // parse all the address details into a useful form
+    $address = $mp[$GLOBALS['mpsCvsFields']['address']];
+    $phone = $mp[$GLOBALS['mpsCvsFields']['phone']];
+
+    $officeDetails = alq_mps_parse_office_details($officeFields, $address, $phone);
+
+    foreach ($officeDetails as $office) {
+      $officeQuery->values($office);
+    }
+
     $mpInsert['created'] = time();
     $query->values($mpInsert);
   }
@@ -139,16 +154,21 @@ function alq_mps_insert() {
   if (!$query->execute()) {
     die('Unable to insert mps - ' . var_dump($mps, TRUE));
   }
+
+  if (!$officeQuery->execute()) {
+    die('Unable to insert offices');
+  }
 }
 
 /**
- * Parse for ministerial details, if not present return false
+ * Parse for title, it appears in a string as [Miss] etc.
+ * if not present return Mr which seems to be default
  *
  * @param $value
  * @return string|null
  */
 function alq_mps_parse_title($value) {
-  $matches = null;
+  $matches = NULL;
   if (preg_match('/\[([^\]]+)\]/', $value, $matches)) {
     return $matches[1];
   }
@@ -156,50 +176,103 @@ function alq_mps_parse_title($value) {
 }
 
 /**
- * Parse for ministerial details, if not present return false
+ * Parse for office details in the address and phone numbers strings
+ * is unstructured data, so not that simple
  *
- * @param $rawValues
+ * @param array $officeFields
+ * @param string $address
+ * @param string $phone
  * @return array|false
  */
-function alq_mps_parse_ministerial_details($rawValues) {
+function alq_mps_parse_office_details($officeFields, $address, $phone) {
+  $addressValues = explode("\n", $address);
+  $phoneValues = explode("\n", $phone);
+  $officeInsert = $officeFields;
+  $officeInsert['created'] = time();
+
+  $return_val = [];
+
   $email = [];
   $address = [];
 
-  $found_details = FALSE;
-  $found_email = FALSE;
+  for ($i = 0, $l = count($addressValues); $i < $l; $i++) {
+    $value = $addressValues[$i];
 
-  foreach ($rawValues as $value) {
-    $parts = explode(":", $value);
+    $parts = explode(':', $value);
 
-    if ((count($parts) === 2) && (trim($parts[0]) === 'Ministerial')) {
-      $found_details = TRUE;
-      $address[] = trim($parts[1]);
-    }
-    else {
-      if ($found_details) {
-        if ((count($parts) === 2) && (trim($parts[0]) === 'Email')) {
-          $found_email = true;
-          $email[] = trim($parts[1]);
+    if (count($parts) > 1) {
+      $start = trim(array_shift($parts));
+      $end = trim(implode(':', $parts));
+
+      if ($start === 'Email') {
+        $email[] = $end;
+      }
+      else {
+        // this means we have a new address
+        $officeInsert['address'] = implode("\n", $address);
+        $officeInsert['email'] = implode(',', $email);
+        $return_val[] = $officeInsert;
+        // clear variables
+        $email = [];
+        $address = [];
+        $officeInsert = $officeFields;
+        $officeInsert['created'] = time();
+
+        if ($start === 'Ministerial') {
+          $officeInsert['type'] = $start;
+          $address[] = $end;
         }
         else {
-          if ($found_email) {
-            $email[] = trim($parts[0]);
-          } else {
-            $address[] = trim($parts[0]);
+          if ($end === '') {
+            $officeInsert['type'] = $start;
+          }
+          else {
+            $address[] = trim($value);
           }
         }
       }
     }
+    else {
+      // addresses end with multiple emails, so if we've got one
+      // it means any further fields are emails
+      // otherwise tack it on to address
+      if (count($email) > 0) {
+        $email[] = trim($value);
+      } else {
+        $address[] = trim($value);
+      }
+    }
   }
 
-  if ($found_details) {
-    return [
-      'address' => implode("\n", $address),
-      'email' => implode(',', $email),
-    ];
+  $officeInsert['address'] = implode("\n", $address);
+  $officeInsert['email'] = implode(',', $email);
+  $return_val[] = $officeInsert;
+
+  $phone_nums = 0;
+  foreach ($phoneValues as $line) {
+    $parts = explode(':', $line);
+
+    if (count($parts) > 1) {
+      $start = trim(array_shift($parts));
+      $end = trim(implode(':', $parts));
+
+      if ($start === 'Ph') {
+        if (!empty($return_val[$phone_nums]['phone'])) {
+          $phone_nums++;
+        }
+        $return_val[$phone_nums]['phone'] = $end;
+      } else if ($start === 'Fax') {
+        $return_val[$phone_nums]['fax'] = $end;
+      }
+    } else {
+      if (preg_match('/1800 .*/', $line)) {
+        $return_val[$phone_nums]['toll_free_phone'] = trim($line);
+
+      }
+    }
   }
 
-  return FALSE;
+  return $return_val;
 }
 
 /**
