@@ -59,6 +59,7 @@ function alq_mps_search($search) {
       ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
   )
     ->fields('mps', [
+      'id',
       'electorate',
     ])
     ->fields('ele', [
@@ -76,12 +77,12 @@ function alq_mps_search($search) {
 /**
  * Menu callback for mps details
  */
-function alq_mps_details($electorate) {
+function alq_mps_details($id) {
   $query = db_select(ALQ_MPS_TABLE, 'mps');
   $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
   $query->condition(
     db_or()
-      ->condition('mps.electorate', $electorate, '=')
+      ->condition('mps.id', $id, '=')
   )
     ->fields('mps')
     ->fields('off');
@@ -90,4 +91,32 @@ function alq_mps_details($electorate) {
   $result = $query->execute();
 
   return drupal_json_output($result->fetch());
+}
+
+/**
+ * Menu callback for adminstering mps
+ */
+function alq_mps_admin() {
+  // get the mps
+  $query = db_select(ALQ_MPS_TABLE, 'mps');
+  $query->fields('mps');
+  $query->orderBy('mps.name', 'ASC');
+  $result = $query->execute();
+
+  // output them in a paged table
+  $output = [];
+
+  foreach ($result as $mp) {
+    $output[] = [
+     $mp->id,
+     $mp->name,
+     $mp->party,
+     $mp->electorate
+    ];
+  }
+
+  return theme('table', [
+    'header' => ['ID', 'Name', 'Party', 'Electorate'],
+    'rows' => $output
+  ]);
 }
