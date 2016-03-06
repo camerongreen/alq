@@ -73,51 +73,16 @@ function alq_mps_insert_electorates() {
  * @return  array
  */
 function alq_mps_insert($mps) {
-  $mpsFields = [
-    'id' => NULL,
-    'name' => NULL,
-    'family_name' => NULL,
-    'given_names' => NULL,
-    'preferred_name' => NULL,
-    'title' => NULL,
-    'qualifications' => NULL,
-    'position' => NULL,
-    'party' => NULL,
-    'electorate' => NULL,
-    'type' => 'State', // hard code for time being
-    'comments' => NULL,
-    'created' => NULL,
-    'changed' => NULL,
-  ];
-
-  $officeFields = [
-    'id' => NULL,
-    'electorate' => NULL,
-    'type' => NULL,
-    'state' => 'QLD', // hard code for time being
-    'address' => NULL,
-    'postcode' => NULL,
-    'email' => NULL,
-    'phone' => NULL,
-    'toll_free_phone' => NULL,
-    'fax' => NULL,
-    'created' => NULL,
-    'changed' => NULL,
-  ];
-
-  $query = db_insert(ALQ_MPS_TABLE)->fields(array_keys($mpsFields));
-
-  $officeQuery = db_insert(ALQ_ELECTORAL_OFFICES_TABLE)->fields(array_keys($officeFields));
+  $query = db_insert(ALQ_MPS_TABLE)->fields(array_keys($GLOBALS['mpsFields']));
+  $officeQuery = db_insert(ALQ_ELECTORAL_OFFICES_TABLE)->fields(array_keys($GLOBALS['officeFields']));
 
   foreach ($mps as $mp) {
-    $mpInsert = $mpsFields;
+    $mpInsert = $GLOBALS['mpsFields'];
+    $mpInsert['type'] = 'State'; // hard code for first iteration
 
     // simple fields that can be passed straight through
     foreach (['electorate', 'party'] as $field) {
       $mpInsert[$field] = $mp[$GLOBALS['mpsCvsFields'][$field]];
-      if ($field === 'electorate') {
-        $officeFields['electorate'] = $mpInsert[$field];
-      }
     }
 
     // parse name, title etc from member details
@@ -131,16 +96,17 @@ function alq_mps_insert($mps) {
     $rawValues = explode("\n", $member);
 
     $mpInsert['name'] = array_shift($rawValues);
-    $mpInsert['position'] = count($rawValues) > 0 ? implode('\n', $rawValues) : NULL;
+    $mpInsert['position'] = count($rawValues) > 0 ? implode("\n", $rawValues) : NULL;
     $mpInsert['title'] = $title;
 
     // parse all the address details into a useful form
     $address = $mp[$GLOBALS['mpsCvsFields']['address']];
     $phone = $mp[$GLOBALS['mpsCvsFields']['phone']];
 
-    $officeDetails = alq_mps_parse_office_details($officeFields, $address, $phone);
+    $officeDetails = alq_mps_parse_office_details($GLOBALS['officeFields'], $address, $phone);
 
     foreach ($officeDetails as $office) {
+      $office['electorate'] = $mpInsert['electorate'];
       $officeQuery->values($office);
     }
 
@@ -219,6 +185,7 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
           // store current address
           $officeInsert['address'] = implode("\n", $addresses);
           $officeInsert['email'] = implode(',', $emails);
+          $officeInsert['state'] = 'QLD'; // hard code for first iteration
           $return_val[] = $officeInsert;
 
           // start new address
@@ -258,6 +225,7 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
   // store the address
   $officeInsert['address'] = implode("\n", $addresses);
   $officeInsert['email'] = implode(',', $emails);
+  $officeInsert['state'] = 'QLD'; // hard code for first iteration
   $return_val[] = $officeInsert;
 
   // now we need to parse the phone numbers

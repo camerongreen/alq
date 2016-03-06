@@ -13,7 +13,6 @@ function alq_mps_install() {
   alq_mps_insert($mps);
 }
 
-
 /**
  * Implements hook_schema()
  *

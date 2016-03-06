@@ -10,31 +10,65 @@ define('ALQ_MPS_TABLE', 'alq_mps');
 define('ALQ_ELECTORAL_OFFICES_TABLE', 'alq_electoral_offices');
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 
+$GLOBALS['mpsFields'] = [
+  'id' => NULL,
+  'name' => NULL,
+  'family_name' => NULL,
+  'given_names' => NULL,
+  'preferred_name' => NULL,
+  'title' => NULL,
+  'qualifications' => NULL,
+  'position' => NULL,
+  'party' => NULL,
+  'electorate' => NULL,
+  'type' => NULL,
+  'comments' => NULL,
+  'created' => NULL,
+  'changed' => NULL,
+];
+
+$GLOBALS['officeFields'] = [
+  'id' => NULL,
+  'electorate' => NULL,
+  'type' => NULL,
+  'state' => NULL,
+  'address' => NULL,
+  'postcode' => NULL,
+  'email' => NULL,
+  'phone' => NULL,
+  'toll_free_phone' => NULL,
+  'fax' => NULL,
+  'created' => NULL,
+  'changed' => NULL,
+];
+
 /**
  * Implements hook menu
  */
 function alq_mps_menu() {
-  $items['alq-mps'] = array(
+  $items['alq-mps'] = [
     'page callback' => 'alq_mps_search',
     'access callback' => 'user_access',
-    'access arguments' => array('access email campaigns'),
-  );
-  $items['alq-mps/details'] = array(
+    'access arguments' => ['access email campaigns'],
+  ];
+  $items['alq-mps/details'] = [
     'page callback' => 'alq_mps_details',
     'access callback' => 'user_access',
-    'access arguments' => array('access email campaigns'),
-  );
-  $items['admin/alq-mps'] = array(
+    'access arguments' => ['access email campaigns'],
+  ];
+  $items['admin/content/alq-mps'] = [
+    'title' => 'Members of Parliament',
     'page callback' => 'alq_mps_admin',
     'access callback' => 'user_access',
-    'access arguments' => array('administer email campaigns'),
-  );
-  $items['admin/alq-mps/edit'] = array(
+    'access arguments' => ['administer email campaigns'],
+    'type' => MENU_NORMAL_ITEM,
+  ];
+  $items['admin/alq-mps/edit'] = [
     'page callback' => 'drupal_get_form',
     'page arguments' => ['alq_mps_edit_form'],
     'access callback' => 'user_access',
-    'access arguments' => array('administer email campaigns'),
-  );
+    'access arguments' => ['administer email campaigns'],
+  ];
   return $items;
 }
 
@@ -42,14 +76,14 @@ function alq_mps_menu() {
  * Implements hook_permission().
  */
 function alq_mps_permission() {
-  return array(
-    'administer email campaigns' => array(
+  return [
+    'administer email campaigns' => [
       'title' => t('Administer the email campaigns'),
-    ),
-    'access email campaigns' => array(
+    ],
+    'access email campaigns' => [
       'title' => t('Access email campaigns'),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
@@ -120,10 +154,10 @@ function alq_mps_admin() {
 
   foreach ($result as $mp) {
     $rows[] = [
-     l($mp->id, '/admin/alq-mps/edit/' . urlencode($mp->id)),
-     $mp->name,
-     $mp->party,
-     $mp->electorate
+      l($mp->id, '/admin/alq-mps/edit/' . urlencode($mp->id)),
+      $mp->name,
+      $mp->party,
+      $mp->electorate
     ];
   }
 
@@ -163,151 +197,175 @@ function alq_mps_get($id) {
  * Returns the render array for the form.
  */
 function alq_mps_edit_form($form, &$form_state, $id) {
+  if (array_key_exists('clicked_button', $form_state) && ($form_state['clicked_button']['#value'] === 'Cancel')) {
+    drupal_goto('/admin/content/alq-mps');
+  }
+
   $mp = alq_mps_get($id);
 
-  $form['id'] = array(
-    '#type' => 'hiddem',
+  $form['id'] = [
+    '#type' => 'hidden',
     '#required' => TRUE,
-    '#value' => $mp->id,
-  );
+    '#default_value' => $mp->id,
+  ];
 
-  $form['name'] = array(
+  $form['name'] = [
     '#type' => 'fieldset',
     '#title' => t('Personal details'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-  );
-  $form['name']['title'] = array(
+    '#tree' => TRUE,
+  ];
+  $form['name']['title'] = [
     '#type' => 'textfield',
-    '#title' => "Title",
+    '#title' => t('Title'),
     '#required' => TRUE,
-    '#value' => $mp->title,
-  );
-  $form['name']['name'] = array(
+    '#default_value' => $mp->title,
+  ];
+  $form['name']['name'] = [
     '#type' => 'textfield',
-    '#title' => "Full name",
+    '#title' => t('Full name'),
     '#description' => 'Full name string',
     '#required' => TRUE,
-    '#value' => $mp->name,
-  );
-  $form['name']['given_names'] = array(
+    '#default_value' => $mp->name,
+  ];
+  $form['name']['given_names'] = [
     '#type' => 'textfield',
     '#title' => t('First name'),
-    '#value' => $mp->given_names,
-  );
-  $form['name']['family'] = array(
+    '#default_value' => $mp->given_names,
+  ];
+  $form['name']['family_name'] = [
     '#type' => 'textfield',
     '#title' => t('Family name'),
-    '#value' => $mp->family_name,
-  );
-  $form['name']['preferred_name'] = array(
+    '#default_value' => $mp->family_name,
+  ];
+  $form['name']['preferred_name'] = [
     '#type' => 'textfield',
     '#title' => t('Preferred/Nick name'),
-    '#value' => $mp->preferred_name,
-  );
-  $form['name']['qualifications'] = array(
+    '#default_value' => $mp->preferred_name,
+  ];
+  $form['name']['qualifications'] = [
     '#type' => 'textfield',
-    '#title' => "Qualifications",
+    '#title' => t('Qualifications'),
     '#description' => 'Degrees, certifications etc',
-    '#value' => $mp->qualifications,
-  );
+    '#default_value' => $mp->qualifications,
+  ];
 
-  $form['details'] = array(
+  $form['details'] = [
     '#type' => 'fieldset',
     '#title' => t('Political details'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-  );
-  $form['details']['position'] = array(
-    '#type' => 'textfield',
-    '#title' => "Position",
+    '#tree' => TRUE,
+  ];
+  $form['details']['position'] = [
+    '#type' => 'textarea',
+    '#title' => t('Position'),
     '#description' => 'Minister of, whip etc.',
-    '#value' => $mp->position,
-  );
-  $form['details']['party'] = array(
+    '#default_value' => $mp->position,
+  ];
+  $form['details']['party'] = [
     '#type' => 'textfield',
-    '#title' => "Party",
+    '#title' => t('Party'),
     '#description' => 'ALP, LNP, GRN, IND.',
     '#required' => TRUE,
-    '#value' => $mp->party,
-  );
-  $form['details']['electorate'] = array(
+    '#default_value' => $mp->party,
+  ];
+  $form['details']['electorate'] = [
     '#type' => 'textfield',
-    '#title' => "Electorate",
+    '#title' => t('Electorate'),
     '#required' => TRUE,
-    '#value' => $mp->electorate,
-  );
-  $form['details']['type'] = array(
+    '#default_value' => $mp->electorate,
+  ];
+  $form['details']['type'] = [
     '#type' => 'textfield',
-    '#title' => "Type",
+    '#title' => t('Type'),
     '#description' => 'State, Federal, Council etc.',
     '#required' => TRUE,
-    '#value' => $mp->type,
-  );
+    '#default_value' => $mp->type,
+  ];
+
+  $form['offices'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Offices'),
+    '#collapsible' => TRUE,
+    '#tree' => TRUE,
+    '#collapsed' => FALSE,
+  ];
 
   foreach ($mp->offices as $key => $office) {
-    $form['offices_' . $key] = array(
+    $form['offices'][$key] = [
       '#type' => 'fieldset',
-      '#title' => t('Office'),
       '#collapsible' => TRUE,
+      '#tree' => TRUE,
       '#collapsed' => FALSE,
-    );
-
-    $form['offices_' . $key]['id'] = array(
+    ];
+    $form['offices'][$key]['id'] = [
       '#type' => 'hidden',
       '#required' => TRUE,
-      '#value' => $office->id,
-    );
-
-    $form['offices_' . $key]['type'] = array(
+      '#default_value' => $office->id,
+    ];
+    $form['offices'][$key]['type'] = [
       '#type' => 'textfield',
-      '#title' => "Type",
-      '#value' => $office->type,
-    );
-
-    $form['offices_' . $key]['state'] = array(
+      '#title' => t('Type'),
+      '#default_value' => $office->type,
+    ];
+    $form['offices'][$key]['email'] = [
       '#type' => 'textfield',
-      '#title' => "State",
+      '#title' => t('Email'),
       '#required' => TRUE,
-      '#value' => $office->state,
-    );
-
-    $form['offices_' . $key]['address'] = array(
+      '#default_value' => $office->email,
+    ];
+    $form['offices'][$key]['state'] = [
       '#type' => 'textfield',
-      '#title' => "Address",
+      '#title' => t('State'),
       '#required' => TRUE,
-      '#value' => $office->address,
-    );
-
-    $form['offices_' . $key]['postcode'] = array(
+      '#default_value' => $office->state,
+    ];
+    $form['offices'][$key]['address'] = [
+      '#type' => 'textarea',
+      '#title' => t('Address'),
+      '#required' => TRUE,
+      '#default_value' => $office->address,
+    ];
+    $form['offices'][$key]['postcode'] = [
       '#type' => 'textfield',
-      '#title' => "Postcode",
-      '#value' => $office->postcode,
-    );
-
-    $form['offices_' . $key]['phone'] = array(
+      '#title' => t('Postcode'),
+      '#default_value' => $office->postcode,
+    ];
+    $form['offices'][$key]['phone'] = [
       '#type' => 'textfield',
-      '#title' => "Phone",
-      '#value' => $office->phone,
-    );
-
-    $form['offices_' . $key]['fax'] = array(
+      '#title' => t('Phone'),
+      '#default_value' => $office->phone,
+    ];
+    $form['offices'][$key]['toll_free_phone'] = [
       '#type' => 'textfield',
-      '#title' => "Fax",
-      '#value' => $office->fax,
-    );
+      '#title' => t('Toll Free Phone'),
+      '#default_value' => $office->toll_free_phone,
+    ];
+    $form['offices'][$key]['fax'] = [
+      '#type' => 'textfield',
+      '#title' => t('Fax'),
+      '#default_value' => $office->fax,
+    ];
   }
 
-  $form['comments'] = array(
+  $form['comments'] = [
     '#type' => 'textarea',
-    '#title' => "Comments",
-    '#value' => $mp->comments,
-  );
+    '#title' => t('Comments'),
+    '#default_value' => $mp->comments,
+  ];
 
-  $form['submit'] = array(
+  $form['submit'] = [
     '#type' => 'submit',
-    '#value' => 'Submit',
-  );
+    '#value' => t('Submit'),
+  ];
+
+  $form['cancel'] = [
+    '#type' => 'button',
+    '#value' => t('Cancel'),
+  ];
+
   return $form;
 }
 
@@ -315,10 +373,6 @@ function alq_mps_edit_form($form, &$form_state, $id) {
  * Validates the form.
  */
 function alq_mps_edit_form_validate($form, &$form_state) {
-  $name = $form_state['values']['name']['name'];
-  if (empty($name)) {
-    form_set_error('name', 'Name is a required field.');
-  }
 }
 
 /**
@@ -328,5 +382,66 @@ function alq_mps_edit_form_validate($form, &$form_state) {
  * form successfully processes
  */
 function alq_mps_edit_form_submit($form, &$form_state) {
-  drupal_set_message(t('The form has been submitted.'));
+  $mp = $form_state['values'];
+  $id = $mp['id'];
+
+  $mpUpdate = $GLOBALS['mpsFields'];
+
+  // remove any fields we won't change
+  foreach (['id', 'created'] as $field) {
+    unset($mpUpdate[$field]);
+  }
+
+  $query = db_update(ALQ_MPS_TABLE);
+  $query->condition('id', $id, '=');
+
+  $mpUpdate['changed'] = time();
+  foreach (['comments'] as $rootVal) {
+    $mpUpdate[$rootVal] = $mp[$rootVal];
+  }
+
+  foreach (['details', 'name'] as $fieldset) {
+    foreach ($mp[$fieldset] as $key => $value) {
+      $mpUpdate[$key] = $value;
+    }
+  }
+
+  $query->fields($mpUpdate);
+
+  if ($query->execute() === 1) {
+    drupal_set_message(t('The MP has been updated.'));
+
+    foreach ($mp['offices'] as $office) {
+      $officeQuery = db_update(ALQ_ELECTORAL_OFFICES_TABLE);
+
+      $officeUpdate = $GLOBALS['officeFields'];
+
+      // remove fields we don't want to update automatically
+      foreach (['id', 'created', 'changed', 'electorate'] as $field) {
+        unset($officeUpdate[$field]);
+      }
+
+      foreach ($officeUpdate as $field => $value) {
+        $officeUpdate[$field] = $office[$field];
+      }
+
+      $id = $office['id'];
+      $officeUpdate['changed'] = time();
+      // take this from the outer mp
+      $officeUpdate['electorate'] = $mpUpdate['electorate'];
+
+      $officeQuery->fields($officeUpdate);
+      $officeQuery->condition('id', $id, '=');
+
+      if ($officeQuery->execute() === 1) {
+        drupal_set_message(t('The MPs office has been updated.'));
+      }
+      else {
+        drupal_set_message('Unable to update office ' . var_dump($officeUpdate, TRUE), 'error');
+      }
+    }
+  }
+  else {
+    drupal_set_message('Unable to update MP' . var_dump($mpUpdate, TRUE), 'error');
+  }
 }
