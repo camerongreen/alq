@@ -69,8 +69,8 @@ function alq_mps_insert_electorates() {
 /**
  * Parse the mps data and insert into db
  *
- * @param  Array [Array] $mps
- * @return  Array[Array]
+ * @param  array $mps
+ * @return  array
  */
 function alq_mps_insert($mps) {
   $mpsFields = [
@@ -84,6 +84,7 @@ function alq_mps_insert($mps) {
     'position' => NULL,
     'party' => NULL,
     'electorate' => NULL,
+    'type' => 'State', // hard code for time being
     'comments' => NULL,
     'created' => NULL,
     'changed' => NULL,
@@ -92,8 +93,8 @@ function alq_mps_insert($mps) {
   $officeFields = [
     'id' => NULL,
     'electorate' => NULL,
-    'state' => 'QLD', // hard code for time being
     'type' => NULL,
+    'state' => 'QLD', // hard code for time being
     'address' => NULL,
     'postcode' => NULL,
     'email' => NULL,
@@ -208,7 +209,7 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
       $end = trim(implode(':', $parts));
 
       if ($start === 'Email') {
-        $email[] = $end;
+        $emails[] = $end;
       }
       else {
         // If it's not an email, the other two colon fields mean we are
@@ -302,7 +303,7 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
  *
  * @return array[array]
  */
-function alq_mps_get() {
+function alq_mps_get_raw() {
   if (($handle = fopen(ALQ_MPS_FILE, "r")) === FALSE) {
     die('Unable to open ' . ALQ_MPS_FILE);
   }

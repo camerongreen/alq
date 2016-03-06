@@ -29,6 +29,12 @@ function alq_mps_menu() {
     'access callback' => 'user_access',
     'access arguments' => array('administer email campaigns'),
   );
+  $items['admin/alq-mps/edit'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['alq_mps_edit_form'],
+    'access callback' => 'user_access',
+    'access arguments' => array('administer email campaigns'),
+  );
   return $items;
 }
 
@@ -71,7 +77,7 @@ function alq_mps_search($search) {
 
   $result = $query->execute();
 
-  return drupal_json_output($result->fetchAll());
+  drupal_json_output($result->fetchAll());
 }
 
 /**
@@ -114,7 +120,7 @@ function alq_mps_admin() {
 
   foreach ($result as $mp) {
     $rows[] = [
-     $mp->id,
+     l($mp->id, '/admin/alq-mps/edit/' . urlencode($mp->id)),
      $mp->name,
      $mp->party,
      $mp->electorate
@@ -129,4 +135,198 @@ function alq_mps_admin() {
   $output .= theme('pager');
 
   return $output;
+}
+
+/**
+ * Menu callback for editing an individual mp
+ */
+function alq_mps_get($id) {
+  // get the mp
+  $query = db_select(ALQ_MPS_TABLE, 'mps');
+  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
+  $query->fields('mps');
+  $query->condition('mps.id', $id);
+  $result = $query->execute();
+  $mp = $result->fetch();
+
+  // get their office/s
+  $query = db_select(ALQ_ELECTORAL_OFFICES_TABLE, 'off');
+  $query->fields('off');
+  $query->condition('off.electorate', $mp->electorate);
+  $result = $query->execute();
+  $mp->offices = $result->fetchAll();
+
+  return $mp;
+}
+
+/**
+ * Returns the render array for the form.
+ */
+function alq_mps_edit_form($form, &$form_state, $id) {
+  $mp = alq_mps_get($id);
+
+  $form['id'] = array(
+    '#type' => 'hiddem',
+    '#required' => TRUE,
+    '#value' => $mp->id,
+  );
+
+  $form['name'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Personal details'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['name']['title'] = array(
+    '#type' => 'textfield',
+    '#title' => "Title",
+    '#required' => TRUE,
+    '#value' => $mp->title,
+  );
+  $form['name']['name'] = array(
+    '#type' => 'textfield',
+    '#title' => "Full name",
+    '#description' => 'Full name string',
+    '#required' => TRUE,
+    '#value' => $mp->name,
+  );
+  $form['name']['given_names'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+    '#value' => $mp->given_names,
+  );
+  $form['name']['family'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Family name'),
+    '#value' => $mp->family_name,
+  );
+  $form['name']['preferred_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Preferred/Nick name'),
+    '#value' => $mp->preferred_name,
+  );
+  $form['name']['qualifications'] = array(
+    '#type' => 'textfield',
+    '#title' => "Qualifications",
+    '#description' => 'Degrees, certifications etc',
+    '#value' => $mp->qualifications,
+  );
+
+  $form['details'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Political details'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['details']['position'] = array(
+    '#type' => 'textfield',
+    '#title' => "Position",
+    '#description' => 'Minister of, whip etc.',
+    '#value' => $mp->position,
+  );
+  $form['details']['party'] = array(
+    '#type' => 'textfield',
+    '#title' => "Party",
+    '#description' => 'ALP, LNP, GRN, IND.',
+    '#required' => TRUE,
+    '#value' => $mp->party,
+  );
+  $form['details']['electorate'] = array(
+    '#type' => 'textfield',
+    '#title' => "Electorate",
+    '#required' => TRUE,
+    '#value' => $mp->electorate,
+  );
+  $form['details']['type'] = array(
+    '#type' => 'textfield',
+    '#title' => "Type",
+    '#description' => 'State, Federal, Council etc.',
+    '#required' => TRUE,
+    '#value' => $mp->type,
+  );
+
+  foreach ($mp->offices as $key => $office) {
+    $form['offices_' . $key] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Office'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+
+    $form['offices_' . $key]['id'] = array(
+      '#type' => 'hidden',
+      '#required' => TRUE,
+      '#value' => $office->id,
+    );
+
+    $form['offices_' . $key]['type'] = array(
+      '#type' => 'textfield',
+      '#title' => "Type",
+      '#value' => $office->type,
+    );
+
+    $form['offices_' . $key]['state'] = array(
+      '#type' => 'textfield',
+      '#title' => "State",
+      '#required' => TRUE,
+      '#value' => $office->state,
+    );
+
+    $form['offices_' . $key]['address'] = array(
+      '#type' => 'textfield',
+      '#title' => "Address",
+      '#required' => TRUE,
+      '#value' => $office->address,
+    );
+
+    $form['offices_' . $key]['postcode'] = array(
+      '#type' => 'textfield',
+      '#title' => "Postcode",
+      '#value' => $office->postcode,
+    );
+
+    $form['offices_' . $key]['phone'] = array(
+      '#type' => 'textfield',
+      '#title' => "Phone",
+      '#value' => $office->phone,
+    );
+
+    $form['offices_' . $key]['fax'] = array(
+      '#type' => 'textfield',
+      '#title' => "Fax",
+      '#value' => $office->fax,
+    );
+  }
+
+  $form['comments'] = array(
+    '#type' => 'textarea',
+    '#title' => "Comments",
+    '#value' => $mp->comments,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+/**
+ * Validates the form.
+ */
+function alq_mps_edit_form_validate($form, &$form_state) {
+  $name = $form_state['values']['name']['name'];
+  if (empty($name)) {
+    form_set_error('name', 'Name is a required field.');
+  }
+}
+
+/**
+ * Add a submit handler/function to the form.
+ *
+ * This will add a completion message to the screen when the
+ * form successfully processes
+ */
+function alq_mps_edit_form_submit($form, &$form_state) {
+  drupal_set_message(t('The form has been submitted.'));
 }

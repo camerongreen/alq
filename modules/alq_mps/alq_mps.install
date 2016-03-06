@@ -9,7 +9,7 @@
  */
 function alq_mps_install() {
   alq_mps_insert_electorates();
-  $mps = alq_mps_get();
+  $mps = alq_mps_get_raw();
   alq_mps_insert($mps);
 }
 
@@ -86,6 +86,13 @@ function alq_mps_schema() {
       ),
       'electorate' => array(
         'description' => 'Electorate',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => FALSE,
+        'default' => null
+      ),
+      'type' => array(
+        'description' => 'Electorate type, state, federal, council etc',
         'type' => 'varchar',
         'length' => 128,
         'not null' => FALSE,
