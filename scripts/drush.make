@@ -98,6 +98,8 @@ projects[omega_tools][version] = 3.0-rc4
 
 projects[pathauto][version] = 1.2
 
+projects[references][version] = 2.1
+
 projects[responsive_menus][version] = 1.5
 
 projects[rules][version] = 2.9

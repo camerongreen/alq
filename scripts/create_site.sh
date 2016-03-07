@@ -146,8 +146,10 @@ libraries \
 metatag \
 module_filter \
 nice_menus \
+node_reference \
 omega_tools \
 pathauto \
+references \
 responsive_menus \
 rules \
 site_map \
