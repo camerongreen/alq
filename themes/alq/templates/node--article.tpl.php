@@ -10,14 +10,18 @@
   <?php if ($display_submitted): ?>
   <footer class="submitted"><?php print $date; ?> -- <?php print $name; ?></footer>
   <?php endif; ?>  
-  
+
   <div<?php print $content_attributes; ?>>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
       print '<div class="article-date">' . date('j F Y', $node->created) . '</div>';
-      if ($node->field_thumbnail_only[$node->language][0]['value'] === "1") {
+      if (
+        property_exists($node, 'field_thumbnail_only')
+        && array_key_exists($node->language, $node->field_thumbnail_only)
+        && ($node->field_thumbnail_only[$node->language][0]['value'] === "1")
+      ) {
         // hide image if they only want to display as thumbnail
         hide($content['field_image']);
       }
