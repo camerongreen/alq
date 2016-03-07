@@ -18,9 +18,9 @@ GIT_DIR=/var/www/alq
 
 # this is the user who will own the files, so you 
 # can edit them etc
-FILE_OWNER=root
+FILE_OWNER=www-data
 # this is the webserver user so it can write stuff to directories etc
-WEBSERVER_GROUP=root
+WEBSERVER_GROUP=www-data
 
 # default settings for DB
 DEFAULT_DB_USER=alq

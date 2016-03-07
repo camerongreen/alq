@@ -149,5 +149,11 @@ libraries[jquery.cycle][download][type] = "file"
 libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
 
+libraries[ckeditor][download][type] = get
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.5.7/ckeditor_4.5.7_full.zip"
+libraries[ckeditor][destination] = libraries
+libraries[ckeditor][directory_name] = ckeditor
+
 libraries[colorbox][download][type] = file
 libraries[colorbox][download][url] = http://colorpowered.com/colorbox/latest
+
