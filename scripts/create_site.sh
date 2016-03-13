@@ -136,6 +136,7 @@ entity \
 facebook_boxes \
 features \
 features_diff \
+field_collection \
 filefield_sources \
 imageapi \
 imce \

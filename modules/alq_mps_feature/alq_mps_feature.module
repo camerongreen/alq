@@ -1,5 +1,8 @@
 <?php
+
 /**
  * @file
  * Drupal needs this blank file.
  */
+
+include_once 'alq_mps_feature.features.inc';

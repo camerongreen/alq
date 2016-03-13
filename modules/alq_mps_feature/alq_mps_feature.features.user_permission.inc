@@ -14,8 +14,7 @@ function alq_mps_feature_user_default_permissions() {
   $permissions['access email campaigns'] = array(
     'name' => 'access email campaigns',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'administrator',
     ),
     'module' => 'alq_mps',
   );
@@ -25,8 +24,6 @@ function alq_mps_feature_user_default_permissions() {
     'name' => 'administer email campaigns',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
-      2 => 'superuser',
     ),
     'module' => 'alq_mps',
   );

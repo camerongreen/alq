@@ -72,6 +72,8 @@ projects[features][version] = 1.0
 
 projects[features_diff][version] = 1.0-beta2
 
+projects[field_collection][version] = 1.0-beta11
+
 projects[filefield_sources][version] = 1.10
 
 projects[google_analytics][version] = 1.4

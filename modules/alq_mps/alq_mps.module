@@ -9,6 +9,7 @@ include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 define('ALQ_MPS_TABLE', 'alq_mps');
 define('ALQ_ELECTORAL_OFFICES_TABLE', 'alq_electoral_offices');
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 
 $GLOBALS['mpsFields'] = [
   'id' => NULL,
@@ -72,6 +73,7 @@ function alq_mps_menu() {
   return $items;
 }
 
+
 /**
  * Implements hook_permission().
  */
@@ -90,28 +92,39 @@ function alq_mps_permission() {
  * Menu callback for mps search
  */
 function alq_mps_search($search) {
-  $query = db_select(ALQ_MPS_TABLE, 'mps');
-  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
-  $query->join(ALQ_ELECTORATES_TABLE, 'ele', 'mps.electorate = ele.state_district');
-  $query->condition(
-    db_or()
-      ->condition('ele.locality', '%' . db_like($search) . '%', 'LIKE')
-      ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
-  )
-    ->fields('mps', [
-      'id',
-      'electorate',
-    ])
-    ->fields('ele', [
-      'locality',
-      'postcode'
-    ]);
-  $query->orderBy('ele.locality', 'ASC');
-  $query->orderBy('ele.postcode', 'ASC');
+  if (strlen($search) > 2) {
+    $query = db_select(ALQ_MPS_TABLE, 'mps');
+    $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
+    $query->join(ALQ_ELECTORATES_TABLE, 'ele', 'mps.electorate = ele.state_district');
+    $query->condition(
+      db_or()
+        ->condition('ele.locality', '%' . db_like($search) . '%', 'LIKE')
+        ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
+    )
+      ->fields('mps', [
+        'id',
+        'name',
+        'party',
+        'position',
+        'title',
+        'electorate',
+      ])
+      ->fields('ele', [
+        'locality',
+        'postcode'
+      ]);
+    $query->orderBy('ele.locality', 'ASC');
+    $query->orderBy('ele.postcode', 'ASC');
+    $query->groupBy('mps.id');
+    $query->groupBy('ele.id');
 
-  $result = $query->execute();
+    $result = $query->execute();
 
-  drupal_json_output($result->fetchAll());
+    drupal_json_output($result->fetchAll());
+  }
+  else {
+    drupal_json_output([]);
+  }
 }
 
 /**
@@ -206,7 +219,7 @@ function alq_mps_edit_form($form, &$form_state, $id) {
   $form['id'] = [
     '#type' => 'hidden',
     '#required' => TRUE,
-    '#default_value' => $mp->id,
+    '#default_value' => $mp ? $mp->id : NULL,
   ];
 
   $form['name'] = [
@@ -220,35 +233,35 @@ function alq_mps_edit_form($form, &$form_state, $id) {
     '#type' => 'textfield',
     '#title' => t('Title'),
     '#required' => TRUE,
-    '#default_value' => $mp->title,
+    '#default_value' => $mp ? $mp->title : NULL,
   ];
   $form['name']['name'] = [
     '#type' => 'textfield',
     '#title' => t('Full name'),
     '#description' => 'Full name string',
     '#required' => TRUE,
-    '#default_value' => $mp->name,
+    '#default_value' => $mp ? $mp->name : NULL,
   ];
   $form['name']['given_names'] = [
     '#type' => 'textfield',
     '#title' => t('First name'),
-    '#default_value' => $mp->given_names,
+    '#default_value' => $mp ? $mp->given_names : NULL,
   ];
   $form['name']['family_name'] = [
     '#type' => 'textfield',
     '#title' => t('Family name'),
-    '#default_value' => $mp->family_name,
+    '#default_value' => $mp ? $mp->family_name : NULL,
   ];
   $form['name']['preferred_name'] = [
     '#type' => 'textfield',
     '#title' => t('Preferred/Nick name'),
-    '#default_value' => $mp->preferred_name,
+    '#default_value' => $mp ? $mp->preferred_name : NULL,
   ];
   $form['name']['qualifications'] = [
     '#type' => 'textfield',
     '#title' => t('Qualifications'),
     '#description' => 'Degrees, certifications etc',
-    '#default_value' => $mp->qualifications,
+    '#default_value' => $mp ? $mp->qualifications : NULL,
   ];
 
   $form['details'] = [
@@ -262,27 +275,27 @@ function alq_mps_edit_form($form, &$form_state, $id) {
     '#type' => 'textarea',
     '#title' => t('Position'),
     '#description' => 'Minister of, whip etc.',
-    '#default_value' => $mp->position,
+    '#default_value' => $mp ? $mp->position : NULL,
   ];
   $form['details']['party'] = [
     '#type' => 'textfield',
     '#title' => t('Party'),
     '#description' => 'ALP, LNP, GRN, IND.',
     '#required' => TRUE,
-    '#default_value' => $mp->party,
+    '#default_value' => $mp ? $mp->party : NULL,
   ];
   $form['details']['electorate'] = [
     '#type' => 'textfield',
     '#title' => t('Electorate'),
     '#required' => TRUE,
-    '#default_value' => $mp->electorate,
+    '#default_value' => $mp ? $mp->electorate : NULL,
   ];
   $form['details']['type'] = [
     '#type' => 'textfield',
     '#title' => t('Type'),
     '#description' => 'State, Federal, Council etc.',
     '#required' => TRUE,
-    '#default_value' => $mp->type,
+    '#default_value' => $mp ? $mp->type : NULL,
   ];
 
   $form['offices'] = [
@@ -444,4 +457,80 @@ function alq_mps_edit_form_submit($form, &$form_state) {
   else {
     drupal_set_message('Unable to update MP' . var_dump($mpUpdate, TRUE), 'error');
   }
+}
+
+function alq_mps_show_email_campaign($node) {
+  if ($cid = alq_mps_has_email_campaign($node->nid)) {
+    $cnode = node_load($cid);
+    $form = drupal_get_form("alq_mps_email_form", $cnode);
+    return drupal_render($form);
+  }
+}
+
+function alq_mps_has_email_campaign($nid) {
+  $query = db_select(ALQ_NODE_REF_TABLE, 'nrf');
+  $query->condition(
+    db_or()
+      ->condition('nrf.entity_type', 'node', '=')
+      ->condition('nrf.field_parent_article_nid', $nid, '=')
+  )->fields('nrf', [
+    'entity_id'
+  ]);
+
+  $result = $query->execute();
+
+  return $result->fetchField(0);
+}
+
+function alq_mps_email_form($form, &$form_state, $cnode) {
+  $form['id'] = [
+    '#type' => 'hidden',
+    '#required' => TRUE,
+    '#default_value' => $cnode->nid,
+  ];
+
+  $form['search'] = [
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE
+  ];
+  $form['search']['suburb'] = [
+    '#type' => 'textfield',
+    '#title' => t('Suburb or Post Code'),
+    '#required' => TRUE,
+    '#autocomplete_path' => 'alq-mps'
+  ];
+
+  $form['subject'] = [
+    '#type' => 'textfield',
+    '#title' => t('Subject'),
+    '#required' => TRUE,
+    '#default_value' => $cnode->title,
+  ];
+  $form['body'] = [
+    '#type' => 'textarea',
+    '#title' => t('Email text'),
+    '#required' => TRUE,
+    '#default_value' => $cnode->body['und'][0]["value"],
+  ];
+  $form['name'] = [
+    '#type' => 'textfield',
+    '#title' => t('Your name'),
+    '#required' => TRUE
+  ];
+  $form['email'] = [
+    '#type' => 'textfield',
+    '#title' => t('Your email'),
+    '#required' => TRUE
+  ];
+  $form['spam'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Would you like to join the Animal Liberation Qld email list'),
+    '#required' => TRUE
+  ];
+  $form['submit'] = [
+    '#type' => 'submit',
+    '#value' => t('Send'),
+  ];
+
+  return $form;
 }

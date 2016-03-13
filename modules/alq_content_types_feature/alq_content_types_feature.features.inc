@@ -27,6 +27,14 @@ function alq_content_types_feature_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'media_article' => array(
+      'name' => t('Media Article'),
+      'base' => 'node_content',
+      'description' => t('Use <em>Media Articles</em> for time-sensitive content like press releases.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'page' => array(
       'name' => t('Basic page'),
       'base' => 'node_content',
