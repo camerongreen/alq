@@ -4,6 +4,13 @@
  * Installation details for the ALQ MPs module
  */
 
+// It seems when running a module install, the module file is included
+// thus defines are present, but when you run uninstall it isn't, so define
+// if it doesn't already exist
+if (!defined('ALQ_ELECTORATES_TABLE')) {
+  define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+}
+
 /**
  * Implements hook_install()
  */
@@ -14,12 +21,37 @@ function alq_mps_install() {
 }
 
 /**
+ * Implements hook_uninstall()
+ */
+function alq_mps_uninstall() {
+  $type = 'emailee';
+  // delete nodes
+  $results = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', $type)
+    ->execute();
+
+  foreach ($results as $result) {
+    $nids[] = $result->nid;
+  }
+
+  if (!empty($nids)) {
+    node_delete_multiple($nids);
+    drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+  }
+
+  drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
+
+  drupal_uninstall_schema('alq_mps');
+}
+
+/**
  * Implements hook_schema()
  *
  * @return mixed
  */
 function alq_mps_schema() {
-  $schema[ALQ_ELECTORATES_TABLE] = array(
+  $schema[ALQ_ELECTORATES_TABLE] = [
     'description' => t('Table to list postcodes for electorates.'),
     'fields' => array(
       'id' => array(
@@ -76,7 +108,7 @@ function alq_mps_schema() {
       'state_district_index' => array('state_district'),
     ),
     'primary key' => array('id'),
-  );
+  ];
 
   return $schema;
 }

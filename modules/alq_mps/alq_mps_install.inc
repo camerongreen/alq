@@ -73,17 +73,18 @@ function alq_mps_insert_electorates() {
  * @return  array
  */
 function alq_mps_insert($mps) {
-  $query = db_insert(ALQ_MPS_TABLE)->fields(array_keys($GLOBALS['mpsFields']));
-  $officeQuery = db_insert(ALQ_ELECTORAL_OFFICES_TABLE)->fields(array_keys($GLOBALS['officeFields']));
-
   foreach ($mps as $mp) {
-    $mpInsert = $GLOBALS['mpsFields'];
-    $mpInsert['type'] = 'State'; // hard code for first iteration
+    $values = array(
+      'type' => 'emailee',
+      'uid' => 1
+    );
 
-    // simple fields that can be passed straight through
-    foreach (['electorate', 'party'] as $field) {
-      $mpInsert[$field] = $mp[$GLOBALS['mpsCvsFields'][$field]];
-    }
+    $entity = entity_create('node', $values);
+    $ewrapper = entity_metadata_wrapper('node', $entity);
+
+    $ewrapper->field_electorate_type->set('State'); // hard code for first iteration
+    $ewrapper->field_electorate->set($mp[$GLOBALS['mpsCvsFields']['electorate']]);
+    $ewrapper->field_party->set($mp[$GLOBALS['mpsCvsFields']['party']]);
 
     // parse name, title etc from member details
     $member = $mp[$GLOBALS['mpsCvsFields']['member']];
@@ -95,9 +96,16 @@ function alq_mps_insert($mps) {
 
     $rawValues = explode("\n", $member);
 
-    $mpInsert['name'] = array_shift($rawValues);
-    $mpInsert['position'] = count($rawValues) > 0 ? implode("\n", $rawValues) : NULL;
-    $mpInsert['title'] = $title;
+    $ewrapper->title->set(array_shift($rawValues));  // use nodes title field for name, we also have field_title later
+    $ewrapper->field_position->set(count($rawValues) > 0 ? implode("\n", $rawValues) : NULL);;
+    $ewrapper->field_title->set($title);
+
+    // save our new MP
+    $ewrapper->save();
+
+    $nid = $ewrapper->getIdentifier();
+
+    $node = node_load($nid);
 
     // parse all the address details into a useful form
     $address = $mp[$GLOBALS['mpsCvsFields']['address']];
@@ -105,21 +113,42 @@ function alq_mps_insert($mps) {
 
     $officeDetails = alq_mps_parse_office_details($GLOBALS['officeFields'], $address, $phone);
 
+    // Load the controller class file.
+    module_load_include('inc', 'entity', 'includes/entity.controller');
+
     foreach ($officeDetails as $office) {
-      $office['electorate'] = $mpInsert['electorate'];
-      $officeQuery->values($office);
+      // Setup the values in the structure expected by the field_collection entity.
+      $values = array(
+        'field_name' => 'field_office',
+        'field_description' => array(
+          LANGUAGE_NONE => array(array('value' => $office['type'])),
+        ),
+        'field_address' => array(
+          LANGUAGE_NONE => array(array('value' => $office['address'])),
+        ),
+        'field_postcode' => array(
+          LANGUAGE_NONE => array(array('value' => $office['postcode'])),
+        ),
+        'field_email' => array(
+          LANGUAGE_NONE => array(array('value' => $office['email'])),
+        ),
+        'field_phone' => array(
+          LANGUAGE_NONE => array(array('value' => $office['phone'])),
+        ),
+        'field_toll_free_phone' => array(
+          LANGUAGE_NONE => array(array('value' => $office['toll_free_phone'])),
+        ),
+        'field_fax' => array(
+          LANGUAGE_NONE => array(array('value' => $office['fax'])),
+        ),
+      );
+      $entity = entity_create('field_collection_item', $values);
+
+      $entity->setHostEntity('node', $node);
+
+      $entity->save();
     }
-
-    $mpInsert['created'] = time();
-    $query->values($mpInsert);
-  }
-
-  if (!$query->execute()) {
-    die('Unable to insert mps - ' . var_dump($mps, TRUE));
-  }
-
-  if (!$officeQuery->execute()) {
-    die('Unable to insert offices');
+    break;
   }
 }
 

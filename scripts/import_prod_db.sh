@@ -80,6 +80,12 @@ if [ -z $DB_FILE ]
     DB_FILE=$DEFAULT_DB_FILE
 fi
 
+# drop and recreate database so that any rubbish hanging around, extra tables etc, is removed
+echo "Dropping database ${DB_NAME}";
+echo "DROP DATABASE IF EXISTS ${DB_NAME}" | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD
+echo "Recreating database ${DB_NAME}";
+echo "CREATE DATABASE ${DB_NAME}" | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD
+echo "Importing database";
 gunzip -c $DB_FILE | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD $DB_NAME
 
 if [ $? -ne 0 ]
@@ -107,10 +113,13 @@ drush vset preprocess_js 0
 drush vset error_level 2
 
 # Now anonymise the users
+echo "Anonymising user emails";
 drush sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
 
 chmod 755 ./scripts/password-hash.sh
 DB_PASSWD_HASH=$(./scripts/password-hash.sh "${DB_PASSWD}" | awk '{print $4;}' | perl -p -e 's/\s*//')
+echo "Anonymising user passwords, setting to admin password";
 drush sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
 
+echo "Clearing cache"
 drush cc all

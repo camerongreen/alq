@@ -13,18 +13,14 @@ function alq_mps_feature_user_default_permissions() {
   // Exported permission: access email campaigns.
   $permissions['access email campaigns'] = array(
     'name' => 'access email campaigns',
-    'roles' => array(
-      0 => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'alq_mps',
   );
 
   // Exported permission: administer email campaigns.
   $permissions['administer email campaigns'] = array(
     'name' => 'administer email campaigns',
-    'roles' => array(
-      0 => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'alq_mps',
   );
 

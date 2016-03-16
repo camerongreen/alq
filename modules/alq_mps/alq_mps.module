@@ -6,8 +6,6 @@
 
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 
-define('ALQ_MPS_TABLE', 'alq_mps');
-define('ALQ_ELECTORAL_OFFICES_TABLE', 'alq_electoral_offices');
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 
@@ -57,19 +55,6 @@ function alq_mps_menu() {
     'access callback' => 'user_access',
     'access arguments' => ['access email campaigns'],
   ];
-  $items['admin/content/alq-mps'] = [
-    'title' => 'Members of Parliament',
-    'page callback' => 'alq_mps_admin',
-    'access callback' => 'user_access',
-    'access arguments' => ['administer email campaigns'],
-    'type' => MENU_NORMAL_ITEM,
-  ];
-  $items['admin/alq-mps/edit'] = [
-    'page callback' => 'drupal_get_form',
-    'page arguments' => ['alq_mps_edit_form'],
-    'access callback' => 'user_access',
-    'access arguments' => ['administer email campaigns'],
-  ];
   return $items;
 }
 
@@ -87,6 +72,8 @@ function alq_mps_permission() {
     ],
   ];
 }
+
+
 
 /**
  * Menu callback for mps search
@@ -147,316 +134,11 @@ function alq_mps_details($id) {
 }
 
 /**
- * Menu callback for adminstering mps
- */
-function alq_mps_admin() {
-  // get the mps
-  $query = db_select(ALQ_MPS_TABLE, 'mps');
-  $num_rows = $query->countQuery()->execute()->fetchField();
-  $num_per_page = 20;
-  $page = pager_default_initialize($num_rows, $num_per_page);
-  $offset = $num_per_page * $page;
-
-  $query->fields('mps');
-  $query->orderBy('mps.name', 'ASC');
-  $query->range($offset, $num_per_page);
-  $result = $query->execute();
-
-  // output them in a paged table
-  $rows = [];
-
-  foreach ($result as $mp) {
-    $rows[] = [
-      l($mp->id, '/admin/alq-mps/edit/' . urlencode($mp->id)),
-      $mp->name,
-      $mp->party,
-      $mp->electorate
-    ];
-  }
-
-  $output = theme('table', [
-    'header' => ['ID', 'Name', 'Party', 'Electorate'],
-    'rows' => $rows
-  ]);
-
-  $output .= theme('pager');
-
-  return $output;
-}
-
-/**
  * Menu callback for editing an individual mp
  */
 function alq_mps_get($id) {
-  // get the mp
-  $query = db_select(ALQ_MPS_TABLE, 'mps');
-  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
-  $query->fields('mps');
-  $query->condition('mps.id', $id);
-  $result = $query->execute();
-  $mp = $result->fetch();
-
-  // get their office/s
-  $query = db_select(ALQ_ELECTORAL_OFFICES_TABLE, 'off');
-  $query->fields('off');
-  $query->condition('off.electorate', $mp->electorate);
-  $result = $query->execute();
-  $mp->offices = $result->fetchAll();
-
+  $mp = node_load($id);
   return $mp;
-}
-
-/**
- * Returns the render array for the form.
- */
-function alq_mps_edit_form($form, &$form_state, $id) {
-  if (array_key_exists('clicked_button', $form_state) && ($form_state['clicked_button']['#value'] === 'Cancel')) {
-    drupal_goto('/admin/content/alq-mps');
-  }
-
-  $mp = alq_mps_get($id);
-
-  $form['id'] = [
-    '#type' => 'hidden',
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->id : NULL,
-  ];
-
-  $form['name'] = [
-    '#type' => 'fieldset',
-    '#title' => t('Personal details'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#tree' => TRUE,
-  ];
-  $form['name']['title'] = [
-    '#type' => 'textfield',
-    '#title' => t('Title'),
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->title : NULL,
-  ];
-  $form['name']['name'] = [
-    '#type' => 'textfield',
-    '#title' => t('Full name'),
-    '#description' => 'Full name string',
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->name : NULL,
-  ];
-  $form['name']['given_names'] = [
-    '#type' => 'textfield',
-    '#title' => t('First name'),
-    '#default_value' => $mp ? $mp->given_names : NULL,
-  ];
-  $form['name']['family_name'] = [
-    '#type' => 'textfield',
-    '#title' => t('Family name'),
-    '#default_value' => $mp ? $mp->family_name : NULL,
-  ];
-  $form['name']['preferred_name'] = [
-    '#type' => 'textfield',
-    '#title' => t('Preferred/Nick name'),
-    '#default_value' => $mp ? $mp->preferred_name : NULL,
-  ];
-  $form['name']['qualifications'] = [
-    '#type' => 'textfield',
-    '#title' => t('Qualifications'),
-    '#description' => 'Degrees, certifications etc',
-    '#default_value' => $mp ? $mp->qualifications : NULL,
-  ];
-
-  $form['details'] = [
-    '#type' => 'fieldset',
-    '#title' => t('Political details'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-    '#tree' => TRUE,
-  ];
-  $form['details']['position'] = [
-    '#type' => 'textarea',
-    '#title' => t('Position'),
-    '#description' => 'Minister of, whip etc.',
-    '#default_value' => $mp ? $mp->position : NULL,
-  ];
-  $form['details']['party'] = [
-    '#type' => 'textfield',
-    '#title' => t('Party'),
-    '#description' => 'ALP, LNP, GRN, IND.',
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->party : NULL,
-  ];
-  $form['details']['electorate'] = [
-    '#type' => 'textfield',
-    '#title' => t('Electorate'),
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->electorate : NULL,
-  ];
-  $form['details']['type'] = [
-    '#type' => 'textfield',
-    '#title' => t('Type'),
-    '#description' => 'State, Federal, Council etc.',
-    '#required' => TRUE,
-    '#default_value' => $mp ? $mp->type : NULL,
-  ];
-
-  $form['offices'] = [
-    '#type' => 'fieldset',
-    '#title' => t('Offices'),
-    '#collapsible' => TRUE,
-    '#tree' => TRUE,
-    '#collapsed' => FALSE,
-  ];
-
-  foreach ($mp->offices as $key => $office) {
-    $form['offices'][$key] = [
-      '#type' => 'fieldset',
-      '#collapsible' => TRUE,
-      '#tree' => TRUE,
-      '#collapsed' => FALSE,
-    ];
-    $form['offices'][$key]['id'] = [
-      '#type' => 'hidden',
-      '#required' => TRUE,
-      '#default_value' => $office->id,
-    ];
-    $form['offices'][$key]['type'] = [
-      '#type' => 'textfield',
-      '#title' => t('Type'),
-      '#default_value' => $office->type,
-    ];
-    $form['offices'][$key]['email'] = [
-      '#type' => 'textfield',
-      '#title' => t('Email'),
-      '#required' => TRUE,
-      '#default_value' => $office->email,
-    ];
-    $form['offices'][$key]['state'] = [
-      '#type' => 'textfield',
-      '#title' => t('State'),
-      '#required' => TRUE,
-      '#default_value' => $office->state,
-    ];
-    $form['offices'][$key]['address'] = [
-      '#type' => 'textarea',
-      '#title' => t('Address'),
-      '#required' => TRUE,
-      '#default_value' => $office->address,
-    ];
-    $form['offices'][$key]['postcode'] = [
-      '#type' => 'textfield',
-      '#title' => t('Postcode'),
-      '#default_value' => $office->postcode,
-    ];
-    $form['offices'][$key]['phone'] = [
-      '#type' => 'textfield',
-      '#title' => t('Phone'),
-      '#default_value' => $office->phone,
-    ];
-    $form['offices'][$key]['toll_free_phone'] = [
-      '#type' => 'textfield',
-      '#title' => t('Toll Free Phone'),
-      '#default_value' => $office->toll_free_phone,
-    ];
-    $form['offices'][$key]['fax'] = [
-      '#type' => 'textfield',
-      '#title' => t('Fax'),
-      '#default_value' => $office->fax,
-    ];
-  }
-
-  $form['comments'] = [
-    '#type' => 'textarea',
-    '#title' => t('Comments'),
-    '#default_value' => $mp->comments,
-  ];
-
-  $form['submit'] = [
-    '#type' => 'submit',
-    '#value' => t('Submit'),
-  ];
-
-  $form['cancel'] = [
-    '#type' => 'button',
-    '#value' => t('Cancel'),
-  ];
-
-  return $form;
-}
-
-/**
- * Validates the form.
- */
-function alq_mps_edit_form_validate($form, &$form_state) {
-}
-
-/**
- * Add a submit handler/function to the form.
- *
- * This will add a completion message to the screen when the
- * form successfully processes
- */
-function alq_mps_edit_form_submit($form, &$form_state) {
-  $mp = $form_state['values'];
-  $id = $mp['id'];
-
-  $mpUpdate = $GLOBALS['mpsFields'];
-
-  // remove any fields we won't change
-  foreach (['id', 'created'] as $field) {
-    unset($mpUpdate[$field]);
-  }
-
-  $query = db_update(ALQ_MPS_TABLE);
-  $query->condition('id', $id, '=');
-
-  $mpUpdate['changed'] = time();
-  foreach (['comments'] as $rootVal) {
-    $mpUpdate[$rootVal] = $mp[$rootVal];
-  }
-
-  foreach (['details', 'name'] as $fieldset) {
-    foreach ($mp[$fieldset] as $key => $value) {
-      $mpUpdate[$key] = $value;
-    }
-  }
-
-  $query->fields($mpUpdate);
-
-  if ($query->execute() === 1) {
-    drupal_set_message(t('The MP has been updated.'));
-
-    foreach ($mp['offices'] as $office) {
-      $officeQuery = db_update(ALQ_ELECTORAL_OFFICES_TABLE);
-
-      $officeUpdate = $GLOBALS['officeFields'];
-
-      // remove fields we don't want to update automatically
-      foreach (['id', 'created', 'changed', 'electorate'] as $field) {
-        unset($officeUpdate[$field]);
-      }
-
-      foreach ($officeUpdate as $field => $value) {
-        $officeUpdate[$field] = $office[$field];
-      }
-
-      $id = $office['id'];
-      $officeUpdate['changed'] = time();
-      // take this from the outer mp
-      $officeUpdate['electorate'] = $mpUpdate['electorate'];
-
-      $officeQuery->fields($officeUpdate);
-      $officeQuery->condition('id', $id, '=');
-
-      if ($officeQuery->execute() === 1) {
-        drupal_set_message(t('The MPs office has been updated.'));
-      }
-      else {
-        drupal_set_message('Unable to update office ' . var_dump($officeUpdate, TRUE), 'error');
-      }
-    }
-  }
-  else {
-    drupal_set_message('Unable to update MP' . var_dump($mpUpdate, TRUE), 'error');
-  }
 }
 
 function alq_mps_show_email_campaign($node) {
@@ -510,7 +192,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#type' => 'textarea',
     '#title' => t('Email text'),
     '#required' => TRUE,
-    '#default_value' => $cnode->body['und'][0]["value"],
+    '#default_value' => $cnode->body[LANGUAGE_NONE][0]["value"],
   ];
   $form['name'] = [
     '#type' => 'textfield',

@@ -186,6 +186,8 @@ alq_content_types_feature \
 alq_editor_role_feature \
 alq_help \
 alq_menus_feature \
+alq_mps \
+alq_mps_feature \
 alq_news_feature \
 alq_section_home_blocks \
 alq_slideshow_feature \

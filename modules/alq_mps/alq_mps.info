@@ -3,4 +3,4 @@ description = Module to enable storing, listing, administering and emailing memb
 core = 7.x
 package = ALQ
 version = 7.x-1.0
-dependencies[] = field_collection
+dependencies[] = alq_mps_feature
