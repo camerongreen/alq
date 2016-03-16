@@ -142,6 +142,7 @@ function alq_mps_insert($mps) {
           LANGUAGE_NONE => array(array('value' => $office['fax'])),
         ),
       );
+
       $entity = entity_create('field_collection_item', $values);
 
       $entity->setHostEntity('node', $node);
