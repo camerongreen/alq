@@ -59,8 +59,48 @@ function alq_mps_menu() {
 }
 
 
+/**
+ * Implements hook_permission().
+ */
+function alq_mps_permission() {
+  return [
+    'administer email campaigns' => [
+      'title' => t('Administer the email campaigns'),
+    ],
+    'access email campaigns' => [
+      'title' => t('Access email campaigns'),
+    ],
+  ];
+}
 
 
+/**
+ * Implements hook_enable()
+ */
+function alq_mps_enable() {
+  alq_mps_insert_electorates();
+  $mps = alq_mps_get_raw();
+  alq_mps_insert($mps);
+}
+
+
+function alq_mps_clean() {
+  $type = 'emailee';
+  // delete nodes
+  $results = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', $type)
+    ->execute();
+  foreach ($results as $result) {
+    $nids[] = $result->nid;
+  }
+  if (!empty($nids)) {
+    node_delete_multiple($nids);
+    drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+  }
+
+  drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
+}
 
 /**
  * Menu callback for mps search

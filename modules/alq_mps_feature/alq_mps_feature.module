@@ -6,17 +6,3 @@
  */
 
 include_once 'alq_mps_feature.features.inc';
-
-/**
- * Implements hook_permission().
- */
-function alq_mps_features_permission() {
-  return [
-    'administer email campaigns' => [
-      'title' => t('Administer the email campaigns'),
-    ],
-    'access email campaigns' => [
-      'title' => t('Access email campaigns'),
-    ],
-  ];
-}
