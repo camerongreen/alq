@@ -372,16 +372,14 @@ function alq_mps_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-email_campaign-body'.
-  $fields['node-email_campaign-body'] = array(
+  // Exported field: 'node-email_campaign-field_body'.
+  $fields['node-email_campaign-field_body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
+      'entity_types' => array(),
+      'field_name' => 'field_body',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -399,48 +397,53 @@ function alq_mps_feature_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_with_summary',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'email_campaign',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'Dear [emailee.name],
+
+... ',
+        ),
+      ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Add the email to the emailee here.   The following tokens are available to use:
+[emailee.name] 
+[emailee.email]
+',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => 7,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_body',
+      'label' => 'Email Body',
+      'required' => 1,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
+          'rows' => '10',
         ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '41',
+        'type' => 'text_textarea',
+        'weight' => '1',
       ),
     ),
   );
@@ -502,7 +505,7 @@ function alq_mps_feature_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '45',
+        'weight' => '6',
       ),
     ),
   );
@@ -536,7 +539,11 @@ function alq_mps_feature_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'email_campaign',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'state',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -566,7 +573,7 @@ function alq_mps_feature_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '47',
+        'weight' => '7',
       ),
     ),
   );
@@ -650,7 +657,7 @@ function alq_mps_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '42',
+        'weight' => '5',
       ),
     ),
   );
@@ -723,7 +730,7 @@ function alq_mps_feature_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '49',
+        'weight' => '8',
       ),
     ),
   );
@@ -1562,14 +1569,18 @@ function alq_mps_feature_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('ALP, LNP, LIB, GRN etc');
+  t('Add the email to the emailee here.   The following tokens are available to use:
+[emailee.name] 
+[emailee.email]
+');
   t('Address');
-  t('Body');
   t('Comments');
   t('Default member id');
   t('Dr, Miss, etc');
   t('Electorate');
   t('Electorate Type');
   t('Email');
+  t('Email Body');
   t('Family Name');
   t('Fax');
   t('Given Names');
