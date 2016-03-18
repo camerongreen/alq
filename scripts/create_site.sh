@@ -188,6 +188,7 @@ alq_help \
 alq_menus_feature \
 alq_mps \
 alq_mps_feature \
+alq_mps_perms_feature \
 alq_news_feature \
 alq_section_home_blocks \
 alq_slideshow_feature \

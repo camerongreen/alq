@@ -118,30 +118,30 @@ function alq_mps_insert($mps) {
 
     foreach ($officeDetails as $office) {
       // Setup the values in the structure expected by the field_collection entity.
-      $values = array(
+      $values = [
         'field_name' => 'field_office',
-        'field_description' => array(
-          LANGUAGE_NONE => array(array('value' => $office['type'])),
-        ),
-        'field_address' => array(
-          LANGUAGE_NONE => array(array('value' => $office['address'])),
-        ),
-        'field_postcode' => array(
-          LANGUAGE_NONE => array(array('value' => $office['postcode'])),
-        ),
-        'field_email' => array(
-          LANGUAGE_NONE => array(array('value' => $office['email'])),
-        ),
-        'field_phone' => array(
-          LANGUAGE_NONE => array(array('value' => $office['phone'])),
-        ),
-        'field_toll_free_phone' => array(
-          LANGUAGE_NONE => array(array('value' => $office['toll_free_phone'])),
-        ),
-        'field_fax' => array(
-          LANGUAGE_NONE => array(array('value' => $office['fax'])),
-        ),
-      );
+        'field_description' => [
+          LANGUAGE_NONE => [['value' => $office['type']]],
+        ],
+        'field_address' => [
+          LANGUAGE_NONE => [['value' => $office['address']]],
+        ],
+        'field_postcode' => [
+          LANGUAGE_NONE => [['value' => $office['postcode']]],
+        ],
+        'field_email' => [
+          LANGUAGE_NONE => [['value' => $office['email']]],
+        ],
+        'field_phone' => [
+          LANGUAGE_NONE => [['value' => $office['phone']]],
+        ],
+        'field_toll_free_phone' => [
+          LANGUAGE_NONE => [['value' => $office['toll_free_phone']]],
+        ],
+        'field_fax' => [
+          LANGUAGE_NONE => [['value' => $office['fax']]],
+        ],
+      ];
 
       $entity = entity_create('field_collection_item', $values);
 
@@ -149,7 +149,6 @@ function alq_mps_insert($mps) {
 
       $entity->save();
     }
-    break;
   }
 }
 
