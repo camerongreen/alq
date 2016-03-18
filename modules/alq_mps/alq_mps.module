@@ -183,9 +183,9 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
   $form['body'] = [
     '#type' => 'textarea',
-    '#title' => t('Email text'),
+    '#title' => t('Email body'),
     '#required' => TRUE,
-    '#default_value' => $cnode->body[LANGUAGE_NONE][0]["value"],
+    '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
   ];
   $form['name'] = [
     '#type' => 'textfield',
