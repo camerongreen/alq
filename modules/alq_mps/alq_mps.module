@@ -58,49 +58,48 @@ function alq_mps_menu() {
   return $items;
 }
 
-
-/**
- * Implements hook_enable()
- */
-function alq_mps_enable() {
-  alq_mps_insert_electorates();
-  $mps = alq_mps_get_raw();
-  alq_mps_insert($mps);
-}
-
 /**
  * Menu callback for mps search
  */
 function alq_mps_search($search) {
   if (strlen($search) > 2) {
-    $query = db_select(ALQ_MPS_TABLE, 'mps');
-    $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
-    $query->join(ALQ_ELECTORATES_TABLE, 'ele', 'mps.electorate = ele.state_district');
+    // first we get a listing of electorates which map
+    // to the postcode or suburb
+    $query = db_select(ALQ_ELECTORATES_TABLE, 'ele');
     $query->condition(
       db_or()
         ->condition('ele.locality', '%' . db_like($search) . '%', 'LIKE')
         ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
     )
-      ->fields('mps', [
-        'id',
-        'name',
-        'party',
-        'position',
-        'title',
-        'electorate',
-      ])
       ->fields('ele', [
-        'locality',
-        'postcode'
+        'state_district',
+        'postcode',
+        'locality'
       ]);
     $query->orderBy('ele.locality', 'ASC');
-    $query->orderBy('ele.postcode', 'ASC');
-    $query->groupBy('mps.id');
     $query->groupBy('ele.id');
 
-    $result = $query->execute();
+    $results = $query->execute();
 
-    drupal_json_output($result->fetchAll());
+    $electorates = [];
+
+    foreach ($results as $result) {
+      $electorates[] = $result->state_district;
+    }
+
+    // then we use that to load the members
+    $fieldQuery = new EntityFieldQuery;
+
+    $fieldResult = $fieldQuery
+      ->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'emailee')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_electorate', 'value', $electorates)
+      ->execute();
+
+    $nodes = entity_load('node', array_keys($fieldResult['node']));
+
+    drupal_json_output($nodes);
   }
   else {
     drupal_json_output([]);
@@ -136,6 +135,9 @@ function alq_mps_get($id) {
 
 function alq_mps_show_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
+    drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
+    drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
+    drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
     $cnode = node_load($cid);
     $form = drupal_get_form('alq_mps_email_form', $cnode);
     return drupal_render($form);
@@ -165,6 +167,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
 
   $form['search'] = [
+    '#title' => 'Search for your MP',
     '#type' => 'fieldset',
     '#collapsible' => FALSE
   ];
@@ -172,7 +175,9 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#type' => 'textfield',
     '#title' => t('Suburb or Post Code'),
     '#required' => TRUE,
-    '#autocomplete_path' => 'alq-mps'
+    '#attributes' => [
+      'autocomplete' => 'off'
+    ]
   ];
 
   $form['subject'] = [
