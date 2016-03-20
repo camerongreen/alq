@@ -66,63 +66,47 @@ function alq_mps_search($search) {
     // first we get a listing of electorates which map
     // to the postcode or suburb
     $query = db_select(ALQ_ELECTORATES_TABLE, 'ele');
+    $query->join('field_data_field_electorate', 'fel', 'ele.state_district = fel.field_electorate_value');
+    $query->join('node', 'n', 'n.nid = fel.entity_id');
     $query->condition(
       db_or()
         ->condition('ele.locality', '%' . db_like($search) . '%', 'LIKE')
         ->condition('ele.postcode', db_like($search) . '%', 'LIKE')
-    )
+    );
+    $query->condition('fel.entity_type', 'node', '=')
+      ->fields('n', [
+        'title',
+        'nid'
+      ])
       ->fields('ele', [
+        'locality',
         'state_district',
-        'postcode',
-        'locality'
-      ]);
+        'postcode'
+      ])
+    ;
+
     $query->orderBy('ele.locality', 'ASC');
-    $query->groupBy('ele.id');
+    $query->groupBy('ele.locality');
+    $query->groupBy('ele.postcode');
+    $query->groupBy('n.nid');
 
-    $results = $query->execute();
+    $results = $query->execute()->fetchAll();
 
-    $electorates = [];
-
-    foreach ($results as $result) {
-      $electorates[] = $result->state_district;
-    }
-
-    // then we use that to load the members
-    $fieldQuery = new EntityFieldQuery;
-
-    $fieldResult = $fieldQuery
-      ->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'emailee')
-      ->propertyCondition('status', 1)
-      ->fieldCondition('field_electorate', 'value', $electorates)
-      ->execute();
-
-    $nodes = entity_load('node', array_keys($fieldResult['node']));
-
-    drupal_json_output($nodes);
+    return drupal_json_output($results);
   }
-  else {
-    drupal_json_output([]);
-  }
+
+  drupal_json_output([]);
 }
 
 /**
  * Menu callback for mps details
  */
-function alq_mps_details($id) {
-  $query = db_select(ALQ_MPS_TABLE, 'mps');
-  $query->join(ALQ_ELECTORAL_OFFICES_TABLE, 'off', 'mps.electorate = off.electorate');
-  $query->condition(
-    db_or()
-      ->condition('mps.id', $id, '=')
-  )
-    ->fields('mps')
-    ->fields('off');
-  $query->orderBy('off.address', 'ASC');
+function alq_mps_details($nids) {
+  $nodes = node_load_multiple($nids);
+  drupal_json_output($nodes);
+}
 
-  $result = $query->execute();
-
-  return drupal_json_output($result->fetch());
+/**
 }
 
 /**
