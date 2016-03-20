@@ -64,6 +64,8 @@
       minLength: 3,
       select: function (event, ui) {
         event.preventDefault();
+        var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
+        $('#edit-suburb').val(ac);
         var results = getEmailees(ui.item.value.locality, ui.item.value.postcode, cache);
         console.log(results);
       },
