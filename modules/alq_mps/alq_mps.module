@@ -164,6 +164,31 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     ]
   ];
 
+  $form['emailee'] = [
+    '#title' => 'Your MP',
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE
+  ];
+  $form['emailee']['emailee_name'] = array(
+    '#title' => 'Member',
+    '#type' => 'textfield',
+    '#attributes' => array('readonly' => 'readonly'),
+    '#required' => TRUE,
+  );
+
+  $form['emailee']['emailee_electorate'] = array(
+    '#title' => 'Electorate',
+    '#type' => 'textfield',
+    '#attributes' => array('readonly' => 'readonly'),
+    '#required' => TRUE,
+  );
+
+  $form['emailee']['nid'] = array(
+    '#type' => 'hidden',
+    '#required' => TRUE,
+    '#attributes' => array('id' => 'edit-emailee'),
+  );
+
   $form['subject'] = [
     '#type' => 'textfield',
     '#title' => t('Subject'),

@@ -5,12 +5,22 @@
   $(document).ready(function () {
     var cache = [];
 
+    function showEmailees(emailees) {
+      var emailee = emailees.shift();
+
+      $('#edit-emailee-name').val(emailee.title);
+      $('#edit-emailee-electorate').val(emailee.state_district);
+      $('#edit-emailees').val(emailee.nid);
+
+      // if there is more than one email, we need to copy the above and add checkboxes for them to choose who to email
+    }
+
     function inCache(data) {
       var stringData = JSON.stringify(data);
       for (var i = 0, l = cache.length; i < l; i++) {
-         if (stringData === JSON.stringify(cache[i])) {
-           return true;
-         }
+        if (stringData === JSON.stringify(cache[i])) {
+          return true;
+        }
       }
       return false;
     }
@@ -67,7 +77,7 @@
         var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
         $('#edit-suburb').val(ac);
         var results = getEmailees(ui.item.value.locality, ui.item.value.postcode, cache);
-        console.log(results);
+        showEmailees(results);
       },
       focus: function (event, ui) {
         event.preventDefault();
