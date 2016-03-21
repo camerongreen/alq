@@ -34,7 +34,7 @@
     <label for="title" class="col-sm-3">Title</label>
 
     <div class="col-sm-9">
-      <select name="title">
+      <select name="title" class="form-control">
         <option value="">-- Select --</option>
         <option>Ms</option>
         <option>Mrs</option>
