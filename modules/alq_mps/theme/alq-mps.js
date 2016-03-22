@@ -30,7 +30,7 @@
       var seen = []; // only want each suburb to appear once
 
       for (var i = 0, l = data.length; i < l; i++) {
-        var ac = data[i].locality + ' - ' + data[i].postcode;
+        var ac = data[i].locality + ' - ' + data[i].postcode + ' (' + data[i].state_district + ')';
 
         if (!inCache(data[i])) {
           cache.push(data[i]);
@@ -48,13 +48,13 @@
       return returnVal;
     }
 
-    function getEmailees(locality, postcode, data) {
+    function getEmailees(state_district, data) {
       var returnVal = [];
       var nids = [];
 
       for (var i = 0, l = data.length; i < l; i++) {
         var place = data[i];
-        if ((place.postcode === postcode) && (place.locality === locality) && (nids.indexOf(place.nid) === -1)) {
+        if ((place.state_district === state_district) && (nids.indexOf(place.nid) === -1)) {
           returnVal.push(place);
           nids.push(place.nid);
         }
@@ -76,7 +76,7 @@
         event.preventDefault();
         var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
         $('#edit-suburb').val(ac);
-        var results = getEmailees(ui.item.value.locality, ui.item.value.postcode, cache);
+        var results = getEmailees(ui.item.value.state_district, cache);
         showEmailees(results);
       },
       focus: function (event, ui) {

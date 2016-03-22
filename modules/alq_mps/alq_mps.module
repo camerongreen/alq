@@ -164,6 +164,11 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     ]
   ];
 
+  $form['search']['helper'] = [
+    '#type' => 'markup',
+    '#markup' => 'If more than one electorate is listed for your suburb, click here to <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new" target="_blank"> find you electorate</a>.'
+  ];
+
   $form['emailee'] = [
     '#title' => 'Your MP',
     '#type' => 'fieldset',
@@ -173,7 +178,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#title' => 'Member',
     '#type' => 'textfield',
     '#attributes' => array('readonly' => 'readonly'),
-    '#required' => TRUE,
+    '#required' => TRUE
   );
 
   $form['emailee']['emailee_electorate'] = array(
