@@ -12,6 +12,8 @@
 # add drupal to it, symlink your custom modules, themes etc
 #
 
+set -x
+
 SITE_NAME="Animal Liberation Queensland"
 
 GIT_DIR=/var/www/alq
@@ -78,7 +80,9 @@ if [ -z ${DB_NAME} ]
     DB_NAME=${DEFAULT_DB_NAME}
 fi
 
+set +x
 echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
+set -x
 
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
 
@@ -106,9 +110,12 @@ ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
 echo "Site install commencing"
 
+set +x
 drush -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
 
 command_status "Error installing site" "Site install completed";
+set -x
+
 
 # Need to sort this out in docker container
 #chgrp -R ${WEBSERVER_GROUP} sites/default/files
@@ -117,58 +124,58 @@ chmod ug+w sites/default/files
 
 drush -y pm-disable toolbar
 drush -y pm-enable \
-addtoany \
-admin \
-admin_menu \
-admin_menu \
-advanced_help \
-captcha \
-ckeditor \
-ckeditor_link \
-colorbox \
-context \
-ctools \
-date \
-devel \
-diff \
-email \
-entity \
-facebook_boxes \
-features \
-features_diff \
-field_collection \
-filefield_sources \
-imageapi \
-imce \
-imce_wysiwyg \
-jquery_plugin \
-jquery_update \
-libraries \
-metatag \
-module_filter \
-nice_menus \
-node_reference \
-omega_tools \
-pathauto \
-references \
-responsive_menus \
-rules \
-site_map \
-stage_file_proxy \
-strongarm \
-token \
-token_filter \
-uc_ajax_admin \
-uc_attribute \
-uc_catalog \
-uc_coupon \
-uc_flatrate \
-uc_paypal \
-views \
-views_slideshow \
-webform \
-workbench \
-xmlsitemap
+  addtoany \
+  admin \
+  admin_menu \
+  admin_menu \
+  advanced_help \
+  captcha \
+  ckeditor \
+  ckeditor_link \
+  colorbox \
+  context \
+  ctools \
+  date \
+  devel \
+  diff \
+  email \
+  entity \
+  facebook_boxes \
+  features \
+  features_diff \
+  field_collection \
+  filefield_sources \
+  imageapi \
+  imce \
+  imce_wysiwyg \
+  jquery_plugin \
+  jquery_update \
+  libraries \
+  metatag \
+  module_filter \
+  nice_menus \
+  node_reference \
+  omega_tools \
+  pathauto \
+  references \
+  responsive_menus \
+  rules \
+  site_map \
+  stage_file_proxy \
+  strongarm \
+  token \
+  token_filter \
+  uc_ajax_admin \
+  uc_attribute \
+  uc_catalog \
+  uc_coupon \
+  uc_flatrate \
+  uc_paypal \
+  views \
+  views_slideshow \
+  webform \
+  workbench \
+  xmlsitemap
 
 # not enabled prod modules
 # googleanalytics
@@ -181,19 +188,20 @@ drush -y pm-update
 
 # enable alq modules and features
 drush -y pm-enable \
-alq \
-alq_content_types_feature \
-alq_editor_role_feature \
-alq_help \
-alq_menus_feature \
-alq_mps \
-alq_mps_feature \
-alq_mps_perms_feature \
-alq_news_feature \
-alq_section_home_blocks \
-alq_slideshow_feature \
-alq_webforms_feature
+  alq \
+  alq_content_types_feature \
+  alq_editor_role_feature \
+  alq_help \
+  alq_menus_feature \
+  alq_mps_feature \
+  alq_news_feature \
+  alq_section_home_blocks \
+  alq_slideshow_feature \
+  alq_webforms_feature
 
+# has to be done seperately
+drush -y pm-enable \
+  alq_mps
 # enable theme
 drush vset theme_default alq
 
