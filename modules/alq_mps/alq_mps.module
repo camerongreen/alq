@@ -7,6 +7,7 @@
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+define('ALQ_EMAILS_TABLE', 'alq_emails');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 
 $GLOBALS['mpsFields'] = [
@@ -100,6 +101,8 @@ function alq_mps_search($search) {
 
 /**
  * Menu callback for mps details
+ *
+ * @param array $nids
  */
 function alq_mps_details($nids) {
   $nodes = node_load_multiple($nids);
@@ -126,6 +129,7 @@ function alq_mps_show_email_campaign($node) {
     $form = drupal_get_form('alq_mps_email_form', $cnode);
     return drupal_render($form);
   }
+  return '';
 }
 
 function alq_mps_has_email_campaign($nid) {
@@ -144,7 +148,7 @@ function alq_mps_has_email_campaign($nid) {
 }
 
 function alq_mps_email_form($form, &$form_state, $cnode) {
-  $form['id'] = [
+  $form['campaign_id'] = [
     '#type' => 'hidden',
     '#required' => TRUE,
     '#default_value' => $cnode->nid,
@@ -219,7 +223,6 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   $form['spam'] = [
     '#type' => 'checkbox',
     '#title' => t('Would you like to join the Animal Liberation Qld email list'),
-    '#required' => TRUE
   ];
   $form['submit'] = [
     '#type' => 'submit',
@@ -227,4 +230,48 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
 
   return $form;
+}
+
+
+function hasHtml($value) {
+  return strip_tags($value) !== $value;
+}
+
+function alq_mps_email_form_validate($form, &$form_state) {
+  $values = $form_state['values'];
+
+  $checkHtml = [
+    'body',
+    'subject',
+    'email',
+    'name'
+  ];
+
+  foreach ($checkHtml as $field) {
+    if (hasHtml($values[$field])) {
+      form_set_error($field, t('Invalid value, please remove links etc.'));
+    }
+  }
+}
+
+function alq_mps_email_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
+  $insert = [
+    'id' => null,
+    'campaign_id' => $values['campaign_id'],
+    'to' => $values['nid'],
+    'body' => $values['body'],
+    'subject' => $values['subject'],
+    'from_email' => $values['email'],
+    'from_name' => $values['name'],
+    'spam' => $values['wants_spam'],
+    'created' => time()
+  ];
+
+  if (drupal_write_record(ALQ_EMAILS_TABLE, $insert)) {
+    drupal_set_message('Successfully created email, it will be sent shortly');
+  } else {
+    drupal_set_message('Error sending email, please use our Contact form to let us know what went wrong', 'error');
+  }
 }

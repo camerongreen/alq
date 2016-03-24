@@ -11,6 +11,10 @@ if (!defined('ALQ_ELECTORATES_TABLE')) {
   define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 }
 
+if (!defined('ALQ_EMAILS_TABLE')) {
+  define('ALQ_EMAILS_TABLE', 'alq_emails');
+}
+
 /**
  * Implements hook_install()
  */
@@ -37,7 +41,7 @@ function alq_mps_uninstall() {
 
   if (!empty($nids)) {
     node_delete_multiple($nids);
-    drupal_set_message(t('%count nodes has been deleted.', array('%count' => count($nids))));
+    drupal_set_message(t('%count nodes have been deleted.', array('%count' => count($nids))));
   }
 
   drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
@@ -110,5 +114,75 @@ function alq_mps_schema() {
     'primary key' => array('id'),
   ];
 
+  $schema[ALQ_EMAILS_TABLE] = [
+    'description' => t('Table to store emails and their statuses.'),
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for a row',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'campaign_id' => array(
+        'description' => 'The identifier for the campaign',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'to' => array(
+        'description' => 'ID of intended recipients',
+        'type' => 'int',
+        'not null' => TRUE
+      ),
+      'subject' => array(
+        'description' => 'Subject of email',
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE
+      ),
+      'body' => array(
+        'description' => 'Body of email',
+        'type' => 'text',
+        'not null' => TRUE
+      ),
+      'from_name' => array(
+        'description' => 'From name',
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE
+      ),
+      'from_email' => array(
+        'description' => 'From email',
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE
+      ),
+      'spam' => array(
+        'description' => 'Wants spam',
+        'type' => 'int',
+        'length' => 1,
+        'default' => 0
+      ),
+      'created' => array(
+        'description' => 'Time created',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'actioned' => array(
+        'description' => 'Time it was sent/attempted to be sent',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'status' => [
+        'description' => 'Status if any of attempt to send',
+        'type' => 'text',
+        'not null' => FALSE,
+        'default' => NULL
+      ]
+    ),
+    'primary key' => array('id'),
+  ];
   return $schema;
 }
