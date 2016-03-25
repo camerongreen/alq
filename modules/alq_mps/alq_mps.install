@@ -41,7 +41,7 @@ function alq_mps_uninstall() {
 
   if (!empty($nids)) {
     node_delete_multiple($nids);
-    drupal_set_message(t('%count nodes have been deleted.', array('%count' => count($nids))));
+    drupal_set_message(t('%count emilee nodes have been deleted.', array('%count' => count($nids))));
   }
 
   drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
@@ -129,7 +129,7 @@ function alq_mps_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE
       ),
-      'to' => array(
+      'recipient' => array(
         'description' => 'ID of intended recipients',
         'type' => 'int',
         'not null' => TRUE
@@ -173,12 +173,11 @@ function alq_mps_schema() {
         'description' => 'Time it was sent/attempted to be sent',
         'type' => 'int',
         'unsigned' => TRUE,
-        'not null' => TRUE
+        'default' => NULL
       ),
       'status' => [
         'description' => 'Status if any of attempt to send',
         'type' => 'text',
-        'not null' => FALSE,
         'default' => NULL
       ]
     ),

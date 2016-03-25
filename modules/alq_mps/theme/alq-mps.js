@@ -10,9 +10,7 @@
 
       $('#edit-emailee-name').val(emailee.title);
       $('#edit-emailee-electorate').val(emailee.state_district);
-      $('#edit-emailees').val(emailee.nid);
-
-      // if there is more than one email, we need to copy the above and add checkboxes for them to choose who to email
+      $('#edit-emailee-nid').val(emailee.nid);
     }
 
     function inCache(data) {

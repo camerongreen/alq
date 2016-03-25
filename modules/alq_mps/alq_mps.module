@@ -83,8 +83,7 @@ function alq_mps_search($search) {
         'locality',
         'state_district',
         'postcode'
-      ])
-    ;
+      ]);
 
     $query->orderBy('ele.locality', 'ASC');
     $query->groupBy('ele.locality');
@@ -110,9 +109,9 @@ function alq_mps_details($nids) {
 }
 
 /**
-}
-
-/**
+ * }
+ *
+ * /**
  * Menu callback for editing an individual mp
  */
 function alq_mps_get($id) {
@@ -125,9 +124,13 @@ function alq_mps_show_email_campaign($node) {
     drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
     drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
     drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
-    $cnode = node_load($cid);
-    $form = drupal_get_form('alq_mps_email_form', $cnode);
-    return drupal_render($form);
+    if (array_key_exists('alq_mps_email_form_submitted', $GLOBALS)) {
+      return '<h2>Thanks for your submission</h2>';
+    } else {
+      $cnode = node_load($cid);
+      $form = drupal_get_form('alq_mps_email_form', $cnode);
+      return drupal_render($form);
+    }
   }
   return '';
 }
@@ -192,10 +195,10 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#required' => TRUE,
   );
 
-  $form['emailee']['nid'] = array(
+  $form['emailee']['emailee_nid'] = array(
     '#type' => 'hidden',
     '#required' => TRUE,
-    '#attributes' => array('id' => 'edit-emailee'),
+    '#attributes' => array('id' => 'edit-emailee-nid'),
   );
 
   $form['subject'] = [
@@ -258,20 +261,21 @@ function alq_mps_email_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
   $insert = [
-    'id' => null,
     'campaign_id' => $values['campaign_id'],
-    'to' => $values['nid'],
+    'recipient' => $values['emailee_nid'],
     'body' => $values['body'],
     'subject' => $values['subject'],
     'from_email' => $values['email'],
     'from_name' => $values['name'],
-    'spam' => $values['wants_spam'],
+    'spam' => $values['spam'],
     'created' => time()
   ];
 
   if (drupal_write_record(ALQ_EMAILS_TABLE, $insert)) {
     drupal_set_message('Successfully created email, it will be sent shortly');
-  } else {
+    $GLOBALS['alq_mps_email_form_submitted'] = TRUE;
+  }
+  else {
     drupal_set_message('Error sending email, please use our Contact form to let us know what went wrong', 'error');
   }
 }
