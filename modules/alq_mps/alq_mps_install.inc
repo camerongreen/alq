@@ -251,15 +251,34 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
     }
   }
 
-  // store the address
+  // store the address in our insert statement
   $officeInsert['address'] = implode("\n", $addresses);
   $officeInsert['email'] = implode(',', $emails);
   $officeInsert['state'] = 'QLD'; // hard code for first iteration
   $return_val[] = $officeInsert;
 
+  // get the matching phone records for each office
+  $phoneValues = parsePhoneValues($phone);
+
+  for ($i = 0, $l = count($phoneValues); $i < $l; $i++) {
+    $return_val[$i] = array_merge($phoneValues[$i], $return_val[$i]);
+  }
+
+  return $return_val;
+}
+
+/**
+ * Parse phone numbers from phone field
+ *
+ * @param $phone
+ * @return array
+ */
+function parsePhoneValues($phone) {
   // now we need to parse the phone numbers
   $phoneValues = explode("\n", $phone);
   $phone_nums = 0;
+
+  $return_val = [];
 
   foreach ($phoneValues as $line) {
     $parts = explode(':', $line);

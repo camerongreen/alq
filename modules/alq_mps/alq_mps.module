@@ -10,38 +10,6 @@ define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_EMAILS_TABLE', 'alq_emails');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 
-$GLOBALS['mpsFields'] = [
-  'id' => NULL,
-  'name' => NULL,
-  'family_name' => NULL,
-  'given_names' => NULL,
-  'preferred_name' => NULL,
-  'title' => NULL,
-  'qualifications' => NULL,
-  'position' => NULL,
-  'party' => NULL,
-  'electorate' => NULL,
-  'type' => NULL,
-  'comments' => NULL,
-  'created' => NULL,
-  'changed' => NULL,
-];
-
-$GLOBALS['officeFields'] = [
-  'id' => NULL,
-  'electorate' => NULL,
-  'type' => NULL,
-  'state' => NULL,
-  'address' => NULL,
-  'postcode' => NULL,
-  'email' => NULL,
-  'phone' => NULL,
-  'toll_free_phone' => NULL,
-  'fax' => NULL,
-  'created' => NULL,
-  'changed' => NULL,
-];
-
 /**
  * Implements hook menu
  */
@@ -92,7 +60,7 @@ function alq_mps_search($search) {
 
     $results = $query->execute()->fetchAll();
 
-    return drupal_json_output($results);
+    drupal_json_output($results);
   }
 
   drupal_json_output([]);
@@ -109,9 +77,6 @@ function alq_mps_details($nids) {
 }
 
 /**
- * }
- *
- * /**
  * Menu callback for editing an individual mp
  */
 function alq_mps_get($id) {
@@ -119,6 +84,12 @@ function alq_mps_get($id) {
   return $mp;
 }
 
+/**
+ * Function to be called which shows the form, loads up the JS etc libraries
+ *
+ * @param $node
+ * @return string
+ */
 function alq_mps_show_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
     drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
@@ -136,6 +107,13 @@ function alq_mps_show_email_campaign($node) {
   return '';
 }
 
+/**
+ * Email campaigns each have a node reference in them
+ * If this node has an email campaign, return its id, otherwise false
+ *
+ * @param $nid
+ * @return mixed  false or campaign id
+ */
 function alq_mps_has_email_campaign($nid) {
   $query = db_select(ALQ_NODE_REF_TABLE, 'nrf');
   $query->condition(
@@ -148,9 +126,22 @@ function alq_mps_has_email_campaign($nid) {
 
   $result = $query->execute();
 
-  return $result->fetchField(0);
+  if (!$result) {
+    return false;
+  } else {
+    return $result->fetchField(0);
+  }
 }
 
+/**
+ * Implementation of hook form, with loaded campaign node to
+ * prefill fields
+ *
+ * @param $form
+ * @param $form_state
+ * @param $cnode
+ * @return mixed
+ */
 function alq_mps_email_form($form, &$form_state, $cnode) {
   $form['campaign_id'] = [
     '#type' => 'hidden',
@@ -236,11 +227,22 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   return $form;
 }
 
-
+/**
+ * Check whether a string has any tags (according to strip_tags) in it
+ *
+ * @param $value
+ * @return bool
+ */
 function hasHtml($value) {
   return strip_tags($value) !== $value;
 }
 
+/**
+ * Implements hook_form_validate()
+ *
+ * @param $form
+ * @param $form_state
+ */
 function alq_mps_email_form_validate($form, &$form_state) {
   $values = $form_state['values'];
 
@@ -258,6 +260,12 @@ function alq_mps_email_form_validate($form, &$form_state) {
   }
 }
 
+/**
+ * Implements hook_form_submit()
+ *
+ * @param $form
+ * @param $form_state
+ */
 function alq_mps_email_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 

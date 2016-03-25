@@ -46,6 +46,7 @@ function alq_mps_uninstall() {
 
   drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
 
+  // delete everything else
   drupal_uninstall_schema('alq_mps');
 }
 
