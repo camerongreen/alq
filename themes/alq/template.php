@@ -12,6 +12,16 @@
  */
 
 /**
+ * implements hook_preprocess_html
+ *
+ * @param $vars
+ */
+function alq_preprocess_html(&$vars) {
+  drupal_add_library('system', 'ui');
+  drupal_add_library('system', 'ui.autocomplete');
+}
+
+/**
  * Alter the page
  */
 function alq_page_alter($page) {

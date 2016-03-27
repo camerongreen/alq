@@ -2,6 +2,8 @@
 /**
  * @file
  * Provides the ability to store, administer and email members of parliament
+ *
+ * To install, first install alq_mps_feature, then install alq_mps_perms_feature
  */
 
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
@@ -19,19 +21,28 @@ function alq_mps_menu() {
     'access callback' => 'user_access',
     'access arguments' => ['access email campaigns'],
   ];
-  $items['alq-mps/details'] = [
-    'page callback' => 'alq_mps_details',
-    'access callback' => 'user_access',
-    'access arguments' => ['access email campaigns'],
-  ];
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function alq_mps_permission() {
+  return [
+    'administer email campaigns' => [
+      'title' => t('Administer the email campaigns'),
+    ],
+    'access email campaigns' => [
+      'title' => t('Access email campaigns'),
+    ],
+  ];
 }
 
 /**
  * Menu callback for mps search
  */
 function alq_mps_search($search) {
-  $result = [];
+  $results = [];
   if (strlen($search) > 2) {
     // first we get a listing of electorates which map
     // to the postcode or suburb
@@ -66,24 +77,6 @@ function alq_mps_search($search) {
 }
 
 /**
- * Menu callback for mps details
- *
- * @param array $nids
- */
-function alq_mps_details($nids) {
-  $nodes = node_load_multiple($nids);
-  drupal_json_output($nodes);
-}
-
-/**
- * Menu callback for editing an individual mp
- */
-function alq_mps_get($id) {
-  $mp = node_load($id);
-  return $mp;
-}
-
-/**
  * Function to be called which shows the form, loads up the JS etc libraries
  *
  * @param $node
@@ -92,7 +85,7 @@ function alq_mps_get($id) {
 function alq_mps_show_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
 
-    if (array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
+    if (isset($_SESSION) && array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
       unset($_SESSION['alq_mps_email_form_submitted']);
       return '<h2>Thanks for your submission</h2>';
     }

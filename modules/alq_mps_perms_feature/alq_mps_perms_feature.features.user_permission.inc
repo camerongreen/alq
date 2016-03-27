@@ -10,6 +10,27 @@
 function alq_mps_perms_feature_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access email campaigns.
+  $permissions['access email campaigns'] = array(
+    'name' => 'access email campaigns',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'alq_mps',
+  );
+
+  // Exported permission: administer email campaigns.
+  $permissions['administer email campaigns'] = array(
+    'name' => 'administer email campaigns',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+      2 => 'superuser',
+    ),
+    'module' => 'alq_mps',
+  );
+
   // Exported permission: create email_campaign content.
   $permissions['create email_campaign content'] = array(
     'name' => 'create email_campaign content',

@@ -2,98 +2,90 @@
  * Functions to support the alp mps application
  */
 (function ($) {
+  var cache = [];
+
+  /**
+   * Takes a list of emailees (currently just one)
+   * and add them to the form
+   *
+   * @param {Array} emailees
+   */
+  function showEmailees(emailees) {
+    var emailee = emailees.shift();
+
+    $('#edit-emailee-name').val(emailee.title);
+    $('#edit-emailee-electorate').val(emailee.state_district);
+    $('#edit-emailee-nid').val(emailee.nid);
+  }
+
+  /**
+   * Check if the current value is in the cache
+   *
+   * @param data
+   * @returns {boolean}
+   */
+  function inCache(data) {
+    var stringData = JSON.stringify(data);
+    for (var i = 0, l = cache.length; i < l; i++) {
+      if (stringData === JSON.stringify(cache[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Take the JSON response and format it for the jQuery autocomplete
+   *
+   * @param data
+   * @returns {Array}
+   */
+  function modifyResponse(data) {
+    var returnVal = [];
+    var seen = []; // only want each suburb to appear once
+
+    for (var i = 0, l = data.length; i < l; i++) {
+      var ac = data[i].locality + ' - ' + data[i].postcode + ' (' + data[i].state_district + ')';
+
+      if (!inCache(data[i])) {
+        cache.push(data[i]);
+      }
+
+      if (seen.indexOf(ac) === -1) {
+        returnVal.push({
+          label: ac,
+          value: data[i]
+        });
+        seen.push(ac);
+      }
+    }
+
+    return returnVal;
+  }
+
+  /**
+   * Find all the emailees which correspond the current district
+   *
+   * @param state_district
+   * @param data
+   * @returns {Array}
+   */
+  function getEmailees(state_district, data) {
+    var returnVal = [];
+    var nids = [];
+
+    for (var i = 0, l = data.length; i < l; i++) {
+      var place = data[i];
+      if ((place.state_district === state_district) && (nids.indexOf(place.nid) === -1)) {
+        returnVal.push(place);
+        nids.push(place.nid);
+      }
+    }
+
+    return returnVal;
+  }
+
   $(document).ready(function () {
-    var cache = [];
-
-    /**
-     * Takes a list of emailees (currently just one)
-     * and add them to the form
-     *
-     * @param {Array} emailees
-     */
-    function showEmailees(emailees) {
-      var emailee = emailees.shift();
-
-      $('#edit-emailee-name').val(emailee.title);
-      $('#edit-emailee-electorate').val(emailee.state_district);
-      $('#edit-emailee-nid').val(emailee.nid);
-    }
-
-    /**
-     * Check if the current value is in the cache
-     *
-     * @param data
-     * @returns {boolean}
-     */
-    function inCache(data) {
-      var stringData = JSON.stringify(data);
-      for (var i = 0, l = cache.length; i < l; i++) {
-        if (stringData === JSON.stringify(cache[i])) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    /**
-     * Take the JSON response and format it for the jQuery autocomplete
-     *
-     * @param data
-     * @returns {Array}
-     */
-    function modifyResponse(data) {
-      var returnVal = [];
-      var seen = []; // only want each suburb to appear once
-
-      for (var i = 0, l = data.length; i < l; i++) {
-        var ac = data[i].locality + ' - ' + data[i].postcode + ' (' + data[i].state_district + ')';
-
-        if (!inCache(data[i])) {
-          cache.push(data[i]);
-        }
-
-        if (seen.indexOf(ac) === -1) {
-          returnVal.push({
-            label: ac,
-            value: data[i]
-          });
-          seen.push(ac);
-        }
-      }
-
-      return returnVal;
-    }
-
-    /**
-     * Find all the emailees which correspond the current district
-     *
-     * @param state_district
-     * @param data
-     * @returns {Array}
-     */
-    function getEmailees(state_district, data) {
-      var returnVal = [];
-      var nids = [];
-
-      for (var i = 0, l = data.length; i < l; i++) {
-        var place = data[i];
-        if ((place.state_district === state_district) && (nids.indexOf(place.nid) === -1)) {
-          returnVal.push(place);
-          nids.push(place.nid);
-        }
-      }
-
-      return returnVal;
-    }
-
-    // add bootstrap classes to form, too painful to do in theme
-    /*
-    $('#alq-mps-email-form div.form-item').addClass('form-group');
-    $('#alq-mps-email-form').find('.form-text, .form-textarea').addClass('form-control');
-    $('#alq-mps-email-form').find('.form-text, .form-textarea-wrapper').wrap('<div class="col-sm-9"></div>');
-    $('#alq-mps-email-form .form-type-textfield label, #alq-mps-email-form .form-type-textarea label').addClass('control-label col-sm-3');
-    */
-
     $('#edit-suburb').autocomplete({
       source: function (request, response) {
         var searchTerm = request.term;
@@ -118,5 +110,4 @@
       }
     });
   });
-})
-(jQuery);
+})(jQuery);
