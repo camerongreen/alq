@@ -39,6 +39,78 @@ function alq_mps_permission() {
 }
 
 /**
+ * Implements hook_cron
+ */
+function alq_mps_cron() {
+  $query = db_select(ALQ_EMAILS_TABLE, 'emt');
+  $query->isNull('emt.actioned')
+    ->fields('emt');
+
+  $results = $query->execute();
+
+  $emails = $results->rowCount();
+  $errors = 0;
+
+  $emaileeCache = [];
+
+  foreach ($results as $result) {
+    $emailee = null;
+    if (!array_key_exists($result->recipient, $emaileeCache)) {
+      $recipient = node_load($result->recipient);
+      $node_wrapper = entity_metadata_wrapper('node', $recipient);
+      $emaileeCache[$result->recipient] = $node_wrapper;
+    }
+    $emailee = $emaileeCache[$result->recipient];
+    if (!alq_mps_email($emailee, $result)) {
+      watchdog('alq_mps', t('Error sending email @nid', ['@nid' => $result->nid]));
+      $errors++;
+    }
+  }
+
+  watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails emails (errors @errors)', ['@emails' => $emails, '@errors' => $errors]));
+}
+
+/**
+ * Sends an email and records result in ALQ_MPS_EMAIL_TABLE
+ *
+ * @param $recipient node_wrapper from entity api
+ * @param $fields
+ * @return boolean
+ */
+function alq_mps_email($recipient, $fields) {
+  $module = 'alq_mps';
+  $key = 'campaign_message';
+
+  // Specify 'to' and 'from' addresses.
+  $to = $recipient->field_office[0]->field_email[0]['value'];
+  $from = $fields->email;
+
+  $language = language_default();
+
+  $send = TRUE;
+
+  $result = drupal_mail($module, $key, $to, $language, $fields, $from, $send);
+
+  return $result['result'] == TRUE;
+}
+
+/**
+ * Implements hook_mail()
+ *
+ * @param $key
+ * @param $message
+ * @param $params
+ */
+function alq_mps_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'campaign_message':
+      $message['subject'] = check_plain($params->subject);
+      $message['body'][] = check_plain($params->body);
+      break;
+  }
+}
+
+/**
  * Menu callback for mps search
  */
 function alq_mps_search($search) {
