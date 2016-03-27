@@ -235,22 +235,10 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
 function alq_mps_theme() {
   return [
     'alq_mps_email_form' => [
-      'render element' => 'form'
-    ]
+      'render element' => 'form',
+      'template' => 'theme/email-form',
+    ],
   ];
-}
-
-/**
- *  Theme the email form, bootstrapifying it
- *
- * @param $variables
- * @return Array
- */
-function theme_alq_mps_email_form($variables) {
-  $form = $variables['form'];
-  $output = '<h3>Take action now!</h3>';
-  $output .= drupal_render_children($form);
-  return $output;
 }
 
 /**
