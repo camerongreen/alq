@@ -86,6 +86,14 @@
       return returnVal;
     }
 
+    // add bootstrap classes to form, too painful to do in theme
+    /*
+    $('#alq-mps-email-form div.form-item').addClass('form-group');
+    $('#alq-mps-email-form').find('.form-text, .form-textarea').addClass('form-control');
+    $('#alq-mps-email-form').find('.form-text, .form-textarea-wrapper').wrap('<div class="col-sm-9"></div>');
+    $('#alq-mps-email-form .form-type-textfield label, #alq-mps-email-form .form-type-textarea label').addClass('control-label col-sm-3');
+    */
+
     $('#edit-suburb').autocomplete({
       source: function (request, response) {
         var searchTerm = request.term;

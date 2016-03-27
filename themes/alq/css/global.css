@@ -555,3 +555,8 @@ div.block-alq-donation-form #donationForm #membershipInfo {
 #block-addtoany-addtoany-button {
   margin-bottom: 1em;
 }
+
+/* line 477, ../scss/global.scss */
+ul.ui-autocomplete {
+  list-style: none;
+}

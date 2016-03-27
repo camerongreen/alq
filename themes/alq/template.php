@@ -52,5 +52,5 @@ function alq_breadcrumb($variables) {
     $breadcrumb = preg_replace("/Catalog/", "Shop", $breadcrumb); // This line will search and replace text.
     return '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . '</div>';
   }
-
 }
+

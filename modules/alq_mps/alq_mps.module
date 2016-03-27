@@ -145,85 +145,109 @@ function alq_mps_has_email_campaign($nid) {
  * @return mixed
  */
 function alq_mps_email_form($form, &$form_state, $cnode) {
+  $classes = ['form-horizontal'];
+
+  if (!isset($form['#attributes']['class'])) {
+    $form['#attributes']['class'] = $classes;
+  }
+  else {
+    $form['#attributes']['class'] = array_merge($form['#attributes']['class'], $classes);
+  }
+
   $form['campaign_id'] = [
     '#type' => 'hidden',
     '#required' => TRUE,
     '#default_value' => $cnode->nid,
   ];
 
-  $form['search'] = [
-    '#title' => 'Find your MP',
-    '#type' => 'fieldset',
-    '#collapsible' => FALSE
-  ];
-  $form['search']['suburb'] = [
+  $form['suburb'] = [
     '#type' => 'textfield',
     '#title' => t('Suburb or Post Code'),
     '#required' => TRUE,
     '#attributes' => [
-      'autocomplete' => 'off'
+      'autocomplete' => 'off',
+      'placeholder' => t('eg Highgate Hill or 4101'),
+      'class' => ['form-control']
     ]
   ];
 
-  $form['search']['helper'] = [
-    '#type' => 'markup',
-    '#markup' => 'If more than one electorate is listed for your suburb, click here to <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new" target="_blank"> find you electorate</a>.'
-  ];
-
-  $form['search']['emailee_name'] = array(
+  $form['emailee_name'] = array(
     '#title' => 'Member',
     '#type' => 'textfield',
-    '#attributes' => array('readonly' => 'readonly'),
-    '#required' => TRUE
+    '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control'],
+      'readonly' => 'readonly',
+    ]
   );
 
-  $form['search']['emailee_electorate'] = array(
+  $form['emailee_electorate'] = array(
     '#title' => 'Electorate',
     '#type' => 'textfield',
-    '#attributes' => array('readonly' => 'readonly'),
     '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control'],
+      'readonly' => 'readonly',
+    ]
   );
 
-  $form['search']['emailee_nid'] = array(
+  $form['emailee_nid'] = [
     '#type' => 'hidden',
     '#required' => TRUE,
-    '#attributes' => array('id' => 'edit-emailee-nid'),
-  );
-
-
-  $form['email_content'] = [
-    '#type' => 'fieldset',
-    '#collapsible' => FALSE
+    '#attributes' => [
+      'id' => 'edit-emailee-nid'
+    ],
   ];
-  $form['email_content']['subject'] = [
+
+  $form['subject'] = [
     '#type' => 'textfield',
     '#title' => t('Subject'),
     '#required' => TRUE,
     '#default_value' => $cnode->title,
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
   ];
-  $form['email_content']['body'] = [
+  $form['body'] = [
     '#type' => 'textarea',
     '#title' => t('Email body'),
     '#required' => TRUE,
     '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
   ];
-  $form['email_content']['name'] = [
+  $form['name'] = [
     '#type' => 'textfield',
     '#title' => t('Your name'),
-    '#required' => TRUE
+    '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
   ];
-  $form['email_content']['email'] = [
+  $form['email'] = [
     '#type' => 'textfield',
     '#title' => t('Your email'),
-    '#required' => TRUE
+    '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
   ];
-  $form['email_content']['spam'] = [
+  $form['spam'] = [
     '#type' => 'checkbox',
     '#title' => t('Would you like to join the Animal Liberation Qld email list'),
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
   ];
-  $form['email_content']['submit'] = [
+  $form['submit'] = [
     '#type' => 'submit',
-    '#value' => t('Send'),
+    '#prefix' => '<div class="form-group"><div class="col-sm-offset-3 col-sm-9">',
+    '#suffix' => '</div></div>',
+    '#value' => t('Send email'),
+    '#attributes' => [
+      'class' => ['btn btn-primary']
+    ]
   ];
 
   return $form;
@@ -306,3 +330,4 @@ function alq_mps_email_form_submit($form, &$form_state) {
     drupal_set_message('Error sending email, please use our Contact form to let us know what went wrong', 'error');
   }
 }
+
