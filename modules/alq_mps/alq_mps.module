@@ -31,6 +31,7 @@ function alq_mps_menu() {
  * Menu callback for mps search
  */
 function alq_mps_search($search) {
+  $result = [];
   if (strlen($search) > 2) {
     // first we get a listing of electorates which map
     // to the postcode or suburb
@@ -59,11 +60,9 @@ function alq_mps_search($search) {
     $query->groupBy('n.nid');
 
     $results = $query->execute()->fetchAll();
-
-    drupal_json_output($results);
   }
 
-  drupal_json_output([]);
+  drupal_json_output($results);
 }
 
 /**
@@ -92,13 +91,15 @@ function alq_mps_get($id) {
  */
 function alq_mps_show_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
-    drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
-    drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
-    drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
+
     if (array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
       unset($_SESSION['alq_mps_email_form_submitted']);
       return '<h2>Thanks for your submission</h2>';
-    } else {
+    }
+    else {
+      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
+      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
+      drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
       $cnode = node_load($cid);
       $form = drupal_get_form('alq_mps_email_form', $cnode);
       return drupal_render($form);
@@ -127,8 +128,9 @@ function alq_mps_has_email_campaign($nid) {
   $result = $query->execute();
 
   if (!$result) {
-    return false;
-  } else {
+    return FALSE;
+  }
+  else {
     return $result->fetchField(0);
   }
 }
@@ -150,7 +152,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
 
   $form['search'] = [
-    '#title' => 'Search for your MP',
+    '#title' => 'Find your MP',
     '#type' => 'fieldset',
     '#collapsible' => FALSE
   ];
@@ -168,63 +170,87 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#markup' => 'If more than one electorate is listed for your suburb, click here to <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new" target="_blank"> find you electorate</a>.'
   ];
 
-  $form['emailee'] = [
-    '#title' => 'Your MP',
-    '#type' => 'fieldset',
-    '#collapsible' => FALSE
-  ];
-  $form['emailee']['emailee_name'] = array(
+  $form['search']['emailee_name'] = array(
     '#title' => 'Member',
     '#type' => 'textfield',
     '#attributes' => array('readonly' => 'readonly'),
     '#required' => TRUE
   );
 
-  $form['emailee']['emailee_electorate'] = array(
+  $form['search']['emailee_electorate'] = array(
     '#title' => 'Electorate',
     '#type' => 'textfield',
     '#attributes' => array('readonly' => 'readonly'),
     '#required' => TRUE,
   );
 
-  $form['emailee']['emailee_nid'] = array(
+  $form['search']['emailee_nid'] = array(
     '#type' => 'hidden',
     '#required' => TRUE,
     '#attributes' => array('id' => 'edit-emailee-nid'),
   );
 
-  $form['subject'] = [
+
+  $form['email_content'] = [
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE
+  ];
+  $form['email_content']['subject'] = [
     '#type' => 'textfield',
     '#title' => t('Subject'),
     '#required' => TRUE,
     '#default_value' => $cnode->title,
   ];
-  $form['body'] = [
+  $form['email_content']['body'] = [
     '#type' => 'textarea',
     '#title' => t('Email body'),
     '#required' => TRUE,
     '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
   ];
-  $form['name'] = [
+  $form['email_content']['name'] = [
     '#type' => 'textfield',
     '#title' => t('Your name'),
     '#required' => TRUE
   ];
-  $form['email'] = [
+  $form['email_content']['email'] = [
     '#type' => 'textfield',
     '#title' => t('Your email'),
     '#required' => TRUE
   ];
-  $form['spam'] = [
+  $form['email_content']['spam'] = [
     '#type' => 'checkbox',
     '#title' => t('Would you like to join the Animal Liberation Qld email list'),
   ];
-  $form['submit'] = [
+  $form['email_content']['submit'] = [
     '#type' => 'submit',
     '#value' => t('Send'),
   ];
 
   return $form;
+}
+
+/**
+ * Implements of hook_theme()
+ */
+function alq_mps_theme() {
+  return [
+    'alq_mps_email_form' => [
+      'render element' => 'form'
+    ]
+  ];
+}
+
+/**
+ *  Theme the email form, bootstrapifying it
+ *
+ * @param $variables
+ * @return Array
+ */
+function theme_alq_mps_email_form($variables) {
+  $form = $variables['form'];
+  $output = '<h3>Take action now!</h3>';
+  $output .= drupal_render_children($form);
+  return $output;
 }
 
 /**
@@ -257,6 +283,10 @@ function alq_mps_email_form_validate($form, &$form_state) {
     if (hasHtml($values[$field])) {
       form_set_error($field, t('Invalid value, please remove links etc.'));
     }
+  }
+
+  if (!valid_email_address($values['email'])) {
+    form_set_error('email', t('Invalid email address.'));
   }
 }
 
