@@ -1,100 +1,99 @@
 @charset "UTF-8";
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* line 18, ../scss/global.scss */
+/* line 17, ../scss/global.scss */
 body {
   background-color: #fff;
 }
-/* line 21, ../scss/global.scss */
+/* line 20, ../scss/global.scss */
 body #zone-branding,
 body #zone-header,
 body div.zone-content {
   background-color: #fff;
 }
-/* line 26, ../scss/global.scss */
+/* line 25, ../scss/global.scss */
 body div.logo-img img {
   height: 85px;
   width: 160px;
 }
 
-/* line 32, ../scss/global.scss */
+/* line 31, ../scss/global.scss */
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: Arial, Verdana, Geneva, sans-serif;
 }
 
-/* line 36, ../scss/global.scss */
+/* line 35, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #502c83;
   text-transform: uppercase;
   line-height: 1.2em;
 }
 
-/* line 42, ../scss/global.scss */
+/* line 41, ../scss/global.scss */
 h1 {
   font-size: 30px;
 }
 
-/* line 46, ../scss/global.scss */
+/* line 45, ../scss/global.scss */
 small {
   font-size: 80%;
 }
 
-/* line 50, ../scss/global.scss */
+/* line 49, ../scss/global.scss */
 .front h1.title {
   font-size: 18px;
   margin-top: 6px;
 }
 
-/* line 55, ../scss/global.scss */
+/* line 54, ../scss/global.scss */
 h2 {
   font-size: 26px;
 }
 
-/* line 59, ../scss/global.scss */
+/* line 58, ../scss/global.scss */
 #region-branding {
   background-color: #fff;
 }
 
-/* line 63, ../scss/global.scss */
+/* line 62, ../scss/global.scss */
 #instagram-link {
   margin-top: 1px;
 }
 
-/* line 67, ../scss/global.scss */
+/* line 66, ../scss/global.scss */
 div.block-block-2 {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 10px;
   /* override bootstrap style */
 }
-/* line 72, ../scss/global.scss */
+/* line 71, ../scss/global.scss */
 div.block-block-2 div::before {
   display: block;
 }
 
 /* override some bootstrap styles */
-/* line 78, ../scss/global.scss */
+/* line 77, ../scss/global.scss */
 body div.page div.zone-footer * {
   box-sizing: content-box !important;
   -moz-box-sizing: content-box !important;
   -webkit-box-sizing: content-box !important;
 }
 
-/* line 84, ../scss/global.scss */
+/* line 83, ../scss/global.scss */
 div.breadcrumb {
-  padding: 0;
-  padding-bottom: 0.5em;
+  padding: 0 0 0.5em;
   margin-bottom: 0;
   background-color: #fff;
 }
 
-/* line 91, ../scss/global.scss */
+/* line 89, ../scss/global.scss */
 .header-social-media-link {
   display: block;
   float: left;
 }
 
 /* Blocks we won't show on mobile version */
-/* line 97, ../scss/global.scss */
+/* line 95, ../scss/global.scss */
 #donate-link,
 .block-block-5,
 .block-block-1,
@@ -102,7 +101,7 @@ div.breadcrumb {
   display: none;
 }
 
-/* line 107, ../scss/global.scss */
+/* line 105, ../scss/global.scss */
 #facebook-link img,
 #twitter-link img,
 #instagram-link img {
@@ -110,11 +109,11 @@ div.breadcrumb {
 }
 
 /* Header menu */
-/* line 113, ../scss/global.scss */
+/* line 111, ../scss/global.scss */
 #block-nice-menus-1 {
   position: relative;
 }
-/* line 116, ../scss/global.scss */
+/* line 114, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul,
 #block-nice-menus-1 ul.nice-menu li,
 #block-nice-menus-1 ul.nice-menu li a {
@@ -123,41 +122,40 @@ div.breadcrumb {
   text-decoration: none;
   padding: 0.3em 2px 0.3em 2px;
 }
-/* line 124, ../scss/global.scss */
+/* line 122, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu li.menuparent,
 #block-nice-menus-1 ul.nice-menu li {
   background-color: #fff;
 }
-/* line 128, ../scss/global.scss */
+/* line 126, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu li.menuparent a:hover,
 #block-nice-menus-1 ul.nice-menu li a:hover {
   background-color: #ddd;
 }
-/* line 132, ../scss/global.scss */
+/* line 130, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu ul {
   background-color: #fff;
   display: none !important;
   box-shadow: 2px 1px 2px #666;
 }
-/* line 138, ../scss/global.scss */
+/* line 136, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down .menuparent a {
   padding-right: 0;
 }
-/* line 141, ../scss/global.scss */
+/* line 139, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent {
-  background-color: #fff;
-  background-image: none;
+  background: #fff none;
 }
-/* line 145, ../scss/global.scss */
+/* line 142, ../scss/global.scss */
 #block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
   background-color: #fff;
 }
 
-/* line 152, ../scss/global.scss */
+/* line 149, ../scss/global.scss */
 .responsive-menus.responsified .responsive-menus-simple {
   background-color: #502c83;
 }
-/* line 155, ../scss/global.scss */
+/* line 152, ../scss/global.scss */
 .responsive-menus.responsified span.toggler {
   background-color: #fff;
   color: #502c83;
@@ -166,68 +164,66 @@ div.breadcrumb {
   margin-right: 2em;
 }
 
-/* line 164, ../scss/global.scss */
+/* line 161, ../scss/global.scss */
 .block-user-menu ul.menu {
   margin: 0;
   padding: 0;
 }
 
-/* line 169, ../scss/global.scss */
+/* line 166, ../scss/global.scss */
 .block-user-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 175, ../scss/global.scss */
+/* line 172, ../scss/global.scss */
 #zone-footer {
   color: #fff;
   background-color: #502c83;
 }
-/* line 178, ../scss/global.scss */
+/* line 175, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu {
   padding-top: 1em;
   padding-bottom: 1ex;
 }
-/* line 181, ../scss/global.scss */
+/* line 178, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li ul {
   display: none;
 }
-/* line 184, ../scss/global.scss */
+/* line 181, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
-/* line 189, ../scss/global.scss */
+/* line 186, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
-/* line 193, ../scss/global.scss */
+/* line 190, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li a {
-  border-right-style: solid;
-  border-right-color: #fff;
-  border-right-width: thin;
+  border-right: thin solid #fff;
   padding-right: 10px;
 }
-/* line 199, ../scss/global.scss */
+/* line 194, ../scss/global.scss */
 #zone-footer .block-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
-/* line 205, ../scss/global.scss */
+/* line 200, ../scss/global.scss */
 #block-views-news-block {
   margin-bottom: 1em;
 }
 
-/* line 212, ../scss/global.scss */
+/* line 207, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row,
 body.page-media-views .view-media-views .views-row,
 .view-news .views-row {
   clear: both;
 }
-/* line 214, ../scss/global.scss */
+/* line 209, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-title a,
 body.page-media-views .view-media-views .views-row .views-field-title a,
 .view-news .views-row .views-field-title a {
@@ -238,7 +234,7 @@ body.page-media-views .view-media-views .views-row .views-field-title a,
   line-height: 1.3em;
   letter-spacing: -0.05em;
 }
-/* line 222, ../scss/global.scss */
+/* line 217, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-field-image,
 body.page-media-views .view-media-views .views-row .views-field-field-image,
 .view-news .views-row .views-field-field-image {
@@ -246,19 +242,18 @@ body.page-media-views .view-media-views .views-row .views-field-field-image,
   width: 220px;
   height: 100%;
 }
-/* line 226, ../scss/global.scss */
+/* line 221, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-field-image img,
 body.page-media-views .view-media-views .views-row .views-field-field-image img,
 .view-news .views-row .views-field-field-image img {
   padding: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-/* line 230, ../scss/global.scss */
+/* line 225, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .field-name-field-tags,
 body.page-in-the-news .view-media-views .views-row .views-label-field-tags,
 body.page-media-views .view-media-views .views-row .field-name-field-tags,
@@ -269,19 +264,19 @@ body.page-media-views .view-media-views .views-row .views-label-field-tags,
   margin-right: 1ex;
   font-weight: bold;
 }
-/* line 236, ../scss/global.scss */
+/* line 231, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-more-link,
 body.page-media-views .view-media-views .views-row .views-more-link,
 .view-news .views-row .views-more-link {
   margin-top: 1ex;
 }
-/* line 240, ../scss/global.scss */
+/* line 235, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link,
 body.page-media-views .view-media-views div.more-link,
 .view-news div.more-link {
   text-align: center;
 }
-/* line 242, ../scss/global.scss */
+/* line 237, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link a,
 body.page-media-views .view-media-views div.more-link a,
 .view-news div.more-link a {
@@ -290,58 +285,57 @@ body.page-media-views .view-media-views div.more-link a,
   text-decoration: none;
   color: #502c83;
 }
-/* line 248, ../scss/global.scss */
+/* line 243, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link a:after,
 body.page-media-views .view-media-views div.more-link a:after,
 .view-news div.more-link a:after {
   content: "▶";
 }
 
-/* line 259, ../scss/global.scss */
+/* line 253, ../scss/global.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block {
   overflow: auto;
 }
 
-/* line 263, ../scss/global.scss */
+/* line 257, ../scss/global.scss */
 div.view-slideshow .views-field-field-slideshow-image img {
   width: 100% !important;
   height: auto !important;
 }
 
-/* line 268, ../scss/global.scss */
+/* line 262, ../scss/global.scss */
 span.views-slideshow-controls-text-next,
 span.views-slideshow-controls-text-previous {
   text-decoration: none !important;
 }
 
-/* line 273, ../scss/global.scss */
+/* line 267, ../scss/global.scss */
 .views-slideshow-controls-text,
 .view-slideshow .views-field-view-node {
   display: none;
 }
 
-/* line 278, ../scss/global.scss */
+/* line 272, ../scss/global.scss */
 .view-slideshow {
-  border-bottom-color: #502c83;
-  border-bottom-style: solid;
+  border-bottom: solid #502c83;
   margin-top: 1em;
 }
-/* line 281, ../scss/global.scss */
+/* line 275, ../scss/global.scss */
 .view-slideshow .views-field-title {
   position: absolute;
   background-color: rgba(66, 66, 66, 0.6);
 }
-/* line 285, ../scss/global.scss */
+/* line 279, ../scss/global.scss */
 .view-slideshow .views-field-title a {
   color: #fff;
   text-decoration: none;
 }
-/* line 289, ../scss/global.scss */
+/* line 283, ../scss/global.scss */
 .view-slideshow .views-field-view-node {
   display: none;
   position: absolute;
 }
-/* line 293, ../scss/global.scss */
+/* line 287, ../scss/global.scss */
 .view-slideshow .views-field-title {
   display: none;
   top: 70px;
@@ -349,7 +343,7 @@ span.views-slideshow-controls-text-previous {
   padding: 2px;
 }
 
-/* line 301, ../scss/global.scss */
+/* line 295, ../scss/global.scss */
 .views-slideshow-controls-text span {
   position: absolute;
   overflow: hidden;
@@ -358,27 +352,27 @@ span.views-slideshow-controls-text-previous {
   color: #fff;
   display: none;
 }
-/* line 308, ../scss/global.scss */
+/* line 302, ../scss/global.scss */
 .views-slideshow-controls-text span a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
 }
-/* line 313, ../scss/global.scss */
+/* line 307, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
   content: "◀";
 }
-/* line 316, ../scss/global.scss */
+/* line 310, ../scss/global.scss */
 .views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
   content: "▶";
 }
 
 /* search form */
-/* line 323, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 326, ../scss/global.scss */
+/* line 320, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -390,13 +384,13 @@ span.views-slideshow-controls-text-previous {
 }
 
 /* email subscribe form */
-/* line 338, ../scss/global.scss */
+/* line 332, ../scss/global.scss */
 #block-block-6 {
   display: none;
   margin-bottom: 0;
 }
 
-/* line 343, ../scss/global.scss */
+/* line 337, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -405,55 +399,52 @@ span.views-slideshow-controls-text-previous {
   height: 43px;
 }
 
-/* line 351, ../scss/global.scss */
+/* line 345, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
-  border-color: #CCC;
-  border-style: solid;
-  border-width: thin;
+  border: thin solid #CCC;
 }
 
 /* Voiceless box */
-/* line 360, ../scss/global.scss */
+/* line 352, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 364, ../scss/global.scss */
+/* line 356, ../scss/global.scss */
 #section-home-header {
   margin: auto;
-  border-bottom-color: #502c83;
-  border-bottom-style: solid;
+  border-bottom: solid #502c83;
 }
-/* line 367, ../scss/global.scss */
+/* line 359, ../scss/global.scss */
 #section-home-header img {
   max-width: 100% !important;
   height: auto;
   display: block;
 }
 
-/* line 375, ../scss/global.scss */
+/* line 367, ../scss/global.scss */
 #section-home-childtree h2 {
   display: none;
 }
-/* line 378, ../scss/global.scss */
+/* line 370, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 381, ../scss/global.scss */
+/* line 373, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
   padding-left: 1ex;
 }
-/* line 386, ../scss/global.scss */
+/* line 378, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "▶";
 }
 
-/* line 392, ../scss/global.scss */
+/* line 384, ../scss/global.scss */
 body.node-type-media-article .field-name-field-intro,
 body.node-type-article .field-name-field-intro,
 body.node-type-section-home .field-name-field-intro {
@@ -461,102 +452,101 @@ body.node-type-section-home .field-name-field-intro {
   font-style: italic;
 }
 
-/* line 399, ../scss/global.scss */
+/* line 391, ../scss/global.scss */
 body.node-type-page .field-type-image,
 body.node-type-media-article .field-type-image,
 body.node-type-article .field-type-image {
   text-align: center;
   padding: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 406, ../scss/global.scss */
+/* line 398, ../scss/global.scss */
 body.node-type-media-article div.article-date,
 body.node-type-article div.article-date {
   font-weight: bold;
   padding-bottom: 1em;
 }
 
-/* line 413, ../scss/global.scss */
+/* line 405, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 415, ../scss/global.scss */
+/* line 407, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 421, ../scss/global.scss */
+/* line 413, ../scss/global.scss */
 article div.field-name-field-tags {
   font-weight: bold;
   color: #666;
   margin-bottom: 1ex;
 }
-/* line 424, ../scss/global.scss */
+/* line 416, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div {
   margin-right: 1ex;
 }
-/* line 426, ../scss/global.scss */
+/* line 418, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:after {
   content: ",";
 }
-/* line 430, ../scss/global.scss */
+/* line 422, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:last-child:after {
   content: "";
 }
 
-/* line 436, ../scss/global.scss */
+/* line 428, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
-  padding-top: 0px;
+  padding-top: 0;
   background: none;
 }
 
 /* Contact us form */
-/* line 442, ../scss/global.scss */
+/* line 434, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }
 
-/* line 446, ../scss/global.scss */
+/* line 438, ../scss/global.scss */
 #uc-coupon-form,
 #uc-cart-pane-coupon {
   margin-bottom: 1em;
 }
 
-/* line 451, ../scss/global.scss */
+/* line 443, ../scss/global.scss */
 #block-views-media-views-block,
 #block-views-media-views-block-1 {
   margin: 1em;
 }
 
-/* line 457, ../scss/global.scss */
+/* line 449, ../scss/global.scss */
 div.block-alq-donation-form h2 {
   margin-top: 1ex;
 }
-/* line 461, ../scss/global.scss */
+/* line 453, ../scss/global.scss */
 div.block-alq-donation-form #donationForm div.input-group {
   margin-top: 5px;
 }
-/* line 463, ../scss/global.scss */
+/* line 455, ../scss/global.scss */
 div.block-alq-donation-form #donationForm div.input-group span.input-group-addon {
   font-size: 10px;
 }
-/* line 467, ../scss/global.scss */
+/* line 459, ../scss/global.scss */
 div.block-alq-donation-form #donationForm #membershipInfo {
   display: none;
 }
 
-/* line 473, ../scss/global.scss */
+/* line 465, ../scss/global.scss */
 #block-addtoany-addtoany-button {
   margin-bottom: 1em;
 }
 
-/* line 477, ../scss/global.scss */
+/* line 469, ../scss/global.scss */
 ul.ui-autocomplete {
   list-style: none;
 }

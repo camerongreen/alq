@@ -14,6 +14,9 @@ $fields = [
 ];
 
 foreach ($fields as $field) {
+  if (!isset($form[$field])) {
+    continue;
+  }
   $ff = $form[$field];
   ?>
   <div class="form-group form-item">

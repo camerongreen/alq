@@ -448,68 +448,6 @@ function alq_mps_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-email_campaign-field_default_member_id'.
-  $fields['node-email_campaign-field_default_member_id'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_default_member_id',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'email_campaign',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'If the user doesn\'t find an MP (say because they are from another state), who should they email',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => '',
-          ),
-          'type' => 'number_integer',
-          'weight' => 4,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_default_member_id',
-      'label' => 'Default member id',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '6',
-      ),
-    ),
-  );
-
   // Exported field: 'node-email_campaign-field_electorate_type'.
   $fields['node-email_campaign-field_electorate_type'] = array(
     'field_config' => array(
@@ -574,6 +512,91 @@ function alq_mps_feature_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-email_campaign-field_emailee'.
+  $fields['node-email_campaign-field_emailee'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_emailee',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'campaignmaterials' => 0,
+          'email_campaign' => 0,
+          'emailee' => 'emailee',
+          'media_article' => 0,
+          'page' => 0,
+          'product' => 0,
+          'section_home' => 0,
+          'webform' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'email_campaign',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_emailee',
+      'label' => 'Emailee',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '6',
       ),
     ),
   );
@@ -1569,22 +1592,22 @@ function alq_mps_feature_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('ALP, LNP, LIB, GRN etc');
+  t('Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.');
   t('Add the email to the emailee here.   The following tokens are available to use:
 [emailee.name] 
 [emailee.email]
 ');
   t('Address');
   t('Comments');
-  t('Default member id');
   t('Dr, Miss, etc');
   t('Electorate');
   t('Electorate Type');
   t('Email');
   t('Email Body');
+  t('Emailee');
   t('Family Name');
   t('Fax');
   t('Given Names');
-  t('If the user doesn\'t find an MP (say because they are from another state), who should they email');
   t('MP, DipEd, BiT etc.');
   t('Nick name etc');
   t('Office');

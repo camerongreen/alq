@@ -8,7 +8,6 @@ $tags-color: #666;
 @mixin bootstrap-img-polaroid {
   padding: 4px;
   background-color: #fff;
-  border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -66,7 +65,7 @@ h2 {
 
 div.block-block-2 {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 10px;
   /* override bootstrap style */
   div::before {
@@ -82,8 +81,7 @@ body div.page div.zone-footer * {
 }
 
 div.breadcrumb {
-  padding: 0;
-  padding-bottom: 0.5em;
+  padding: 0 0 0.5em;
   margin-bottom: 0;
   background-color: #fff;
 }
@@ -139,8 +137,7 @@ div.breadcrumb {
     padding-right: 0;
   }
   ul.nice-menu-down li.menuparent {
-    background-color: $header-background-color;
-    background-image: none;
+    background: $header-background-color none;
   }
   ul.nice-menu-down li.menuparent:hover {
     background-color: $header-background-color;
@@ -191,9 +188,7 @@ div.breadcrumb {
       text-decoration: none;
     }
     & > li a {
-      border-right-style: solid;
-      border-right-color: #fff;
-      border-right-width: thin;
+      border-right: thin solid #fff;
       padding-right: 10px;
     }
     & > li:last-child a {
@@ -252,8 +247,7 @@ body.page-media-views .view-media-views,
 }
 
 @mixin header-image-border {
-  border-bottom-color: $alq-purple;
-  border-bottom-style: solid;
+  border-bottom: solid $alq-purple;
 }
 
 #views_slideshow_cycle_teaser_section_slideshow-block {
@@ -351,9 +345,7 @@ span.views-slideshow-controls-text-previous {
 select,
 input[type=text],
 input[type=email] {
-  border-color: #CCC;
-  border-style: solid;
-  border-width: thin;
+  border: thin solid #CCC;
 }
 
 /* Voiceless box */
@@ -434,7 +426,7 @@ article div.field-name-field-tags {
 }
 
 body[class*="page-catalog-"] div.region-content-inner {
-  padding-top: 0px;
+  padding-top: 0;
   background: none;
 }
 
