@@ -382,6 +382,13 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control']
     ]
   ];
+
+  if (module_exists('image_captcha')) {
+    $form['captcha'] = [
+      '#type' => 'captcha',
+      '#captcha_type' => 'image_captcha/Image',
+    ];
+  }
   $form['submit'] = [
     '#type' => 'submit',
     '#prefix' => '<div class="form-group"><div class="col-sm-offset-3 col-sm-9">',

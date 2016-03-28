@@ -10,6 +10,7 @@ $fields = [
   'email',
   'name',
   'spam',
+  'captcha',
   'submit',
 ];
 
@@ -32,7 +33,13 @@ foreach ($fields as $field) {
     </div>
   <?php }
   else {
-    if ($ff['#type'] === 'submit') {
+    if ($ff['#type'] === 'captcha') {
+      ?>
+      <div class="col-sm-offset-3 col-sm-9">
+      <?= render($ff) ?>
+      </div>
+      <?php
+    } else if ($ff['#type'] === 'submit') {
       ?>
       <div class="col-sm-offset-3 col-sm-9">
         <button class="btn btn-primary" type="submit" id="<?= $ff['#id'] ?>"
@@ -69,22 +76,20 @@ foreach ($fields as $field) {
           </div>
         <?php }
       }
+      ?></div><!-- .col-sm-9 --><?php
     }
-    ?></div><?php
   } ?>
-  </div>
+  </div><!-- ./form-group -->
   <?php
   if ($field === 'suburb') {
     ?>
     <div class="clearfix">
       <div class="help pull-right clearfix">If more than one electorate is
-        listed
-        for
-        your suburb, click here to <a
+        listed for your suburb, click here to <a
           href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
           target="_blank"> find your electorate</a>.
       </div>
-    </div>
+    </div><!-- .fearclix -->
     <?php
   }
 

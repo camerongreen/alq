@@ -21,7 +21,7 @@ web:
     build: .
     ports:
         - "26980:80"
-        - "5000:5000"
+        - "26900:5000"
     volumes:
         - ../../public_html:/var/www/html
         - ..:/var/www/alq
