@@ -1111,7 +1111,7 @@ function alq_mps_feature_field_default_fields() {
   $fields['node-emailee-field_office'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_office',

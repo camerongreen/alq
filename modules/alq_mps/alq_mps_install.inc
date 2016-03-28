@@ -96,7 +96,8 @@ function alq_mps_insert($mps) {
 
     $rawValues = explode("\n", $member);
 
-    $ewrapper->title->set(array_shift($rawValues));  // use nodes title field for name, we also have field_title later
+    $name = array_shift($rawValues); // name is first line
+    $ewrapper->title->set($name);  // use nodes title field for name, we also have field_title later
     $ewrapper->field_position->set(count($rawValues) > 0 ? implode("\n", $rawValues) : NULL);;
     $ewrapper->field_title->set($title);
 
@@ -130,7 +131,7 @@ function alq_mps_insert($mps) {
           LANGUAGE_NONE => [['value' => $office['postcode']]],
         ],
         'field_email' => [
-          LANGUAGE_NONE => [['value' => $office['email']]],
+          LANGUAGE_NONE => [['email' => $office['email']]],
         ],
         'field_phone' => [
           LANGUAGE_NONE => [['value' => $office['phone']]],
@@ -143,11 +144,11 @@ function alq_mps_insert($mps) {
         ],
       ];
 
-      $entity = entity_create('field_collection_item', $values);
+      $officeEntity = entity_create('field_collection_item', $values);
 
-      $entity->setHostEntity('node', $node);
+      $officeEntity->setHostEntity('node', $node);
 
-      $entity->save();
+      $officeEntity->save();
     }
   }
 }

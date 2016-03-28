@@ -58,8 +58,11 @@ function alq_mps_cron() {
     $emailee = NULL;
     if (!array_key_exists($result->recipient, $emaileeCache)) {
       $recipient = node_load($result->recipient);
-      $node_wrapper = entity_metadata_wrapper('node', $recipient);
-      $emaileeCache[$result->recipient] = $node_wrapper;
+      $recipient->offices = [];
+      foreach ($recipient->field_office[LANGUAGE_NONE] as $entity_id) {
+        $recipient->offices[] = entity_load('field_collection_item', [$entity_id['value']]);
+      }
+      $emaileeCache[$result->recipient] = $recipient;
     }
     $emailee = $emaileeCache[$result->recipient];
     if (!alq_mps_email($emailee, $result)) {
@@ -85,9 +88,11 @@ function alq_mps_email($recipient, $fields) {
   $module = 'alq_mps';
   $key = 'campaign_message';
 
+  // only deal with first office for time being
+  $office = $recipient->offices[0][LANGUAGE_NONE];
+
   // Specify 'to' and 'from' addresses.
-  /*
-  $to = $recipient->field_office[0]->field_email[0]['value'];
+  $to = $office['field_email'][0]['email'];
   $from = $fields->email;
 
   $language = language_default();
@@ -95,8 +100,6 @@ function alq_mps_email($recipient, $fields) {
   $send = TRUE;
 
   $result = drupal_mail($module, $key, $to, $language, $fields, $from, $send);
-  */
-  $result = ['result' => FALSE];
 
   alq_mps_record_email_status($fields, $result);
 
@@ -192,8 +195,8 @@ function alq_mps_show_email_campaign($node) {
       return '<h2>Thanks for your submission</h2>';
     }
     else {
-      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', array('type' => 'external'));
-      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', array('type' => 'external'));
+      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', ['type' => 'external']);
+      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', ['type' => 'external']);
       drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
       $cnode = node_load($cid);
       $form = drupal_get_form('alq_mps_email_form', $cnode);
@@ -300,7 +303,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     ];
   }
 
-  $form['emailee_name'] = array(
+  $form['emailee_name'] = [
     '#title' => 'Member',
     '#type' => 'textfield',
     '#required' => TRUE,
@@ -308,14 +311,14 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control'],
       'readonly' => 'readonly',
     ]
-  );
+  ];
 
   if ($eid) {
     $form['emailee_name']['#value'] = $emailee->title;
   }
 
   if (!$eid) {
-    $form['emailee_electorate'] = array(
+    $form['emailee_electorate'] = [
       '#title' => 'Electorate',
       '#type' => 'textfield',
       '#required' => $eid === FALSE,
@@ -323,7 +326,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
         'class' => ['form-control'],
         'readonly' => 'readonly',
       ]
-    );
+    ];
   }
 
   $form['emailee_nid'] = [
