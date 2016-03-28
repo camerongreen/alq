@@ -122,7 +122,7 @@ function alq_mps_record_email_status($fields, $result) {
     $fields->status = 'Error, please check watchdog logs';
   }
 
-  if (!drupal_write_record(ALQ_EMAILS_TABLE, $fields)) {
+  if (!drupal_write_record(ALQ_EMAILS_TABLE, $fields, $fields->id)) {
     watchdog('alq_mps', t('Error saving email sending status to logs'));
   }
 }
