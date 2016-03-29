@@ -160,6 +160,7 @@ drush -y pm-enable \
   references \
   responsive_menus \
   rules \
+  smtp \
   site_map \
   stage_file_proxy \
   strongarm \

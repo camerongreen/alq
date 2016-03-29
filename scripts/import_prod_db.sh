@@ -97,7 +97,7 @@ else
 fi
 
 # enable all your dev modules
-drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff
+drush -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
 
 # disable production modules
 drush -y pm-disable googleanalytics boost captcha
