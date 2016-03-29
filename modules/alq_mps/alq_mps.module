@@ -89,11 +89,11 @@ function alq_mps_email($recipient, $fields) {
   $key = 'campaign_message';
 
   // only deal with first office for time being
-  $office = $recipient->offices[0][LANGUAGE_NONE];
+  $office = array_shift($recipient->offices[0]);
 
   // Specify 'to' and 'from' addresses.
-  $to = $office['field_email'][0]['email'];
-  $from = $fields->email;
+  $to = $office->field_email[LANGUAGE_NONE][0]['email'];
+  $from = $fields->from_email;
 
   $language = language_default();
 
