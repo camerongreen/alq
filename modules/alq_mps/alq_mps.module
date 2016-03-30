@@ -8,6 +8,8 @@
 
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 
+define('ALQ_MAX_EMAILS_PER_RUN', 50);
+
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_EMAILS_TABLE', 'alq_emails');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
@@ -21,6 +23,14 @@ function alq_mps_menu() {
     'page callback' => 'alq_mps_search',
     'access callback' => 'user_access',
     'access arguments' => ['access email campaigns'],
+  ];
+
+  $items['admin/content/alq-mps'] = [
+    'title' => 'Email campaign history',
+    'page callback' => 'alq_mps_admin',
+    'access callback' => 'user_access',
+    'access arguments' => ['administer email campaigns'],
+    'type' => MENU_NORMAL_ITEM,
   ];
   return $items;
 }
@@ -45,7 +55,9 @@ function alq_mps_permission() {
 function alq_mps_cron() {
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->isNull('emt.actioned')
-    ->fields('emt');
+    ->fields('emt')
+    ->orderBy('created')
+    ->range(0, ALQ_MAX_EMAILS_PER_RUN);
 
   $results = $query->execute();
 
@@ -91,15 +103,24 @@ function alq_mps_email($recipient, $fields) {
   // only deal with first office for time being
   $office = array_shift($recipient->offices[0]);
 
+  $to = null;
+
   // Specify 'to' and 'from' addresses.
-  $to = $office->field_email[LANGUAGE_NONE][0]['email'];
+
+  // don't email people when in development
+  if (module_exists('devel')) {
+    $to = variable_get('site_mail');
+  } else {
+    $to = $office->field_email[LANGUAGE_NONE][0]['email'];
+  }
+
   $from = $fields->from_email;
 
   $language = language_default();
 
   $send = TRUE;
 
-  $result = drupal_mail($module, $key, $to, $language, $fields, $from, $send);
+  $result = drupal_mail($module, $key, $to, $language, (array)$fields, $from, $send);
 
   alq_mps_record_email_status($fields, $result);
 
@@ -122,7 +143,7 @@ function alq_mps_record_email_status($fields, $result) {
     $fields->status = 'Error, please check watchdog logs';
   }
 
-  if (!drupal_write_record(ALQ_EMAILS_TABLE, $fields, $fields->id)) {
+  if (!drupal_write_record(ALQ_EMAILS_TABLE, $fields, 'id')) {
     watchdog('alq_mps', t('Error saving email sending status to logs'));
   }
 }
@@ -137,8 +158,8 @@ function alq_mps_record_email_status($fields, $result) {
 function alq_mps_mail($key, &$message, $params) {
   switch ($key) {
     case 'campaign_message':
-      $message['subject'] = check_plain($params->subject);
-      $message['body'][] = check_plain($params->body);
+      $message['subject'] = check_plain($params['subject']);
+      $message['body'][] = check_plain($params['body']);
       break;
   }
 }
@@ -480,3 +501,47 @@ function alq_mps_email_form_submit($form, &$form_state) {
   }
 }
 
+/**
+ * Menu callback for administering mps
+ */
+function alq_mps_admin() {
+  // get the mps
+  $query = db_select(ALQ_EMAILS_TABLE, 'emt');
+  $num_rows = $query->countQuery()->execute()->fetchField();
+  $num_per_page = 40;
+  $page = pager_default_initialize($num_rows, $num_per_page);
+  $offset = $num_per_page * $page;
+
+  $query->fields('emt');
+  $query->orderBy('emt.created', 'DESC');
+  $query->range($offset, $num_per_page);
+  $results = $query->execute();
+
+  // output them in a paged table
+  $rows = [];
+
+  foreach ($results as $result) {
+    $rows[] = [
+      $result->id,
+      $result->subject,
+      $result->from_name,
+      $result->from_email,
+      $result->spam,
+      $result->body,
+      l($result->campaign_id, '/node/' . urlencode($result->campaign_id)),
+      l($result->recipient, '/node/' . urlencode($result->recipient)),
+      date("Y-m-d h:m:s", $result->created),
+      $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      $result->status
+    ];
+  }
+
+  $output = theme('table', [
+    'header' => ['ID', 'Subject', 'From', 'Email', 'Spam', 'Body', 'Campaign', 'Recipient', 'Created', 'Actioned', 'Status'],
+    'rows' => $rows
+  ]);
+
+  $output .= theme('pager');
+
+  return $output;
+}

@@ -37,6 +37,11 @@ If you have a copy of the ALQ database, copy your gzipped sql file into the dire
 Once the initialisation code has been run the first time, from then on you can via:
 
     docker-compose up -d
+    
+# Emailing
+
+The SMTP module is installed in development, so you can use it to send emails if you 
+have a valid SMTP server (ie the one your internet provider uses)
 
 
 # Tests
