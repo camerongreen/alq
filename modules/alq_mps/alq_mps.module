@@ -60,6 +60,15 @@ function alq_mps_permission() {
  * Implements hook_cron
  */
 function alq_mps_cron() {
+  alq_mps_send_emails();
+  alq_mps_cleanup_emails();
+}
+
+/**
+ * Grabs the ALQ_MAX_EMAILS_PER_RUN most recent emails which haven't been
+ * actioned and tries to send them
+ */
+function alq_mps_send_emails() {
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->isNull('emt.actioned')
     ->fields('emt')
@@ -90,10 +99,29 @@ function alq_mps_cron() {
     }
   }
 
-  watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails emails (errors @errors)', [
-    '@emails' => $emails,
-    '@errors' => $errors
-  ]));
+  if ($emails > 0) {
+    watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails emails (errors @errors)', [
+      '@emails' => $emails,
+      '@errors' => $errors
+    ]));
+  }
+}
+
+/**
+ * Cleans up actioned emails older than a year
+ */
+function alq_mps_cleanup_emails() {
+  $query = db_delete(ALQ_EMAILS_TABLE)
+    ->isNotNull('actioned')
+    ->condition('actioned', strtotime('-1 year'), '<');
+
+  $emails = $query->execute();
+
+  if ($emails > 0) {
+    watchdog('alq_mps', t('alq_mps cron run. cleaned up @emails emails', [
+      '@emails' => $emails
+    ]));
+  }
 }
 
 /**
@@ -110,14 +138,15 @@ function alq_mps_email($recipient, $fields) {
   // only deal with first office for time being
   $office = array_shift($recipient->offices[0]);
 
-  $to = null;
+  $to = NULL;
 
   // Specify 'to' and 'from' addresses.
 
   // don't email people when in development
   if (module_exists('devel')) {
     $to = variable_get('site_mail');
-  } else {
+  }
+  else {
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
@@ -127,7 +156,7 @@ function alq_mps_email($recipient, $fields) {
 
   $send = TRUE;
 
-  $result = drupal_mail($module, $key, $to, $language, (array)$fields, $from, $send);
+  $result = drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
 
   alq_mps_record_email_status($fields, $result);
 
@@ -542,10 +571,27 @@ function alq_mps_admin() {
     ];
   }
 
-  $output = l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), ['attributes' => ['target' => '_blank', 'download' => null]]);
+  $output = l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), [
+    'attributes' => [
+      'target' => '_blank',
+      'download' => NULL
+    ]
+  ]);
 
   $output .= theme('table', [
-    'header' => ['ID', 'Subject', 'From', 'Email', 'Spam', 'Body', 'Campaign', 'Recipient', 'Created', 'Actioned', 'Status'],
+    'header' => [
+      'ID',
+      'Subject',
+      'From',
+      'Email',
+      'Spam',
+      'Body',
+      'Campaign',
+      'Recipient',
+      'Created',
+      'Actioned',
+      'Status'
+    ],
     'rows' => $rows
   ]);
 
@@ -559,7 +605,7 @@ function alq_mps_admin() {
  *
  * @param String  YYYYMMDD
  */
-function alq_mps_admin_csv($date=null) {
+function alq_mps_admin_csv($date = NULL) {
   if (!$date) {
     $date = time();
   }
@@ -578,7 +624,19 @@ function alq_mps_admin_csv($date=null) {
   drupal_add_http_header('Pragma', 'no-cache');
 
   // maybe t these
-  $keys = ['ID', 'Subject', 'From', 'Email', 'Spam', 'Body', 'Campaign', 'Recipient', 'Created', 'Actioned', 'Status'];
+  $keys = [
+    'ID',
+    'Subject',
+    'From',
+    'Email',
+    'Spam',
+    'Body',
+    'Campaign',
+    'Recipient',
+    'Created',
+    'Actioned',
+    'Status'
+  ];
 
   $out = fopen('php://output', 'w');
   fputcsv($out, $keys);
