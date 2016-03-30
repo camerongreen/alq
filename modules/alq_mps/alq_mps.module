@@ -8,7 +8,7 @@
 
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 
-define('ALQ_MAX_EMAILS_PER_RUN', 50);
+define('ALQ_MAX_EMAILS_PER_RUN', 100); // hostgator limit is 500 per hour
 
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_EMAILS_TABLE', 'alq_emails');
@@ -25,12 +25,19 @@ function alq_mps_menu() {
     'access arguments' => ['access email campaigns'],
   ];
 
-  $items['admin/content/alq-mps'] = [
+  $items['admin/workbench/alq-mps'] = [
     'title' => 'Email campaign history',
     'page callback' => 'alq_mps_admin',
     'access callback' => 'user_access',
     'access arguments' => ['administer email campaigns'],
     'type' => MENU_NORMAL_ITEM,
+  ];
+  $items['admin/workbench/alq-mps/csv'] = [
+    'title' => 'Download CSV',
+    'page callback' => 'alq_mps_admin_csv',
+    'access callback' => 'user_access',
+    'access arguments' => ['administer email campaigns'],
+    'type' => MENU_CALLBACK,
   ];
   return $items;
 }
@@ -502,10 +509,9 @@ function alq_mps_email_form_submit($form, &$form_state) {
 }
 
 /**
- * Menu callback for administering mps
+ * Menu callback for viewing sent emails
  */
 function alq_mps_admin() {
-  // get the mps
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $num_rows = $query->countQuery()->execute()->fetchField();
   $num_per_page = 40;
@@ -536,7 +542,9 @@ function alq_mps_admin() {
     ];
   }
 
-  $output = theme('table', [
+  $output = l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), ['attributes' => ['target' => '_blank', 'download' => null]]);
+
+  $output .= theme('table', [
     'header' => ['ID', 'Subject', 'From', 'Email', 'Spam', 'Body', 'Campaign', 'Recipient', 'Created', 'Actioned', 'Status'],
     'rows' => $rows
   ]);
@@ -544,4 +552,54 @@ function alq_mps_admin() {
   $output .= theme('pager');
 
   return $output;
+}
+
+/**
+ * Menu callback for downloading email statuses
+ *
+ * @param String  YYYYMMDD
+ */
+function alq_mps_admin_csv($date=null) {
+  if (!$date) {
+    $date = time();
+  }
+  $query = db_select(ALQ_EMAILS_TABLE, 'emt');
+  $query->fields('emt');
+  $unixTimeFrom = strtotime('-1 month', $date);
+  $unixTimeTo = strtotime($date);
+  $query->condition('emt.created', $unixTimeFrom, '>=');
+  $query->condition('emt.created', $unixTimeTo, '<');
+  $query->orderBy('emt.created', 'DESC');
+  $results = $query->execute();
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename=alq-emails-' . $date . '.csv');
+  drupal_add_http_header('Expires', '0');
+  drupal_add_http_header('Pragma', 'no-cache');
+
+  // maybe t these
+  $keys = ['ID', 'Subject', 'From', 'Email', 'Spam', 'Body', 'Campaign', 'Recipient', 'Created', 'Actioned', 'Status'];
+
+  $out = fopen('php://output', 'w');
+  fputcsv($out, $keys);
+
+  foreach ($results as $result) {
+    $row = [
+      $result->id,
+      $result->subject,
+      $result->from_name,
+      $result->from_email,
+      $result->spam,
+      $result->body,
+      l($result->campaign_id, '/node/' . urlencode($result->campaign_id)),
+      l($result->recipient, '/node/' . urlencode($result->recipient)),
+      date("Y-m-d h:m:s", $result->created),
+      $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      $result->status
+    ];
+    fputcsv($out, $row);
+  }
+
+  fclose($out);
+  drupal_exit();
 }
