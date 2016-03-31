@@ -45,7 +45,7 @@
     var seen = []; // only want each suburb to appear once
 
     for (var i = 0, l = data.length; i < l; i++) {
-      var ac = data[i].locality + ' - ' + data[i].postcode + ' (' + data[i].state_district + ')';
+      var ac = data[i].locality + ' - ' + data[i].postcode + ' (State District: ' + data[i].state_district + ')';
 
       if (!inCache(data[i])) {
         cache.push(data[i]);
@@ -86,6 +86,7 @@
   }
 
   $(document).ready(function () {
+    $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
     $('#edit-suburb').autocomplete({
       source: function (request, response) {
         var searchTerm = request.term;

@@ -43,6 +43,38 @@ function alq_mps_menu() {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function alq_mps_block_info() {
+  return array(
+    "alq_mps_email_campaign_display" => array(
+      "info" => t("ALQ MPS Email Campaign display"),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function alq_mps_block_view($delta = '') {
+  $block = null;
+
+  switch ($delta) {
+    case 'alq_mps_email_campaign_display':
+      $block['subject'] = t('Take Action Now!');
+      // only display on node pages
+      if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
+        $node = node_load(arg(1));
+        $block["content"] = alq_mps_get_email_campaign($node);
+      }
+      break;
+  }
+
+  return $block;
+}
+
+/**
  * Implements hook_permission().
  */
 function alq_mps_permission() {
@@ -244,7 +276,7 @@ function alq_mps_search($search) {
  * @param $node
  * @return string
  */
-function alq_mps_show_email_campaign($node) {
+function alq_mps_get_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
 
     if (isset($_SESSION) && array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
@@ -350,11 +382,11 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   if (!$eid) {
     $form['suburb'] = [
       '#type' => 'textfield',
-      '#title' => t('Suburb or Post Code'),
+      '#title' => t('Find your member'),
       '#required' => $eid === FALSE,
       '#attributes' => [
         'autocomplete' => 'off',
-        'placeholder' => t('eg Highgate Hill or 4101'),
+        'placeholder' => t('Search using your suburb or postcode'),
         'class' => ['form-control']
       ]
     ];

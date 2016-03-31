@@ -1,6 +1,10 @@
-<h3>Take action now!</h3>
 <?php
-
+/*
+ * This is all kind of lame, recreating the form display, but it's the only
+ * way I could easily bootstrapise the form
+ *
+ * If a better way appears, it should replace this
+ */
 $fields = [
   'suburb',
   'emailee_name',
@@ -84,8 +88,8 @@ foreach ($fields as $field) {
   if ($field === 'suburb') {
     ?>
     <div class="clearfix">
-      <div class="help pull-right clearfix">If more than one electorate is
-        listed for your suburb, click here to <a
+      <div class="help pull-right clearfix">If more than one electoral district is
+        listed, click here to <a
           href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
           target="_blank"> find your electorate</a>.
       </div>

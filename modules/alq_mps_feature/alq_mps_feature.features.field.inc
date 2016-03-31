@@ -401,18 +401,9 @@ function alq_mps_feature_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'email_campaign',
-      'default_value' => array(
-        0 => array(
-          'value' => 'Dear [emailee.name],
-
-... ',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Add the email to the emailee here.   The following tokens are available to use:
-[emailee.name] 
-[emailee.email]
-',
+      'description' => 'Please edit this message if you have a moment as this will increase its impact.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1593,10 +1584,6 @@ function alq_mps_feature_field_default_fields() {
   // Included for use with string extractors like potx.
   t('ALP, LNP, LIB, GRN etc');
   t('Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.');
-  t('Add the email to the emailee here.   The following tokens are available to use:
-[emailee.name] 
-[emailee.email]
-');
   t('Address');
   t('Comments');
   t('Dr, Miss, etc');
@@ -1614,6 +1601,7 @@ function alq_mps_feature_field_default_fields() {
   t('Parent article');
   t('Party');
   t('Phone');
+  t('Please edit this message if you have a moment as this will increase its impact.');
   t('Position');
   t('Postcode');
   t('Preferred Name');

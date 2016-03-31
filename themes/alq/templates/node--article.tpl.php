@@ -33,12 +33,6 @@
     ?>
   </div>
 
-  <?php
-  if (module_exists('alq_mps')) {
-    print alq_mps_show_email_campaign($node);
-  }
-  ?>
-
   <div class="clearfix">
     <?php print render($content['field_tags']); ?>
   </div>
