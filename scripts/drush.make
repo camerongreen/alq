@@ -60,7 +60,7 @@ projects[date][version] = 2.9
 
 projects[devel][version] = 1.5
 
-projects[diff][version] = 3.23.2
+projects[diff][version] = 3.2
 
 projects[email][version] = 1.3
 
