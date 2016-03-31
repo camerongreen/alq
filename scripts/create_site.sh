@@ -12,8 +12,6 @@
 # add drupal to it, symlink your custom modules, themes etc
 #
 
-set -x
-
 SITE_NAME="Animal Liberation Queensland"
 
 GIT_DIR=/var/www/alq
@@ -28,6 +26,11 @@ WEBSERVER_GROUP=www-data
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=alq_db
+
+# hosting company work around has custom drush path
+if [ -f ~/.drush_alias ]; then
+        . ~/.drush_alias
+fi
 
 #
 # Output command status and exit if error
@@ -47,7 +50,6 @@ function command_status {
   fi
 }
 
-set +x
 # go...
 # check site admin has value
 if [ -z ${ADMIN} ]
@@ -84,7 +86,6 @@ fi
 
 echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
-set -x
 
 read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
 if [ -z ${SITE_EMAIL} ]
@@ -110,11 +111,9 @@ ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
 echo "Site install commencing"
 
-set +x
 drush -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
 
 command_status "Error installing site" "Site install completed";
-set -x
 
 
 # Need to sort this out in docker container
