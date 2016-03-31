@@ -48,7 +48,7 @@ projects[captcha][version] = 1.3
 
 projects[ckeditor][version] = 1.16
 
-projects[ckeditor_link][version] = 1.16
+projects[ckeditor_link][version] = 2.4
 
 projects[colorbox][version] = 2.9
 
