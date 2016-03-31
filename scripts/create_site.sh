@@ -47,6 +47,7 @@ function command_status {
   fi
 }
 
+set +x
 # go...
 # check site admin has value
 if [ -z ${ADMIN} ]
@@ -61,6 +62,7 @@ if [ -z ${DB_USER} ]
   then
     DB_USER=${DEFAULT_DB_USER}
 fi
+
 read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
 # need a newline in the output here as -s swallows it
 echo ""
@@ -80,11 +82,9 @@ if [ -z ${DB_NAME} ]
     DB_NAME=${DEFAULT_DB_NAME}
 fi
 
-set +x
 echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
-set -x
-
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
+set -x
 
 read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
 if [ -z ${SITE_EMAIL} ]
