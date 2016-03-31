@@ -11,7 +11,7 @@
 # mods, set some values etc
 #
 
-DEFAULT_PROD_HOST=alq.org.au
+DEFAULT_PROD_HOST="http://alq.org.au"
 
 # this is the user who will own the files, so you
 # can edit them etc
@@ -24,6 +24,11 @@ DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=alq_db
 DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
+
+# hosting company work around has custom drush path
+if [ -f ~/.drush_alias ]; then
+        . ~/.drush_alias
+fi
 
 # first set up the database
 read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
