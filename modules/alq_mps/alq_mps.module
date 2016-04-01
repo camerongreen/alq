@@ -26,7 +26,7 @@ function alq_mps_menu() {
   ];
 
   $items['admin/workbench/alq-mps'] = [
-    'title' => 'Email campaign history',
+    'title' => 'Email campaigns',
     'page callback' => 'alq_mps_admin',
     'access callback' => 'user_access',
     'access arguments' => ['administer email campaigns'],
@@ -58,13 +58,13 @@ function alq_mps_block_info() {
  * Implements hook_block_view().
  */
 function alq_mps_block_view($delta = '') {
-  $block = null;
+  $block = NULL;
 
   switch ($delta) {
     case 'alq_mps_email_campaign_display':
       $block['subject'] = t('Take Action Now!');
       // only display on node pages
-      if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
         $block["content"] = alq_mps_get_email_campaign($node);
       }
@@ -603,12 +603,17 @@ function alq_mps_admin() {
     ];
   }
 
-  $output = l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), [
-    'attributes' => [
-      'target' => '_blank',
-      'download' => NULL
-    ]
-  ]);
+  $links = [
+    l('View all emailees', 'admin/workbench/alq-mps/emailees'),
+    l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), [
+      'attributes' => [
+        'target' => '_blank',
+        'download' => NULL
+      ]
+    ])
+  ];
+
+  $output = "<ul><li>" . implode("</li><li>", $links) . "</li></ul>";
 
   $output .= theme('table', [
     'header' => [
