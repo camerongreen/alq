@@ -439,14 +439,14 @@ function alq_mps_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-email_campaign-field_electorate_type'.
-  $fields['node-email_campaign-field_electorate_type'] = array(
+  // Exported field: 'node-email_campaign-field_campaign_type'.
+  $fields['node-email_campaign-field_campaign_type'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_electorate_type',
+      'field_name' => 'field_campaign_type',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -457,9 +457,8 @@ function alq_mps_feature_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'state' => 'State',
-          'federal' => 'Federal',
-          'council' => 'Council',
+          'single' => 'Single Email',
+          'qld_state' => 'QLD State MPs',
         ),
         'allowed_values_function' => '',
       ),
@@ -468,20 +467,16 @@ function alq_mps_feature_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'email_campaign',
-      'default_value' => array(
-        0 => array(
-          'value' => 'state',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'What sort of email campaign is this, just to one person, or to a group of MPs etc',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 5,
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -491,8 +486,8 @@ function alq_mps_feature_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_electorate_type',
-      'label' => 'Electorate Type',
+      'field_name' => 'field_campaign_type',
+      'label' => 'Campaign Type',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -511,7 +506,7 @@ function alq_mps_feature_field_default_fields() {
   $fields['node-email_campaign-field_emailee'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_emailee',
@@ -672,79 +667,6 @@ function alq_mps_feature_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '5',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-email_campaign-field_state'.
-  $fields['node-email_campaign-field_state'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_state',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'ACT' => 'Australian Capital Territory',
-          'NSW' => 'New South Wales',
-          'NT' => 'Northern Territory',
-          'QLD' => 'Queensland',
-          'SA' => 'South Australia',
-          'TAS' => 'Tasmania',
-          'VIC' => 'Victoria',
-          'WA' => 'Western Australia',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'email_campaign',
-      'default_value' => array(
-        0 => array(
-          'value' => 'QLD',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 6,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_state',
-      'label' => 'State',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '8',
       ),
     ),
   );
@@ -1585,6 +1507,7 @@ function alq_mps_feature_field_default_fields() {
   t('ALP, LNP, LIB, GRN etc');
   t('Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.');
   t('Address');
+  t('Campaign Type');
   t('Comments');
   t('Dr, Miss, etc');
   t('Electorate');
@@ -1610,6 +1533,7 @@ function alq_mps_feature_field_default_fields() {
   t('This is the article which this should appear under');
   t('Title');
   t('Toll Free Phone');
+  t('What sort of email campaign is this, just to one person, or to a group of MPs etc');
 
   return $fields;
 }
