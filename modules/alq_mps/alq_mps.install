@@ -28,20 +28,25 @@ function alq_mps_install() {
  * Implements hook_uninstall()
  */
 function alq_mps_uninstall() {
-  $type = 'emailee';
   // delete nodes
-  $results = db_select('node', 'n')
-    ->fields('n', array('nid'))
-    ->condition('type', $type)
-    ->execute();
+  $types = ['emailee', 'email_campaign'];
 
-  foreach ($results as $result) {
-    $nids[] = $result->nid;
-  }
+  foreach ($types as $type) {
+    $nids = [];
 
-  if (!empty($nids)) {
-    node_delete_multiple($nids);
-    drupal_set_message(t('%count emilee nodes have been deleted.', array('%count' => count($nids))));
+    $results = db_select('node', 'n')
+      ->fields('n', array('nid'))
+      ->condition('type', $type)
+      ->execute();
+
+    foreach ($results as $result) {
+      $nids[] = $result->nid;
+    }
+
+    if (!empty($nids)) {
+      node_delete_multiple($nids);
+      drupal_set_message(t('%count %type nodes have been deleted.', array('%type' => $type, '%count' => count($nids))));
+    }
   }
 
   drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
