@@ -114,7 +114,7 @@ function alq_mps_feature_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'admin/workbench/alq_mps/emailees';
+  $handler->display->display_options['path'] = 'admin/workbench/alq-mps/emailees';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Emailees';
   $handler->display->display_options['menu']['name'] = 'devel';
