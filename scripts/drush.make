@@ -34,7 +34,7 @@ projects[drupal][version] = 7
 ; Modules
 ; --------
 
-projects[addtoany][version] = 4.9
+projects[addtoany][version] = 4.12
 
 projects[admin][version] = 2.0-beta3
 
@@ -46,11 +46,11 @@ projects[boost][version] = 1.0
 
 projects[captcha][version] = 1.3
 
-projects[ckeditor][version] = 1.16
+projects[ckeditor][version] = 1.17
 
 projects[ckeditor_link][version] = 2.4
 
-projects[colorbox][version] = 2.9
+projects[colorbox][version] = 2.10
 
 projects[context][version] = 3.6
 
@@ -64,7 +64,7 @@ projects[diff][version] = 3.2
 
 projects[email][version] = 1.3
 
-projects[entity][version] = 1.6
+projects[entity][version] = 1.7
 
 projects[facebook_boxes][version] = 1.0
 
@@ -80,17 +80,17 @@ projects[google_analytics][version] = 1.4
 
 projects[imageapi][version] = 1.x-dev
 
-projects[imce][version] = 1.9
+projects[imce][version] = 1.10
 
 projects[imce_wysiwyg][version] = 1.0
 
 projects[jquery_plugin][version] = 1.0
 
-projects[jquery_update][version] = 2.6
+projects[jquery_update][version] = 2.7
 
 projects[libraries][version] = 2.2
 
-projects[metatag][version] = 1.7
+projects[metatag][version] = 1.13
 
 projects[module_filter][version] = 2.0
 
@@ -98,7 +98,7 @@ projects[nice_menus][version] = 3.x-dev
 
 projects[omega_tools][version] = 3.0-rc4
 
-projects[pathauto][version] = 1.2
+projects[pathauto][version] = 1.3
 
 projects[references][version] = 2.1
 
@@ -118,11 +118,11 @@ projects[token][version] = 1.6
 
 projects[token_filter][version] = 1.1
 
-projects[ubercart][version] = 3.8
+projects[ubercart][version] = 3.9
 
 projects[uc_coupon][version] = 2.1-alpha7
 
-projects[views][version] = 3.11
+projects[views][version] = 3.13
 
 projects[views_slideshow][version] = 3.1
 
