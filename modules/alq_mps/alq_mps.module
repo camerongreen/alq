@@ -393,7 +393,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   }
 
   $form['emailee_name'] = [
-    '#title' => 'Member',
+    '#title' => 'Email to',
     '#type' => 'textfield',
     '#required' => TRUE,
     '#attributes' => [
@@ -406,11 +406,20 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     $form['emailee_name']['#value'] = $emailee->title;
   }
 
-  if (!$eid) {
-    $form['emailee_electorate'] = [
-      '#title' => 'Electorate',
+  if ($eid) {
+    $form['emailee_position'] = [
+      '#title' => 'Position',
       '#type' => 'textfield',
-      '#required' => $eid === FALSE,
+      '#default_value' => str_replace("\n", ' ', $emailee->field_position[LANGUAGE_NONE][0]["value"]),
+      '#attributes' => [
+        'class' => ['form-control'],
+        'readonly' => 'readonly',
+      ]
+    ];
+  } else {
+    $form['emailee_electorate'] = [
+      '#title' => 'Member for',
+      '#type' => 'textfield',
       '#attributes' => [
         'class' => ['form-control'],
         'readonly' => 'readonly',
@@ -441,7 +450,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
   $form['body'] = [
     '#type' => 'textarea',
-    '#title' => t('Email body'),
+    '#title' => t('Email text'),
     '#required' => TRUE,
     '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
     '#attributes' => [

@@ -9,6 +9,7 @@ $fields = [
   'suburb',
   'emailee_name',
   'emailee_electorate',
+  'emailee_position',
   'subject',
   'body',
   'email',
