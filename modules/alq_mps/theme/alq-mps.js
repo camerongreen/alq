@@ -86,6 +86,8 @@
   }
 
   $(document).ready(function () {
+    $('#edit-name').val($.cookie('Drupal.visitor.from_name'));
+    $('#edit-email').val($.cookie('Drupal.visitor.from_email'));
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
     $('.suburb-search').autocomplete({
       source: function (request, response) {

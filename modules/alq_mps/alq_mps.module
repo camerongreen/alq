@@ -284,6 +284,7 @@ function alq_mps_get_email_campaign($node) {
       return '<h2>Thanks for your submission</h2>';
     }
     else {
+      drupal_add_library('system', 'jquery.cookie');
       drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', ['type' => 'external']);
       drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', ['type' => 'external']);
       drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
@@ -409,17 +410,16 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   }
 
   if ($eid) {
-    $form['emailee_position'] = [
-      '#title' => 'Position',
-      '#type' => 'textfield',
-      '#attributes' => [
-        'class' => ['form-control'],
-        'readonly' => 'readonly',
-      ]
-    ];
-
     if (is_array($emailee->field_position) && array_key_exists(LANGUAGE_NONE, $emailee->field_position)) {
-      $form['emailee_position']['#default_value'] = str_replace("\n", ' ', $emailee->field_position[LANGUAGE_NONE][0]["value"]);
+      $form['emailee_position'] = [
+        '#title' => 'Position',
+        '#type' => 'textfield',
+        '#default_value' => str_replace("\n", ' ', $emailee->field_position[LANGUAGE_NONE][0]["value"]),
+        '#attributes' => [
+          'class' => ['form-control'],
+          'readonly' => 'readonly',
+        ]
+      ];
     }
   } else {
     $form['emailee_electorate'] = [
@@ -588,6 +588,11 @@ function alq_mps_email_form_submit($form, &$form_state) {
     'spam' => $values['spam'],
     'created' => time()
   ];
+
+  user_cookie_save([
+    'from_email' => $values['email'],
+    'from_name' => $values['name'],
+  ]);
 
   if (drupal_write_record(ALQ_EMAILS_TABLE, $insert)) {
     drupal_set_message('Successfully created email, it will be sent shortly');

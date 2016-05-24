@@ -82,7 +82,7 @@ function alq_mps_insert($mps) {
     $entity = entity_create('node', $values);
     $ewrapper = entity_metadata_wrapper('node', $entity);
 
-    $ewrapper->field_electorate_type->set('State'); // hard code for first iteration
+    $ewrapper->field_electorate_type->set('state'); // hard code for first iteration
     $ewrapper->field_electorate->set($mp[$GLOBALS['mpsCvsFields']['electorate']]);
     $ewrapper->field_party->set($mp[$GLOBALS['mpsCvsFields']['party']]);
 
