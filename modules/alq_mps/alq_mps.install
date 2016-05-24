@@ -163,6 +163,12 @@ function alq_mps_schema() {
         'length' => 512,
         'not null' => TRUE
       ),
+      'from_address' => array(
+        'description' => 'From address',
+        'type' => 'varchar',
+        'length' => 512,
+        'not null' => TRUE
+      ),
       'spam' => array(
         'description' => 'Wants spam',
         'type' => 'int',

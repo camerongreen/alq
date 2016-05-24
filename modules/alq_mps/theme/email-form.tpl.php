@@ -5,8 +5,9 @@
  *
  * If a better way appears, it should replace this
  */
+
+// order of the fields for the form
 $fields = [
-  'suburb',
   'emailee_name',
   'emailee_electorate',
   'emailee_position',
@@ -18,6 +19,15 @@ $fields = [
   'captcha',
   'submit',
 ];
+
+// suburb appears in a different order according to whether it is used
+// for search (where the person needs to find their mp) or if there is a static
+// mp and we just want the person to enter it
+if (in_array('suburb-search', $form['suburb']['#attributes']['class'])) {
+  array_unshift($fields, 'suburb');
+} else {
+  array_splice($fields, 7, 0, 'suburb');
+}
 
 foreach ($fields as $field) {
   if (!isset($form[$field])) {
@@ -62,7 +72,7 @@ foreach ($fields as $field) {
         ?>
         <input
           <?= $field === 'suburb' ? 'autocomplete="off" ' : '' ?><?= array_key_exists('readonly', $ff['#attributes']) && $ff['#attributes']['readonly'] ? 'readonly="readonly" ' : '' ?><?= array_key_exists('placeholder', $ff['#attributes']) && $ff['#attributes']['placeholder'] ? ' placeholder="' . $ff['#attributes']['placeholder']. '"' : '' ?>
-          class="form-control form-text<?= $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>" type="text"
+          class="<?= implode(' ', $ff['#attributes']['class']) ?> form-text<?= $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>" type="text"
           id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
           value="<?= $ff['#value'] ?>"><span
           role="status" aria-live="polite"
@@ -74,7 +84,7 @@ foreach ($fields as $field) {
           ?>
           <div
             class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
-            <textarea class="form-control form-textarea required"
+            <textarea class="<?= implode(' ', $ff['#attributes']['class']) ?> form-textarea required"
                       id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
                       cols="60"
                       rows="5"><?= $ff['#value'] ?></textarea>

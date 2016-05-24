@@ -87,7 +87,7 @@
 
   $(document).ready(function () {
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
-    $('#edit-suburb').autocomplete({
+    $('.suburb-search').autocomplete({
       source: function (request, response) {
         var searchTerm = request.term;
         $.getJSON('/alq-mps/' + searchTerm, function (data) {
@@ -102,7 +102,7 @@
       select: function (event, ui) {
         event.preventDefault();
         var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
-        $('#edit-suburb').val(ac);
+        $('.suburb-search').val(ac);
         var results = getEmailees(ui.item.value.state_district, cache);
         showEmailees(results);
       },
