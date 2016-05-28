@@ -187,6 +187,12 @@ function alq_mps_schema() {
         'unsigned' => TRUE,
         'default' => NULL
       ),
+      'confirmation_sent' => array(
+        'description' => 'Confirmation email sent to user',
+        'type' => 'int',
+        'length' => 1,
+        'default' => 0
+      ),
       'status' => [
         'description' => 'Status if any of attempt to send',
         'type' => 'text',

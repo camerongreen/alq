@@ -107,33 +107,48 @@ function alq_mps_send_emails() {
     ->orderBy('created')
     ->range(0, ALQ_MAX_EMAILS_PER_RUN);
 
-  $results = $query->execute();
+  $emails = $query->execute();
 
-  $emails = $results->rowCount();
+  $emailCount = $emails->rowCount();
   $errors = 0;
 
   $emaileeCache = [];
 
-  foreach ($results as $result) {
+  foreach ($emails as $email) {
     $emailee = NULL;
-    if (!array_key_exists($result->recipient, $emaileeCache)) {
-      $recipient = node_load($result->recipient);
+    // try and cache the emailees we don't have to keep getting them
+    // from the database
+    if (!array_key_exists($email->recipient, $emaileeCache)) {
+      $recipient = node_load($email->recipient);
       $recipient->offices = [];
       foreach ($recipient->field_office[LANGUAGE_NONE] as $entity_id) {
         $recipient->offices[] = entity_load('field_collection_item', [$entity_id['value']]);
       }
-      $emaileeCache[$result->recipient] = $recipient;
+      $emaileeCache[$email->recipient] = $recipient;
     }
-    $emailee = $emaileeCache[$result->recipient];
-    if (!alq_mps_email($emailee, $result)) {
-      watchdog('alq_mps', t('Error sending email @nid', ['@nid' => $result->nid]));
+    $emailee = $emaileeCache[$email->recipient];
+    // send the email, checking the result.  If it is sent, we send the user
+    // a confirmation email
+    $result = alq_mps_email($emailee, $email);
+    $confirmation_sent = 0;
+    if ($result['result']) {
+      $confirmation_result = alq_mps_confirmation_email($email);
+      if ($confirmation_result['result'] == TRUE) {
+        $confirmation_sent = 1;
+      } else {
+        watchdog('alq_mps', t('Error sending campaign confirmation email - @nid', ['@nid' => $email->nid]));
+      }
+    } else {
+      watchdog('alq_mps', t('Error sending campaign email - @nid', ['@nid' => $email->nid]));
       $errors++;
     }
+    // Add email to log
+    alq_mps_record_email_status($emailee, $result, $confirmation_sent);
   }
 
-  if ($emails > 0) {
-    watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails emails (errors @errors)', [
-      '@emails' => $emails,
+  if ($emailCount > 0) {
+    watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails campaign email/s (error/s @errors)', [
+      '@emails' => $emailCount,
       '@errors' => $errors
     ]));
   }
@@ -190,20 +205,52 @@ function alq_mps_email($recipient, $fields) {
 
   $result = drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
 
-  alq_mps_record_email_status($fields, $result);
+  return $result;
+}
 
-  return $result['result'];
+/**
+ * 
+ * Sends a confirmation email and records result in ALQ_MPS_EMAIL_TABLE
+ *
+ * @param $fields
+ * @return boolean
+ */
+function alq_mps_confirmation_email($fields) {
+  $module = 'alq_mps';
+  $key = 'campaign_confirmation_message';
+
+  // don't email people when in development
+  if (module_exists('devel')) {
+    $to = variable_get('site_mail');
+  }
+  else {
+    // responding to the person who sent the message
+    $to = $fields->from_email;
+  }
+
+  $from = variable_get('site_mail');
+
+  $language = language_default();
+
+  $send = TRUE;
+
+  $result = drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
+
+  return $result;
 }
 
 /**
  * Check the email result status and write the actioned date
  * and status into the emails table
  *
- * @param $fields
- * @param $result
+ * @param $fields  fields to update in db
+ * @param $result   result of email attempt
+ * @param $confirmation_sent  has a confirmation email been sent
  */
-function alq_mps_record_email_status($fields, $result) {
+function alq_mps_record_email_status($fields, $result, $confirmation_sent) {
   $fields->actioned = time();
+  $fields->confirmation_sent = $confirmation_sent;
+
   if ($result['result'] == TRUE) {
     $fields->status = 'successfully queued';
   }
@@ -227,6 +274,10 @@ function alq_mps_mail($key, &$message, $params) {
   switch ($key) {
     case 'campaign_message':
       $message['subject'] = check_plain($params['subject']);
+      $message['body'][] = check_plain($params['body']);
+      break;
+    case 'campaign_confirmation_message':
+      $message['subject'] = 'Re: ' . check_plain($params['subject']);
       $message['body'][] = check_plain($params['body']);
       break;
   }
@@ -633,6 +684,7 @@ function alq_mps_admin() {
       l($result->recipient, '/node/' . urlencode($result->recipient)),
       date("Y-m-d h:m:s", $result->created),
       $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      $result->confirmation_sent,
       $result->status
     ];
   }
@@ -661,6 +713,7 @@ function alq_mps_admin() {
       'Recipient',
       'Created',
       'Actioned',
+      'Confirmation sent',
       'Status'
     ],
     'rows' => $rows
@@ -706,6 +759,7 @@ function alq_mps_admin_csv($date = NULL) {
     'Recipient',
     'Created',
     'Actioned',
+    'Confirmation Sent',
     'Status'
   ];
 
@@ -724,6 +778,7 @@ function alq_mps_admin_csv($date = NULL) {
       l($result->recipient, '/node/' . urlencode($result->recipient)),
       date("Y-m-d h:m:s", $result->created),
       $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      $result->confirmation_sent,
       $result->status
     ];
     fputcsv($out, $row);

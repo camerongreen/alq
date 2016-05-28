@@ -20,8 +20,8 @@ web:
     container_name: alq_web
     build: .
     environment:
-        XDEBUG_CONFIG: "remote_connect_back=1 remote_enable=1"
-        PHP_IDE_CONFIG
+        - XDEBUG_CONFIG
+        - PHP_IDE_CONFIG
     ports:
         - "26980:80"
         - "26900:5000"
