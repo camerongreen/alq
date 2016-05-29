@@ -115,7 +115,6 @@ function alq_mps_send_emails() {
   $emaileeCache = [];
 
   foreach ($emails as $email) {
-    $emailee = NULL;
     // try and cache the emailees we don't have to keep getting them
     // from the database
     if (!array_key_exists($email->recipient, $emaileeCache)) {
@@ -127,27 +126,30 @@ function alq_mps_send_emails() {
       $emaileeCache[$email->recipient] = $recipient;
     }
     $emailee = $emaileeCache[$email->recipient];
+
     // send the email, checking the result.  If it is sent, we send the user
     // a confirmation email
     $result = alq_mps_email($emailee, $email);
     $confirmation_sent = 0;
-    if ($result['result']) {
+    if ($result['result'] == TRUE) {
       $confirmation_result = alq_mps_confirmation_email($email);
       if ($confirmation_result['result'] == TRUE) {
         $confirmation_sent = 1;
-      } else {
+      }
+      else {
         watchdog('alq_mps', t('Error sending campaign confirmation email - @nid', ['@nid' => $email->nid]));
       }
-    } else {
+    }
+    else {
       watchdog('alq_mps', t('Error sending campaign email - @nid', ['@nid' => $email->nid]));
       $errors++;
     }
     // Add email to log
-    alq_mps_record_email_status($emailee, $result, $confirmation_sent);
+    alq_mps_record_email_status($email, $result, $confirmation_sent);
   }
 
   if ($emailCount > 0) {
-    watchdog('alq_mps', t('alq_mps cron run. Tried to send @emails campaign email/s (error/s @errors)', [
+    watchdog('alq_mps', t('alq_mps cron run. @emails campaign email/s found (error/s @errors)', [
       '@emails' => $emailCount,
       '@errors' => $errors
     ]));
@@ -181,35 +183,25 @@ function alq_mps_cleanup_emails() {
 function alq_mps_email($recipient, $fields) {
   $module = 'alq_mps';
   $key = 'campaign_message';
-
-  // only deal with first office for time being
-  $office = array_shift($recipient->offices[0]);
-
-  $to = NULL;
-
-  // Specify 'to' and 'from' addresses.
+  $from = $fields->from_email;
+  $language = language_default();
+  $send = TRUE;
 
   // don't email people when in development
   if (module_exists('devel')) {
     $to = variable_get('site_mail');
   }
   else {
+    // only deal with first office for time being
+    $office = array_shift($recipient->offices[0]);
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
-  $from = $fields->from_email;
-
-  $language = language_default();
-
-  $send = TRUE;
-
-  $result = drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
-
-  return $result;
+  return drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
 }
 
 /**
- * 
+ *
  * Sends a confirmation email and records result in ALQ_MPS_EMAIL_TABLE
  *
  * @param $fields
@@ -218,6 +210,9 @@ function alq_mps_email($recipient, $fields) {
 function alq_mps_confirmation_email($fields) {
   $module = 'alq_mps';
   $key = 'campaign_confirmation_message';
+  $from = variable_get('site_mail');
+  $language = language_default();
+  $send = TRUE;
 
   // don't email people when in development
   if (module_exists('devel')) {
@@ -228,15 +223,7 @@ function alq_mps_confirmation_email($fields) {
     $to = $fields->from_email;
   }
 
-  $from = variable_get('site_mail');
-
-  $language = language_default();
-
-  $send = TRUE;
-
-  $result = drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
-
-  return $result;
+  return drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
 }
 
 /**
@@ -278,7 +265,7 @@ function alq_mps_mail($key, &$message, $params) {
       break;
     case 'campaign_confirmation_message':
       $message['subject'] = 'Re: ' . check_plain($params['subject']);
-      $message['body'][] = check_plain($params['body']);
+      $message['body'][] = $params['body'];
       break;
   }
 }
@@ -472,7 +459,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
         ]
       ];
     }
-  } else {
+  }
+  else {
     $form['emailee_electorate'] = [
       '#title' => 'Member for',
       '#type' => 'textfield',

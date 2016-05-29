@@ -90,7 +90,11 @@ projects[jquery_update][version] = 2.7
 
 projects[libraries][version] = 2.2
 
+projects[mailsystem][version] = 2.34
+
 projects[metatag][version] = 1.13
+
+projects[mimemail][version] = 1.0-beta4
 
 projects[module_filter][version] = 2.0
 

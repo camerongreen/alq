@@ -150,7 +150,10 @@ drush -y pm-enable \
   jquery_plugin \
   jquery_update \
   libraries \
+  mailsystem \
   metatag \
+  mimemail \
+  mimemail_compress \
   module_filter \
   nice_menus \
   node_reference \
