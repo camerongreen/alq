@@ -264,11 +264,31 @@ function alq_mps_mail($key, &$message, $params) {
       $message['body'][] = check_plain($params['body']);
       break;
     case 'campaign_confirmation_message':
-      $message['subject'] = 'Re: ' . check_plain($params['subject']);
-      $message['body'][] = $params['body'];
+      $response = alq_mps_confirmation_email_html($key, $params);
+      $message['subject'] = check_plain($response['subject']);
+      $message['body'][] = $response['body'];
       break;
   }
 }
+
+/**
+ * Get confirmation email html
+ *
+ * @param $key
+ * @param $params
+ */
+function alq_mps_confirmation_email_html($key, $params) {
+  // hard code for now, rewrite this to be much better
+  return [
+    'subject' => 'THANK YOU',
+    'body' => '<p>Thank you so much for speaking up for calves – the voiceless victims of the cruelty of "calf scruffing"</p>.
+<p>Make sure you stay up to date with the campaign by following us on <b>facebook</b> (https://www.facebook.com/animalliberationqld/).</p>
+<p>Help us shine the spotlight on rodeo cruelty - keep our investigators on the ground by making a <b>donation</b> (http://alq.org.au/content/donate).</p>
+<p>Thanks again for helping create a more compassionate world for animals!</p>
+<p>The team at Animal Liberation Queensland.</p>'
+  ];
+}
+
 
 /**
  * Menu callback for mps search

@@ -32,7 +32,7 @@
   </head>
   <body id="mimemail-body" <?php if ($module && $key): print 'class="'. $module .'-'. $key .'"'; endif; ?>>
   <div id="header">
-    <img src="http://alq.org.au/sites/all/themes/alq/logo.png" alt="Animal Liberation Qld">
+    <img style="height: 85px; width=160px;" src="http://alq.org.au/sites/all/themes/alq/logo.png" alt="Animal Liberation Qld">
   </div>
     <div id="center">
       <div id="main">
