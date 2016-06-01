@@ -23,7 +23,10 @@ $fields = [
 // suburb appears in a different order according to whether it is used
 // for search (where the person needs to find their mp) or if there is a static
 // mp and we just want the person to enter it
-if (in_array('suburb-search', $form['suburb']['#attributes']['class'])) {
+
+$suburbSearch = in_array('suburb-search', $form['suburb']['#attributes']['class']);
+
+if ($suburbSearch) {
   array_unshift($fields, 'suburb');
 } else {
   array_splice($fields, 7, 0, 'suburb');
@@ -96,7 +99,7 @@ foreach ($fields as $field) {
   } ?>
   </div><!-- ./form-group -->
   <?php
-  if ($field === 'suburb') {
+  if ($suburbSearch && ($field === 'suburb')) {
     ?>
     <div class="clearfix">
       <div class="help pull-right clearfix">If more than one electoral district is
