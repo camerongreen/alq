@@ -282,9 +282,9 @@ function alq_mps_mail($key, &$message, $params) {
 function alq_mps_format_email($key, $params) {
   $returnVal = $params['body'] . "\n";
   $returnVal .= "\n--\n";
-  $returnVal .= $params['name'] . "\n";
-  $returnVal .= $params['email'] . "\n";
-  $returnVal .= $params['suburb'] . "\n";
+  $returnVal .= $params['from_name'] . "\n";
+  $returnVal .= $params['from_email'] . "\n";
+  $returnVal .= $params['from_address'] . "\n";
 
   return $returnVal;
 }
