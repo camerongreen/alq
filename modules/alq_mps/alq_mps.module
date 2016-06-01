@@ -261,7 +261,8 @@ function alq_mps_mail($key, &$message, $params) {
   switch ($key) {
     case 'campaign_message':
       $message['subject'] = check_plain($params['subject']);
-      $message['body'][] = check_plain($params['body']);
+      $body = alq_mps_format_email($key, $params);
+      $message['body'][] = check_plain($body);
       break;
     case 'campaign_confirmation_message':
       $response = alq_mps_confirmation_email_html($key, $params);
@@ -272,10 +273,28 @@ function alq_mps_mail($key, &$message, $params) {
 }
 
 /**
+ * Format the email to the emailee
+ *
+ * @param $key
+ * @param $params
+ * @return  string $body
+ */
+function alq_mps_format_email($key, $params) {
+  $returnVal = $params['body'] . "\n";
+  $returnVal .= "\n--\n";
+  $returnVal .= $params['name'] . "\n";
+  $returnVal .= $params['email'] . "\n";
+  $returnVal .= $params['suburb'] . "\n";
+
+  return $returnVal;
+}
+
+/**
  * Get confirmation email html
  *
  * @param $key
  * @param $params
+ * @return  array ['subject', 'body']
  */
 function alq_mps_confirmation_email_html($key, $params) {
   // hard code for now, rewrite this to be much better
@@ -612,12 +631,13 @@ function alq_mps_email_form_validate($form, &$form_state) {
   $checkHtml = [
     'body',
     'subject',
+    'suburb',
     'email',
     'name'
   ];
 
   foreach ($checkHtml as $field) {
-    if (hasHtml($values[$field])) {
+    if (isset($values[$field]) && hasHtml($values[$field])) {
       form_set_error($field, t('Invalid value, please remove links etc.'));
     }
   }
