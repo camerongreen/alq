@@ -721,7 +721,7 @@ function alq_mps_admin() {
 
   $links = [
     l('View all emailees', 'admin/workbench/alq-mps/emailees'),
-    l('Download emails for last month', 'admin/workbench/alq-mps/csv/' . date('Ymd'), [
+    l('Download emails for current month', 'admin/workbench/alq-mps/csv/' . date('Y-M'), [
       'attributes' => [
         'target' => '_blank',
         'download' => NULL
@@ -768,18 +768,21 @@ function getBrizzyTime() {
 /**
  * Menu callback for downloading email statuses
  *
- * @param String  YYYYMMDD
+ * @param String  YYYY-MMM
  */
 function alq_mps_admin_csv($date = NULL) {
-  if (!$date) {
-    $date = date('Ymd', getBrizzyTime());
+  // should be good for the next thousand years ot so
+  if (!preg_match('/2\d{3}-\w{3}/', $date)) {
+    $date = date('Y-M', getBrizzyTime());
   }
+
+  $unixTimeFrom = strtotime($date);
+
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->fields('emt');
-  $unixTimeFrom = strtotime('-1 month', $date);
   $query->condition('emt.created', $unixTimeFrom, '>=');
   // so we get essentially get a second before midnight
-  $unixTimeTo = strtotime('+1 day', $date) - 1;
+  $unixTimeTo = strtotime(date('Y-m-t 23:59:59', $unixTimeFrom));
   $query->condition('emt.created', $unixTimeTo, '<');
   $query->orderBy('emt.created', 'DESC');
   $results = $query->execute();
