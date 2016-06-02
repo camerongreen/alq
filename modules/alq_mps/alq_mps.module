@@ -772,13 +772,14 @@ function getBrizzyTime() {
  */
 function alq_mps_admin_csv($date = NULL) {
   if (!$date) {
-    $date = getBrizzyTime();
+    $date = date('Ymd', getBrizzyTime());
   }
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->fields('emt');
   $unixTimeFrom = strtotime('-1 month', $date);
-  $unixTimeTo = strtotime('+1 day', $date);
   $query->condition('emt.created', $unixTimeFrom, '>=');
+  // so we get essentially get a second before midnight
+  $unixTimeTo = strtotime('+1 day', $date) - 1;
   $query->condition('emt.created', $unixTimeTo, '<');
   $query->orderBy('emt.created', 'DESC');
   $results = $query->execute();
