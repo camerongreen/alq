@@ -137,11 +137,11 @@ function alq_mps_send_emails() {
         $confirmation_sent = 1;
       }
       else {
-        watchdog('alq_mps', t('Error sending campaign confirmation email - @nid', ['@nid' => $email->nid]));
+        watchdog('alq_mps', t('Error sending campaign confirmation email - @id', ['@id' => $email->id]));
       }
     }
     else {
-      watchdog('alq_mps', t('Error sending campaign email - @nid', ['@nid' => $email->nid]));
+      watchdog('alq_mps', t('Error sending campaign email - @id', ['@id' => $email->id]));
       $errors++;
     }
     // Add email to log
