@@ -112,12 +112,13 @@ function alq_mps_send_emails() {
   $emailCount = $emails->rowCount();
   $errors = 0;
 
+  $cacheDisabled = true;
   $emaileeCache = [];
 
   foreach ($emails as $email) {
     // try and cache the emailees we don't have to keep getting them
     // from the database
-    if (!array_key_exists($email->recipient, $emaileeCache)) {
+    if ($cacheDisabled || !array_key_exists($email->recipient, $emaileeCache)) {
       $recipient = node_load($email->recipient);
       $recipient->offices = [];
       foreach ($recipient->field_office[LANGUAGE_NONE] as $entity_id) {
