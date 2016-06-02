@@ -777,7 +777,7 @@ function alq_mps_admin_csv($date = NULL) {
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->fields('emt');
   $unixTimeFrom = strtotime('-1 month', $date);
-  $unixTimeTo = strtotime($date);
+  $unixTimeTo = strtotime('+1 day', $date);
   $query->condition('emt.created', $unixTimeFrom, '>=');
   $query->condition('emt.created', $unixTimeTo, '<');
   $query->orderBy('emt.created', 'DESC');
