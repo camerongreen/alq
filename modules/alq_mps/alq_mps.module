@@ -236,7 +236,7 @@ function alq_mps_confirmation_email($fields) {
  * @param $confirmation_sent  has a confirmation email been sent
  */
 function alq_mps_record_email_status($fields, $result, $confirmation_sent) {
-  $fields->actioned = time();
+  $fields->actioned = getBrizzyTime();
   $fields->confirmation_sent = $confirmation_sent;
 
   if ($result['result'] == TRUE) {
@@ -666,7 +666,7 @@ function alq_mps_email_form_submit($form, &$form_state) {
     'from_address' => $values['suburb'],
     'from_name' => $values['name'],
     'spam' => $values['spam'],
-    'created' => time()
+    'created' => getBrizzyTime()
   ];
 
   user_cookie_save([
@@ -692,6 +692,7 @@ function alq_mps_admin() {
   $num_per_page = 40;
   $page = pager_default_initialize($num_rows, $num_per_page);
   $offset = $num_per_page * $page;
+  $charsOfEmailToShow = 250;
 
   $query->fields('emt');
   $query->orderBy('emt.created', 'DESC');
@@ -708,7 +709,7 @@ function alq_mps_admin() {
       $result->from_name,
       $result->from_email,
       $result->spam,
-      substr($result->body, 0, 250),
+      substr($result->body, 0, $charsOfEmailToShow),
       l($result->campaign_id, '/node/' . urlencode($result->campaign_id)),
       l($result->recipient, '/node/' . urlencode($result->recipient)),
       date("Y-m-d h:m:s", $result->created),
@@ -737,7 +738,7 @@ function alq_mps_admin() {
       'From',
       'Email',
       'Spam',
-      'Body (first 250 Chars)',
+      'Body (first ' . $charsOfEmailToShow . ' Chars)',
       'Campaign',
       'Recipient',
       'Created',
@@ -754,13 +755,24 @@ function alq_mps_admin() {
 }
 
 /**
+ * Get time in Brisbane
+ *
+ * @return int timestamp
+ */
+function getBrizzyTime() {
+  $timezone = 'Australia/Brisbane';
+  $datetime = new DateTime('now', new DateTimeZone($timezone));
+  return $datetime->getTimestamp();
+}
+
+/**
  * Menu callback for downloading email statuses
  *
  * @param String  YYYYMMDD
  */
 function alq_mps_admin_csv($date = NULL) {
   if (!$date) {
-    $date = time();
+    $date = getBrizzyTime();
   }
   $query = db_select(ALQ_EMAILS_TABLE, 'emt');
   $query->fields('emt');
