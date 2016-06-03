@@ -550,3 +550,8 @@ div.block-alq-donation-form #donationForm #membershipInfo {
 ul.ui-autocomplete {
   list-style: none;
 }
+
+/* line 473, ../scss/global.scss */
+#block-alq-mps-alq-mps-email-campaign-stats {
+  margin-top: 1em;
+}

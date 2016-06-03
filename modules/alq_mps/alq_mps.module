@@ -15,6 +15,8 @@ define('ALQ_EMAILS_TABLE', 'alq_emails');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 define('ALQ_EMAILEE_REF_TABLE', 'field_data_field_emailee');
 
+define('ALQ_EMAIL_SUCCESS_STATUS', 'successfully queued');
+
 /**
  * Implements hook menu
  */
@@ -47,8 +49,11 @@ function alq_mps_menu() {
  */
 function alq_mps_block_info() {
   return array(
-    "alq_mps_email_campaign_display" => array(
-      "info" => t("ALQ MPS Email Campaign display"),
+    'alq_mps_email_campaign_display' => array(
+      'info' => t('ALQ MPS Email Campaign display'),
+    ),
+    'alq_mps_email_campaign_stats' => array(
+      'info' => t('ALQ MPS Email Campaign statistics'),
     ),
   );
 }
@@ -66,7 +71,15 @@ function alq_mps_block_view($delta = '') {
       // only display on node pages
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
-        $block["content"] = alq_mps_get_email_campaign($node);
+        $block['content'] = alq_mps_get_email_campaign($node);
+      }
+      break;
+    case 'alq_mps_email_campaign_stats':
+      $block['subject'] = t('Campaign statistics');
+      // only display on node pages
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        $block['content'] = alq_mps_get_email_campaign_stats($node);
       }
       break;
   }
@@ -112,7 +125,7 @@ function alq_mps_send_emails() {
   $emailCount = $emails->rowCount();
   $errors = 0;
 
-  $cacheDisabled = true;
+  $cacheDisabled = TRUE;
   $emaileeCache = [];
 
   foreach ($emails as $email) {
@@ -240,7 +253,7 @@ function alq_mps_record_email_status($fields, $result, $confirmation_sent) {
   $fields->confirmation_sent = $confirmation_sent;
 
   if ($result['result'] == TRUE) {
-    $fields->status = 'successfully queued';
+    $fields->status = ALQ_EMAIL_SUCCESS_STATUS;
   }
   else {
     $fields->status = 'Error, please check watchdog logs';
@@ -349,6 +362,68 @@ function alq_mps_search($search) {
 }
 
 /**
+ * Function to be called which shows the email statistics
+ *
+ * @param $node
+ * @return string
+ */
+function alq_mps_get_email_campaign_stats($node) {
+  drupal_add_js('//www.gstatic.com/charts/loader.js', ['type' => 'external']);
+  drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps-stats.js');
+
+  $emails = alq_mps_get_email_campaign_emails($node->nid);
+
+  if ($emails) {
+    $sent = 0;
+    $unsent = 0;
+    $errors = 0;
+
+    foreach ($emails as $email) {
+      if ($email->actioned) {
+        if ($email->status === ALQ_EMAIL_SUCCESS_STATUS) {
+          ++$sent;
+        }
+        else {
+          ++$errors;
+        }
+      }
+      else {
+        ++$unsent;
+      }
+    }
+
+    drupal_add_js(['alq_mps' => [
+      'emails' => $emails,
+      'ALQ_EMAIL_SUCCESS_STATUS' => ALQ_EMAIL_SUCCESS_STATUS
+    ]], ['type' => 'setting']);
+
+    return theme('alq_mps_email_campaign_stats', [
+      'emails' => $emails,
+      'sent' => $sent,
+      'errors' => $errors,
+      'unsent' => $unsent
+    ]);
+  }
+
+  return 'No emails sent';
+}
+
+/**
+ * Function to be called which shows the email statistics
+ *
+ * @param $campaignId
+ * @return string
+ */
+function alq_mps_get_email_campaign_emails($campaignId) {
+  $query = db_select(ALQ_EMAILS_TABLE, 'aet');
+  $query->condition('aet.campaign_id', $campaignId, '=');
+  $query->fields('aet');
+  $query->orderBy('created', 'DESC');
+
+  return $query->execute()->fetchAll();
+}
+
+/**
  * Function to be called which shows the form, loads up the JS etc libraries
  *
  * @param $node
@@ -356,7 +431,6 @@ function alq_mps_search($search) {
  */
 function alq_mps_get_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
-
     if (isset($_SESSION) && array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
       unset($_SESSION['alq_mps_email_form_submitted']);
       return '<h2>Thanks for your submission</h2>';
@@ -607,6 +681,15 @@ function alq_mps_theme() {
       'render element' => 'form',
       'template' => 'theme/email-form',
     ],
+    'alq_mps_email_campaign_stats' => [
+      'template' => 'theme/email-campaign-stats',
+      'variables' => [
+        'emails' => NULL,
+        'sent' => NULL,
+        'unsent' => NULL,
+        'errors' => NULL
+      ]
+    ],
   ];
 }
 
@@ -712,8 +795,8 @@ function alq_mps_admin() {
       substr($result->body, 0, $charsOfEmailToShow),
       l($result->campaign_id, '/node/' . urlencode($result->campaign_id)),
       l($result->recipient, '/node/' . urlencode($result->recipient)),
-      date("Y-m-d h:m:s", $result->created),
-      $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      date('Y-m-d h:m:s', $result->created),
+      $result->actioned ? date('Y-m-d h:m:s', $result->actioned) : $result->actioned,
       $result->confirmation_sent,
       $result->status
     ];
@@ -729,7 +812,7 @@ function alq_mps_admin() {
     ])
   ];
 
-  $output = "<ul><li>" . implode("</li><li>", $links) . "</li></ul>";
+  $output = '<ul><li>' . implode('</li><li>', $links) . '</li></ul>';
 
   $output .= theme('table', [
     'header' => [
@@ -821,8 +904,8 @@ function alq_mps_admin_csv($date = NULL) {
       $result->body,
       l($result->campaign_id, '/node/' . urlencode($result->campaign_id)),
       l($result->recipient, '/node/' . urlencode($result->recipient)),
-      date("Y-m-d h:m:s", $result->created),
-      $result->actioned ? date("Y-m-d h:m:s", $result->actioned) : $result->actioned,
+      date('Y-m-d h:m:s', $result->created),
+      $result->actioned ? date('Y-m-d h:m:s', $result->actioned) : $result->actioned,
       $result->confirmation_sent,
       $result->status
     ];
