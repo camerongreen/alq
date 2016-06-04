@@ -311,14 +311,14 @@ function alq_mps_format_email($key, $params) {
  * @return  array ['subject', 'body']
  */
 function alq_mps_confirmation_email_html($key, $params) {
-  // hard code for now, rewrite this to be much better
+  $campaign = node_load($params['campaign_id']);
+
+  $subject = $campaign->field_confirmation_subject[LANGUAGE_NONE][0]["value"];
+  $body = $campaign->field_confirmation_html[LANGUAGE_NONE][0]["value"];
+
   return [
-    'subject' => 'THANK YOU',
-    'body' => '<div style="font-size: 14px"><p>Thank you so much for speaking up for calves – the voiceless victims of the cruelty of "calf scruffing".</p>
-<p>Make sure you stay up to date with the campaign by following us on <b>facebook</b> (https://www.facebook.com/animalliberationqld/).</p>
-<p>Help us shine the spotlight on rodeo cruelty - keep our investigators on the ground by making a <b>donation</b> (http://alq.org.au/content/donate).</p>
-<p>Thanks again for helping create a more compassionate world for animals!</p>
-<p>The team at Animal Liberation Queensland.</p></div>'
+    'subject' => $subject,
+    'body' => $body
   ];
 }
 
