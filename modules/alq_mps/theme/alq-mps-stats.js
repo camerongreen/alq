@@ -2,14 +2,22 @@
  * Functions to support the alp mps application
  */
 (function ($) {
-  function drawChart() {
+  // http://stackoverflow.com/a/3067896/1350475
+  function yyyymmdd(date) {
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth() + 1).toString(); // getMonth() is zero-based
+    var dd = date.getDate().toString();
+    return yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]); // padding
+  }
+
+  function getStats() {
     var emails = Drupal.settings.alq_mps.emails;
 
     var stats = [];
 
     for (var i = 0, l = emails.length; i < l; i++) {
       var date = new Date(emails[i].created * 1000);
-      var displayDate = date.getFullYear() + '-' + (date.getMonth() + 1);
+      var displayDate = yyyymmdd(date);
       var sent = emails[i].status === Drupal.settings.alq_mps.ALQ_EMAIL_SUCCESS_STATUS ? 1 : 0;
       var unsent = emails[i].actioned === null ? 1 : 0;
       var error = !unsent && !sent ? 1 : 0;
@@ -35,6 +43,13 @@
 
     // add headers
     stats.unshift(['Month', 'Total', 'Sent', 'Unsent', 'Errors']);
+
+    return stats;
+  }
+
+  function drawChart() {
+    var stats = getStats();
+
     var data = google.visualization.arrayToDataTable(stats);
 
     var options = {
@@ -56,7 +71,7 @@
     // nl2br for email content
     var field = $('div.field-name-field-body div.field-item');
     var fieldText = field.text();
-    field.html(fieldText.replace("\n", '<br>'));
+    field.text(fieldText.replace("\n", '<br>'));
   });
 
 })(jQuery);
