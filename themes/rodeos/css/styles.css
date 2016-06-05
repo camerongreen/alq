@@ -1213,6 +1213,12 @@ span.field-label {
 }
 
 .skip-link {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal;
   display: block;
   padding: 2px 0 3px;
   text-align: center;
@@ -1231,6 +1237,15 @@ span.field-label {
   .skip-link__wrapper {
     display: none;
   }
+}
+
+p.skip-link__wrapper {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal;
 }
 
 .tabs {
@@ -1820,6 +1835,23 @@ tr.drag-previous {
 .table-drag__tree-child-horizontal,
 .tree-child-horizontal {
   background-position: -11px center;
+}
+
+body {
+  background: #EEE;
+}
+
+#header-menu {
+  background-color: white;
+  height: 75px;
+}
+
+#header-menu ul {
+  list-style-type: none;
+}
+
+#header-menu ul li {
+  display: inline;
 }
 
 /*# sourceMappingURL=styles.css.map */

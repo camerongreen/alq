@@ -11,6 +11,7 @@
 
 .skip-link,
 %skip-link {
+  @include visually-hidden();
   display: block;
   padding: 2px 0 3px;
   text-align: center;
@@ -28,4 +29,8 @@
       display: none;
     }
   }
+}
+
+p.skip-link__wrapper {
+  @include visually-hidden();
 }
