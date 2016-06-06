@@ -1,144 +1,377 @@
-; Drupal's .info files allow themers to easily specify some of the static
-; properties of your theme. Properties such as its name, stylesheets,
-; javascripts, and block regions.
-;
-; Drupal 7 stores a cache of the data in this .info files. If you modify any
-; lines in this file, you MUST refresh Drupal 7's cache by simply visiting the
-; Appearance page at admin/appearance.
+name = Rodeos
+description = ALQ Rodeos theme
+core = 7.x
+engine = phptemplate
+screenshot = screenshot.png
+base theme = omega
 
+; REQUIRED CORE REGIONS
 
+regions[page_top] = Page Top
+regions[page_bottom] = Page Bottom
+regions[content] = Content
 
-; The name, description and screenshot used for this theme on the Appearance
-; page at admin/appearance.
+; ADDITIONAL REGIONS
 
-screenshot  = screenshot.png
-name        = Rodeos
-description = Read the <a href="https://drupal.org/node/873778">online docs</a> or the included README.txt on how to create a theme with Zen.
+regions[user_first] = User Bar First
+regions[user_second] = User Bar Second
 
+regions[branding] = Branding
+regions[menu] = Menu
 
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
 
-; This theme is compatible with Drupal 7 core. And it is a sub-theme of Zen.
+regions[header_first] = Header First
+regions[header_second] = Header Second
 
-core        = 7.x
-base theme  = zen
+regions[preface_first] = Preface First
+regions[preface_second] = Preface Second
+regions[preface_third] = Preface Third
 
+regions[postscript_first] = Postscript First
+regions[postscript_second] = Postscript Second
+regions[postscript_third] = Postscript Third
+regions[postscript_fourth] = Postscript Fourth
 
+regions[footer_first] = Footer First
+regions[footer_second] = Footer Second
 
-; This section controls the CSS files for your theme. There are 3 different
-; things you can do with a "stylesheets" line:
-; - Add a new stylesheet for your theme.
-; - Override a module's stylesheet. If the stylesheet you are adding uses the
-;   same filename as a stylesheet from a Drupal core or contrib module, your CSS
-;   file will be used instead of the module's file.
-; - Remove a module's stylesheet. If you specify the name of a Drupal core or
-;   contrib module's stylesheets, Drupal will remove that stylesheet if you do
-;   NOT include a file with that name with your theme.
-;
-; stylesheets[MEDIA][] = FILE
-;
-; The "FILE" is the name of the stylesheet to add/override/remove.
-; The "MEDIA" in the first set of brackets is a media type or a media query.
-; Typical CSS media types include "all", "screen", "print", and "handheld". A
-; typical media query is "screen and (max-width: 320px)".
-;
-; CSS2.1 media types: http://www.w3.org/TR/CSS21/media.html#media-types
-; CSS3 media queries: http://www.w3.org/TR/css3-mediaqueries/
+; ZONES
 
-; First we remove any Drupal styling that Zen provides as components.
-stylesheets[all][] = system.base.css
-stylesheets[all][] = system.menus.css
-stylesheets[all][] = system.messages.css
-stylesheets[all][] = system.theme.css
-stylesheets[all][] = comment.css
-stylesheets[all][] = node.css
+zones[user] = User
+zones[branding] = Branding
+zones[menu] = Menu
+zones[header] = Header
+zones[preface] = Preface
+zones[content] = Content
+zones[postscript] = Postscript
+zones[footer] = Footer
 
-; Then we add our own stylesheet.
-stylesheets[all][] = css/styles.css
+; OPTIONAL STYLESHEETS
 
-; If you wish to use conditional stylesheets, you should install the
-; conditional stylesheets module: https://drupal.org/project/conditional_styles
-;
-;stylesheets-conditional[lte IE 8][all][] = css/ie8.css
-;stylesheets-conditional[(gte IE 9)|(gt IEMobile 7)|(!IE)][] = css/styles.css
+css[global.css][name] = Your custom global styles
+css[global.css][description] = This file holds all the globally active custom CSS of your theme.
+css[global.css][options][weight] = 10
 
+; THEME SETTINGS (DEFAULTS)
 
+settings[alpha_grid] = 'alpha_default'
+settings[alpha_primary_alpha_default] = 'normal'
+settings[alpha_responsive] = '1'
+settings[alpha_layouts_alpha_fluid_primary] = 'normal'
+settings[alpha_layouts_alpha_fluid_normal_responsive] = '0'
+settings[alpha_layouts_alpha_fluid_normal_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_primary] = 'normal'
+settings[alpha_layouts_alpha_default_fluid_responsive] = '0'
+settings[alpha_layouts_alpha_default_fluid_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_fluid_weight] = '0'
+settings[alpha_layouts_alpha_default_narrow_responsive] = '1'
+settings[alpha_layouts_alpha_default_narrow_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_narrow_weight] = '1'
+settings[alpha_layouts_alpha_default_normal_responsive] = '1'
+settings[alpha_layouts_alpha_default_normal_media] = 'all and (min-width: 980px) and (min-device-width: 980px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)'
+settings[alpha_layouts_alpha_default_normal_weight] = '2'
+settings[alpha_layouts_alpha_default_wide_responsive] = '1'
+settings[alpha_layouts_alpha_default_wide_media] = 'all and (min-width: 1220px)'
+settings[alpha_layouts_alpha_default_wide_weight] = '3'
+settings[alpha_viewport] = '1'
+settings[alpha_viewport_initial_scale] = '1'
+settings[alpha_viewport_min_scale] = '1'
+settings[alpha_viewport_max_scale] = '1'
+settings[alpha_viewport_user_scaleable] = ''
+settings[alpha_libraries][omega_formalize] = 'omega_formalize'
+settings[alpha_libraries][omega_equalheights] = ''
+settings[alpha_libraries][omega_mediaqueries] = 'omega_mediaqueries'
+settings[alpha_css][alpha-reset.css] = 'alpha-reset.css'
+settings[alpha_css][alpha-mobile.css] = 'alpha-mobile.css'
+settings[alpha_css][alpha-alpha.css] = 'alpha-alpha.css'
+settings[alpha_css][omega-text.css] = 'omega-text.css'
+settings[alpha_css][omega-branding.css] = 'omega-branding.css'
+settings[alpha_css][omega-menu.css] = 'omega-menu.css'
+settings[alpha_css][omega-forms.css] = 'omega-forms.css'
+settings[alpha_css][omega-visuals.css] = 'omega-visuals.css'
+settings[alpha_css][global.css] = 'global.css'
+settings[alpha_debug_block_toggle] = '1'
+settings[alpha_debug_block_active] = '1'
+settings[alpha_debug_grid_toggle] = '1'
+settings[alpha_debug_grid_active] = '1'
+settings[alpha_debug_grid_roles][1] = '1'
+settings[alpha_debug_grid_roles][2] = '2'
+settings[alpha_debug_grid_roles][3] = '3'
+settings[alpha_toggle_messages] = '1'
+settings[alpha_toggle_action_links] = '1'
+settings[alpha_toggle_tabs] = '1'
+settings[alpha_toggle_breadcrumb] = '1'
+settings[alpha_toggle_page_title] = '1'
+settings[alpha_toggle_feed_icons] = '1'
+settings[alpha_hidden_title] = ''
+settings[alpha_hidden_site_name] = ''
+settings[alpha_hidden_site_slogan] = ''
+settings[alpha_zone_user_equal_height_container] = ''
+settings[alpha_zone_user_wrapper] = '1'
+settings[alpha_zone_user_force] = ''
+settings[alpha_zone_user_section] = 'header'
+settings[alpha_zone_user_weight] = '1'
+settings[alpha_zone_user_columns] = '12'
+settings[alpha_zone_user_primary] = ''
+settings[alpha_zone_user_css] = ''
+settings[alpha_zone_user_wrapper_css] = ''
+settings[alpha_zone_branding_equal_height_container] = ''
+settings[alpha_zone_branding_wrapper] = '1'
+settings[alpha_zone_branding_force] = ''
+settings[alpha_zone_branding_section] = 'header'
+settings[alpha_zone_branding_weight] = '2'
+settings[alpha_zone_branding_columns] = '12'
+settings[alpha_zone_branding_primary] = ''
+settings[alpha_zone_branding_css] = ''
+settings[alpha_zone_branding_wrapper_css] = ''
+settings[alpha_zone_menu_equal_height_container] = ''
+settings[alpha_zone_menu_wrapper] = '1'
+settings[alpha_zone_menu_force] = ''
+settings[alpha_zone_menu_section] = 'header'
+settings[alpha_zone_menu_weight] = '3'
+settings[alpha_zone_menu_columns] = '12'
+settings[alpha_zone_menu_primary] = ''
+settings[alpha_zone_menu_css] = ''
+settings[alpha_zone_menu_wrapper_css] = ''
+settings[alpha_zone_header_equal_height_container] = ''
+settings[alpha_zone_header_wrapper] = '1'
+settings[alpha_zone_header_force] = ''
+settings[alpha_zone_header_section] = 'header'
+settings[alpha_zone_header_weight] = '4'
+settings[alpha_zone_header_columns] = '12'
+settings[alpha_zone_header_primary] = ''
+settings[alpha_zone_header_css] = ''
+settings[alpha_zone_header_wrapper_css] = ''
+settings[alpha_zone_preface_equal_height_container] = ''
+settings[alpha_zone_preface_wrapper] = '1'
+settings[alpha_zone_preface_force] = ''
+settings[alpha_zone_preface_section] = 'content'
+settings[alpha_zone_preface_weight] = '1'
+settings[alpha_zone_preface_columns] = '12'
+settings[alpha_zone_preface_primary] = ''
+settings[alpha_zone_preface_css] = ''
+settings[alpha_zone_preface_wrapper_css] = ''
+settings[alpha_zone_content_equal_height_container] = ''
+settings[alpha_zone_content_wrapper] = '1'
+settings[alpha_zone_content_force] = '1'
+settings[alpha_zone_content_section] = 'content'
+settings[alpha_zone_content_weight] = '2'
+settings[alpha_zone_content_columns] = '12'
+settings[alpha_zone_content_primary] = 'content'
+settings[alpha_zone_content_css] = ''
+settings[alpha_zone_content_wrapper_css] = ''
+settings[alpha_zone_postscript_equal_height_container] = ''
+settings[alpha_zone_postscript_wrapper] = '1'
+settings[alpha_zone_postscript_force] = ''
+settings[alpha_zone_postscript_section] = 'content'
+settings[alpha_zone_postscript_weight] = '3'
+settings[alpha_zone_postscript_columns] = '12'
+settings[alpha_zone_postscript_primary] = ''
+settings[alpha_zone_postscript_css] = ''
+settings[alpha_zone_postscript_wrapper_css] = ''
+settings[alpha_zone_footer_equal_height_container] = ''
+settings[alpha_zone_footer_wrapper] = '1'
+settings[alpha_zone_footer_force] = ''
+settings[alpha_zone_footer_section] = 'footer'
+settings[alpha_zone_footer_weight] = '1'
+settings[alpha_zone_footer_columns] = '12'
+settings[alpha_zone_footer_primary] = ''
+settings[alpha_zone_footer_css] = ''
+settings[alpha_zone_footer_wrapper_css] = ''
+settings[alpha_region_dashboard_sidebar_equal_height_container] = ''
+settings[alpha_region_dashboard_sidebar_equal_height_element] = ''
+settings[alpha_region_dashboard_sidebar_force] = ''
+settings[alpha_region_dashboard_sidebar_zone] = ''
+settings[alpha_region_dashboard_sidebar_prefix] = ''
+settings[alpha_region_dashboard_sidebar_columns] = '1'
+settings[alpha_region_dashboard_sidebar_suffix] = ''
+settings[alpha_region_dashboard_sidebar_weight] = '-50'
+settings[alpha_region_dashboard_sidebar_css] = ''
+settings[alpha_region_dashboard_inactive_equal_height_container] = ''
+settings[alpha_region_dashboard_inactive_equal_height_element] = ''
+settings[alpha_region_dashboard_inactive_force] = ''
+settings[alpha_region_dashboard_inactive_zone] = ''
+settings[alpha_region_dashboard_inactive_prefix] = ''
+settings[alpha_region_dashboard_inactive_columns] = '1'
+settings[alpha_region_dashboard_inactive_suffix] = ''
+settings[alpha_region_dashboard_inactive_weight] = '-50'
+settings[alpha_region_dashboard_inactive_css] = ''
+settings[alpha_region_dashboard_main_equal_height_container] = ''
+settings[alpha_region_dashboard_main_equal_height_element] = ''
+settings[alpha_region_dashboard_main_force] = ''
+settings[alpha_region_dashboard_main_zone] = ''
+settings[alpha_region_dashboard_main_prefix] = ''
+settings[alpha_region_dashboard_main_columns] = '1'
+settings[alpha_region_dashboard_main_suffix] = ''
+settings[alpha_region_dashboard_main_weight] = '-50'
+settings[alpha_region_dashboard_main_css] = ''
+settings[alpha_region_user_first_equal_height_container] = ''
+settings[alpha_region_user_first_equal_height_element] = ''
+settings[alpha_region_user_first_force] = ''
+settings[alpha_region_user_first_zone] = 'user'
+settings[alpha_region_user_first_prefix] = ''
+settings[alpha_region_user_first_columns] = '8'
+settings[alpha_region_user_first_suffix] = ''
+settings[alpha_region_user_first_weight] = '1'
+settings[alpha_region_user_first_css] = ''
+settings[alpha_region_user_second_equal_height_container] = ''
+settings[alpha_region_user_second_equal_height_element] = ''
+settings[alpha_region_user_second_force] = ''
+settings[alpha_region_user_second_zone] = 'user'
+settings[alpha_region_user_second_prefix] = ''
+settings[alpha_region_user_second_columns] = '4'
+settings[alpha_region_user_second_suffix] = ''
+settings[alpha_region_user_second_weight] = '2'
+settings[alpha_region_user_second_css] = ''
+settings[alpha_region_branding_equal_height_container] = ''
+settings[alpha_region_branding_equal_height_element] = ''
+settings[alpha_region_branding_force] = '1'
+settings[alpha_region_branding_zone] = 'branding'
+settings[alpha_region_branding_prefix] = ''
+settings[alpha_region_branding_columns] = '12'
+settings[alpha_region_branding_suffix] = ''
+settings[alpha_region_branding_weight] = '1'
+settings[alpha_region_branding_css] = ''
+settings[alpha_region_menu_equal_height_container] = ''
+settings[alpha_region_menu_equal_height_element] = ''
+settings[alpha_region_menu_force] = '1'
+settings[alpha_region_menu_zone] = 'menu'
+settings[alpha_region_menu_prefix] = ''
+settings[alpha_region_menu_columns] = '12'
+settings[alpha_region_menu_suffix] = ''
+settings[alpha_region_menu_weight] = '1'
+settings[alpha_region_menu_css] = ''
+settings[alpha_region_header_first_equal_height_container] = ''
+settings[alpha_region_header_first_equal_height_element] = ''
+settings[alpha_region_header_first_force] = ''
+settings[alpha_region_header_first_zone] = 'header'
+settings[alpha_region_header_first_prefix] = ''
+settings[alpha_region_header_first_columns] = '6'
+settings[alpha_region_header_first_suffix] = ''
+settings[alpha_region_header_first_weight] = '1'
+settings[alpha_region_header_first_css] = ''
+settings[alpha_region_header_second_equal_height_container] = ''
+settings[alpha_region_header_second_equal_height_element] = ''
+settings[alpha_region_header_second_force] = ''
+settings[alpha_region_header_second_zone] = 'header'
+settings[alpha_region_header_second_prefix] = ''
+settings[alpha_region_header_second_columns] = '6'
+settings[alpha_region_header_second_suffix] = ''
+settings[alpha_region_header_second_weight] = '2'
+settings[alpha_region_header_second_css] = ''
+settings[alpha_region_preface_first_equal_height_container] = ''
+settings[alpha_region_preface_first_equal_height_element] = ''
+settings[alpha_region_preface_first_force] = ''
+settings[alpha_region_preface_first_zone] = 'preface'
+settings[alpha_region_preface_first_prefix] = ''
+settings[alpha_region_preface_first_columns] = '4'
+settings[alpha_region_preface_first_suffix] = ''
+settings[alpha_region_preface_first_weight] = '1'
+settings[alpha_region_preface_first_css] = ''
+settings[alpha_region_preface_second_equal_height_container] = ''
+settings[alpha_region_preface_second_equal_height_element] = ''
+settings[alpha_region_preface_second_force] = ''
+settings[alpha_region_preface_second_zone] = 'preface'
+settings[alpha_region_preface_second_prefix] = ''
+settings[alpha_region_preface_second_columns] = '4'
+settings[alpha_region_preface_second_suffix] = ''
+settings[alpha_region_preface_second_weight] = '2'
+settings[alpha_region_preface_second_css] = ''
+settings[alpha_region_preface_third_equal_height_container] = ''
+settings[alpha_region_preface_third_equal_height_element] = ''
+settings[alpha_region_preface_third_force] = ''
+settings[alpha_region_preface_third_zone] = 'preface'
+settings[alpha_region_preface_third_prefix] = ''
+settings[alpha_region_preface_third_columns] = '4'
+settings[alpha_region_preface_third_suffix] = ''
+settings[alpha_region_preface_third_weight] = '3'
+settings[alpha_region_preface_third_css] = ''
+settings[alpha_region_content_equal_height_container] = ''
+settings[alpha_region_content_equal_height_element] = ''
+settings[alpha_region_content_force] = ''
+settings[alpha_region_content_zone] = 'content'
+settings[alpha_region_content_prefix] = ''
+settings[alpha_region_content_columns] = '6'
+settings[alpha_region_content_suffix] = ''
+settings[alpha_region_content_weight] = '2'
+settings[alpha_region_content_css] = ''
+settings[alpha_region_sidebar_first_equal_height_container] = ''
+settings[alpha_region_sidebar_first_equal_height_element] = ''
+settings[alpha_region_sidebar_first_force] = ''
+settings[alpha_region_sidebar_first_zone] = 'content'
+settings[alpha_region_sidebar_first_prefix] = ''
+settings[alpha_region_sidebar_first_columns] = '3'
+settings[alpha_region_sidebar_first_suffix] = ''
+settings[alpha_region_sidebar_first_weight] = '1'
+settings[alpha_region_sidebar_first_css] = ''
+settings[alpha_region_sidebar_second_equal_height_container] = ''
+settings[alpha_region_sidebar_second_equal_height_element] = ''
+settings[alpha_region_sidebar_second_force] = ''
+settings[alpha_region_sidebar_second_zone] = 'content'
+settings[alpha_region_sidebar_second_prefix] = ''
+settings[alpha_region_sidebar_second_columns] = '3'
+settings[alpha_region_sidebar_second_suffix] = ''
+settings[alpha_region_sidebar_second_weight] = '3'
+settings[alpha_region_sidebar_second_css] = ''
+settings[alpha_region_postscript_first_equal_height_container] = ''
+settings[alpha_region_postscript_first_equal_height_element] = ''
+settings[alpha_region_postscript_first_force] = ''
+settings[alpha_region_postscript_first_zone] = 'postscript'
+settings[alpha_region_postscript_first_prefix] = ''
+settings[alpha_region_postscript_first_columns] = '3'
+settings[alpha_region_postscript_first_suffix] = ''
+settings[alpha_region_postscript_first_weight] = '1'
+settings[alpha_region_postscript_first_css] = ''
+settings[alpha_region_postscript_second_equal_height_container] = ''
+settings[alpha_region_postscript_second_equal_height_element] = ''
+settings[alpha_region_postscript_second_force] = ''
+settings[alpha_region_postscript_second_zone] = 'postscript'
+settings[alpha_region_postscript_second_prefix] = ''
+settings[alpha_region_postscript_second_columns] = '3'
+settings[alpha_region_postscript_second_suffix] = ''
+settings[alpha_region_postscript_second_weight] = '2'
+settings[alpha_region_postscript_second_css] = ''
+settings[alpha_region_postscript_third_equal_height_container] = ''
+settings[alpha_region_postscript_third_equal_height_element] = ''
+settings[alpha_region_postscript_third_force] = ''
+settings[alpha_region_postscript_third_zone] = 'postscript'
+settings[alpha_region_postscript_third_prefix] = ''
+settings[alpha_region_postscript_third_columns] = '3'
+settings[alpha_region_postscript_third_suffix] = ''
+settings[alpha_region_postscript_third_weight] = '3'
+settings[alpha_region_postscript_third_css] = ''
+settings[alpha_region_postscript_fourth_equal_height_container] = ''
+settings[alpha_region_postscript_fourth_equal_height_element] = ''
+settings[alpha_region_postscript_fourth_force] = ''
+settings[alpha_region_postscript_fourth_zone] = 'postscript'
+settings[alpha_region_postscript_fourth_prefix] = ''
+settings[alpha_region_postscript_fourth_columns] = '3'
+settings[alpha_region_postscript_fourth_suffix] = ''
+settings[alpha_region_postscript_fourth_weight] = '4'
+settings[alpha_region_postscript_fourth_css] = ''
+settings[alpha_region_footer_first_equal_height_container] = ''
+settings[alpha_region_footer_first_equal_height_element] = ''
+settings[alpha_region_footer_first_force] = ''
+settings[alpha_region_footer_first_zone] = 'footer'
+settings[alpha_region_footer_first_prefix] = ''
+settings[alpha_region_footer_first_columns] = '12'
+settings[alpha_region_footer_first_suffix] = ''
+settings[alpha_region_footer_first_weight] = '1'
+settings[alpha_region_footer_first_css] = ''
+settings[alpha_region_footer_second_equal_height_container] = ''
+settings[alpha_region_footer_second_equal_height_element] = ''
+settings[alpha_region_footer_second_force] = ''
+settings[alpha_region_footer_second_zone] = 'footer'
+settings[alpha_region_footer_second_prefix] = ''
+settings[alpha_region_footer_second_columns] = '12'
+settings[alpha_region_footer_second_suffix] = ''
+settings[alpha_region_footer_second_weight] = '2'
+settings[alpha_region_footer_second_css] = ''
+; Information added by drupal.org packaging script on 2012-02-19
+version = "7.x-3.1"
+core = "7.x"
+project = "omega"
+datestamp = "1329681647"
 
-; Optionally add some JavaScripts to your theme.
-
-;scripts[] = js/script.js
-
-
-
-; This section lists the regions defined in Zen's default page.tpl.php and
-; maintenance-page.tpl.php files. The name in brackets is the machine name of
-; the region. The text after the equals sign is a descriptive text used on the
-; admin/structure/blocks page.
-;
-; In the page.tpl, the contents of the region are output with a
-; $page['MACHINE-NAME'] variable and, in the maintenance-page.tpl, the region is
-; output with a $MACHINE-NAME variable. For example, with this line in the .info
-; file:
-;   regions[header_top] = Header top
-; You'll use this variable in page.tpl.php:
-;   <?php print render($page['header_top']); ?>
-; And you'll use this variable in maintenance-page.tpl.php:
-;   <?php print $header_top; ?>
-
-regions[header]         = Header
-regions[navigation]     = Navigation bar
-regions[highlighted]    = Highlighted
-regions[help]           = Help
-regions[content]        = Content
-regions[sidebar_first]  = First sidebar
-regions[sidebar_second] = Second sidebar
-regions[footer]         = Footer
-regions[bottom]         = Page bottom
-
-; The page_top and page_bottom regions are hidden, which means they will not
-; show up on the blocks administration page. But they are required in order for
-; the html.tpl.php to work properly, so do not delete them.
-
-regions[page_top]       = Page top
-regions[page_bottom]    = Page bottom
-
-
-
-; Various page elements output by the theme can be toggled on and off. The
-; "features" control which of these check boxes display on the
-; admin/appearance config page. This is useful for suppressing check boxes
-; for elements not used by your sub-theme. To suppress a check box, omit the
-; entry for it below. See the Drupal 7 Theme Guide for more info:
-; https://drupal.org/node/171205#features
-
-features[] = logo
-features[] = name
-features[] = slogan
-features[] = node_user_picture
-features[] = comment_user_picture
-features[] = favicon
-features[] = main_menu
-features[] = secondary_menu
-
-
-
-; Set the default values of settings on the theme-settings.php form.
-
-settings[zen_breadcrumb]           = yes
-settings[zen_breadcrumb_separator] = ' › '
-settings[zen_breadcrumb_home]      = 1
-settings[zen_breadcrumb_trailing]  = 0
-settings[zen_breadcrumb_title]     = 0
-settings[zen_skip_link_anchor]     = main-menu
-settings[zen_skip_link_text]       = Jump to navigation
-settings[zen_meta][]               = html5
-settings[zen_meta][]               = meta
-settings[zen_rebuild_registry]     = 1
-
-; To make this sub-theme an admin theme with shortcut links next to titles,
-; uncomment the line below.
-
-;settings[shortcut_module_link]    = 1
-
-; To add a Panels layout (which can also be used by Display Suite), uncomment
-; the line below and see the documentation at: https://drupal.org/node/495654
-;plugins[panels][layouts] = panels-layouts

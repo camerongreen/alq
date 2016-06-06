@@ -1,0 +1,115 @@
+<?php
+/**
+ * @file
+ * Provides various functions for rodeos, refactor out if it starts getting
+ * silly, into functional oriented modules
+ */
+
+define('ALQ_RODEOS_CAMPAIGN_ID', '91');
+define('ALQ_RODEOS_TAKE_ACTION_BLOCK', '2');
+define('ALQ_RODEOS_EXPLAINER_BLOCK', '3');
+define('ALQ_RODEOS_EMAIL_INTRO_BLOCK', '8');
+define('ALQ_RODEOS_DONATION_EXPLAINER_BLOCK', '4');
+
+
+/**
+ * Implements hook_block_info().
+ */
+function alq_rodeos_block_info() {
+  return array(
+    'alq_rodeos_email_member' => [
+      'info' => t('ALQ Rodeos email member'),
+    ],
+    'alq_rodeos_donation' => [
+      'info' => t('ALQ Rodeos donation'),
+    ]
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function alq_rodeos_block_view($delta = '') {
+  $block = NULL;
+
+  switch ($delta) {
+    case 'alq_rodeos_email_member':
+      $block = alq_rodeos_get_member_email_block();
+      break;
+    case 'alq_rodeos_donation':
+      $block = alq_rodeos_get_donation_block();
+      break;
+  }
+
+  return $block;
+}
+
+
+/**
+ * Function to be called which shows the form, loads up the JS etc libraries
+ *
+ * @return string
+ */
+function alq_rodeos_get_donation_block() {
+  $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_DONATION_EXPLAINER_BLOCK);
+  $form = drupal_get_form('alq_mps_donation_form');
+  $donationForm = drupal_render($form);
+
+  $block = [
+    'subject' => t($explainerBlock['subject']),
+    'content' => theme('alq_rodeos_donation', [
+      'donation_form' => $donationForm,
+      'explainer_block' => $explainerBlock['content']
+    ])
+  ];
+
+  return $block;
+}
+/**
+ * Function to be called which shows the form, loads up the JS etc libraries
+ *
+ * @return string
+ */
+function alq_rodeos_get_member_email_block() {
+  $taBlock = module_invoke('block', 'block_view', ALQ_RODEOS_TAKE_ACTION_BLOCK);
+  $emailIntroBlock = module_invoke('block', 'block_view', ALQ_RODEOS_EMAIL_INTRO_BLOCK);
+  $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_EXPLAINER_BLOCK);
+  $emailFormBlock = module_invoke('alq_mps', 'block_view', 'alq_mps_email_campaign_display');
+
+  $block = [
+    'subject' => t($taBlock['subject']),
+    'content' => theme('alq_rodeos_email_member', [
+      'take_action_block' => $taBlock['content'],
+      'email_intro_block' => $emailIntroBlock['content'],
+      'email_form' => $emailFormBlock['content'],
+      'explainer_block' => $explainerBlock['content']
+    ])
+  ];
+
+  return $block;
+}
+
+/**
+ * Implements of hook_theme()
+ */
+function alq_rodeos_theme() {
+  return [
+    'alq_rodeos_email_member' => [
+      'template' => 'theme/email-member-section',
+      'variables' => [
+        'take_action_block' => NULL,
+        'email_intro_block' => NULL,
+        'email_form' => NULL,
+        'explainer_block' => NULL,
+      ]
+    ],
+    'alq_rodeos_donation' => [
+      'template' => 'theme/donation-section',
+      'variables' => [
+        'donation_form' => NULL,
+        'explainer_block' => NULL,
+      ]
+    ],
+  ];
+}

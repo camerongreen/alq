@@ -1,0 +1,124 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+$header-font: 'Lato', sans-serif;
+$header-color: #333;
+$text-font: 'Merriweather', serif;
+
+body {
+  background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: $text-font;
+  font-size: 16px;
+
+  &.front {
+    #page-title {
+      display: none;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font;
+  color: $header-color;
+}
+
+#zone-branding-wrapper {
+  position: fixed;
+  width: 100%;
+  margin-top: 10px;
+  height: 75px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  div.logo-img img {
+    margin-top: 12px;
+    margin-left: 12px;
+    max-height: 50px;
+  }
+
+  ul {
+    list-style-type: none;
+    li {
+      display: inline-block;
+      margin-right: 2ex;
+      margin-top: 23px;
+      a {
+        font-family: $header-font;
+        font-size: 110%;
+        padding-top: 30px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $header-color;
+      }
+    }
+  }
+}
+
+#zone-content {
+}
+
+// title - rethink rodeos etc
+div.block-6 {
+  margin-top: 6em;
+  margin-bottom: 2em;
+  color: white;
+  text-align: center;
+  font-size: 200%;
+  h1 {
+    font-size: 200%;
+    color: white;
+  }
+}
+
+// campaign video
+div.block-7 {
+  width: 60%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: auto;
+  .content {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// intro text - rodeo animals need our help right now
+div.block-alq-rodeos,
+section.block-5,
+div.block-4,
+div.block-3,
+section.block-2,
+div.block-1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+  margin-bottom: 2em;
+  .block-inner {
+    width: 80%;
+    margin: auto;
+    p {
+      color: black;
+    }
+  }
+}
+
+div.block-1 {
+  .block-inner {
+    p {
+      text-align: center;
+    }
+  }
+}

@@ -17,10 +17,23 @@ Issue Queue:    http://drupal.org/project/issues/omega
 Usage Stats:    http://drupal.org/project/usage/omega
 Twitter:        http://twitter.com/Omeglicon
 ##########################################################################################
+##### Process Hooks
+##########################################################################################
 
-The templates folder is here to organize any custom templates you have for your subhteme.
-The HTML5 Starterkit (and subthemes) uses all default templates in the Omega base theme, 
-and is why this directory is empty. 
+Any custom process functionality can (rather than directly in template.php) be placed 
+in this process folder in a file named as such:
 
-Any page, node, etc. templates you need to customize can be copied here, and customized 
-accordingly.
+TEMPLATE_process_html() = process-html.inc
+TEMPLATE_process_page() = process-page.inc
+TEMPLATE_process_node() = process-node.inc
+TEMPLATE_process_comment() = process-comment.inc
+TEMPLATE_process_region() = process-region.inc
+etc.
+
+Inside of your process-HOOK.inc files, you can either directly dump the PHP code as it 
+would normally appear INSIDE of a process function, or you can optionally (recommended) 
+wrap the code in a custom hook for Alpha/Omega as such:
+
+function THEMENAME_alpha_process_HOOK(&$vars) {
+  // custom functionality here
+}

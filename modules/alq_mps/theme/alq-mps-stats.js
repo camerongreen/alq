@@ -65,13 +65,15 @@
 
   // go...
   $(document).ready(function () {
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+    if (Drupal.settings.hasOwnProperty('alq_mps')) {
+      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-    // nl2br for email content
-    var field = $('div.field-name-field-body div.field-item');
-    var fieldText = field.text();
-    field.text(fieldText.replace("\n", '<br>'));
+      // nl2br for email content
+      var field = $('div.field-name-field-body div.field-item');
+      var fieldText = field.text();
+      field.text(fieldText.replace("\n", '<br>'));
+    }
   });
 
 })(jQuery);

@@ -1,0 +1,134 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+/* line 7, ../scss/global.scss */
+body {
+  background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Merriweather", serif;
+  font-size: 16px;
+}
+/* line 17, ../scss/global.scss */
+body.front #page-title {
+  display: none;
+}
+
+/* line 23, ../scss/global.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+  color: #333;
+}
+
+/* line 28, ../scss/global.scss */
+#zone-branding-wrapper {
+  position: fixed;
+  width: 100%;
+  margin-top: 10px;
+  height: 75px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+/* line 35, ../scss/global.scss */
+#zone-branding-wrapper div.logo-img img {
+  margin-top: 12px;
+  margin-left: 12px;
+  max-height: 50px;
+}
+/* line 41, ../scss/global.scss */
+#zone-branding-wrapper ul {
+  list-style-type: none;
+}
+/* line 43, ../scss/global.scss */
+#zone-branding-wrapper ul li {
+  display: inline-block;
+  margin-right: 2ex;
+  margin-top: 23px;
+}
+/* line 47, ../scss/global.scss */
+#zone-branding-wrapper ul li a {
+  font-family: "Lato", sans-serif;
+  font-size: 110%;
+  padding-top: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
+}
+
+/* line 64, ../scss/global.scss */
+div.block-6 {
+  margin-top: 6em;
+  margin-bottom: 2em;
+  color: white;
+  text-align: center;
+  font-size: 200%;
+}
+/* line 70, ../scss/global.scss */
+div.block-6 h1 {
+  font-size: 200%;
+  color: white;
+}
+
+/* line 77, ../scss/global.scss */
+div.block-7 {
+  width: 60%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: auto;
+}
+/* line 82, ../scss/global.scss */
+div.block-7 .content {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+/* line 87, ../scss/global.scss */
+div.block-7 .content iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 98, ../scss/global.scss */
+div.block-alq-rodeos,
+section.block-5,
+div.block-4,
+div.block-3,
+section.block-2,
+div.block-1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+  margin-bottom: 2em;
+}
+/* line 109, ../scss/global.scss */
+div.block-alq-rodeos .block-inner,
+section.block-5 .block-inner,
+div.block-4 .block-inner,
+div.block-3 .block-inner,
+section.block-2 .block-inner,
+div.block-1 .block-inner {
+  width: 80%;
+  margin: auto;
+}
+/* line 112, ../scss/global.scss */
+div.block-alq-rodeos .block-inner p,
+section.block-5 .block-inner p,
+div.block-4 .block-inner p,
+div.block-3 .block-inner p,
+section.block-2 .block-inner p,
+div.block-1 .block-inner p {
+  color: black;
+}
+
+/* line 120, ../scss/global.scss */
+div.block-1 .block-inner p {
+  text-align: center;
+}
