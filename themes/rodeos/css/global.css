@@ -96,7 +96,6 @@ div.block-7 .content iframe {
 }
 
 /* line 98, ../scss/global.scss */
-div.block-alq-rodeos,
 section.block-5,
 div.block-4,
 div.block-3,
@@ -108,8 +107,7 @@ div.block-1 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 109, ../scss/global.scss */
-div.block-alq-rodeos .block-inner,
+/* line 108, ../scss/global.scss */
 section.block-5 .block-inner,
 div.block-4 .block-inner,
 div.block-3 .block-inner,
@@ -118,8 +116,7 @@ div.block-1 .block-inner {
   width: 80%;
   margin: auto;
 }
-/* line 112, ../scss/global.scss */
-div.block-alq-rodeos .block-inner p,
+/* line 111, ../scss/global.scss */
 section.block-5 .block-inner p,
 div.block-4 .block-inner p,
 div.block-3 .block-inner p,
@@ -128,7 +125,15 @@ div.block-1 .block-inner p {
   color: black;
 }
 
-/* line 120, ../scss/global.scss */
+/* line 117, ../scss/global.scss */
+div.block-alq-rodeos {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2em;
+}
+
+/* line 126, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
 }

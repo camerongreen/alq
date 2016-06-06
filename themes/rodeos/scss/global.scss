@@ -95,7 +95,6 @@ div.block-7 {
 }
 
 // intro text - rodeo animals need our help right now
-div.block-alq-rodeos,
 section.block-5,
 div.block-4,
 div.block-3,
@@ -113,6 +112,13 @@ div.block-1 {
       color: black;
     }
   }
+}
+
+div.block-alq-rodeos {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2em;
 }
 
 div.block-1 {
