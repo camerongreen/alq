@@ -1,6 +1,6 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
-/* line 7, ../scss/global.scss */
+/* line 8, ../scss/global.scss */
 body {
   background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -10,18 +10,18 @@ body {
   font-family: "Merriweather", serif;
   font-size: 16px;
 }
-/* line 17, ../scss/global.scss */
+/* line 18, ../scss/global.scss */
 body.front #page-title {
   display: none;
 }
 
-/* line 23, ../scss/global.scss */
+/* line 24, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   color: #333;
 }
 
-/* line 28, ../scss/global.scss */
+/* line 29, ../scss/global.scss */
 #zone-branding-wrapper {
   position: fixed;
   width: 100%;
@@ -30,23 +30,23 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
 }
-/* line 35, ../scss/global.scss */
+/* line 36, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img img {
   margin-top: 12px;
   margin-left: 12px;
   max-height: 50px;
 }
-/* line 41, ../scss/global.scss */
+/* line 42, ../scss/global.scss */
 #zone-branding-wrapper ul {
   list-style-type: none;
 }
-/* line 43, ../scss/global.scss */
+/* line 44, ../scss/global.scss */
 #zone-branding-wrapper ul li {
   display: inline-block;
   margin-right: 2ex;
   margin-top: 23px;
 }
-/* line 47, ../scss/global.scss */
+/* line 48, ../scss/global.scss */
 #zone-branding-wrapper ul li a {
   font-family: "Lato", sans-serif;
   font-size: 110%;
@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 
-/* line 64, ../scss/global.scss */
+/* line 65, ../scss/global.scss */
 div.block-6 {
   margin-top: 6em;
   margin-bottom: 2em;
@@ -65,20 +65,20 @@ div.block-6 {
   text-align: center;
   font-size: 200%;
 }
-/* line 70, ../scss/global.scss */
+/* line 71, ../scss/global.scss */
 div.block-6 h1 {
   font-size: 200%;
   color: white;
 }
 
-/* line 77, ../scss/global.scss */
+/* line 78, ../scss/global.scss */
 div.block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 82, ../scss/global.scss */
+/* line 83, ../scss/global.scss */
 div.block-7 .content {
   position: relative;
   padding-bottom: 56.25%;
@@ -86,7 +86,7 @@ div.block-7 .content {
   padding-top: 25px;
   height: 0;
 }
-/* line 87, ../scss/global.scss */
+/* line 88, ../scss/global.scss */
 div.block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -95,7 +95,7 @@ div.block-7 .content iframe {
   height: 100%;
 }
 
-/* line 98, ../scss/global.scss */
+/* line 99, ../scss/global.scss */
 section.block-5,
 div.block-4,
 div.block-3,
@@ -107,7 +107,7 @@ div.block-1 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 108, ../scss/global.scss */
+/* line 109, ../scss/global.scss */
 section.block-5 .block-inner,
 div.block-4 .block-inner,
 div.block-3 .block-inner,
@@ -116,7 +116,7 @@ div.block-1 .block-inner {
   width: 80%;
   margin: auto;
 }
-/* line 111, ../scss/global.scss */
+/* line 112, ../scss/global.scss */
 section.block-5 .block-inner p,
 div.block-4 .block-inner p,
 div.block-3 .block-inner p,
@@ -125,15 +125,47 @@ div.block-1 .block-inner p {
   color: black;
 }
 
-/* line 117, ../scss/global.scss */
+/* line 118, ../scss/global.scss */
 div.block-alq-rodeos {
   background-color: white;
   width: 80%;
   margin: auto;
   margin-bottom: 2em;
+  padding: 2em;
+  border-radius: 4px;
+}
+/* line 119, ../scss/global.scss */
+div.block-alq-rodeos h2 {
+  font-size: 150%;
 }
 
-/* line 126, ../scss/global.scss */
+/* line 132, ../scss/global.scss */
+#take-action-images div.image-row > div {
+  width: 50%;
+  float: left;
+  margin-bottom: 10px;
+}
+
+/* line 142, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
+}
+
+/* line 148, ../scss/global.scss */
+#donation-form {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  color: white;
+  font-size: 120%;
+  background-color: #502e84;
+  height: 100%;
+}
+/* line 151, ../scss/global.scss */
+#donation-form h2 {
+  color: white;
+  font-size: 400%;
+}
+/* line 155, ../scss/global.scss */
+#donation-form button {
+  margin-top: 13px;
 }

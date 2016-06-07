@@ -3,6 +3,7 @@
 $header-font: 'Lato', sans-serif;
 $header-color: #333;
 $text-font: 'Merriweather', serif;
+$alq-purple: #502e84;
 
 body {
   background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
@@ -115,10 +116,25 @@ div.block-1 {
 }
 
 div.block-alq-rodeos {
+  h2 {
+    font-size: 150%;
+  }
   background-color: white;
   width: 80%;
   margin: auto;
   margin-bottom: 2em;
+  padding: 2em;
+  border-radius: 4px;
+}
+
+#take-action-images {
+  div.image-row {
+    & > div {
+      width: 50%;
+      float: left;
+      margin-bottom: 10px;
+    }
+  }
 }
 
 div.block-1 {
@@ -128,3 +144,20 @@ div.block-1 {
     }
   }
 }
+
+#donation-form {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  h2 {
+    color: white;
+    font-size: 400%;
+  }
+  button {
+    margin-top: 13px;
+  }
+  color: white;
+  font-size: 120%;
+  background-color: $alq-purple;
+  height: 100%;
+}
+

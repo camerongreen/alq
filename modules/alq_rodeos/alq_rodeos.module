@@ -53,13 +53,10 @@ function alq_rodeos_block_view($delta = '') {
  */
 function alq_rodeos_get_donation_block() {
   $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_DONATION_EXPLAINER_BLOCK);
-  $form = drupal_get_form('alq_mps_donation_form');
-  $donationForm = drupal_render($form);
 
   $block = [
     'subject' => t($explainerBlock['subject']),
     'content' => theme('alq_rodeos_donation', [
-      'donation_form' => $donationForm,
       'explainer_block' => $explainerBlock['content']
     ])
   ];
