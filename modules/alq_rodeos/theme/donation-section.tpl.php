@@ -4,7 +4,7 @@
     <h2>Donate</h2>
     <form>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
 
           <div class="form-group">
             <label for="donation_18"><input type="radio" name="donation_amount"
@@ -29,7 +29,7 @@
               Other</label>
           </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
           <div>
             Your generous donation will help found our important work
           </div>

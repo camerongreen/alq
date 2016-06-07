@@ -22,6 +22,9 @@ function alq_rodeos_block_info() {
     ],
     'alq_rodeos_donation' => [
       'info' => t('ALQ Rodeos donation'),
+    ],
+    'alq_rodeos_footer' => [
+      'info' => t('ALQ Rodeos footer'),
     ]
   );
 }
@@ -40,7 +43,23 @@ function alq_rodeos_block_view($delta = '') {
     case 'alq_rodeos_donation':
       $block = alq_rodeos_get_donation_block();
       break;
+    case 'alq_rodeos_footer':
+      $block = alq_rodeos_get_footer_block();
+      break;
   }
+
+  return $block;
+}
+
+/**
+ * Function to be called which shows the footer
+ *
+ * @return string
+ */
+function alq_rodeos_get_footer_block() {
+  $block = [
+    'content' => theme('alq_rodeos_footer', [])
+  ];
 
   return $block;
 }
@@ -63,6 +82,8 @@ function alq_rodeos_get_donation_block() {
 
   return $block;
 }
+
+
 /**
  * Function to be called which shows the form, loads up the JS etc libraries
  *
@@ -106,6 +127,11 @@ function alq_rodeos_theme() {
       'variables' => [
         'donation_form' => NULL,
         'explainer_block' => NULL,
+      ]
+    ],
+    'alq_rodeos_footer' => [
+      'template' => 'theme/footer',
+      'variables' => [
       ]
     ],
   ];
