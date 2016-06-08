@@ -71,12 +71,32 @@ function alq_rodeos_get_footer_block() {
  * @return string
  */
 function alq_rodeos_get_donation_block() {
+  global $conf, $base_url;
+
   $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_DONATION_EXPLAINER_BLOCK);
+
+  $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
+
+  if (stripos($paypalUrl, 'sandbox') === FALSE) {
+    $url = 'https://www.paypal.com/cgi-bin/webscr';
+    $business = $conf['paypal_id'];
+  }
+  else {
+    $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+    $business = $conf['paypal_email'];
+  }
+
+  $redirect_url_cancel = $base_url;
+  $redirect_url = $base_url . '/thanks';
 
   $block = [
     'subject' => t($explainerBlock['subject']),
     'content' => theme('alq_rodeos_donation', [
-      'explainer_block' => $explainerBlock['content']
+      'explainer_block' => $explainerBlock['content'],
+      'action' => $url,
+      'business' => $business,
+      'redirect_url' => $redirect_url,
+      'redirect_url_cancel' => $redirect_url_cancel
     ])
   ];
 
@@ -125,8 +145,11 @@ function alq_rodeos_theme() {
     'alq_rodeos_donation' => [
       'template' => 'theme/donation-section',
       'variables' => [
-        'donation_form' => NULL,
         'explainer_block' => NULL,
+        'action' => NULL,
+        'business' => NULL,
+        'redirect_url' => NULL,
+        'redirect_url_cancel' => NULL
       ]
     ],
     'alq_rodeos_footer' => [
