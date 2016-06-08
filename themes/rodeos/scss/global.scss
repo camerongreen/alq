@@ -7,19 +7,43 @@ $alq-purple: #502e84;
 $header-height: 75px;
 
 body {
-  background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
+  font-family: $text-font;
+  font-size: 16px;
+}
+
+body:not(.front) {
+  background: url(../images/small-cow-jumped-on-from-horse.jpg) no-repeat center center fixed #666;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: $text-font;
-  font-size: 16px;
 
-  &.front {
-    #page-title {
-      display: none;
-    }
+  #region-content {
+    padding: 1em;
+    width: 80%;
+    margin: auto;
+    background-color: rgba(255,255,255,.9);
+    border-radius: 4px;
   }
+
+}
+
+body.front {
+  background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed #666;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  #page-title {
+    display: none;
+  }
+  #section-content {
+    margin-top: 0px;
+  }
+}
+
+#section-content {
+  margin-top: 100px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -167,6 +191,7 @@ div.block-1 {
 
 // footer block
 #region-footer-second {
+  margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
@@ -214,4 +239,22 @@ a.anchor {
   // stop the top padding overlaying other elements
   //z-index: -1;
   padding-top: $header-height;
+}
+
+div.viddy {
+  width: 50%;
+  margin: auto;
+  & > div {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
