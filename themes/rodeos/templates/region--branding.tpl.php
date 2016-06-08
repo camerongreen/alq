@@ -8,10 +8,9 @@
           </div>
         <?php endif; ?>
         <ul role="menu" class="pull-right">
-          <li><a href="#take-action">Take action!</a></li>
-          <li><a href="#donate">Donate</a></li>
-          <li><a href="/events">Rodeo events</a></li>
-          <li><a href="#pledge">Take the pledge</a></li>
+          <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Take action!</a></li>
+          <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
+          <li><a href="/facts">Rodeo facts</a></li>
         </ul>
         <?php if ($site_name || $site_slogan): ?>
           <?php $class = $site_name_hidden && $site_slogan_hidden ? ' element-invisible' : ''; ?>

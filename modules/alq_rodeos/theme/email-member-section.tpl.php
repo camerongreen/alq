@@ -1,4 +1,3 @@
-<a name="take-action"></a>
 <?= $take_action_block ?>
 <div class="row">
   <div class="col-sm-7" id="email-form-section">

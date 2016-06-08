@@ -86,6 +86,12 @@
   }
 
   $(document).ready(function () {
+    // stop enter submitting form
+    $(document).on("keypress", ":input:not(textarea):not([type=submit])", function(event) {
+      if (event.keyCode == 13) {
+        event.preventDefault();
+      }
+    });
     $('#edit-name').val($.cookie('Drupal.visitor.from_name'));
     $('#edit-email').val($.cookie('Drupal.visitor.from_email'));
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');

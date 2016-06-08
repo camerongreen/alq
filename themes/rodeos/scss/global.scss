@@ -4,6 +4,7 @@ $header-font: 'Lato', sans-serif;
 $header-color: #333;
 $text-font: 'Merriweather', serif;
 $alq-purple: #502e84;
+$header-height: 75px;
 
 body {
   background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
@@ -30,9 +31,10 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   width: 100%;
   margin-top: 10px;
-  height: 75px;
+  height: $header-height;
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
+  box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
   div.logo-img img {
     margin-top: 12px;
     margin-left: 12px;
@@ -150,6 +152,7 @@ div.block-1 {
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
+  border-radius: 4px;
   h2 {
     color: white;
     font-size: 400%;
@@ -172,9 +175,43 @@ div.block-1 {
     margin: auto;
     margin-top: 1em;
     margin-bottom: 1em;
+    padding: 1em;
     div {
       color: white;
       font-size: 90%;
+      padding-left: 1em;
+    }
+    div.copyright {
+      text-align: right;
+    }
+    div.social-media {
+      text-align: center;
+      a {
+        font-size: 300%;
+        color: white;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+    ul.links {
+      margin: 0;
+      list-style-type: none;
+      & > li {
+        text-indent: -5px;
+        a {
+          color: white;
+        }
+      }
+      & > li:before {
+        content: "- ";
+        text-indent: -5px;
+      }
     }
   }
+}
+
+a.anchor {
+  // stop the top padding overlaying other elements
+  //z-index: -1;
+  padding-top: $header-height;
 }

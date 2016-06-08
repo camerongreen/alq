@@ -24,10 +24,11 @@ function rodeos_preprocess_html(&$vars) {
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', ['type' => 'external']);
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', ['type' => 'external']);
   drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', ['type' => 'external']);
+  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', ['type' => 'external']);
 
 // add fonts we will use
   drupal_add_css('//fonts.googleapis.com/css?family=Lato|Merriweather', ['type' => 'external']);
 
 // and out script we'll do tricky things with
-  drupal_add_js(path_to_theme(), '/js/rodeos.js');
+  drupal_add_js(path_to_theme() . '/js/rodeos.js');
 }

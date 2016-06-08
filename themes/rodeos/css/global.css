@@ -1,6 +1,6 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
-/* line 8, ../scss/global.scss */
+/* line 9, ../scss/global.scss */
 body {
   background: url(../images/calf-pulled-by-neck.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -10,18 +10,18 @@ body {
   font-family: "Merriweather", serif;
   font-size: 16px;
 }
-/* line 18, ../scss/global.scss */
+/* line 19, ../scss/global.scss */
 body.front #page-title {
   display: none;
 }
 
-/* line 24, ../scss/global.scss */
+/* line 25, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   color: #333;
 }
 
-/* line 29, ../scss/global.scss */
+/* line 30, ../scss/global.scss */
 #zone-branding-wrapper {
   position: fixed;
   width: 100%;
@@ -29,24 +29,25 @@ h1, h2, h3, h4, h5, h6 {
   height: 75px;
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
+  box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
 }
-/* line 36, ../scss/global.scss */
+/* line 38, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img img {
   margin-top: 12px;
   margin-left: 12px;
   max-height: 50px;
 }
-/* line 42, ../scss/global.scss */
+/* line 44, ../scss/global.scss */
 #zone-branding-wrapper ul {
   list-style-type: none;
 }
-/* line 44, ../scss/global.scss */
+/* line 46, ../scss/global.scss */
 #zone-branding-wrapper ul li {
   display: inline-block;
   margin-right: 2ex;
   margin-top: 23px;
 }
-/* line 48, ../scss/global.scss */
+/* line 50, ../scss/global.scss */
 #zone-branding-wrapper ul li a {
   font-family: "Lato", sans-serif;
   font-size: 110%;
@@ -57,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 
-/* line 65, ../scss/global.scss */
+/* line 67, ../scss/global.scss */
 div.block-6 {
   margin-top: 6em;
   margin-bottom: 2em;
@@ -65,20 +66,20 @@ div.block-6 {
   text-align: center;
   font-size: 200%;
 }
-/* line 71, ../scss/global.scss */
+/* line 73, ../scss/global.scss */
 div.block-6 h1 {
   font-size: 200%;
   color: white;
 }
 
-/* line 78, ../scss/global.scss */
+/* line 80, ../scss/global.scss */
 div.block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 83, ../scss/global.scss */
+/* line 85, ../scss/global.scss */
 div.block-7 .content {
   position: relative;
   padding-bottom: 56.25%;
@@ -86,7 +87,7 @@ div.block-7 .content {
   padding-top: 25px;
   height: 0;
 }
-/* line 88, ../scss/global.scss */
+/* line 90, ../scss/global.scss */
 div.block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -95,7 +96,7 @@ div.block-7 .content iframe {
   height: 100%;
 }
 
-/* line 99, ../scss/global.scss */
+/* line 101, ../scss/global.scss */
 section.block-5,
 div.block-4,
 div.block-3,
@@ -107,7 +108,7 @@ div.block-1 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 109, ../scss/global.scss */
+/* line 111, ../scss/global.scss */
 section.block-5 .block-inner,
 div.block-4 .block-inner,
 div.block-3 .block-inner,
@@ -116,7 +117,7 @@ div.block-1 .block-inner {
   width: 80%;
   margin: auto;
 }
-/* line 112, ../scss/global.scss */
+/* line 114, ../scss/global.scss */
 section.block-5 .block-inner p,
 div.block-4 .block-inner p,
 div.block-3 .block-inner p,
@@ -125,7 +126,7 @@ div.block-1 .block-inner p {
   color: black;
 }
 
-/* line 119, ../scss/global.scss */
+/* line 121, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -134,56 +135,97 @@ div.block-1 .block-inner p {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 120, ../scss/global.scss */
+/* line 122, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 134, ../scss/global.scss */
+/* line 136, ../scss/global.scss */
 #take-action-images div.image-row > div {
   width: 50%;
   float: left;
   margin-bottom: 10px;
 }
 
-/* line 144, ../scss/global.scss */
+/* line 146, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 150, ../scss/global.scss */
+/* line 152, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
+  border-radius: 4px;
   color: white;
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 153, ../scss/global.scss */
+/* line 156, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 157, ../scss/global.scss */
+/* line 160, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 166, ../scss/global.scss */
+/* line 169, ../scss/global.scss */
 #region-footer-second {
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 170, ../scss/global.scss */
+/* line 173, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
   margin-top: 1em;
   margin-bottom: 1em;
+  padding: 1em;
 }
-/* line 175, ../scss/global.scss */
+/* line 179, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
+  padding-left: 1em;
+}
+/* line 184, ../scss/global.scss */
+#region-footer-second footer div.copyright {
+  text-align: right;
+}
+/* line 187, ../scss/global.scss */
+#region-footer-second footer div.social-media {
+  text-align: center;
+}
+/* line 189, ../scss/global.scss */
+#region-footer-second footer div.social-media a {
+  font-size: 300%;
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* line 196, ../scss/global.scss */
+#region-footer-second footer ul.links {
+  margin: 0;
+  list-style-type: none;
+}
+/* line 199, ../scss/global.scss */
+#region-footer-second footer ul.links > li {
+  text-indent: -5px;
+}
+/* line 201, ../scss/global.scss */
+#region-footer-second footer ul.links > li a {
+  color: white;
+}
+/* line 205, ../scss/global.scss */
+#region-footer-second footer ul.links > li:before {
+  content: "- ";
+  text-indent: -5px;
+}
+
+/* line 213, ../scss/global.scss */
+a.anchor {
+  padding-top: 75px;
 }

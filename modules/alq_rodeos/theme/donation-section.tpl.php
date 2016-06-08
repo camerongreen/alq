@@ -1,4 +1,3 @@
-<a name="donate"></a>
 <div class="row">
   <div class="col-sm-5" id="donation-form">
     <h2>Donate</h2>
