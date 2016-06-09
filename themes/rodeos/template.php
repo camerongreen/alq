@@ -35,3 +35,23 @@ function rodeos_preprocess_html(&$vars) {
 // and out script we'll do tricky things with
   drupal_add_js(path_to_theme() . '/js/rodeos.js');
 }
+
+/**
+ * Alter the page
+ */
+function rodeos_page_alter($page) {
+  global $base_url;
+
+  if (drupal_is_front_page()) {
+    $meta_og_image = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:image',
+        'content' => $base_url . '/' . drupal_get_path('theme', 'rodeos') . '/screenshot.jpg'
+      )
+    );
+
+    drupal_add_html_head($meta_og_image, 'meta_og_image');
+  }
+}
