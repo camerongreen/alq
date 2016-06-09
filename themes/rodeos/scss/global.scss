@@ -22,7 +22,7 @@ body:not(.front) {
     padding: 1em;
     width: 80%;
     margin: auto;
-    background-color: rgba(255,255,255,.9);
+    background-color: rgba(255, 255, 255, .9);
     border-radius: 4px;
   }
 
@@ -59,10 +59,12 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
   box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
-  div.logo-img img {
-    margin-top: 12px;
-    margin-left: 12px;
-    max-height: 50px;
+  div.logo-img {
+    margin: 0;
+    img {
+      margin-top: 12px;
+      max-height: 50px;
+    }
   }
 
   ul {
@@ -268,5 +270,34 @@ div.viddy {
     margin-top: 1em;
     font-weight: bold;
     font-size: 110%;
+  }
+}
+
+#block-alq-rodeos-alq-rodeos-pledge-count {
+  position: absolute;
+  background: url(../images/cow-hug.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 140px;
+  width: 125px;
+  top: 120px;
+  right: 75px;
+  color: white;
+  font-size: 150%;
+  font-family: $header-font;
+  text-align: center;
+  font-weight: bold;
+  div.content {
+    margin-top: 44px;
+    #pledge-count {
+      font-size: 200%;
+      line-height: 30px;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
 }

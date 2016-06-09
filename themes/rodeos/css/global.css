@@ -62,22 +62,25 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
 }
 /* line 62, ../scss/global.scss */
+#zone-branding-wrapper div.logo-img {
+  margin: 0;
+}
+/* line 64, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img img {
   margin-top: 12px;
-  margin-left: 12px;
   max-height: 50px;
 }
-/* line 68, ../scss/global.scss */
+/* line 70, ../scss/global.scss */
 #zone-branding-wrapper ul {
   list-style-type: none;
 }
-/* line 70, ../scss/global.scss */
+/* line 72, ../scss/global.scss */
 #zone-branding-wrapper ul li {
   display: inline-block;
   margin-right: 2ex;
   margin-top: 23px;
 }
-/* line 74, ../scss/global.scss */
+/* line 76, ../scss/global.scss */
 #zone-branding-wrapper ul li a {
   font-family: "Lato", sans-serif;
   font-size: 110%;
@@ -88,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 
-/* line 91, ../scss/global.scss */
+/* line 93, ../scss/global.scss */
 div.block-6 {
   margin-top: 6em;
   margin-bottom: 2em;
@@ -96,20 +99,20 @@ div.block-6 {
   text-align: center;
   font-size: 200%;
 }
-/* line 97, ../scss/global.scss */
+/* line 99, ../scss/global.scss */
 div.block-6 h1 {
   font-size: 200%;
   color: white;
 }
 
-/* line 104, ../scss/global.scss */
+/* line 106, ../scss/global.scss */
 div.block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 109, ../scss/global.scss */
+/* line 111, ../scss/global.scss */
 div.block-7 .content {
   position: relative;
   padding-bottom: 56.25%;
@@ -117,7 +120,7 @@ div.block-7 .content {
   padding-top: 25px;
   height: 0;
 }
-/* line 114, ../scss/global.scss */
+/* line 116, ../scss/global.scss */
 div.block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -126,7 +129,7 @@ div.block-7 .content iframe {
   height: 100%;
 }
 
-/* line 125, ../scss/global.scss */
+/* line 127, ../scss/global.scss */
 section.block-5,
 div.block-4,
 div.block-3,
@@ -138,7 +141,7 @@ div.block-1 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 135, ../scss/global.scss */
+/* line 137, ../scss/global.scss */
 section.block-5 .block-inner,
 div.block-4 .block-inner,
 div.block-3 .block-inner,
@@ -147,7 +150,7 @@ div.block-1 .block-inner {
   width: 80%;
   margin: auto;
 }
-/* line 138, ../scss/global.scss */
+/* line 140, ../scss/global.scss */
 section.block-5 .block-inner p,
 div.block-4 .block-inner p,
 div.block-3 .block-inner p,
@@ -156,7 +159,7 @@ div.block-1 .block-inner p {
   color: black;
 }
 
-/* line 145, ../scss/global.scss */
+/* line 147, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -165,24 +168,24 @@ div.block-1 .block-inner p {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 146, ../scss/global.scss */
+/* line 148, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 160, ../scss/global.scss */
+/* line 162, ../scss/global.scss */
 #take-action-images div.image-row > div {
   width: 50%;
   float: left;
   margin-bottom: 10px;
 }
 
-/* line 170, ../scss/global.scss */
+/* line 172, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 176, ../scss/global.scss */
+/* line 178, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -191,24 +194,24 @@ div.block-1 .block-inner p {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 180, ../scss/global.scss */
+/* line 182, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 184, ../scss/global.scss */
+/* line 186, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 193, ../scss/global.scss */
+/* line 195, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 198, ../scss/global.scss */
+/* line 200, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -216,57 +219,57 @@ div.block-1 .block-inner p {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 204, ../scss/global.scss */
+/* line 206, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 209, ../scss/global.scss */
+/* line 211, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 212, ../scss/global.scss */
+/* line 214, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 214, ../scss/global.scss */
+/* line 216, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 221, ../scss/global.scss */
+/* line 223, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 224, ../scss/global.scss */
+/* line 226, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 226, ../scss/global.scss */
+/* line 228, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 230, ../scss/global.scss */
+/* line 232, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 238, ../scss/global.scss */
+/* line 240, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 244, ../scss/global.scss */
+/* line 246, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
 }
-/* line 247, ../scss/global.scss */
+/* line 249, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 56.25%;
@@ -274,7 +277,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 252, ../scss/global.scss */
+/* line 254, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -283,14 +286,47 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 263, ../scss/global.scss */
+/* line 265, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 267, ../scss/global.scss */
+/* line 269, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
+}
+
+/* line 276, ../scss/global.scss */
+#block-alq-rodeos-alq-rodeos-pledge-count {
+  position: absolute;
+  background: url(../images/cow-hug.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 140px;
+  width: 125px;
+  top: 120px;
+  right: 75px;
+  color: white;
+  font-size: 150%;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+/* line 292, ../scss/global.scss */
+#block-alq-rodeos-alq-rodeos-pledge-count div.content {
+  margin-top: 44px;
+}
+/* line 294, ../scss/global.scss */
+#block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
+  font-size: 200%;
+  line-height: 30px;
+}
+/* line 297, ../scss/global.scss */
+#block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
+  color: white;
+  text-decoration: none;
 }

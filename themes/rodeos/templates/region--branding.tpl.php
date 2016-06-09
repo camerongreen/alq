@@ -2,12 +2,7 @@
   <div<?php print $content_attributes; ?>>
     <?php if ($linked_logo_img || $site_name || $site_slogan): ?>
       <div class="branding-data clearfix row">
-        <?php if ($linked_logo_img): ?>
-          <div class="logo-img">
-            <?php print $linked_logo_img; ?>
-          </div>
-        <?php endif; ?>
-        <ul role="menu" class="pull-right">
+        <ul role="menu" class="menu-cnt col-md-8 col-sm-12">
           <li><a href="#block-alq-rodeos-alq-rodeos-pledge" class="anke">Take the pledge</a></li>
           <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Contact your MP</a></li>
           <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
@@ -15,6 +10,11 @@
           <li><a href="/info">Rodeo Info</a></li>
           <li><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
         </ul>
+        <?php if ($linked_logo_img): ?>
+          <div class="logo-img col-md-4 col-sm-12">
+            <?php print $linked_logo_img; ?>
+          </div>
+        <?php endif; ?>
         <?php if ($site_name || $site_slogan): ?>
           <?php $class = $site_name_hidden && $site_slogan_hidden ? ' element-invisible' : ''; ?>
           <hgroup class="site-name-slogan<?php print $class; ?>">

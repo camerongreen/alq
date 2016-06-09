@@ -26,6 +26,9 @@ function alq_rodeos_block_info() {
     'alq_rodeos_pledge' => [
       'info' => t('ALQ Rodeos pledge'),
     ],
+    'alq_rodeos_pledge_count' => [
+      'info' => t('ALQ Rodeos pledge count'),
+    ],
     'alq_rodeos_donation' => [
       'info' => t('ALQ Rodeos donation'),
     ],
@@ -54,6 +57,9 @@ function alq_rodeos_block_view($delta = '') {
       break;
     case 'alq_rodeos_pledge':
       $block = alq_rodeos_get_pledge_block();
+      break;
+    case 'alq_rodeos_pledge_count':
+      $block = alq_rodeos_get_pledge_count_block();
       break;
   }
 
@@ -92,6 +98,28 @@ function alq_rodeos_get_pledge_block() {
 
   return $block;
 }
+
+
+/**
+ * Function to be called which shows the pledge count
+ *
+ * @return string
+ */
+function alq_rodeos_get_pledge_count_block() {
+  $query = db_select(ALQ_PLEDGES_TABLE, 'p')
+      ->fields('p')
+      ->execute();
+  $pledgeCount = $query->rowCount();
+
+  $block = [
+    'content' => theme('alq_rodeos_pledge_count', [
+      'pledge_count' => $pledgeCount,
+    ])
+  ];
+
+  return $block;
+}
+
 
 /**
  * Function to be called which shows the form, loads up the JS etc libraries
@@ -185,6 +213,12 @@ function alq_rodeos_theme() {
       'variables' => [
         'pledge_intro_block' => NULL,
         'pledge_form' => NULL,
+      ]
+    ],
+    'alq_rodeos_pledge_count' => [
+      'template' => 'theme/pledge-count',
+      'variables' => [
+        'pledge_count' => NULL,
       ]
     ],
     'alq_rodeos_footer' => [
