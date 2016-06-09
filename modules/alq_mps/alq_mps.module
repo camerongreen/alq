@@ -437,8 +437,8 @@ function alq_mps_get_email_campaign($node) {
     }
     else {
       drupal_add_library('system', 'jquery.cookie');
-      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css', ['type' => 'external']);
-      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js', ['type' => 'external']);
+      drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css', ['type' => 'external']);
+      drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js', ['type' => 'external']);
       drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
       $cnode = node_load($cid);
       $form = drupal_get_form('alq_mps_email_form', $cnode);
