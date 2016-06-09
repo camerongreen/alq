@@ -136,7 +136,7 @@ function alq_forms_block_view($delta = "") {
   global $base_url, $conf;
   $block = NULL;
 
-  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css', array('type' => 'external'));
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', array('type' => 'external'));
   drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css', array('type' => 'external'));
   drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
 
