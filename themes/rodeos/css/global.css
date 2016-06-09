@@ -319,13 +319,14 @@ div.viddy > div iframe {
 /* line 292, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
+  text-shadow: 4px 2px #222;
 }
-/* line 294, ../scss/global.scss */
+/* line 295, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 200%;
   line-height: 30px;
 }
-/* line 297, ../scss/global.scss */
+/* line 298, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
