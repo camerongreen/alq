@@ -8,7 +8,8 @@
           </div>
         <?php endif; ?>
         <ul role="menu" class="pull-right">
-          <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Email your MP!</a></li>
+          <li><a href="#block-alq-rodeos-alq-rodeos-pledge" class="anke">Take the pledge</a></li>
+          <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Contact your MP</a></li>
           <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
           <li><a href="/take-action">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>

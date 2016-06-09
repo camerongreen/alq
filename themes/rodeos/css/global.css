@@ -282,3 +282,15 @@ div.viddy > div iframe {
   width: 100%;
   height: 100%;
 }
+
+/* line 263, ../scss/global.scss */
+#pledge-form h2 {
+  text-align: center;
+  border-bottom: solid #CCC thin;
+}
+/* line 267, ../scss/global.scss */
+#pledge-form p {
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 110%;
+}

@@ -5,11 +5,14 @@
  * silly, into functional oriented modules
  */
 
+define('ALQ_PLEDGES_TABLE', 'alq_pledges');
+
 define('ALQ_RODEOS_CAMPAIGN_ID', '91');
 define('ALQ_RODEOS_TAKE_ACTION_BLOCK', '2');
 define('ALQ_RODEOS_EXPLAINER_BLOCK', '3');
 define('ALQ_RODEOS_EMAIL_INTRO_BLOCK', '8');
 define('ALQ_RODEOS_DONATION_EXPLAINER_BLOCK', '4');
+define('ALQ_RODEOS_PLEDGE_INTRO_BLOCK', '10');
 
 
 /**
@@ -19,6 +22,9 @@ function alq_rodeos_block_info() {
   return array(
     'alq_rodeos_email_member' => [
       'info' => t('ALQ Rodeos email member'),
+    ],
+    'alq_rodeos_pledge' => [
+      'info' => t('ALQ Rodeos pledge'),
     ],
     'alq_rodeos_donation' => [
       'info' => t('ALQ Rodeos donation'),
@@ -46,6 +52,9 @@ function alq_rodeos_block_view($delta = '') {
     case 'alq_rodeos_footer':
       $block = alq_rodeos_get_footer_block();
       break;
+    case 'alq_rodeos_pledge':
+      $block = alq_rodeos_get_pledge_block();
+      break;
   }
 
   return $block;
@@ -64,6 +73,25 @@ function alq_rodeos_get_footer_block() {
   return $block;
 }
 
+
+/**
+ * Function to be called which shows the pledge
+ *
+ * @return string
+ */
+function alq_rodeos_get_pledge_block() {
+  $pledgeIntro = module_invoke('block', 'block_view', ALQ_RODEOS_PLEDGE_INTRO_BLOCK);
+  $form = drupal_get_form('alq_rodeos_pledge_form');
+  $pledgeForm = drupal_render($form);
+  $block = [
+    'content' => theme('alq_rodeos_pledge', [
+      'pledge_intro_block' => $pledgeIntro['content'],
+      'pledge_form' => $pledgeForm
+    ])
+  ];
+
+  return $block;
+}
 
 /**
  * Function to be called which shows the form, loads up the JS etc libraries
@@ -152,10 +180,109 @@ function alq_rodeos_theme() {
         'redirect_url_cancel' => NULL
       ]
     ],
+    'alq_rodeos_pledge' => [
+      'template' => 'theme/pledge-section',
+      'variables' => [
+        'pledge_intro_block' => NULL,
+        'pledge_form' => NULL,
+      ]
+    ],
     'alq_rodeos_footer' => [
       'template' => 'theme/footer',
       'variables' => [
       ]
     ],
   ];
+}
+
+/**
+ * Implementation of hook form
+ *
+ * @param $form
+ * @param $form_state
+ * @return mixed
+ */
+function alq_rodeos_pledge_form($form, &$form_state) {
+  $classes = ['form-horizontal'];
+
+  if (!isset($form['#attributes']['class'])) {
+    $form['#attributes']['class'] = $classes;
+  }
+  else {
+    $form['#attributes']['class'] = array_merge($form['#attributes']['class'], $classes);
+  }
+
+  $form['name'] = [
+    '#type' => 'textfield',
+    '#title' => t('Your name'),
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div>',
+    '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
+  ];
+  $form['suburb'] = [
+    '#type' => 'textfield',
+    '#title' => t('Your suburb'),
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div>',
+    '#required' => TRUE,
+    '#attributes' => [
+      'class' => ['form-control']
+    ]
+  ];
+
+  $form['submit'] = [
+    '#type' => 'submit',
+    '#prefix' => '<div class="form-group">',
+    '#suffix' => '</div>',
+    '#value' => t('Pledge'),
+    '#attributes' => [
+      'class' => ['btn btn-primary']
+    ]
+  ];
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_validate()
+ *
+ * @param $form
+ * @param $form_state
+ */
+function alq_rodeos_pledge_form_validate($form, &$form_state) {
+  /*
+  $values = $form_state['values'];
+
+  if (!valid_email_address($values['email'])) {
+    form_set_error('email', t('Invalid email address.'));
+  }
+  */
+}
+
+/**
+ * Implements hook_form_submit()
+ *
+ * @param $form
+ * @param $form_state
+ */
+function alq_rodeos_pledge_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+
+  $insert = [
+    'pledge' => 'rodeos',
+    'name' => $values['name'],
+    'suburb' => $values['suburb'],
+    'created' => getBrizzyTime()
+  ];
+
+  if (drupal_write_record(ALQ_PLEDGES_TABLE, $insert)) {
+    drupal_set_message('You successfully made your pledge');
+    $_SESSION['alq_rodeos_pledge_form_submitted'] = TRUE;
+  }
+  else {
+    drupal_set_message('Error making pledge, please Contact ALQ to let us know', 'error');
+  }
 }

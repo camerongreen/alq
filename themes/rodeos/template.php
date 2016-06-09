@@ -20,9 +20,12 @@ function rodeos_preprocess_html(&$vars) {
   drupal_add_library('system', 'ui');
   drupal_add_library('system', 'ui.autocomplete');
 
+  // make sure boostrap appears after formalize
+  $weight = 200;
+
 // Add bootstrap cdn.
-  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', ['type' => 'external']);
-  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', ['type' => 'external']);
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', ['type' => 'external', 'weight' => $weight]);
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', ['type' => 'external', 'weight' => $weight + 1]);
   drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', ['type' => 'external']);
   drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css', ['type' => 'external']);
 
