@@ -72,8 +72,13 @@ h1, h2, h3, h4, h5, h6 {
     list-style-type: none;
     li {
       display: inline-block;
-      margin-right: 2ex;
       margin-top: 25px;
+      &:after {
+        content: " \00b7";
+      }
+      &.nobullet:after {
+        content: none;
+      }
       a {
         font-family: $header-font;
         font-size: 110%;

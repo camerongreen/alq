@@ -8,7 +8,7 @@
           <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
           <li><a href="/take-action">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>
-          <li><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
+          <li class="nobullet"><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
         </ul>
         <?php if ($linked_logo_img): ?>
           <div class="logo-img col-md-4 col-sm-12">
