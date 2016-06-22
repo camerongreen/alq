@@ -1,8 +1,8 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
-$header-font: 'Lato', sans-serif;
+$header-font: 'Hind', sans-serif;
 $header-color: #333;
-$text-font: 'Merriweather', serif;
+$text-font: 'Open sans', sans-serif;
 $alq-purple: #502e84;
 $header-height: 75px;
 
@@ -73,11 +73,10 @@ h1, h2, h3, h4, h5, h6 {
     li {
       display: inline-block;
       margin-right: 2ex;
-      margin-top: 23px;
+      margin-top: 25px;
       a {
         font-family: $header-font;
         font-size: 110%;
-        padding-top: 30px;
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
