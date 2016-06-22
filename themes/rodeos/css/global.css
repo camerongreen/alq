@@ -59,7 +59,6 @@ h1, h2, h3, h4, h5, h6 {
   height: 75px;
   background: rgba(255, 255, 255, 0.9);
   z-index: 1;
-  box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
 }
 /* line 62, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img {
@@ -260,17 +259,24 @@ div.block-1 .block-inner p {
   text-indent: -5px;
 }
 
-/* line 241, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
+#zone-header p > strong {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+/* line 249, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 247, ../scss/global.scss */
+/* line 255, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
 }
-/* line 250, ../scss/global.scss */
+/* line 258, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 56.25%;
@@ -278,7 +284,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 255, ../scss/global.scss */
+/* line 263, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -287,19 +293,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 266, ../scss/global.scss */
+/* line 274, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 270, ../scss/global.scss */
+/* line 278, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 277, ../scss/global.scss */
+/* line 285, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -317,17 +323,17 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 293, ../scss/global.scss */
+/* line 301, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
   text-shadow: 4px 2px #222;
 }
-/* line 296, ../scss/global.scss */
+/* line 304, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 200%;
   line-height: 30px;
 }
-/* line 299, ../scss/global.scss */
+/* line 307, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
