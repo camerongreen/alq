@@ -649,7 +649,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#type' => 'checkbox',
     '#title' => t('Would you like to join the Animal Liberation Qld email list'),
     '#attributes' => [
-      'class' => ['form-control']
+      'class' => ['form-con$rol'],
+      'checked' => 'checked'
     ]
   ];
 

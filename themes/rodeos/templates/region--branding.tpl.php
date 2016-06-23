@@ -2,16 +2,14 @@
   <div<?php print $content_attributes; ?>>
     <?php if ($linked_logo_img || $site_name || $site_slogan): ?>
       <div class="branding-data clearfix row">
-        <ul role="menu" class="menu-cnt col-md-8 col-sm-12">
-          <li><a href="#block-alq-rodeos-alq-rodeos-pledge" class="anke">Take the pledge</a></li>
-          <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Contact your MP</a></li>
-          <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
-          <li><a href="/take-action">Take Action</a></li>
+        <ul role="menu" class="menu-cnt col-md-6">
+          <li><a href="#block-alq-rodeos-alq-rodeos-email-member" class="anke">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>
+          <li><a href="#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
           <li class="nobullet"><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
         </ul>
         <?php if ($linked_logo_img): ?>
-          <div class="logo-img col-md-4 col-sm-12">
+          <div class="logo-img col-md-6">
             <?php print $linked_logo_img; ?>
           </div>
         <?php endif; ?>

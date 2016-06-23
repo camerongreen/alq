@@ -1,4 +1,5 @@
 <div class="row">
+  <h2>Please support our work by making a donation today</h2>
   <div class="col-sm-5" id="donation-form">
     <h2>Donate</h2>
     <form action="<?= $action ?>">
@@ -23,14 +24,14 @@
         <div class="col-sm-4">
 
           <div class="form-group">
-            <label for="donation_18"><input type="radio" name="amount"
-                                            value="18" id="donation_18"/>
-              $18</label>
+            <label for="donation_20"><input type="radio" name="amount"
+                                            value="20" id="donation_20"/>
+              $20</label>
           </div>
           <div class="form-group">
-            <label for="donation_45"><input type="radio" name="amount"
-                                            value="45" id="donation_45"/>
-              $45</label>
+            <label for="donation_50"><input type="radio" name="amount"
+                                            value="50" id="donation_50"/>
+              $50</label>
           </div>
           <div class="form-group">
             <label for="donation_100"><input type="radio" name="amount"
@@ -40,14 +41,14 @@
           <div class="form-group">
             <label for="donation_other"><input type="radio"
                                                name="amount"
-                                               value="other"
+                                               value=""
                                                id="donation_other"/>
               Other</label>
           </div>
         </div>
         <div class="col-sm-8">
           <div>
-            Your generous donation will help found our important work
+            Your generous donation will help fund our important work
           </div>
           <button type="submit" class="btn btn-default btn-lg">Give now</button>
         </div>

@@ -101,12 +101,14 @@ function alq_rodeos_get_pledge_block() {
 
 
 /**
- * Function to be called which shows the pledge count
+ * Function to be called which was meant to show the pledge count
+ * the spec has changed, now they just want to display emails
  *
  * @return string
  */
 function alq_rodeos_get_pledge_count_block() {
-  $query = db_select(ALQ_PLEDGES_TABLE, 'p')
+  $query = db_select(ALQ_EMAILS_TABLE, 'p')
+      ->condition('campaign_id', ALQ_RODEOS_CAMPAIGN_ID, '=')
       ->fields('p')
       ->execute();
   $pledgeCount = $query->rowCount();

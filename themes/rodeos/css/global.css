@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-top: 10px;
   height: 75px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.6);
   z-index: 1;
   box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
 }
@@ -122,7 +122,7 @@ div.block-7 {
 /* line 116, ../scss/global.scss */
 div.block-7 .content {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 53%;
   /* 16:9 */
   padding-top: 25px;
   height: 0;
@@ -166,7 +166,38 @@ div.block-1 .block-inner p {
   color: black;
 }
 
+/* line 151, ../scss/global.scss */
+section.block-11 {
+  width: 100%;
+  margin-bottom: 2em;
+}
 /* line 152, ../scss/global.scss */
+section.block-11 h2 {
+  color: white;
+  font-size: 150%;
+}
+/* line 157, ../scss/global.scss */
+section.block-11 a {
+  color: white;
+  text-align: center;
+  font-size: 130%;
+  text-decoration: none;
+}
+/* line 164, ../scss/global.scss */
+section.block-11 div {
+  text-align: center;
+}
+/* line 169, ../scss/global.scss */
+section.block-11 .block-inner {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 5px;
+  background-color: #502e84;
+  width: 80%;
+  margin: auto;
+}
+
+/* line 180, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -175,24 +206,24 @@ div.block-1 .block-inner p {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 153, ../scss/global.scss */
+/* line 181, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 167, ../scss/global.scss */
+/* line 195, ../scss/global.scss */
 #take-action-images div.image-row > div {
   width: 50%;
   float: left;
   margin-bottom: 10px;
 }
 
-/* line 177, ../scss/global.scss */
+/* line 205, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 183, ../scss/global.scss */
+/* line 211, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -201,24 +232,24 @@ div.block-1 .block-inner p {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 187, ../scss/global.scss */
+/* line 218, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 191, ../scss/global.scss */
+/* line 222, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 200, ../scss/global.scss */
+/* line 228, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 205, ../scss/global.scss */
+/* line 233, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -226,72 +257,72 @@ div.block-1 .block-inner p {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 211, ../scss/global.scss */
+/* line 239, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 216, ../scss/global.scss */
+/* line 244, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 219, ../scss/global.scss */
+/* line 247, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 221, ../scss/global.scss */
+/* line 249, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 228, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 231, ../scss/global.scss */
+/* line 259, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 233, ../scss/global.scss */
+/* line 261, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 237, ../scss/global.scss */
+/* line 265, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 246, ../scss/global.scss */
-#zone-header p > strong {
+/* line 274, ../scss/global.scss */
+#zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 253, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 259, ../scss/global.scss */
+/* line 287, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
 }
-/* line 262, ../scss/global.scss */
+/* line 290, ../scss/global.scss */
 div.viddy > div {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 51%;
   /* 16:9 */
   padding-top: 25px;
   height: 0;
 }
-/* line 267, ../scss/global.scss */
+/* line 295, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -300,19 +331,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 278, ../scss/global.scss */
+/* line 306, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 282, ../scss/global.scss */
+/* line 310, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 289, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -330,16 +361,16 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 305, ../scss/global.scss */
+/* line 333, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 308, ../scss/global.scss */
+/* line 336, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 200%;
   line-height: 30px;
 }
-/* line 311, ../scss/global.scss */
+/* line 339, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;

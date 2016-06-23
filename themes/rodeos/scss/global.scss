@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-top: 10px;
   height: $header-height;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.6);
   z-index: 1;
   box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
   div.logo-img {
@@ -115,7 +115,7 @@ div.block-7 {
   margin: auto;
   .content {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 53%; /* 16:9 */
     padding-top: 25px;
     height: 0;
     iframe {
@@ -145,6 +145,34 @@ div.block-1 {
     p {
       color: black;
     }
+  }
+}
+
+section.block-11 {
+  h2 {
+    color: white;
+    font-size: 150%;
+  }
+
+  a {
+    color: white;
+    text-align: center;
+    font-size: 130%;
+    text-decoration: none;
+  }
+
+  div {
+    text-align: center;
+  }
+  width: 100%;
+  margin-bottom: 2em;
+  .block-inner {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+    background-color: $alq-purple;
+    width: 80%;
+    margin: auto;
   }
 }
 
@@ -184,6 +212,9 @@ div.block-1 {
   padding-top: 2em;
   padding-bottom: 3em;
   border-radius: 4px;
+  color: white;
+  font-size: 130%;
+  background-color: $alq-purple;
   h2 {
     color: white;
     font-size: 400%;
@@ -191,9 +222,6 @@ div.block-1 {
   button {
     margin-top: 13px;
   }
-  color: white;
-  font-size: 130%;
-  background-color: $alq-purple;
 }
 
 // footer block
@@ -243,7 +271,7 @@ div.block-1 {
 }
 
 #zone-header {
-  p > strong {
+  strong {
     background-color: rgba(0, 0, 0, 0.5);
     padding-left: 1ex;
     padding-right: 1ex;
@@ -261,7 +289,7 @@ div.viddy {
   margin: auto;
   & > div {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 51%; /* 16:9 */
     padding-top: 25px;
     height: 0;
     iframe {
