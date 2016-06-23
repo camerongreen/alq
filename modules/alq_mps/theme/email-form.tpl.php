@@ -44,7 +44,7 @@ foreach ($fields as $field) {
     ?>
     <div class="col-sm-offset-3 col-sm-9">
       <div class="checkbox">
-        <label><input class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>" type="checkbox"
+        <label><input class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>" type="checkbox" <?= array_key_exists('checked', $ff['#attributes']) && $ff['#attributes']['checked'] ? 'checked="checked" ' : '' ?>
                       id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
                       value="1"><?= $ff['#title'] ?></label>
       </div>
