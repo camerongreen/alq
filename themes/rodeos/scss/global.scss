@@ -193,9 +193,10 @@ section.block-11 {
 #take-action-images {
   div.image-row {
     & > div {
-      width: 50%;
+      width: 25%;
       float: left;
       margin-bottom: 10px;
+      text-align: center;
     }
   }
 }
@@ -342,4 +343,12 @@ div.viddy {
       }
     }
   }
+}
+
+body.page-node-92 h2 {
+  margin-top: 1em;
+}
+
+#email-explainer ul {
+  margin-left: 20px;
 }

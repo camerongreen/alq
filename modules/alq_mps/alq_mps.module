@@ -615,6 +615,11 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control']
     ]
   ];
+  $form['default_body'] = [
+    '#type' => 'hidden',
+    '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
+  ];
+
   $form['name'] = [
     '#type' => 'textfield',
     '#title' => t('Your name'),

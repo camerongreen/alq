@@ -92,6 +92,7 @@
         event.preventDefault();
       }
     });
+    
     $('#edit-name').val($.cookie('Drupal.visitor.from_name'));
     $('#edit-email').val($.cookie('Drupal.visitor.from_email'));
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');

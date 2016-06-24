@@ -8,6 +8,8 @@
     <div class="well">
       <?= $explainer_block ?>
     </div>
+  </div>
+ <div class="row"> 
     <div id="take-action-images">
       <div class="image-row">
         <div>
@@ -20,10 +22,7 @@
             src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/small-calf-2.jpg"
             alt="Calf roping sequence 2" class="img-thumbnail"/>
         </div>
-      </div>
-      <div class="image-row">
         <div>
-
           <img
             src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/small-calf-3.jpg"
             alt="Calf roping sequence 3" class="img-thumbnail"/>
