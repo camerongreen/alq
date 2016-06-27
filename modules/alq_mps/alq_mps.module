@@ -110,6 +110,21 @@ function alq_mps_cron() {
 }
 
 /**
+ * Loads up the CC fields for an email campaign
+ * 
+ * @param int $campaign_id
+ * @return string
+ */
+function alq_mps_get_ccs($campaign_id) {
+  $emails = [];
+  $campaign = node_load($campaign_id);
+  foreach ($campaign->field_cc[LANGUAGE_NONE] as $email) {
+    $emails[] = $email['email'];
+  }
+  return implode(',', $emails);
+}
+
+/**
  * Grabs the ALQ_MAX_EMAILS_PER_RUN most recent emails which haven't been
  * actioned and tries to send them
  */
@@ -125,25 +140,20 @@ function alq_mps_send_emails() {
   $emailCount = $emails->rowCount();
   $errors = 0;
 
-  $cacheDisabled = TRUE;
-  $emaileeCache = [];
-
   foreach ($emails as $email) {
-    // try and cache the emailees we don't have to keep getting them
-    // from the database
-    if ($cacheDisabled || !array_key_exists($email->recipient, $emaileeCache)) {
-      $recipient = node_load($email->recipient);
-      $recipient->offices = [];
-      foreach ($recipient->field_office[LANGUAGE_NONE] as $entity_id) {
-        $recipient->offices[] = entity_load('field_collection_item', [$entity_id['value']]);
-      }
-      $emaileeCache[$email->recipient] = $recipient;
+    $ccs = alq_mps_get_ccs($email->campaign_id);
+    if ($ccs) {
+      $email['headers']['Cc'] = $ccs;
     }
-    $emailee = $emaileeCache[$email->recipient];
+    $recipient = node_load($email->recipient);
+    $recipient->offices = [];
+    foreach ($recipient->field_office[LANGUAGE_NONE] as $entity_id) {
+      $recipient->offices[] = entity_load('field_collection_item', [$entity_id['value']]);
+    }
 
     // send the email, checking the result.  If it is sent, we send the user
     // a confirmation email
-    $result = alq_mps_email($emailee, $email);
+    $result = alq_mps_email($recipient, $email);
     $confirmation_sent = 0;
     if ($result['result'] == TRUE) {
       $confirmation_result = alq_mps_confirmation_email($email);
@@ -392,10 +402,12 @@ function alq_mps_get_email_campaign_stats($node) {
       }
     }
 
-    drupal_add_js(['alq_mps' => [
-      'emails' => $emails,
-      'ALQ_EMAIL_SUCCESS_STATUS' => ALQ_EMAIL_SUCCESS_STATUS
-    ]], ['type' => 'setting']);
+    drupal_add_js([
+      'alq_mps' => [
+        'emails' => $emails,
+        'ALQ_EMAIL_SUCCESS_STATUS' => ALQ_EMAIL_SUCCESS_STATUS
+      ]
+    ], ['type' => 'setting']);
 
     return theme('alq_mps_email_campaign_stats', [
       'emails' => $emails,

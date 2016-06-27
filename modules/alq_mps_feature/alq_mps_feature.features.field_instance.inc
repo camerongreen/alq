@@ -289,6 +289,45 @@ function alq_mps_feature_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-email_campaign-field_cc'.
+  $field_instances['node-email_campaign-field_cc'] = array(
+    'bundle' => 'email_campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_cc',
+    'label' => 'CC',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
       'weight' => 7,
     ),
   );
@@ -337,7 +376,7 @@ function alq_mps_feature_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -381,7 +420,7 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -962,6 +1001,7 @@ function alq_mps_feature_field_default_field_instances() {
   t('ALP, LNP, LIB, GRN etc');
   t('Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.');
   t('Address');
+  t('CC');
   t('Campaign Type');
   t('Comments');
   t('Confirmation HTML');

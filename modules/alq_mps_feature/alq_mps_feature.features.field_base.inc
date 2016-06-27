@@ -94,6 +94,21 @@ function alq_mps_feature_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_cc'.
+  $field_bases['field_cc'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_cc',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'email',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'email',
+  );
+
   // Exported field_base: 'field_confirmation_html'.
   $field_bases['field_confirmation_html'] = array(
     'active' => 1,
@@ -336,8 +351,9 @@ function alq_mps_feature_field_default_field_bases() {
         'article' => 'article',
         'campaignmaterials' => 0,
         'email_campaign' => 0,
+        'emailee' => 0,
         'media_article' => 0,
-        'page' => 0,
+        'page' => 'page',
         'product' => 0,
         'section_home' => 0,
         'webform' => 0,
