@@ -87,7 +87,7 @@
 
   $(document).ready(function () {
     // stop enter submitting form
-    $(document).on("keypress", ":input:not(textarea):not([type=submit])", function(event) {
+    $(document).on('keypress', ':input:not(textarea):not([type="submit"])', function(event) {
       if (event.keyCode == 13) {
         event.preventDefault();
       }
@@ -118,6 +118,25 @@
       focus: function (event) {
         event.preventDefault();
       }
+    });
+    $('#suburb-default').click(function (evt) {
+      // allow them to set and unset the default member
+      var nid = $('#edit-emailee-nid');
+      var defaultNid = $('#edit-emailee-default-nid');
+      var name = $('#edit-emailee-name');
+      var electorateParent = $('#edit-emailee-electorate').closest('div.form-group');
+      // unset
+      if (nid.val() === defaultNid.val()) {
+        name.val('');
+        nid.val('');
+        electorateParent.show();
+      } else {
+        // set
+        name.val($('#edit-emailee-default-name').val());
+        electorateParent.hide();
+        nid.val(defaultNid.val());
+      }
+      
     });
   });
 })(jQuery);

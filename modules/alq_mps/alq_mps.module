@@ -584,10 +584,31 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
 
     $form['suburb_help'] = [
       '#type' => 'markup',
-      '#markup' => 'If more than one electoral district is listed, click here to
+      '#markup' => 'If multiple electorates are listed, go here to
         <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
           target="_blank"> find your electorate</a>.' 
     ];
+    
+    if ($emailee) {
+      $form['suburb_default'] = [
+        '#type' => 'markup',
+        '#markup' => 'Outside of Queensland? <a href="javascript://" id="suburb-default">Click here to email the responsible minister</a>.'
+      ];
+      $form['emailee_default_name'] = [
+        '#type' => 'hidden',
+        '#value' => $emailee->title,
+        '#attributes' => [
+          'id' => 'edit-emailee-default-name'
+        ]
+      ];
+      $form['emailee_default_nid'] = [
+        '#type' => 'hidden',
+        '#value' => $emailee->nid,
+        '#attributes' => [
+          'id' => 'edit-emailee-default-nid'
+        ]
+      ];
+    }
   }
 
   $form['emailee_name'] = [

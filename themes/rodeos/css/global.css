@@ -378,11 +378,16 @@ div.viddy > div iframe {
 }
 
 /* line 348, ../scss/global.scss */
+div.markup {
+  font-size: 80%;
+}
+
+/* line 352, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 352, ../scss/global.scss */
+/* line 356, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }

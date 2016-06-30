@@ -28,6 +28,7 @@ $suburbSearch = in_array('suburb-search', $form['suburb']['#attributes']['class'
 
 if ($suburbSearch) {
   array_unshift($fields, 'suburb_help');
+  array_unshift($fields, 'suburb_default');
   array_unshift($fields, 'suburb');
 }
 else {
@@ -58,7 +59,7 @@ foreach ($fields as $field) {
     <?php }
     else if (in_array($ff['#type'], ['captcha', 'markup'])) {
       ?>
-      <div class="col-sm-offset-3 col-sm-9">
+      <div class="col-sm-offset-3 col-sm-9 <?= $ff['#type'] ?>">
         <?= render($ff) ?>
       </div>
       <?php
@@ -107,4 +108,5 @@ foreach ($fields as $field) {
 
   unset($form[$field]);
 }
+// render all the other fields which we haven't specified
 print drupal_render_children($form);
