@@ -14,6 +14,7 @@ define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_EMAILS_TABLE', 'alq_emails');
 define('ALQ_NODE_REF_TABLE', 'field_data_field_parent_article');
 define('ALQ_EMAILEE_REF_TABLE', 'field_data_field_emailee');
+define('ALQ_CAMPAIGN_TYPE_TABLE', 'field_data_field_campaign_type');
 
 define('ALQ_EMAIL_SUCCESS_STATUS', 'successfully queued');
 
@@ -111,7 +112,7 @@ function alq_mps_cron() {
 
 /**
  * Loads up the CC fields for an email campaign
- * 
+ *
  * @param int $campaign_id
  * @return string
  */
@@ -485,6 +486,28 @@ function alq_mps_has_email_campaign($nid) {
   return FALSE;
 }
 
+
+/**
+ * Is this campaign to a list/search type or just a single person
+ * campaign
+ *
+ * @param $nid
+ * @return boolean
+ */
+function alq_mps_get_campaign_type($nid) {
+  $query = db_select(ALQ_CAMPAIGN_TYPE_TABLE, 'fdfct');
+  $query->condition('fdfct.entity_type', 'node', '=')
+    ->condition('fdfct.entity_id', $nid, '=');
+  $query->fields('fdfct', [
+    'field_campaign_type_value'
+  ]);
+
+  $result = $query->execute();
+
+  return $result->fetchField(0);
+}
+
+
 /**
  * Email campaigns may have a emailee reference in them
  * If this campaign has an emailee, return its id, otherwise false
@@ -492,7 +515,7 @@ function alq_mps_has_email_campaign($nid) {
  * @param $nid
  * @return mixed  emailee nid or false
  */
-function alq_mps_is_defined_list($nid) {
+function alq_mps_get_default_emailee($nid) {
   $query = db_select(ALQ_EMAILEE_REF_TABLE, 'erf');
   $query->condition('erf.entity_type', 'node', '=')
     ->condition('erf.entity_id', $nid, '=');
@@ -528,9 +551,10 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     $form['#attributes']['class'] = array_merge($form['#attributes']['class'], $classes);
   }
 
-  // check if it is an email just to one person
-  // eid will be true if it is
-  $eid = alq_mps_is_defined_list($cnode->nid);
+  $campaign_type = alq_mps_get_campaign_type($cnode->nid);
+
+  // check if there is a default emailer
+  $eid = alq_mps_get_default_emailee($cnode->nid);
 
   $emailee = NULL;
 
@@ -546,7 +570,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
 
   // if we are allowing the user to search for a member
   // then add the suburb search field
-  if (!$eid) {
+  if ($campaign_type === 'qld_state') {
     $form['suburb'] = [
       '#type' => 'textfield',
       '#title' => t('Find your member'),
@@ -556,6 +580,13 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
         'placeholder' => t('Search using your suburb or postcode'),
         'class' => ['form-control', 'suburb-search']
       ]
+    ];
+
+    $form['suburb_help'] = [
+      '#type' => 'markup',
+      '#markup' => 'If more than one electoral district is listed, click here to
+        <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
+          target="_blank"> find your electorate</a>.' 
     ];
   }
 
@@ -569,11 +600,9 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     ]
   ];
 
-  if ($eid) {
+  if ($campaign_type === 'single') {
     $form['emailee_name']['#value'] = $emailee->title;
-  }
-
-  if ($eid) {
+    
     if (is_array($emailee->field_position) && array_key_exists(LANGUAGE_NONE, $emailee->field_position)) {
       $form['emailee_position'] = [
         '#title' => 'Position',
@@ -605,7 +634,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     ],
   ];
 
-  if ($eid) {
+  if ($campaign_type === 'single') {
     $form['emailee_nid']['#value'] = $eid;
   }
 
@@ -650,7 +679,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   ];
   // if the email is to a defined email/s then ask the user
   // to manually enter their postcode
-  if ($eid) {
+  if ($campaign_type === 'single') {
     $form['suburb'] = [
       '#type' => 'textfield',
       '#title' => t('Suburb'),
@@ -686,7 +715,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['btn btn-primary']
     ]
   ];
-
+  
   return $form;
 }
 

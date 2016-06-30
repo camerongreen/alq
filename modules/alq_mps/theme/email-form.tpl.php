@@ -27,11 +27,15 @@ $fields = [
 $suburbSearch = in_array('suburb-search', $form['suburb']['#attributes']['class']);
 
 if ($suburbSearch) {
+  array_unshift($fields, 'suburb_help');
   array_unshift($fields, 'suburb');
-} else {
+}
+else {
   array_splice($fields, 7, 0, 'suburb');
 }
 
+// this is all pretty nuts, but I wanted to use bootstrap for the form and this
+// was the best way I could think of doing it
 foreach ($fields as $field) {
   if (!isset($form[$field])) {
     continue;
@@ -39,25 +43,27 @@ foreach ($fields as $field) {
   $ff = $form[$field];
   ?>
   <div class="form-group form-item">
-  <?php
-  if ($ff['#type'] === 'checkbox') {
-    ?>
-    <div class="col-sm-offset-3 col-sm-9">
-      <div class="checkbox">
-        <label><input class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>" type="checkbox" <?= array_key_exists('checked', $ff['#attributes']) && $ff['#attributes']['checked'] ? 'checked="checked" ' : '' ?>
-                      id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
-                      value="1"><?= $ff['#title'] ?></label>
-      </div>
-    </div>
-  <?php }
-  else {
-    if ($ff['#type'] === 'captcha') {
+    <?php
+    if ($ff['#type'] === 'checkbox') {
       ?>
       <div class="col-sm-offset-3 col-sm-9">
-      <?= render($ff) ?>
+        <div class="checkbox">
+          <label><input
+              class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>"
+              type="checkbox" <?= array_key_exists('checked', $ff['#attributes']) && $ff['#attributes']['checked'] ? 'checked="checked" ' : '' ?>
+              id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
+              value="1"><?= $ff['#title'] ?></label>
+        </div>
+      </div>
+    <?php }
+    else if (in_array($ff['#type'], ['captcha', 'markup'])) {
+      ?>
+      <div class="col-sm-offset-3 col-sm-9">
+        <?= render($ff) ?>
       </div>
       <?php
-    } else if ($ff['#type'] === 'submit') {
+    }
+    else if ($ff['#type'] === 'submit') {
       ?>
       <div class="col-sm-offset-3 col-sm-9">
         <button class="btn btn-primary" type="submit" id="<?= $ff['#id'] ?>"
@@ -70,46 +76,34 @@ foreach ($fields as $field) {
       <label for="<?= $ff['#id'] ?>"
              class="col-sm-3"><?= $ff['#title'] ?><?= $ff['#required'] ? '<span class="form-required" title="This field is required.">*</span>' : '' ?></label>
       <div class="col-sm-9">
-      <?php
-      if ($ff['#type'] === 'textfield') {
-        ?>
-        <input
-          <?= $field === 'suburb' ? 'autocomplete="off" ' : '' ?><?= array_key_exists('readonly', $ff['#attributes']) && $ff['#attributes']['readonly'] ? 'readonly="readonly" ' : '' ?><?= array_key_exists('placeholder', $ff['#attributes']) && $ff['#attributes']['placeholder'] ? ' placeholder="' . $ff['#attributes']['placeholder']. '"' : '' ?>
-          class="<?= implode(' ', $ff['#attributes']['class']) ?> form-text<?= $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>" type="text"
-          id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
-          value="<?= $ff['#value'] ?>"><span
-          role="status" aria-live="polite"
-          class="ui-helper-hidden-accessible"></span>
         <?php
-      }
-      else {
-        if ($ff['#type'] === 'textarea') {
+        if ($ff['#type'] === 'textfield') {
+          ?>
+          <input
+            <?= $field === 'suburb' ? 'autocomplete="off" ' : '' ?><?= array_key_exists('readonly', $ff['#attributes']) && $ff['#attributes']['readonly'] ? 'readonly="readonly" ' : '' ?><?= array_key_exists('placeholder', $ff['#attributes']) && $ff['#attributes']['placeholder'] ? ' placeholder="' . $ff['#attributes']['placeholder'] . '"' : '' ?>
+            class="<?= implode(' ', $ff['#attributes']['class']) ?> form-text<?= $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>"
+            type="text"
+            id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
+            value="<?= $ff['#value'] ?>"><span
+            role="status" aria-live="polite"
+            class="ui-helper-hidden-accessible"></span>
+          <?php
+        }
+        else if ($ff['#type'] === 'textarea') {
           ?>
           <div
             class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
-            <textarea class="<?= implode(' ', $ff['#attributes']['class']) ?> form-textarea required"
-                      id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
-                      cols="60"
-                      rows="5"><?= $ff['#value'] ?></textarea>
+            <textarea
+              class="<?= implode(' ', $ff['#attributes']['class']) ?> form-textarea required"
+              id="<?= $ff['#id'] ?>" name="<?= $ff['#name'] ?>"
+              cols="60"
+              rows="5"><?= $ff['#value'] ?></textarea>
           </div>
         <?php }
-      }
-      ?></div><!-- .col-sm-9 --><?php
-    }
-  } ?>
+        ?></div><!-- .col-sm-9 --><?php
+    } ?>
   </div><!-- ./form-group -->
   <?php
-  if ($suburbSearch && ($field === 'suburb')) {
-    ?>
-    <div class="clearfix">
-      <div class="help pull-right clearfix">If more than one electoral district is
-        listed, click here to <a
-          href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
-          target="_blank"> find your electorate</a>.
-      </div>
-    </div><!-- .fearclix -->
-    <?php
-  }
 
   unset($form[$field]);
 }
