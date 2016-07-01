@@ -126,6 +126,17 @@ function alq_mps_get_ccs($campaign_id) {
 }
 
 /**
+ * Loads up the footer field for an email campaign
+ *
+ * @param int $campaign_id
+ * @return string
+ */
+function alq_mps_get_footer($campaign_id) {
+  $campaign = node_load($campaign_id);
+  return $campaign->field_footer[LANGUAGE_NONE][0]['value'];
+}
+
+/**
  * Grabs the ALQ_MAX_EMAILS_PER_RUN most recent emails which haven't been
  * actioned and tries to send them
  */
@@ -495,6 +506,7 @@ function alq_mps_has_email_campaign($nid) {
  * @return boolean
  */
 function alq_mps_get_campaign_type($nid) {
+  // not sure why I did it like this and didn't just load the node
   $query = db_select(ALQ_CAMPAIGN_TYPE_TABLE, 'fdfct');
   $query->condition('fdfct.entity_type', 'node', '=')
     ->condition('fdfct.entity_id', $nid, '=');
@@ -586,9 +598,9 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       '#type' => 'markup',
       '#markup' => 'If multiple electorates are listed, go here to
         <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
-          target="_blank"> find your electorate</a>.' 
+          target="_blank"> find your electorate</a>.'
     ];
-    
+
     if ($emailee) {
       $form['suburb_default'] = [
         '#type' => 'markup',
@@ -623,7 +635,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
 
   if ($campaign_type === 'single') {
     $form['emailee_name']['#value'] = $emailee->title;
-    
+
     if (is_array($emailee->field_position) && array_key_exists(LANGUAGE_NONE, $emailee->field_position)) {
       $form['emailee_position'] = [
         '#title' => 'Position',
@@ -736,7 +748,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['btn btn-primary']
     ]
   ];
-  
+
   return $form;
 }
 
@@ -808,10 +820,14 @@ function alq_mps_email_form_validate($form, &$form_state) {
 function alq_mps_email_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
+  $footer = alq_mps_get_footer($values['campaign_id']);
+
+  $body = $values['body'] . "\n\n" . (empty($footer) ? '' : $footer);
+
   $insert = [
     'campaign_id' => $values['campaign_id'],
     'recipient' => $values['emailee_nid'],
-    'body' => $values['body'],
+    'body' => $body,
     'subject' => $values['subject'],
     'from_email' => $values['email'],
     'from_address' => $values['suburb'],

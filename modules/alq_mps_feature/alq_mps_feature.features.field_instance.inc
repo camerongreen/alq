@@ -289,7 +289,7 @@ function alq_mps_feature_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -328,7 +328,7 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -376,7 +376,7 @@ function alq_mps_feature_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -420,7 +420,7 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -461,7 +461,47 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-email_campaign-field_footer'.
+  $field_instances['node-email_campaign-field_footer'] = array(
+    'bundle' => 'email_campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This will be added to every email sent to the MP/subject of the campaign.  It is not shown to the user.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_footer',
+    'label' => 'Email Footer',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 3,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 2,
     ),
   );
 
@@ -502,7 +542,7 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1011,6 +1051,7 @@ function alq_mps_feature_field_default_field_instances() {
   t('Electorate Type');
   t('Email');
   t('Email Body');
+  t('Email Footer');
   t('Emailee');
   t('Family Name');
   t('Fax');
@@ -1030,6 +1071,7 @@ function alq_mps_feature_field_default_field_instances() {
   t('The subject for the confirmation email to be sent to the user filling out the form');
   t('This is the article which this should appear under');
   t('This is the text which will be sent to the user who is filling out the email form, to thank them for sending the email.  It is a html field, if you don\'t understand html, please get in touch with someone who does to format the field for you.');
+  t('This will be added to every email sent to the MP/subject of the campaign.  It is not shown to the user.');
   t('Title');
   t('Toll Free Phone');
   t('What sort of email campaign is this, just to one person, or to a group of MPs etc');
