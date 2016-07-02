@@ -132,16 +132,14 @@ function alq_rodeos_get_donation_block() {
   global $conf, $base_url;
 
   $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_DONATION_EXPLAINER_BLOCK);
-
-  $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
-
-  if (stripos($paypalUrl, 'sandbox') === FALSE) {
-    $url = 'https://www.paypal.com/cgi-bin/webscr';
-    $business = $conf['paypal_id'];
-  }
-  else {
+  
+  if (module_exists('devel')) {
     $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
     $business = $conf['paypal_email'];
+  }
+  else {
+    $url = 'https://www.paypal.com/cgi-bin/webscr';
+    $business = $conf['paypal_id'];
   }
 
   $redirect_url_cancel = $base_url;

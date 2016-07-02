@@ -357,37 +357,42 @@ div.viddy > div iframe {
   top: 120px;
   right: 75px;
   color: white;
-  font-size: 150%;
   font-family: "Hind", sans-serif;
   text-align: center;
   font-weight: bold;
 }
-/* line 334, ../scss/global.scss */
+/* line 333, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 337, ../scss/global.scss */
+/* line 336, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
-  font-size: 200%;
+  font-size: 300%;
   line-height: 30px;
 }
-/* line 340, ../scss/global.scss */
+/* line 339, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
+/* line 344, ../scss/global.scss */
+#block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
+  font-size: 140%;
+  line-height: 21px;
+  margin-top: 6px;
+}
 
-/* line 348, ../scss/global.scss */
+/* line 352, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 352, ../scss/global.scss */
+/* line 356, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 356, ../scss/global.scss */
+/* line 360, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }

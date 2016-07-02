@@ -124,7 +124,8 @@
       var nid = $('#edit-emailee-nid');
       var defaultNid = $('#edit-emailee-default-nid');
       var name = $('#edit-emailee-name');
-      var electorateParent = $('#edit-emailee-electorate').closest('div.form-group');
+      var electorate = $('#edit-emailee-electorate');
+      var electorateParent = electorate.closest('div.form-group');
       // unset
       if (nid.val() === defaultNid.val()) {
         name.val('');
@@ -133,6 +134,8 @@
       } else {
         // set
         name.val($('#edit-emailee-default-name').val());
+        electorate.val('');
+        $('#edit-suburb').val('');
         electorateParent.hide();
         nid.val(defaultNid.val());
       }

@@ -327,7 +327,6 @@ div.viddy {
   top: 120px;
   right: 75px;
   color: white;
-  font-size: 150%;
   font-family: $header-font;
   text-align: center;
   font-weight: bold;
@@ -335,12 +334,17 @@ div.viddy {
     margin-top: 44px;
     //text-shadow: 4px 2px #222;
     #pledge-count {
-      font-size: 200%;
+      font-size: 300%;
       line-height: 30px;
       a {
         color: white;
         text-decoration: none;
       }
+    }
+    #pledge-count-text {
+      font-size: 140%;
+      line-height: 21px;
+      margin-top: 6px;
     }
   }
 }
