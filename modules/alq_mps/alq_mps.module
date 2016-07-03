@@ -8,7 +8,7 @@
 
 include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
 
-define('ALQ_MAX_EMAILS_PER_RUN', 100); // hostgator limit is 500 per hour
+define('ALQ_MAX_EMAILS_PER_RUN', 200); // hostgator limit is 500 per hour
 
 define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
 define('ALQ_EMAILS_TABLE', 'alq_emails');
@@ -122,7 +122,7 @@ function alq_mps_get_ccs($campaign_id) {
   foreach ($campaign->field_cc[LANGUAGE_NONE] as $email) {
     $emails[] = $email['email'];
   }
-  return implode(',', $emails);
+  return $emails;
 }
 
 /**
@@ -146,6 +146,10 @@ function alq_mps_send_emails() {
     ->fields('emt')
     ->orderBy('created')
     ->range(0, ALQ_MAX_EMAILS_PER_RUN);
+  
+  // use this to count the number of emails we can send per run
+  // we'll ignore errors in doing this
+  $sentEmails = 0;
 
   $emails = $query->execute();
 
@@ -153,9 +157,18 @@ function alq_mps_send_emails() {
   $errors = 0;
 
   foreach ($emails as $email) {
+    // Add one each for the email and the confirmation
+    $sentEmails += 2;
     $ccs = alq_mps_get_ccs($email->campaign_id);
-    if ($ccs) {
+    if ((count($ccs) > 0) && !module_exists('devel')) {
+      // Not sure how hostgator counts emails, but assume
+      // cc logically results in a sent email
+      $sentEmails += count($ccs);
       $email['headers']['Cc'] = $ccs;
+    }
+    // if this would push us over the max emails per run, break out
+    if ($sentEmails > ALQ_MAX_EMAILS_PER_RUN) {
+      break;
     }
     $recipient = node_load($email->recipient);
     $recipient->offices = [];

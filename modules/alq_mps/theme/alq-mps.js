@@ -119,7 +119,7 @@
         event.preventDefault();
       }
     });
-    $('#suburb-default').click(function (evt) {
+    $('#suburb-default').click(function () {
       // allow them to set and unset the default member
       var nid = $('#edit-emailee-nid');
       var defaultNid = $('#edit-emailee-default-nid');
