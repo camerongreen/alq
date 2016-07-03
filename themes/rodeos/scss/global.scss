@@ -73,10 +73,11 @@ h1, h2, h3, h4, h5, h6 {
     li {
       display: inline-block;
       margin-top: 25px;
-      &:after {
-        content: " \00b7";
+      &:before {
+        content: "\00b7";
+        padding-right: 3px;
       }
-      &.nobullet:after {
+      &.nobullet:before {
         content: none;
       }
       a {
@@ -89,9 +90,6 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
   }
-}
-
-#zone-content {
 }
 
 // title - rethink rodeos etc
@@ -360,3 +358,21 @@ body.page-node-92 h2 {
 #email-explainer ul {
   margin-left: 20px;
 }
+
+// over ride styles on smaller devices
+@media only screen and (max-width: 768px) {
+  #block-alq-rodeos-alq-rodeos-pledge-count {
+    display: none;
+  }
+  div.block-6 {
+    margin-top: 4em;
+    margin-bottom: 1em;
+    h1 {
+      font-size: 180%;
+    }
+  }
+  div.block-7 {
+    width: 90%;
+  }
+}
+

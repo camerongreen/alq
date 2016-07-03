@@ -1,10 +1,10 @@
 <?= $take_action_block ?>
 <div class="row">
-  <div class="col-sm-7" id="email-form-section">
+  <div class="col-sm-12 col-md-7" id="email-form-section">
     <?= $email_intro_block ?>
     <?= $email_form ?>
   </div>
-  <div class="col-sm-5" id="email-explainer">
+  <div class="col-sm-12 col-md-5 hidden-xs" id="email-explainer">
     <div class="well">
       <?= $explainer_block ?>
     </div>

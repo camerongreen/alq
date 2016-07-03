@@ -1,6 +1,6 @@
 <div class="row">
   <h2>Please support our work by making a donation today</h2>
-  <div class="col-sm-5" id="donation-form">
+  <div class="col-sm-5 col-xs-12" id="donation-form">
     <h2>Donate</h2>
     <form action="<?= $action ?>">
       <input type="hidden" name="business" value="<?= $business ?>"/>
@@ -55,7 +55,7 @@
       </div>
     </form>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-7 col-xs-12">
     <?= $explainer_block ?>
   </div>
 </div>
