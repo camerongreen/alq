@@ -110,6 +110,8 @@
       minLength: 3,
       select: function (event, ui) {
         event.preventDefault();
+        // in case it was made invisible by the default user
+        $('#edit-emailee-electorate').closest('div.form-group').show();
         var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
         $('.suburb-search').val(ac);
         var results = getEmailees(ui.item.value.state_district, cache);
