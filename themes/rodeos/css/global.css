@@ -212,18 +212,18 @@ section.block-11 .block-inner {
   font-size: 150%;
 }
 
-/* line 193, ../scss/global.scss */
-#take-action-images div.image-row > div {
+/* line 192, ../scss/global.scss */
+#take-action-images > div {
   margin-bottom: 10px;
   text-align: center;
 }
 
-/* line 202, ../scss/global.scss */
+/* line 200, ../scss/global.scss */
 div.block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 208, ../scss/global.scss */
+/* line 206, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -232,24 +232,24 @@ div.block-1 .block-inner p {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 215, ../scss/global.scss */
+/* line 213, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 219, ../scss/global.scss */
+/* line 217, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 225, ../scss/global.scss */
+/* line 223, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 230, ../scss/global.scss */
+/* line 228, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -257,64 +257,64 @@ div.block-1 .block-inner p {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 236, ../scss/global.scss */
+/* line 234, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 241, ../scss/global.scss */
+/* line 239, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 244, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 246, ../scss/global.scss */
+/* line 244, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 253, ../scss/global.scss */
+/* line 251, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 256, ../scss/global.scss */
+/* line 254, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 258, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 262, ../scss/global.scss */
+/* line 260, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 271, ../scss/global.scss */
+/* line 269, ../scss/global.scss */
 #zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 278, ../scss/global.scss */
+/* line 276, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 284, ../scss/global.scss */
+/* line 282, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
 }
-/* line 287, ../scss/global.scss */
+/* line 285, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -322,7 +322,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 292, ../scss/global.scss */
+/* line 290, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -331,19 +331,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 303, ../scss/global.scss */
+/* line 301, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 307, ../scss/global.scss */
+/* line 305, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 314, ../scss/global.scss */
+/* line 312, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -360,59 +360,59 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 329, ../scss/global.scss */
+/* line 327, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 332, ../scss/global.scss */
+/* line 330, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 335, ../scss/global.scss */
+/* line 333, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 340, ../scss/global.scss */
+/* line 338, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 348, ../scss/global.scss */
+/* line 346, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 352, ../scss/global.scss */
+/* line 350, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 356, ../scss/global.scss */
+/* line 354, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 362, ../scss/global.scss */
+  /* line 360, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 365, ../scss/global.scss */
+  /* line 363, ../scss/global.scss */
   div.block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
   }
-  /* line 368, ../scss/global.scss */
+  /* line 366, ../scss/global.scss */
   div.block-6 h1 {
     font-size: 180%;
   }
 
-  /* line 372, ../scss/global.scss */
+  /* line 370, ../scss/global.scss */
   div.block-7 {
     width: 90%;
   }

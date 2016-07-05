@@ -189,11 +189,9 @@ section.block-11 {
 }
 
 #take-action-images {
-  div.image-row {
-    & > div {
-      margin-bottom: 10px;
-      text-align: center;
-    }
+  & > div {
+    margin-bottom: 10px;
+    text-align: center;
   }
 }
 
