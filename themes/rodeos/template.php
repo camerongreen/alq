@@ -48,7 +48,7 @@ function rodeos_page_alter($page) {
       '#tag' => 'meta',
       '#attributes' => array(
         'property' => 'og:image',
-        'content' => $base_url . '/' . drupal_get_path('theme', 'rodeos') . '/screenshot.jpg'
+        'content' => $base_url . '/' . drupal_get_path('theme', 'rodeos') . '/screenshot.png'
       )
     );
 
