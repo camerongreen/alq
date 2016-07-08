@@ -349,7 +349,7 @@ function alq_mps_confirmation_email_html($key, $params) {
   $campaign = node_load($params['campaign_id']);
 
   $subject = $campaign->field_confirmation_subject[LANGUAGE_NONE][0]["value"];
-  $body = $campaign->field_confirmation_subject[LANGUAGE_NONE][0]["value"];
+  $body = $campaign->field_confirmation_html[LANGUAGE_NONE][0]["value"];
 
   return [
     'subject' => $subject,
