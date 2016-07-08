@@ -119,8 +119,12 @@ function alq_mps_cron() {
 function alq_mps_get_ccs($campaign_id) {
   $emails = [];
   $campaign = node_load($campaign_id);
-  foreach ($campaign->field_cc[LANGUAGE_NONE] as $email) {
-    $emails[] = $email['email'];
+  if (property_exists($campaign, 'field_cc')
+    && array_key_exists(LANGUAGE_NONE, $campaign->field_cc)
+  ) {
+    foreach ($campaign->field_cc[LANGUAGE_NONE] as $email) {
+      $emails[] = $email['email'];
+    }
   }
   return $emails;
 }
@@ -133,9 +137,9 @@ function alq_mps_get_ccs($campaign_id) {
  */
 function alq_mps_get_footer($campaign_id) {
   $campaign = node_load($campaign_id);
-  return property_exists($campaign, 'field_footer') 
-    && array_key_exists(LANGUAGE_NONE, $campaign->field_footer) 
-    && $campaign->field_footer[LANGUAGE_NONE][0]['value'];
+  return property_exists($campaign, 'field_footer')
+  && array_key_exists(LANGUAGE_NONE, $campaign->field_footer)
+  && $campaign->field_footer[LANGUAGE_NONE][0]['value'];
 }
 
 /**
@@ -148,7 +152,7 @@ function alq_mps_send_emails() {
     ->fields('emt')
     ->orderBy('created')
     ->range(0, ALQ_MAX_EMAILS_PER_RUN);
-  
+
   // use this to count the number of emails we can send per run
   // we'll ignore errors in doing this
   $sentEmails = 0;
