@@ -133,7 +133,9 @@ function alq_mps_get_ccs($campaign_id) {
  */
 function alq_mps_get_footer($campaign_id) {
   $campaign = node_load($campaign_id);
-  return $campaign->field_footer[LANGUAGE_NONE][0]['value'];
+  return property_exists($campaign, 'field_footer') 
+    && array_key_exists(LANGUAGE_NONE, $campaign->field_footer) 
+    && $campaign->field_footer[LANGUAGE_NONE][0]['value'];
 }
 
 /**
