@@ -44,6 +44,18 @@ Once the initialisation code has been run the first time, from then on you can v
 The SMTP module is installed in development, so you can use it to send emails if you 
 have a valid SMTP server (ie the one your internet provider uses)
 
+To set it up in development for eg the ALQ MPs module:
+ * Go into System -> SMTP Authentication Support
+ * Turn on module
+ * Put in SMTP Server settings (smtp.gmail.com, Port 465, Use SSL)
+ * Put Gmail address in for SMTP Authentication username, and generate app password from Google
+ * Log everything
+ * Go into System -> Mail System
+ * New Setting - ALQ MPs module, key is campaign_confirmation_message
+ * New Class - Format: MimeMailSystem, mail: SmtpMailSystem
+ * Assign new class to new setting
+ 
+// todo: put this in the import_prod.sh script
 
 # Tests
 
