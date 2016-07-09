@@ -147,19 +147,14 @@ function alq_mps_get_footer($campaign_id) {
  * actioned and tries to send them
  */
 function alq_mps_send_emails() {
-  $query = db_select(ALQ_EMAILS_TABLE, 'emt');
-  $query->isNull('emt.actioned')
-    ->fields('emt')
-    ->orderBy('created')
-    ->range(0, ALQ_MAX_EMAILS_PER_RUN);
-
+  $emails = alq_mps_get_email_batch();
+  
+  $emailCount = $emails->rowCount();
+  
   // use this to count the number of emails we can send per run
   // we'll ignore errors in doing this
   $sentEmails = 0;
 
-  $emails = $query->execute();
-
-  $emailCount = $emails->rowCount();
   $errors = 0;
 
   foreach ($emails as $email) {
@@ -209,6 +204,22 @@ function alq_mps_send_emails() {
       '@errors' => $errors
     ]));
   }
+}
+
+/**
+ * Get a batch of emails with null actions, limited by run
+ * 
+ * @return \DatabaseStatementInterface|null
+ */
+function alq_mps_get_email_batch() {
+  $query = db_select(ALQ_EMAILS_TABLE, 'emt');
+  $query->isNull('emt.actioned')
+    ->fields('emt')
+    ->orderBy('created')
+    ->range(0, ALQ_MAX_EMAILS_PER_RUN);
+
+  $emails = $query->execute();
+  return $emails;
 }
 
 /**
@@ -339,7 +350,9 @@ function alq_mps_format_email($key, $params) {
   $returnVal .= "\n--\n";
   $returnVal .= $params['from_name'] . "\n";
   $returnVal .= $params['from_email'] . "\n";
-  $returnVal .= $params['from_address'] . "\n";
+  if (array_key_exists('from_address', $params) && !empty($params['from_address'])) {
+    $returnVal .= $params['from_address'] . "\n";
+  }
 
   return $returnVal;
 }
@@ -605,7 +618,6 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     $form['suburb'] = [
       '#type' => 'textfield',
       '#title' => t('Find your member'),
-      '#required' => TRUE,
       '#attributes' => [
         'autocomplete' => 'off',
         'placeholder' => t('Search using your suburb or postcode'),
