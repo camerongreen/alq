@@ -137,6 +137,7 @@
             '</div>' +
             '<div class="modal-body">' +
             '<p>Please modify the text of the email.  This multiplies the power of your message.</p>' +
+            '<p>Make sure you remove the start and end characters as well, "[" and "]".</p>' +
             '</div>' +
             '<div class="modal-footer">' +
             '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
