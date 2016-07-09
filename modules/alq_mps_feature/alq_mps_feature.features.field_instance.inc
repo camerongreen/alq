@@ -221,7 +221,7 @@ function alq_mps_feature_field_default_field_instances() {
     'bundle' => 'email_campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Please edit this message if you have a moment as this will increase its impact.',
+    'description' => 'This is the default text the person will see when using the form.  To put in a call to edit the text use square brackets at the start and end eg "[Please write your own email]", the form will detect this if the user submits it without changing it and warn them.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -429,7 +429,7 @@ function alq_mps_feature_field_default_field_instances() {
     'bundle' => 'email_campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.',
+    'description' => 'Add people who will be emailed by this form.  For a single campaign this person will be emailed, for a search campaign the user will be given  choice to email this person if they can\'t find a person by searching.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1039,7 +1039,7 @@ function alq_mps_feature_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('ALP, LNP, LIB, GRN etc');
-  t('Add people who will be emailed by this form.  If this field has a value, the "search for your electorate" will not be used.');
+  t('Add people who will be emailed by this form.  For a single campaign this person will be emailed, for a search campaign the user will be given  choice to email this person if they can\'t find a person by searching.');
   t('Address');
   t('CC');
   t('Campaign Type');
@@ -1062,7 +1062,6 @@ function alq_mps_feature_field_default_field_instances() {
   t('Parent article');
   t('Party');
   t('Phone');
-  t('Please edit this message if you have a moment as this will increase its impact.');
   t('Position');
   t('Postcode');
   t('Preferred Name');
@@ -1070,6 +1069,7 @@ function alq_mps_feature_field_default_field_instances() {
   t('State');
   t('The subject for the confirmation email to be sent to the user filling out the form');
   t('This is the article which this should appear under');
+  t('This is the default text the person will see when using the form.  To put in a call to edit the text use square brackets at the start and end eg "[Please write your own email]", the form will detect this if the user submits it without changing it and warn them.');
   t('This is the text which will be sent to the user who is filling out the email form, to thank them for sending the email.  It is a html field, if you don\'t understand html, please get in touch with someone who does to format the field for you.');
   t('This will be added to every email sent to the MP/subject of the campaign.  It is not shown to the user.');
   t('Title');
