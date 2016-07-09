@@ -87,12 +87,12 @@
 
   $(document).ready(function () {
     // stop enter submitting form
-    $(document).on('keypress', ':input:not(textarea):not([type="submit"])', function(event) {
+    $(document).on('keypress', ':input:not(textarea):not([type="submit"])', function (event) {
       if (event.keyCode == 13) {
         event.preventDefault();
       }
     });
-    
+
     $('#edit-name').val($.cookie('Drupal.visitor.from_name'));
     $('#edit-email').val($.cookie('Drupal.visitor.from_email'));
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
@@ -121,6 +121,32 @@
         event.preventDefault();
       }
     });
+
+    $('#alq-mps-email-form').submit(function (evt) {
+      var body = $('#edit-body').val();
+      var re = /^\[[\s\S]+\]$/m;
+      var found = body.search(re);
+      if (found !== -1) {
+        evt.preventDefault();
+        var modal = '<div class="modal fade" tabindex="-1" role="dialog">' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+            '<h4 class="modal-title">Text of your email</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<p>Please modify the text of the email.  This multiplies the power of your message.</p>' +
+            '</div>' +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+        $(modal).modal();
+      }
+    });
     $('#suburb-default').click(function () {
       // allow them to set and unset the default member
       var nid = $('#edit-emailee-nid');
@@ -141,7 +167,7 @@
         electorateParent.hide();
         nid.val(defaultNid.val());
       }
-      
+
     });
   });
 })(jQuery);
