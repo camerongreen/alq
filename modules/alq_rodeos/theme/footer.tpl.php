@@ -2,8 +2,8 @@
   <div class="col-sm-4">
     <ul class="links">
       <li><a href="//alq.org.au">Animal Liberation Queensland website</a></li>
-      <li><a href="//alq.org.au/contact-us">Contact ALQ</a></li>
-      <li><a href="//alq.org.au/privacy-policy">Privacy policy</a></li>
+      <li><a href="//alq.org.au/contact">Contact ALQ</a></li>
+      <li><a href="//alq.org.au/privacy">Privacy policy</a></li>
       </ul>
   </div>
   <div class="col-sm-3 social-media">
