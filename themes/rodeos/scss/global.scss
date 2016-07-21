@@ -283,6 +283,7 @@ a.anchor {
 div.viddy {
   width: 50%;
   margin: auto;
+  margin-bottom: 1em;
   & > div {
     position: relative;
     padding-bottom: 51%; /* 16:9 */

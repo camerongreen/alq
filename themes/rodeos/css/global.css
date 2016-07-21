@@ -314,8 +314,9 @@ a.anchor {
 div.viddy {
   width: 50%;
   margin: auto;
+  margin-bottom: 1em;
 }
-/* line 286, ../scss/global.scss */
+/* line 287, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -323,7 +324,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 291, ../scss/global.scss */
+/* line 292, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -332,19 +333,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 302, ../scss/global.scss */
+/* line 303, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 306, ../scss/global.scss */
+/* line 307, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 313, ../scss/global.scss */
+/* line 314, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -361,80 +362,80 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 328, ../scss/global.scss */
+/* line 329, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 331, ../scss/global.scss */
+/* line 332, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 334, ../scss/global.scss */
+/* line 335, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 339, ../scss/global.scss */
+/* line 340, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 347, ../scss/global.scss */
+/* line 348, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 351, ../scss/global.scss */
+/* line 352, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 355, ../scss/global.scss */
+/* line 356, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 361, ../scss/global.scss */
+  /* line 362, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 364, ../scss/global.scss */
+  /* line 365, ../scss/global.scss */
   div.block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
   }
-  /* line 367, ../scss/global.scss */
+  /* line 368, ../scss/global.scss */
   div.block-6 h1 {
     font-size: 180%;
   }
 
-  /* line 371, ../scss/global.scss */
+  /* line 372, ../scss/global.scss */
   div.block-7 {
     width: 90%;
   }
 
-  /* line 377, ../scss/global.scss */
+  /* line 378, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 382, ../scss/global.scss */
+  /* line 383, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
 
-  /* line 389, ../scss/global.scss */
+  /* line 390, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 }
-/* line 395, ../scss/global.scss */
+/* line 396, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
