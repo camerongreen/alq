@@ -75,7 +75,8 @@ h1, h2, h3, h4, h5, h6 {
       margin-top: 25px;
       &:before {
         content: "\00b7";
-        padding-right: 3px;
+        padding-left: 6px;
+        padding-right: 9px;
       }
       &.nobullet:before {
         content: none;
@@ -370,5 +371,27 @@ body.page-node-92 h2 {
   div.block-7 {
     width: 90%;
   }
+  #zone-branding-wrapper {
+    ul {
+      li {
+        &:before {
+          content: "\00b7";
+          padding-left: 0px;
+          padding-right: 3px;
+        }
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+    }
+  }
+  #region-footer-second {
+    footer div.copyright {
+      text-align: center;
+    }
+  }
 }
 
+.nav-tabs li a {
+  text-decoration: none;
+}
