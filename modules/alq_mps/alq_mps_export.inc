@@ -113,7 +113,8 @@ function alq_mps_update_offices($node, $newDetails) {
   foreach ($node->field_office[LANGUAGE_NONE] as $entity_id) {
     $office = entity_load('field_collection_item', [$entity_id['value']]);
     // assume offices are in the same order
-    // for some reason in json there is an extra level of the array here
+    // In json there is an extra level of the array here so double shift
+    // I'm sure there's a good reason for it
     $newOffice = array_shift(array_shift($newOffices));
     $office->field_address = $newOffice['field_address']['und'][0]['value'];
     $office->field_fax = $newOffice['field_fax']['und'][0]['value'];
@@ -122,7 +123,8 @@ function alq_mps_update_offices($node, $newDetails) {
     $office->field_toll_free_phone = $newOffice['field_toll_free_phone']['und'][0]['value'];
     if (!$office->save()) {
       drush_print('Error saving ' . $office['item_id']);
+      ++$errors;
     }
-
   }
+  return ($errors === 0);
 }

@@ -13,6 +13,8 @@
 
 DEFAULT_PROD_HOST="http://rethinkrodeos.com"
 
+DRUSH="drush -l rodeos"
+
 # this is the user who will own the files, so you
 # can edit them etc
 FILE_OWNER=$USER
@@ -108,28 +110,28 @@ else
 fi
 
 # enable all your dev modules
-drush -y pm-enable devel stage_file_proxy features_diff smtp
+${DRUSH} -y pm-enable devel stage_file_proxy features_diff smtp
 
 # disable production modules
-drush -y pm-disable googleanalytics captcha
+${DRUSH} -y pm-disable googleanalytics captcha
 
 # set site variables to development values
-drush vset site_mail ${SITE_EMAIL}
-drush vset file_private_path /tmp/private
-drush vset file_temporary_path /tmp
-drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
-drush vset preprocess_css 0
-drush vset preprocess_js 0
-drush vset error_level 2
+${DRUSH} vset site_mail ${SITE_EMAIL}
+${DRUSH} vset file_private_path /tmp/private
+${DRUSH} vset file_temporary_path /tmp
+${DRUSH} variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
+${DRUSH} vset preprocess_css 0
+${DRUSH} vset preprocess_js 0
+${DRUSH} vset error_level 2
 
 # Now anonymise the users
 echo "Anonymising user emails";
-drush sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
+${DRUSH} sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
 
 chmod 755 ./scripts/password-hash.sh
 DB_PASSWD_HASH=$(./scripts/password-hash.sh "${DB_PASSWD}" | awk '{print $4;}' | perl -p -e 's/\s*//')
 echo "Anonymising user passwords, setting to admin password";
-drush sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
+${DRUSH} sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
 
 echo "Clearing cache"
-drush cc all
+${DRUSH} cc all

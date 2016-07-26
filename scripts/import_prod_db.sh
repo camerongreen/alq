@@ -13,7 +13,7 @@
 
 DEFAULT_PROD_HOST="http://alq.org.au"
 
-DRUSH="drush -l rodeos"
+DRUSH="drush"
 
 # this is the user who will own the files, so you
 # can edit them etc
