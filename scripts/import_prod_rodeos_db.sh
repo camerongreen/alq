@@ -1,19 +1,17 @@
 #!/bin/bash
 # 
-# This script is useful for pulling the production dbs across to development
+# This script is useful for pulling the production rodeos dbs across to development
 # it turns on the devel module etc.
 #
 # Step 1: Pull a gzipped version of the prod db somewhere
 # Step 2: Run this script from the drupal root directory, eg
-#   ADMIN_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_db.sh
+#   ADMIN_EMAIL="alq@whatever.org" ../alq/scripts/import_prod_rodeos_db.sh
 # it will ask you for the drupal db details, import the dump
-# file from prod you've downloaded into it, enable and disable some
+# file from prod you've downloaded into it, enable and disable some 
 # mods, set some values etc
 #
 
-DEFAULT_PROD_HOST="http://alq.org.au"
-
-DRUSH="drush -l rodeos"
+DEFAULT_PROD_HOST="http://rethinkrodeos.com"
 
 # this is the user who will own the files, so you
 # can edit them etc
@@ -23,9 +21,9 @@ WEBSERVER_GROUP=www-data
 
 # default settings for DB
 DEFAULT_DB_USER=alq
-DEFAULT_DB_NAME=alq_db
+DEFAULT_DB_NAME=rodeos_db
 DEFAULT_DB_HOST=alq_db
-DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
+DEFAULT_DB_FILE=../sql/rodeos_latest.sql.gz
 
 # hosting company work around has custom drush path
 if [ -f ~/.drush_alias ]; then
@@ -110,29 +108,28 @@ else
 fi
 
 # enable all your dev modules
-${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
+drush -y pm-enable devel stage_file_proxy features_diff smtp
 
 # disable production modules
-${DRUSH} -y pm-disable googleanalytics boost captcha
+drush -y pm-disable googleanalytics captcha
 
 # set site variables to development values
-${DRUSH} vset site_mail ${SITE_EMAIL}
-${DRUSH} vset file_private_path /tmp/private
-${DRUSH} vset file_temporary_path /tmp
-${DRUSH} vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
-${DRUSH} variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
-${DRUSH} vset preprocess_css 0
-${DRUSH} vset preprocess_js 0
-${DRUSH} vset error_level 2
+drush vset site_mail ${SITE_EMAIL}
+drush vset file_private_path /tmp/private
+drush vset file_temporary_path /tmp
+drush variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
+drush vset preprocess_css 0
+drush vset preprocess_js 0
+drush vset error_level 2
 
 # Now anonymise the users
 echo "Anonymising user emails";
-${DRUSH} sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
+drush sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
 
 chmod 755 ./scripts/password-hash.sh
 DB_PASSWD_HASH=$(./scripts/password-hash.sh "${DB_PASSWD}" | awk '{print $4;}' | perl -p -e 's/\s*//')
 echo "Anonymising user passwords, setting to admin password";
-${DRUSH} sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
+drush sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
 
 echo "Clearing cache"
-${DRUSH} cc all
+drush cc all
