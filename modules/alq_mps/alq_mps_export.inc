@@ -6,12 +6,16 @@
 
 define('ALQ_MPS_EMAILEE_NODE_TYPE', 'emailee');
 
+/**
+ * Callback to export emailees to json
+ */
 function alq_mps_export_emailees() {
-  $nids = db_select('node', 'n')
-    ->fields('n', array('nid'))
+  $query = db_select('node', 'n');
+  $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
+  $query->fields('n', array('nid'))
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->execute()
-    ->fetchCol();
+    ->condition('fdfp.field_party_value', 'N/A', '!=');
+  $nids = $query->execute()->fetchCol();
 
   $nodes = node_load_multiple($nids);
 
@@ -24,6 +28,12 @@ function alq_mps_export_emailees() {
   print drupal_json_encode($nodes);
 }
 
+/**
+ * Call back to import emailees from json file
+ *
+ * @param $file
+ * @return bool
+ */
 function alq_mps_import_emailees($file) {
   if (empty($file)) {
     drush_print('File parameter is required');
@@ -54,6 +64,12 @@ function alq_mps_import_emailees($file) {
   drush_print('Updated ' . $successes . ' nodes out of ' . count($jsonNodes));
 }
 
+/**
+ * Update an invidual emailee's whole record
+ *
+ * @param $newDetails
+ * @return bool
+ */
 function alq_mps_update_emailee($newDetails) {
   $node = alq_mps_find_emailee($newDetails);
   if ($node) {
@@ -76,6 +92,12 @@ function alq_mps_update_emailee($newDetails) {
   return FALSE;
 }
 
+/**
+ * Do our best to find each MP, using electorate and name
+ *
+ * @param $details
+ * @return bool|mixed
+ */
 function alq_mps_find_emailee($details) {
   $familyName = $details['field_family_name']['und'][0]['value'];
   $givenNames = $details['field_given_names']['und'][0]['value'];
@@ -103,6 +125,13 @@ function alq_mps_find_emailee($details) {
   return FALSE;
 }
 
+/**
+ * Update the mps details, excepting office which is a field collection
+ *
+ * @param $node
+ * @param $details
+ * @return mixed
+ */
 function alq_mps_update_node($node, $details) {
   $fields = [
     'field_family_name',
@@ -122,6 +151,15 @@ function alq_mps_update_node($node, $details) {
   return $node_wrapper->save();
 }
 
+/**
+ * Update offices which is an evil field collection
+ * took me as long to write this function as the whole
+ * rest of the import export drush command etc.
+ *
+ * @param $rawNode
+ * @param $newDetails
+ * @return bool
+ */
 function alq_mps_update_offices($rawNode, $newDetails) {
   $node = entity_metadata_wrapper('node', $rawNode);
   $rawOffices = $node->field_office->value();
