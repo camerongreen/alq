@@ -12,11 +12,11 @@
 function alq_mps_drush_command() {
   $items = [
     'alq-export-emailees' => [
-      'description' => 'Exports emailees in stdout in json format.',
+      'description' => 'Exports emailees in stdout in json format, use -v for stats.',
       'aliases' => ['alqeex'],
     ],
     'alq-import-emailees' => [
-      'description' => 'Imports emailees from file in json format.',
+      'description' => 'Imports emailees from file in json format, use -v for extra info.',
       'aliases' => ['alqeim'],
       'arguments' => [
         'file' => 'The json formatted file containing emailees',
