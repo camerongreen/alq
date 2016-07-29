@@ -71,3 +71,25 @@ You can inspect the running tests, by using VNC.  For me that involved:
 If you want to drush etc, in the docker directory:
 
     docker exec -ti alq_web bash -c 'drush cc all'
+    
+    
+# XDebugging
+
+## Web
+
+I set up a server for alq.test for PHPStorm, the most important thing is to get the path mappings right, and to change the port to 26980.
+
+| Local site folder | Absolute path on server    |
+|-------------------|----------------------------|
+| public_html       | /var/www/html              |
+| alq/modules       | /var/www/alq/modules       | 
+| alq/themes/alq    | /var/www/alq/themes/alq    |
+| alq/themes/rodeos | /var/www/alq/themes/rodeos |
+
+Then use an xdebug extension in your browser to turn it on.
+
+## Command line
+
+All I had to do in PHPStorm was to set up a normal debug server called alq.test as per the web debug and send it through to drush as a variable eg:
+
+    docker exec -ti alq_web bash -c 'PHP_IDE_CONFIG="serverName=alq.test" drush -l rodeos alq-import-emailees emailees.json'

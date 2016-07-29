@@ -14,7 +14,7 @@ function alq_mps_export_emailees() {
   $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
   $query->fields('n', array('nid'))
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfp.field_party_value', 'N/A', '!=');
+    ->condition('fdfp.field_party_value', 'N/A', '!='); // ignore test users
   $nids = $query->execute()->fetchCol();
 
   $nodes = node_load_multiple($nids);
@@ -24,6 +24,12 @@ function alq_mps_export_emailees() {
       $node->offices[] = entity_load('field_collection_item', [$entity_id['value']]);
     }
   }
+
+  drush_log(dt('@function - Exporting @nodes @type', [
+    '@function' => __FUNCTION__,
+    '@nodes' => count($nodes),
+    '@type' => ALQ_MPS_EMAILEE_NODE_TYPE
+  ]), 'notice');
 
   print drupal_json_encode($nodes);
 }
@@ -35,58 +41,82 @@ function alq_mps_export_emailees() {
  * @return bool
  */
 function alq_mps_import_emailees($file) {
-  if (empty($file)) {
-    drush_print('File parameter is required');
-    exit(1);
-  }
-  if (!file_exists($file)) {
-    drush_print('File not found: ' . $file);
-    exit(1);
-  }
+  alq_mps_check_import($file);
 
+  $jsonNodes = getJsonNodes($file);
+
+  $successes = 0;
+
+  $transaction = db_transaction();
+  foreach ($jsonNodes as $jsonNode) {
+    $node = alq_mps_find_emailee($jsonNode);
+    if ($node) {
+      if (alq_mps_update_emailee($node, $jsonNode)) {
+        ++$successes;
+      }
+      else {
+        drush_log(dt('Update failed for nid: @nid', ['@nid' => $jsonNode['nid']]), 'error');
+        $transaction->rollback();
+        return FALSE;
+      }
+    }
+    else {
+      drush_log(dt('Unable to find @nid', ['@nid' => $jsonNode['nid']]), 'error');
+    }
+  }
+  $transaction->commit();
+  drush_log(dt('Updated @successes nodes out of @nodes', [
+    '@successes' => $successes,
+    '@nodes' => count($jsonNodes)
+  ]), 'notice');
+}
+
+/**
+ * @param $file
+ * @return mixed
+ */
+function getJsonNodes($file) {
   $json = file_get_contents($file);
 
   $jsonNodes = drupal_json_decode($json);
 
-  drush_print('Read ' . count($jsonNodes) . ' objects from ' . $file);
+  drush_log(dt('Read @nodes objects from @file', [
+    '@nodes' => count($jsonNodes),
+    '@file' => $file
+  ]), 'notice');
+  return $jsonNodes;
+}
 
-  $successes = 0;
-
-  foreach ($jsonNodes as $jsonNode) {
-    if (alq_mps_update_emailee($jsonNode)) {
-      ++$successes;
-    }
-    else {
-      drush_print('Update failed, exiting: nid ' . $jsonNode['nid']);
-      return FALSE;
-    }
+/**
+ * @param $file
+ */
+function alq_mps_check_import($file) {
+  if (empty($file)) {
+    drush_log(dt('File parameter is required'), 'error');
+    exit(1);
   }
-  drush_print('Updated ' . $successes . ' nodes out of ' . count($jsonNodes));
+  if (!file_exists($file)) {
+    drush_log(dt('File not found: @file', ['@file' => $file]), 'error');
+    exit(1);
+  }
 }
 
 /**
  * Update an invidual emailee's whole record
  *
+ * @param $node
  * @param $newDetails
  * @return bool
  */
-function alq_mps_update_emailee($newDetails) {
-  $node = alq_mps_find_emailee($newDetails);
-  if ($node) {
-    if (alq_mps_update_node($node, $newDetails)) {
-      if (alq_mps_update_offices($node, $newDetails)) {
-        return TRUE;
-      }
-      else {
-        drush_print('Failed to update offices ' . $newDetails['nid']);
-      }
+function alq_mps_update_emailee($node, $newDetails) {
+  if (alq_mps_update_node($node, $newDetails)) {
+    if (alq_mps_update_offices($node, $newDetails)) {
+      return TRUE;
     }
-    else {
-      drush_print('Failed to update ' . $newDetails['nid']);
-    }
+    drush_log(dt('Failed to update offices @nid', ['@nid' => $newDetails['nid']]), 'error');
   }
   else {
-    drush_print('Failed to find ' . $newDetails['nid']);
+    drush_log(dt('Failed to update @nid', ['@nid' => $newDetails['nid']]), 'error');
   }
 
   return FALSE;
@@ -99,10 +129,11 @@ function alq_mps_update_emailee($newDetails) {
  * @return bool|mixed
  */
 function alq_mps_find_emailee($details) {
-  $familyName = $details['field_family_name']['und'][0]['value'];
-  $givenNames = $details['field_given_names']['und'][0]['value'];
+  // try to deal with inconsistent punctuation etc
+  $familyName = preg_replace('/\W/', '_', $details['field_family_name']['und'][0]['value']);
+  $givenNames = preg_replace('/\W/', '_', $details['field_given_names']['und'][0]['value']);
   $party = $details['field_party']['und'][0]['value'];
-  $electorate = $details['field_electorate']['und'][0]['value'];
+  $electorate = preg_replace('/\W/', '_', $details['field_electorate']['und'][0]['value']);
   $query = db_select('node', 'n');
   $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
   $query->join('field_data_field_electorate', 'fdfe', 'fdfe.entity_id = n.nid');
@@ -114,7 +145,7 @@ function alq_mps_find_emailee($details) {
     ->condition('fdfp.field_party_value', $party)
     ->condition('fdfe.entity_type', 'node')
     ->condition('fdfe.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfe.field_electorate_value', $electorate);
+    ->condition('fdfe.field_electorate_value', $electorate, 'like');
 
   $nid = $query->execute()->fetchField();
 
@@ -186,7 +217,7 @@ function alq_mps_update_offices($rawNode, $newDetails) {
     }
 
     if (!$office->save()) {
-      drush_print('Unable to save office ' . json_encode($office));
+      drush_log(dt('Unable to save office @office', ['@office' => json_encode($office)]), 'error');
       ++$errors;
     }
   }
