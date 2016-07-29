@@ -64,7 +64,6 @@ function alq_mps_import_emailees($file) {
       drush_log(dt('Unable to find @nid', ['@nid' => $jsonNode['nid']]), 'error');
     }
   }
-  $transaction->commit();
   drush_log(dt('Updated @successes nodes out of @nodes', [
     '@successes' => $successes,
     '@nodes' => count($jsonNodes)
