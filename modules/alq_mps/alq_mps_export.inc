@@ -83,6 +83,7 @@ function getJsonNodes($file) {
     '@nodes' => count($jsonNodes),
     '@file' => $file
   ]), 'notice');
+
   return $jsonNodes;
 }
 
