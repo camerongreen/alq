@@ -175,11 +175,11 @@
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary active oneoffOption" id="oneoffAmount">
             <input type="radio" name="amountChoice"
-                   value="35"/> $<span>35</span>
+                   value="35" checked="checked" /> $<span>35</span>
           </label>
           <label class="btn btn-primary monthlyOption" id="amount1">
             <input type="radio" name="amountChoice"
-                   value="100" checked="checked"/> $100
+                   value="100" /> $100
           </label>
           <label class="btn btn-primary monthlyOption" id="amount2">
             <input type="radio" name="amountChoice"
