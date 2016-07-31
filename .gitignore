@@ -4,5 +4,3 @@ themes/alq/.sass-cache
 test/node_modules
 test/reports
 test/lib
-bower_components/
-vendor/
