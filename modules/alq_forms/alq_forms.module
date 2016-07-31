@@ -137,12 +137,12 @@ function alq_forms_block_view($delta = "") {
   $block = NULL;
 
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', array('type' => 'external'));
-  drupal_add_css('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.css', array('type' => 'external'));
+  drupal_add_css(drupal_get_path('module', 'alq_forms') . '/bower_components/form.validation/dist/css/formValidation.css');
   drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
 
   drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js', array('type' => 'external'));
-  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.js', array('type' => 'external'));
-  drupal_add_js('//cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.js', array('type' => 'external'));
+  drupal_add_js(drupal_get_path('module', 'alq_forms') . '/bower_components/form.validation/dist/js/formValidation.min.js');
+  drupal_add_js(drupal_get_path('module', 'alq_forms') . '/bower_components/form.validation/dist/js/framework/bootstrap.js');
 
   $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
   if (stripos($paypalUrl, 'sandbox') === FALSE) {
