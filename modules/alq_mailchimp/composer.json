@@ -1,0 +1,12 @@
+{
+    "name": "alq/mailchimp",
+    "require": {
+        "mailchimp/mailchimp": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Cameron Green",
+            "email": "i@camerongreen.org"
+        }
+    ]
+}

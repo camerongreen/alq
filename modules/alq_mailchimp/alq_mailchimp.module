@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * Provides the ability to store, administer and emails
+ */
+
+/**
+ * Implements hook_cron
+ */
+function alq_mailchimp_cron() {
+  $mailChimpConfig = alq_mailchimp_get_config();
+  $mailChimpSettings = alq_mailchimp_get_settings();
+  alq_mailchimp_update_lists($mailChimpConfig, $mailChimpSettings);
+}
+
+/**
+ * Get auth creds for mailchimp
+ *
+ * @return array
+ */
+function alq_mailchimp_get_config() {
+  global $conf;
+
+  $apiKey = $conf['alq_mailchimp_api_key'];
+
+  $subdomain = substr($apiKey, -3, 3);
+
+  return [
+    'api_key' => $apiKey,
+    'server' => 'https://' . $subdomain . '.api.mailchimp.com/3.0'
+  ];
+}
+
+function alq_mailchimp_get_settings() {
+  global $conf;
+  return $conf['alq_mailchimp_lists'];
+}
+
+function alq_mailchimp_update_lists($config, $settings) {
+
+}
+
+function alq_mailchimp_get_list($listId) {
+  $config = alq_mailchimp_get_config();
+
+  $url = $config['server'] . '/lists/' . urlencode($listId) . '/members';
+
+  $headers = [
+    'Authorization' => 'Basic ' . base64_encode('noam_chomsky:' . $config['apiKey']),
+    'Content-Type' => 'application/json'
+  ];
+
+  $request = drupal_http_request($url, [
+    'method' => 'GET',
+    'headers' => $headers,
+  ]);
+
+  if ($request->code === 200) {
+    return $request->data;
+  }
+  else {
+    watchdog('error', __FUNCTION__ . ':code-' . $request->code . ':error-' . $request->error);
+    return FALSE;
+  }
+}
