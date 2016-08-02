@@ -37,17 +37,53 @@ function alq_mailchimp_get_settings() {
 }
 
 function alq_mailchimp_update_lists($config, $settings) {
-
+  foreach ($settings as $list) {
+    $subscribers = alq_mailchimp_get_subscribers($list['tables']);
+    print_r($subscribers);
+    //alq_mailchimp_add_members($list['id'], $config, $subscribers);
+  }
 }
 
-function alq_mailchimp_get_list($listId) {
+/**
+ * Check the listed tables for email subscribers
+ *
+ * @param Array $tables
+ */
+function alq_mailchimp_get_subscribers($tables) {
+  $memberList = [];
+
+  foreach($tables as $table) {
+    $memberList = array_merge($memberList, alq_mailchimp_get_subscribers_from_table($table));
+  }
+
+  return $memberList;
+}
+
+/**
+ * Check the listed table for email subscribers
+ *
+ * @param string $table
+ */
+function alq_mailchimp_get_subscribers_from_table($table) {
+  $query = db_select($table, 'tbl');
+  $query->condition('tbl.spam', 1);
+  $query->addField('tbl', 'from_name', 'name');
+  $query->addField('tbl', 'from_email', 'email');
+  $query->addField('tbl', 'from_address', 'address');
+  $query->addField('tbl', 'campaign_id');
+  $query->orderBy('tbl.created');
+
+  $result = $query->execute();
+  return $result->fetchAllAssoc('email');
+}
+
+function alq_mailchimp_get_members($listId) {
   $config = alq_mailchimp_get_config();
 
   $url = $config['server'] . '/lists/' . urlencode($listId) . '/members';
 
   $headers = [
-    'Authorization' => 'Basic ' . base64_encode('noam_chomsky:' . $config['apiKey']),
-    'Content-Type' => 'application/json'
+    'Authorization' => 'apikey ' . $config['api_key']
   ];
 
   $request = drupal_http_request($url, [
@@ -55,11 +91,12 @@ function alq_mailchimp_get_list($listId) {
     'headers' => $headers,
   ]);
 
-  if ($request->code === 200) {
+  if ($request->code === '200') {
     return $request->data;
   }
   else {
-    watchdog('error', __FUNCTION__ . ':code-' . $request->code . ':error-' . $request->error);
+    watchdog('error', __FUNCTION__ . ';code=' . $request->code . ';error=' . $request->error);
+    watchdog('error', 'url=' . $url);
     return FALSE;
   }
 }
