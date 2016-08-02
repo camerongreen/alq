@@ -65,16 +65,46 @@ function alq_mailchimp_get_subscribers($tables) {
  * @param string $table
  */
 function alq_mailchimp_get_subscribers_from_table($table) {
-  $query = db_select($table, 'tbl');
+  $query = db_select($table['name'], 'tbl');
   $query->condition('tbl.spam', 1);
-  $query->addField('tbl', 'from_name', 'name');
-  $query->addField('tbl', 'from_email', 'email');
-  $query->addField('tbl', 'from_address', 'address');
-  $query->addField('tbl', 'campaign_id');
+  if (array_key_exists('name', $table['fields'])) {
+    $query->addField('tbl', $table['fields']['name'], 'name');
+  } elseif (array_key_exists('first_name', $table['fields'])
+    && array_key_exists('last_name', $table['fields'])) {
+    $query->addField('tbl', $table['fields']['first_name'], 'first_name');
+    $query->addField('tbl', $table['fields']['last_name'], 'last_name');
+  } else {
+    throw new Exception('Table must have either a name column, or both first_name and last_name columns');
+  }
+
+  $query->addField('tbl', $table['fields']['email'], 'email');
   $query->orderBy('tbl.created');
 
-  $result = $query->execute();
-  return $result->fetchAllAssoc('email');
+  $results = $query->execute();
+
+  $returnVal = [];
+
+  foreach ($results as $result) {
+    if (array_key_exists('name', $table['fields'])) {
+      $names = alq_mailchimp_parse_names($result->name);
+      $result->first_name = $names['first_name'];
+      $result->last_name = $names['last_name'];
+    }
+
+    $returnVal[$result->email] = $result;
+  }
+
+  return $returnVal;
+}
+
+function alq_mailchimp_parse_names($name) {
+  $name = preg_replace('/\s+/', ' ', trim($name));
+  $parts = explode(' ', $name);
+
+  return [
+    'first_name' => $parts[0],
+    'last_name' => count($parts) === 1 ? '' : implode(' ', array_slice($parts, 1))
+  ];
 }
 
 function alq_mailchimp_get_members($listId) {
