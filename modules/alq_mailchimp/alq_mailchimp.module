@@ -4,6 +4,11 @@
  * Provides the ability to store, administer and emails
  */
 
+// values for the spam column
+define('ALQ_MAILCHIMP_SUBSCRIBE', 1);
+define('ALQ_MAILCHIMP_SUCCESS', 2);
+define('ALQ_MAILCHIMP_ERROR', 3);
+
 /**
  * Implements hook_cron
  */
@@ -39,10 +44,79 @@ function alq_mailchimp_get_settings() {
 function alq_mailchimp_update_lists($config, $settings) {
   foreach ($settings as $list) {
     $subscribers = alq_mailchimp_get_subscribers($list['tables']);
-    print_r($subscribers);
-    //alq_mailchimp_add_members($list['id'], $config, $subscribers);
+    watchdog('info', 'Found ' . count($subscribers) . ' for ' . $list['id']);
+    if (count($subscribers) > 0) {
+      alq_mailchimp_add_members($list, $config, $subscribers);
+    }
   }
 }
+
+function alq_mailchimp_add_members($list, $config, $subscribers) {
+  foreach ($subscribers as $subscriber) {
+    $result = alq_mailchimp_add_member($list['id'], $config, $subscriber);
+    // more efficient ways to do this but spreads out the requests a little
+    alq_mailchimp_update_status($subscriber, $result ? ALQ_MAILCHIMP_SUCCESS : ALQ_MAILCHIMP_ERROR);
+    break;
+  }
+}
+
+/**
+ * Update the list table with the status of the subscribe attempty
+ *
+ * @param Array  $list
+ * @param Object $subscriber
+ * @param int $status
+ */
+function alq_mailchimp_update_status($subscriber, $status) {
+  $fields = [
+    'id' => $subscriber->id,
+    'spam' => $status
+  ];
+
+  if (!drupal_write_record($subscriber->origin_table, $fields, 'id')) {
+    watchdog('alq_mps', t('Error saving email sending status to ' . $subscriber->origin_table));
+  }
+}
+
+function alq_mailchimp_add_member($listId, $config, $subscriber) {
+  $member = [
+    'email_address' => $subscriber->email,
+    'status' => 'subscribed',
+    'merge_fields' => [
+      'FNAME' => $subscriber->first_name,
+      'LNAME' => $subscriber->last_name
+    ]
+  ];
+
+  $userHash = md5($subscriber->email);
+
+  $url = $config['server'] . '/lists/' . urlencode($listId) . '/members/' . urlencode($userHash);
+
+  $headers = [
+    'Authorization' => 'apikey ' . $config['api_key'],
+    'Content-type' => 'application/json'
+  ];
+
+  if (false && module_exists('devel')) {
+    drush_print(drupal_json_encode($member));
+  }
+  else {
+    $request = drupal_http_request($url, [
+      'method' => 'PUT',
+      'headers' => $headers,
+      'data' => drupal_json_encode($member)
+    ]);
+    if ($request->code === '200') {
+      return true;
+    }
+    else {
+      watchdog('error', __FUNCTION__ . ';code=' . $request->code . ';error=' . $request->error);
+      watchdog('error', drupal_json_encode($member));
+      return FALSE;
+    }
+  }
+}
+
 
 /**
  * Check the listed tables for email subscribers
@@ -52,7 +126,7 @@ function alq_mailchimp_update_lists($config, $settings) {
 function alq_mailchimp_get_subscribers($tables) {
   $memberList = [];
 
-  foreach($tables as $table) {
+  foreach ($tables as $table) {
     $memberList = array_merge($memberList, alq_mailchimp_get_subscribers_from_table($table));
   }
 
@@ -66,18 +140,23 @@ function alq_mailchimp_get_subscribers($tables) {
  */
 function alq_mailchimp_get_subscribers_from_table($table) {
   $query = db_select($table['name'], 'tbl');
-  $query->condition('tbl.spam', 1);
+  $query->condition('tbl.spam', ALQ_MAILCHIMP_SUBSCRIBE);
+  $query->addField('tbl', 'id');
   if (array_key_exists('name', $table['fields'])) {
     $query->addField('tbl', $table['fields']['name'], 'name');
-  } elseif (array_key_exists('first_name', $table['fields'])
-    && array_key_exists('last_name', $table['fields'])) {
+  }
+  elseif (array_key_exists('first_name', $table['fields'])
+    && array_key_exists('last_name', $table['fields'])
+  ) {
     $query->addField('tbl', $table['fields']['first_name'], 'first_name');
     $query->addField('tbl', $table['fields']['last_name'], 'last_name');
-  } else {
+  }
+  else {
     throw new Exception('Table must have either a name column, or both first_name and last_name columns');
   }
 
-  $query->addField('tbl', $table['fields']['email'], 'email');
+  $query->addExpression('LOWER(tbl.' . db_escape_field($table['fields']['email']) . ')', 'email');
+  $query->addExpression(':table', 'origin_table', [':table' => $table['name']]);
   $query->orderBy('tbl.created');
 
   $results = $query->execute();
@@ -100,6 +179,27 @@ function alq_mailchimp_get_subscribers_from_table($table) {
 function alq_mailchimp_parse_names($name) {
   $name = preg_replace('/\s+/', ' ', trim($name));
   $parts = explode(' ', $name);
+  $salutations = [
+    'Mr',
+    'Mrs',
+    'Miss',
+    'Dr',
+    'Ms',
+    'Prof',
+    'Rev'
+  ];
+
+  // add .
+  $tmpNum = count($salutations);
+
+  for ($i = 0; $i < $tmpNum; $i++) {
+    $salutations[] = $salutations[$i] . '.';
+  }
+
+  // remove salutations
+  if ((count($parts) > 1) && in_array($parts[0], $salutations)) {
+    array_shift($parts);
+  }
 
   return [
     'first_name' => $parts[0],
@@ -107,6 +207,12 @@ function alq_mailchimp_parse_names($name) {
   ];
 }
 
+/**
+ * Just a test function whilst getting the API working
+ *
+ * @param $listId
+ * @return bool
+ */
 function alq_mailchimp_get_members($listId) {
   $config = alq_mailchimp_get_config();
 
@@ -126,7 +232,6 @@ function alq_mailchimp_get_members($listId) {
   }
   else {
     watchdog('error', __FUNCTION__ . ';code=' . $request->code . ';error=' . $request->error);
-    watchdog('error', 'url=' . $url);
     return FALSE;
   }
 }
