@@ -1,21 +1,65 @@
 <?php
 /**
  * @file
- * Provides the ability to store, administer and emails
+ * Provides the ability to store emails in a mailchimp list
+ *
+ * Configuration looks like this, basically you provide an array
+ * for each list you want to write to in settings.php.  This has an array
+ * of tables to pull the data from, and you can customise the fields it
+ * pulls the data from/updates and primary key for the table.
+ *
+ * $conf['alq_mailchimp_api_key'] = 'secret-squirrel';
+ * $conf['alq_mailchimp_lists'] = [
+ *   [
+ *     'id' => 'get-from-mailchimp', // mailchimp list
+ *     'tables' => [
+ *       [
+ *         'name' => 'alq_emails',
+ *         'fields' => [
+ *           'id' => 'id',
+ *           'spam' => 'spam',
+ *           'name' => 'from_name',
+ *           'email' => 'from_email',
+ *         ]
+ *       ]
+ *     ]
+ *   ]
+ * ];
+ *
+ * $conf['alq_mailchimp_webforms'] = [
+ *   [
+ *     'id' => 'get-from-mailchimp', // mailchimp list
+ *     'nid' => '254',
+ *     'cid' => '17', // field to put response from email list subscribe
+ *     'fields' => [
+ *       'first_name' => '[4]["value"][0]',
+ *       'last_name' => '[5]["value"][0]',
+ *       'email' => '[6]["value"][0]',
+ *       'spam' => '[17]["value"][0]',
+ *     ]
+ *   ]
+ * ];
  */
 
 // values for the spam column
 define('ALQ_MAILCHIMP_SUBSCRIBE', 1);
 define('ALQ_MAILCHIMP_SUCCESS', 2);
 define('ALQ_MAILCHIMP_ERROR', 3);
+define('ALQ_MAILCHIMP_WEBFORM_SUBSCRIBE', 'on');
+define('ALQ_MAILCHIMP_WEBFORM_SUCCESS', 'subscribed');
+define('ALQ_MAILCHIMP_WEBFORM_ERROR', 'error');
 
 /**
  * Implements hook_cron
  */
 function alq_mailchimp_cron() {
   $mailChimpConfig = alq_mailchimp_get_config();
-  $mailChimpSettings = alq_mailchimp_get_settings();
-  alq_mailchimp_update_lists($mailChimpConfig, $mailChimpSettings);
+  if ($mailChimpConfig) {
+    $tables = []; // alq_mailchimp_get_tables();
+    alq_mailchimp_update_lists('tables', $mailChimpConfig, $tables);
+    $webforms = alq_mailchimp_get_webforms();
+    alq_mailchimp_update_lists('webform', $mailChimpConfig, $webforms);
+  }
 }
 
 /**
@@ -26,58 +70,144 @@ function alq_mailchimp_cron() {
 function alq_mailchimp_get_config() {
   global $conf;
 
-  $apiKey = $conf['alq_mailchimp_api_key'];
+  $apiKey = array_key_exists('alq_mailchimp_api_key', $conf) ? $conf['alq_mailchimp_api_key'] : FALSE;
 
-  $subdomain = substr($apiKey, -3, 3);
+  if ($apiKey) {
+    $subdomain = substr($apiKey, -3, 3);
 
-  return [
-    'api_key' => $apiKey,
-    'server' => 'https://' . $subdomain . '.api.mailchimp.com/3.0'
-  ];
+    return [
+      'api_key' => $apiKey,
+      'server' => 'https://' . $subdomain . '.api.mailchimp.com/3.0'
+    ];
+  }
+
+  return FALSE;
 }
 
-function alq_mailchimp_get_settings() {
+/**
+ * Pull the config which lists the tables to work with
+ *
+ * @return mixed
+ */
+function alq_mailchimp_get_tables() {
   global $conf;
   return $conf['alq_mailchimp_lists'];
 }
 
-function alq_mailchimp_update_lists($config, $settings) {
-  foreach ($settings as $list) {
-    $subscribers = alq_mailchimp_get_subscribers($list['tables']);
-    watchdog('info', 'Found ' . count($subscribers) . ' for ' . $list['id']);
-    if (count($subscribers) > 0) {
-      alq_mailchimp_add_members($list, $config, $subscribers);
+/**
+ * Pull the config which lists the webforms to work with
+ *
+ * @return mixed
+ */
+function alq_mailchimp_get_webforms() {
+  global $conf;
+  return $conf['alq_mailchimp_webforms'];
+}
+
+/**
+ * Update the passed in mail chimp lists
+ *
+ * @param $type webform or table
+ * @param $config
+ * @param $lists
+ */
+function alq_mailchimp_update_lists($type, $config, $lists) {
+  if (is_array($lists)) {
+    foreach ($lists as $list) {
+      if ($type === 'webform') {
+        $subscribers = alq_mailchimp_get_webform_subscribers($list);
+      }
+      else {
+        $subscribers = alq_mailchimp_get_subscribers($list['tables']);
+      }
+      watchdog('info', 'Found ' . count($subscribers) . ' for $type ' . $list['id']);
+      if (count($subscribers) > 0) {
+        alq_mailchimp_add_members($type, $list, $config, $subscribers);
+      }
     }
   }
 }
 
-function alq_mailchimp_add_members($list, $config, $subscribers) {
+/**
+ * Add list of subscribers to the mailchimp list
+ *
+ * @param $type webform or table
+ * @param $list
+ * @param $config
+ * @param $subscribers
+ */
+function alq_mailchimp_add_members($type, $list, $config, $subscribers) {
   foreach ($subscribers as $subscriber) {
     $result = alq_mailchimp_add_member($list['id'], $config, $subscriber);
     // more efficient ways to do this but spreads out the requests a little
-    alq_mailchimp_update_status($subscriber, $result ? ALQ_MAILCHIMP_SUCCESS : ALQ_MAILCHIMP_ERROR);
-    break;
+    if ($type == 'webform') {
+      alq_mailchimp_update_webform_status($list, $subscriber, $result ? ALQ_MAILCHIMP_WEBFORM_SUCCESS : ALQ_MAILCHIMP_WEBFORM_ERROR);
+    }
+    else {
+      alq_mailchimp_update_status($list, $subscriber, $result ? ALQ_MAILCHIMP_SUCCESS : ALQ_MAILCHIMP_ERROR);
+    }
   }
+}
+
+
+/**
+ * Update the list table with the status of the subscribe attempt
+ *
+ * @param Array $list
+ * @param Object $subscriber
+ * @param int $status
+ * @return bool $success
+ */
+function alq_mailchimp_update_status($list, $subscriber, $status) {
+  $fields = [
+    $list['fields']['id'] => $subscriber->id,
+    $list['fields']['spam'] => $status
+  ];
+
+  if (drupal_write_record($subscriber->origin_table, $fields, $list['fields']['id'])) {
+    return TRUE;
+  }
+  else {
+    watchdog('alq_mps', t('Error saving email sending status to ' . $subscriber->origin_table));
+    return FALSE;
+  }
+}
+
+
+/**
+ * Update the list webform with the status of the subscribe attempt
+ *
+ * @param Array $list
+ * @param Object $subscriber
+ * @param int $status
+ * @return boolean
+ */
+function alq_mailchimp_update_webform_status($list, $subscriber, $status) {
+  $numUpdated = db_update('webform_submitted_data')
+    ->fields([
+      'data' => $status
+    ])
+    ->condition('nid', $list['nid'])
+    ->condition('cid', $list['cid'])
+    ->condition('sid', $subscriber->sid)
+    ->execute();
+
+  if ($numUpdated !== 1) {
+    watchdog('alq_mps', t('Error saving email sending status to webform #' . $list->nid));
+    return FALSE;
+  }
+  return TRUE;
 }
 
 /**
- * Update the list table with the status of the subscribe attempty
+ * Puts a member to the passed in mailchimp list, if they don't exist it
+ * creates them, if they do (as defined by email address) it updates them
  *
- * @param Array  $list
- * @param Object $subscriber
- * @param int $status
+ * @param $listId
+ * @param $config
+ * @param $subscriber
+ * @return bool
  */
-function alq_mailchimp_update_status($subscriber, $status) {
-  $fields = [
-    'id' => $subscriber->id,
-    'spam' => $status
-  ];
-
-  if (!drupal_write_record($subscriber->origin_table, $fields, 'id')) {
-    watchdog('alq_mps', t('Error saving email sending status to ' . $subscriber->origin_table));
-  }
-}
-
 function alq_mailchimp_add_member($listId, $config, $subscriber) {
   $member = [
     'email_address' => $subscriber->email,
@@ -97,7 +227,7 @@ function alq_mailchimp_add_member($listId, $config, $subscriber) {
     'Content-type' => 'application/json'
   ];
 
-  if (false && module_exists('devel')) {
+  if (FALSE && module_exists('devel')) {
     drush_print(drupal_json_encode($member));
   }
   else {
@@ -107,7 +237,7 @@ function alq_mailchimp_add_member($listId, $config, $subscriber) {
       'data' => drupal_json_encode($member)
     ]);
     if ($request->code === '200') {
-      return true;
+      return TRUE;
     }
     else {
       watchdog('error', __FUNCTION__ . ';code=' . $request->code . ';error=' . $request->error);
@@ -122,6 +252,7 @@ function alq_mailchimp_add_member($listId, $config, $subscriber) {
  * Check the listed tables for email subscribers
  *
  * @param Array $tables
+ * @return Array
  */
 function alq_mailchimp_get_subscribers($tables) {
   $memberList = [];
@@ -133,14 +264,28 @@ function alq_mailchimp_get_subscribers($tables) {
   return $memberList;
 }
 
+
+/**
+ * Check the listed tables for email subscribers
+ *
+ * @param Array $webform
+ * @return Array
+ */
+function alq_mailchimp_get_webform_subscribers($webform) {
+  include_once(drupal_get_path('module', 'webform') . '/includes/webform.submissions.inc');
+  return alq_mailchimp_get_subscribers_from_webform($webform);
+}
+
 /**
  * Check the listed table for email subscribers
  *
  * @param string $table
+ * @return Array
+ * @throws \Exception
  */
 function alq_mailchimp_get_subscribers_from_table($table) {
   $query = db_select($table['name'], 'tbl');
-  $query->condition('tbl.spam', ALQ_MAILCHIMP_SUBSCRIBE);
+  $query->condition('tbl.' . $table['fields']['spam'], ALQ_MAILCHIMP_SUBSCRIBE);
   $query->addField('tbl', 'id');
   if (array_key_exists('name', $table['fields'])) {
     $query->addField('tbl', $table['fields']['name'], 'name');
@@ -171,6 +316,35 @@ function alq_mailchimp_get_subscribers_from_table($table) {
     }
 
     $returnVal[$result->email] = $result;
+  }
+
+  return $returnVal;
+}
+
+/**
+ * Check the listed webform for email subscribers
+ *
+ * @param string $webform
+ * @return Array
+ * @throws \Exception
+ */
+function alq_mailchimp_get_subscribers_from_webform($webform) {
+  $results = webform_get_submissions($webform['nid']);
+
+  $returnVal = [];
+
+  foreach ($results as $result) {
+    $spam = NULL;
+    // yeh I'm using eval, what of it?
+    eval('$spam = $result->data' . $webform['fields']['spam'] . ';');
+    if ($spam === ALQ_MAILCHIMP_WEBFORM_SUBSCRIBE) {
+      $obj = new stdClass();
+      eval('$obj->email = $result->data' . $webform['fields']['email'] . ';');
+      eval('$obj->first_name = $result->data' . $webform['fields']['first_name'] . ';');
+      eval('$obj->last_name = $result->data' . $webform['fields']['last_name'] . ';');
+      $obj->sid = $result->sid;
+      $returnVal[$obj->email] = $obj;
+    }
   }
 
   return $returnVal;
