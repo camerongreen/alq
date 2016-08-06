@@ -359,15 +359,18 @@ body.page-node-92 h2 {
 
 // over ride styles on smaller devices
 @media only screen and (max-width: 768px) {
+  body:not(.front) {
+    #region-content {
+      width: 90%;
+    }
+  }
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
   div.block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
-    h1 {
-      font-size: 180%;
-    }
+    font-size: 150%;
   }
   div.block-7 {
     width: 90%;
@@ -386,9 +389,32 @@ body.page-node-92 h2 {
       }
     }
   }
+  #section-content {
+    div.block-alq-rodeos {
+      width: 100%;
+    }
+  }
   #region-footer-second {
     footer div.copyright {
       text-align: center;
+    }
+  }
+  div.viddy {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1em;
+    & > div {
+      position: relative;
+      padding-bottom: 46%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

@@ -399,43 +399,73 @@ body.page-node-92 h2 {
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 362, ../scss/global.scss */
+  /* line 363, ../scss/global.scss */
+  body:not(.front) #region-content {
+    width: 90%;
+  }
+
+  /* line 367, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 365, ../scss/global.scss */
+  /* line 370, ../scss/global.scss */
   div.block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
-  }
-  /* line 368, ../scss/global.scss */
-  div.block-6 h1 {
-    font-size: 180%;
+    font-size: 150%;
   }
 
-  /* line 372, ../scss/global.scss */
+  /* line 375, ../scss/global.scss */
   div.block-7 {
     width: 90%;
   }
 
-  /* line 378, ../scss/global.scss */
+  /* line 381, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 383, ../scss/global.scss */
+  /* line 386, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
 
-  /* line 390, ../scss/global.scss */
+  /* line 393, ../scss/global.scss */
+  #section-content div.block-alq-rodeos {
+    width: 100%;
+  }
+
+  /* line 398, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
+
+  /* line 402, ../scss/global.scss */
+  div.viddy {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1em;
+  }
+  /* line 406, ../scss/global.scss */
+  div.viddy > div {
+    position: relative;
+    padding-bottom: 46%;
+    /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+  }
+  /* line 411, ../scss/global.scss */
+  div.viddy > div iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
-/* line 396, ../scss/global.scss */
+/* line 422, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
