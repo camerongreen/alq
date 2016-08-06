@@ -55,7 +55,7 @@ define('ALQ_MAILCHIMP_WEBFORM_ERROR', 'error');
 function alq_mailchimp_cron() {
   $mailChimpConfig = alq_mailchimp_get_config();
   if ($mailChimpConfig) {
-    $tables = []; // alq_mailchimp_get_tables();
+    $tables = alq_mailchimp_get_tables();
     alq_mailchimp_update_lists('tables', $mailChimpConfig, $tables);
     $webforms = alq_mailchimp_get_webforms();
     alq_mailchimp_update_lists('webform', $mailChimpConfig, $webforms);
