@@ -166,7 +166,7 @@ function alq_mps_send_emails() {
       // Not sure how hostgator counts emails, but assume
       // cc logically results in a sent email
       $sentEmails += count($ccs);
-      $email['headers']['Cc'] = $ccs;
+      $email->headers['Cc'] = $ccs;
     }
     // if this would push us over the max emails per run, break out
     if ($sentEmails > ALQ_MAX_EMAILS_PER_RUN) {
