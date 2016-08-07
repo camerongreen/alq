@@ -41,13 +41,19 @@
  * ];
  */
 
+// In development (identified by the devel module being enabled) you may not
+// wish to write to mailchimp. Set this to true if so.
+define('ALQ_MAILCHIMP_DEVEL_PRINT_ONLY', FALSE);
+
 // values for the spam column
+define('ALQ_MAILCHIMP_DUPLICATE', 4);
+define('ALQ_MAILCHIMP_ERROR', 3);
 define('ALQ_MAILCHIMP_SUBSCRIBE', 1);
 define('ALQ_MAILCHIMP_SUCCESS', 2);
-define('ALQ_MAILCHIMP_ERROR', 3);
+define('ALQ_MAILCHIMP_WEBFORM_DUPLICATE', 'duplicate');
+define('ALQ_MAILCHIMP_WEBFORM_ERROR', 'error');
 define('ALQ_MAILCHIMP_WEBFORM_SUBSCRIBE', 'on');
 define('ALQ_MAILCHIMP_WEBFORM_SUCCESS', 'subscribed');
-define('ALQ_MAILCHIMP_WEBFORM_ERROR', 'error');
 
 /**
  * Implements hook_cron
@@ -86,6 +92,7 @@ function alq_mailchimp_get_config() {
 
 /**
  * Pull the config which lists the tables to work with
+ * Might pull from admin panel or something later
  *
  * @return mixed
  */
@@ -96,6 +103,7 @@ function alq_mailchimp_get_tables() {
 
 /**
  * Pull the config which lists the webforms to work with
+ * Might pull from admin panel or something later
  *
  * @return mixed
  */
@@ -120,7 +128,7 @@ function alq_mailchimp_update_lists($type, $config, $lists) {
       else {
         $subscribers = alq_mailchimp_get_subscribers($list['tables']);
       }
-      watchdog('info', 'Found ' . count($subscribers) . ' for $type ' . $list['id']);
+      watchdog('info', 'Found ' . count($subscribers) . ' for ' . $type . ', id: ' . $list['id']);
       if (count($subscribers) > 0) {
         alq_mailchimp_add_members($type, $list, $config, $subscribers);
       }
@@ -138,13 +146,33 @@ function alq_mailchimp_update_lists($type, $config, $lists) {
  */
 function alq_mailchimp_add_members($type, $list, $config, $subscribers) {
   foreach ($subscribers as $subscriber) {
-    $result = alq_mailchimp_add_member($list['id'], $config, $subscriber);
-    // more efficient ways to do this but spreads out the requests a little
-    if ($type == 'webform') {
-      alq_mailchimp_update_webform_status($list, $subscriber, $result ? ALQ_MAILCHIMP_WEBFORM_SUCCESS : ALQ_MAILCHIMP_WEBFORM_ERROR);
+    if ($subscriber->duplicate) {
+      if (ALQ_MAILCHIMP_DEVEL_PRINT_ONLY && module_exists('devel')) {
+        drush_print('Duplicate: ' . drupal_json_encode($subscriber));
+      }
+      else {
+        if ($type == 'webform') {
+          alq_mailchimp_update_webform_status($list, $subscriber, ALQ_MAILCHIMP_WEBFORM_DUPLICATE);
+        }
+        else {
+          alq_mailchimp_update_status($list, $subscriber, ALQ_MAILCHIMP_DUPLICATE);
+        }
+      }
     }
     else {
-      alq_mailchimp_update_status($list, $subscriber, $result ? ALQ_MAILCHIMP_SUCCESS : ALQ_MAILCHIMP_ERROR);
+      $result = alq_mailchimp_add_member($list['id'], $config, $subscriber);
+      // more efficient ways to do this but spreads out the requests a little
+      if (ALQ_MAILCHIMP_DEVEL_PRINT_ONLY && module_exists('devel')) {
+        drush_print('Result: ' . ($result ? 'OK' : 'Error'));
+      }
+      else {
+        if ($type == 'webform') {
+          alq_mailchimp_update_webform_status($list, $subscriber, $result ? ALQ_MAILCHIMP_WEBFORM_SUCCESS : ALQ_MAILCHIMP_WEBFORM_ERROR);
+        }
+        else {
+          alq_mailchimp_update_status($list, $subscriber, $result ? ALQ_MAILCHIMP_SUCCESS : ALQ_MAILCHIMP_ERROR);
+        }
+      }
     }
   }
 }
@@ -159,12 +187,14 @@ function alq_mailchimp_add_members($type, $list, $config, $subscribers) {
  * @return bool $success
  */
 function alq_mailchimp_update_status($list, $subscriber, $status) {
+  $table = $list['tables'][$subscriber->origin_table];
+
   $fields = [
-    $list['fields']['id'] => $subscriber->id,
-    $list['fields']['spam'] => $status
+    $table['id'] => $subscriber->id,
+    $table['spam'] => $status
   ];
 
-  if (drupal_write_record($subscriber->origin_table, $fields, $list['fields']['id'])) {
+  if (drupal_write_record($subscriber->origin_table, $fields, $table['id'])) {
     return TRUE;
   }
   else {
@@ -227,8 +257,10 @@ function alq_mailchimp_add_member($listId, $config, $subscriber) {
     'Content-type' => 'application/json'
   ];
 
-  if (FALSE && module_exists('devel')) {
+  // by default don't write to lists in development
+  if (ALQ_MAILCHIMP_DEVEL_PRINT_ONLY && module_exists('devel')) {
     drush_print(drupal_json_encode($member));
+    return TRUE;
   }
   else {
     $request = drupal_http_request($url, [
@@ -257,8 +289,8 @@ function alq_mailchimp_add_member($listId, $config, $subscriber) {
 function alq_mailchimp_get_subscribers($tables) {
   $memberList = [];
 
-  foreach ($tables as $table) {
-    $memberList = array_merge($memberList, alq_mailchimp_get_subscribers_from_table($table));
+  foreach ($tables as $tableName => $fields) {
+    $memberList = array_merge($memberList, alq_mailchimp_get_subscribers_from_table($tableName, $fields));
   }
 
   return $memberList;
@@ -278,44 +310,47 @@ function alq_mailchimp_get_webform_subscribers($webform) {
 
 /**
  * Check the listed table for email subscribers
+ * duplicated subscribers will have 'duplicated' set to true on them
  *
  * @param string $table
  * @return Array
  * @throws \Exception
  */
-function alq_mailchimp_get_subscribers_from_table($table) {
-  $query = db_select($table['name'], 'tbl');
-  $query->condition('tbl.' . $table['fields']['spam'], ALQ_MAILCHIMP_SUBSCRIBE);
+function alq_mailchimp_get_subscribers_from_table($tableName, $fields) {
+  $query = db_select($tableName, 'tbl');
+  $query->condition('tbl.' . $fields['spam'], ALQ_MAILCHIMP_SUBSCRIBE);
   $query->addField('tbl', 'id');
-  if (array_key_exists('name', $table['fields'])) {
-    $query->addField('tbl', $table['fields']['name'], 'name');
+  if (array_key_exists('name', $fields)) {
+    $query->addField('tbl', $fields['name'], 'name');
   }
-  elseif (array_key_exists('first_name', $table['fields'])
-    && array_key_exists('last_name', $table['fields'])
+  elseif (array_key_exists('first_name', $fields)
+    && array_key_exists('last_name', $fields)
   ) {
-    $query->addField('tbl', $table['fields']['first_name'], 'first_name');
-    $query->addField('tbl', $table['fields']['last_name'], 'last_name');
+    $query->addField('tbl', $fields['first_name'], 'first_name');
+    $query->addField('tbl', $fields['last_name'], 'last_name');
   }
   else {
     throw new Exception('Table must have either a name column, or both first_name and last_name columns');
   }
 
-  $query->addExpression('LOWER(tbl.' . db_escape_field($table['fields']['email']) . ')', 'email');
-  $query->addExpression(':table', 'origin_table', [':table' => $table['name']]);
+  $query->addExpression('LOWER(tbl.' . db_escape_field($fields['email']) . ')', 'email');
+  $query->addExpression(':table', 'origin_table', [':table' => $tableName]);
   $query->orderBy('tbl.created');
 
   $results = $query->execute();
 
   $returnVal = [];
+  $seen = [];
 
   foreach ($results as $result) {
-    if (array_key_exists('name', $table['fields'])) {
+    if (array_key_exists('name', $fields)) {
       $names = alq_mailchimp_parse_names($result->name);
       $result->first_name = $names['first_name'];
       $result->last_name = $names['last_name'];
     }
-
-    $returnVal[$result->email] = $result;
+    $result->duplicate = array_key_exists($result->email, $seen);
+    $seen[$result->email] = TRUE;
+    $returnVal[] = $result;
   }
 
   return $returnVal;
@@ -323,6 +358,7 @@ function alq_mailchimp_get_subscribers_from_table($table) {
 
 /**
  * Check the listed webform for email subscribers
+ * duplicated subscribers will have 'duplicated' set to true on them
  *
  * @param string $webform
  * @return Array
@@ -331,6 +367,7 @@ function alq_mailchimp_get_subscribers_from_table($table) {
 function alq_mailchimp_get_subscribers_from_webform($webform) {
   $results = webform_get_submissions($webform['nid']);
 
+  $seen = [];
   $returnVal = [];
 
   foreach ($results as $result) {
@@ -339,11 +376,13 @@ function alq_mailchimp_get_subscribers_from_webform($webform) {
     eval('$spam = $result->data' . $webform['fields']['spam'] . ';');
     if ($spam === ALQ_MAILCHIMP_WEBFORM_SUBSCRIBE) {
       $obj = new stdClass();
-      eval('$obj->email = $result->data' . $webform['fields']['email'] . ';');
+      eval('$obj->email = strtolower($result->data' . $webform['fields']['email'] . ');');
       eval('$obj->first_name = $result->data' . $webform['fields']['first_name'] . ';');
       eval('$obj->last_name = $result->data' . $webform['fields']['last_name'] . ';');
       $obj->sid = $result->sid;
-      $returnVal[$obj->email] = $obj;
+      $obj->duplicate = array_key_exists($obj->email, $seen);
+      $seen[$obj->email] = TRUE;
+      $returnVal[] = $obj;
     }
   }
 
