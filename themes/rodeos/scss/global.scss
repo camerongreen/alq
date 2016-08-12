@@ -240,6 +240,13 @@ div.block-1 {
     div.copyright {
       text-align: right;
     }
+    div.images {
+      text-align: right;
+      img {
+        max-height: 50px;
+        margin-left: 10px;
+      }
+    }
     div.social-media {
       text-align: center;
       a {
@@ -395,7 +402,7 @@ body.page-node-92 h2 {
     }
   }
   #region-footer-second {
-    footer div.copyright {
+    footer div.images {
       text-align: center;
     }
   }
