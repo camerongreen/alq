@@ -450,14 +450,18 @@ body.page-node-92 h2 {
   #region-footer-second footer div.images {
     text-align: center;
   }
+  /* line 408, ../scss/global.scss */
+  #region-footer-second footer div.copyright {
+    text-align: center;
+  }
 
-  /* line 409, ../scss/global.scss */
+  /* line 412, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 413, ../scss/global.scss */
+  /* line 416, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -465,7 +469,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 418, ../scss/global.scss */
+  /* line 421, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -474,7 +478,7 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 429, ../scss/global.scss */
+/* line 432, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
