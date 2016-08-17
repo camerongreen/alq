@@ -251,6 +251,7 @@ function alq_mps_email($recipient, $fields) {
   $module = 'alq_mps';
   $key = 'campaign_message';
   $from = $fields->from_email;
+  $fields->headers['Reply-to'] = $from;
   $language = language_default();
   $send = TRUE;
 
