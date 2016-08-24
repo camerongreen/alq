@@ -63,7 +63,7 @@ h2 {
   margin-top: 1px;
 }
 
-div.block-block-2 {
+#block-block-2 {
   position: absolute;
   top: 0;
   right: 10px;
@@ -172,7 +172,7 @@ div.breadcrumb {
 #zone-footer {
   color: #fff;
   background-color: $alq-purple;
-  .block-menu-footer-menu ul.menu {
+  #block-menu-menu-footer-menu ul.menu {
     padding-top: 1em;
     padding-bottom: 1ex;
     li ul {

@@ -1,7 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* Social media block */
 /* line 4, ../scss/alq-alpha-default-normal.scss */
-div.block-block-2 {
+#block-block-2 {
   top: -10px;
   right: 40px;
 }

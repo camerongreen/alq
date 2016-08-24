@@ -79,11 +79,11 @@ body {
 }
 
 /* line 67, ../scss/alq-alpha-default-narrow.scss */
-.block-menu-footer-menu {
+#block-menu-menu-footer-menu {
   padding-left: 40px;
 }
 /* line 69, ../scss/alq-alpha-default-narrow.scss */
-.block-menu-footer-menu ul.menu {
+#block-menu-menu-footer-menu ul.menu {
   margin-top: 1ex;
   margin-bottom: 1ex;
 }

@@ -60,14 +60,14 @@ h2 {
 }
 
 /* line 66, ../scss/global.scss */
-div.block-block-2 {
+#block-block-2 {
   position: absolute;
   top: 0;
   right: 10px;
   /* override bootstrap style */
 }
 /* line 71, ../scss/global.scss */
-div.block-block-2 div::before {
+#block-block-2 div::before {
   display: block;
 }
 
@@ -183,32 +183,32 @@ div.breadcrumb {
   background-color: #502c83;
 }
 /* line 175, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu {
+#zone-footer #block-menu-menu-footer-menu ul.menu {
   padding-top: 1em;
   padding-bottom: 1ex;
 }
 /* line 178, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu li ul {
+#zone-footer #block-menu-menu-footer-menu ul.menu li ul {
   display: none;
 }
 /* line 181, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu li {
+#zone-footer #block-menu-menu-footer-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
 /* line 186, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu li a {
+#zone-footer #block-menu-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
 /* line 190, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu > li a {
+#zone-footer #block-menu-menu-footer-menu ul.menu > li a {
   border-right: thin solid #fff;
   padding-right: 10px;
 }
 /* line 194, ../scss/global.scss */
-#zone-footer .block-menu-footer-menu ul.menu > li:last-child a {
+#zone-footer #block-menu-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
