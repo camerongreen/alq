@@ -268,13 +268,13 @@ input[type=email] {
 
 /* Voiceless block */
 /* line 221, ../scss/alq-alpha-default-narrow.scss */
-.block-block-1 {
+#block-block-1 {
   display: inherit;
 }
 
 /* Donate now block */
 /* line 226, ../scss/alq-alpha-default-narrow.scss */
-.block-block-5 {
+#block-block-5 {
   display: inherit;
   color: #f8931d;
   font-size: 200%;
@@ -282,7 +282,7 @@ input[type=email] {
   font-weight: bold;
 }
 /* line 232, ../scss/alq-alpha-default-narrow.scss */
-.block-block-5 a {
+#block-block-5 a {
   color: #f8931d;
 }
 
