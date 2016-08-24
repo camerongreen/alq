@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // title - rethink rodeos etc
-div.block-6 {
+#block-block-6 {
   margin-top: 6em;
   margin-bottom: 2em;
   color: white;
@@ -107,7 +107,7 @@ div.block-6 {
 }
 
 // campaign video
-div.block-7 {
+#block-block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -128,11 +128,11 @@ div.block-7 {
 }
 
 // intro text - rodeo animals need our help right now
-section.block-5,
-div.block-4,
-div.block-3,
-section.block-2,
-div.block-1 {
+#block-block-5,
+#block-block-4,
+#block-block-3,
+#block-block-2,
+#block-block-1 {
   background-color: rgba(255, 255, 255, 0.8);
   padding-top: 30px;
   padding-bottom: 10px;
@@ -147,7 +147,7 @@ div.block-1 {
   }
 }
 
-section.block-11 {
+#block-block-11 {
   h2 {
     color: white;
     font-size: 150%;
@@ -196,7 +196,7 @@ section.block-11 {
   }
 }
 
-div.block-1 {
+#block-block-1 {
   .block-inner {
     p {
       text-align: center;
@@ -374,12 +374,12 @@ body.page-node-92 h2 {
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
-  div.block-6 {
+  #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
-  div.block-7 {
+  #block-block-7 {
     width: 90%;
   }
   #zone-branding-wrapper {

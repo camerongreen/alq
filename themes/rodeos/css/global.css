@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 97, ../scss/global.scss */
-div.block-6 {
+#block-block-6 {
   margin-top: 6em;
   margin-bottom: 2em;
   color: white;
@@ -109,20 +109,20 @@ div.block-6 {
   font-size: 200%;
 }
 /* line 103, ../scss/global.scss */
-div.block-6 h1 {
+#block-block-6 h1 {
   font-size: 200%;
   color: white;
 }
 
 /* line 110, ../scss/global.scss */
-div.block-7 {
+#block-block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
 /* line 115, ../scss/global.scss */
-div.block-7 .content {
+#block-block-7 .content {
   position: relative;
   padding-bottom: 53%;
   /* 16:9 */
@@ -130,7 +130,7 @@ div.block-7 .content {
   height: 0;
 }
 /* line 120, ../scss/global.scss */
-div.block-7 .content iframe {
+#block-block-7 .content iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -139,11 +139,11 @@ div.block-7 .content iframe {
 }
 
 /* line 131, ../scss/global.scss */
-section.block-5,
-div.block-4,
-div.block-3,
-section.block-2,
-div.block-1 {
+#block-block-5,
+#block-block-4,
+#block-block-3,
+#block-block-2,
+#block-block-1 {
   background-color: rgba(255, 255, 255, 0.8);
   padding-top: 30px;
   padding-bottom: 10px;
@@ -151,46 +151,46 @@ div.block-1 {
   margin-bottom: 2em;
 }
 /* line 141, ../scss/global.scss */
-section.block-5 .block-inner,
-div.block-4 .block-inner,
-div.block-3 .block-inner,
-section.block-2 .block-inner,
-div.block-1 .block-inner {
+#block-block-5 .block-inner,
+#block-block-4 .block-inner,
+#block-block-3 .block-inner,
+#block-block-2 .block-inner,
+#block-block-1 .block-inner {
   width: 80%;
   margin: auto;
 }
 /* line 144, ../scss/global.scss */
-section.block-5 .block-inner p,
-div.block-4 .block-inner p,
-div.block-3 .block-inner p,
-section.block-2 .block-inner p,
-div.block-1 .block-inner p {
+#block-block-5 .block-inner p,
+#block-block-4 .block-inner p,
+#block-block-3 .block-inner p,
+#block-block-2 .block-inner p,
+#block-block-1 .block-inner p {
   color: black;
 }
 
 /* line 150, ../scss/global.scss */
-section.block-11 {
+#block-block-11 {
   width: 100%;
   margin-bottom: 2em;
 }
 /* line 151, ../scss/global.scss */
-section.block-11 h2 {
+#block-block-11 h2 {
   color: white;
   font-size: 150%;
 }
 /* line 156, ../scss/global.scss */
-section.block-11 a {
+#block-block-11 a {
   color: white;
   text-align: center;
   font-size: 130%;
   text-decoration: none;
 }
 /* line 163, ../scss/global.scss */
-section.block-11 div {
+#block-block-11 div {
   text-align: center;
 }
 /* line 168, ../scss/global.scss */
-section.block-11 .block-inner {
+#block-block-11 .block-inner {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 5px;
@@ -220,7 +220,7 @@ section.block-11 .block-inner {
 }
 
 /* line 201, ../scss/global.scss */
-div.block-1 .block-inner p {
+#block-block-1 .block-inner p {
   text-align: center;
 }
 
@@ -419,14 +419,14 @@ body.page-node-92 h2 {
   }
 
   /* line 377, ../scss/global.scss */
-  div.block-6 {
+  #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
 
   /* line 382, ../scss/global.scss */
-  div.block-7 {
+  #block-block-7 {
     width: 90%;
   }
 
