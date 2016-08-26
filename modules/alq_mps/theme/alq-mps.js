@@ -124,7 +124,9 @@
 
     $('#alq-mps-email-form').submit(function (evt) {
       var body = $('#edit-body').val();
-      var re = /^\[[\s\S]+\]$/m;
+      // make it into one line so we can regex it
+      var body = body.replace(/\n/g, '');
+      var re = /^\[.+\]$/;
       var found = body.search(re);
       if (found !== -1) {
         evt.preventDefault();
