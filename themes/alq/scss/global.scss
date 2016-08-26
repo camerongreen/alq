@@ -93,8 +93,8 @@ div.breadcrumb {
 
 /* Blocks we won't show on mobile version */
 #donate-link,
-.block-block-5, /* Donate now block */
-.block-block-1, /* Voiceless block */
+#block-block-5, /* Donate now block */
+#block-block-1, /* Voiceless block */
 #block-facebook-boxes-fb-like {
   display: none;
 }
