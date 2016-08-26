@@ -180,7 +180,7 @@ function alq_mps_send_emails() {
     // a confirmation email
     $result = alq_mps_email($recipient, $email);
     $confirmation_sent = 0;
-    if (true || $result['result'] == TRUE) {
+    if ($result['result'] == TRUE) {
       $confirmation_result = alq_mps_confirmation_email($email);
       if ($confirmation_result['result'] == TRUE) {
         $confirmation_sent = 1;
@@ -346,7 +346,7 @@ function alq_mps_mail($key, &$message, $params) {
  * @return  string $body
  */
 function alq_mps_format_email($key, $params) {
-  $returnVal = alq_mps_replace_tokens($params['body'], ['name' => $params['from_name']]) . "\n";
+  $returnVal = $params['body'] . "\n";
   $returnVal .= "\n--\n";
   $returnVal .= $params['from_name'] . "\n";
   $returnVal .= $params['from_email'] . "\n";
@@ -854,7 +854,8 @@ function alq_mps_email_form_submit($form, &$form_state) {
   $values = $form_state['values'];
 
   $footer = alq_mps_get_footer($values['campaign_id']);
-  $body = $values['body'] . "\n\n" . ($footer ?: '');
+  $body = alq_mps_replace_tokens($values['body'], ['name' => $values['name']]);
+  $body .= "\n\n" . ($footer ?: '');
 
   $insert = [
     'campaign_id' => $values['campaign_id'],
