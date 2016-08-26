@@ -19,9 +19,9 @@
     </div>
     <div class="col-sm-5 col-xs-12 images">
       <!--img
-        src="<?= drupal_get_path('theme', 'alq') ?>/images/alq_logo_white.png"
+        src="/<?= drupal_get_path('theme', 'alq') ?>/images/alq_logo_white.png"
         alt="ALQ Logo"/-->
-      <img src="<?= drupal_get_path('theme', 'rodeos') ?>/images/rspca.png"
+      <img src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/rspca.png"
            alt="RSPCA Logo"/>
     </div>
   </div>
