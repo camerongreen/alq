@@ -106,22 +106,27 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2em;
   color: white;
   text-align: center;
-  font-size: 200%;
+  font-size: 150%;
 }
 /* line 103, ../scss/global.scss */
+#block-block-6 p {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+/* line 107, ../scss/global.scss */
 #block-block-6 h1 {
-  font-size: 200%;
+  font-size: 250%;
   color: white;
 }
 
-/* line 110, ../scss/global.scss */
+/* line 114, ../scss/global.scss */
 #block-block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 115, ../scss/global.scss */
+/* line 119, ../scss/global.scss */
 #block-block-7 .content {
   position: relative;
   padding-bottom: 53%;
@@ -129,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 25px;
   height: 0;
 }
-/* line 120, ../scss/global.scss */
+/* line 124, ../scss/global.scss */
 #block-block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -138,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-/* line 131, ../scss/global.scss */
+/* line 135, ../scss/global.scss */
 #block-block-5,
 #block-block-4,
 #block-block-3,
@@ -150,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 141, ../scss/global.scss */
+/* line 145, ../scss/global.scss */
 #block-block-5 .block-inner,
 #block-block-4 .block-inner,
 #block-block-3 .block-inner,
@@ -159,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 80%;
   margin: auto;
 }
-/* line 144, ../scss/global.scss */
+/* line 148, ../scss/global.scss */
 #block-block-5 .block-inner p,
 #block-block-4 .block-inner p,
 #block-block-3 .block-inner p,
@@ -168,28 +173,28 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
-/* line 150, ../scss/global.scss */
+/* line 154, ../scss/global.scss */
 #block-block-11 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 151, ../scss/global.scss */
+/* line 155, ../scss/global.scss */
 #block-block-11 h2 {
   color: white;
   font-size: 150%;
 }
-/* line 156, ../scss/global.scss */
+/* line 160, ../scss/global.scss */
 #block-block-11 a {
   color: white;
   text-align: center;
   font-size: 130%;
   text-decoration: none;
 }
-/* line 163, ../scss/global.scss */
+/* line 167, ../scss/global.scss */
 #block-block-11 div {
   text-align: center;
 }
-/* line 168, ../scss/global.scss */
+/* line 172, ../scss/global.scss */
 #block-block-11 .block-inner {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -199,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
 }
 
-/* line 179, ../scss/global.scss */
+/* line 183, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -208,23 +213,23 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 180, ../scss/global.scss */
+/* line 184, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 193, ../scss/global.scss */
+/* line 197, ../scss/global.scss */
 #take-action-images > div {
   margin-bottom: 10px;
   text-align: center;
 }
 
-/* line 201, ../scss/global.scss */
+/* line 205, ../scss/global.scss */
 #block-block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 207, ../scss/global.scss */
+/* line 211, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -233,24 +238,24 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 214, ../scss/global.scss */
+/* line 218, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 218, ../scss/global.scss */
+/* line 222, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 224, ../scss/global.scss */
+/* line 228, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 229, ../scss/global.scss */
+/* line 233, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -258,74 +263,74 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 235, ../scss/global.scss */
+/* line 239, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 240, ../scss/global.scss */
+/* line 244, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 243, ../scss/global.scss */
+/* line 247, ../scss/global.scss */
 #region-footer-second footer div.images {
   text-align: right;
 }
-/* line 245, ../scss/global.scss */
+/* line 249, ../scss/global.scss */
 #region-footer-second footer div.images img {
   max-height: 50px;
   margin-left: 10px;
 }
-/* line 250, ../scss/global.scss */
+/* line 254, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 252, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 259, ../scss/global.scss */
+/* line 263, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 262, ../scss/global.scss */
+/* line 266, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 264, ../scss/global.scss */
+/* line 268, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 268, ../scss/global.scss */
+/* line 272, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 277, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 #zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 284, ../scss/global.scss */
+/* line 288, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 290, ../scss/global.scss */
+/* line 294, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
   margin-bottom: 1em;
 }
-/* line 294, ../scss/global.scss */
+/* line 298, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -333,7 +338,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 299, ../scss/global.scss */
+/* line 303, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -342,19 +347,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 310, ../scss/global.scss */
+/* line 314, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 314, ../scss/global.scss */
+/* line 318, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 321, ../scss/global.scss */
+/* line 325, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -371,97 +376,102 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 336, ../scss/global.scss */
+/* line 340, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 339, ../scss/global.scss */
+/* line 343, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 342, ../scss/global.scss */
+/* line 346, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 347, ../scss/global.scss */
+/* line 351, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 355, ../scss/global.scss */
+/* line 359, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 359, ../scss/global.scss */
+/* line 363, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 363, ../scss/global.scss */
+/* line 367, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 370, ../scss/global.scss */
+  /* line 374, ../scss/global.scss */
   body:not(.front) #region-content {
     width: 90%;
   }
 
-  /* line 374, ../scss/global.scss */
+  /* line 378, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 377, ../scss/global.scss */
+  /* line 381, ../scss/global.scss */
   #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
+  /* line 385, ../scss/global.scss */
+  #block-block-6 p {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 
-  /* line 382, ../scss/global.scss */
+  /* line 390, ../scss/global.scss */
   #block-block-7 {
     width: 90%;
   }
 
-  /* line 388, ../scss/global.scss */
+  /* line 396, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 393, ../scss/global.scss */
+  /* line 401, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
 
-  /* line 400, ../scss/global.scss */
+  /* line 408, ../scss/global.scss */
   #section-content div.block-alq-rodeos {
     width: 100%;
   }
 
-  /* line 405, ../scss/global.scss */
+  /* line 413, ../scss/global.scss */
   #region-footer-second footer div.images {
     text-align: center;
   }
-  /* line 408, ../scss/global.scss */
+  /* line 416, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 
-  /* line 412, ../scss/global.scss */
+  /* line 420, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 416, ../scss/global.scss */
+  /* line 424, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -469,7 +479,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 421, ../scss/global.scss */
+  /* line 429, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -478,7 +488,7 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 432, ../scss/global.scss */
+/* line 440, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
