@@ -52,6 +52,26 @@ function rodeos_page_alter($page) {
       )
     );
 
+    $meta_og_title = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:title',
+        'content' => 'RethinkRodeos.com'
+      )
+    );
+
+    $meta_og_desc = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:description',
+        'content' => 'Grown men causing fear, stress and pain to calves all in the name of entertainment is simply wrong. Please help stop this bullying of baby animals.'
+      )
+    );
+
     drupal_add_html_head($meta_og_image, 'meta_og_image');
+    drupal_add_html_head($meta_og_title, 'meta_og_title');
+    drupal_add_html_head($meta_og_desc, 'meta_og_desc');
   }
 }
