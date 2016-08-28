@@ -118,15 +118,19 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 250%;
   color: white;
 }
+/* line 111, ../scss/global.scss */
+#block-block-6 a {
+  color: white;
+}
 
-/* line 114, ../scss/global.scss */
+/* line 117, ../scss/global.scss */
 #block-block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 119, ../scss/global.scss */
+/* line 122, ../scss/global.scss */
 #block-block-7 .content {
   position: relative;
   padding-bottom: 53%;
@@ -134,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 25px;
   height: 0;
 }
-/* line 124, ../scss/global.scss */
+/* line 127, ../scss/global.scss */
 #block-block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -143,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-/* line 135, ../scss/global.scss */
+/* line 138, ../scss/global.scss */
 #block-block-5,
 #block-block-4,
 #block-block-3,
@@ -155,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 145, ../scss/global.scss */
+/* line 148, ../scss/global.scss */
 #block-block-5 .block-inner,
 #block-block-4 .block-inner,
 #block-block-3 .block-inner,
@@ -164,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 80%;
   margin: auto;
 }
-/* line 148, ../scss/global.scss */
+/* line 151, ../scss/global.scss */
 #block-block-5 .block-inner p,
 #block-block-4 .block-inner p,
 #block-block-3 .block-inner p,
@@ -173,28 +177,28 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
-/* line 154, ../scss/global.scss */
+/* line 157, ../scss/global.scss */
 #block-block-11 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 155, ../scss/global.scss */
+/* line 158, ../scss/global.scss */
 #block-block-11 h2 {
   color: white;
   font-size: 150%;
 }
-/* line 160, ../scss/global.scss */
+/* line 163, ../scss/global.scss */
 #block-block-11 a {
   color: white;
   text-align: center;
   font-size: 130%;
   text-decoration: none;
 }
-/* line 167, ../scss/global.scss */
+/* line 170, ../scss/global.scss */
 #block-block-11 div {
   text-align: center;
 }
-/* line 172, ../scss/global.scss */
+/* line 175, ../scss/global.scss */
 #block-block-11 .block-inner {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -204,7 +208,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
 }
 
-/* line 183, ../scss/global.scss */
+/* line 186, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -213,23 +217,23 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 184, ../scss/global.scss */
+/* line 187, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 197, ../scss/global.scss */
+/* line 200, ../scss/global.scss */
 #take-action-images > div {
   margin-bottom: 10px;
   text-align: center;
 }
 
-/* line 205, ../scss/global.scss */
+/* line 208, ../scss/global.scss */
 #block-block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 211, ../scss/global.scss */
+/* line 214, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -238,24 +242,24 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 218, ../scss/global.scss */
+/* line 221, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 222, ../scss/global.scss */
+/* line 225, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 228, ../scss/global.scss */
+/* line 231, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 233, ../scss/global.scss */
+/* line 236, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -263,74 +267,74 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 239, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 244, ../scss/global.scss */
+/* line 247, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 247, ../scss/global.scss */
+/* line 250, ../scss/global.scss */
 #region-footer-second footer div.images {
   text-align: right;
 }
-/* line 249, ../scss/global.scss */
+/* line 252, ../scss/global.scss */
 #region-footer-second footer div.images img {
   max-height: 50px;
   margin-left: 10px;
 }
-/* line 254, ../scss/global.scss */
+/* line 257, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 256, ../scss/global.scss */
+/* line 259, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 263, ../scss/global.scss */
+/* line 266, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 266, ../scss/global.scss */
+/* line 269, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 268, ../scss/global.scss */
+/* line 271, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 272, ../scss/global.scss */
+/* line 275, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 281, ../scss/global.scss */
+/* line 284, ../scss/global.scss */
 #zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 288, ../scss/global.scss */
+/* line 291, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 294, ../scss/global.scss */
+/* line 297, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
   margin-bottom: 1em;
 }
-/* line 298, ../scss/global.scss */
+/* line 301, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -338,7 +342,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 303, ../scss/global.scss */
+/* line 306, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -347,19 +351,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 314, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 318, ../scss/global.scss */
+/* line 321, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 325, ../scss/global.scss */
+/* line 328, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -376,102 +380,102 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 340, ../scss/global.scss */
+/* line 343, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 343, ../scss/global.scss */
+/* line 346, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 346, ../scss/global.scss */
+/* line 349, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 351, ../scss/global.scss */
+/* line 354, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 359, ../scss/global.scss */
+/* line 362, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 363, ../scss/global.scss */
+/* line 366, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 367, ../scss/global.scss */
+/* line 370, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 374, ../scss/global.scss */
+  /* line 377, ../scss/global.scss */
   body:not(.front) #region-content {
     width: 90%;
   }
 
-  /* line 378, ../scss/global.scss */
+  /* line 381, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 381, ../scss/global.scss */
+  /* line 384, ../scss/global.scss */
   #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
-  /* line 385, ../scss/global.scss */
+  /* line 388, ../scss/global.scss */
   #block-block-6 p {
     margin-left: 5%;
     margin-right: 5%;
   }
 
-  /* line 390, ../scss/global.scss */
+  /* line 393, ../scss/global.scss */
   #block-block-7 {
     width: 90%;
   }
 
-  /* line 396, ../scss/global.scss */
+  /* line 399, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 401, ../scss/global.scss */
+  /* line 404, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
 
-  /* line 408, ../scss/global.scss */
+  /* line 411, ../scss/global.scss */
   #section-content div.block-alq-rodeos {
     width: 100%;
   }
 
-  /* line 413, ../scss/global.scss */
+  /* line 416, ../scss/global.scss */
   #region-footer-second footer div.images {
     text-align: center;
   }
-  /* line 416, ../scss/global.scss */
+  /* line 419, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 
-  /* line 420, ../scss/global.scss */
+  /* line 423, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 424, ../scss/global.scss */
+  /* line 427, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -479,7 +483,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 429, ../scss/global.scss */
+  /* line 432, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -488,7 +492,7 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 440, ../scss/global.scss */
+/* line 443, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
