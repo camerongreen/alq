@@ -17,4 +17,25 @@
       }
     });
   });
+
+  $(window).scroll(function () {
+    var zbw = $('#zone-branding-wrapper');
+    if ($(document).scrollTop() > 0) {
+      zbw.css({
+        position: 'fixed',
+      });
+      zbw.stop().animate({
+        'margin-top': '0px',
+        'background-color': 'rgba(255, 255, 255, 0.9)'
+      }, 300);
+    } else {
+      zbw.css({
+        position: 'static'
+      });
+      zbw.stop().animate({
+        'margin-top': '10px',
+        'background-color': 'rgba(255, 255, 255, 0.6)'
+      }, 300);
+    }
+  });
 })(jQuery);
