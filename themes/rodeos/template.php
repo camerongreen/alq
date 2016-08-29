@@ -70,8 +70,18 @@ function rodeos_page_alter($page) {
       )
     );
 
+    $meta_og_url = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:url',
+        'content' => 'rethinkrodeos.com'
+      )
+    );
+
     drupal_add_html_head($meta_og_image, 'meta_og_image');
     drupal_add_html_head($meta_og_title, 'meta_og_title');
     drupal_add_html_head($meta_og_desc, 'meta_og_desc');
+    drupal_add_html_head($meta_og_url, 'meta_og_url');
   }
 }
