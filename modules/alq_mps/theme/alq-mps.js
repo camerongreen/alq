@@ -93,8 +93,14 @@
       }
     });
 
-    $('#edit-name').val($.cookie('Drupal.visitor.from_name'));
-    $('#edit-email').val($.cookie('Drupal.visitor.from_email'));
+    var from_name = $.cookie('Drupal.visitor.from_name');
+    if (from_name) {
+      $('#edit-name').val(from_name);
+    }
+    var from_email = $.cookie('Drupal.visitor.from_email');
+    if (from_email) {
+      $('#edit-email').val(from_email);
+    }
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
     $('.suburb-search').autocomplete({
       source: function (request, response) {
