@@ -19,6 +19,7 @@
 function rodeos_preprocess_html(&$vars) {
   drupal_add_library('system', 'ui');
   drupal_add_library('system', 'ui.autocomplete');
+  drupal_add_library('system', 'jquery.cookie');
 
   // make sure boostrap appears after formalize
   $weight = 200;
