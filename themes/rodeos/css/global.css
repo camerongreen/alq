@@ -1,12 +1,12 @@
 /* This file will hold styles for the mobile version of your website (mobile first). */
 /* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
-/* line 9, ../scss/global.scss */
+/* line 10, ../scss/global.scss */
 body {
   font-family: "Open sans", sans-serif;
   font-size: 16px;
 }
 
-/* line 14, ../scss/global.scss */
+/* line 15, ../scss/global.scss */
 body:not(.front) {
   background: url(../images/small-cow-jumped-on-from-horse.jpg) no-repeat center center fixed #666;
   -webkit-background-size: cover;
@@ -14,7 +14,7 @@ body:not(.front) {
   -o-background-size: cover;
   background-size: cover;
 }
-/* line 21, ../scss/global.scss */
+/* line 22, ../scss/global.scss */
 body:not(.front) #region-content {
   padding: 1em;
   width: 80%;
@@ -23,7 +23,7 @@ body:not(.front) #region-content {
   border-radius: 4px;
 }
 
-/* line 31, ../scss/global.scss */
+/* line 32, ../scss/global.scss */
 body.front {
   background: url(../images/calf-pulled-by-neck-2.jpg) no-repeat center center fixed #666;
   -webkit-background-size: cover;
@@ -31,27 +31,27 @@ body.front {
   -o-background-size: cover;
   background-size: cover;
 }
-/* line 37, ../scss/global.scss */
+/* line 38, ../scss/global.scss */
 body.front #page-title {
   display: none;
 }
-/* line 40, ../scss/global.scss */
+/* line 41, ../scss/global.scss */
 body.front #section-content {
   margin-top: 0px;
 }
 
-/* line 45, ../scss/global.scss */
+/* line 46, ../scss/global.scss */
 #section-content {
   margin-top: 100px;
 }
 
-/* line 49, ../scss/global.scss */
+/* line 50, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Hind", sans-serif;
   color: #333;
 }
 
-/* line 54, ../scss/global.scss */
+/* line 55, ../scss/global.scss */
 #zone-branding-wrapper {
   width: 100%;
   margin-top: 10px;
@@ -60,36 +60,36 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   box-shadow: 0px 5px 5px rgba(80, 80, 80, 0.5);
 }
-/* line 61, ../scss/global.scss */
+/* line 62, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img {
   margin: 0;
   text-align: right;
 }
-/* line 64, ../scss/global.scss */
+/* line 65, ../scss/global.scss */
 #zone-branding-wrapper div.logo-img img {
   margin-top: 12px;
   max-height: 50px;
 }
-/* line 70, ../scss/global.scss */
+/* line 71, ../scss/global.scss */
 #zone-branding-wrapper ul {
   list-style-type: none;
+  margin-top: 24px;
 }
-/* line 72, ../scss/global.scss */
+/* line 74, ../scss/global.scss */
 #zone-branding-wrapper ul li {
   display: inline-block;
-  margin-top: 25px;
 }
-/* line 75, ../scss/global.scss */
+/* line 76, ../scss/global.scss */
 #zone-branding-wrapper ul li:before {
   content: "\00b7";
   padding-left: 6px;
   padding-right: 9px;
 }
-/* line 80, ../scss/global.scss */
+/* line 81, ../scss/global.scss */
 #zone-branding-wrapper ul li.nobullet:before {
   content: none;
 }
-/* line 83, ../scss/global.scss */
+/* line 84, ../scss/global.scss */
 #zone-branding-wrapper ul li a {
   font-family: "Hind", sans-serif;
   font-size: 110%;
@@ -98,8 +98,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: #333;
 }
+/* line 92, ../scss/global.scss */
+#zone-branding-wrapper ul li.highlight a {
+  color: #8b0000;
+}
+/* line 95, ../scss/global.scss */
+#zone-branding-wrapper ul li.highlight.mobile {
+  display: none;
+}
 
-/* line 96, ../scss/global.scss */
+/* line 103, ../scss/global.scss */
 #block-block-6 {
   margin-top: 5em;
   margin-bottom: 2em;
@@ -107,29 +115,29 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   font-size: 150%;
 }
-/* line 102, ../scss/global.scss */
+/* line 109, ../scss/global.scss */
 #block-block-6 p {
   margin-left: 15%;
   margin-right: 15%;
 }
-/* line 106, ../scss/global.scss */
+/* line 113, ../scss/global.scss */
 #block-block-6 h1 {
   font-size: 250%;
   color: white;
 }
-/* line 110, ../scss/global.scss */
+/* line 117, ../scss/global.scss */
 #block-block-6 a {
   color: white;
 }
 
-/* line 116, ../scss/global.scss */
+/* line 123, ../scss/global.scss */
 #block-block-7 {
   width: 60%;
   padding-top: 1em;
   padding-bottom: 1em;
   margin: auto;
 }
-/* line 121, ../scss/global.scss */
+/* line 128, ../scss/global.scss */
 #block-block-7 .content {
   position: relative;
   padding-bottom: 53%;
@@ -137,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 25px;
   height: 0;
 }
-/* line 126, ../scss/global.scss */
+/* line 133, ../scss/global.scss */
 #block-block-7 .content iframe {
   position: absolute;
   top: 0;
@@ -146,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-/* line 137, ../scss/global.scss */
+/* line 144, ../scss/global.scss */
 #block-block-5,
 #block-block-4,
 #block-block-3,
@@ -158,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 147, ../scss/global.scss */
+/* line 154, ../scss/global.scss */
 #block-block-5 .block-inner,
 #block-block-4 .block-inner,
 #block-block-3 .block-inner,
@@ -167,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 80%;
   margin: auto;
 }
-/* line 150, ../scss/global.scss */
+/* line 157, ../scss/global.scss */
 #block-block-5 .block-inner p,
 #block-block-4 .block-inner p,
 #block-block-3 .block-inner p,
@@ -176,28 +184,28 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
-/* line 156, ../scss/global.scss */
+/* line 163, ../scss/global.scss */
 #block-block-11 {
   width: 100%;
   margin-bottom: 2em;
 }
-/* line 157, ../scss/global.scss */
+/* line 164, ../scss/global.scss */
 #block-block-11 h2 {
   color: white;
   font-size: 150%;
 }
-/* line 162, ../scss/global.scss */
+/* line 169, ../scss/global.scss */
 #block-block-11 a {
   color: white;
   text-align: center;
   font-size: 130%;
   text-decoration: none;
 }
-/* line 169, ../scss/global.scss */
+/* line 176, ../scss/global.scss */
 #block-block-11 div {
   text-align: center;
 }
-/* line 174, ../scss/global.scss */
+/* line 181, ../scss/global.scss */
 #block-block-11 .block-inner {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -207,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
 }
 
-/* line 185, ../scss/global.scss */
+/* line 192, ../scss/global.scss */
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -216,23 +224,23 @@ h1, h2, h3, h4, h5, h6 {
   padding: 2em;
   border-radius: 4px;
 }
-/* line 186, ../scss/global.scss */
+/* line 193, ../scss/global.scss */
 #section-content div.block-alq-rodeos h2 {
   font-size: 150%;
 }
 
-/* line 199, ../scss/global.scss */
+/* line 206, ../scss/global.scss */
 #take-action-images > div {
   margin-bottom: 10px;
   text-align: center;
 }
 
-/* line 207, ../scss/global.scss */
+/* line 214, ../scss/global.scss */
 #block-block-1 .block-inner p {
   text-align: center;
 }
 
-/* line 213, ../scss/global.scss */
+/* line 220, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -241,24 +249,24 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 220, ../scss/global.scss */
+/* line 227, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 224, ../scss/global.scss */
+/* line 231, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 230, ../scss/global.scss */
+/* line 237, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 235, ../scss/global.scss */
+/* line 242, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -266,74 +274,74 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 241, ../scss/global.scss */
+/* line 248, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 246, ../scss/global.scss */
+/* line 253, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 249, ../scss/global.scss */
+/* line 256, ../scss/global.scss */
 #region-footer-second footer div.images {
   text-align: right;
 }
-/* line 251, ../scss/global.scss */
+/* line 258, ../scss/global.scss */
 #region-footer-second footer div.images img {
   max-height: 50px;
   margin-left: 10px;
 }
-/* line 256, ../scss/global.scss */
+/* line 263, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 258, ../scss/global.scss */
+/* line 265, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 265, ../scss/global.scss */
+/* line 272, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 268, ../scss/global.scss */
+/* line 275, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 270, ../scss/global.scss */
+/* line 277, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 274, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 283, ../scss/global.scss */
+/* line 290, ../scss/global.scss */
 #zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 290, ../scss/global.scss */
+/* line 297, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 296, ../scss/global.scss */
+/* line 303, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
   margin-bottom: 1em;
 }
-/* line 300, ../scss/global.scss */
+/* line 307, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -341,7 +349,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 305, ../scss/global.scss */
+/* line 312, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -350,19 +358,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 316, ../scss/global.scss */
+/* line 323, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 320, ../scss/global.scss */
+/* line 327, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 327, ../scss/global.scss */
+/* line 334, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -379,102 +387,110 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 342, ../scss/global.scss */
+/* line 349, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 345, ../scss/global.scss */
+/* line 352, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 348, ../scss/global.scss */
+/* line 355, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 353, ../scss/global.scss */
+/* line 360, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 361, ../scss/global.scss */
+/* line 368, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 365, ../scss/global.scss */
+/* line 372, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 369, ../scss/global.scss */
+/* line 376, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 376, ../scss/global.scss */
+  /* line 383, ../scss/global.scss */
   body:not(.front) #region-content {
     width: 90%;
   }
 
-  /* line 380, ../scss/global.scss */
+  /* line 387, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 383, ../scss/global.scss */
+  /* line 390, ../scss/global.scss */
   #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
-  /* line 387, ../scss/global.scss */
+  /* line 394, ../scss/global.scss */
   #block-block-6 p {
     margin-left: 5%;
     margin-right: 5%;
   }
 
-  /* line 392, ../scss/global.scss */
+  /* line 399, ../scss/global.scss */
   #block-block-7 {
     width: 90%;
   }
 
-  /* line 398, ../scss/global.scss */
+  /* line 405, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 403, ../scss/global.scss */
+  /* line 410, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
+  /* line 413, ../scss/global.scss */
+  #zone-branding-wrapper ul li.highlight.desktop {
+    display: none;
+  }
+  /* line 416, ../scss/global.scss */
+  #zone-branding-wrapper ul li.highlight.mobile {
+    display: inline-block;
+  }
 
-  /* line 410, ../scss/global.scss */
+  /* line 423, ../scss/global.scss */
   #section-content div.block-alq-rodeos {
     width: 100%;
   }
 
-  /* line 415, ../scss/global.scss */
+  /* line 428, ../scss/global.scss */
   #region-footer-second footer div.images {
     text-align: center;
   }
-  /* line 418, ../scss/global.scss */
+  /* line 431, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 
-  /* line 422, ../scss/global.scss */
+  /* line 435, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 426, ../scss/global.scss */
+  /* line 439, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -482,7 +498,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 431, ../scss/global.scss */
+  /* line 444, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -491,7 +507,7 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 442, ../scss/global.scss */
+/* line 455, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }

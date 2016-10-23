@@ -4,6 +4,7 @@ $header-font: 'Hind', sans-serif;
 $header-color: #333;
 $text-font: 'Open sans', sans-serif;
 $alq-purple: #502e84;
+$alq-text-highlight: #ff0000;
 $header-height: 75px;
 
 body {
@@ -69,9 +70,9 @@ h1, h2, h3, h4, h5, h6 {
 
   ul {
     list-style-type: none;
+    margin-top: 24px;
     li {
       display: inline-block;
-      margin-top: 25px;
       &:before {
         content: "\00b7";
         padding-left: 6px;
@@ -87,6 +88,12 @@ h1, h2, h3, h4, h5, h6 {
         text-transform: uppercase;
         font-weight: bold;
         color: $header-color;
+      }
+      &.highlight a {
+        color: #8b0000;
+      }
+      &.highlight.mobile {
+        display: none;
       }
     }
   }
@@ -402,6 +409,12 @@ body.page-node-92 h2 {
         }
         &:nth-child(3) {
           display: none;
+        }
+        &.highlight.desktop {
+          display: none;
+        }
+        &.highlight.mobile {
+          display: inline-block;
         }
       }
     }
