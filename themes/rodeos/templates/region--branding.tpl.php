@@ -6,7 +6,7 @@
           <li class="nobullet"><a href="/#block-alq-rodeos-alq-rodeos-email-member" class="anke">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>
           <li><a href="/#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
-          <li class="highlight desktop"><a href="/censored-ads">Censored Ads</a></li>
+          <li class="highlight desktop"><a href="/censored-ads">Censored Ad</a></li>
           <li class="highlight mobile"><a href="/censored-ads">Ads</a></li>
           <li><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
         </ul>
