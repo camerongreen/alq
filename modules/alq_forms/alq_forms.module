@@ -28,6 +28,7 @@ function alq_forms_submission() {
     $data = alq_forms_parse_post_fields();
 
     $submission = (object) array(
+      'sid' => NULL,
       'nid' => $node->nid,
       'uid' => $user->uid,
       'submitted' => REQUEST_TIME,
@@ -55,14 +56,14 @@ function alq_forms_webform_loader($title, $type) {
   $entities = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', $type)
     ->propertyCondition('title', $title)
-    ->range(0,1)
+    ->range(0, 1)
     ->execute();
 
   if (!empty($entities['node'])) {
     return node_load(array_shift(array_keys($entities['node'])));
   }
 
-  return false;
+  return FALSE;
 }
 
 function alq_forms_parse_post_fields() {
@@ -105,9 +106,7 @@ function alq_forms_parse_post_fields() {
     }
 
     $data[$i + 1] = array(
-      'value' => array(
-        $value
-      )
+      $value
     );
   }
 

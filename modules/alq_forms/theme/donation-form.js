@@ -87,7 +87,7 @@
 
   function eligibleForMembership() {
     return (getAmount() >= membershipEligibilityAmount)
-      || (getDonationType() === 'monthly');
+        || (getDonationType() === 'monthly');
   }
 
   function membershipValidator(value) {
@@ -239,42 +239,46 @@
       e.stopImmediatePropagation();
 
       var $form = $(e.target),
-        fv = $(e.target).data('formValidation');
+          fv = $(e.target).data('formValidation');
 
       // submit for our records, if it is successful
       // then pass onto paypal
       $.post('/donate/submission', $form.serialize())
-        .done(function (data) {
-          // if the user is getting membership we send through
-          // more information.  Otherwise we send very little
-          var custom = [];
+          .done(function (data) {
+            if (data.type !== 'success') {
+              alert('There has been a problem creating this form, please get in touch with us via our Contact page');
+            } else {
+              // if the user is getting membership we send through
+              // more information.  Otherwise we send very little
+              var custom = [];
 
-          if (wantsMembership()) {
-            custom.push('GN:' + $('#givenName').val());
-            custom.push('FN:' + $('#familyName').val());
-            custom.push('Email:' + $('#email').val());
-            custom.push('Ph:' + $('#phone').val());
-          } else {
-            if ($('#givenName').val()) {
-              custom.push('GN:' + $('#givenName').val());
-            }
-            if ($('#familyName').val()) {
-              custom.push('FN:' + $('#familyName').val());
-            }
-            if ($('#email').val()) {
-              custom.push('Email:' + $('#email').val());
-            }
-          }
-          custom.push('Type:' + $('input[name="donationType"]:checked').val());
-          custom.push('Amount:$' + $('#amount').val());
+              if (wantsMembership()) {
+                custom.push('GN:' + $('#givenName').val());
+                custom.push('FN:' + $('#familyName').val());
+                custom.push('Email:' + $('#email').val());
+                custom.push('Ph:' + $('#phone').val());
+              } else {
+                if ($('#givenName').val()) {
+                  custom.push('GN:' + $('#givenName').val());
+                }
+                if ($('#familyName').val()) {
+                  custom.push('FN:' + $('#familyName').val());
+                }
+                if ($('#email').val()) {
+                  custom.push('Email:' + $('#email').val());
+                }
+              }
+              custom.push('Type:' + $('input[name="donationType"]:checked').val());
+              custom.push('Amount:$' + $('#amount').val());
 
-          custom.push(data.message);
-          $('#custom').val(custom.join(','));
+              custom.push(data.message);
+              $('#custom').val(custom.join(','));
 
-          fv.defaultSubmit();
-        }).fail(function () {
-          alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
-        });
+              fv.defaultSubmit();
+            }
+          }).fail(function () {
+        alert('There has been a problem submitting this form, please get in touch with us via our Contact page');
+      });
     });
   });
 })(jQuery);
