@@ -116,7 +116,7 @@ function alq_mps_cron() {
  * Loads up the CC fields for an email campaign
  *
  * @param int $campaign_id
- * @return string
+ * @return array
  */
 function alq_mps_get_ccs($campaign_id) {
   $emails = [];
@@ -242,15 +242,16 @@ function alq_mps_cleanup_emails() {
 /**
  * Sends an email and records result in ALQ_MPS_EMAIL_TABLE
  *
- * @param $recipient node_wrapper from entity api
- * @param $fields
- * @return boolean
+ * @param object $recipient
+ *  node_wrapper from entity api
+ * @param object $fields
+ * @return array
  */
 function alq_mps_email($recipient, $fields) {
   $module = 'alq_mps';
   $key = 'campaign_message';
   $from = $fields->from_email;
-  $fields->headers['Reply-to'] = $from;
+  $fields->headers['Reply-to'] = trim($from);
   $language = language_default();
   $send = TRUE;
 
@@ -264,7 +265,7 @@ function alq_mps_email($recipient, $fields) {
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
-  return drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
+  return drupal_mail($module, $key, trim($to), $language, (array) $fields, trim($from), $send);
 }
 
 /**
@@ -272,7 +273,7 @@ function alq_mps_email($recipient, $fields) {
  * Sends a confirmation email and records result in ALQ_MPS_EMAIL_TABLE
  *
  * @param $fields
- * @return boolean
+ * @return boolean|array
  */
 function alq_mps_confirmation_email($fields) {
   $module = 'alq_mps';
@@ -297,9 +298,12 @@ function alq_mps_confirmation_email($fields) {
  * Check the email result status and write the actioned date
  * and status into the emails table
  *
- * @param $fields  fields to update in db
- * @param $result   result of email attempt
- * @param $confirmation_sent  has a confirmation email been sent
+ * @param object $fields
+ *  fields to update in db
+ * @param array $result
+ *  Result of email attempt
+ * @param string $confirmation_sent
+ *  Has a confirmation email been sent
  */
 function alq_mps_record_email_status($fields, $result, $confirmation_sent) {
   $fields->actioned = getBrizzyTime();
@@ -471,7 +475,7 @@ function alq_mps_get_email_campaign_stats($node) {
  * Function to be called which shows the email statistics
  *
  * @param $campaignId
- * @return string
+ * @return array
  */
 function alq_mps_get_email_campaign_emails($campaignId) {
   $query = db_select(ALQ_EMAILS_TABLE, 'aet');
@@ -840,7 +844,7 @@ function alq_mps_email_form_validate($form, &$form_state) {
     }
   }
 
-  if (!valid_email_address($values['email'])) {
+  if (!valid_email_address(trim($values['email']))) {
     form_set_error('email', t('Invalid email address.'));
   }
 }
@@ -862,10 +866,10 @@ function alq_mps_email_form_submit($form, &$form_state) {
     'campaign_id' => $values['campaign_id'],
     'recipient' => $values['emailee_nid'],
     'body' => $body,
-    'subject' => $values['subject'],
-    'from_email' => $values['email'],
-    'from_address' => $values['suburb'],
-    'from_name' => $values['name'],
+    'subject' => trim($values['subject']),
+    'from_email' => trim($values['email']),
+    'from_address' => trim($values['suburb']),
+    'from_name' => trim($values['name']),
     'spam' => $values['spam'],
     'created' => getBrizzyTime()
   ];
@@ -969,7 +973,8 @@ function getBrizzyTime() {
 /**
  * Menu callback for downloading email statuses
  *
- * @param String  YYYY-MMM
+ * @param string $date
+ *   YYYY-MMM
  */
 function alq_mps_admin_csv($date = NULL) {
   // should be good for the next thousand years ot so
