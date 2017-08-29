@@ -109,7 +109,7 @@ function alq_mps_permission() {
  */
 function alq_mps_cron() {
   alq_mps_send_emails();
-  alq_mps_cleanup_emails();
+  // alq_mps_cleanup_emails();
 }
 
 /**
@@ -225,7 +225,6 @@ function alq_mps_get_email_batch() {
 /**
  * Cleans up actioned emails older than a year
  */
-/*
 function alq_mps_cleanup_emails() {
   $query = db_delete(ALQ_EMAILS_TABLE)
     ->isNotNull('actioned')
@@ -239,7 +238,6 @@ function alq_mps_cleanup_emails() {
     ]));
   }
 }
-*/
 
 /**
  * Sends an email and records result in ALQ_MPS_EMAIL_TABLE
