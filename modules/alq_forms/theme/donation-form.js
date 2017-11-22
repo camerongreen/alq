@@ -116,7 +116,7 @@
 
   function amountOtherValueValidator(value) {
     if (chosenOtherAmount()) {
-      return /^\d+$/.test(value) && (value >= getMinimum());
+      return /^(\d+|\d+\.\d+)$/.test(value) && (value >= getMinimum());
     }
 
     return true;

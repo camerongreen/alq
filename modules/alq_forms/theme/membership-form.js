@@ -82,7 +82,7 @@
     // call this just to be sure we have the current amount
     setAmount();
     if (hasChosenOtherAmount()) {
-      return /^\d+$/.test(value) && validAmount()
+      return /^(\d+|\d+\.\d+)$/.test(value) && validAmount();
     }
 
     return true;
