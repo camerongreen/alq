@@ -312,9 +312,7 @@
       <p>Remembering the animals in your will is a wonderful way to leave a
         compassionate legacy.</p>
 
-      <p>Please <a href="/contact">contact our office</a> for further
-        information.</p>
-
+      <p>Please go to our <a href="/content/bequests">will/bequests page</a> or <a href="/contact">contact our office</a> for further information.</p>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="donations">
