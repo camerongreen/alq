@@ -139,6 +139,7 @@ function alq_forms_block_view($delta = "") {
   drupal_add_css(drupal_get_path('module', 'alq_forms') . '/theme/styles.css');
 
   drupal_add_js(drupal_get_path('module', 'alq_forms') . '/bower_components/form.validation/dist/js/formValidation.min.js', ['scope' => 'footer']);
+  drupal_add_js(drupal_get_path('module', 'alq_forms') . '/bower_components/form.validation/dist/js/framework/bootstrap.min.js', ['scope' => 'footer']);
 
   $paypalUrl = variable_get("uc_paypal_wpp_server", "https://api-3t.sandbox.paypal.com/nvp");
   if (stripos($paypalUrl, 'sandbox') === FALSE) {
