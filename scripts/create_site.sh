@@ -14,7 +14,9 @@
 
 SITE_NAME="Animal Liberation Queensland"
 
-GIT_DIR=/var/www/alq
+if [ -z ${GIT_DIR} ]
+  GIT_DIR=/var/www/alq
+fi
 
 # this is the user who will own the files, so you 
 # can edit them etc
