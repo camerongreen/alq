@@ -142,7 +142,7 @@ projects[xmlsitemap][version] = 2.2
 ; Themes
 ; --------
 
-projects[omega][version] = 3.1
+projects[omega][version] = 3.x
   
   
 ; Libraries
