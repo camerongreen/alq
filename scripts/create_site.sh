@@ -36,6 +36,13 @@ if [ -f ~/.drush_alias ]
     . ~/.drush_alias
 fi
 
+if [ -z $CIRCLECI ]
+then
+  DRUSH=~/project/vendor/bin/drush
+else
+  DRUSH=drush
+fi
+
 #
 # Output command status and exit if error
 #
@@ -108,6 +115,7 @@ then
 else
   echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} ${DB_NAME} > /dev/null
 fi
+
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
 
 if [ -z ${SITE_EMAIL} ]
@@ -126,7 +134,7 @@ if [ -z ${SITE_EMAIL} ]
     fi
 fi
 
-drush make -y ${GIT_DIR}/scripts/drush.make .
+${DRUSH} make -y ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
 # remove link if it exists
@@ -137,7 +145,7 @@ ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
 echo "Site install commencing"
 
-drush -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
+${DRUSH} -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
 
 command_status "Error installing site" "Site install completed";
 
@@ -147,8 +155,8 @@ command_status "Error installing site" "Site install completed";
 chmod ug+w sites/default/
 chmod ug+w sites/default/files
 
-drush -y pm-disable toolbar
-drush -y pm-enable \
+${DRUSH} -y pm-disable toolbar
+${DRUSH} -y pm-enable \
   addtoany \
   admin \
   admin_menu \
@@ -213,10 +221,10 @@ drush -y pm-enable \
 
 # You should note any new additions
 # and add to the drush.make script to save yourself time in the future
-drush -y pm-update
+${DRUSH} -y pm-update
 
 # enable alq modules and features
-drush -y pm-enable \
+${DRUSH} -y pm-enable \
   alq \
   alq_content_types_feature \
   alq_editor_role_feature \
@@ -229,10 +237,10 @@ drush -y pm-enable \
   alq_webforms_feature
 
 # has to be done seperately
-drush -y pm-enable \
+${DRUSH} -y pm-enable \
   alq_mps
 # enable theme
-drush vset theme_default alq
+${DRUSH} vset theme_default alq
 
 echo "Completed"
 
