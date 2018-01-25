@@ -24,6 +24,10 @@ jobs:
     steps:
       - checkout
 
+      - run: sudo apt-get update
+      - run: sudo apt-get upgrade
+      - run: sudo apt-get install mysql-client libpng-dev
+
       - run:
           name: Install PHP MYSQL
           command: sudo docker-php-ext-install pdo_mysql
@@ -31,10 +35,6 @@ jobs:
       - run:
           name: Install PHP GD
           command: sudo docker-php-ext-install gd
-
-      - run: sudo apt-get update
-      - run: sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
