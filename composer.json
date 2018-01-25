@@ -1,0 +1,13 @@
+{
+    "name": "camerongreen/alq",
+    "type": "project",
+    "require": {
+        "drush/drush": "^8.1"
+    },
+    "authors": [
+        {
+            "name": "Cameron Green",
+            "email": "i@camerongreen.org"
+        }
+    ]
+}
