@@ -72,7 +72,7 @@ if [ -z ${DB_USER} ]
     fi
 fi
 
-if [ `set | grep '^DB_PASSWD=$'` ]
+if [ -z ${CIRCLECI} ]
   then
     read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
     # need a newline in the output here as -s swallows it
