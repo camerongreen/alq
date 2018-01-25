@@ -13,7 +13,7 @@ jobs:
     working_directory: ~/project
 
     dependencies:
-      post:
+      pre:
         - sudo apt-get update
         - sudo apt-get install mysql-client
         - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -22,6 +22,7 @@ jobs:
         - php composer.phar self-update
         - sudo mv composer.phar /usr/local/bin/composer
         - sudo composer self-update
+      post:
         - sudo cp ~/project/.circleci/config/alq.conf /etc/apache2/sites-available
         - sudo a2ensite alq
         - sudo service apache2 restart
