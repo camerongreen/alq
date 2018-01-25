@@ -134,11 +134,6 @@ if [ -z ${SITE_EMAIL} ]
     fi
 fi
 
-echo "Site install commencing"
-
-${DRUSH} -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
-
-command_status "Error installing site" "Site install completed";
 
 ${DRUSH} make -y ${GIT_DIR}/scripts/drush.make .
 
@@ -150,7 +145,9 @@ rm sites/all/modules/custom
 ln -s ${GIT_DIR}/modules sites/all/modules/custom
 ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
-${DRUSH} updb -y
+echo "Site install commencing"
+
+${DRUSH} -y site-install standard --db-url="mysql://${DB_USER}:${DB_PASSWD}@${DB_HOST}/${DB_NAME}" --account-pass="${DB_PASSWD}" --site-name="${SITE_NAME}" --site-mail="${SITE_EMAIL}" --account-name="${ADMIN}" --account-mail="${SITE_EMAIL}"
 
 command_status "Error installing site" "Site install completed";
 
