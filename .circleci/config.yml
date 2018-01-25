@@ -26,7 +26,7 @@ jobs:
 
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client php7.1-mysql
+      - run: sudo apt-get install mysql-client php7.1-mysqli
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
