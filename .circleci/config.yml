@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1.5-browsers
-      - image: circleci/mysql:9.4
+      - image: circleci/mysql:latest
 
     working_directory: ~/
 
