@@ -22,7 +22,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update
-      - run: sudo apt-get install mysql-client
+      - run: sudo apt-get install mysql-client php7-mysql
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
