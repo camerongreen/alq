@@ -24,10 +24,14 @@ jobs:
     steps:
       - checkout
 
+      - run: sudo apt-get install apt-transport-https lsb-release ca-certificates
+      - run: sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+      - run: echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
       - run: sudo apt-cache search php
-      - run: sudo apt-get install mysql-client php-mysql
+      - run: sudo apt-get install mysql-client php7.2-mysql
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
