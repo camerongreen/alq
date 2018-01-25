@@ -24,8 +24,8 @@ jobs:
       - run: sudo composer self-update
       - run: composer install --prefer-dist
 
-      - run: GIT_DIR=~/project ADMIN=testadmin DB_PASSWD=password SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
-       
+      - run: GIT_DIR=~/project ADMIN=testadmin DEFAULT_DB_USER=alq DEFAULT_DB_NAME=alq_db DEFAULT_DB_HOST=localhost DB_PASSWD=password SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
+
       - save_cache:
           paths:
             - ./vendor
