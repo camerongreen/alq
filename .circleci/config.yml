@@ -10,7 +10,7 @@ jobs:
       - image: circleci/php:7.1.5-browsers
       - image: circleci/mysql:latest
 
-    working_directory: ~/
+    working_directory: ~/project
 
     steps:
       - checkout
