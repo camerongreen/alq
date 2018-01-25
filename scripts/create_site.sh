@@ -38,9 +38,9 @@ fi
 
 if [ -z $CIRCLECI ]
 then
-  DRUSH=~/project/vendor/bin/drush
-else
   DRUSH=drush
+else
+  DRUSH=~/project/vendor/bin/drush
 fi
 
 #
