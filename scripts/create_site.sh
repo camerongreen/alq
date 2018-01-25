@@ -15,7 +15,8 @@
 SITE_NAME="Animal Liberation Queensland"
 
 if [ -z ${GIT_DIR} ]
-  GIT_DIR=/var/www/alq
+  then
+    GIT_DIR=/var/www/alq
 fi
 
 # this is the user who will own the files, so you 
@@ -30,8 +31,9 @@ DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=alq_db
 
 # hosting company work around has custom drush path
-if [ -f ~/.drush_alias ]; then
-  . ~/.drush_alias
+if [ -f ~/.drush_alias ]
+  then
+    . ~/.drush_alias
 fi
 
 #
