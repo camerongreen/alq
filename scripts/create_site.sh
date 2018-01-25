@@ -102,7 +102,12 @@ if [ -z ${DB_NAME} ]
     fi
 fi
 
-echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
+if [ -z ${CIRCLECI} ]
+then
+  echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
+else
+  echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} ${DB_NAME} > /dev/null
+fi
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
 
 if [ -z ${SITE_EMAIL} ]
