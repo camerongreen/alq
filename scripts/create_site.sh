@@ -64,56 +64,61 @@ fi
 
 # set up the database
 if [ -z ${DB_USER} ]
-  read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
-  if [ -z ${DB_USER} ]
-    then
-      DB_USER=${DEFAULT_DB_USER}
-  fi
+  then
+    read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
+    if [ -z ${DB_USER} ]
+      then
+        DB_USER=${DEFAULT_DB_USER}
+    fi
 fi
 
 if [ -z ${DB_PASSWD} ]
-  read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
-  # need a newline in the output here as -s swallows it
-  echo ""
-  if [ -z ${DB_PASSWD} ]
-    then
-      echo "DB Password is required";
-      exit 1
-  fi
+  then
+    read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
+    # need a newline in the output here as -s swallows it
+    echo ""
+    if [ -z ${DB_PASSWD} ]
+      then
+        echo "DB Password is required";
+        exit 1
+    fi
 fi
 
 if [ -z ${DB_HOST} ]
-  read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
-  if [ -z ${DB_HOST} ]
-    then
-      DB_HOST=${DEFAULT_DB_HOST}
-  fi
+  then
+    read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
+    if [ -z ${DB_HOST} ]
+      then
+        DB_HOST=${DEFAULT_DB_HOST}
+    fi
 fi
 
 if [ -z ${DB_NAME} ]
-  read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
-  if [ -z ${DB_NAME} ]
-    then
-      DB_NAME=${DEFAULT_DB_NAME}
-  fi
+  then
+    read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
+    if [ -z ${DB_NAME} ]
+      then
+        DB_NAME=${DEFAULT_DB_NAME}
+    fi
 fi
 
 echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
 command_status "Unable to connect to database\nPlease ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}" "Connected to db";
 
 if [ -z ${SITE_EMAIL} ]
-  read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
-  if [ -z ${SITE_EMAIL} ]
-    then
-      if [ -z ${ADMIN_EMAIL} ]
-        then
-          echo "Site needs an email, see the comments at the top of"
-          echo "this script for how to put a default one on command line"
-          exit 1
-      else
-        SITE_EMAIL=${ADMIN_EMAIL}
+  then
+    read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
+    if [ -z ${SITE_EMAIL} ]
+      then
+        if [ -z ${ADMIN_EMAIL} ]
+          then
+            echo "Site needs an email, see the comments at the top of"
+            echo "this script for how to put a default one on command line"
+            exit 1
+        else
+          SITE_EMAIL=${ADMIN_EMAIL}
+      fi
     fi
-  fi
 fi
 
 drush make -y ${GIT_DIR}/scripts/drush.make .
