@@ -25,8 +25,12 @@ jobs:
       - checkout
 
       - run:
-          name: Install PHP extensions
+          name: Install PHP MYSQL
           command: sudo docker-php-ext-install pdo_mysql
+
+      - run:
+          name: Install PHP GD
+          command: sudo docker-php-ext-install gd
 
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
