@@ -68,7 +68,7 @@ if [ -z ${DB_USER} ]
   if [ -z ${DB_USER} ]
     then
       DB_USER=${DEFAULT_DB_USER}
-  `fi
+  fi
 fi
 
 if [ -z ${DB_PASSWD} ]
