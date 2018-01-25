@@ -12,19 +12,25 @@ jobs:
 
     working_directory: ~/project
 
+    dependencies:
+      post:
+        - sudo apt-get update
+        - sudo apt-get install mysql-client
+        - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+        - php composer-setup.php
+        - php -r "unlink('composer-setup.php');"
+        - php composer.phar self-update
+        - sudo mv composer.phar /usr/local/bin/composer
+        - sudo composer self-update
+        - sudo cp ~/project/.circleci/config/alq.conf /etc/apache2/sites-available
+        - sudo a2ensite alq
+        - sudo service apache2 restart
+
     steps:
       - checkout
 
-      - run: sudo apt-get update
-      - run: sudo apt-get install mysql-client
-
       # Get composer working.
-      - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-      - run: php composer-setup.php
-      - run: php -r "unlink('composer-setup.php');"
-      - run: php composer.phar self-update
-      - run: sudo mv composer.phar /usr/local/bin/composer
-      - run: sudo composer self-update
+
       - run: composer install --prefer-dist
 
       - run: GIT_DIR=~/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
