@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.1.5-browsers
+      - image: circleci/php:7.2-apache-browsers
       - image: circleci/mysql:latest
 
     working_directory: ~/project
@@ -26,7 +26,7 @@ jobs:
 
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client php7.1-mysqli
+      - run: sudo apt-get install mysql-client php-mysql
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
