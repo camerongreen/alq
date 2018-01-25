@@ -15,6 +15,8 @@ jobs:
     steps:
       - checkout
 
+      - run: sudo apt install mysql-client
+
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
@@ -23,8 +25,6 @@ jobs:
       - run: sudo mv composer.phar /usr/local/bin/composer
       - run: sudo composer self-update
       - run: composer install --prefer-dist
-
-      - run: apt install mysql-client
 
       - run: GIT_DIR=~/project ADMIN=testadmin DB_USER=alq DB_NAME=alq_db DB_HOST=localhost DB_PASSWD=password SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
 
