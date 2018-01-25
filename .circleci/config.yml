@@ -17,9 +17,9 @@ jobs:
 
       - run: sudo apt install composer
 
-      - run: composer install
+      - run: composer install -n --prefer-dist
 
-      - run: ./scripts/create_site.sh
+      - run: DB_PASSWD=password SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
        
       - save_cache:
           paths:
