@@ -72,7 +72,7 @@ if [ -z ${DB_USER} ]
     fi
 fi
 
-if [ -z ${DB_PASSWD} ]
+if [ `set | grep '^DB_PASSWD=$'` ]
   then
     read -s -p "Database (and Drupal admin user) passwd:" DB_PASSWD
     # need a newline in the output here as -s swallows it
