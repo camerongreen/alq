@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt install mysql-client
+      - run: sudo apt-get update && apt-get install mysql-client
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
