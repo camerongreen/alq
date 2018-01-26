@@ -18,6 +18,7 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 * cd !$
 * mkdir sql
 * git clone https://github.com/camerongreen/alq.git
+* COMPOSER=alq/docker/config/composer.json composer install
 * mkdir public_html
 * cd alq/docker
 
@@ -27,11 +28,11 @@ Start the docker environment by running the following (sudo the docker commands 
 
 Create the empty site:
 
-    docker exec -ti alq_web bash -c "ADMIN=admin ADMIN_EMAIL=alq@example.com ../alq/scripts/create_site.sh"
+    docker exec -ti alq_web bash -c "cd public_html && ADMIN=admin ADMIN_EMAIL=alq@example.com ../alq/scripts/create_site.sh"
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml (by default called alq_latest.sql.gz):
 
-    docker exec -ti alq_web bash -c 'ADMIN_EMAIL=alq@example.com ../alq/scripts/import_prod_db.sh'
+    docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@example.com ../alq/scripts/import_prod_db.sh'
     
 # Running
     

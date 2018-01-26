@@ -44,6 +44,7 @@ jobs:
       - run: sudo mv composer.phar /usr/local/bin/composer
       - run: sudo composer self-update
 
+      - run: cp docker/config/composer.json .
       - run: composer install --prefer-dist
 
       - run: GIT_DIR=~/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh

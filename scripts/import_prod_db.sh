@@ -13,7 +13,7 @@
 
 DEFAULT_PROD_HOST="http://alq.org.au"
 
-DRUSH="drush"
+DRUSH="../vendor/bin/drush"
 
 # this is the user who will own the files, so you
 # can edit them etc
@@ -33,28 +33,43 @@ if [ -f ~/.drush_alias ]; then
 fi
 
 # first set up the database
-read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
 if [ -z $DB_USER ]
-  then
-    DB_USER=$DEFAULT_DB_USER
+then
+  read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
+  if [ -z $DB_USER ]
+    then
+      DB_USER=$DEFAULT_DB_USER
+  fi
 fi
-read -s -p "Database passwd:" DB_PASSWD
-# need a newline in the output here as -s swallows it
-echo ""
+
 if [ -z $DB_PASSWD ]
   then
-    echo "DB Password is required";
-    exit 1
+    read -s -p "Database passwd:" DB_PASSWD
+    # need a newline in the output here as -s swallows it
+    echo ""
+    if [ -z $DB_PASSWD ]
+      then
+        echo "DB Password is required";
+        exit 1
+    fi
 fi
-read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
+
 if [ -z $DB_HOST ]
   then
-    DB_HOST=$DEFAULT_DB_HOST
+    read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
+    if [ -z $DB_HOST ]
+      then
+        DB_HOST=$DEFAULT_DB_HOST
+    fi
 fi
-read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
+
 if [ -z $DB_NAME ]
   then
-    DB_NAME=$DEFAULT_DB_NAME
+    read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
+    if [ -z $DB_NAME ]
+      then
+        DB_NAME=$DEFAULT_DB_NAME
+    fi
 fi
 
 echo "SELECT 1;" | mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWD $DB_NAME > /dev/null
