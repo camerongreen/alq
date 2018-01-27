@@ -143,8 +143,8 @@ ${DRUSH} vset preprocess_js 0
 ${DRUSH} vset error_level 2
 
 # Now anonymise the users
-echo "Anonymising users";
-${DRUSH} sql-sanitize -y --sanitize-password='${DB_PASSWD}'
+echo "Anonymising users (set password to default sql-sanitize password of...password"
+${DRUSH} sql-sanitize -y
 
 echo "Clearing cache"
 ${DRUSH} cc all
