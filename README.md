@@ -32,7 +32,7 @@ Create the empty site:
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml (by default called alq_latest.sql.gz):
 
-    docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
+    docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@example.org ../alq/scripts/import_prod_db.sh'
     
 # Running
     

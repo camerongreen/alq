@@ -143,13 +143,10 @@ ${DRUSH} vset preprocess_js 0
 ${DRUSH} vset error_level 2
 
 # Now anonymise the users
-echo "Anonymising user emails";
-${DRUSH} sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
-
-chmod 755 ./scripts/password-hash.sh
-DB_PASSWD_HASH=$(./scripts/password-hash.sh "${DB_PASSWD}" | awk '{print $4;}' | perl -p -e 's/\s*//')
-echo "Anonymising user passwords, setting to admin password";
-${DRUSH} sqlq "UPDATE users SET pass='${DB_PASSWD_HASH}'"
+echo "Anonymising users";
+${DRUSH} sql-sanitize --sanitize-password='${DB_PASSWD}'
 
 echo "Clearing cache"
 ${DRUSH} cc all
+
+echo "Done :) Maybe run drush up -y"
