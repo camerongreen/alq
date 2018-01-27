@@ -38,7 +38,12 @@ if [ -f ~/.drush_alias ]
     . ~/.drush_alias
 fi
 
-DRUSH=../vendor/bin/drush
+if [ -z $CIRCLECI ]
+then
+  DRUSH=../vendor/bin/drush
+else
+  DRUSH=~/project/vendor/bin/drush
+fi
 
 #
 # Output command status and exit if error
