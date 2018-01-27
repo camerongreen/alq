@@ -144,7 +144,7 @@ ${DRUSH} vset error_level 2
 
 # Now anonymise the users
 echo "Anonymising users";
-${DRUSH} sql-sanitize --sanitize-password='${DB_PASSWD}'
+${DRUSH} sql-sanitize -y --sanitize-password='${DB_PASSWD}'
 
 echo "Clearing cache"
 ${DRUSH} cc all
