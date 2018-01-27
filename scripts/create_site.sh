@@ -137,7 +137,7 @@ if [ -z ${SITE_EMAIL} ]
 fi
 
 
-${DRUSH} make -v ${GIT_DIR}/scripts/drush.make .
+${DRUSH} make ${GIT_DIR}/scripts/drush.make .
 
 command_status "Drush make failed" "Drush make completed";
 
