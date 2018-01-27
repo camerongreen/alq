@@ -11,6 +11,8 @@
 # mods, set some values etc
 #
 
+set -e
+
 DEFAULT_PROD_HOST="http://alq.org.au"
 
 DRUSH="../vendor/bin/drush"

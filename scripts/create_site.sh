@@ -12,11 +12,13 @@
 # add drupal to it, symlink your custom modules, themes etc
 #
 
+set -e
+
 SITE_NAME="Animal Liberation Queensland"
 
 if [ -z ${GIT_DIR} ]
   then
-    GIT_DIR=/var/www/alq
+    GIT_DIR=/var/www/html/alq
 fi
 
 # this is the user who will own the files, so you 
@@ -36,12 +38,7 @@ if [ -f ~/.drush_alias ]
     . ~/.drush_alias
 fi
 
-if [ -z $CIRCLECI ]
-then
-  DRUSH=drush
-else
-  DRUSH=~/project/vendor/bin/drush
-fi
+DRUSH=../vendor/bin/drush
 
 #
 # Output command status and exit if error
@@ -140,8 +137,19 @@ ${DRUSH} make -v ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
 # remove link if it exists
-rm sites/all/modules/custom
+if [ -e sites/all/modules/custom ]
+then
+  echo "Removing module link"
+  rm sites/all/modules/custom
+fi
 
+if [ -e sites/all/themes/alq ]
+then
+  echo "Removing theme link"
+  rm sites/all/themes/alq
+fi
+
+echo "Linking directories"
 ln -s ${GIT_DIR}/modules sites/all/modules/custom
 ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
