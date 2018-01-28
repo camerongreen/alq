@@ -38,7 +38,7 @@ if [ -f ~/.drush_alias ]
     . ~/.drush_alias
 fi
 
-if [ -z $CIRCLECI ]
+if [ -z ${CIRCLECI} ]
 then
   DRUSH=../vendor/bin/drush
 else
