@@ -37,6 +37,8 @@ fi
 if [ ! -d ${DEFAULT_PRIVATE_DIR} ]
 then
   mkdir ${DEFAULT_PRIVATE_DIR}
+  chgrp ${WEBSERVER_GROUP} ${DEFAULT_PRIVATE_DIR}
+  chmod 775 ${DEFAULT_PRIVATE_DIR}
 fi
 
 # first set up the database
