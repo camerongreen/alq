@@ -170,63 +170,70 @@ chmod ug+w sites/default/
 chmod ug+w sites/default/files
 
 ${DRUSH} -y pm-disable toolbar
-${DRUSH} -y pm-enable \
-  addtoany \
-  admin \
-  admin_menu \
-  admin_menu \
-  advanced_help \
-  captcha \
-  ckeditor \
-  ckeditor_link \
-  colorbox \
-  context \
-  ctools \
-  date \
-  devel \
-  diff \
-  email \
-  entity \
-  facebook_boxes \
-  features \
-  features_diff \
-  field_collection \
-  filefield_sources \
-  imageapi \
-  imce \
-  imce_wysiwyg \
-  jquery_plugin \
-  jquery_update \
-  libraries \
-  mailsystem \
-  metatag \
-  mimemail \
-  mimemail_compress \
-  module_filter \
-  nice_menus \
-  node_reference \
-  omega_tools \
-  pathauto \
-  references \
-  responsive_menus \
-  rules \
-  smtp \
-  site_map \
-  stage_file_proxy \
-  strongarm \
-  token \
-  token_filter \
-  uc_ajax_admin \
-  uc_attribute \
-  uc_catalog \
-  uc_coupon \
-  uc_flatrate \
-  uc_paypal \
-  views \
-  views_slideshow \
-  webform \
-  workbench \
+
+MODULES=(
+  addtoany
+  admin
+  admin_menu
+  admin_menu
+  advanced_help
+  captcha
+  ckeditor
+  ckeditor_link
+  colorbox
+  context
+  ctools
+  date
+  devel
+  diff
+  email
+  entity
+  facebook_boxes
+  features
+  features_diff
+  field_collection
+  filefield_sources
+  imageapi
+  imce
+  imce_wysiwyg
+  jquery_plugin
+  jquery_update
+  libraries
+  mailsystem
+  metatag
+  mimemail
+  mimemail_compress
+  module_filter
+  nice_menus
+  node_reference
+  omega_tools
+  pathauto
+  references
+  responsive_menus
+  rules
+  smtp
+  site_map
+  stage_file_proxy
+  strongarm
+  token
+  token_filter
+  uc_ajax_admin
+  uc_attribute
+  uc_catalog
+  uc_coupon
+  uc_flatrate
+  uc_paypal
+  views
+  views_slideshow
+  webform
+  workbench
   xmlsitemap
+)
+
+for MODULE in "${MODULES[@]}"
+do
+  ${DRUSH} -y pm-enable ${MODULE}
+done
 
 # not enabled prod modules
 # googleanalytics
