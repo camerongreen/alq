@@ -9,6 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-apache-browsers
       - image: circleci/mysql:latest
+      - image: selenium/standalone-firefox:latest
 
     working_directory: ~/project
 
@@ -25,7 +26,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client libpng-dev npm
+      - run: sudo apt-get install mysql-client libpng-dev npm xvfb
 
       - run:
           name: Install PHP MYSQL
