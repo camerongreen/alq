@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "ALQ Donation form demo",
   "main": "index.html",
-  "scripts": {
-    "test": "karma start"
-  },
   "repository": {
     "type": "git",
     "url": "http://github.com/camerongreen/alq"
@@ -22,7 +19,8 @@
     "url": "https://github.com/camerongreen/alq/issues"
   },
   "devDependencies": {
-    "selenium-webdriver": "~2.46.1",
-    "nightwatch": "~0.7.11"
+    "selenium-server": "^3.8.1",
+    "chromedriver": "^2.33.2",
+    "nightwatch": "~0.9.8"
   }
 }
