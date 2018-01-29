@@ -26,8 +26,6 @@ web:
         - "26980:80"
         - "26900:5000"
     volumes:
-        - ../../public_html:/var/www/html
-        - ..:/var/www/alq
-        - ../../sql:/var/www/sql
+        - ../../:/var/www/html
     links:
         - db:mysql

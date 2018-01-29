@@ -18,6 +18,7 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 * cd !$
 * mkdir sql
 * git clone https://github.com/camerongreen/alq.git
+* COMPOSER=alq/docker/config/composer.json composer install
 * mkdir public_html
 * cd alq/docker
 
@@ -27,11 +28,11 @@ Start the docker environment by running the following (sudo the docker commands 
 
 Create the empty site:
 
-    docker exec -ti alq_web bash -c "ADMIN=admin ADMIN_EMAIL=alq@example.com ../alq/scripts/create_site.sh"
+    docker exec -ti alq_web bash -c "cd public_html && ADMIN=admin ADMIN_EMAIL=alq@example.org ../alq/scripts/create_site.sh"
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml (by default called alq_latest.sql.gz):
 
-    docker exec -ti alq_web bash -c 'ADMIN_EMAIL=alq@example.com ../alq/scripts/import_prod_db.sh'
+    docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@example.org ../alq/scripts/import_prod_db.sh'
     
 # Running
     
@@ -70,7 +71,7 @@ You can inspect the running tests, by using VNC.  For me that involved:
 
 If you want to drush etc, in the docker directory:
 
-    docker exec -ti alq_web bash -c 'drush cc all'
+    docker exec -ti alq_web bash -c 'cd public_html && drush cc all'
     
     
 # XDebugging
@@ -79,12 +80,16 @@ If you want to drush etc, in the docker directory:
 
 I set up a server for alq.test for PHPStorm, the most important thing is to get the path mappings right, and to change the port to 26980.
 
-| Local site folder | Absolute path on server    |
-|-------------------|----------------------------|
-| public_html       | /var/www/html              |
-| alq/modules       | /var/www/alq/modules       | 
-| alq/themes/alq    | /var/www/alq/themes/alq    |
-| alq/themes/rodeos | /var/www/alq/themes/rodeos |
+| Local site folder | Absolute path on server         |
+|-------------------|---------------------------------|
+| public_html       | /var/www/html/public_html       |
+| alq/modules       | /var/www/html/alq/modules       | 
+| alq/themes/alq    | /var/www/html/alq/themes/alq    |
+| alq/themes/rodeos | /var/www/html/alq/themes/rodeos |
+
+Then run docker compose with the IP address of your PC according to docker:
+
+    XDEBUG_CONFIG="remote_host=172.17.0.1" docker-compose up -d
 
 Then use an xdebug extension in your browser to turn it on.
 

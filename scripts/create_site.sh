@@ -12,11 +12,13 @@
 # add drupal to it, symlink your custom modules, themes etc
 #
 
+set -e
+
 SITE_NAME="Animal Liberation Queensland"
 
 if [ -z ${GIT_DIR} ]
   then
-    GIT_DIR=/var/www/alq
+    GIT_DIR=/var/www/html/alq
 fi
 
 # this is the user who will own the files, so you 
@@ -36,9 +38,9 @@ if [ -f ~/.drush_alias ]
     . ~/.drush_alias
 fi
 
-if [ -z $CIRCLECI ]
+if [ -z ${CIRCLECI} ]
 then
-  DRUSH=drush
+  DRUSH=../vendor/bin/drush
 else
   DRUSH=~/project/vendor/bin/drush
 fi
@@ -134,14 +136,24 @@ if [ -z ${SITE_EMAIL} ]
     fi
 fi
 
-
-${DRUSH} make -v ${GIT_DIR}/scripts/drush.make .
+${DRUSH} make ${GIT_DIR}/scripts/drush.make .
 
 command_status "Drush make failed" "Drush make completed";
 
 # remove link if it exists
-rm sites/all/modules/custom
+if [ -e sites/all/modules/custom ]
+then
+  echo "Removing module link"
+  rm sites/all/modules/custom
+fi
 
+if [ -e sites/all/themes/alq ]
+then
+  echo "Removing theme link"
+  rm sites/all/themes/alq
+fi
+
+echo "Linking directories"
 ln -s ${GIT_DIR}/modules sites/all/modules/custom
 ln -s ${GIT_DIR}/themes/alq sites/all/themes
 
@@ -158,63 +170,70 @@ chmod ug+w sites/default/
 chmod ug+w sites/default/files
 
 ${DRUSH} -y pm-disable toolbar
-${DRUSH} -y pm-enable \
-  addtoany \
-  admin \
-  admin_menu \
-  admin_menu \
-  advanced_help \
-  captcha \
-  ckeditor \
-  ckeditor_link \
-  colorbox \
-  context \
-  ctools \
-  date \
-  devel \
-  diff \
-  email \
-  entity \
-  facebook_boxes \
-  features \
-  features_diff \
-  field_collection \
-  filefield_sources \
-  imageapi \
-  imce \
-  imce_wysiwyg \
-  jquery_plugin \
-  jquery_update \
-  libraries \
-  mailsystem \
-  metatag \
-  mimemail \
-  mimemail_compress \
-  module_filter \
-  nice_menus \
-  node_reference \
-  omega_tools \
-  pathauto \
-  references \
-  responsive_menus \
-  rules \
-  smtp \
-  site_map \
-  stage_file_proxy \
-  strongarm \
-  token \
-  token_filter \
-  uc_ajax_admin \
-  uc_attribute \
-  uc_catalog \
-  uc_coupon \
-  uc_flatrate \
-  uc_paypal \
-  views \
-  views_slideshow \
-  webform \
-  workbench \
+
+MODULES=(
+  addtoany
+  admin
+  admin_menu
+  admin_menu
+  advanced_help
+  captcha
+  ckeditor
+  ckeditor_link
+  colorbox
+  context
+  ctools
+  date
+  devel
+  diff
+  email
+  entity
+  facebook_boxes
+  features
+  features_diff
+  field_collection
+  filefield_sources
+  imageapi
+  imce
+  imce_wysiwyg
+  jquery_plugin
+  jquery_update
+  libraries
+  mailsystem
+  metatag
+  mimemail
+  mimemail_compress
+  module_filter
+  nice_menus
+  node_reference
+  omega_tools
+  pathauto
+  references
+  responsive_menus
+  rules
+  smtp
+  site_map
+  stage_file_proxy
+  strongarm
+  token
+  token_filter
+  uc_ajax_admin
+  uc_attribute
+  uc_catalog
+  uc_coupon
+  uc_flatrate
+  uc_paypal
+  views
+  views_slideshow
+  webform
+  workbench
   xmlsitemap
+)
+
+for MODULE in "${MODULES[@]}"
+do
+  ${DRUSH} -y pm-enable ${MODULE}
+done
 
 # not enabled prod modules
 # googleanalytics
@@ -241,6 +260,7 @@ ${DRUSH} -y pm-enable \
 # has to be done seperately
 ${DRUSH} -y pm-enable \
   alq_mps
+
 # enable theme
 ${DRUSH} vset theme_default alq
 

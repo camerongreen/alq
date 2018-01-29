@@ -1,5 +1,6 @@
 {
     "name": "camerongreen/alq",
+    "description": "ALQ dependencies",
     "type": "project",
     "require": {
         "drush/drush": "^8.1"

@@ -218,8 +218,7 @@ function alq_mps_get_email_batch() {
     ->orderBy('created')
     ->range(0, ALQ_MAX_EMAILS_PER_RUN);
 
-  $emails = $query->execute();
-  return $emails;
+  return $query->execute();
 }
 
 /**

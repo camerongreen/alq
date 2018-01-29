@@ -4,16 +4,16 @@
  * Provides functions for the animal liberation donate form
  */
 function alq_forms_menu() {
-  $items['donate/submission'] = array(
+  $items['donate/submission'] = [
     'page callback' => 'alq_forms_submission',
     'access callback' => TRUE,
-    'type' => MENU_CALLBACK
-  );
-  $items['membership/submission'] = array(
+    'type' => MENU_CALLBACK,
+  ];
+  $items['membership/submission'] = [
     'page callback' => 'alq_forms_submission',
     'access callback' => TRUE,
-    'type' => MENU_CALLBACK
-  );
+    'type' => MENU_CALLBACK,
+  ];
   return $items;
 }
 
@@ -27,7 +27,7 @@ function alq_forms_submission() {
   try {
     $data = alq_forms_parse_post_fields();
 
-    $submission = (object) array(
+    $submission = (object) [
       'sid' => NULL,
       'nid' => $node->nid,
       'uid' => $user->uid,
@@ -35,7 +35,7 @@ function alq_forms_submission() {
       'remote_addr' => ip_address(),
       'is_draft' => FALSE,
       'data' => $data,
-    );
+    ];
 
     module_load_include('inc', 'webform', 'includes/webform.submissions');
     $sid = webform_submission_insert($node, $submission);
@@ -67,11 +67,11 @@ function alq_forms_webform_loader($title, $type) {
 }
 
 function alq_forms_parse_post_fields() {
-  $data = array();
+  $data = [];
 
   // these need to be in the same order as the database table
   // see - drush sqlq 'SELECT cid, form_key, name FROM webform_component WHERE nid = :webform_nid;'
-  $fields = array(
+  $fields = [
     'donationType',
     'amount',
     'membership',
@@ -90,13 +90,13 @@ function alq_forms_parse_post_fields() {
     'volunteering',
     'spam',
     'subject',
-  );
+  ];
 
-  $required = array(
+  $required = [
     'donationType',
     'amount',
     'subject',
-  );
+  ];
 
   for ($i = 0, $l = count($fields); $i < $l; $i++) {
     $value = array_key_exists($fields[$i], $_POST) ? $_POST[$fields[$i]] : NULL;
@@ -105,9 +105,9 @@ function alq_forms_parse_post_fields() {
       throw new Exception('Missing required field - ' . $fields[$i]);
     }
 
-    $data[$i + 1] = array(
-      $value
-    );
+    $data[$i + 1] = [
+      $value,
+    ];
   }
 
   return $data;
@@ -118,14 +118,14 @@ function alq_forms_parse_post_fields() {
  * Implements hook_block_info().
  */
 function alq_forms_block_info() {
-  return array(
-    "alq_donation_form" => array(
+  return [
+    "alq_donation_form" => [
       "info" => t("ALQ Donation Form"),
-    ),
-    "alq_membership_form" => array(
+    ],
+    "alq_membership_form" => [
       "info" => t("ALQ Membership Form"),
-    )
-  );
+    ],
+  ];
 }
 
 /**
@@ -159,12 +159,12 @@ function alq_forms_block_view($delta = "") {
       $redirect_url_cancel = $base_url . '/donate';
       $redirect_url = $base_url . '/thanks';
 
-      $block["content"] = theme("alq_donation_form", array(
+      $block["content"] = theme("alq_donation_form", [
         'action' => $url,
         'business' => $business,
         'redirect_url' => $redirect_url,
-        'redirect_url_cancel' => $redirect_url_cancel
-      ));
+        'redirect_url_cancel' => $redirect_url_cancel,
+      ]);
       break;
     case "alq_membership_form":
       drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/membership-form.js');
@@ -173,12 +173,12 @@ function alq_forms_block_view($delta = "") {
       $redirect_url_cancel = $base_url . '/membership';
       $redirect_url = $base_url . '/thanks';
 
-      $block["content"] = theme("alq_membership_form", array(
+      $block["content"] = theme("alq_membership_form", [
         'action' => $url,
         'business' => $business,
         'redirect_url' => $redirect_url,
-        'redirect_url_cancel' => $redirect_url_cancel
-      ));
+        'redirect_url_cancel' => $redirect_url_cancel,
+      ]);
       break;
   }
 
@@ -189,24 +189,87 @@ function alq_forms_block_view($delta = "") {
  * Implements hook_theme();
  */
 function alq_forms_theme() {
-  return array(
-    "alq_donation_form" => array(
+  return [
+    "alq_donation_form" => [
       "template" => "theme/donation-form",
-      "variables" => array(
+      "variables" => [
         'action' => NULL,
         'business' => NULL,
         'redirect_url' => NULL,
-        'redirect_url_cancel' => NULL
-      )
-    ),
-    "alq_membership_form" => array(
+        'redirect_url_cancel' => NULL,
+      ],
+    ],
+    "alq_membership_form" => [
       "template" => "theme/membership-form",
-      "variables" => array(
+      "variables" => [
         'action' => NULL,
         'business' => NULL,
         'redirect_url' => NULL,
-        'redirect_url_cancel' => NULL
-      )
-    ),
-  );
+        'redirect_url_cancel' => NULL,
+      ],
+    ],
+  ];
+}
+
+
+/**
+ * Implements hook_cron().
+ */
+function alq_forms_cron() {
+  $my_module = 'alq_forms';
+  $seconds_in_day = 24 * 60 * 60;
+  $days_to_email = 7; // If no submissions since this time email.
+
+  // Only run once a day.
+  if ((time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
+    $nid = 254; // Donations form.
+
+    $last_updated = alq_forms_webform_last_submission($nid);
+
+    // If the last submission was more than a week ago, email admin and log
+    // in watchdog.
+    if ($last_updated < (time() - ($days_to_email * $seconds_in_day))) {
+      watchdog(WATCHDOG_ERROR, "No submissions in last $days_to_email for form $nid");
+
+      $node_url = "http://alq.org.au/node/${nid}";
+
+      $from = variable_get('system_mail', 'info@alq.org.au');
+      $message = [
+        'id' => $my_module,
+        'from' => $from,
+        'to' => 'i@camerongreen.org',
+        'subject' => 'alq.org.au: No donations in last week',
+        'body' => "Form to check: <a href=\"${node_url}\">${node_url}</a>\n",
+        'headers' => [
+          'From' => $from,
+          'Sender' => $from,
+          'Return-Path' => $from,
+        ],
+      ];
+
+      $system = drupal_mail_system($my_module, 'webform_submissions_check');
+      $system->mail($message);
+    }
+  }
+}
+
+
+/**
+ * Last date webform had submission.
+ *
+ * @param int $nid
+ *   Nid of webform to check.
+ *
+ * @return array
+ *   Details.
+ *
+ */
+function alq_forms_webform_last_submission($nid) {
+  $query = db_select('node', 'n');
+  $query->join('webform_submissions', 'w', 'n.nid = w.nid');
+  $query->addExpression('MAX(w.completed)', 'max_completed');
+  $query->groupBy('n.nid');
+  $query->condition('n.nid', $nid);
+  $result = $query->execute();
+  return $result->fetchField();
 }
