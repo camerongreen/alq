@@ -24,9 +24,8 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt-get update
-      - run: sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client libpng-dev
+      - run: sudo apt-get update && sudo apt-get upgrade
+      - run: sudo apt-get install mysql-client libpng-dev npm
 
       - run:
           name: Install PHP MYSQL
