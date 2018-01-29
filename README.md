@@ -40,6 +40,11 @@ Once the initialisation code has been run the first time, from then on you can v
 
     docker-compose up -d
     
+If you want to drush etc, in the docker directory:
+
+    docker exec -ti alq_web bash -c 'cd public_html && drush cc all'
+    
+    
 # Emailing
 
 The SMTP module is installed in development, so you can use it to send emails if you 
@@ -60,6 +65,14 @@ To set it up in development for eg the ALQ MPs module:
 
 # Tests
 
+You need to start the site and the test container at the same time:
+
+    docker-compose -f docker-compose.yml -f docker-compose-test.yml up -d
+
+Note to stop all containers you will need to specify the same thing, eg:
+
+    docker-compose -f docker-compose.yml -f docker-compose-test.yml stop
+
 To run the nightwatch tests, from the docker directory:
 
     docker exec -ti alq_test_runner bash -c ./run-tests.sh
@@ -68,11 +81,6 @@ You can inspect the running tests, by using VNC.  For me that involved:
 
 * Installing remmima and the VNC plugin via aptitude
 * Creating a new VNC connection to the exposed port, by setting the server to 0.0.0.0:26959
-
-If you want to drush etc, in the docker directory:
-
-    docker exec -ti alq_web bash -c 'cd public_html && drush cc all'
-    
     
 # XDebugging
 

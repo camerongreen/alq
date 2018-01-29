@@ -26,7 +26,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client libpng-dev npm xvfb
+      - run: sudo apt-get install mysql-client libpng-dev nodejs nodejs-legacy npm
 
       - run:
           name: Install PHP MYSQL
