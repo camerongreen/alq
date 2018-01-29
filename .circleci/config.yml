@@ -55,4 +55,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
-      - run: cd ~/project/tests && ./run-tests.sh
+      - run: cd test && ./run-tests.sh
