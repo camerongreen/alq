@@ -9,7 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-apache-browsers
       - image: circleci/mysql:latest
-      - image: selenium/standalone-chrome:latest
 
     working_directory: ~/project
 
