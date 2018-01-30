@@ -21,6 +21,6 @@
   "devDependencies": {
     "selenium-server": "^3.8.1",
     "chromedriver": "^2.33.2",
-    "nightwatch": "~0.9.8"
+    "nightwatch": "~0.9.19"
   }
 }
