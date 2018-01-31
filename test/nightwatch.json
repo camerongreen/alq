@@ -15,7 +15,7 @@
 
   "test_settings" : {
     "default" : {
-      "launch_url" : "localhost:8080",
+      "launch_url" : "localhost",
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
       "silent": true,
