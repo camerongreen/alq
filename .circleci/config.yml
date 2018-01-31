@@ -9,7 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-apache-browsers
       - image: circleci/mysql:latest
-      - image: selenium/standalone-firefox:3.8.1
 
     working_directory: ~/project
 
@@ -28,6 +27,24 @@ jobs:
 
       - run: sudo apt-get update && sudo apt-get upgrade
       - run: sudo apt-get install mysql-client libpng-dev nodejs nodejs-legacy npm
+
+      - run:
+          name: Start Xvfb
+          command: |
+            sudo Xvfb :7055
+            export DISPLAY=:7055
+          background: true
+      - run:
+          name: Start Selenium
+          command: |
+            sudo apt-get install -y default-jre
+            wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium-server.jar
+            java -jar selenium-server.jar
+          background: true
+      - run:
+          name: PhantomJS install
+          command: |
+            sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
 
       - run:
           name: Install PHP MYSQL
