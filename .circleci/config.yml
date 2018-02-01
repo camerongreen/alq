@@ -18,8 +18,8 @@ jobs:
 
     dependencies:
       post:
-        - sudo cp ~/project/.circleci/config/alq.conf /etc/apache2/sites-available
-        - sudo a2ensite alq
+        - sudo cp ~/project/.circleci/config/alq.test /etc/apache2/sites-available
+        - sudo a2ensite alq.test
         - sudo service apache2 restart
 
     steps:
