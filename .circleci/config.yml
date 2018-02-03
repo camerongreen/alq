@@ -47,8 +47,13 @@ jobs:
           name: Install PHP GD
           command: sudo docker-php-ext-install gd
 
-      # Link the code base in
-      - run: sudo ln -s /home/circleci/project/public_html /var/www/html
+      -run: sudo service apache2 start
+
+      # Copy the code base in
+      - run: sudo cp -R /home/circleci/project/public_html/* /var/www/html/
+      - run: sudo cp -R /home/circleci/project/public_html/.* /var/www/html/
+
+      - run: cd /var/www/html
 
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
