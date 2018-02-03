@@ -69,5 +69,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
-      - run: sudo find /etc/apache
       - run: cd test && ./run-tests.sh
