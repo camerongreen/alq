@@ -15,7 +15,7 @@
 
   "test_settings" : {
     "default" : {
-      "launch_url" : "drupal.test",
+      "launch_url" : "alq.test",
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
       "silent": true,
