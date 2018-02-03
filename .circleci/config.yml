@@ -49,10 +49,6 @@ jobs:
 
       - run: sudo service apache2 start
 
-      # Copy the code base in
-      - run: cd /var/www/html
-      - run: sudo cp -r /home/circleci/project/public_html /var/www/html
-
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
@@ -63,6 +59,8 @@ jobs:
 
       - run: cp docker/config/composer.json .
       - run: composer install --prefer-dist
+
+      - run: cd /var/www/html
 
       - run: GIT_DIR=~/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
 
