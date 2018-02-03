@@ -14,20 +14,12 @@ jobs:
 
     services:
       - mysql
-      - selenium
-
-    dependencies:
-      post:
-        - sudo cp ~/project/.circleci/config/alq.test /etc/apache2/sites-available
-        - sudo a2ensite alq.test
-        - sudo service apache2 restart
 
     steps:
       - checkout
 
       - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install mysql-client libpng-dev nodejs nodejs-legacy npm
-      - run: echo "127.0.0.1   alq.test" | sudo tee --append /etc/hosts
+      - run: sudo apt-get install vim mysql-client libpng-dev nodejs nodejs-legacy npm
 
       - run:
           name: Start Xvfb
@@ -55,6 +47,9 @@ jobs:
           name: Install PHP GD
           command: sudo docker-php-ext-install gd
 
+      # Link the code base in
+      - run: sudo ln -s /home/circleci/project/public_html /var/www/html
+
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
@@ -74,4 +69,5 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
+      - run: sudo find /etc/apache
       - run: cd test && ./run-tests.sh
