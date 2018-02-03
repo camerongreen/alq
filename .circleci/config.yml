@@ -60,9 +60,7 @@ jobs:
       - run: cp docker/config/composer.json .
       - run: composer install --prefer-dist
 
-      - run: cd /var/www/html
-
-      - run: GIT_DIR=~/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org ./scripts/create_site.sh
+      - run: cd /var/www/html && GIT_DIR=~/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org sudo /home/circleci/project/scripts/create_site.sh
 
       - save_cache:
           paths:
