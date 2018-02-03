@@ -47,7 +47,7 @@ jobs:
           name: Install PHP GD
           command: sudo docker-php-ext-install gd
 
-      -run: sudo service apache2 start
+      - run: sudo service apache2 start
 
       # Copy the code base in
       - run: sudo cp -R /home/circleci/project/public_html/* /var/www/html/
