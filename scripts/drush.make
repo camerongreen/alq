@@ -34,7 +34,7 @@ projects[drupal][version] = 7.x
 ; Modules
 ; --------
 
-projects[addtoany][version] = 4.12
+projects[addtoany][version] = 4.14
 
 projects[admin][version] = 2.0-beta3
 
@@ -54,25 +54,25 @@ projects[colorbox][version] = 2.10
 
 projects[context][version] = 3.6
 
-projects[ctools][version] = 1.9
+projects[ctools][version] = 1.12
 
-projects[date][version] = 2.9
+projects[date][version] = 2.10
 
 projects[devel][version] = 1.5
 
-projects[diff][version] = 3.2
+projects[diff][version] = 3.3
 
 projects[email][version] = 1.3
 
-projects[entity][version] = 1.7
+projects[entity][version] = 1.8
 
 projects[facebook_boxes][version] = 1.0
 
-projects[features][version] = 1.0
+projects[features][version] = 2.10
 
 projects[features_diff][version] = 1.0-beta2
 
-projects[field_collection][version] = 1.0-beta11
+projects[field_collection][version] = 1.0-beta12
 
 projects[filefield_sources][version] = 1.10
 
@@ -80,7 +80,7 @@ projects[google_analytics][version] = 1.4
 
 projects[imageapi][version] = 1.x-dev
 
-projects[imce][version] = 1.10
+projects[imce][version] = 1.11
 
 projects[imce_wysiwyg][version] = 1.0
 
@@ -88,15 +88,15 @@ projects[jquery_plugin][version] = 1.0
 
 projects[jquery_update][version] = 2.7
 
-projects[libraries][version] = 2.2
+projects[libraries][version] = 2.3
 
 projects[mailsystem][version] = 2.34
 
-projects[metatag][version] = 1.13
+projects[metatag][version] = 1.22
 
-projects[mimemail][version] = 1.0-beta4
+projects[mimemail][version] = 1.0
 
-projects[module_filter][version] = 2.0
+projects[module_filter][version] = 2.1
 
 projects[nice_menus][version] = 3.x-dev
 
@@ -106,9 +106,9 @@ projects[pathauto][version] = 1.3
 
 projects[references][version] = 2.1
 
-projects[responsive_menus][version] = 1.5
+projects[responsive_menus][version] = 1.6
 
-projects[rules][version] = 2.9
+projects[rules][version] = 2.10
 
 projects[site_map][version] = 1.3
 
@@ -116,9 +116,9 @@ projects[stage_file_proxy][version] = 1.7
 
 projects[strongarm][version] = 2.0
 
-projects[smtp][version] = 1.3
+projects[smtp][version] = 1.7
 
-projects[token][version] = 1.6
+projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
@@ -126,17 +126,17 @@ projects[ubercart][version] = 3.9
 
 projects[uc_coupon][version] = 2.1-alpha7
 
-projects[views][version] = 3.13
+projects[views][version] = 3.18
 
-projects[views_slideshow][version] = 3.1
+projects[views_slideshow][version] = 3.9
 
-projects[webform][version] = 3.24
+projects[webform][version] = 3.27
 
 projects[workbench][version] = 1.2
 
 projects[wysiwyg][version] = 2.2
 
-projects[xmlsitemap][version] = 2.2
+projects[xmlsitemap][version] = 2.3
 
 
 ; Themes
