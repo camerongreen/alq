@@ -3,7 +3,7 @@
  *
  * Note to run these you will need to ln -s docs/demo . in the public_html directory
  */
-var siteUrl = 'http://alq.test';
+var siteUrl = 'http://localhost';
 var pageUrl = siteUrl + '/membership';
 
 this.testAnnualRepeat = function (browser) {
