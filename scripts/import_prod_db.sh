@@ -81,12 +81,12 @@ if [ -z ${DB_NAME} ]
     fi
 fi
 
-echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
+echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} > /dev/null
 
 if [ $? -ne 0 ]
   then
     echo "Unable to connect to database"
-    echo "Please ensure you have created ${DB_NAME} and granted access to ${DB_USER}@${DB_HOST}"
+    echo "Please ensure you have granted access to ${DB_NAME} for ${DB_USER}@${DB_HOST}"
     exit 1
 else
   echo "Connected to db"
