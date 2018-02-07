@@ -81,7 +81,7 @@ function alq_mps_schema() {
         'description' => 'LGA Division',
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
         'default' => ''
       ),
       'state_district' => array(
@@ -202,4 +202,19 @@ function alq_mps_schema() {
     'primary key' => array('id'),
   ];
   return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Allow null in lga division.
+ */
+function alq_mps_update_7001() {
+  db_change_field(ALQ_ELECTORATES_TABLE, 'lga_division', 'lga_division', [
+    'description' => 'LGA Division',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+    'default' => ''
+  ]);
 }

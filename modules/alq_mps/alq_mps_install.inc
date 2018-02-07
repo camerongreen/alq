@@ -17,35 +17,51 @@ $GLOBALS['mpsCvsFields'] = [
 ];
 
 /**
- * Turn the electorates CSV into a keyed hash
+ * Import the default electorates file.
  *
  * @return  array[array]
  */
 function alq_mps_insert_electorates() {
-  if (($handle = fopen(ALQ_ELECTORATES_FILE, "r")) === FALSE) {
-    die('Unable to open ' . ALQ_ELECTORATES_FILE);
+  return alq_mps_import_electorates(ALQ_ELECTORATES_FILE);
+}
+
+/**
+ * Given a file, import it into the electorates table, clearing
+ * any existing electorates.
+ *
+ * @param string $filename
+ *   Name of file to open.
+ * @param int $ignore_rows
+ *   Optional - number of csv header rows to ignore.
+ *
+ * @return  array[array]
+ */
+function alq_mps_import_electorates($filename, $ignore_rows=1) {
+  // Delete existing members.
+  db_truncate(ALQ_ELECTORATES_TABLE)->execute();
+
+  if (($handle = fopen($filename, "r")) === FALSE) {
+    die('Unable to open ' . $filename);
   }
 
-  // ignore header row
-  $first = TRUE;
   $electorates = [];
   $electorateFields = [
     'id' => NULL,
-    'lga_council' => 0,
-    'lga_division' => 1,
-    'state_district' => 2,
-    'federal_district' => 3,
-    'locality' => 4,
-    'postcode' => 5,
+    'lga_council' => 1,
+    'lga_division' => NULL,
+    'state_district' => 0,
+    'federal_district' => 2,
+    'locality' => 3,
+    'postcode' => 4,
   ];
 
   $query = db_insert(ALQ_ELECTORATES_TABLE)->fields(array_keys($electorateFields));
 
+  $count = 0;
+
   while (($electorate = fgetcsv($handle)) !== FALSE) {
-    if ($first) {
-      $first = FALSE;
-    }
-    else {
+    // Ignore header rows.
+    if (++$count > $ignore_rows) {
       $electorateInsert = [];
 
       foreach ($electorateFields as $field => $index) {
