@@ -156,4 +156,4 @@ ${DRUSH} sql-sanitize -y
 echo "Clearing cache"
 ${DRUSH} cc all
 
-echo "Done :) Maybe run drush up -y"
+echo "Done :) Maybe run drush up -y and update the makefile with any updates!"

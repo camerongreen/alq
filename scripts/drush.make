@@ -46,7 +46,7 @@ projects[boost][version] = 1.0
 
 projects[captcha][version] = 1.3
 
-projects[ckeditor][version] = 1.17
+projects[ckeditor][version] = 1.18
 
 projects[ckeditor_link][version] = 2.4
 
@@ -74,7 +74,7 @@ projects[features_diff][version] = 1.0-beta2
 
 projects[field_collection][version] = 1.0-beta12
 
-projects[filefield_sources][version] = 1.10
+projects[filefield_sources][version] = 1.11
 
 projects[google_analytics][version] = 1.4
 
@@ -122,7 +122,7 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ubercart][version] = 3.9
+projects[ubercart][version] = 3.11
 
 projects[uc_coupon][version] = 2.1-alpha7
 
