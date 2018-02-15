@@ -6,8 +6,8 @@
  * To install, first install alq_mps_feature, then install alq_mps_perms_feature
  */
 
-include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_install.inc');
-include_once(drupal_get_path('module', 'alq_mps') . '/alq_mps_export.inc');
+module_load_include('inc', 'alq_mps', 'alq_mps_install');
+module_load_include('inc', 'alq_mps', 'alq_mps_export');
 
 define('ALQ_MAX_EMAILS_PER_RUN', 200); // hostgator limit is 500 per hour
 

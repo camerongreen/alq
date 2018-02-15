@@ -24,7 +24,6 @@ web:
         - PHP_IDE_CONFIG
     ports:
         - "26980:80"
-        - "26900:5000"
     volumes:
         - ../../:/var/www/html
     links:

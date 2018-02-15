@@ -12,7 +12,7 @@ define('ALQ_MPS_EMAILEE_NODE_TYPE', 'emailee');
 function alq_mps_export_emailees() {
   $query = db_select('node', 'n');
   $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
-  $query->fields('n', array('nid'))
+  $query->fields('n', ['nid'])
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
     ->condition('fdfp.field_party_value', 'N/A', '!='); // ignore test users
   $nids = $query->execute()->fetchCol();
@@ -28,7 +28,7 @@ function alq_mps_export_emailees() {
   drush_log(dt('@function - Exporting @nodes @type', [
     '@function' => __FUNCTION__,
     '@nodes' => count($nodes),
-    '@type' => ALQ_MPS_EMAILEE_NODE_TYPE
+    '@type' => ALQ_MPS_EMAILEE_NODE_TYPE,
   ]), 'notice');
 
   print drupal_json_encode($nodes);
@@ -38,6 +38,7 @@ function alq_mps_export_emailees() {
  * Call back to import emailees from json file
  *
  * @param $file
+ *
  * @return bool
  */
 function alq_mps_import_emailees($file) {
@@ -66,12 +67,13 @@ function alq_mps_import_emailees($file) {
   }
   drush_log(dt('Updated @successes nodes out of @nodes', [
     '@successes' => $successes,
-    '@nodes' => count($jsonNodes)
+    '@nodes' => count($jsonNodes),
   ]), 'notice');
 }
 
 /**
  * @param $file
+ *
  * @return mixed
  */
 function getJsonNodes($file) {
@@ -81,7 +83,7 @@ function getJsonNodes($file) {
 
   drush_log(dt('Read @nodes objects from @file', [
     '@nodes' => count($jsonNodes),
-    '@file' => $file
+    '@file' => $file,
   ]), 'notice');
 
   return $jsonNodes;
@@ -102,10 +104,11 @@ function alq_mps_check_import($file) {
 }
 
 /**
- * Update an invidual emailee's whole record
+ * Update an individual emailee's whole record.
  *
  * @param $node
  * @param $newDetails
+ *
  * @return bool
  */
 function alq_mps_update_emailee($node, $newDetails) {
@@ -123,29 +126,27 @@ function alq_mps_update_emailee($node, $newDetails) {
 }
 
 /**
- * Do our best to find each MP, using electorate and name
+ * Do our best to find each MP, using electorate.
  *
  * @param $details
+ *
  * @return bool|mixed
  */
 function alq_mps_find_emailee($details) {
   // try to deal with inconsistent punctuation etc
-  $familyName = preg_replace('/\W/', '_', $details['field_family_name']['und'][0]['value']);
-  $givenNames = preg_replace('/\W/', '_', $details['field_given_names']['und'][0]['value']);
-  $party = $details['field_party']['und'][0]['value'];
-  $electorate = preg_replace('/\W/', '_', $details['field_electorate']['und'][0]['value']);
+  $electorate = $details['field_electorate']['und'][0]['value'];
+  $type = $details['field_electorate_type']['und'][0]['value'];
   $query = db_select('node', 'n');
-  $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
   $query->join('field_data_field_electorate', 'fdfe', 'fdfe.entity_id = n.nid');
-  $query->fields('n', array('nid'))
+  $query->join('field_data_field_electorate_type', 'fdfet', 'fdfet.entity_id = n.nid');
+  $query->fields('n', ['nid'])
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('n.title', '%' . $familyName . '%' . $givenNames . '%', 'like')
-    ->condition('fdfp.entity_type', 'node')
-    ->condition('fdfp.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfp.field_party_value', $party)
     ->condition('fdfe.entity_type', 'node')
     ->condition('fdfe.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfe.field_electorate_value', $electorate, 'like');
+    ->condition('fdfet.entity_type', 'node')
+    ->condition('fdfet.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
+    ->condition('fdfet.field_electorate_type_value', $type)
+    ->condition('fdfe.field_electorate_value', $electorate);
 
   $nid = $query->execute()->fetchField();
 
@@ -161,6 +162,7 @@ function alq_mps_find_emailee($details) {
  *
  * @param $node
  * @param $details
+ *
  * @return mixed
  */
 function alq_mps_update_node($node, $details) {
@@ -170,7 +172,7 @@ function alq_mps_update_node($node, $details) {
     'field_position',
     'field_preferred_name',
     'field_qualifications',
-    'title'
+    'title',
   ];
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $node_wrapper->title->set($details['title']);
@@ -189,6 +191,7 @@ function alq_mps_update_node($node, $details) {
  *
  * @param $rawNode
  * @param $newDetails
+ *
  * @return bool
  */
 function alq_mps_update_offices($rawNode, $newDetails) {
@@ -207,7 +210,7 @@ function alq_mps_update_offices($rawNode, $newDetails) {
       'field_fax',
       'field_phone',
       'field_postcode',
-      'field_toll_free_phone'
+      'field_toll_free_phone',
     ];
 
     foreach ($fields as $field) {
