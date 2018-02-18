@@ -1054,3 +1054,72 @@ function alq_mps_replace_tokens($text, $tokensAndValues) {
 
   return $returnVal;
 }
+
+
+/**
+ * Parse the mps data and insert into db
+ *
+ * @param  array $mps
+ *
+ * @return  array
+ */
+function alq_mps_create($mp) {
+  $values = [
+    'type' => 'emailee',
+    'uid' => 1,
+  ];
+
+  $entity = entity_create('node', $values);
+  $ewrapper = entity_metadata_wrapper('node', $entity);
+
+  $ewrapper->field_electorate_type->set($mp['state']);
+  $ewrapper->field_electorate->set($mp['electorate']);
+  $ewrapper->field_party->set($mp['party']);
+
+  $ewrapper->title->set($mp['name']);  // use nodes title field for name, we also have field_title later
+  $ewrapper->field_position->set($mp['position']);
+  $ewrapper->field_title->set($mp['title']);
+
+  // save our new MP
+  $ewrapper->save();
+
+  $nid = $ewrapper->getIdentifier();
+
+  $node = node_load($nid);
+
+  foreach ($mp['offices'] as $office) {
+    // Setup the values in the structure expected by the field_collection entity.
+    $values = [
+      'field_name' => 'field_office',
+      'field_description' => [
+        LANGUAGE_NONE => [['value' => $office['type']]],
+      ],
+      'field_address' => [
+        LANGUAGE_NONE => [['value' => $office['address']]],
+      ],
+      'field_postcode' => [
+        LANGUAGE_NONE => [['value' => $office['postcode']]],
+      ],
+      'field_email' => [
+        LANGUAGE_NONE => [['email' => $office['email']]],
+      ],
+      'field_phone' => [
+        LANGUAGE_NONE => [['value' => $office['phone']]],
+      ],
+      'field_toll_free_phone' => [
+        LANGUAGE_NONE => [['value' => $office['toll_free_phone']]],
+      ],
+      'field_fax' => [
+        LANGUAGE_NONE => [['value' => $office['fax']]],
+      ],
+    ];
+
+    $officeEntity = entity_create('field_collection_item', $values);
+
+    $officeEntity->setHostEntity('node', $node);
+
+    $officeEntity->save();
+  }
+
+  return $node;
+}

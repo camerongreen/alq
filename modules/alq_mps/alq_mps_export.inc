@@ -52,8 +52,17 @@ function alq_mps_import_emailees($file) {
   foreach ($jsonNodes as $jsonNode) {
     $node = alq_mps_find_emailee($jsonNode);
     if ($node) {
+      drush_log(dt('Found @nid - @title', [
+        '@nid' => $node->nid,
+        '@title' => $node->title,
+      ]));
+
       if (alq_mps_update_emailee($node, $jsonNode)) {
         ++$successes;
+        drush_log(dt('Updated nid @nid (import nid @inid)', [
+          '@nid' => $node->nid,
+          '@inid' => $jsonNode['nid'],
+        ]), 'info');
       }
       else {
         drush_log(dt('Update failed for nid: @nid', ['@nid' => $jsonNode['nid']]), 'error');
@@ -62,13 +71,16 @@ function alq_mps_import_emailees($file) {
       }
     }
     else {
-      drush_log(dt('Unable to find @nid', ['@nid' => $jsonNode['nid']]), 'error');
+      drush_log(dt('Unable to find import nid @nid, creating', ['@nid' => $jsonNode['nid']]), 'error');
+      alq_mps_create_emailee($jsonNode);
     }
   }
   drush_log(dt('Updated @successes nodes out of @nodes', [
     '@successes' => $successes,
     '@nodes' => count($jsonNodes),
   ]), 'notice');
+
+  return TRUE;
 }
 
 /**
@@ -133,19 +145,24 @@ function alq_mps_update_emailee($node, $newDetails) {
  * @return bool|mixed
  */
 function alq_mps_find_emailee($details) {
-  // try to deal with inconsistent punctuation etc
   $electorate = $details['field_electorate']['und'][0]['value'];
   $type = $details['field_electorate_type']['und'][0]['value'];
+
+  drush_print(dt('Searching for @electorate type @type', [
+    '@electorate' => $electorate,
+    '@type' => $type,
+  ]));
+
   $query = db_select('node', 'n');
   $query->join('field_data_field_electorate', 'fdfe', 'fdfe.entity_id = n.nid');
   $query->join('field_data_field_electorate_type', 'fdfet', 'fdfet.entity_id = n.nid');
   $query->fields('n', ['nid'])
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfe.entity_type', 'node')
-    ->condition('fdfe.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
     ->condition('fdfet.entity_type', 'node')
     ->condition('fdfet.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
     ->condition('fdfet.field_electorate_type_value', $type)
+    ->condition('fdfe.entity_type', 'node')
+    ->condition('fdfe.bundle', ALQ_MPS_EMAILEE_NODE_TYPE)
     ->condition('fdfe.field_electorate_value', $electorate);
 
   $nid = $query->execute()->fetchField();
@@ -155,6 +172,53 @@ function alq_mps_find_emailee($details) {
   }
 
   return FALSE;
+}
+
+/**
+ * Create an emailee.
+ *
+ * @param $details
+ *
+ * @return array
+ */
+function alq_mps_create_emailee($details) {
+  $fields['name'] = $details['title'];
+
+  $keys = [
+    'electorate_type',
+    'electorate',
+    'given_name',
+    'family_name',
+    'preferred_name',
+    'party',
+    'position',
+    'title',
+  ];
+
+  foreach ($keys as $key) {
+    $fields[$key] = $details['field_' . $key][LANGUAGE_NONE][0]['value'];
+  }
+
+  foreach ($fields['offices'] as $office_array) {
+    $office = [];
+    $office_raw = array_shift($office_array);
+
+    $keys = [
+      'field_address',
+      'field_fax',
+      'field_phone',
+      'field_postcode',
+      'field_toll_free_phone',
+    ];
+
+    foreach ($keys as $key) {
+      $office[$key] = $office_raw['field_' . $key][LANGUAGE_NONE][0]['value'];
+    }
+
+    $fields['offices'][] = $office;
+  }
+
+  return alq_mps_create($fields);
 }
 
 /**
@@ -169,9 +233,11 @@ function alq_mps_update_node($node, $details) {
   $fields = [
     'field_family_name',
     'field_given_names',
+    'field_party',
     'field_position',
     'field_preferred_name',
     'field_qualifications',
+    'field_title',
     'title',
   ];
   $node_wrapper = entity_metadata_wrapper('node', $node);
@@ -201,22 +267,27 @@ function alq_mps_update_offices($rawNode, $newDetails) {
   $errors = 0;
 
   for ($i = 0, $l = count($newOffices); $i < $l; $i++) {
-    $office = entity_metadata_wrapper('field_collection_item', $rawOffices[$i]);
-    // In json there is an extra level of the array here so double shift
-    // I'm sure there's a good reason for it
-    $newOffice = array_shift($newOffices[$i]);
-    $fields = [
-      'field_address',
-      'field_fax',
-      'field_phone',
-      'field_postcode',
-      'field_toll_free_phone',
-    ];
+    if (isset($rawOffices[$i])) {
+
+      $office = entity_metadata_wrapper('field_collection_item', $rawOffices[$i]);
+      // In json there is an extra level of the array here so double shift
+      // I'm sure there's a good reason for it
+      $newOffice = array_shift($newOffices[$i]);
+      $fields = [
+        'field_address',
+        'field_fax',
+        'field_phone',
+        'field_postcode',
+        'field_toll_free_phone',
+      ];
+    }
 
     foreach ($fields as $field) {
-      $officeVal = $office->$field->value();
-      $val = $newOffice[$field][LANGUAGE_NONE][0]['value'];
-      $office->$field->set(is_array($officeVal) ? [$val] : $val);
+      if (property_exists($office, $field)) {
+        $officeVal = $office->$field->value();
+        $val = isset($newOffice[$field][LANGUAGE_NONE][0]['value']) ? $newOffice[$field][LANGUAGE_NONE][0]['value'] : NULL;
+        $office->$field->set(is_array($officeVal) ? [$val] : $val);
+      }
     }
 
     if (!$office->save()) {

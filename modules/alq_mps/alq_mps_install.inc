@@ -1,7 +1,8 @@
 <?php
 /**
  * @file
- * Provides functions to import the mps, electorates and offices in to the database
+ * Provides functions to import the mps, electorates and offices in to the
+ *   database
  */
 
 define('ALQ_MPS_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_QLD_Members_List.csv');
@@ -36,7 +37,7 @@ function alq_mps_insert_electorates() {
  *
  * @return  array[array]
  */
-function alq_mps_import_electorates($filename, $ignore_rows=1) {
+function alq_mps_import_electorates($filename, $ignore_rows = 1) {
   // Delete existing members.
   db_truncate(ALQ_ELECTORATES_TABLE)->execute();
 
@@ -86,87 +87,49 @@ function alq_mps_import_electorates($filename, $ignore_rows=1) {
  * Parse the mps data and insert into db
  *
  * @param  array $mps
+ *
  * @return  array
  */
-function alq_mps_insert($mps) {
+function alq_mps_insert_all($mps) {
   foreach ($mps as $mp) {
-    $values = array(
-      'type' => 'emailee',
-      'uid' => 1
-    );
-
-    $entity = entity_create('node', $values);
-    $ewrapper = entity_metadata_wrapper('node', $entity);
-
-    $ewrapper->field_electorate_type->set('state'); // hard code for first iteration
-    $ewrapper->field_electorate->set($mp[$GLOBALS['mpsCvsFields']['electorate']]);
-    $ewrapper->field_party->set($mp[$GLOBALS['mpsCvsFields']['party']]);
-
-    // parse name, title etc from member details
-    $member = $mp[$GLOBALS['mpsCvsFields']['member']];
-
-    $title = alq_mps_parse_title($member);
-    if ($title) {
-      $member = preg_replace('/\s*\[[^\]]+\]/', '', $member);
-    }
-
-    $rawValues = explode("\n", $member);
-
-    $name = array_shift($rawValues); // name is first line
-    $ewrapper->title->set($name);  // use nodes title field for name, we also have field_title later
-    $ewrapper->field_position->set(count($rawValues) > 0 ? implode("\n", $rawValues) : NULL);;
-    $ewrapper->field_title->set($title);
-
-    // save our new MP
-    $ewrapper->save();
-
-    $nid = $ewrapper->getIdentifier();
-
-    $node = node_load($nid);
-
-    // parse all the address details into a useful form
-    $address = $mp[$GLOBALS['mpsCvsFields']['address']];
-    $phone = $mp[$GLOBALS['mpsCvsFields']['phone']];
-
-    $officeDetails = alq_mps_parse_office_details($GLOBALS['officeFields'], $address, $phone);
-
-    // Load the controller class file.
-    module_load_include('inc', 'entity', 'includes/entity.controller');
-
-    foreach ($officeDetails as $office) {
-      // Setup the values in the structure expected by the field_collection entity.
-      $values = [
-        'field_name' => 'field_office',
-        'field_description' => [
-          LANGUAGE_NONE => [['value' => $office['type']]],
-        ],
-        'field_address' => [
-          LANGUAGE_NONE => [['value' => $office['address']]],
-        ],
-        'field_postcode' => [
-          LANGUAGE_NONE => [['value' => $office['postcode']]],
-        ],
-        'field_email' => [
-          LANGUAGE_NONE => [['email' => $office['email']]],
-        ],
-        'field_phone' => [
-          LANGUAGE_NONE => [['value' => $office['phone']]],
-        ],
-        'field_toll_free_phone' => [
-          LANGUAGE_NONE => [['value' => $office['toll_free_phone']]],
-        ],
-        'field_fax' => [
-          LANGUAGE_NONE => [['value' => $office['fax']]],
-        ],
-      ];
-
-      $officeEntity = entity_create('field_collection_item', $values);
-
-      $officeEntity->setHostEntity('node', $node);
-
-      $officeEntity->save();
-    }
+    alq_mps_insert($mp);
   }
+}
+
+/**
+ * Parse the mps data and insert into db
+ *
+ * @param  array $mps
+ *
+ * @return  array
+ */
+function alq_mps_insert($mp) {
+  $fields['electorate_type'] = 'state'; // hard code for first iteration
+  $fields['electorate'] = $mp[$GLOBALS['mpsCvsFields']['electorate']];
+  $fields['party'] = $mp[$GLOBALS['mpsCvsFields']['party']];
+
+  // parse name, title etc from member details
+  $member = $mp[$GLOBALS['mpsCvsFields']['member']];
+
+  $title = alq_mps_parse_title($member);
+  if ($title) {
+    $member = preg_replace('/\s*\[[^\]]+\]/', '', $member);
+  }
+
+  $rawValues = explode("\n", $member);
+
+  $name = array_shift($rawValues); // name is first line
+  $fields['name'] = $name;  // use nodes title field for name, we also have field_title later
+  $fields['position'] = count($rawValues) > 0 ? implode("\n", $rawValues) : NULL;
+  $fields['title'] = $title;
+
+  // parse all the address details into a useful form
+  $address = $mp[$GLOBALS['mpsCvsFields']['address']];
+  $phone = $mp[$GLOBALS['mpsCvsFields']['phone']];
+
+  $fields['offices'] = alq_mps_parse_office_details($GLOBALS['officeFields'], $address, $phone);
+
+  alq_mps_create($fields);
 }
 
 /**
@@ -174,6 +137,7 @@ function alq_mps_insert($mps) {
  * if not present return Mr which seems to be default
  *
  * @param $value
+ *
  * @return string|null
  */
 function alq_mps_parse_title($value) {
@@ -191,6 +155,7 @@ function alq_mps_parse_title($value) {
  * @param array $officeFields
  * @param string $address
  * @param string $phone
+ *
  * @return array|false
  */
 function alq_mps_parse_office_details($officeFields, $address, $phone) {
@@ -288,6 +253,7 @@ function alq_mps_parse_office_details($officeFields, $address, $phone) {
  * Parse phone numbers from phone field
  *
  * @param $phone
+ *
  * @return array
  */
 function parsePhoneValues($phone) {
@@ -381,6 +347,7 @@ function alq_mps_get_raw() {
  * Check if a csv row is empty
  *
  * @param $csvArray
+ *
  * @return bool
  */
 function alq_mps_empty_row($csvArray) {
