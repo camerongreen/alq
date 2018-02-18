@@ -51,14 +51,14 @@ function alq_mps_menu() {
  * Implements hook_block_info().
  */
 function alq_mps_block_info() {
-  return array(
-    'alq_mps_email_campaign_display' => array(
+  return [
+    'alq_mps_email_campaign_display' => [
       'info' => t('ALQ MPS Email Campaign display'),
-    ),
-    'alq_mps_email_campaign_stats' => array(
+    ],
+    'alq_mps_email_campaign_stats' => [
       'info' => t('ALQ MPS Email Campaign statistics'),
-    ),
-  );
+    ],
+  ];
 }
 
 
@@ -116,6 +116,7 @@ function alq_mps_cron() {
  * Loads up the CC fields for an email campaign
  *
  * @param int $campaign_id
+ *
  * @return array
  */
 function alq_mps_get_ccs($campaign_id) {
@@ -135,11 +136,12 @@ function alq_mps_get_ccs($campaign_id) {
  * Loads up the footer field for an email campaign
  *
  * @param int $campaign_id
+ *
  * @return string
  */
 function alq_mps_get_footer($campaign_id) {
   $campaign = node_load($campaign_id);
-  return property_exists($campaign, 'field_footer') && array_key_exists(LANGUAGE_NONE, $campaign->field_footer) ? $campaign->field_footer[LANGUAGE_NONE][0]['value'] : false;
+  return property_exists($campaign, 'field_footer') && array_key_exists(LANGUAGE_NONE, $campaign->field_footer) ? $campaign->field_footer[LANGUAGE_NONE][0]['value'] : FALSE;
 }
 
 /**
@@ -148,9 +150,9 @@ function alq_mps_get_footer($campaign_id) {
  */
 function alq_mps_send_emails() {
   $emails = alq_mps_get_email_batch();
-  
+
   $emailCount = $emails->rowCount();
-  
+
   // use this to count the number of emails we can send per run
   // we'll ignore errors in doing this
   $sentEmails = 0;
@@ -201,14 +203,14 @@ function alq_mps_send_emails() {
   if ($emailCount > 0) {
     watchdog('alq_mps', t('alq_mps cron run. @emails campaign email/s found (error/s @errors)', [
       '@emails' => $emailCount,
-      '@errors' => $errors
+      '@errors' => $errors,
     ]));
   }
 }
 
 /**
  * Get a batch of emails with null actions, limited by run
- * 
+ *
  * @return \DatabaseStatementInterface|null
  */
 function alq_mps_get_email_batch() {
@@ -233,7 +235,7 @@ function alq_mps_cleanup_emails() {
 
   if ($emails > 0) {
     watchdog('alq_mps', t('alq_mps cron run. cleaned up @emails emails', [
-      '@emails' => $emails
+      '@emails' => $emails,
     ]));
   }
 }
@@ -244,6 +246,7 @@ function alq_mps_cleanup_emails() {
  * @param object $recipient
  *  node_wrapper from entity api
  * @param object $fields
+ *
  * @return array
  */
 function alq_mps_email($recipient, $fields) {
@@ -272,6 +275,7 @@ function alq_mps_email($recipient, $fields) {
  * Sends a confirmation email and records result in ALQ_MPS_EMAIL_TABLE
  *
  * @param $fields
+ *
  * @return boolean|array
  */
 function alq_mps_confirmation_email($fields) {
@@ -347,6 +351,7 @@ function alq_mps_mail($key, &$message, $params) {
  *
  * @param $key
  * @param $params
+ *
  * @return  string $body
  */
 function alq_mps_format_email($key, $params) {
@@ -366,6 +371,7 @@ function alq_mps_format_email($key, $params) {
  *
  * @param $key
  * @param $params
+ *
  * @return  array ['subject', 'body']
  */
 function alq_mps_confirmation_email_html($key, $params) {
@@ -378,7 +384,7 @@ function alq_mps_confirmation_email_html($key, $params) {
 
   return [
     'subject' => $subject,
-    'body' => $body
+    'body' => $body,
   ];
 }
 
@@ -402,12 +408,12 @@ function alq_mps_search($search) {
     $query->condition('fel.entity_type', 'node', '=')
       ->fields('n', [
         'title',
-        'nid'
+        'nid',
       ])
       ->fields('ele', [
         'locality',
         'state_district',
-        'postcode'
+        'postcode',
       ]);
 
     $query->orderBy('ele.locality', 'ASC');
@@ -425,6 +431,7 @@ function alq_mps_search($search) {
  * Function to be called which shows the email statistics
  *
  * @param $node
+ *
  * @return string
  */
 function alq_mps_get_email_campaign_stats($node) {
@@ -455,15 +462,15 @@ function alq_mps_get_email_campaign_stats($node) {
     drupal_add_js([
       'alq_mps' => [
         'emails' => $emails,
-        'ALQ_EMAIL_SUCCESS_STATUS' => ALQ_EMAIL_SUCCESS_STATUS
-      ]
+        'ALQ_EMAIL_SUCCESS_STATUS' => ALQ_EMAIL_SUCCESS_STATUS,
+      ],
     ], ['type' => 'setting']);
 
     return theme('alq_mps_email_campaign_stats', [
       'emails' => $emails,
       'sent' => $sent,
       'errors' => $errors,
-      'unsent' => $unsent
+      'unsent' => $unsent,
     ]);
   }
 
@@ -474,6 +481,7 @@ function alq_mps_get_email_campaign_stats($node) {
  * Function to be called which shows the email statistics
  *
  * @param $campaignId
+ *
  * @return array
  */
 function alq_mps_get_email_campaign_emails($campaignId) {
@@ -489,6 +497,7 @@ function alq_mps_get_email_campaign_emails($campaignId) {
  * Function to be called which shows the form, loads up the JS etc libraries
  *
  * @param $node
+ *
  * @return string
  */
 function alq_mps_get_email_campaign($node) {
@@ -515,6 +524,7 @@ function alq_mps_get_email_campaign($node) {
  * If this node has an email campaign, return its id, otherwise false
  *
  * @param $nid
+ *
  * @return mixed  false or campaign id
  */
 function alq_mps_has_email_campaign($nid) {
@@ -523,7 +533,7 @@ function alq_mps_has_email_campaign($nid) {
     ->condition('nrf.field_parent_article_nid', $nid, '=');
 
   $query->fields('nrf', [
-    'entity_id'
+    'entity_id',
   ]);
 
   $result = $query->execute();
@@ -541,6 +551,7 @@ function alq_mps_has_email_campaign($nid) {
  * campaign
  *
  * @param $nid
+ *
  * @return boolean
  */
 function alq_mps_get_campaign_type($nid) {
@@ -549,7 +560,7 @@ function alq_mps_get_campaign_type($nid) {
   $query->condition('fdfct.entity_type', 'node', '=')
     ->condition('fdfct.entity_id', $nid, '=');
   $query->fields('fdfct', [
-    'field_campaign_type_value'
+    'field_campaign_type_value',
   ]);
 
   $result = $query->execute();
@@ -563,6 +574,7 @@ function alq_mps_get_campaign_type($nid) {
  * If this campaign has an emailee, return its id, otherwise false
  *
  * @param $nid
+ *
  * @return mixed  emailee nid or false
  */
 function alq_mps_get_default_emailee($nid) {
@@ -570,7 +582,7 @@ function alq_mps_get_default_emailee($nid) {
   $query->condition('erf.entity_type', 'node', '=')
     ->condition('erf.entity_id', $nid, '=');
   $query->fields('erf', [
-    'field_emailee_nid'
+    'field_emailee_nid',
   ]);
 
   $result = $query->execute();
@@ -589,6 +601,7 @@ function alq_mps_get_default_emailee($nid) {
  * @param $form
  * @param $form_state
  * @param $cnode
+ *
  * @return mixed
  */
 function alq_mps_email_form($form, &$form_state, $cnode) {
@@ -627,35 +640,35 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       '#attributes' => [
         'autocomplete' => 'off',
         'placeholder' => t('Search using your suburb or postcode'),
-        'class' => ['form-control', 'suburb-search']
-      ]
+        'class' => ['form-control', 'suburb-search'],
+      ],
     ];
 
     $form['suburb_help'] = [
       '#type' => 'markup',
       '#markup' => 'If multiple electorates are listed, go here to
         <a href="https://www.ecq.qld.gov.au/electoral-boundaries/find-my-electorate/state-district-maps-new"
-          target="_blank"> find your electorate</a>.'
+          target="_blank"> find your electorate</a>.',
     ];
 
     if ($emailee) {
       $form['suburb_default'] = [
         '#type' => 'markup',
-        '#markup' => 'Outside of Queensland? <a href="javascript://" id="suburb-default">Click here to email the responsible minister</a>.'
+        '#markup' => 'Outside of Queensland? <a href="javascript://" id="suburb-default">Click here to email the responsible minister</a>.',
       ];
       $form['emailee_default_name'] = [
         '#type' => 'hidden',
         '#value' => $emailee->title,
         '#attributes' => [
-          'id' => 'edit-emailee-default-name'
-        ]
+          'id' => 'edit-emailee-default-name',
+        ],
       ];
       $form['emailee_default_nid'] = [
         '#type' => 'hidden',
         '#value' => $emailee->nid,
         '#attributes' => [
-          'id' => 'edit-emailee-default-nid'
-        ]
+          'id' => 'edit-emailee-default-nid',
+        ],
       ];
     }
   }
@@ -667,7 +680,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#attributes' => [
       'class' => ['form-control'],
       'readonly' => 'readonly',
-    ]
+    ],
   ];
 
   if ($campaign_type === 'single') {
@@ -681,7 +694,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
         '#attributes' => [
           'class' => ['form-control'],
           'readonly' => 'readonly',
-        ]
+        ],
       ];
     }
   }
@@ -692,7 +705,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       '#attributes' => [
         'class' => ['form-control'],
         'readonly' => 'readonly',
-      ]
+      ],
     ];
   }
 
@@ -700,7 +713,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#type' => 'hidden',
     '#required' => TRUE,
     '#attributes' => [
-      'id' => 'edit-emailee-nid'
+      'id' => 'edit-emailee-nid',
     ],
   ];
 
@@ -714,8 +727,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#required' => TRUE,
     '#default_value' => $cnode->title,
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
   $form['body'] = [
     '#type' => 'textarea',
@@ -723,8 +736,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#required' => TRUE,
     '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]["value"],
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
   $form['default_body'] = [
     '#type' => 'hidden',
@@ -736,16 +749,16 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#title' => t('Your name'),
     '#required' => TRUE,
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
   $form['email'] = [
     '#type' => 'textfield',
     '#title' => t('Your email'),
     '#required' => TRUE,
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
   // if the email is to a defined email/s then ask the user
   // to manually enter their postcode
@@ -756,8 +769,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       '#required' => TRUE,
       '#attributes' => [
         'placeholder' => t('Suburb or postcode'),
-        'class' => ['form-control']
-      ]
+        'class' => ['form-control'],
+      ],
     ];
   }
 
@@ -766,8 +779,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#title' => t('Would you like to join the Animal Liberation Qld email list'),
     '#attributes' => [
       'class' => ['form-con$rol'],
-      'checked' => 'checked'
-    ]
+      'checked' => 'checked',
+    ],
   ];
 
   if (module_exists('image_captcha')) {
@@ -782,8 +795,8 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     '#suffix' => '</div></div>',
     '#value' => t('Send email'),
     '#attributes' => [
-      'class' => ['btn btn-primary']
-    ]
+      'class' => ['btn btn-primary'],
+    ],
   ];
 
   return $form;
@@ -804,8 +817,8 @@ function alq_mps_theme() {
         'emails' => NULL,
         'sent' => NULL,
         'unsent' => NULL,
-        'errors' => NULL
-      ]
+        'errors' => NULL,
+      ],
     ],
   ];
 }
@@ -814,6 +827,7 @@ function alq_mps_theme() {
  * Check whether a string has any tags (according to strip_tags) in it
  *
  * @param $value
+ *
  * @return bool
  */
 function hasHtml($value) {
@@ -834,7 +848,7 @@ function alq_mps_email_form_validate($form, &$form_state) {
     'subject',
     'suburb',
     'email',
-    'name'
+    'name',
   ];
 
   foreach ($checkHtml as $field) {
@@ -870,7 +884,7 @@ function alq_mps_email_form_submit($form, &$form_state) {
     'from_address' => trim($values['suburb']),
     'from_name' => trim($values['name']),
     'spam' => $values['spam'],
-    'created' => getBrizzyTime()
+    'created' => getBrizzyTime(),
   ];
 
   user_cookie_save([
@@ -919,7 +933,7 @@ function alq_mps_admin() {
       date('Y-m-d h:m:s', $result->created),
       $result->actioned ? date('Y-m-d h:m:s', $result->actioned) : $result->actioned,
       $result->confirmation_sent,
-      $result->status
+      $result->status,
     ];
   }
 
@@ -928,9 +942,9 @@ function alq_mps_admin() {
     l('Download emails for current month', 'admin/workbench/alq-mps/csv/' . date('Y-M'), [
       'attributes' => [
         'target' => '_blank',
-        'download' => NULL
-      ]
-    ])
+        'download' => NULL,
+      ],
+    ]),
   ];
 
   $output = '<ul><li>' . implode('</li><li>', $links) . '</li></ul>';
@@ -948,9 +962,9 @@ function alq_mps_admin() {
       'Created',
       'Actioned',
       'Confirmation sent',
-      'Status'
+      'Status',
     ],
-    'rows' => $rows
+    'rows' => $rows,
   ]);
 
   $output .= theme('pager');
@@ -1010,7 +1024,7 @@ function alq_mps_admin_csv($date = NULL) {
     'Created',
     'Actioned',
     'Confirmation Sent',
-    'Status'
+    'Status',
   ];
 
   $out = fopen('php://output', 'w');
@@ -1029,7 +1043,7 @@ function alq_mps_admin_csv($date = NULL) {
       date('Y-m-d h:m:s', $result->created),
       $result->actioned ? date('Y-m-d h:m:s', $result->actioned) : $result->actioned,
       $result->confirmation_sent,
-      $result->status
+      $result->status,
     ];
     fputcsv($out, $row);
   }
@@ -1041,8 +1055,9 @@ function alq_mps_admin_csv($date = NULL) {
 /**
  * Replace tokens
  *
- * @param string  $text
- * @param array  $tokensAndValues hash token => value
+ * @param string $text
+ * @param array $tokensAndValues hash token => value
+ *
  * @return string
  */
 function alq_mps_replace_tokens($text, $tokensAndValues) {
@@ -1072,12 +1087,26 @@ function alq_mps_create($mp) {
   $entity = entity_create('node', $values);
   $ewrapper = entity_metadata_wrapper('node', $entity);
 
-  $ewrapper->field_electorate_type->set($mp['state']);
+  $ewrapper->field_electorate_type->set($mp['electorate_type']);
   $ewrapper->field_electorate->set($mp['electorate']);
   $ewrapper->field_party->set($mp['party']);
 
   $ewrapper->title->set($mp['name']);  // use nodes title field for name, we also have field_title later
-  $ewrapper->field_position->set($mp['position']);
+  if (isset($mp['given_names'])) {
+    $ewrapper->field_given_names->set($mp['given_names']);
+  }
+  if (isset($mp['family_name'])) {
+    $ewrapper->field_family_name->set($mp['family_name']);
+  }
+  if (isset($mp['preferred_name'])) {
+    $ewrapper->field_preferred_name->set($mp['preferred_name']);
+  }
+  if (isset($mp['position'])) {
+    $ewrapper->field_position->set($mp['position']);
+  }
+  if (isset($mp['qualifications'])) {
+    $ewrapper->field_qualifications->set($mp['qualifications']);
+  }
   $ewrapper->field_title->set($mp['title']);
 
   // save our new MP
@@ -1089,36 +1118,35 @@ function alq_mps_create($mp) {
 
   foreach ($mp['offices'] as $office) {
     // Setup the values in the structure expected by the field_collection entity.
-    $values = [
-      'field_name' => 'field_office',
-      'field_description' => [
-        LANGUAGE_NONE => [['value' => $office['type']]],
-      ],
-      'field_address' => [
-        LANGUAGE_NONE => [['value' => $office['address']]],
-      ],
-      'field_postcode' => [
-        LANGUAGE_NONE => [['value' => $office['postcode']]],
-      ],
-      'field_email' => [
-        LANGUAGE_NONE => [['email' => $office['email']]],
-      ],
-      'field_phone' => [
-        LANGUAGE_NONE => [['value' => $office['phone']]],
-      ],
-      'field_toll_free_phone' => [
-        LANGUAGE_NONE => [['value' => $office['toll_free_phone']]],
-      ],
-      'field_fax' => [
-        LANGUAGE_NONE => [['value' => $office['fax']]],
-      ],
-    ];
+    if (isset($office['address'])) {
+      $values = [
+        'field_name' => 'field_office',
+        'field_address' => [
+          LANGUAGE_NONE => [['value' => $office['address']]],
+        ],
+        'field_postcode' => isset($office['postcode']) ? [
+          LANGUAGE_NONE => [['value' => $office['postcode']]],
+        ] : NULL,
+        'field_email' => isset($office['email']) ? [
+          LANGUAGE_NONE => [['email' => $office['email']]],
+        ] : NULL,
+        'field_phone' => [
+          LANGUAGE_NONE => [['value' => $office['phone']]],
+        ],
+        'field_toll_free_phone' => isset($office['toll_free_phone']) ? [
+          LANGUAGE_NONE => [['value' => $office['toll_free_phone']]],
+        ] : NULL,
+        'field_fax' => isset($office['fax']) ? [
+          LANGUAGE_NONE => [['value' => $office['fax']]],
+        ] : NULL,
+      ];
 
-    $officeEntity = entity_create('field_collection_item', $values);
+      $officeEntity = entity_create('field_collection_item', $values);
 
-    $officeEntity->setHostEntity('node', $node);
+      $officeEntity->setHostEntity('node', $node);
 
-    $officeEntity->save();
+      $officeEntity->save();
+    }
   }
 
   return $node;

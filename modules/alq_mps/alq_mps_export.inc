@@ -187,32 +187,43 @@ function alq_mps_create_emailee($details) {
   $keys = [
     'electorate_type',
     'electorate',
-    'given_name',
+    'given_names',
     'family_name',
     'preferred_name',
     'party',
     'position',
+    'qualifications',
     'title',
   ];
 
   foreach ($keys as $key) {
-    $fields[$key] = $details['field_' . $key][LANGUAGE_NONE][0]['value'];
+    if (isset($details['field_' . $key][LANGUAGE_NONE][0]['value'])) {
+      $fields[$key] = $details['field_' . $key][LANGUAGE_NONE][0]['value'];
+    }
   }
 
-  foreach ($fields['offices'] as $office_array) {
+  $fields['offices'] = [];
+
+  foreach ($details['offices'] as $office_array) {
     $office = [];
     $office_raw = array_shift($office_array);
 
     $keys = [
-      'field_address',
-      'field_fax',
-      'field_phone',
-      'field_postcode',
-      'field_toll_free_phone',
+      'address',
+      'fax',
+      'phone',
+      'postcode',
+      'toll_free_phone',
     ];
 
     foreach ($keys as $key) {
-      $office[$key] = $office_raw['field_' . $key][LANGUAGE_NONE][0]['value'];
+      if (isset($office_raw['field_' . $key][LANGUAGE_NONE][0]['value'])) {
+        $office[$key] = $office_raw['field_' . $key][LANGUAGE_NONE][0]['value'];
+      }
+    }
+
+    if (isset($office_raw['field_email'][LANGUAGE_NONE][0]['email'])) {
+      $office['email'] = $office_raw['field_email'][LANGUAGE_NONE][0]['email'];
     }
 
     $fields['offices'][] = $office;
@@ -268,7 +279,6 @@ function alq_mps_update_offices($rawNode, $newDetails) {
 
   for ($i = 0, $l = count($newOffices); $i < $l; $i++) {
     if (isset($rawOffices[$i])) {
-
       $office = entity_metadata_wrapper('field_collection_item', $rawOffices[$i]);
       // In json there is an extra level of the array here so double shift
       // I'm sure there's a good reason for it
@@ -280,19 +290,19 @@ function alq_mps_update_offices($rawNode, $newDetails) {
         'field_postcode',
         'field_toll_free_phone',
       ];
-    }
 
-    foreach ($fields as $field) {
-      if (property_exists($office, $field)) {
-        $officeVal = $office->$field->value();
-        $val = isset($newOffice[$field][LANGUAGE_NONE][0]['value']) ? $newOffice[$field][LANGUAGE_NONE][0]['value'] : NULL;
-        $office->$field->set(is_array($officeVal) ? [$val] : $val);
+      foreach ($fields as $field) {
+        if (property_exists($office, $field)) {
+          $officeVal = $office->$field->value();
+          $val = isset($newOffice[$field][LANGUAGE_NONE][0]['value']) ? $newOffice[$field][LANGUAGE_NONE][0]['value'] : NULL;
+          $office->$field->set(is_array($officeVal) ? [$val] : $val);
+        }
       }
-    }
 
-    if (!$office->save()) {
-      drush_log(dt('Unable to save office @office', ['@office' => json_encode($office)]), 'error');
-      ++$errors;
+      if (!$office->save()) {
+        drush_log(dt('Unable to save office @office', ['@office' => json_encode($office)]), 'error');
+        ++$errors;
+      }
     }
   }
 
