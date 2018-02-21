@@ -47,7 +47,7 @@ function alq_forms_submission() {
     $returnVal['message'] = $e->getMessage();
   }
 
-  return drupal_json_output($returnVal);
+  drupal_json_output($returnVal);
 }
 
 
