@@ -9,11 +9,13 @@ function alq_forms_menu() {
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   ];
+
   $items['membership/submission'] = [
     'page callback' => 'alq_forms_submission',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   ];
+
   return $items;
 }
 
@@ -22,6 +24,7 @@ function alq_forms_menu() {
  */
 function alq_forms_submission() {
   global $user;
+
   $node = alq_forms_webform_loader('Donations form', 'webform');
 
   try {
