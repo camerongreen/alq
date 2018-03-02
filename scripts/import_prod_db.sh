@@ -15,7 +15,6 @@ set -e
 
 DEFAULT_PROD_HOST="http://alq.org.au"
 DEFAULT_PRIVATE_DIR="/tmp/private"
-DRUSH="../vendor/bin/drush"
 
 # this is the user who will own the files, so you
 # can edit them etc
@@ -32,6 +31,13 @@ DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
 # hosting company work around has custom drush path
 if [ -f ~/.drush_alias ]; then
         . ~/.drush_alias
+fi
+
+if [ -z ${CIRCLECI} ]
+then
+  DRUSH=../vendor/bin/drush
+else
+  DRUSH=/home/circleci/project/vendor/bin/drush
 fi
 
 if [ ! -d ${DEFAULT_PRIVATE_DIR} ]
@@ -51,16 +57,19 @@ then
   fi
 fi
 
-if [ -z ${DB_PASSWD} ]
+if [ -z ${CIRCLECI} ]
+then
+  if [ -z ${DB_PASSWD} ]
   then
     read -s -p "Database passwd:" DB_PASSWD
     # need a newline in the output here as -s swallows it
     echo ""
     if [ -z ${DB_PASSWD} ]
-      then
-        echo "DB Password is required";
-        exit 1
+    then
+      echo "DB Password is required";
+      exit 1
     fi
+  fi
 fi
 
 if [ -z ${DB_HOST} ]
@@ -81,7 +90,12 @@ if [ -z ${DB_NAME} ]
     fi
 fi
 
-echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} > /dev/null
+if [ -z ${CIRCLECI} ]
+then
+  echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
+else
+  echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} ${DB_NAME} > /dev/null
+fi
 
 if [ $? -ne 0 ]
   then
