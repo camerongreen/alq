@@ -6,7 +6,7 @@
  */
 
 define('ALQ_MPS_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_QLD_Members_List.csv');
-define('ALQ_ELECTORATES_FILE', drupal_get_path('module', 'alq_mps') . '/data/2016_State_Federal_Locality_Postcodes.csv');
+define('ALQ_ELECTORATES_FILE', drupal_get_path('module', 'alq_mps') . '/data/2018_State_LGA_Federal_Locality_Postcodes.csv');
 
 // Friendly names for fields for the mps CVS file
 $GLOBALS['mpsCvsFields'] = [
