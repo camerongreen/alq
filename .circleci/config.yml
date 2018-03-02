@@ -62,6 +62,8 @@ jobs:
 
       - run: cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org /home/circleci/project/scripts/create_site.sh"
 
+      - run: cd /var/www/html && sudo -- sh -c "ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org /home/circleci/project/scripts/create_site.sh"
+
       - run: sudo chown -R www-data:www-data /var/www/html
 
       - save_cache:

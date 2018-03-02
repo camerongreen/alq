@@ -92,23 +92,27 @@ else
   echo "Connected to db"
 fi
 
-read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
 if [ -z ${SITE_EMAIL} ]
-  then
-  if [ -z ${ADMIN_EMAIL} ]
+  read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
+  if [ -z ${SITE_EMAIL} ]
     then
-      echo "Site needs an email, see the comments at the top of"
-      echo "this script for how to put a default one on command line"
-      exit 1
-  else 
-      SITE_EMAIL=${ADMIN_EMAIL}
+    if [ -z ${ADMIN_EMAIL} ]
+      then
+        echo "Site needs an email, see the comments at the top of"
+        echo "this script for how to put a default one on command line"
+        exit 1
+    else
+        SITE_EMAIL=${ADMIN_EMAIL}
+    fi
   fi
 fi
 
-read -p "Database sql gzipped file [${DEFAULT_DB_FILE}]:" DB_FILE
 if [ -z ${DB_FILE} ]
-  then
-    DB_FILE=${DEFAULT_DB_FILE}
+  read -p "Database sql gzipped file [${DEFAULT_DB_FILE}]:" DB_FILE
+  if [ -z ${DB_FILE} ]
+    then
+      DB_FILE=${DEFAULT_DB_FILE}
+  fi
 fi
 
 if [ ! -e ${DB_FILE} ]
