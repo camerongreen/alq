@@ -76,7 +76,6 @@ field_revision_taxonomy_catalog
 field_revision_uc_catalog_image
 field_revision_uc_product_image
 migrate_log
-node_revision
 node_comment_statistics
 queue
 search_dataset
@@ -96,8 +95,6 @@ uc_order_comments
 uc_order_line_items
 uc_order_quotes
 uc_shipments
-users
-variable
 watchdog
 webform_submissions
 webform_submitted_data

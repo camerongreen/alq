@@ -65,6 +65,8 @@ To set it up in development for eg the ALQ MPs module:
 
 # Tests
 
+## Local
+
 You need to start the site and the test container at the same time:
 
     docker-compose -f docker-compose.yml -f docker-compose-test.yml up -d
@@ -81,6 +83,19 @@ You can inspect the running tests, by using VNC.  For me that involved:
 
 * Installing remmima and the VNC plugin via aptitude
 * Creating a new VNC connection to the exposed port, by setting the server to 0.0.0.0:26959
+
+## CircleCI
+
+We build and test this automatically on CircleCI.
+
+To create a subset of the test database, run the following:
+
+docker exec -ti alq_web bash -c 'cd public_html && ../alq/scripts/create_test_database.sh'
+
+Check it for leaking any private information (passwords, api keys etc) then gzip it.
+
+    docker exec -ti alq_web bash -c 'gzip alq/.circleci/data/*.sql'
+
     
 # XDebugging
 
