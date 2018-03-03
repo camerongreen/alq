@@ -3,10 +3,11 @@
  */
 module.exports = {
   'Check title': function (browser) {
+    console.log('lu:' + browser.launch_url);
     browser
-        .url(browser.launch_url + '/node/109')
+        .url(browser.launch_url)
         .waitForElementVisible('body', 1000)
-        .assert.containsText('h1', 'OUR LATEST NEWS')
+        .assert.containsText('h1', 'ANIMAL LIBERATION QUEENSLAND')
         .end();
   },
   'Check footer year current': function (browser) {
