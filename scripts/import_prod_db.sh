@@ -107,32 +107,34 @@ else
 fi
 
 if [ -z ${SITE_EMAIL} ]
+  then
   read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
   if [ -z ${SITE_EMAIL} ]
-    then
+  then
     if [ -z ${ADMIN_EMAIL} ]
-      then
-        echo "Site needs an email, see the comments at the top of"
-        echo "this script for how to put a default one on command line"
-        exit 1
+    then
+      echo "Site needs an email, see the comments at the top of"
+      echo "this script for how to put a default one on command line"
+      exit 1
     else
-        SITE_EMAIL=${ADMIN_EMAIL}
+      SITE_EMAIL=${ADMIN_EMAIL}
     fi
   fi
 fi
 
 if [ -z ${DB_FILE} ]
+  then
   read -p "Database sql gzipped file [${DEFAULT_DB_FILE}]:" DB_FILE
   if [ -z ${DB_FILE} ]
-    then
-      DB_FILE=${DEFAULT_DB_FILE}
+  then
+    DB_FILE=${DEFAULT_DB_FILE}
   fi
 fi
 
 if [ ! -e ${DB_FILE} ]
-  then
-    echo "Backup doesn't exist.  Looking for ${DB_FILE}"
-    exit 1
+then
+  echo "Backup doesn't exist.  Looking for ${DB_FILE}"
+  exit 1
 fi
 
 # drop and recreate database so that any rubbish hanging around, extra tables etc, is removed
