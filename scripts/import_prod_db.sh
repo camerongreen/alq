@@ -11,7 +11,7 @@
 # mods, set some values etc
 #
 
-set -e
+set -ex
 
 DEFAULT_PROD_HOST="http://alq.org.au"
 DEFAULT_PRIVATE_DIR="/tmp/private"
