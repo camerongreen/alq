@@ -37,8 +37,8 @@ function alq_mps_insert_electorates() {
  *
  * @return  array[array]
  */
-function alq_mps_import_electorates($filename, $ignore_rows = 1) {
-  // Delete existing members.
+function alq_mps_import_electorates($filename, $ignore_rows = 10) {
+  // Delete existing electorates.
   db_truncate(ALQ_ELECTORATES_TABLE)->execute();
 
   if (($handle = fopen($filename, "r")) === FALSE) {
