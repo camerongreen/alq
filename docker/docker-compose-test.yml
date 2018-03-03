@@ -4,7 +4,7 @@
 
 selenium-fx:
     container_name: alq_selenium_fx
-    image: selenium/standalone-firefox-debug:2.48.2
+    image: selenium/standalone-firefox-debug:3.10
     ports:
         - "26944:4444"
         - "26959:5900"

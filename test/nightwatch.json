@@ -15,7 +15,22 @@
 
   "test_settings" : {
     "default" : {
-      "launch_url" : "localhost",
+      "launch_url" : "http://alq_web",
+      "selenium_port"  : 4444,
+      "selenium_host"  : "selenium-fx",
+      "silent": true,
+      "screenshots" : {
+        "enabled" : true,
+        "path" : "/tmp/screenshots"
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "circleci" : {
+      "launch_url" : "http://localhost",
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
       "silent": true,

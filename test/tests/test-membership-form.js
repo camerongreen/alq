@@ -1,65 +1,69 @@
 /**
  * Donation form demo
  *
- * Note to run these you will need to ln -s docs/demo . in the public_html directory
+ * Note to run these you will need to ln -s docs/demo . in the public_html
+ * directory
  */
-var siteUrl = 'http://localhost';
-var pageUrl = siteUrl + '/membership';
+var pageUrl = '/membership';
 
 this.testAnnualRepeat = function (browser) {
-    browser
-        .url(pageUrl)
-        .waitForElementVisible('#oneoff', 1000)
-        .getValue('#t3', function (result) {
-            this.assert.equal(result.value, 'M')
-        })
-        .click('#annual input')
-        .getValue('#t3', function (result) {
-            this.assert.equal(result.value, 'Y')
-        })
-        .end();
+  var siteUrl = browser.launch_url;
+  browser
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#oneoff', 1000)
+      .getValue('#t3', function (result) {
+        this.assert.equal(result.value, 'M')
+      })
+      .click('#annual input')
+      .getValue('#t3', function (result) {
+        this.assert.equal(result.value, 'Y')
+      })
+      .end();
 };
 
 this.testOneoffAmountChanges = function (browser) {
-    browser
-        .url(pageUrl)
-        .waitForElementVisible('#oneoff', 1000);
+  var siteUrl = browser.launch_url;
+  browser
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#oneoff', 1000);
 
-    browser.click('#oneoff');
+  browser.click('#oneoff');
 
-    var types = {
-       'Individual': 35,
-       'Student/Unwaged': 25,
-       'Family': 55,
-       'Lifetime': 500
-    };
+  var types = {
+    'Individual': 35,
+    'Student/Unwaged': 25,
+    'Family': 55,
+    'Lifetime': 500
+  };
 
-    for (var i in types) {
-        if (types.hasOwnProperty(i)) {
-            browser.click('select[id="membershipType"] option[value="' + i + '"]')
-            browser.expect.element('#membershipType').to.have.value.that.equals(i);
-            browser.expect.element('#oneoffAmount input').to.have.value.that.equals(types[i]);
-        }
+  for (var i in types) {
+    if (types.hasOwnProperty(i)) {
+      browser.click('select[id="membershipType"] option[value="' + i + '"]')
+      browser.expect.element('#membershipType').to.have.value.that.equals(i);
+      browser.expect.element('#oneoffAmount input').to.have.value.that.equals(types[i]);
     }
-    browser.end();
+  }
+  browser.end();
 };
 
 this.testClickOneoffElements = function (browser) {
-    browser
-        .url(pageUrl)
-        .waitForElementVisible('#oneoff', 1000);
+  var siteUrl = browser.launch_url;
+  browser
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#oneoff', 1000);
 
-    browser.click('#oneoff');
-    browser.expect.element('#oneoffAmount input').to.be.selected;
-    browser.expect.element('#amount1').to.not.be.visible;
-    browser.expect.element('#oneoffAmount').to.be.visible;
-    browser.expect.element('#annual').to.be.visible;
-    browser.end();
+  browser.click('#oneoff');
+  browser.expect.element('#oneoffAmount input').to.be.selected;
+  browser.expect.element('#amount1').to.not.be.visible;
+  browser.expect.element('#oneoffAmount').to.be.visible;
+  browser.expect.element('#annual').to.be.visible;
+  browser.end();
 };
 
 this.testClickMonthlyElements = function (browser) {
+  var siteUrl = browser.launch_url;
   browser
-      .url(pageUrl)
+      .url(siteUrl + '/' + pageUrl)
       .waitForElementVisible('#monthly', 1000);
 
   browser.click('#monthly');
@@ -71,9 +75,10 @@ this.testClickMonthlyElements = function (browser) {
 };
 
 this.testAmountOther = function (browser) {
+  var siteUrl = browser.launch_url;
   browser
-    .url(pageUrl)
-    .waitForElementVisible('#amountOther', 1000);
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#amountOther', 1000);
   browser.expect.element('#amountOtherValue').to.not.be.enabled;
   browser.expect.element('#amountOther input').to.not.be.selected;
   browser.click('#amountOther');
@@ -81,18 +86,19 @@ this.testAmountOther = function (browser) {
   browser.expect.element('#amountOtherValue').to.be.enabled;
 
   browser.setValue('#amountOtherValue', '50')
-    .click('#amountOther')
-    .getValue('#amount', function (result) {
-      this.assert.equal(result.value, '50')
-    })
-    .end();
+      .click('#amountOther')
+      .getValue('#amount', function (result) {
+        this.assert.equal(result.value, '50')
+      })
+      .end();
 };
 
 // with all this bootstrap magic going on, test trivial things
 this.testClickMonthly = function (browser) {
+  var siteUrl = browser.launch_url;
   browser
-    .url(pageUrl)
-    .waitForElementVisible('#monthly', 1000);
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#monthly', 1000);
 
   browser.expect.element('#oneoff input').to.be.selected;
   browser.expect.element('#monthly input').to.not.be.selected;
@@ -103,8 +109,9 @@ this.testClickMonthly = function (browser) {
 };
 
 this.testAmountOtherMinimum = function (browser) {
+  var siteUrl = browser.launch_url;
   browser
-      .url(pageUrl)
+      .url(siteUrl + '/' + pageUrl)
       .waitForElementVisible('#amountOther', 1000)
       .click('#amountOther')
       .waitForElementVisible('#amountOtherValue', 1000)
@@ -115,13 +122,14 @@ this.testAmountOtherMinimum = function (browser) {
 };
 
 this.testAmountOtherMinimumFail = function (browser) {
+  var siteUrl = browser.launch_url;
   browser
-    .url(pageUrl)
-    .waitForElementVisible('#amountOther', 1000)
-    .click('#amountOther')
-    .waitForElementVisible('#amountOtherValue', 1000)
-    .setValue('#amountOtherValue', '34')
-    .click('#amountOther') // do this to move the focus
-    .assert.containsText('div.has-error', 'Monthly minimum is')
-    .end();
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#amountOther', 1000)
+      .click('#amountOther')
+      .waitForElementVisible('#amountOtherValue', 1000)
+      .setValue('#amountOtherValue', '34')
+      .click('#amountOther') // do this to move the focus
+      .assert.containsText('div.has-error', 'Monthly minimum is')
+      .end();
 };
