@@ -14,7 +14,7 @@ this.testSearchBySuburb = function (browser) {
 
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;
   browser.setValue('#edit-suburb', 'Highgate');
-  browser.waitForElementVisible('ul.ui-autocomplete', 2000);
+  browser.waitForElementVisible('ul.ui-autocomplete', 5000);
   browser.expect.element('ul.ui-autocomplete li a').text.to.contain('HIGHGATE HILL');
   browser.click('ul.ui-autocomplete li a');
   browser.expect.element('#edit-emailee-name').value.to.equal('Hon Jacklyn Trad');
@@ -31,7 +31,7 @@ this.testSearchByPostcode = function (browser) {
 
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;
   browser.setValue('#edit-suburb', '4101');
-  browser.waitForElementVisible('ul.ui-autocomplete', 2000);
+  browser.waitForElementVisible('ul.ui-autocomplete', 5000);
   browser.expect.element('ul.ui-autocomplete li a').text.to.contain('HIGHGATE HILL');
   browser.click('ul.ui-autocomplete li a');
   browser.expect.element('#edit-emailee-name').value.to.equal('Hon Jacklyn Trad');
