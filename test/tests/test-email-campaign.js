@@ -4,7 +4,7 @@
  * Note to run these you will need to ln -s docs/demo . in the public_html
  * directory
  */
-var pageUrl = '/ban-calf-scruffing-quamby';
+var pageUrl = '/ban-greyhound-racing';
 
 this.testSearchBySuburb = function (browser) {
   var siteUrl = browser.launch_url;
@@ -12,7 +12,7 @@ this.testSearchBySuburb = function (browser) {
       .url(siteUrl + '/' + pageUrl)
       .waitForElementVisible('#edit-suburb', 1000);
 
-  browser.expect.element('h1').text.to.equal('BAN CALF SCRUFFING');
+  browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;
   browser.setValue('#edit-suburb', 'Highgate');
   browser.waitForElementVisible('ul.ui-autocomplete', 5000);
@@ -30,7 +30,7 @@ this.testSearchByPostcode = function (browser) {
       .url(siteUrl + '/' + pageUrl)
       .waitForElementVisible('#edit-suburb', 1000);
 
-  browser.expect.element('h1').text.to.equal('BAN CALF SCRUFFING');
+  browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;
   browser.setValue('#edit-suburb', '4101');
   browser.waitForElementVisible('ul.ui-autocomplete', 5000);
