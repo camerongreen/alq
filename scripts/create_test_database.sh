@@ -96,6 +96,7 @@ uc_order_line_items
 uc_order_quotes
 uc_shipments
 users
+variable
 watchdog
 webform_submissions
 webform_submitted_data
