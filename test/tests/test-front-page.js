@@ -3,9 +3,9 @@
  */
 module.exports = {
   'Check title': function (browser) {
-    var siteUrl = browser.launch_url;
+    var siteUrl = browser.launch_url + '/';
     browser
-        .url(browser.siteUrl)
+        .url(siteUrl)
         .waitForElementVisible('body', 1000)
         .assert.containsText('h1', 'OUR LATEST NEWS')
         .end();
