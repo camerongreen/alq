@@ -1,8 +1,5 @@
 /**
- * Membership form demo
- *
- * Note to run these you will need to ln -s docs/demo . in the public_html
- * directory
+ * Test the donation form.
  */
 var pageUrl = '/donate';
 

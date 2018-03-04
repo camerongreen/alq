@@ -77,7 +77,7 @@ Note to stop all containers you will need to specify the same thing, eg:
 
 To run the nightwatch tests, from the docker directory:
 
-    docker exec -ti alq_test_runner bash -c ./run-tests.sh
+    docker exec -ti alq_test_runner bash -c "./run-tests.sh"
     
 You can inspect the running tests, by using VNC.  For me that involved:
 
