@@ -72,4 +72,5 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
+      - run: mkdir /tmp/screenshots
       - run: cd test && ./run-tests.sh --env=circleci
