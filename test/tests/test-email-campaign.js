@@ -6,6 +6,20 @@
  */
 var pageUrl = '/ban-greyhound-racing';
 
+
+this.testDefaultMinister = function (browser) {
+  var siteUrl = browser.launch_url;
+  browser
+      .url(siteUrl + '/' + pageUrl)
+      .waitForElementVisible('#edit-suburb', 1000);
+
+  browser.click('#suburb-default');
+  browser.expect.element('#edit-emailee-name').value.to.equal('Mr David Batt');
+  browser.expect.element('#edit-emailee-electorate').to.not.be.visible;
+  browser.end();
+};
+
+
 this.testSearchBySuburb = function (browser) {
   var siteUrl = browser.launch_url;
   browser
@@ -38,18 +52,5 @@ this.testSearchByPostcode = function (browser) {
   browser.click('ul.ui-autocomplete li a');
   browser.expect.element('#edit-emailee-name').value.to.equal('Hon Jacklyn Trad');
   browser.expect.element('#edit-emailee-electorate').value.to.equal('SOUTH BRISBANE');
-  browser.end();
-};
-
-
-this.testDefaultMinister = function (browser) {
-  var siteUrl = browser.launch_url;
-  browser
-      .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('#edit-suburb', 1000);
-
-  browser.click('#suburb-default');
-  browser.expect.element('#edit-emailee-name').value.to.equal('Mr David Batt');
-  browser.expect.element('#edit-emailee-electorate').to.not.be.visible;
   browser.end();
 };
