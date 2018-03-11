@@ -24,7 +24,7 @@ this.testSearchBySuburb = function (browser) {
   var siteUrl = browser.launch_url;
   browser
       .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('ul.ui-autocomplete', 1000);
+      .waitForElementPresent('ul.ui-autocomplete', 1000);
 
   browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;
@@ -42,7 +42,7 @@ this.testSearchByPostcode = function (browser) {
   var siteUrl = browser.launch_url;
   browser
       .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('ul.ui-autocomplete', 1000);
+      .waitForElementPresent('ul.ui-autocomplete', 1000);
 
   browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
   browser.expect.element('ul.ui-autocomplete').to.not.be.visible;

@@ -75,7 +75,7 @@ Note to stop all containers you will need to specify the same thing, eg:
 
     docker-compose -f docker-compose.yml -f docker-compose-test.yml stop
 
-To run the nightwatch tests, from the docker directory:
+To run the nightwatch tests (after making sure selenium has had time to startup) from the docker directory:
 
     docker exec -ti alq_test_runner bash -c "./run-tests.sh"
     
