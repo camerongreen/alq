@@ -14,7 +14,7 @@ this.testDefaultMinister = function (browser) {
       .waitForElementVisible('#edit-suburb', 1000);
 
   browser.click('#suburb-default');
-  browser.expect.element('#edit-emailee-name').value.to.equal('Mr David Batt');
+  browser.expect.element('#edit-emailee-name').value.to.equal('Hon Annastacia Palaszczuk');
   browser.expect.element('#edit-emailee-electorate').to.not.be.visible;
   browser.end();
 };
