@@ -32,7 +32,7 @@ jobs:
           command: |
             sudo apt-get install -y default-jre
             wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium-server.jar
-            java -jar selenium-server.jar
+            java -jar selenium-server.jar -log /tmp/selenium.log
           background: true
       - run:
           name: PhantomJS install
