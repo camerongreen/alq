@@ -19,7 +19,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install vim mysql-client libpng-dev nodejs nodejs-legacy npm
+      - run: sudo apt-get install vim default-jre mysql-client libpng-dev nodejs nodejs-legacy npm
 
       - run:
           name: Start Xvfb
@@ -30,14 +30,9 @@ jobs:
       - run:
           name: Start Selenium
           command: |
-            sudo apt-get install -y default-jre
             wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium-server.jar
             java -jar selenium-server.jar -log /tmp/selenium.log
           background: true
-      - run:
-          name: PhantomJS install
-          command: |
-            sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
 
       - run:
           name: Install PHP MYSQL
@@ -60,9 +55,9 @@ jobs:
       - run: cp docker/config/composer.json .
       - run: composer install --prefer-dist
 
-      - run: cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org /home/circleci/project/scripts/create_site.sh"
+      - run: cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/create_site.sh"
 
-      - run: cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test_data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=i@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
+      - run: cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test_data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
 
       - run: sudo chown -R www-data:www-data /var/www/html
 
@@ -72,5 +67,4 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
         
       # run tests!
-      #- run: mkdir /tmp/screenshots
       - run: cd test && ./run-tests.sh --env=circleci
