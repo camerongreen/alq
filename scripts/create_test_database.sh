@@ -10,7 +10,7 @@ DEFAULT_DB_HOST=alq_db
 
 # Relative to public_html.
 DEFAULT_OUTPUT_DIR=../alq/.circleci/data
-DEFAULT_OUTPUT_FILENAME=test_data.sql
+DEFAULT_OUTPUT_FILENAME=test-data.sql
 
 # Tables not to dump data from.
 NO_DATA_TABLES=(
@@ -175,8 +175,9 @@ mysqldump --no-data -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} ${TABL
 
 # Add users 0 and 1 to the database.
 mysqldump --no-create-info --where='uid = 0' -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} users >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}
-echo "INSERT INTO users (uid, name, pass, mail) VALUES (1, 'testadmin', '', 'test@example.com');" >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME};
+echo "INSERT INTO users (uid, name, pass, mail, status) VALUES (1, 'testadmin', '', 'test@example.com', 1);" >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME};
 
 # Add variables to database.  Note high probabilty of leaking information.
 mysqldump --no-create-info --where='name NOT IN ("drupal_private_key", "googleanalytics_account", "mimemail_key",  "uc_paypal_api_password", "uc_paypal_api_signature", "uc_paypal_api_username")' -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} variable >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}
 
+gzip ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}

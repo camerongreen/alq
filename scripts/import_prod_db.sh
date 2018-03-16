@@ -138,20 +138,14 @@ then
 fi
 
 # drop and recreate database so that any rubbish hanging around, extra tables etc, is removed
-echo "Dropping database ${DB_NAME}";
 if [ -z ${CIRCLECI} ]
 then
+  echo "Dropping database ${DB_NAME}";
   echo "DROP DATABASE IF EXISTS ${DB_NAME}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
   echo "Recreating database ${DB_NAME}";
   echo "CREATE DATABASE ${DB_NAME}" | mysql -h $DB_HOST -u ${DB_USER} -p${DB_PASSWD}
   echo "Importing database";
   gunzip -c $DB_FILE | mysql -h $DB_HOST -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME}
-else
-  echo "DROP DATABASE IF EXISTS ${DB_NAME}" | mysql -h ${DB_HOST} -u ${DB_USER}
-  echo "Recreating database ${DB_NAME}";
-  echo "CREATE DATABASE ${DB_NAME}" | mysql -h $DB_HOST -u ${DB_USER}
-  echo "Importing database";
-  gunzip -c $DB_FILE | mysql -h $DB_HOST -u ${DB_USER} ${DB_NAME}
 fi
 
 if [ $? -ne 0 ]
