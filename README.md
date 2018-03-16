@@ -92,9 +92,15 @@ To create a subset of the test database, run the following:
 
 docker exec -ti alq_web bash -c 'cd public_html && ../alq/scripts/create_test_database.sh'
 
-Check it for leaking any private information (passwords, api keys etc) then gzip it.
+Check it for leaking any private information (passwords, api keys etc).
 
-    docker exec -ti alq_web bash -c 'gzip alq/.circleci/data/*.sql'
+    docker exec -ti alq_web bash -c 'zcat alq/.circleci/data/test-data.sql.gz'
+
+To debug CircleCI builds rebuild via ssh then:
+                         
+    ssh -p portnum -L 8080:localhost:80 ip_address
+                         
+Then just go to localhost:8080 in your browser, and you have the full site.
 
     
 # XDebugging

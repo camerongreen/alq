@@ -146,6 +146,9 @@ then
   echo "CREATE DATABASE ${DB_NAME}" | mysql -h $DB_HOST -u ${DB_USER} -p${DB_PASSWD}
   echo "Importing database";
   gunzip -c $DB_FILE | mysql -h $DB_HOST -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME}
+else
+  echo "Importing database";
+  gunzip -c $DB_FILE | mysql -h $DB_HOST -u ${DB_USER} ${DB_NAME}
 fi
 
 if [ $? -ne 0 ]
