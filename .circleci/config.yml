@@ -42,6 +42,7 @@ jobs:
           name: Install PHP GD
           command: sudo docker-php-ext-install gd
 
+      - run: sudo a2enmod rewrite
       - run: sudo service apache2 start
 
       # Get composer working.
