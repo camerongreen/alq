@@ -29,7 +29,12 @@ this.testSearchBySuburb = function (browser) {
   browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
   browser.expect.element('ul.ui-autocomplete').to.be.present;
   browser.setValue('#edit-suburb', 'Highgate')
+  browser.getLog('client', function(result) {
+    console.log('-- client log --');
+    console.log(result);
+  });
   browser.getLog('browser', function(result) {
+    console.log('-- browser log --');
     console.log(result);
   });
   browser.expect.element('ul.ui-autocomplete').to.be.visible;
