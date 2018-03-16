@@ -177,7 +177,7 @@ ${DRUSH} vset error_level 2
 
 # Now anonymise the users
 echo "Anonymising users (set password to default sql-sanitize password of...password"
-${DRUSH} sql-sanitize -y
+${DRUSH} sql-sanitize -y --sanitize-password=password --santize-email=${SITE_EMAIL}
 
 echo "Clearing cache"
 ${DRUSH} cc all
