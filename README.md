@@ -34,6 +34,7 @@ If you have a copy of the ALQ database, copy your gzipped sql file into the dire
 
     docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@example.org ../alq/scripts/import_prod_db.sh'
     
+    
 # Running
     
 Once the initialisation code has been run the first time, from then on you can via:
@@ -45,7 +46,7 @@ If you want to drush etc, in the docker directory:
     docker exec -ti alq_web bash -c 'cd public_html && drush cc all'
     
     
-# Emailing
+## Emailing
 
 The SMTP module is installed in development, so you can use it to send emails if you 
 have a valid SMTP server (ie the one your internet provider uses)
@@ -63,6 +64,21 @@ To set it up in development for eg the ALQ MPs module:
  
 // todo: put this in the import_prod.sh script
 
+## Paypal
+
+The import process should set the uc_paypal_wpp_server variable to the sandbox, but if
+not you can just delete it and it sets it in the uc_paypal module backend.
+
+Then you will need to go to developer.paypal.com and sign up for a sandbox business account.  Once you get the credentials, you'll need to set them in here:
+
+'cd public_html && ../vendor/bin/drush vset uc_paypal_wps_email {from_paypal}'
+'cd public_html && ../vendor/bin/drush vset uc_paypal_api_password {from_paypal}'
+'cd public_html && ../vendor/bin/drush vset uc_paypal_api_username {from_paypal}'
+'cd public_html && ../vendor/bin/drush vset uc_paypal_api_signature {from_paypal'
+
+To actually make a payment, you'll want to set up some sandbox personal accounts too.
+
+    
 # Tests
 
 ## Local
