@@ -79,7 +79,7 @@
             <?php endif; ?>
 
             <p><b><?php print t('Want to manage your order online?'); ?></b><br />
-            <?php print t('If you need to check the status of your order, please visit our home page at !store_link and click on "My account" in the menu or login with the following link:', array('!store_link' => $store_link)); ?>
+            <?php print t('If you need to check the status of your order, please use our contact form'); ?>
             <br /><br /><?php print $site_login_link; ?></p>
             <?php endif; ?>
 
@@ -257,8 +257,7 @@
                 <td colspan="2">
                   <hr noshade="noshade" size="1" /><br />
 
-                  <?php if ($help_text): ?>
-                  <p><b><?php print t('Where can I get help with reviewing my order?'); ?></b><br />
+                  <?php if (FALSE && $help_text): ?>
                   <?php print t('To learn more about managing your orders on !store_link, please visit our <a href="!store_help_url">help page</a>.', array('!store_link' => $store_link, '!store_help_url' => $store_help_url)); ?>
                   <br /></p>
                   <?php endif; ?>
