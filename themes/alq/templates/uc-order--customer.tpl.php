@@ -71,16 +71,6 @@
 
             <?php if ($thank_you_message): ?>
             <p><b><?php print t('Thanks for your order, !order_first_name!', array('!order_first_name' => $order_first_name)); ?></b></p>
-
-            <?php if (FALSE && isset($order->data['new_user'])): ?>
-            <p><b><?php print t('An account has been created for you with the following details:'); ?></b></p>
-            <p><b><?php print t('Username:'); ?></b> <?php print $order_new_username; ?><br />
-            <b><?php print t('Password:'); ?></b> <?php print $order_new_password; ?></p>
-            <?php endif; ?>
-
-            <p><b><?php print t('Want to manage your order online?'); ?></b><br />
-            <?php print t('If you need to check the status of your order, please use our contact form'); ?>
-            <br /><br /><?php print $site_login_link; ?></p>
             <?php endif; ?>
 
             <table cellpadding="4" cellspacing="0" border="0" width="100%" style="font-family: verdana, arial, helvetica; font-size: small;">
