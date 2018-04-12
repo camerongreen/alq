@@ -102,7 +102,9 @@ You can inspect the running tests, by using VNC.  For me that involved:
 
 ## CircleCI
 
-We build and test this automatically on CircleCI.
+We build and test this automatically on CircleCI.  Current build status is:
+
+[![CircleCI](https://circleci.com/gh/camerongreen/alq.svg?style=svg)](https://circleci.com/gh/camerongreen/alq)
 
 To create a subset of the test database, run the following:
 
