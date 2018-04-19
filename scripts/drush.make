@@ -66,6 +66,8 @@ projects[email][version] = 1.3
 
 projects[entity][version] = 1.8
 
+projects[extlink][version] = 1.19
+
 projects[facebook_boxes][version] = 1.0
 
 projects[features][version] = 2.10
