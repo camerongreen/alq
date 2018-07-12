@@ -12,9 +12,6 @@ jobs:
 
     working_directory: ~/project
 
-    services:
-      - mysql
-
     steps:
       - checkout
 
