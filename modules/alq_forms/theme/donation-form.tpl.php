@@ -60,6 +60,10 @@
                 <input type="radio" name="donationType"
                        value="Monthly"/> Monthly
               </label>
+              <label class="btn btn-primary" id="annual">
+                <input type="radio" name="donationType"
+                       value="Annual"/> Annual
+              </label>
             </div>
           </div>
         </div>
@@ -73,19 +77,19 @@
               <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary" id="amount1">
                   <input type="radio" name="amountChoice"
-                         value="250"/> $250
+                         value="10" checked="checked"/> $20
                 </label>
                 <label class="btn btn-primary active" id="amount2">
                   <input type="radio" name="amountChoice"
-                         value="100" checked="checked"/> $100
+                         value="50" /> $50
                 </label>
                 <label class="btn btn-primary" id="amount3">
                   <input type="radio" name="amountChoice"
-                         value="50"/> $50
+                         value="100"/> $100
                 </label>
                 <label class="btn btn-primary" id="amount4">
                   <input type="radio" name="amountChoice"
-                         value="25"/> $25
+                         value="250"/> $250
                 </label>
                 <label class="btn btn-primary" id="amountOther">
                   <input type="radio" name="amountChoice"
@@ -104,51 +108,7 @@
           </div>
         </div>
 
-        <div class="form-group" id="membership">
-          <div class="col-sm-offset-3 col-sm-9">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="membership"/>
-                Would you like a complimentary membership? <a
-                  href="/content/membership-benefits" id="membershipBenefits"
-                  target="_blank">Membership Benefits</a>
-                <small>(new window)</small>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group" id="membershipInfo">
-          <div class="col-sm-offset-3 col-sm-9">
-            All monthly donations and any single donations over $50 are eligible
-            for a complimentary membership
-          </div>
-        </div>
-
-
         <h2 id="informationHeading">Optional information</h2>
-
-        <h2 id="membershipHeading">Membership information</h2>
-
-        <div class="requiredLegend membershipOptions">
-          Required Fields <span>&#x2605;</span>
-        </div>
-
-        <div class="form-group membershipOptions" id="title">
-          <label for="title" class="col-sm-3">Title</label>
-
-          <div class="col-sm-9">
-            <select name="title" class="form-control">
-              <option value="">-- Select --</option>
-              <option>Ms</option>
-              <option>Mrs</option>
-              <option>Miss</option>
-              <option>Mr</option>
-              <option>Dr</option>
-              <option>Professor</option>
-              <option>Mx</option>
-            </select>
-          </div>
-        </div>
 
         <div class="form-group">
           <label for="givenName" class="col-sm-3">Given Name</label>
@@ -177,109 +137,6 @@
                    placeholder="Email"/>
           </div>
         </div>
-
-        <div class="form-group membershipOptions">
-          <label for="phone" class="col-sm-3">Phone</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="phone" name="phone"
-                   placeholder="Phone"/>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="address1" class="col-sm-3">Address 1</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="address1"
-                   name="address1"
-                   placeholder="Address Line 1"/>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="address2" class="col-sm-3">Address 2</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="address2"
-                   name="address2"
-                   placeholder="Address Line 2"/>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="town" class="col-sm-3">Suburb/Town</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="suburb" name="suburb"
-                   placeholder="Suburb/Town"/>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="postcode" class="col-sm-3">Postcode</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="postcode"
-                   name="postcode"
-                   placeholder="Postcode"/>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="occupation" class="col-sm-3">Occupation</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="occupation"
-                   name="occupation"
-                   placeholder="Occupation"/>
-          </div>
-        </div>
-
-
-        <div class="form-group membershipOptions">
-          <label for="membershipType" class="col-sm-3">Membership Type</label>
-
-          <div class="col-sm-9">
-            <select class="form-control" id="membershipType"
-                    name="membershipType">
-              <option value="Individual">Individual</option>
-              <option value="Student/Unwaged">Student/Unwaged</option>
-              <option value="Family">Family</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <label for="newsletter" class="col-sm-3">Newsletter</label>
-
-          <div class="col-sm-9">
-            <div class="radio">
-              <label id="newsletterEmail">
-                <input type="radio" name="newsletter" id="newsletterEmail"
-                       value="Email newsletter" checked="checked "/> Newsletter
-                by email
-              </label>
-              <label id="newsletterPrint">
-                <input type="radio" name="newsletter" id="newsletterPrint"
-                       value="Printed newsletter"/> Printed newsletter by post
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group membershipOptions">
-          <div class="col-sm-offset-3 col-sm-9">
-            <div class="checkbox">
-              <label id="volunteering">
-                <input type="checkbox" name="volunteering"/>
-                I am interested in finding out more about
-                volunteering
-              </label>
-            </div>
-          </div>
-        </div>
-
 
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">

@@ -2,23 +2,7 @@
  * Donation form with optional membership
  */
 (function ($) {
-  var membershipEligibilityAmount = 50;
-  var amountOtherMonthlyMinimum = 5;
-  var amountOtherMinimum = 2;
-
-  var requiredMembershipOptions = [
-    'givenName',
-    'familyName',
-    'address1',
-    'suburb',
-    'postcode'
-  ];
-
-  // Accessor functions
-
-  function wantsMembership() {
-    return $('#membership input').is(':checked');
-  }
+  var donationMinimum = 2;
 
   function wantsSpam() {
     return $('#spam input').is(':checked');
@@ -28,90 +12,28 @@
     return $('#amountOther input').is(':checked');
   }
 
-  function getNewsletterType() {
-    return $('input[name="newsletter"]:checked').id;
-  }
-
-  function getAmount() {
-    return parseInt($('#amount').val(), 10);
-  }
-
   function getMinimum() {
-    return getDonationType() === 'monthly' ? amountOtherMonthlyMinimum : amountOtherMinimum;
-  }
-
-  function getDonationType() {
-    return $('input[name="donationType"]:checked').parent().prop('id');
+    return donationMinimum;
   }
 
   function setAmount() {
     var amount = 0;
     if (chosenOtherAmount()) {
       amount = $('#amountOtherValue').val();
-    } else {
+    }
+    else {
       amount = $('input[name="amountChoice"]:checked').val();
     }
     $('#amount').val(amount);
     $('#a3').val(amount); // for subscribe button
   }
 
-  function enableMembership() {
-    $('.membershipOptions').fadeIn();
-    $('#membershipHeading').show();
-    $('#informationHeading').hide();
-
-    $(requiredMembershipOptions).each(function (index, value) {
-      $('#' + value).parent().parent().addClass('required');
-      $('#donationForm').data('formValidation').resetField($('#' + value));
-    });
-  }
-
-  function disableMembership() {
-    $('.membershipOptions').fadeOut();
-    $('#membershipHeading').hide();
-    $('#informationHeading').show();
-
-    $(requiredMembershipOptions).each(function (index, value) {
-      $('#' + value).parent().parent().removeClass('required');
-      $('#donationForm').data('formValidation').resetField($('#' + value));
-    });
-  }
-
-  function setMembershipOptions() {
-    if (wantsMembership() && eligibleForMembership()) {
-      enableMembership();
-    } else {
-      disableMembership();
-    }
-  }
-
-  function eligibleForMembership() {
-    return (getAmount() >= membershipEligibilityAmount)
-        || (getDonationType() === 'monthly');
-  }
-
-  function membershipValidator(value) {
-    return wantsMembership() ? value !== '' : true;
-  }
-
   function emailValidator(value) {
-    if (emailRequired()) {
+    if (wantsSpam()) {
       return value !== '';
     }
 
-    return true;
-  }
-
-  function emailRequired() {
-    return wantsSpam() || (wantsMembership() && (getNewsletterType() === 'newsletterEmail'));
-  }
-
-  function addressValidator(value) {
-    if (wantsMembership() && (getNewsletterType() === 'newsletterPrint')) {
-      return value !== '';
-    }
-
-    return true;
+    return null;
   }
 
   function amountOtherValueValidator(value) {
@@ -119,33 +41,24 @@
       return /^(\d+|\d+\.\d+)$/.test(value) && (value >= getMinimum());
     }
 
-    return true;
+    return null;
   }
 
   $(document).ready(function () {
     setAmount();
 
     // listen for changes on the form, and check that the state is correct
-    $('input[name="amountChoice"], #amountOtherValue, #membership input, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
+    $('input[name="amountChoice"], #amountOtherValue, input[name="donationType"], input[name="newsletter"]', '#donationForm').change(function () {
       setAmount();
 
       if ($('#amountOther input').is(':checked')) {
         $('#amountOtherValue').prop('disabled', '').removeClass('disabled');
         $('#donationForm').formValidation('revalidateField', 'amountOtherValue');
-      } else {
+      }
+      else {
         $('#amountOtherValue').prop('disabled', 'disabled').addClass('disabled');
         $('#donationForm').data('formValidation').resetField($('#amountOtherValue'));
       }
-
-      if (eligibleForMembership()) {
-        $('#membershipInfo').hide();
-        $('#membership').fadeIn();
-      } else {
-        $('#membership').hide();
-        $('#membershipInfo').fadeIn();
-      }
-
-      setMembershipOptions();
     });
 
     $('#spam input').change(function () {
@@ -154,11 +67,17 @@
       }
     });
 
-    $('#oneoff, #monthly').click(function () {
+    $('#oneoff, #monthly, #annual').click(function () {
       $('#donationType').val(this.id);
       if (this.id === 'monthly') {
+        $('#t3').val('M');
         $('#cmd').val('_xclick-subscriptions');
-      } else {
+      }
+      else if (this.id === 'annual') {
+        $('#t3').val('Y');
+        $('#cmd').val('_xclick-subscriptions');
+      }
+      else {
         $('#cmd').val('_donations');
       }
     });
@@ -176,24 +95,8 @@
         amountOtherValue: {
           validators: {
             callback: {
-              message: 'Please specify at least $' + amountOtherMinimum + ' for single donations and $' + amountOtherMonthlyMinimum + ' for monthly donations',
+              message: 'Please specify at least $' + getMinimum() + ' for donations',
               callback: amountOtherValueValidator
-            }
-          }
-        },
-        givenName: {
-          validators: {
-            callback: {
-              message: 'Please specify your given name',
-              callback: membershipValidator
-            }
-          }
-        },
-        familyName: {
-          validators: {
-            callback: {
-              message: 'Please specify your family name',
-              callback: membershipValidator
             }
           }
         },
@@ -205,30 +108,6 @@
             callback: {
               message: 'Please specify your email address',
               callback: emailValidator
-            }
-          }
-        },
-        address1: {
-          validators: {
-            callback: {
-              message: 'Please specify your address',
-              callback: addressValidator
-            }
-          }
-        },
-        suburb: {
-          validators: {
-            callback: {
-              message: 'Please specify your suburb',
-              callback: addressValidator
-            }
-          }
-        },
-        postcode: {
-          validators: {
-            callback: {
-              message: 'Please specify your postcode',
-              callback: addressValidator
             }
           }
         }
@@ -247,27 +126,22 @@
           .done(function (data) {
             if (data.type !== 'success') {
               alert('There has been a problem creating this form, please get in touch with us via our Contact page');
-            } else {
+            }
+            else {
               // if the user is getting membership we send through
               // more information.  Otherwise we send very little
               var custom = [];
 
-              if (wantsMembership()) {
+              if ($('#givenName').val()) {
                 custom.push('GN:' + $('#givenName').val());
-                custom.push('FN:' + $('#familyName').val());
-                custom.push('Email:' + $('#email').val());
-                custom.push('Ph:' + $('#phone').val());
-              } else {
-                if ($('#givenName').val()) {
-                  custom.push('GN:' + $('#givenName').val());
-                }
-                if ($('#familyName').val()) {
-                  custom.push('FN:' + $('#familyName').val());
-                }
-                if ($('#email').val()) {
-                  custom.push('Email:' + $('#email').val());
-                }
               }
+              if ($('#familyName').val()) {
+                custom.push('FN:' + $('#familyName').val());
+              }
+              if ($('#email').val()) {
+                custom.push('Email:' + $('#email').val());
+              }
+
               custom.push('Type:' + $('input[name="donationType"]:checked').val());
               custom.push('Amount:$' + $('#amount').val());
 

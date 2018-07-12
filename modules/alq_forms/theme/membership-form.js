@@ -44,11 +44,9 @@
     setAmount();
     if (hasChosenOtherAmount()) {
       return /^(\d+|\d+\.\d+)$/.test(value) && validAmount();
-    } {
-      return null;
     }
 
-    return true;
+    return null;
   }
 
   $(document).ready(function () {
