@@ -1,5 +1,17 @@
 (function($){
   "use strict";
+
+  // Fix for https://stackoverflow.com/questions/14923301/uncaught-typeerror-cannot-read-property-msie-of-undefined-jquery-tools
+  jQuery.browser = {};
+  (function () {
+    jQuery.browser.msie = false;
+    jQuery.browser.version = 0;
+    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+      jQuery.browser.msie = true;
+      jQuery.browser.version = RegExp.$1;
+    }
+  })();
+
   $(document).ready(function () {
     $("body.front .views-slideshow-controls-text span").hide();
 

@@ -170,6 +170,8 @@ function alq_forms_block_view($delta = "") {
       ]);
       break;
     case "alq_membership_form":
+      drupal_add_library('system', 'ui.slider');
+
       drupal_add_js(drupal_get_path('module', 'alq_forms') . '/theme/membership-form.js');
       $block["subject"] = t("Membership");
 

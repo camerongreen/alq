@@ -71,16 +71,16 @@
 
     <div class="col-sm-9">
       <input type="text" class="form-control" id="email" name="email"
-             placeholder="Email"/>
+             placeholder="Email" />
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <label for="phone" class="col-sm-3">Phone</label>
 
     <div class="col-sm-9">
       <input type="text" class="form-control" id="phone" name="phone"
-             placeholder="Phone"/>
+             placeholder="Phone" />
     </div>
   </div>
 
@@ -123,94 +123,25 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label for="occupation" class="col-sm-3">Occupation</label>
-
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="occupation"
-             name="occupation"
-             placeholder="Occupation"/>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="membershipType" class="col-sm-3">Membership Type</label>
-
-    <div class="col-sm-9">
-      <select class="form-control" id="membershipType"
-              name="membershipType">
-        <option value="Individual">Individual</option>
-        <option value="Student/Unwaged">Student/Unwaged</option>
-        <option value="Family">Family</option>
-        <option value="Lifetime">Lifetime membership (one off payment)</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="donationType" class="col-sm-3">Payment type</label>
-    <input type="hidden" name="cmd" id="cmd" value="_donations"/>
-
-    <div class="col-sm-9">
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-primary active" id="oneoff">
-          <input type="radio" name="donationType"
-                 value="One off" checked="checked"/> Annual
-        </label>
-        <label class="btn btn-primary" id="monthly">
-          <input type="radio" name="donationType"
-                 value="Monthly"/> Monthly
-        </label>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="form-group">
-    <label for="amountChoice" class="col-sm-3">Amount</label>
+  <div class="form-group required">
+    <label for="amountChoice" class="col-sm-3">Monthly amount</label>
     <input type="hidden" name="amount" id="amount"/>
 
     <div class="col-sm-9">
       <div class="form-inline">
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary active oneoffOption" id="oneoffAmount">
-            <input type="radio" name="amountChoice"
-                   value="35" checked="checked" /> $<span>35</span>
-          </label>
-          <label class="btn btn-primary monthlyOption" id="amount1">
-            <input type="radio" name="amountChoice"
-                   value="100" /> $100
-          </label>
-          <label class="btn btn-primary monthlyOption" id="amount2">
-            <input type="radio" name="amountChoice"
-                   value="50"/> $50
-          </label>
-          <label class="btn btn-primary monthlyOption" id="amount3">
-            <input type="radio" name="amountChoice"
-                   value="25"/> $25
-          </label>
-          <label class="btn btn-primary monthlyOption" id="amount4">
-            <input type="radio" name="amountChoice"
-                   value="15"/> $15
-          </label>
-          <label class="btn btn-primary" id="amountOther">
-            <input type="radio" name="amountChoice"
-                   value="amountOther"/> Other
-          </label>
-        </div>
+        <ul id="slider-values"></ul>
+        <div id="slider"></div>
+      </div>
+    </div>
+
+    <div class="col-sm-offset-3 col-sm-9">
+      <div class="form-inline">
         <div class="input-group">
           <span class="input-group-addon">$</span>
           <input type="text" class="form-control disabled"
-                 id="amountOtherValue" autocomplete="off"
-                 name="amountOtherValue" placeholder="Other amount"
-                 disabled="disabled"
-            />
-        </div>
-        <div class="checkbox oneoffOption">
-          <label id="annual">
-            <input type="checkbox" name="annual"/>
-            Repeat annually
-          </label>
+                 id="amountOther" autocomplete="off"
+                 name="amountOther" placeholder="Other amount"
+          />
         </div>
       </div>
     </div>
@@ -235,6 +166,24 @@
   </div>
 
   <div class="form-group">
+    <label for="welcome-pack" class="col-sm-3">Welcome pack</label>
+
+    <div class="col-sm-9">
+      <div class="radio">
+        <label id="welcomePackEmail">
+          <input type="radio" name="welcome-pack" id="welcomePackEmail"
+                 value="Email welcome pack" checked="checked "/> Welcome pack
+          by email
+        </label>
+        <label id="welcomePackPrint">
+          <input type="radio" name="welcome-pack" id="welcomePackPrint"
+                 value="Printed welcome pack"/> Printed welcome pack by post
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
       <div class="checkbox">
         <label id="volunteering">
@@ -245,7 +194,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
@@ -267,8 +215,8 @@
     </div>
     <div class="col-sm-4" id="pp-logo">
       <img
-        src="/<?= drupal_get_path('theme', 'alq') ?>/images/paypal.jpg"
-        alt="PayPal"/>
+          src="/<?= drupal_get_path('theme', 'alq') ?>/images/paypal.jpg"
+          alt="PayPal"/>
     </div>
   </div>
 </form>

@@ -11,3 +11,29 @@ div.block-alq-donation-form #donationForm div.input-group {
 div.block-alq-donation-form #donationForm div.input-group span.input-group-addon {
   font-size: 14px;
 }
+
+#slider {
+  width: 420px;
+  margin-left: 10px;
+  margin-bottom: 1ex;
+}
+
+#slider-values {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-item-type: none;
+}
+
+#slider-values li {
+  margin: 0;
+  padding: 0;
+  list-item-type: none;
+  display: block;
+  float: left;
+  width: 13.33%;
+}
+
+#slider-values li.active {
+  font-weight: bold;
+}
