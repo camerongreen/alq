@@ -23,17 +23,33 @@ this.testAmountOther = function (browser) {
 };
 
 // with all this bootstrap magic going on, test trivial things
-this.testClickMonthly = function (browser) {
+this.testClickDonationType = function (browser) {
   var siteUrl = browser.launch_url;
   browser
       .url(siteUrl + '/' + pageUrl)
       .waitForElementVisible('#monthly', 1000);
 
   browser.expect.element('#oneoff input').to.be.selected;
+  browser.expect.element('#annual input').to.not.be.selected;
   browser.expect.element('#monthly input').to.not.be.selected;
   browser.click('#monthly');
   browser.expect.element('#monthly input').to.be.selected;
+  browser.expect.element('#annual input').to.not.be.selected;
   browser.expect.element('#oneoff input').to.not.be.selected;
+
+  browser.getValue('#t3', function (result) {
+    this.assert.equal(result.value, 'M')
+  });
+
+  browser.click('#annual');
+  browser.expect.element('#annual input').to.be.selected;
+  browser.expect.element('#monthly input').to.not.be.selected;
+  browser.expect.element('#oneoff input').to.not.be.selected;
+
+  browser.getValue('#t3', function (result) {
+    this.assert.equal(result.value, 'Y')
+  });
+
   browser.end();
 };
 

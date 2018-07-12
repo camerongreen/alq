@@ -62,7 +62,7 @@
     });
 
     $('#spam input').change(function () {
-      if (!emailRequired()) {
+      if (!wantsSpam()) {
         $('#donationForm').data('formValidation').resetField($('#email'));
       }
     });
