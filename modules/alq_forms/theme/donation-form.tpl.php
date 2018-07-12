@@ -142,7 +142,7 @@
           <div class="col-sm-offset-3 col-sm-9">
             <div class="checkbox">
               <label id="spam">
-                <input type="checkbox" name="spam" checked="checked"/>
+                <input type="checkbox" name="spam" />
                 Would you like to join the Animal Liberation Queensland
                 mailing list?
               </label>

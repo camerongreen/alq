@@ -35,6 +35,7 @@ function alq_forms_submission() {
       'nid' => $node->nid,
       'uid' => $user->uid,
       'submitted' => REQUEST_TIME,
+      'completed' => REQUEST_TIME,
       'remote_addr' => ip_address(),
       'is_draft' => FALSE,
       'data' => $data,
@@ -93,6 +94,7 @@ function alq_forms_parse_post_fields() {
     'volunteering',
     'spam',
     'subject',
+    'welcome_pack',
   ];
 
   $required = [

@@ -166,6 +166,7 @@ function alq_news_feature_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
+    'media_article' => 'media_article',
   );
   $export['news'] = $view;
 
