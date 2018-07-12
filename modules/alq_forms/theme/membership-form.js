@@ -3,7 +3,6 @@
  */
 (function ($) {
   var monthlyDonations = [5, 10, 15, 20, 30, 50, 100];
-  var fv;
 
   // Accessor functions
 
@@ -45,8 +44,8 @@
     setAmount();
     if (hasChosenOtherAmount()) {
       return /^(\d+|\d+\.\d+)$/.test(value) && validAmount();
-    } else {
-      fv.resetField('amountOther');
+    } {
+      return null;
     }
 
     return true;
@@ -76,7 +75,7 @@
       setAmount();
     });
 
-    fv = $('#membershipForm').formValidation({
+    $('#membershipForm').formValidation({
       framework: 'bootstrap',
       excluded: [':hidden', ':not(:visible)'],
       icon: {
