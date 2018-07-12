@@ -16,7 +16,7 @@ jobs:
       - checkout
 
       - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essentials
+      - run: sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
       - run: sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt-get install -y nodejs
 
