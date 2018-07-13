@@ -1,0 +1,26 @@
+{
+  "name": "alq",
+  "version": "1.0.0",
+  "description": "Animal Liberation Queensland ============================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camerongreen/alq.git"
+  },
+  "author": "Cameron Green <i@camerongreen.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camerongreen/alq/issues"
+  },
+  "homepage": "https://github.com/camerongreen/alq#readme",
+  "devDependencies": {
+    "node-sass": "^4.9.2"
+  }
+}

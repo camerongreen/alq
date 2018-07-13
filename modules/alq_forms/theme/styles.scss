@@ -44,3 +44,31 @@ div.requiredLegend span {
     margin-right: 2px;
   }
 }
+
+#slider {
+  width: 87%;
+  margin-left: 10px;
+  margin-bottom: 1ex;
+}
+
+#slider-values {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-item-type: none;
+
+  $number_of_lis: 7;
+
+  li {
+    margin: 0;
+    padding: 0;
+    list-item-type: none;
+    display: block;
+    float: left;
+    width: (100% / $number_of_lis);
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

@@ -6,4 +6,5 @@ test/reports
 test/lib
 
 /vendor/
+/node_modules/
 /.idea

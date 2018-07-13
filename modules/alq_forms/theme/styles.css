@@ -29,3 +29,23 @@ div.requiredLegend span {
 #annual input {
   float: left;
   margin-right: 2px; }
+
+#slider {
+  width: 87%;
+  margin-left: 10px;
+  margin-bottom: 1ex; }
+
+#slider-values {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-item-type: none; }
+  #slider-values li {
+    margin: 0;
+    padding: 0;
+    list-item-type: none;
+    display: block;
+    float: left;
+    width: 14.28571%; }
+    #slider-values li.active {
+      font-weight: bold; }
