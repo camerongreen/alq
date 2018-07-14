@@ -39,6 +39,7 @@
         <input type="hidden" name="p3" value="1"/>
         <input type="hidden" name="t3" id="t3" value="M"/>
         <input type="hidden" name="subject" value="Donation"/>
+        <input type="hidden" name="cmd" id="cmd" value="_donations"/>
 
         <!-- /variables from paypal -->
 
@@ -48,7 +49,6 @@
 
         <div class="form-group">
           <label for="donationType" class="col-sm-3">Donation type</label>
-          <input type="hidden" name="cmd" id="cmd" value="_donations"/>
 
           <div class="col-sm-9">
             <div class="btn-group" data-toggle="buttons">
@@ -75,11 +75,11 @@
           <div class="col-sm-9">
             <div class="form-inline">
               <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary" id="amount1">
+                <label class="btn btn-primary active" id="amount1">
                   <input type="radio" name="amountChoice"
-                         value="10" checked="checked"/> $20
+                         value="20" checked="checked"/> $20
                 </label>
-                <label class="btn btn-primary active" id="amount2">
+                <label class="btn btn-primary" id="amount2">
                   <input type="radio" name="amountChoice"
                          value="50" /> $50
                 </label>

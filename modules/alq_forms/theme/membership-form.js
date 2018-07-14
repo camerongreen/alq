@@ -156,18 +156,24 @@
       // then pass onto paypal
       $.post('/membership/submission', $form.serialize())
           .done(function (data) {
-            // if the user is getting membership we send through
-            // more information.  Otherwise we send very little
             var custom = [];
 
             custom.push('GN:' + $('#givenName').val());
             custom.push('FN:' + $('#familyName').val());
             custom.push('Email:' + $('#email').val());
             custom.push('Ph:' + $('#phone').val());
-            custom.push('Type:' + $('input[name="donationType"]:checked').val());
+            custom.push('Address 1:' + $('#address1').val());
+            custom.push('Address 2:' + $('#address2').val());
+            custom.push('Suburb:' + $('#suburb').val());
+            custom.push('Postcode:' + $('#postcode').val());
+            custom.push('Newsletter:' + $('input[name="newsletter"]:checked').val());
+            custom.push('Welcome pack:' + $('input[name="welcome-pack"]:checked').val());
+            custom.push('Volunteering:' + $('input[name="volunteering"]:checked').val());
+            custom.push('Mailing list:' + $('input[name="spam"]:checked').val());
             custom.push('Amount:$' + $('#amount').val());
 
             custom.push(data.message);
+
             $('#custom').val(custom.join(','));
 
             fv.defaultSubmit();
