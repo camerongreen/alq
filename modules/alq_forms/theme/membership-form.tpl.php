@@ -179,6 +179,10 @@
           <input type="radio" name="welcome-pack" id="welcomePackPrint"
                  value="Printed welcome pack"/> Printed welcome pack by post
         </label>
+        <label id="welcomePackPrint">
+          <input type="radio" name="welcome-pack" id="alreadyMember"
+                 value="Existing membership renewal"/> Existing membership renewal
+        </label>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@
  * Membership form
  */
 (function ($) {
+  var defaultDonation = 10;
   var monthlyDonations = [5, 10, 15, 20, 30, 50, 100];
 
   // Accessor functions
@@ -63,6 +64,7 @@
       max: monthlyDonations.length - 1,
       step: 1,
       animate: true,
+      value: monthlyDonations.indexOf(defaultDonation),
       change: setAmount
     });
 
