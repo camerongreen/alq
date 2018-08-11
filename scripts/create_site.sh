@@ -4,15 +4,15 @@
 #
 # eg :
 # git clone https://github.com/camerongreen/alq.git
-# mkdir html
+# mkdir public_html
 # cd !$
 # ADMIN="admin" ADMIN_EMAIL="alq@whatever.org" ../alq/scripts/create_site.sh
 #
-# it will ask you for the db you've created's details, then create public_html
-# add drupal to it, symlink your custom modules, themes etc
+# It will ask you for the db you've created's details, then
+# add drupal to it, symlink your custom modules, themes etc.
 #
 
-set -e
+set -ex
 
 SITE_NAME="Animal Liberation Queensland"
 
@@ -21,7 +21,7 @@ if [ -z ${GIT_DIR} ]
     GIT_DIR=/var/www/html/alq
 fi
 
-# this is the user who will own the files, so you 
+# this is the user who will own the files, so you
 # can edit them etc
 FILE_OWNER=www-data
 # this is the webserver user so it can write stuff to directories etc
@@ -40,7 +40,7 @@ fi
 
 if [ -z ${CIRCLECI} ]
 then
-  DRUSH=../vendor/bin/drush
+  DRUSH="../vendor/bin/drush -v"
 else
   DRUSH=/home/circleci/project/vendor/bin/drush
 fi

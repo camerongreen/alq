@@ -21,10 +21,13 @@ web:
     build: .
     environment:
         - XDEBUG_CONFIG
-        - PHP_IDE_CONFIG
+        - PHP_IDE_CONFIG=serverName=alq.test
     ports:
         - "26980:80"
     volumes:
-        - ../../:/var/www/html
+        # Linux
+        #- ../../:/var/www/html
+        # OSX
+        - ../../:/var/www/html:cached
     links:
         - db:mysql

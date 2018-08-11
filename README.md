@@ -28,11 +28,11 @@ Start the docker environment by running the following (sudo the docker commands 
 
 Create the empty site:
 
-    docker exec -ti alq_web bash -c "cd public_html && ADMIN=admin ADMIN_EMAIL=alq@example.org ../alq/scripts/create_site.sh"
+    docker exec -ti alq_web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@example.org ../alq/scripts/create_site.sh"
     
 If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml (by default called alq_latest.sql.gz) otherwise grab the one from the .circleci/data directory:
 
-    docker exec -ti alq_web bash -c 'cd public_html && ADMIN_EMAIL=alq@example.org ../alq/scripts/import_prod_db.sh'
+    docker exec -ti alq_web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
     
     
 # Running
