@@ -177,7 +177,7 @@
         </label>
         <label id="welcomePackPrint">
           <input type="radio" name="welcome-pack" id="welcomePackPrint"
-                 value="Printed welcome pack"/> Printed welcome pack by post
+                 value="Printed welcome pack"/> Printed welcome pack by post (including membership card)
         </label>
         <label id="welcomePackPrint">
           <input type="radio" name="welcome-pack" id="alreadyMember"
@@ -204,8 +204,7 @@
       <div class="checkbox">
         <label id="spam">
           <input type="checkbox" name="spam" checked="checked"/>
-          Would you like to join the Animal Liberation Queensland
-          mailing list?
+          Join the Animal Liberation Qld email list? (1-2 emails per month)
         </label>
       </div>
     </div>
