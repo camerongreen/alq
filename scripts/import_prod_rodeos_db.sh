@@ -130,7 +130,7 @@ echo "Anonymising user emails";
 ${DRUSH} sqlq "UPDATE users SET mail='${SITE_EMAIL}'"
 
 # Now anonymise the users
-echo "Anonymising users (set password to default sql-sanitize password of...password"
+echo "Anonymising users (set password to default sql-sanitize password of...password)"
 ${DRUSH} sql-sanitize -y
 
 echo "Clearing cache"

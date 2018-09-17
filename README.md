@@ -1,7 +1,7 @@
 Animal Liberation Queensland
 ============================
 
-This is the code for the website http://alq.org.au
+This is the code for the websites alq.org.au and rethinkrodeos.com
 
 
 # Build intro
@@ -12,7 +12,7 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 
 # Installation
 
-* Add alq.test to your /etc/hosts file
+* Add alq.test and rodeos.test to your /etc/hosts file
 * Ensure you have docker and docker-compose installed
 * mkdir alq.test
 * cd !$
@@ -30,10 +30,30 @@ Create the empty site:
 
     docker exec -ti alq_web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@example.org ../alq/scripts/create_site.sh"
     
-If you have a copy of the ALQ database, copy your gzipped sql file into the directory outlined in docker-compose.yml (by default called alq_latest.sql.gz) otherwise grab the one from the .circleci/data directory:
+If you have a copy of the ALQ database (see Backups below), copy your gzipped sql file (by default called alq_latest.sql.gz) into a directory named sql at the same level as the alq git directory otherwise grab the one from the .circleci/data directory:
 
     docker exec -ti alq_web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
     
+To get the rodeos website going, you will need to do the following in the sites directory:
+
+* mkdir -p rodeos/files
+* mkdir rodeos/themes
+* ln -s rodeos rodeos.test
+* pushd !$
+* ln -s ../../../../alq/themes/rodeos/ .
+* popd
+* cp default/settings.php rodeos/
+* Edit rodeos/settings.php and change the db name from alq_db to rodeos_db
+
+Now Create the rodeos_db database in MySQL
+* mysql -u root -h 0.0.0.0 -P 26906 -psecret
+* CREATE DATABASE rodeos_db;
+* GRANT ALL PRIVILEGES ON rodeos_db.* TO alq IDENTIFIED BY 'secret';
+
+You will need a copy of the Rodeos database (see Backups below) which you can get from the backups on the website, copy your gzipped sql file (by default called rodeos_latest.sql.gz) into a directory named sql at the same level as the alq git directory:
+
+    docker exec -ti alq_web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_rodeos_db.sh'
+
     
 # Running
     
@@ -147,3 +167,11 @@ Then use an xdebug extension in your browser to turn it on.
 All I had to do in PHPStorm was to set up a normal debug server called alq.test as per the web debug and send it through to drush as a variable eg:
 
     docker exec -ti alq_web bash -c 'PHP_IDE_CONFIG="serverName=alq.test" drush -l rodeos alq-import-emailees emailees.json'
+    
+## Backups
+
+The automysqlbackup.sh script in the bin directory of the server is run nightly to backup the website.
+
+The backups are stored in the backups/db directory.  These should be copied elsewhere regularly.
+
+
