@@ -9,41 +9,23 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-apache-browsers
       - image: circleci/mysql:5.7
+      - image: selenium/standalone-firefox:3
 
     working_directory: ~/project
 
     steps:
       - checkout
-
+      # Set up some packages we want to use.
       - run: sudo apt-get update && sudo apt-get upgrade
       - run: sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
-      - run: sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      - run: sudo apt-get install -y nodejs
-
-      - run:
-          name: Start Xvfb
-          command: |
-            sudo Xvfb :7055
-            export DISPLAY=:7055
-          background: true
-      - run:
-          name: Start Selenium
-          command: |
-            wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar -O selenium-server.jar
-            java -jar selenium-server.jar -log /tmp/selenium.log
-          background: true
-
-      - run:
-          name: Install PHP MYSQL
-          command: sudo docker-php-ext-install pdo_mysql
-
-      - run:
-          name: Install PHP GD
-          command: sudo docker-php-ext-install gd
-
+      - run: sudo docker-php-ext-install pdo_mysql
+      - run: sudo docker-php-ext-install gd
+      # Install mod_rewrite and start apache.
       - run: sudo a2enmod rewrite
       - run: sudo service apache2 start
-
+      # NPM doesn't have an apt package so install it manually.
+      - run: sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      - run: sudo apt-get install -y nodejs
       # Get composer working.
       - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
       - run: php composer-setup.php
@@ -51,16 +33,12 @@ jobs:
       - run: php composer.phar self-update
       - run: sudo mv composer.phar /usr/local/bin/composer
       - run: sudo composer self-update
-
       - run: cp docker/config/composer.json .
       - run: composer install --prefer-dist
-
+      # Finally... now install the site.
       - run: cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/create_site.sh"
-
       - run: cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test-data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
-
       - run: sudo chown -R www-data:www-data /var/www/html
-
       - save_cache:
           paths:
             - ./vendor
