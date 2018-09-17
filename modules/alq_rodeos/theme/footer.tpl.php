@@ -26,6 +26,6 @@
     </div>
   </div>
   <div class="copyright">
-    Copyright &copy; Animal Liberation Queensland 2016
+    Copyright &copy; Animal Liberation Queensland <?php print date('Y'); ?>
   </div>
 </footer>
