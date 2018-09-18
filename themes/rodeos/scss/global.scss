@@ -410,12 +410,6 @@ body.page-node-92 h2 {
         &:nth-child(3) {
           display: none;
         }
-        &.highlight.desktop {
-          display: none;
-        }
-        &.highlight.mobile {
-          display: inline-block;
-        }
       }
     }
   }
@@ -454,4 +448,15 @@ body.page-node-92 h2 {
 
 .nav-tabs li a {
   text-decoration: none;
+}
+
+div.view-news {
+  div.views-row {
+    margin-bottom: 2em;
+    a {
+      text-decoration: none;
+    }
+
+  }
+
 }

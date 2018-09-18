@@ -461,36 +461,28 @@ body.page-node-92 h2 {
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
-  /* line 413, ../scss/global.scss */
-  #zone-branding-wrapper ul li.highlight.desktop {
-    display: none;
-  }
-  /* line 416, ../scss/global.scss */
-  #zone-branding-wrapper ul li.highlight.mobile {
-    display: inline-block;
-  }
 
-  /* line 423, ../scss/global.scss */
+  /* line 417, ../scss/global.scss */
   #section-content div.block-alq-rodeos {
     width: 100%;
   }
 
-  /* line 428, ../scss/global.scss */
+  /* line 422, ../scss/global.scss */
   #region-footer-second footer div.images {
     text-align: center;
   }
-  /* line 431, ../scss/global.scss */
+  /* line 425, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 
-  /* line 435, ../scss/global.scss */
+  /* line 429, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 439, ../scss/global.scss */
+  /* line 433, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -498,7 +490,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 444, ../scss/global.scss */
+  /* line 438, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -507,7 +499,16 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 455, ../scss/global.scss */
+/* line 449, ../scss/global.scss */
 .nav-tabs li a {
+  text-decoration: none;
+}
+
+/* line 454, ../scss/global.scss */
+div.view-news div.views-row {
+  margin-bottom: 2em;
+}
+/* line 456, ../scss/global.scss */
+div.view-news div.views-row a {
   text-decoration: none;
 }
