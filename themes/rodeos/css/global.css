@@ -519,3 +519,8 @@ div.view-news div.views-row div.views-field-field-image {
 div.view-news div.views-row a {
   text-decoration: none;
 }
+
+/* line 471, ../scss/global.scss */
+div.center {
+  text-align: center;
+}
