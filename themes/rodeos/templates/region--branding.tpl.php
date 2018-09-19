@@ -6,7 +6,12 @@
           <li class="nobullet"><a href="/#block-alq-rodeos-alq-rodeos-email-member" class="anke">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>
           <li><a href="/#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
-          <li class="highlight"><a href="/news">News</a></li>
+          <li class="highlight"><a href="/news" aria-haspopup="true">News</a>
+              <ul aria-label="submenu">
+                  <li><a href="/cruelty-is-not-great">Email Kate Jones</a></li>
+                  <li><a href="/censored-billboard">Censored billboard</a></li>
+              </ul>
+          </li>
           <li><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
         </ul>
         <?php if ($linked_logo_img): ?>

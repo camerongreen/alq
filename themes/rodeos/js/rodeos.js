@@ -20,6 +20,7 @@
 
   $(window).scroll(function () {
     var zbw = $('#zone-branding-wrapper');
+    var dropdown_menu = $('#zone-branding-wrapper ul li ul');
     if ($(document).scrollTop() > 0) {
       zbw.css({
         position: 'fixed',
@@ -28,11 +29,19 @@
         'margin-top': '0px',
         'background-color': 'rgba(255, 255, 255, 0.9)'
       }, 300);
+      dropdown_menu.stop().animate({
+        'margin-top': '0px',
+        'background-color': 'rgba(255, 255, 255, 0.9)'
+      }, 300);
     } else {
       zbw.css({
         position: 'static'
       });
       zbw.stop().animate({
+        'margin-top': '10px',
+        'background-color': 'rgba(255, 255, 255, 0.6)'
+      }, 300);
+      dropdown_menu.stop().animate({
         'margin-top': '10px',
         'background-color': 'rgba(255, 255, 255, 0.6)'
       }, 300);

@@ -69,13 +69,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   ul {
-    list-style-type: none;
-    margin-top: 24px;
+    list-style: none;
+    display: block;
     li {
-      display: inline-block;
+      display: block;
+      float: left;
+      padding-top: 26px;
+      padding-bottom: 26px;
+      position: relative;
+      transition-duration: 1s;
+
+      &:hover,
+      &:focus-within {
+        cursor: pointer;
+        a {
+          outline: none;
+        }
+      }
       &:before {
         content: "\00b7";
-        padding-left: 6px;
+        padding-left: 11px;
         padding-right: 9px;
       }
       &.nobullet:before {
@@ -95,6 +108,39 @@ h1, h2, h3, h4, h5, h6 {
       &.highlight.mobile {
         display: none;
       }
+
+      ul {
+        visibility: hidden;
+        opacity: 0;
+        min-width: 15rem;
+        position: absolute;
+        transition: all 1s ease;
+        right: 0;
+        display: none;
+        background: rgba(255, 255, 255, 0.6);
+
+        @media only screen and (min-width: 700px) {
+          right: auto;
+          left: 0;
+        }
+
+        li {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          clear: both;
+          width: 100%;
+        }
+      }
+
+      &:hover > ul,
+      &:focus-within > ul,
+      & ul:hover,
+      & ul:focus {
+        visibility: visible;
+        opacity: 1;
+        display: block
+      }
+
     }
   }
 }
