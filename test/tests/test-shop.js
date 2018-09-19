@@ -9,7 +9,7 @@ this.testAddToCart = function (browser) {
       .url(siteUrl + '/' + pageUrl);
   browser.useXpath();
   browser.click('//a[text()="Apparel"]');
-  browser.click('//a[text()="ALQ Hoodie"]');
+  browser.click('//a[text()="Change T-Shirt"]');
   browser.useCss();
   browser.click('select[id="edit-attributes-2"] option[value="5"]')
   var price = null;
@@ -17,7 +17,7 @@ this.testAddToCart = function (browser) {
     price = result.value.substr(1);
     browser.clearValue('#edit-qty');
     browser.setValue('#edit-qty', '2');
-    browser.click('#edit-submit-230');
+    browser.click('#edit-actions .form-submit');
     browser.assert.urlContains('/cart');
     browser.click('#edit-checkout--2');
     browser.expect.element('td.subtotal span.uc-price').text.to.equal('$' + (2 * price).toFixed(2));
