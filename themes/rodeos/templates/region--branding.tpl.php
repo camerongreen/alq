@@ -9,7 +9,7 @@
           <li class="highlight"><a href="/news" aria-haspopup="true">News</a>
               <ul aria-label="submenu">
                   <li><a href="/cruelty-is-not-great">Email Kate Jones</a></li>
-                  <li><a href="/censored-billboard">Censored billboard</a></li>
+                  <li><a href="/censored-ad">Censored billboard</a></li>
               </ul>
           </li>
           <li><a href="/" title="Home"><icon class="fa fa-home"></icon></a></li>
