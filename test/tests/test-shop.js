@@ -9,7 +9,7 @@ this.testAddToCart = function (browser) {
       .url(siteUrl + '/' + pageUrl);
   browser.useXpath();
   browser.click('//a[text()="Apparel"]');
-  browser.click('//a[text()="Change T-Shirt"]');
+  browser.click('//a[text()="Be the Change T-Shirt"]');
   browser.useCss();
   browser.click('select[id="edit-attributes-2"] option[value="5"]')
   var price = null;
