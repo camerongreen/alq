@@ -452,7 +452,14 @@ body.page-node-92 h2 {
 
 div.view-news {
   div.views-row {
+    div.views-field-field-image {
+      width: 240px;
+      float: left;
+    }
+
     margin-bottom: 2em;
+    overflow: auto;
+    clear: both;
     a {
       text-decoration: none;
     }

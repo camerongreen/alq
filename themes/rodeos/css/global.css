@@ -507,8 +507,15 @@ body.page-node-92 h2 {
 /* line 454, ../scss/global.scss */
 div.view-news div.views-row {
   margin-bottom: 2em;
+  overflow: auto;
+  clear: both;
 }
-/* line 456, ../scss/global.scss */
+/* line 455, ../scss/global.scss */
+div.view-news div.views-row div.views-field-field-image {
+  width: 240px;
+  float: left;
+}
+/* line 463, ../scss/global.scss */
 div.view-news div.views-row a {
   text-decoration: none;
 }
