@@ -172,6 +172,6 @@ All I had to do in PHPStorm was to set up a normal debug server called alq.test 
 
 The automysqlbackup.sh script in the bin directory of the server is run nightly to backup the website.
 
-The backups are stored in the backups/db directory.  These should be copied elsewhere regularly.
+The backups are stored in the backups/db directory.  These should be copied elsewhere regularly via something like "rsync --delete -rve "ssh" alq:backups ."
 
 

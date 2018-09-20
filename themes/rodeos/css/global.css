@@ -284,7 +284,12 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-/* line 266, ../scss/global.scss */
+/* line 267, ../scss/global.scss */
+section.block-alq-mps textarea {
+  height: 400px;
+}
+
+/* line 272, ../scss/global.scss */
 #donation-form {
   padding-top: 2em;
   padding-bottom: 3em;
@@ -293,24 +298,24 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 130%;
   background-color: #502e84;
 }
-/* line 273, ../scss/global.scss */
+/* line 279, ../scss/global.scss */
 #donation-form h2 {
   color: white;
   font-size: 400%;
 }
-/* line 277, ../scss/global.scss */
+/* line 283, ../scss/global.scss */
 #donation-form button {
   margin-top: 13px;
 }
 
-/* line 283, ../scss/global.scss */
+/* line 289, ../scss/global.scss */
 #region-footer-second {
   margin-top: 1.5em;
   background-color: #333;
   margin-left: 0;
   margin-right: 0;
 }
-/* line 288, ../scss/global.scss */
+/* line 294, ../scss/global.scss */
 #region-footer-second footer {
   width: 80%;
   margin: auto;
@@ -318,74 +323,74 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em;
 }
-/* line 294, ../scss/global.scss */
+/* line 300, ../scss/global.scss */
 #region-footer-second footer div {
   color: white;
   font-size: 90%;
   padding-left: 1em;
 }
-/* line 299, ../scss/global.scss */
+/* line 305, ../scss/global.scss */
 #region-footer-second footer div.copyright {
   text-align: right;
 }
-/* line 302, ../scss/global.scss */
+/* line 308, ../scss/global.scss */
 #region-footer-second footer div.images {
   text-align: right;
 }
-/* line 304, ../scss/global.scss */
+/* line 310, ../scss/global.scss */
 #region-footer-second footer div.images img {
   max-height: 50px;
   margin-left: 10px;
 }
-/* line 309, ../scss/global.scss */
+/* line 315, ../scss/global.scss */
 #region-footer-second footer div.social-media {
   text-align: center;
 }
-/* line 311, ../scss/global.scss */
+/* line 317, ../scss/global.scss */
 #region-footer-second footer div.social-media a {
   font-size: 300%;
   color: white;
   margin-left: 5px;
   margin-right: 5px;
 }
-/* line 318, ../scss/global.scss */
+/* line 324, ../scss/global.scss */
 #region-footer-second footer ul.links {
   margin: 0;
   list-style-type: none;
 }
-/* line 321, ../scss/global.scss */
+/* line 327, ../scss/global.scss */
 #region-footer-second footer ul.links > li {
   text-indent: -5px;
 }
-/* line 323, ../scss/global.scss */
+/* line 329, ../scss/global.scss */
 #region-footer-second footer ul.links > li a {
   color: white;
 }
-/* line 327, ../scss/global.scss */
+/* line 333, ../scss/global.scss */
 #region-footer-second footer ul.links > li:before {
   content: "- ";
   text-indent: -5px;
 }
 
-/* line 336, ../scss/global.scss */
+/* line 342, ../scss/global.scss */
 #zone-header strong {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 1ex;
   padding-right: 1ex;
 }
 
-/* line 343, ../scss/global.scss */
+/* line 349, ../scss/global.scss */
 a.anchor {
   padding-top: 75px;
 }
 
-/* line 349, ../scss/global.scss */
+/* line 355, ../scss/global.scss */
 div.viddy {
   width: 50%;
   margin: auto;
   margin-bottom: 1em;
 }
-/* line 353, ../scss/global.scss */
+/* line 359, ../scss/global.scss */
 div.viddy > div {
   position: relative;
   padding-bottom: 51%;
@@ -393,7 +398,7 @@ div.viddy > div {
   padding-top: 25px;
   height: 0;
 }
-/* line 358, ../scss/global.scss */
+/* line 364, ../scss/global.scss */
 div.viddy > div iframe {
   position: absolute;
   top: 0;
@@ -402,19 +407,19 @@ div.viddy > div iframe {
   height: 100%;
 }
 
-/* line 369, ../scss/global.scss */
+/* line 375, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
   border-bottom: solid #CCC thin;
 }
-/* line 373, ../scss/global.scss */
+/* line 379, ../scss/global.scss */
 #pledge-form p {
   margin-top: 1em;
   font-weight: bold;
   font-size: 110%;
 }
 
-/* line 380, ../scss/global.scss */
+/* line 386, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count {
   position: absolute;
   background: url(../images/cow-hug.png) no-repeat center center;
@@ -431,102 +436,102 @@ div.viddy > div iframe {
   text-align: center;
   font-weight: bold;
 }
-/* line 395, ../scss/global.scss */
+/* line 401, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content {
   margin-top: 44px;
 }
-/* line 398, ../scss/global.scss */
+/* line 404, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
   font-size: 300%;
   line-height: 30px;
 }
-/* line 401, ../scss/global.scss */
+/* line 407, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
   color: white;
   text-decoration: none;
 }
-/* line 406, ../scss/global.scss */
+/* line 412, ../scss/global.scss */
 #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count-text {
   font-size: 140%;
   line-height: 21px;
   margin-top: 6px;
 }
 
-/* line 414, ../scss/global.scss */
+/* line 420, ../scss/global.scss */
 div.markup {
   font-size: 80%;
 }
 
-/* line 418, ../scss/global.scss */
+/* line 424, ../scss/global.scss */
 body.page-node-92 h2 {
   margin-top: 1em;
 }
 
-/* line 422, ../scss/global.scss */
+/* line 428, ../scss/global.scss */
 #email-explainer ul {
   margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 429, ../scss/global.scss */
+  /* line 435, ../scss/global.scss */
   body:not(.front) #region-content {
     width: 90%;
   }
 
-  /* line 433, ../scss/global.scss */
+  /* line 439, ../scss/global.scss */
   #block-alq-rodeos-alq-rodeos-pledge-count {
     display: none;
   }
 
-  /* line 436, ../scss/global.scss */
+  /* line 442, ../scss/global.scss */
   #block-block-6 {
     margin-top: 4em;
     margin-bottom: 1em;
     font-size: 150%;
   }
-  /* line 440, ../scss/global.scss */
+  /* line 446, ../scss/global.scss */
   #block-block-6 p {
     margin-left: 5%;
     margin-right: 5%;
   }
 
-  /* line 445, ../scss/global.scss */
+  /* line 451, ../scss/global.scss */
   #block-block-7 {
     width: 90%;
   }
 
-  /* line 451, ../scss/global.scss */
+  /* line 457, ../scss/global.scss */
   #zone-branding-wrapper ul li:before {
     content: "\00b7";
     padding-left: 0px;
     padding-right: 3px;
   }
-  /* line 456, ../scss/global.scss */
+  /* line 462, ../scss/global.scss */
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none;
   }
 
-  /* line 463, ../scss/global.scss */
+  /* line 469, ../scss/global.scss */
   #section-content div.block-alq-rodeos {
     width: 100%;
   }
 
-  /* line 468, ../scss/global.scss */
+  /* line 474, ../scss/global.scss */
   #region-footer-second footer div.images {
     text-align: center;
   }
-  /* line 471, ../scss/global.scss */
+  /* line 477, ../scss/global.scss */
   #region-footer-second footer div.copyright {
     text-align: center;
   }
 
-  /* line 475, ../scss/global.scss */
+  /* line 481, ../scss/global.scss */
   div.viddy {
     width: 90%;
     margin: auto;
     margin-bottom: 1em;
   }
-  /* line 479, ../scss/global.scss */
+  /* line 485, ../scss/global.scss */
   div.viddy > div {
     position: relative;
     padding-bottom: 46%;
@@ -534,7 +539,7 @@ body.page-node-92 h2 {
     padding-top: 25px;
     height: 0;
   }
-  /* line 484, ../scss/global.scss */
+  /* line 490, ../scss/global.scss */
   div.viddy > div iframe {
     position: absolute;
     top: 0;
@@ -543,28 +548,28 @@ body.page-node-92 h2 {
     height: 100%;
   }
 }
-/* line 495, ../scss/global.scss */
+/* line 501, ../scss/global.scss */
 .nav-tabs li a {
   text-decoration: none;
 }
 
-/* line 500, ../scss/global.scss */
+/* line 506, ../scss/global.scss */
 div.view-news div.views-row {
   margin-bottom: 2em;
   overflow: auto;
   clear: both;
 }
-/* line 501, ../scss/global.scss */
+/* line 507, ../scss/global.scss */
 div.view-news div.views-row div.views-field-field-image {
   width: 240px;
   float: left;
 }
-/* line 509, ../scss/global.scss */
+/* line 515, ../scss/global.scss */
 div.view-news div.views-row a {
   text-decoration: none;
 }
 
-/* line 517, ../scss/global.scss */
+/* line 523, ../scss/global.scss */
 div.center {
   text-align: center;
 }
