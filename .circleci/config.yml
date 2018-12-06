@@ -9,12 +9,20 @@ jobs:
       # specify the version you desire here
       - image: circleci/php:7.1-apache-browsers
       - image: circleci/mysql:5.7
-      - image: selenium/standalone-firefox:3
 
     working_directory: ~/project
 
     steps:
       - checkout
+      - run:
+          name: Download Selenium
+          command: |
+            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
       # Set up some packages we want to use.
       - run: sudo apt-get update && sudo apt-get upgrade
       - run: sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
