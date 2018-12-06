@@ -132,7 +132,7 @@ projects[views][version] = 3.18
 
 projects[views_slideshow][version] = 3.9
 
-projects[webform][version] = 3.27
+projects[webform][version] = 4.18
 
 projects[workbench][version] = 1.2
 

@@ -30,10 +30,13 @@ function alq_forms_submission() {
   try {
     $data = alq_forms_parse_post_fields();
 
+    $serial = _webform_submission_serial_next_value($node->nid);
+
     $submission = (object) [
       'sid' => NULL,
       'nid' => $node->nid,
       'uid' => $user->uid,
+      'serial' => $serial,
       'submitted' => REQUEST_TIME,
       'completed' => REQUEST_TIME,
       'remote_addr' => ip_address(),
