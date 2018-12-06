@@ -3,22 +3,24 @@
 <form class="form-horizontal" id="membershipForm" method="post"
       action="<?= $action ?>">
     <!-- variables from paypal -->
+    <input type="hidden" name="a3" id="a3" value=""/>
     <input type="hidden" name="business" value="<?= $business ?>"/>
-    <input type="hidden" name="lc" value="AU"/>
-    <input type="hidden" name="item_name" value="Animal Liberation Qld"/>
-    <input type="hidden" name="no_note" value="1"/>
-    <input type="hidden" name="no_shipping" value="1"/>
-    <input type="hidden" name="rm" value="1"/>
-    <input type="hidden" name="return" value="<?= $redirect_url ?>"/>
     <input type="hidden" name="cancel_return"
            value="<?= $redirect_url_cancel ?>"/>
-    <input type="hidden" name="currency_code" value="AUD"/>
-    <input type="hidden" name="src" value="1"/>
-    <input type="hidden" name="a3" id="a3" value=""/>
-    <input type="hidden" name="p3" value="1"/>
-    <input type="hidden" id="t3" name="t3" value="M"/>
-    <input type="hidden" name="subject" value="Membership"/>
     <input type="hidden" name="cmd" id="cmd" value="_xclick-subscriptions"/>
+    <input type="hidden" name="currency_code" value="AUD"/>
+    <input type="hidden" name="item_name" value="Animal Liberation Qld"/>
+    <input type="hidden" name="item_nimber" value="Monthly subscription"/>
+    <input type="hidden" name="lc" value="AU"/>
+    <input type="hidden" name="no_note" value="1"/>
+    <input type="hidden" name="no_shipping" value="1"/>
+    <input type="hidden" name="p3" value="1"/>
+    <input type="hidden" name="return" value="<?= $redirect_url ?>"/>
+    <input type="hidden" name="rm" value="1"/>
+    <input type="hidden" name="sra" value="1"/>
+    <input type="hidden" name="src" value="1"/>
+    <input type="hidden" name="subject" value="Membership"/>
+    <input type="hidden" name="t3" id="t3" value="M"/>
 
     <!-- /variables from paypal -->
 

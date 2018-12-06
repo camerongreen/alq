@@ -176,7 +176,8 @@
 
             custom.push(data.message);
 
-            $('#custom').val(custom.join(','));
+            // Field has limit of 255 characters, so send what we can.
+            $('#custom').val(custom.join(',').substr(0, 255));
 
             fv.defaultSubmit();
           }).fail(function () {
