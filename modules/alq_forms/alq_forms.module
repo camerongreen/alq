@@ -49,7 +49,8 @@ function alq_forms_submission() {
     webform_submission_send_mail($node, $submission);
     $returnVal['type'] = 'success';
     $returnVal['message'] = 'sid:' . $sid;
-  } catch (Exception $e) {
+  }
+  catch (Exception $e) {
     $returnVal['type'] = 'error';
     $returnVal['message'] = $e->getMessage();
   }
@@ -231,34 +232,45 @@ function alq_forms_cron() {
   $days_to_email = 7; // If no submissions since this time email.
 
   // Only run once a day.
-  if ((time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
+  if (TRUE || (time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
     $nid = 254; // Donations form.
 
-    $last_updated = alq_forms_webform_last_submission($nid);
+    $donation_types = [
+      'Monthly',
+      'One off',
+    ];
 
-    // If the last submission was more than a week ago, email admin and log
-    // in watchdog.
-    if ($last_updated < (time() - ($days_to_email * $seconds_in_day))) {
-      watchdog(WATCHDOG_ERROR, "No submissions in last $days_to_email for form $nid");
+    foreach ($donation_types as $donation_type) {
+      $last_updated = alq_forms_webform_last_submission($nid, $donation_type);
 
-      $node_url = "http://alq.org.au/node/${nid}";
+      // If the last submission was more than a week ago, email admin and log
+      // in watchdog.
+      $time_before = time() - ($days_to_email * $seconds_in_day);
+      if ($last_updated < $time_before) {
+        watchdog(WATCHDOG_ERROR, "No submissions in last $days_to_email for form $nid type $donation_type");
 
-      $from = variable_get('system_mail', 'info@alq.org.au');
-      $message = [
-        'id' => $my_module,
-        'from' => $from,
-        'to' => 'i@camerongreen.org',
-        'subject' => 'alq.org.au: No donations in last week',
-        'body' => "Form to check: <a href=\"${node_url}\">${node_url}</a>\n",
-        'headers' => [
-          'From' => $from,
-          'Sender' => $from,
-          'Return-Path' => $from,
-        ],
-      ];
+        $node_url = "http://alq.org.au/node/${nid}";
 
-      $system = drupal_mail_system($my_module, 'webform_submissions_check');
-      $system->mail($message);
+        $from = variable_get('system_mail', 'info@alq.org.au');
+        $message = [
+          'id' => $my_module,
+          'from' => $from,
+          'to' => 'i@camerongreen.org',
+          'subject' => 'alq.org.au: No ' . $donation_type . ' donations in last week',
+          'body' => ["Form to check: <a href=\"${node_url}\">${node_url}</a>"],
+          'headers' => [
+            'From' => $from,
+            'Sender' => $from,
+            'Return-Path' => $from,
+          ],
+        ];
+
+        $system = drupal_mail_system($my_module, 'webform_submissions_check');
+        $message = $system->format($message);
+        if (!$system->mail($message)) {
+          watchdog(WATCHDOG_ERROR, 'Unable to send submissions email');
+        }
+      }
     }
   }
 }
@@ -269,17 +281,22 @@ function alq_forms_cron() {
  *
  * @param int $nid
  *   Nid of webform to check.
+ * @param string $donation_type
+ *   Data value to check, Monthly or One Off.
  *
  * @return array
  *   Details.
  *
  */
-function alq_forms_webform_last_submission($nid) {
-  $query = db_select('node', 'n');
-  $query->join('webform_submissions', 'w', 'n.nid = w.nid');
-  $query->addExpression('MAX(w.completed)', 'max_completed');
-  $query->groupBy('n.nid');
-  $query->condition('n.nid', $nid);
+function alq_forms_webform_last_submission($nid, $donation_type) {
+  $donation_type_cid = 1;
+  $query = db_select('webform_submissions', 'ws');
+  $query->join('webform_submitted_data', 'wsd', 'wsd.nid = ws.nid AND wsd.sid = ws.sid');
+  $query->addExpression('MAX(ws.completed)', 'max_completed');
+  $query->groupBy('ws.nid');
+  $query->condition('ws.nid', $nid);
+  $query->condition('wsd.cid', $donation_type_cid);
+  $query->condition('wsd.data', $donation_type);
   $result = $query->execute();
   return $result->fetchField();
 }
