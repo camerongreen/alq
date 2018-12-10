@@ -232,7 +232,7 @@ function alq_forms_cron() {
   $days_to_email = 7; // If no submissions since this time email.
 
   // Only run once a day.
-  if (TRUE || (time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
+  if ((time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
     $nid = 254; // Donations form.
 
     $donation_types = [
