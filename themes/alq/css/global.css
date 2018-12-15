@@ -560,3 +560,9 @@ ul.ui-autocomplete {
 body.node-type-product div.main-product-image {
   margin-bottom: 1ex;
 }
+
+/* line 484, ../scss/global.scss */
+body.page-catalog li.pager-next,
+body.page-catalog li.pager-previous {
+  display: none;
+}
