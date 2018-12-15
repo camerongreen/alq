@@ -481,15 +481,17 @@ body.node-type-product {
 }
 
 body.page-catalog {
-  li.pager-next,
-  li.pager-previous {
-    display: none;
-  }
+  ul.pager {
+    margin-bottom: 1em;
 
+    li.pager-next,
+    li.pager-previous {
+      display: none;
+    }
+  }
 }
 
 div.view-uc-catalog-terms {
-
   td {
     padding-bottom: 1em;
   }
@@ -497,6 +499,5 @@ div.view-uc-catalog-terms {
   a {
     font-weight: bold;
   }
-
 }
 

@@ -562,16 +562,20 @@ body.node-type-product div.main-product-image {
 }
 
 /* line 484, ../scss/global.scss */
-body.page-catalog li.pager-next,
-body.page-catalog li.pager-previous {
+body.page-catalog ul.pager {
+  margin-bottom: 1em;
+}
+/* line 487, ../scss/global.scss */
+body.page-catalog ul.pager li.pager-next,
+body.page-catalog ul.pager li.pager-previous {
   display: none;
 }
 
-/* line 493, ../scss/global.scss */
+/* line 495, ../scss/global.scss */
 div.view-uc-catalog-terms td {
   padding-bottom: 1em;
 }
-/* line 497, ../scss/global.scss */
+/* line 499, ../scss/global.scss */
 div.view-uc-catalog-terms a {
   font-weight: bold;
 }
