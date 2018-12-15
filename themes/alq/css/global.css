@@ -555,3 +555,8 @@ ul.ui-autocomplete {
 #block-alq-mps-alq-mps-email-campaign-stats {
   margin-top: 1em;
 }
+
+/* line 478, ../scss/global.scss */
+body.node-type-product div.main-product-image {
+  margin-bottom: 1ex;
+}
