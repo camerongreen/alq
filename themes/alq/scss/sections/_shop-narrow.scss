@@ -1,5 +1,11 @@
 div.view-uc-catalog-terms {
   div.row {
+    width: 460px;
+
+    .col-sm-6, .col-md-6, .col-lg-6 {
+      width: 460px;
+    }
+
     & > div {
       div.views-field-entity-id {
         float: left;

@@ -206,48 +206,44 @@ body.page-catalog ul.pager li.pager-previous {
 }
 
 /* line 17, ../scss/sections/_shop.scss */
-div.view-uc-catalog-terms #views-bootstrap-grid-1 {
-  margin-left: 10px;
+div.view-uc-catalog-terms div.row {
+  margin: auto;
+  width: max-content;
 }
-/* line 22, ../scss/sections/_shop.scss */
+@media only screen and (max-width: 460px) {
+  /* line 17, ../scss/sections/_shop.scss */
+  div.view-uc-catalog-terms div.row {
+    width: 240px;
+  }
+}
+/* line 25, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
-  width: 460px;
-  margin: 0 0 10px 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  width: 220px;
 }
-/* line 27, ../scss/sections/_shop.scss */
+/* line 31, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div {
   background-color: #502c83;
   padding: 0;
 }
-/* line 31, ../scss/sections/_shop.scss */
-div.view-uc-catalog-terms div.row > div div.views-field-entity-id {
-  width: 220px;
-}
-/* line 34, ../scss/sections/_shop.scss */
+/* line 36, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 41, ../scss/sections/_shop.scss */
+/* line 43, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
-  width: 240px;
-  height: 220px;
-  line-height: 220px;
   border-color: #502c83;
   border-style: solid;
   border-width: 1px;
+  height: 100px;
 }
-/* line 50, ../scss/sections/_shop.scss */
-div.view-uc-catalog-terms div.row > div div.views-field-name span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
-}
-/* line 55, ../scss/sections/_shop.scss */
+/* line 51, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
-  font-size: 24pt;
+  font-size: 30px;
   font-weight: normal;
   text-decoration: none;
   color: #fff;
