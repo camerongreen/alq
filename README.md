@@ -158,7 +158,7 @@ I set up a server for alq.test for PHPStorm, the most important thing is to get 
 
 Then run docker compose with the IP address of your PC according to docker:
 
-    XDEBUG_CONFIG="remote_host=172.17.0.1" docker-compose up -d
+    XDEBUG_CONFIG="remote_host=10.1.1.5" docker-compose up -d
 
 Then use an xdebug extension in your browser to turn it on.
 

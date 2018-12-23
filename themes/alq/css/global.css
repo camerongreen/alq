@@ -1,62 +1,310 @@
 @charset "UTF-8";
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* line 17, ../scss/global.scss */
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* line 2, ../scss/sections/_header.scss */
+#region-branding {
+  background-color: #fff;
+}
+
+/* line 6, ../scss/sections/_header.scss */
+#instagram-link {
+  margin-top: 1px;
+}
+
+/* line 10, ../scss/sections/_header.scss */
+.header-social-media-link {
+  display: block;
+  float: left;
+}
+
+/* line 17, ../scss/sections/_header.scss */
+#facebook-link img,
+#twitter-link img {
+  margin-right: 2px;
+}
+
+/* line 23, ../scss/sections/_header.scss */
+#instagram-link img {
+  margin-right: 3px;
+}
+
+/* Header menu */
+/* line 29, ../scss/sections/_header.scss */
+body #block-nice-menus-1 ul.nice-menu ul li a {
+  font-weight: normal;
+}
+
+/* line 33, ../scss/sections/_header.scss */
+#block-nice-menus-1 {
+  position: relative;
+}
+/* line 36, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu ul,
+#block-nice-menus-1 ul.nice-menu li,
+#block-nice-menus-1 ul.nice-menu li a {
+  border: 0;
+  color: #502c83;
+  text-decoration: none;
+  padding: 0.3em 2px 0.3em 2px;
+  font-weight: normal;
+}
+/* line 45, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu li.menuparent,
+#block-nice-menus-1 ul.nice-menu li {
+  background-color: #fff;
+}
+/* line 49, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu li.menuparent a:hover,
+#block-nice-menus-1 ul.nice-menu li a:hover {
+  background-color: #ddd;
+}
+/* line 53, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu ul {
+  background-color: #fff;
+  display: none !important;
+  box-shadow: 2px 1px 2px #666;
+}
+/* line 59, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu-down .menuparent a {
+  padding-right: 0;
+}
+/* line 62, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu-down li.menuparent {
+  background: #fff none;
+}
+/* line 65, ../scss/sections/_header.scss */
+#block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
+  background-color: #fff;
+}
+
+/* line 72, ../scss/sections/_header.scss */
+.responsive-menus.responsified .responsive-menus-simple {
+  background-color: #502c83;
+}
+/* line 75, ../scss/sections/_header.scss */
+.responsive-menus.responsified span.toggler {
+  background-color: #fff;
+  color: #502c83;
+  box-shadow: none;
+  text-align: right;
+  margin-right: 2em;
+}
+
+/* line 84, ../scss/sections/_header.scss */
+.block-user-menu ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 89, ../scss/sections/_header.scss */
+.block-user-menu ul.menu li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* line 100, ../scss/sections/_header.scss */
+#section-home-header {
+  margin: auto;
+  border-bottom: solid #502c83;
+}
+/* line 103, ../scss/sections/_header.scss */
+#section-home-header img {
+  max-width: 100% !important;
+  height: auto;
+  display: block;
+}
+
+/* line 1, ../scss/sections/_slideshow.scss */
+#views_slideshow_cycle_teaser_section_slideshow-block {
+  overflow: auto;
+}
+
+/* line 5, ../scss/sections/_slideshow.scss */
+div.view-slideshow .views-field-field-slideshow-image img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* line 10, ../scss/sections/_slideshow.scss */
+span.views-slideshow-controls-text-next,
+span.views-slideshow-controls-text-previous {
+  text-decoration: none !important;
+}
+
+/* line 15, ../scss/sections/_slideshow.scss */
+.views-slideshow-controls-text,
+.view-slideshow .views-field-view-node {
+  display: none;
+}
+
+/* line 20, ../scss/sections/_slideshow.scss */
+.view-slideshow {
+  border-bottom: solid #502c83;
+  margin-top: 1em;
+}
+/* line 23, ../scss/sections/_slideshow.scss */
+.view-slideshow .views-field-title {
+  position: absolute;
+  background-color: rgba(66, 66, 66, 0.6);
+}
+/* line 27, ../scss/sections/_slideshow.scss */
+.view-slideshow .views-field-title a {
+  color: #fff;
+  text-decoration: none;
+}
+/* line 31, ../scss/sections/_slideshow.scss */
+.view-slideshow .views-field-view-node {
+  display: none;
+  position: absolute;
+}
+/* line 35, ../scss/sections/_slideshow.scss */
+.view-slideshow .views-field-title {
+  display: none;
+  top: 70px;
+  left: 10px;
+  padding: 2px;
+}
+
+/* line 43, ../scss/sections/_slideshow.scss */
+.views-slideshow-controls-text span {
+  position: absolute;
+  overflow: hidden;
+  z-index: 10;
+  background-color: rgba(66, 66, 66, 0.6);
+  color: #fff;
+  display: none;
+}
+/* line 50, ../scss/sections/_slideshow.scss */
+.views-slideshow-controls-text span a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+/* line 55, ../scss/sections/_slideshow.scss */
+.views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
+  content: "◀";
+}
+/* line 58, ../scss/sections/_slideshow.scss */
+.views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
+  content: "▶";
+}
+
+/* line 2, ../scss/sections/_shop.scss */
+body.node-type-product div.main-product-image {
+  margin-bottom: 1ex;
+}
+
+/* line 7, ../scss/sections/_shop.scss */
+body.page-catalog ul.pager {
+  margin-bottom: 1em;
+}
+/* line 10, ../scss/sections/_shop.scss */
+body.page-catalog ul.pager li.pager-next,
+body.page-catalog ul.pager li.pager-previous {
+  display: none;
+}
+
+/* line 17, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms #views-bootstrap-grid-1 {
+  margin-left: 10px;
+}
+/* line 22, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
+  width: 460px;
+  margin: 0 0 10px 10px;
+}
+/* line 27, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div {
+  background-color: #502c83;
+  padding: 0;
+}
+/* line 31, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div div.views-field-entity-id {
+  width: 220px;
+}
+/* line 34, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
+  border-color: #000;
+  border-style: solid;
+  border-width: 1px;
+}
+/* line 41, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div div.views-field-name {
+  text-align: center;
+  width: 240px;
+  height: 220px;
+  line-height: 220px;
+  border-color: #502c83;
+  border-style: solid;
+  border-width: 1px;
+}
+/* line 50, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div div.views-field-name span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+/* line 55, ../scss/sections/_shop.scss */
+div.view-uc-catalog-terms div.row > div div.views-field-name span a {
+  font-size: 24pt;
+  font-weight: normal;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* line 21, ../scss/global.scss */
 body {
   background-color: #fff;
 }
-/* line 20, ../scss/global.scss */
+/* line 24, ../scss/global.scss */
 body #zone-branding,
 body #zone-header,
 body div.zone-content {
   background-color: #fff;
 }
-/* line 25, ../scss/global.scss */
+/* line 29, ../scss/global.scss */
 body div.logo-img img {
   height: 85px;
   width: 160px;
 }
 
-/* line 31, ../scss/global.scss */
+/* line 35, ../scss/global.scss */
 body, h1, h2, h3, h4, h5, h6, p {
   font-family: Arial, Verdana, Geneva, sans-serif;
 }
 
-/* line 35, ../scss/global.scss */
+/* line 39, ../scss/global.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #502c83;
   text-transform: uppercase;
   line-height: 1.2em;
 }
 
-/* line 41, ../scss/global.scss */
+/* line 45, ../scss/global.scss */
 h1 {
   font-size: 30px;
 }
 
-/* line 45, ../scss/global.scss */
+/* line 49, ../scss/global.scss */
 small {
   font-size: 80%;
 }
 
-/* line 49, ../scss/global.scss */
+/* line 53, ../scss/global.scss */
 .front h1.title {
   font-size: 18px;
   margin-top: 6px;
 }
 
-/* line 54, ../scss/global.scss */
+/* line 58, ../scss/global.scss */
 h2 {
   font-size: 26px;
 }
 
-/* line 58, ../scss/global.scss */
+/* line 62, ../scss/global.scss */
 #region-branding {
   background-color: #fff;
-}
-
-/* line 62, ../scss/global.scss */
-#instagram-link {
-  margin-top: 1px;
 }
 
 /* line 66, ../scss/global.scss */
@@ -86,14 +334,8 @@ div.breadcrumb {
   background-color: #fff;
 }
 
-/* line 89, ../scss/global.scss */
-.header-social-media-link {
-  display: block;
-  float: left;
-}
-
 /* Blocks we won't show on mobile version */
-/* line 95, ../scss/global.scss */
+/* line 90, ../scss/global.scss */
 #donate-link,
 #block-block-5,
 #block-block-1,
@@ -101,129 +343,53 @@ div.breadcrumb {
   display: none;
 }
 
-/* line 105, ../scss/global.scss */
-#facebook-link img,
-#twitter-link img,
-#instagram-link img {
-  margin-right: 2px;
-}
-
-/* Header menu */
-/* line 111, ../scss/global.scss */
-#block-nice-menus-1 {
-  position: relative;
-}
-/* line 114, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu ul,
-#block-nice-menus-1 ul.nice-menu li,
-#block-nice-menus-1 ul.nice-menu li a {
-  border: 0;
-  color: #502c83;
-  text-decoration: none;
-  padding: 0.3em 2px 0.3em 2px;
-}
-/* line 122, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu li.menuparent,
-#block-nice-menus-1 ul.nice-menu li {
-  background-color: #fff;
-}
-/* line 126, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu li.menuparent a:hover,
-#block-nice-menus-1 ul.nice-menu li a:hover {
-  background-color: #ddd;
-}
-/* line 130, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu ul {
-  background-color: #fff;
-  display: none !important;
-  box-shadow: 2px 1px 2px #666;
-}
-/* line 136, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu-down .menuparent a {
-  padding-right: 0;
-}
-/* line 139, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu-down li.menuparent {
-  background: #fff none;
-}
-/* line 142, ../scss/global.scss */
-#block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
-  background-color: #fff;
-}
-
-/* line 149, ../scss/global.scss */
-.responsive-menus.responsified .responsive-menus-simple {
-  background-color: #502c83;
-}
-/* line 152, ../scss/global.scss */
-.responsive-menus.responsified span.toggler {
-  background-color: #fff;
-  color: #502c83;
-  box-shadow: none;
-  text-align: right;
-  margin-right: 2em;
-}
-
-/* line 161, ../scss/global.scss */
-.block-user-menu ul.menu {
-  margin: 0;
-  padding: 0;
-}
-
-/* line 166, ../scss/global.scss */
-.block-user-menu ul.menu li {
-  display: inline;
-  list-style-type: none;
-  padding: 0;
-}
-
-/* line 172, ../scss/global.scss */
+/* line 97, ../scss/global.scss */
 #zone-footer {
   color: #fff;
   background-color: #502c83;
 }
-/* line 175, ../scss/global.scss */
+/* line 100, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu {
   padding-top: 1em;
   padding-bottom: 1ex;
 }
-/* line 178, ../scss/global.scss */
+/* line 103, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu li ul {
   display: none;
 }
-/* line 181, ../scss/global.scss */
+/* line 106, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu li {
   display: inline;
   list-style-type: none;
   padding: 0;
 }
-/* line 186, ../scss/global.scss */
+/* line 111, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu li a {
   color: #fff;
   text-decoration: none;
 }
-/* line 190, ../scss/global.scss */
+/* line 115, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu > li a {
   border-right: thin solid #fff;
   padding-right: 10px;
 }
-/* line 194, ../scss/global.scss */
+/* line 119, ../scss/global.scss */
 #zone-footer #block-menu-menu-footer-menu ul.menu > li:last-child a {
   border: none;
 }
 
-/* line 200, ../scss/global.scss */
+/* line 125, ../scss/global.scss */
 #block-views-news-block {
   margin-bottom: 1em;
 }
 
-/* line 207, ../scss/global.scss */
+/* line 132, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row,
 body.page-media-views .view-media-views .views-row,
 .view-news .views-row {
   clear: both;
 }
-/* line 209, ../scss/global.scss */
+/* line 134, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-title a,
 body.page-media-views .view-media-views .views-row .views-field-title a,
 .view-news .views-row .views-field-title a {
@@ -234,7 +400,7 @@ body.page-media-views .view-media-views .views-row .views-field-title a,
   line-height: 1.3em;
   letter-spacing: -0.05em;
 }
-/* line 217, ../scss/global.scss */
+/* line 142, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-field-image,
 body.page-media-views .view-media-views .views-row .views-field-field-image,
 .view-news .views-row .views-field-field-image {
@@ -242,7 +408,7 @@ body.page-media-views .view-media-views .views-row .views-field-field-image,
   width: 220px;
   height: 100%;
 }
-/* line 221, ../scss/global.scss */
+/* line 146, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-field-field-image img,
 body.page-media-views .view-media-views .views-row .views-field-field-image img,
 .view-news .views-row .views-field-field-image img {
@@ -253,7 +419,7 @@ body.page-media-views .view-media-views .views-row .views-field-field-image img,
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-/* line 225, ../scss/global.scss */
+/* line 150, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .field-name-field-tags,
 body.page-in-the-news .view-media-views .views-row .views-label-field-tags,
 body.page-media-views .view-media-views .views-row .field-name-field-tags,
@@ -264,19 +430,19 @@ body.page-media-views .view-media-views .views-row .views-label-field-tags,
   margin-right: 1ex;
   font-weight: bold;
 }
-/* line 231, ../scss/global.scss */
+/* line 156, ../scss/global.scss */
 body.page-in-the-news .view-media-views .views-row .views-more-link,
 body.page-media-views .view-media-views .views-row .views-more-link,
 .view-news .views-row .views-more-link {
   margin-top: 1ex;
 }
-/* line 235, ../scss/global.scss */
+/* line 160, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link,
 body.page-media-views .view-media-views div.more-link,
 .view-news div.more-link {
   text-align: center;
 }
-/* line 237, ../scss/global.scss */
+/* line 162, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link a,
 body.page-media-views .view-media-views div.more-link a,
 .view-news div.more-link a {
@@ -285,94 +451,19 @@ body.page-media-views .view-media-views div.more-link a,
   text-decoration: none;
   color: #502c83;
 }
-/* line 243, ../scss/global.scss */
+/* line 168, ../scss/global.scss */
 body.page-in-the-news .view-media-views div.more-link a:after,
 body.page-media-views .view-media-views div.more-link a:after,
 .view-news div.more-link a:after {
   content: "▶";
 }
 
-/* line 253, ../scss/global.scss */
-#views_slideshow_cycle_teaser_section_slideshow-block {
-  overflow: auto;
-}
-
-/* line 257, ../scss/global.scss */
-div.view-slideshow .views-field-field-slideshow-image img {
-  width: 100% !important;
-  height: auto !important;
-}
-
-/* line 262, ../scss/global.scss */
-span.views-slideshow-controls-text-next,
-span.views-slideshow-controls-text-previous {
-  text-decoration: none !important;
-}
-
-/* line 267, ../scss/global.scss */
-.views-slideshow-controls-text,
-.view-slideshow .views-field-view-node {
-  display: none;
-}
-
-/* line 272, ../scss/global.scss */
-.view-slideshow {
-  border-bottom: solid #502c83;
-  margin-top: 1em;
-}
-/* line 275, ../scss/global.scss */
-.view-slideshow .views-field-title {
-  position: absolute;
-  background-color: rgba(66, 66, 66, 0.6);
-}
-/* line 279, ../scss/global.scss */
-.view-slideshow .views-field-title a {
-  color: #fff;
-  text-decoration: none;
-}
-/* line 283, ../scss/global.scss */
-.view-slideshow .views-field-view-node {
-  display: none;
-  position: absolute;
-}
-/* line 287, ../scss/global.scss */
-.view-slideshow .views-field-title {
-  display: none;
-  top: 70px;
-  left: 10px;
-  padding: 2px;
-}
-
-/* line 295, ../scss/global.scss */
-.views-slideshow-controls-text span {
-  position: absolute;
-  overflow: hidden;
-  z-index: 10;
-  background-color: rgba(66, 66, 66, 0.6);
-  color: #fff;
-  display: none;
-}
-/* line 302, ../scss/global.scss */
-.views-slideshow-controls-text span a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-}
-/* line 307, ../scss/global.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-previous:before {
-  content: "◀";
-}
-/* line 310, ../scss/global.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-next:after {
-  content: "▶";
-}
-
 /* search form */
-/* line 317, ../scss/global.scss */
+/* line 176, ../scss/global.scss */
 #block-search-form h2 {
   display: none;
 }
-/* line 320, ../scss/global.scss */
+/* line 179, ../scss/global.scss */
 #block-search-form .form-submit {
   background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
   text-indent: -9999px;
@@ -384,13 +475,13 @@ span.views-slideshow-controls-text-previous {
 }
 
 /* email subscribe form */
-/* line 332, ../scss/global.scss */
+/* line 191, ../scss/global.scss */
 #block-block-6 {
   display: none;
   margin-bottom: 0;
 }
 
-/* line 337, ../scss/global.scss */
+/* line 196, ../scss/global.scss */
 #mc-embedded-subscribe-form input[type=submit] {
   background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
   text-indent: -9999px;
@@ -399,7 +490,7 @@ span.views-slideshow-controls-text-previous {
   height: 43px;
 }
 
-/* line 345, ../scss/global.scss */
+/* line 204, ../scss/global.scss */
 select,
 input[type=text],
 input[type=email] {
@@ -407,44 +498,44 @@ input[type=email] {
 }
 
 /* Voiceless box */
-/* line 352, ../scss/global.scss */
+/* line 211, ../scss/global.scss */
 #block-block-1 div p {
   text-align: center;
 }
 
-/* line 356, ../scss/global.scss */
+/* line 215, ../scss/global.scss */
 #section-home-header {
   margin: auto;
   border-bottom: solid #502c83;
 }
-/* line 359, ../scss/global.scss */
+/* line 218, ../scss/global.scss */
 #section-home-header img {
   max-width: 100% !important;
   height: auto;
   display: block;
 }
 
-/* line 367, ../scss/global.scss */
+/* line 226, ../scss/global.scss */
 #section-home-childtree h2 {
   display: none;
 }
-/* line 370, ../scss/global.scss */
+/* line 229, ../scss/global.scss */
 #section-home-childtree ul {
   list-style: none;
   padding: 0;
 }
-/* line 373, ../scss/global.scss */
+/* line 232, ../scss/global.scss */
 #section-home-childtree ul li a {
   color: #000;
   text-decoration: none;
   padding-left: 1ex;
 }
-/* line 378, ../scss/global.scss */
+/* line 237, ../scss/global.scss */
 #section-home-childtree ul li:before {
   content: "▶";
 }
 
-/* line 384, ../scss/global.scss */
+/* line 243, ../scss/global.scss */
 body.node-type-media-article .field-name-field-intro,
 body.node-type-article .field-name-field-intro,
 body.node-type-section-home .field-name-field-intro {
@@ -452,7 +543,7 @@ body.node-type-section-home .field-name-field-intro {
   font-style: italic;
 }
 
-/* line 391, ../scss/global.scss */
+/* line 250, ../scss/global.scss */
 body.node-type-page .field-type-image,
 body.node-type-media-article .field-type-image,
 body.node-type-article .field-type-image {
@@ -465,117 +556,117 @@ body.node-type-article .field-type-image {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* line 398, ../scss/global.scss */
+/* line 257, ../scss/global.scss */
 body.node-type-media-article div.article-date,
 body.node-type-article div.article-date {
   font-weight: bold;
   padding-bottom: 1em;
 }
 
-/* line 405, ../scss/global.scss */
+/* line 264, ../scss/global.scss */
 .page-catalog table:nth-child(1) {
   border: none;
 }
-/* line 407, ../scss/global.scss */
+/* line 266, ../scss/global.scss */
 .page-catalog table:nth-child(1) td {
   text-align: center;
 }
 
-/* line 413, ../scss/global.scss */
+/* line 272, ../scss/global.scss */
 article div.field-name-field-tags {
   font-weight: bold;
   color: #666;
   margin-bottom: 1ex;
 }
-/* line 416, ../scss/global.scss */
+/* line 275, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div {
   margin-right: 1ex;
 }
-/* line 418, ../scss/global.scss */
+/* line 277, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:after {
   content: ",";
 }
-/* line 422, ../scss/global.scss */
+/* line 281, ../scss/global.scss */
 article div.field-name-field-tags div.field-items div:last-child:after {
   content: "";
 }
 
-/* line 428, ../scss/global.scss */
+/* line 287, ../scss/global.scss */
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0;
   background: none;
 }
 
 /* Contact us form */
-/* line 434, ../scss/global.scss */
+/* line 293, ../scss/global.scss */
 body.page-contact ul {
   list-style: none;
 }
 
-/* line 438, ../scss/global.scss */
+/* line 297, ../scss/global.scss */
 #uc-coupon-form,
 #uc-cart-pane-coupon {
   margin-bottom: 1em;
 }
 
-/* line 443, ../scss/global.scss */
+/* line 302, ../scss/global.scss */
 #block-views-media-views-block,
 #block-views-media-views-block-1 {
   margin: 1em;
 }
 
-/* line 449, ../scss/global.scss */
+/* line 308, ../scss/global.scss */
 div.block-alq-donation-form h2 {
   margin-top: 1ex;
 }
-/* line 453, ../scss/global.scss */
+/* line 312, ../scss/global.scss */
 div.block-alq-donation-form #donationForm div.input-group {
   margin-top: 5px;
 }
-/* line 455, ../scss/global.scss */
+/* line 314, ../scss/global.scss */
 div.block-alq-donation-form #donationForm div.input-group span.input-group-addon {
   font-size: 10px;
 }
-/* line 459, ../scss/global.scss */
+/* line 318, ../scss/global.scss */
 div.block-alq-donation-form #donationForm #membershipInfo {
   display: none;
 }
 
-/* line 465, ../scss/global.scss */
+/* line 324, ../scss/global.scss */
 #block-addtoany-addtoany-button {
   margin-bottom: 1em;
 }
 
-/* line 469, ../scss/global.scss */
+/* line 328, ../scss/global.scss */
 ul.ui-autocomplete {
   list-style: none;
 }
 
-/* line 473, ../scss/global.scss */
+/* line 332, ../scss/global.scss */
 #block-alq-mps-alq-mps-email-campaign-stats {
   margin-top: 1em;
 }
 
-/* line 478, ../scss/global.scss */
+/* line 337, ../scss/global.scss */
 body.node-type-product div.main-product-image {
   margin-bottom: 1ex;
 }
 
-/* line 484, ../scss/global.scss */
+/* line 343, ../scss/global.scss */
 body.page-catalog ul.pager {
   margin-bottom: 1em;
 }
-/* line 487, ../scss/global.scss */
+/* line 346, ../scss/global.scss */
 body.page-catalog ul.pager li.pager-next,
 body.page-catalog ul.pager li.pager-previous {
   display: none;
 }
 
-/* line 495, ../scss/global.scss */
+/* line 354, ../scss/global.scss */
 div.view-uc-catalog-terms td {
   padding-bottom: 1em;
 }
-/* line 499, ../scss/global.scss */
+/* line 358, ../scss/global.scss */
 div.view-uc-catalog-terms a {
   font-weight: bold;
 }

@@ -14,6 +14,7 @@
 set -e
 
 DEFAULT_PROD_HOST="http://alq.org.au"
+DEFAULT_DEV_HOST="http://alq.test:26980"
 DEFAULT_PRIVATE_DIR="/tmp/private"
 
 # this is the user who will own the files, so you
@@ -175,6 +176,7 @@ ${DRUSH} vset stage_file_proxy_origin ${DEFAULT_PROD_HOST}
 ${DRUSH} vset preprocess_css 0
 ${DRUSH} vset preprocess_js 0
 ${DRUSH} vset error_level 2
+${DRUSH} vset extlink_exclude ${DEFAULT_DEV_HOST}
 
 # Now anonymise the users
 echo "Anonymising users (set password to default sql-sanitize password of...password)"

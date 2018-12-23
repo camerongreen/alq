@@ -1,302 +1,63 @@
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* line 2, ../scss/alq-alpha-default-narrow.scss */
-body {
-  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
-}
+/*
+Error: File to import not found or unreadable: shop-narrow.
+       Load paths:
+         Compass::SpriteImporter
+         /www/alq.test/alq/themes/alq/scss
+         /Library/Ruby/Gems/2.3.0/gems/compass-core-1.0.3/stylesheets
+        on line 6 of /www/alq.test/alq/themes/alq/./scss/alq-alpha-default-narrow.scss
 
-/* line 6, ../scss/alq-alpha-default-narrow.scss */
-.logo-img {
-  margin-left: 10px;
-}
+1: /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). *\/
+2: body {
+3:   background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
+4: }
+5: 
+6: @import 'shop-narrow';
+7: 
+8: .logo-img {
+9:   margin-left: 10px;
+10: }
+11: 
 
-/* line 10, ../scss/alq-alpha-default-narrow.scss */
-.region-branding-inner {
-  padding: 1em;
-}
-
-/* line 14, ../scss/alq-alpha-default-narrow.scss */
-.region-sidebar-first {
-  margin-right: 10px;
-}
-/* line 16, ../scss/alq-alpha-default-narrow.scss */
-.region-sidebar-first .region-sidebar-first-inner {
-  padding: 4px;
-}
-/* line 20, ../scss/alq-alpha-default-narrow.scss */
-.region-sidebar-first .region-sidebar-first-inner section {
-  margin-bottom: 1.5em;
-}
-
-/* Header menu */
-/* line 26, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 {
-  position: absolute;
-  top: 71px;
-  right: 0px;
-}
-/* line 31, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu a {
-  padding: 0.3em 5px 0.3em 5px;
-}
-/* line 34, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu ul {
-  display: inherit !important;
-}
-/* line 38, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu-down .menuparent a {
-  padding-right: 15px;
-}
-/* line 41, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu-down li.menuparent {
-  background: url("/sites/all/modules/nice_menus/images/arrow-down.png") no-repeat scroll right center;
-}
-/* line 44, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
-  background: url("/sites/all/modules/nice_menus/images/arrow-down.png") no-repeat scroll right center;
-}
-/* line 47, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu-down li li.menuparent {
-  background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
-}
-/* line 50, ../scss/alq-alpha-default-narrow.scss */
-#block-nice-menus-1 ul.nice-menu-down li li.menuparent:hover {
-  background: url("/sites/all/modules/nice_menus/images/arrow-right.png") no-repeat scroll right center;
-}
-
-/* line 55, ../scss/alq-alpha-default-narrow.scss */
-#donate-link {
-  display: inherit;
-}
-
-/* line 59, ../scss/alq-alpha-default-narrow.scss */
-#zone-footer {
-  height: 60px;
-}
-
-/* line 63, ../scss/alq-alpha-default-narrow.scss */
-#zone-content {
-  padding-top: 1.5em;
-}
-
-/* line 67, ../scss/alq-alpha-default-narrow.scss */
-#block-menu-menu-footer-menu {
-  padding-left: 40px;
-}
-/* line 69, ../scss/alq-alpha-default-narrow.scss */
-#block-menu-menu-footer-menu ul.menu {
-  margin-top: 1ex;
-  margin-bottom: 1ex;
-}
-
-/* line 78, ../scss/alq-alpha-default-narrow.scss */
-body.page-in-the-news .view-media-views .views-row,
-body.page-media-views .view-media-views .views-row,
-.view-news .views-row {
-  margin-bottom: 30px;
-  overflow: auto;
-}
-/* line 81, ../scss/alq-alpha-default-narrow.scss */
-body.page-in-the-news .view-media-views .views-row .views-field-title a,
-body.page-media-views .view-media-views .views-row .views-field-title a,
-.view-news .views-row .views-field-title a {
-  font-size: 17px;
-}
-/* line 84, ../scss/alq-alpha-default-narrow.scss */
-body.page-in-the-news .view-media-views .views-row .views-field-body p:last-child,
-body.page-media-views .view-media-views .views-row .views-field-body p:last-child,
-.view-news .views-row .views-field-body p:last-child {
-  margin-bottom: 1ex;
-}
-/* line 87, ../scss/alq-alpha-default-narrow.scss */
-body.page-in-the-news .view-media-views .views-row .views-field-field-image,
-body.page-media-views .view-media-views .views-row .views-field-field-image,
-.view-news .views-row .views-field-field-image {
-  width: 220px;
-}
-/* line 89, ../scss/alq-alpha-default-narrow.scss */
-body.page-in-the-news .view-media-views .views-row .views-field-field-image img,
-body.page-media-views .view-media-views .views-row .views-field-field-image img,
-.view-news .views-row .views-field-field-image img {
-  max-width: 200px;
-}
-
-/* line 96, ../scss/alq-alpha-default-narrow.scss */
-.region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-}
-
-/* line 100, ../scss/alq-alpha-default-narrow.scss */
-#section-home-header,
-.view-slideshow {
-  border-bottom-width: 4px;
-  margin-bottom: 1em;
-  margin-top: 0;
-}
-
-/* line 107, ../scss/alq-alpha-default-narrow.scss */
-#section-home-header {
-  width: 700px !important;
-}
-/* line 109, ../scss/alq-alpha-default-narrow.scss */
-#section-home-header img {
-  width: 700px !important;
-  height: 120px !important;
-}
-
-/* line 115, ../scss/alq-alpha-default-narrow.scss */
-#views_slideshow_cycle_teaser_section_slideshow-block,
-.view-slideshow .views-field-field-image img {
-  width: 700px !important;
-  height: 253px !important;
-}
-
-/* line 122, ../scss/alq-alpha-default-narrow.scss */
-.view-slideshow .views-field-title {
-  top: 140px;
-  left: 30px;
-  padding: 1ex;
-}
-/* line 126, ../scss/alq-alpha-default-narrow.scss */
-.view-slideshow .views-field-title a {
-  font-size: 25px;
-}
-/* line 130, ../scss/alq-alpha-default-narrow.scss */
-.view-slideshow .views-field-view-node {
-  top: 200px;
-  left: 30px;
-  display: none;
-}
-
-/* line 137, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text {
-  display: inherit;
-}
-/* line 139, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text span {
-  top: 20px;
-  padding: 5px;
-  font-size: 15px;
-}
-/* line 143, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-previous {
-  left: 4px;
-}
-/* line 146, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-previous a {
-  padding-left: 6px;
-}
-/* line 149, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-next {
-  right: 4px;
-}
-/* line 152, ../scss/alq-alpha-default-narrow.scss */
-.views-slideshow-controls-text span.views-slideshow-controls-text-next a {
-  padding-right: 6px;
-}
-
-/* search form */
-/* line 159, ../scss/alq-alpha-default-narrow.scss */
-#block-search-form h2 {
-  display: inherit;
-}
-
-/* line 163, ../scss/alq-alpha-default-narrow.scss */
-#block-search-form input[type=text] {
-  width: 100%;
-}
-
-/* email subscribe form */
-/* line 168, ../scss/alq-alpha-default-narrow.scss */
-#mc-embedded-subscribe-form input[type=email] {
-  width: 100%;
-}
-
-/* line 172, ../scss/alq-alpha-default-narrow.scss */
-#block-block-6 {
-  display: inherit;
-}
-/* line 174, ../scss/alq-alpha-default-narrow.scss */
-#block-block-6 div {
-  margin-bottom: 1ex;
-}
-
-/* line 179, ../scss/alq-alpha-default-narrow.scss */
-select,
-input[type=text],
-input[type=email] {
-  border-radius: 3px;
-  height: 31px;
-}
-
-/* Copyright box */
-/* line 187, ../scss/alq-alpha-default-narrow.scss */
-#block-block-3 div p {
-  padding-top: 20px;
-}
-
-/* line 192, ../scss/alq-alpha-default-narrow.scss */
-#section-home-childtree h2 {
-  margin-bottom: 5px;
-  display: inherit;
-}
-/* line 196, ../scss/alq-alpha-default-narrow.scss */
-#section-home-childtree ul {
-  margin-left: 1em;
-}
-/* line 198, ../scss/alq-alpha-default-narrow.scss */
-#section-home-childtree ul li a {
-  font-size: 130%;
-}
-
-/* line 204, ../scss/alq-alpha-default-narrow.scss */
-.node-type-media-article article .field-name-field-intro,
-.node-type-article article .field-name-field-intro,
-.node-type-section-home .field-name-field-intro {
-  font-size: 140%;
-}
-
-/* line 210, ../scss/alq-alpha-default-narrow.scss */
-.node-type-page .field-type-image,
-.node-type-media-article .field-type-image,
-.node-type-article .field-type-image {
-  width: 290px;
-  margin: 1em;
-  border-radius: 4px;
-  padding: 3px;
-  float: right;
-}
-
-/* Voiceless block */
-/* line 221, ../scss/alq-alpha-default-narrow.scss */
-#block-block-1 {
-  display: inherit;
-}
-
-/* Donate now block */
-/* line 226, ../scss/alq-alpha-default-narrow.scss */
-#block-block-5 {
-  display: inherit;
-  color: #f8931d;
-  font-size: 200%;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-/* line 232, ../scss/alq-alpha-default-narrow.scss */
-#block-block-5 a {
-  color: #f8931d;
-}
-
-/* Facebook widget, trying to make responsive */
-/* line 238, ../scss/alq-alpha-default-narrow.scss */
-#block-facebook-boxes-fb-like {
-  display: inherit;
-}
-/* line 240, ../scss/alq-alpha-default-narrow.scss */
-#block-facebook-boxes-fb-like h2 {
-  margin-bottom: 4px;
-}
-
-/* line 245, ../scss/alq-alpha-default-narrow.scss */
-.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
-  width: 100% !important;
-}
+Backtrace:
+/www/alq.test/alq/themes/alq/./scss/alq-alpha-default-narrow.scss:6
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/import_node.rb:44:in `import'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/engine.rb:284:in `render'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:494:in `update_stylesheet'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:473:in `on_file_changed'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/lib/sass/plugin/compiler.rb:331:in `block in watch'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:254:in `report_changes'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:323:in `poll_changed_directories'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.4.25/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: shop-narrow.\A        Load paths:\A          Compass::SpriteImporter\A          /www/alq.test/alq/themes/alq/scss\A          /Library/Ruby/Gems/2.3.0/gems/compass-core-1.0.3/stylesheets\A         on line 6 of /www/alq.test/alq/themes/alq/./scss/alq-alpha-default-narrow.scss\A \A 1: /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */\A 2: body {\A 3:   background-image: url(\"/sites/all/themes/alq/images/lil_fiber.png\");\A 4: }\A 5: \A 6: @import 'shop-narrow';\A 7: \A 8: .logo-img {\A 9:   margin-left: 10px;\A 10: }\A 11: "; }
