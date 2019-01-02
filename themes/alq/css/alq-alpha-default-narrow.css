@@ -42,6 +42,26 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 24pt;
 }
 
+/* line 44, ../scss/sections/_shop-narrow.scss */
+#block-block-8 div.content {
+  margin: 2em 0 2em 0;
+  padding: 2em 200px 2em 2em;
+  background-image: url("/sites/all/themes/alq/images/goodwill-wines-bg.png");
+}
+/* line 45, ../scss/sections/_shop-narrow.scss */
+#block-block-8 div.content h2 {
+  margin-top: 2em;
+}
+/* line 52, ../scss/sections/_shop-narrow.scss */
+#block-block-8 div.content div.wines-picture {
+  width: 220px;
+}
+/* line 55, ../scss/sections/_shop-narrow.scss */
+#block-block-8 div.content div.wines-picture img {
+  height: 272px;
+  width: 200px;
+}
+
 /* line 8, ../scss/alq-alpha-default-narrow.scss */
 .logo-img {
   margin-left: 10px;

@@ -1,8 +1,11 @@
+// Styling the main individual product pages.
 body.node-type-product {
   div.main-product-image {
     margin-bottom: 1ex;
   }
 }
+
+// Styling pager for products.
 body.page-catalog {
   ul.pager {
     margin-bottom: 1em;
@@ -13,6 +16,8 @@ body.page-catalog {
     }
   }
 }
+
+// Product list on front page of shope.
 div.view-uc-catalog-terms {
   div.row {
     margin: auto;
@@ -50,11 +55,37 @@ div.view-uc-catalog-terms {
         span {
           a {
             font-size: 30px;
+            text-shadow: 0px 2px #000;
             font-weight: normal;
             text-decoration: none;
             color: #fff;
           }
         }
+      }
+    }
+  }
+}
+
+// Goodwill wines wide block.
+#block-block-8 {
+  div.content {
+    margin: 1em 0 1em 0;
+    padding: 1em;
+    background-image: none;
+    background-position: right;
+    background-repeat: no-repeat;
+
+    p {
+      font-size: 110%;
+    }
+
+    div.wines-picture {
+      width: 110px;
+      float: left;
+
+      img {
+        height: 136px;
+        width: 100px;
       }
     }
   }

@@ -190,50 +190,50 @@ span.views-slideshow-controls-text-previous {
   content: "▶";
 }
 
-/* line 2, ../scss/sections/_shop.scss */
+/* line 3, ../scss/sections/_shop.scss */
 body.node-type-product div.main-product-image {
   margin-bottom: 1ex;
 }
 
-/* line 7, ../scss/sections/_shop.scss */
+/* line 10, ../scss/sections/_shop.scss */
 body.page-catalog ul.pager {
   margin-bottom: 1em;
 }
-/* line 10, ../scss/sections/_shop.scss */
+/* line 13, ../scss/sections/_shop.scss */
 body.page-catalog ul.pager li.pager-next,
 body.page-catalog ul.pager li.pager-previous {
   display: none;
 }
 
-/* line 17, ../scss/sections/_shop.scss */
+/* line 22, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row {
   margin: auto;
   width: max-content;
 }
 @media only screen and (max-width: 460px) {
-  /* line 17, ../scss/sections/_shop.scss */
+  /* line 22, ../scss/sections/_shop.scss */
   div.view-uc-catalog-terms div.row {
     width: 240px;
   }
 }
-/* line 25, ../scss/sections/_shop.scss */
+/* line 30, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 220px;
 }
-/* line 31, ../scss/sections/_shop.scss */
+/* line 36, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div {
   background-color: #502c83;
   padding: 0;
 }
-/* line 36, ../scss/sections/_shop.scss */
+/* line 41, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 43, ../scss/sections/_shop.scss */
+/* line 48, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
   border-color: #502c83;
@@ -241,12 +241,36 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
   border-width: 1px;
   height: 100px;
 }
-/* line 51, ../scss/sections/_shop.scss */
+/* line 56, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 30px;
+  text-shadow: 0px 2px #000;
   font-weight: normal;
   text-decoration: none;
   color: #fff;
+}
+
+/* line 71, ../scss/sections/_shop.scss */
+#block-block-8 div.content {
+  margin: 1em 0 1em 0;
+  padding: 1em;
+  background-image: none;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+/* line 78, ../scss/sections/_shop.scss */
+#block-block-8 div.content p {
+  font-size: 110%;
+}
+/* line 82, ../scss/sections/_shop.scss */
+#block-block-8 div.content div.wines-picture {
+  width: 110px;
+  float: left;
+}
+/* line 86, ../scss/sections/_shop.scss */
+#block-block-8 div.content div.wines-picture img {
+  height: 136px;
+  width: 100px;
 }
 
 /* line 21, ../scss/global.scss */
@@ -490,7 +514,7 @@ body.page-media-views .view-media-views div.more-link a:after,
 select,
 input[type=text],
 input[type=email] {
-  border: thin solid #CCC;
+  border: thin solid #ccc;
 }
 
 /* Voiceless box */
@@ -665,4 +689,16 @@ div.view-uc-catalog-terms td {
 /* line 358, ../scss/global.scss */
 div.view-uc-catalog-terms a {
   font-weight: bold;
+}
+
+/* line 363, ../scss/global.scss */
+a.btn:link,
+a.btn:visited {
+  text-decoration: none;
+  color: #fff;
+}
+/* line 367, ../scss/global.scss */
+a.btn:link.btn-default,
+a.btn:visited.btn-default {
+  color: #000;
 }

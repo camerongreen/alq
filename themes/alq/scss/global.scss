@@ -204,7 +204,7 @@ body.page-media-views .view-media-views,
 select,
 input[type=text],
 input[type=email] {
-  border: thin solid #CCC;
+  border: thin solid #ccc;
 }
 
 /* Voiceless box */
@@ -360,3 +360,11 @@ div.view-uc-catalog-terms {
   }
 }
 
+a.btn:link,
+a.btn:visited {
+  text-decoration: none;
+  color: #fff;
+  &.btn-default {
+    color: #000;
+  }
+}

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * alq_mps_perms_feature.features.user_permission.inc
@@ -16,6 +17,7 @@ function alq_mps_perms_feature_user_default_permissions() {
     'roles' => array(
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'editor' => 'editor',
     ),
     'module' => 'alq_mps',
   );
