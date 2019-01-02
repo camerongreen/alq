@@ -1,7 +1,8 @@
-name = Shop
+name = ALQ Shop
 description = ALQ shop features
 core = 7.x
 package = ALQ
+version = 7.x-1.0
 dependencies[] = alq_mps_feature
 dependencies[] = text
 dependencies[] = uc_catalog
