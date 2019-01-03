@@ -195,45 +195,138 @@ body.node-type-product div.main-product-image {
   margin-bottom: 1ex;
 }
 
-/* line 10, ../scss/sections/_shop.scss */
-body.page-catalog ul.pager {
-  margin-bottom: 1em;
+/* line 12, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog {
+  background-color: #eee;
+  border-radius: 4px;
 }
-/* line 13, ../scss/sections/_shop.scss */
-body.page-catalog ul.pager li.pager-next,
-body.page-catalog ul.pager li.pager-previous {
+/* line 16, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row {
+  margin: 0;
+  padding-top: 1em;
+}
+/* line 20, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) {
+  width: 200px;
+  padding: 1ex;
+  margin-left: 16px;
+  margin-right: 16px;
+  text-align: center;
+}
+/* line 27, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title {
+  margin-top: 1ex;
+}
+/* line 29, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title a {
+  font-size: 110%;
+  color: #000;
+  text-decoration: none;
+}
+/* line 36, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-field-extra-details {
+  font-color: #727272;
+  font-style: italic;
+}
+/* line 41, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-display-price {
+  float: left;
+  width: 50%;
+  font-weight: bold;
+  margin-top: 14px;
+  font-size: 110%;
+}
+/* line 49, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-buyitnowbutton {
+  text-align: right;
+  float: left;
+  width: 50%;
+}
+/* line 55, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) input[type="submit"] {
+  border: none;
+  background: #502c83;
+  color: #fff;
+  border-radius: 0;
+  font-weight: normal;
+}
+/* line 63, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) img {
+  border-radius: 4px;
+}
+/* line 67, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.form-wrapper {
+  text-align: left;
+}
+/* line 74, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list {
+  display: flex;
+  justify-content: center;
+}
+/* line 78, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager {
+  margin: 1em 0 1em 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+/* line 84, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager li {
+  font-size: 11pt;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: #666;
+}
+/* line 90, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager li a {
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: #666;
+}
+/* line 96, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager li.pager-next, body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
   display: none;
 }
+/* line 100, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager li.pager-last {
+  position: relative;
+}
+/* line 103, ../scss/sections/_shop.scss */
+body.page-catalog #block-system-main div.item-list ul.pager li.pager-current {
+  color: #000;
+}
 
-/* line 22, ../scss/sections/_shop.scss */
+/* line 114, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row {
   margin: auto;
   width: max-content;
 }
 @media only screen and (max-width: 460px) {
-  /* line 22, ../scss/sections/_shop.scss */
+  /* line 114, ../scss/sections/_shop.scss */
   div.view-uc-catalog-terms div.row {
     width: 240px;
   }
 }
-/* line 30, ../scss/sections/_shop.scss */
+/* line 122, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 220px;
 }
-/* line 36, ../scss/sections/_shop.scss */
+/* line 128, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div {
   background-color: #502c83;
   padding: 0;
 }
-/* line 41, ../scss/sections/_shop.scss */
+/* line 133, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 48, ../scss/sections/_shop.scss */
+/* line 140, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
   border-color: #502c83;
@@ -241,7 +334,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
   border-width: 1px;
   height: 100px;
 }
-/* line 56, ../scss/sections/_shop.scss */
+/* line 148, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 30px;
   text-shadow: 0px 2px #000;
@@ -250,7 +343,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   color: #fff;
 }
 
-/* line 71, ../scss/sections/_shop.scss */
+/* line 163, ../scss/sections/_shop.scss */
 #block-block-8 div.content {
   margin: 1em 0 1em 0;
   padding: 1em;
@@ -258,16 +351,16 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   background-position: right;
   background-repeat: no-repeat;
 }
-/* line 78, ../scss/sections/_shop.scss */
+/* line 170, ../scss/sections/_shop.scss */
 #block-block-8 div.content p {
   font-size: 110%;
 }
-/* line 82, ../scss/sections/_shop.scss */
+/* line 174, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture {
   width: 110px;
   float: left;
 }
-/* line 86, ../scss/sections/_shop.scss */
+/* line 178, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture img {
   height: 136px;
   width: 100px;

@@ -7,17 +7,109 @@ body.node-type-product {
 
 // Styling pager for products.
 body.page-catalog {
-  ul.pager {
-    margin-bottom: 1em;
 
-    li.pager-next,
-    li.pager-previous {
-      display: none;
+  #block-system-main {
+    div.view-uc-catalog {
+      background-color: #eee;
+      border-radius: 4px;
+
+      div.row {
+        margin: 0;
+        padding-top: 1em;
+
+        & > div:not(.clearfix) {
+          width: 200px;
+          padding: 1ex;
+          margin-left: 16px;
+          margin-right: 16px;
+          text-align: center;
+
+          div.views-field-title {
+            margin-top: 1ex;
+            a {
+              font-size: 110%;
+              color: #000;
+              text-decoration: none;
+            }
+          }
+
+          div.views-field-field-extra-details {
+            font-color: #727272;
+            font-style: italic;
+          }
+
+          div.views-field-display-price {
+            float: left;
+            width: 50%;
+            font-weight: bold;
+            margin-top: 14px;
+            font-size: 110%;
+          }
+
+          div.views-field-buyitnowbutton {
+            text-align: right;
+            float: left;
+            width: 50%;
+          }
+
+          input[type="submit"] {
+            border: none;
+            background: $alq-purple;
+            color: #fff;
+            border-radius: 0;
+            font-weight: normal;
+          }
+
+          img {
+            border-radius: 4px;
+          }
+
+          div.form-wrapper {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    div.item-list {
+      display: flex;
+      justify-content: center;
+
+      ul.pager {
+        margin: 1em 0 1em 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+
+        li {
+          font-size: 11pt;
+          background: none;
+          border: none;
+          border-radius: 0;
+          color: #666;
+          & a {
+            background: none;
+            border: none;
+            border-radius: 0;
+            color: #666;
+          }
+          &.pager-next,
+          &.pager-previous {
+            display: none;
+          }
+          &.pager-last {
+            position: relative;
+          }
+          &.pager-current {
+            color: #000;
+          }
+        }
+      }
     }
   }
 }
 
-// Product list on front page of shope.
+// Product list on front page of shop.
 div.view-uc-catalog-terms {
   div.row {
     margin: auto;
