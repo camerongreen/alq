@@ -1,7 +1,78 @@
+$gray-bg: #eee;
+
 // Styling the main individual product pages.
 body.node-type-product {
-  div.main-product-image {
-    margin-bottom: 1ex;
+  input[type="submit"] {
+    border: none;
+    background: $alq-purple;
+    color: #fff;
+    border-radius: 0;
+    font-weight: normal;
+    text-shadow: none;
+    font-size: 130%;
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+  }
+
+  article {
+    padding: 1em;
+    margin: 1em;
+    background-color: $gray-bg;
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  div.field-name-body {
+    font-size: 110%;
+    margin-left: 42%;
+  }
+
+  div.field-type-image {
+    float: left;
+    width: 40%;
+    height: auto;
+    margin-right: 1em;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    #slide-nav {
+      li {
+        display: inline;
+        list-style-type: none;
+
+        img {
+          height: 100px;
+          width: auto;
+          border-radius: 2px;
+          margin: 5px;
+        }
+      }
+    }
+  }
+
+  div.display-price {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+  }
+
+  div.add-to-cart {
+    border-top-color: #ccc;
+    border-top-style: solid;
+    border-top-width: thin;
+    margin-left: 42%;
+
+    label {
+      width: 80px;
+    }
+
+    div.form-actions {
+      padding-left: 80px;
+    }
   }
 }
 
@@ -10,7 +81,7 @@ body.page-catalog {
 
   #block-system-main {
     div.view-uc-catalog {
-      background-color: #eee;
+      background-color: $gray-bg;
       border-radius: 4px;
 
       div.row {

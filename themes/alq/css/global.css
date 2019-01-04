@@ -190,22 +190,89 @@ span.views-slideshow-controls-text-previous {
   content: "▶";
 }
 
-/* line 3, ../scss/sections/_shop.scss */
-body.node-type-product div.main-product-image {
-  margin-bottom: 1ex;
+/* line 5, ../scss/sections/_shop.scss */
+body.node-type-product input[type="submit"] {
+  border: none;
+  background: #502c83;
+  color: #fff;
+  border-radius: 0;
+  font-weight: normal;
+  text-shadow: none;
+  font-size: 130%;
+  border-radius: 8px;
+  padding: 10px 20px 10px 20px;
+}
+/* line 17, ../scss/sections/_shop.scss */
+body.node-type-product article {
+  padding: 1em;
+  margin: 1em;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: auto;
+}
+/* line 25, ../scss/sections/_shop.scss */
+body.node-type-product div.field-name-body {
+  font-size: 110%;
+  margin-left: 42%;
+}
+/* line 30, ../scss/sections/_shop.scss */
+body.node-type-product div.field-type-image {
+  float: left;
+  width: 40%;
+  height: auto;
+  margin-right: 1em;
+}
+/* line 36, ../scss/sections/_shop.scss */
+body.node-type-product div.field-type-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+/* line 43, ../scss/sections/_shop.scss */
+body.node-type-product div.field-type-image #slide-nav li {
+  display: inline;
+  list-style-type: none;
+}
+/* line 47, ../scss/sections/_shop.scss */
+body.node-type-product div.field-type-image #slide-nav li img {
+  height: 100px;
+  width: auto;
+  border-radius: 2px;
+  margin: 5px;
+}
+/* line 57, ../scss/sections/_shop.scss */
+body.node-type-product div.display-price {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+}
+/* line 63, ../scss/sections/_shop.scss */
+body.node-type-product div.add-to-cart {
+  border-top-color: #ccc;
+  border-top-style: solid;
+  border-top-width: thin;
+  margin-left: 42%;
+}
+/* line 69, ../scss/sections/_shop.scss */
+body.node-type-product div.add-to-cart label {
+  width: 80px;
+}
+/* line 73, ../scss/sections/_shop.scss */
+body.node-type-product div.add-to-cart div.form-actions {
+  padding-left: 80px;
 }
 
-/* line 12, ../scss/sections/_shop.scss */
+/* line 83, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog {
   background-color: #eee;
   border-radius: 4px;
 }
-/* line 16, ../scss/sections/_shop.scss */
+/* line 87, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row {
   margin: 0;
   padding-top: 1em;
 }
-/* line 20, ../scss/sections/_shop.scss */
+/* line 91, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) {
   width: 200px;
   padding: 1ex;
@@ -213,22 +280,22 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   margin-right: 16px;
   text-align: center;
 }
-/* line 27, ../scss/sections/_shop.scss */
+/* line 98, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title {
   margin-top: 1ex;
 }
-/* line 29, ../scss/sections/_shop.scss */
+/* line 100, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title a {
   font-size: 110%;
   color: #000;
   text-decoration: none;
 }
-/* line 36, ../scss/sections/_shop.scss */
+/* line 107, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-field-extra-details {
   font-color: #727272;
   font-style: italic;
 }
-/* line 41, ../scss/sections/_shop.scss */
+/* line 112, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-display-price {
   float: left;
   width: 50%;
@@ -236,13 +303,13 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   margin-top: 14px;
   font-size: 110%;
 }
-/* line 49, ../scss/sections/_shop.scss */
+/* line 120, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-buyitnowbutton {
   text-align: right;
   float: left;
   width: 50%;
 }
-/* line 55, ../scss/sections/_shop.scss */
+/* line 126, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) input[type="submit"] {
   border: none;
   background: #502c83;
@@ -250,27 +317,27 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   border-radius: 0;
   font-weight: normal;
 }
-/* line 63, ../scss/sections/_shop.scss */
+/* line 134, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) img {
   border-radius: 4px;
 }
-/* line 67, ../scss/sections/_shop.scss */
+/* line 138, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.form-wrapper {
   text-align: left;
 }
-/* line 74, ../scss/sections/_shop.scss */
+/* line 145, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list {
   display: flex;
   justify-content: center;
 }
-/* line 78, ../scss/sections/_shop.scss */
+/* line 149, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager {
   margin: 1em 0 1em 0;
   background: none;
   border: none;
   border-radius: 0;
 }
-/* line 84, ../scss/sections/_shop.scss */
+/* line 155, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li {
   font-size: 11pt;
   background: none;
@@ -278,55 +345,55 @@ body.page-catalog #block-system-main div.item-list ul.pager li {
   border-radius: 0;
   color: #666;
 }
-/* line 90, ../scss/sections/_shop.scss */
+/* line 161, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li a {
   background: none;
   border: none;
   border-radius: 0;
   color: #666;
 }
-/* line 96, ../scss/sections/_shop.scss */
+/* line 167, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-next, body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
   display: none;
 }
-/* line 100, ../scss/sections/_shop.scss */
+/* line 171, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-last {
   position: relative;
 }
-/* line 103, ../scss/sections/_shop.scss */
+/* line 174, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-current {
   color: #000;
 }
 
-/* line 114, ../scss/sections/_shop.scss */
+/* line 185, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row {
   margin: auto;
   width: max-content;
 }
 @media only screen and (max-width: 460px) {
-  /* line 114, ../scss/sections/_shop.scss */
+  /* line 185, ../scss/sections/_shop.scss */
   div.view-uc-catalog-terms div.row {
     width: 240px;
   }
 }
-/* line 122, ../scss/sections/_shop.scss */
+/* line 193, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 220px;
 }
-/* line 128, ../scss/sections/_shop.scss */
+/* line 199, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div {
   background-color: #502c83;
   padding: 0;
 }
-/* line 133, ../scss/sections/_shop.scss */
+/* line 204, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 140, ../scss/sections/_shop.scss */
+/* line 211, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
   border-color: #502c83;
@@ -334,7 +401,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
   border-width: 1px;
   height: 100px;
 }
-/* line 148, ../scss/sections/_shop.scss */
+/* line 219, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 30px;
   text-shadow: 0px 2px #000;
@@ -343,7 +410,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   color: #fff;
 }
 
-/* line 163, ../scss/sections/_shop.scss */
+/* line 234, ../scss/sections/_shop.scss */
 #block-block-8 div.content {
   margin: 1em 0 1em 0;
   padding: 1em;
@@ -351,16 +418,16 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   background-position: right;
   background-repeat: no-repeat;
 }
-/* line 170, ../scss/sections/_shop.scss */
+/* line 241, ../scss/sections/_shop.scss */
 #block-block-8 div.content p {
   font-size: 110%;
 }
-/* line 174, ../scss/sections/_shop.scss */
+/* line 245, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture {
   width: 110px;
   float: left;
 }
-/* line 178, ../scss/sections/_shop.scss */
+/* line 249, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture img {
   height: 136px;
   width: 100px;

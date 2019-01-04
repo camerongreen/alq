@@ -6,3 +6,10 @@
  */
 
 include_once 'alq_shop.features.inc';
+
+function alq_shop_node_view($node, $view_mode, $langcode) {
+  if ($node->type === 'product') {
+    drupal_add_library('jquery_plugin', 'cycle');
+    drupal_add_js(drupal_get_path('module', 'alq_shop') . '/js/shop.js');
+  }
+}
