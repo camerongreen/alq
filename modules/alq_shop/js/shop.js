@@ -4,6 +4,8 @@
       fx:     'fade',
       speed:  'slow',
       pager:  '#slide-nav',
+      slideResize: true,
+      containerResize: true,
 
       // callback fn that creates a thumbnail to use as pager anchor
       pagerAnchorBuilder: function(idx, slide) {
