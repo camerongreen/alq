@@ -59,3 +59,19 @@ div.view-uc-catalog-terms {
     }
   }
 }
+
+// Styling the main individual product pages.
+body.node-type-product {
+  div.field-name-body {
+    margin-left: 42%;
+  }
+
+  div.field-type-image {
+    float: left;
+    width: 40%;
+  }
+
+  div.add-to-cart {
+    margin-left: 42%;
+  }
+}

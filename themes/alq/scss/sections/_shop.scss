@@ -14,7 +14,7 @@ body.node-type-product {
     padding: 10px 20px 10px 20px;
   }
 
-  article {
+  #zone-content div.block-main div.content {
     padding: 1em;
     margin: 1em;
     background-color: $gray-bg;
@@ -24,12 +24,9 @@ body.node-type-product {
 
   div.field-name-body {
     font-size: 110%;
-    margin-left: 42%;
   }
 
   div.field-type-image {
-    float: left;
-    width: 40%;
     height: auto;
     margin-right: 1em;
 
@@ -40,6 +37,9 @@ body.node-type-product {
     }
 
     #slide-nav {
+      padding: 0;
+      text-align: center;
+
       li {
         display: inline;
         list-style-type: none;
@@ -64,7 +64,6 @@ body.node-type-product {
     border-top-color: #ccc;
     border-top-style: solid;
     border-top-width: thin;
-    margin-left: 42%;
 
     label {
       width: 80px;

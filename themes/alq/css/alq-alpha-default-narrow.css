@@ -62,6 +62,20 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   width: 200px;
 }
 
+/* line 65, ../scss/sections/_shop-narrow.scss */
+body.node-type-product div.field-name-body {
+  margin-left: 42%;
+}
+/* line 69, ../scss/sections/_shop-narrow.scss */
+body.node-type-product div.field-type-image {
+  float: left;
+  width: 40%;
+}
+/* line 74, ../scss/sections/_shop-narrow.scss */
+body.node-type-product div.add-to-cart {
+  margin-left: 42%;
+}
+
 /* line 8, ../scss/alq-alpha-default-narrow.scss */
 .logo-img {
   margin-left: 10px;
