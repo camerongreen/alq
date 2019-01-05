@@ -215,65 +215,69 @@ body.node-type-product div.field-name-body {
   font-size: 110%;
 }
 /* line 29, ../scss/sections/_shop.scss */
+body.node-type-product div.field-items {
+  overflow: auto;
+}
+/* line 33, ../scss/sections/_shop.scss */
 body.node-type-product div.field-type-image {
   height: auto;
   margin-right: 1em;
 }
-/* line 33, ../scss/sections/_shop.scss */
+/* line 37, ../scss/sections/_shop.scss */
 body.node-type-product div.field-type-image img {
   width: 100%;
   height: auto;
   border-radius: 4px;
 }
-/* line 39, ../scss/sections/_shop.scss */
+/* line 43, ../scss/sections/_shop.scss */
 body.node-type-product div.field-type-image #slide-nav {
   padding: 0;
   text-align: center;
 }
-/* line 43, ../scss/sections/_shop.scss */
+/* line 47, ../scss/sections/_shop.scss */
 body.node-type-product div.field-type-image #slide-nav li {
   display: inline;
   list-style-type: none;
 }
-/* line 47, ../scss/sections/_shop.scss */
+/* line 51, ../scss/sections/_shop.scss */
 body.node-type-product div.field-type-image #slide-nav li img {
   height: 100px;
   width: auto;
   border-radius: 2px;
   margin: 5px;
 }
-/* line 57, ../scss/sections/_shop.scss */
+/* line 61, ../scss/sections/_shop.scss */
 body.node-type-product div.display-price {
   background-color: #000;
   color: #fff;
   padding: 10px;
 }
-/* line 63, ../scss/sections/_shop.scss */
+/* line 67, ../scss/sections/_shop.scss */
 body.node-type-product div.add-to-cart {
   border-top-color: #ccc;
   border-top-style: solid;
   border-top-width: thin;
 }
-/* line 68, ../scss/sections/_shop.scss */
+/* line 72, ../scss/sections/_shop.scss */
 body.node-type-product div.add-to-cart label {
   width: 80px;
 }
-/* line 72, ../scss/sections/_shop.scss */
+/* line 76, ../scss/sections/_shop.scss */
 body.node-type-product div.add-to-cart div.form-actions {
   padding-left: 80px;
 }
 
-/* line 82, ../scss/sections/_shop.scss */
+/* line 86, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog {
   background-color: #eee;
   border-radius: 4px;
 }
-/* line 86, ../scss/sections/_shop.scss */
+/* line 90, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row {
   margin: 0;
   padding-top: 1em;
 }
-/* line 90, ../scss/sections/_shop.scss */
+/* line 94, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) {
   width: 200px;
   padding: 1ex;
@@ -281,22 +285,22 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   margin-right: 16px;
   text-align: center;
 }
-/* line 97, ../scss/sections/_shop.scss */
+/* line 101, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title {
   margin-top: 1ex;
 }
-/* line 99, ../scss/sections/_shop.scss */
+/* line 103, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title a {
   font-size: 110%;
   color: #000;
   text-decoration: none;
 }
-/* line 106, ../scss/sections/_shop.scss */
+/* line 110, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-field-extra-details {
   font-color: #727272;
   font-style: italic;
 }
-/* line 111, ../scss/sections/_shop.scss */
+/* line 115, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-display-price {
   float: left;
   width: 50%;
@@ -304,13 +308,13 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   margin-top: 14px;
   font-size: 110%;
 }
-/* line 119, ../scss/sections/_shop.scss */
+/* line 123, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-buyitnowbutton {
   text-align: right;
   float: left;
   width: 50%;
 }
-/* line 125, ../scss/sections/_shop.scss */
+/* line 129, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) input[type="submit"] {
   border: none;
   background: #502c83;
@@ -318,27 +322,27 @@ body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clea
   border-radius: 0;
   font-weight: normal;
 }
-/* line 133, ../scss/sections/_shop.scss */
+/* line 137, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) img {
   border-radius: 4px;
 }
-/* line 137, ../scss/sections/_shop.scss */
+/* line 141, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.form-wrapper {
   text-align: left;
 }
-/* line 144, ../scss/sections/_shop.scss */
+/* line 148, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list {
   display: flex;
   justify-content: center;
 }
-/* line 148, ../scss/sections/_shop.scss */
+/* line 152, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager {
   margin: 1em 0 1em 0;
   background: none;
   border: none;
   border-radius: 0;
 }
-/* line 154, ../scss/sections/_shop.scss */
+/* line 158, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li {
   font-size: 11pt;
   background: none;
@@ -346,55 +350,55 @@ body.page-catalog #block-system-main div.item-list ul.pager li {
   border-radius: 0;
   color: #666;
 }
-/* line 160, ../scss/sections/_shop.scss */
+/* line 164, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li a {
   background: none;
   border: none;
   border-radius: 0;
   color: #666;
 }
-/* line 166, ../scss/sections/_shop.scss */
+/* line 170, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-next, body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
   display: none;
 }
-/* line 170, ../scss/sections/_shop.scss */
+/* line 174, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-last {
   position: relative;
 }
-/* line 173, ../scss/sections/_shop.scss */
+/* line 177, ../scss/sections/_shop.scss */
 body.page-catalog #block-system-main div.item-list ul.pager li.pager-current {
   color: #000;
 }
 
-/* line 184, ../scss/sections/_shop.scss */
+/* line 188, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row {
   margin: auto;
   width: max-content;
 }
 @media only screen and (max-width: 460px) {
-  /* line 184, ../scss/sections/_shop.scss */
+  /* line 188, ../scss/sections/_shop.scss */
   div.view-uc-catalog-terms div.row {
     width: 240px;
   }
 }
-/* line 192, ../scss/sections/_shop.scss */
+/* line 196, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 220px;
 }
-/* line 198, ../scss/sections/_shop.scss */
+/* line 202, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div {
   background-color: #502c83;
   padding: 0;
 }
-/* line 203, ../scss/sections/_shop.scss */
+/* line 207, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 210, ../scss/sections/_shop.scss */
+/* line 214, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
   border-color: #502c83;
@@ -402,7 +406,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
   border-width: 1px;
   height: 100px;
 }
-/* line 218, ../scss/sections/_shop.scss */
+/* line 222, ../scss/sections/_shop.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 30px;
   text-shadow: 0px 2px #000;
@@ -411,7 +415,7 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   color: #fff;
 }
 
-/* line 233, ../scss/sections/_shop.scss */
+/* line 237, ../scss/sections/_shop.scss */
 #block-block-8 div.content {
   margin: 1em 0 1em 0;
   padding: 1em;
@@ -419,16 +423,16 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   background-position: right;
   background-repeat: no-repeat;
 }
-/* line 240, ../scss/sections/_shop.scss */
+/* line 244, ../scss/sections/_shop.scss */
 #block-block-8 div.content p {
   font-size: 110%;
 }
-/* line 244, ../scss/sections/_shop.scss */
+/* line 248, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture {
   width: 110px;
   float: left;
 }
-/* line 248, ../scss/sections/_shop.scss */
+/* line 252, ../scss/sections/_shop.scss */
 #block-block-8 div.content div.wines-picture img {
   height: 136px;
   width: 100px;
