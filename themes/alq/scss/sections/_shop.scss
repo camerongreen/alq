@@ -28,11 +28,20 @@ body.node-type-product {
 
   div.field-items {
     overflow: auto;
+
   }
 
   div.field-type-image {
     height: auto;
     margin-right: 1em;
+
+    div.field-item {
+      display: none;
+
+      &:nth-child(1) {
+        display: block;
+      }
+    }
 
     img {
       width: 100%;
