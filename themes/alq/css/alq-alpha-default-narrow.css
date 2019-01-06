@@ -4,26 +4,22 @@ body {
   background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
 }
 
-/* line 2, ../scss/sections/_shop-narrow.scss */
-div.view-uc-catalog-terms div.row {
-  width: 460px;
-}
-/* line 5, ../scss/sections/_shop-narrow.scss */
+/* line 3, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   width: 460px;
 }
-/* line 10, ../scss/sections/_shop-narrow.scss */
+/* line 8, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id {
   float: left;
   width: 220px;
 }
-/* line 14, ../scss/sections/_shop-narrow.scss */
+/* line 12, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
   border-color: #000;
   border-style: solid;
   border-width: 1px;
 }
-/* line 21, ../scss/sections/_shop-narrow.scss */
+/* line 19, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name {
   text-align: center;
   float: left;
@@ -31,47 +27,47 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
   height: 220px;
   line-height: 220px;
 }
-/* line 28, ../scss/sections/_shop-narrow.scss */
+/* line 26, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
 }
-/* line 33, ../scss/sections/_shop-narrow.scss */
+/* line 31, ../scss/sections/_shop-narrow.scss */
 div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   font-size: 24pt;
 }
 
-/* line 44, ../scss/sections/_shop-narrow.scss */
+/* line 42, ../scss/sections/_shop-narrow.scss */
 #block-block-8 div.content {
   margin: 2em 0 2em 0;
   padding: 2em 200px 2em 2em;
   background-image: url("/sites/all/themes/alq/images/goodwill-wines-bg.png");
 }
-/* line 45, ../scss/sections/_shop-narrow.scss */
+/* line 43, ../scss/sections/_shop-narrow.scss */
 #block-block-8 div.content h2 {
   margin-top: 2em;
 }
-/* line 52, ../scss/sections/_shop-narrow.scss */
+/* line 50, ../scss/sections/_shop-narrow.scss */
 #block-block-8 div.content div.wines-picture {
   width: 220px;
 }
-/* line 55, ../scss/sections/_shop-narrow.scss */
+/* line 53, ../scss/sections/_shop-narrow.scss */
 #block-block-8 div.content div.wines-picture img {
   height: 272px;
   width: 200px;
 }
 
-/* line 65, ../scss/sections/_shop-narrow.scss */
+/* line 63, ../scss/sections/_shop-narrow.scss */
 body.node-type-product div.field-name-body {
   margin-left: 42%;
 }
-/* line 69, ../scss/sections/_shop-narrow.scss */
+/* line 67, ../scss/sections/_shop-narrow.scss */
 body.node-type-product div.field-type-image {
   float: left;
   width: 40%;
 }
-/* line 74, ../scss/sections/_shop-narrow.scss */
+/* line 72, ../scss/sections/_shop-narrow.scss */
 body.node-type-product div.add-to-cart {
   margin-left: 42%;
 }
