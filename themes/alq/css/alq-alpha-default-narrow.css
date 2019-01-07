@@ -58,16 +58,16 @@ div.view-uc-catalog-terms div.row > div div.views-field-name span a {
   width: 200px;
 }
 
-/* line 63, ../scss/sections/_shop-narrow.scss */
-body.node-type-product div.field-name-body {
+/* line 64, ../scss/sections/_shop-narrow.scss */
+body.node-type-product div.content > div.field-name-body {
   margin-left: 42%;
 }
-/* line 67, ../scss/sections/_shop-narrow.scss */
+/* line 69, ../scss/sections/_shop-narrow.scss */
 body.node-type-product div.field-type-image {
   float: left;
   width: 40%;
 }
-/* line 72, ../scss/sections/_shop-narrow.scss */
+/* line 74, ../scss/sections/_shop-narrow.scss */
 body.node-type-product div.add-to-cart {
   margin-left: 42%;
 }

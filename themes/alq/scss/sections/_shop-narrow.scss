@@ -60,8 +60,10 @@ div.view-uc-catalog-terms {
 
 // Styling the main individual product pages.
 body.node-type-product {
-  div.field-name-body {
-    margin-left: 42%;
+  div.content {
+    & > div.field-name-body {
+      margin-left: 42%;
+    }
   }
 
   div.field-type-image {
