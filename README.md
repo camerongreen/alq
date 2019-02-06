@@ -28,7 +28,7 @@ Start the docker environment by running the following (sudo the docker commands 
 
 Create the empty site:
 
-    docker exec -ti alq_web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@example.org ../alq/scripts/create_site.sh"
+    docker exec -ti alq_web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
     
 If you have a copy of the ALQ database (see Backups below), copy your gzipped sql file (by default called alq_latest.sql.gz) into a directory named sql at the same level as the alq git directory otherwise grab the one from the .circleci/data directory:
 
@@ -94,7 +94,7 @@ Then you will need to go to developer.paypal.com and sign up for a sandbox busin
 'cd public_html && ../vendor/bin/drush vset uc_paypal_wps_email {from_paypal}'
 'cd public_html && ../vendor/bin/drush vset uc_paypal_api_password {from_paypal}'
 'cd public_html && ../vendor/bin/drush vset uc_paypal_api_username {from_paypal}'
-'cd public_html && ../vendor/bin/drush vset uc_paypal_api_signature {from_paypal'
+'cd public_html && ../vendor/bin/drush vset uc_paypal_api_signature {from_paypal}'
 
 To actually make a payment, you'll want to set up some sandbox personal accounts too.
 

@@ -171,6 +171,7 @@ ${DRUSH} vset site_mail ${SITE_EMAIL}
 ${DRUSH} vset file_private_path ${DEFAULT_PRIVATE_DIR}
 ${DRUSH} vset file_temporary_path /tmp
 ${DRUSH} vset uc_paypal_wpp_server "https://api-3t.sandbox.paypal.com/nvp"
+${DRUSH} vset uc_paypal_wps_server "https://www.sandbox.paypal.com/cgi-bin/webscr"
 ${DRUSH} vset uc_paypal_wps_email ${SITE_EMAIL}
 ${DRUSH} vset stage_file_proxy_origin ${DEFAULT_PROD_HOST}
 ${DRUSH} vset preprocess_css 0

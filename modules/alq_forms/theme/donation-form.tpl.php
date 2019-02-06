@@ -32,7 +32,7 @@
                 <input type="hidden" name="currency_code" value="AUD"/>
                 <input type="hidden" name="item_name"
                        value="Animal Liberation Qld"/>
-                <input type="hidden" name="item_number" value="Monthly subscription"/>
+                <input type="hidden" name="item_number" id="item_number" value="One off donation"/>
                 <input type="hidden" name="lc" value="AU"/>
                 <input type="hidden" name="no_note" value="1"/>
                 <input type="hidden" name="no_shipping" value="1"/>
@@ -42,7 +42,7 @@
                 <input type="hidden" name="rm" value="1"/>
                 <input type="hidden" name="src" value="1"/>
                 <input type="hidden" name="subject" value="Donation"/>
-                <input type="hidden" name="t3" id="t3" value="M"/>
+                <input type="hidden" name="t3" id="t3" value=""/>
 
                 <!-- /variables from paypal -->
 

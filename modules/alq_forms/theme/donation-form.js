@@ -72,13 +72,17 @@
       if (this.id === 'monthly') {
         $('#t3').val('M');
         $('#cmd').val('_xclick-subscriptions');
+        $('#item_number').val('Monthly subscription');
       }
       else if (this.id === 'annual') {
         $('#t3').val('Y');
         $('#cmd').val('_xclick-subscriptions');
+        $('#item_number').val('Annual subscription');
       }
       else {
+        $('#t3').val('');
         $('#cmd').val('_donations');
+        $('#item_number').val('One off donation');
       }
     });
 

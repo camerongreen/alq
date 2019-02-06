@@ -130,6 +130,8 @@ projects[uc_coupon][version] = 2.1-alpha7
 
 projects[views][version] = 3.18
 
+projects[views_bootstrap][version] = 3.2
+
 projects[views_slideshow][version] = 3.9
 
 projects[webform][version] = 4.18
