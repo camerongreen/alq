@@ -162,6 +162,7 @@ fi
 
 # enable all your dev modules
 if [ -z ${CIRCLECI} ]
+then
   ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
 fi
 
