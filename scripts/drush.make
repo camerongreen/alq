@@ -110,7 +110,7 @@ projects[references][version] = 2.2
 
 projects[responsive_menus][version] = 1.7
 
-projects[rules][version] = 2.12
+projects[rules][version] = 2.11
 
 projects[site_map][version] = 1.3
 
