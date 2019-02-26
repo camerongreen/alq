@@ -123,8 +123,7 @@
 
         <div class="col-sm-9">
             <input type="text" class="form-control" id="postcode"
-                   name="postcode"
-                   placeholder="Postcode"/>
+                   name="postcode" placeholder="Postcode"/>
         </div>
     </div>
 
@@ -181,19 +180,17 @@
                     <input type="radio" name="welcome-pack"
                            id="welcomePackEmail"
                            value="Email welcome pack" checked="checked "/>
-                    Welcome pack
-                    by email
+                    Welcome pack by email
                 </label>
                 <label id="welcomePackPrint">
                     <input type="radio" name="welcome-pack"
                            id="welcomePackPrint"
-                           value="Printed welcome pack"/> Printed welcome pack
-                    by post (including membership card)
+                           value="Printed welcome pack"/> Printed welcome pack by post
                 </label>
                 <label id="welcomePackPrint">
                     <input type="radio" name="welcome-pack" id="alreadyMember"
                            value="Existing membership renewal"/> Existing
-                    membership renewal
+                    membership renewal (No welcome pack)
                 </label>
             </div>
         </div>
@@ -204,8 +201,7 @@
             <div class="checkbox">
                 <label id="volunteering">
                     <input type="checkbox" name="volunteering"/>
-                    I am interested in finding out more about
-                    volunteering
+                    I am interested in finding out more about volunteering
                 </label>
             </div>
         </div>
