@@ -161,7 +161,9 @@ else
 fi
 
 # enable all your dev modules
-${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
+if [ -z ${CIRCLECI} ]
+  ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
+fi
 
 # disable production modules
 ${DRUSH} -y pm-disable googleanalytics boost captcha
