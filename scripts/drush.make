@@ -110,7 +110,8 @@ projects[references][version] = 2.2
 
 projects[responsive_menus][version] = 1.7
 
-projects[rules][version] = 2.11
+projects[rules][version] = 2.12
+projects[rules][patch][] =  'https://www.drupal.org/files/issues/2018-03-16/rules-faces_warnings-1111868-7.patch'
 
 projects[site_map][version] = 1.3
 
