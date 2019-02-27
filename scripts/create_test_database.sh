@@ -79,6 +79,7 @@ migrate_log
 node_comment_statistics
 queue
 registry
+registry_file
 search_dataset
 search_index
 search_node_links
