@@ -1,6 +1,6 @@
 # Docker build for alq.org.au
 # Use 269 prefix for ports
-FROM php:7.1-apache
+FROM php:7.2-apache
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public_html
 ENV PATH "${PATH}:/var/www/html/vendor/bin"

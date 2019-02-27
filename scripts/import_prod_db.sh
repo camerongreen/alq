@@ -164,6 +164,9 @@ fi
 if [ -z ${CIRCLECI} ]
 then
   ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
+else
+  ${DRUSH} rr
+  ${DRUSH} cc all
 fi
 
 # disable production modules
