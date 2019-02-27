@@ -164,6 +164,11 @@ fi
 if [ -z ${CIRCLECI} ]
 then
   ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
+else
+  # Do the whole annoying registry rebuild thing.
+  pushd sites/all/modules/registry_rebuild
+  php registry_rebuild.php
+  popd
 fi
 
 # disable production modules
