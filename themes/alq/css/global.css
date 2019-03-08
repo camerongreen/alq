@@ -268,11 +268,11 @@ body.node-type-product div.add-to-cart {
 }
 /* line 81, ../scss/sections/_shop.scss */
 body.node-type-product div.add-to-cart label {
-  width: 80px;
+  width: 90px;
 }
 /* line 85, ../scss/sections/_shop.scss */
 body.node-type-product div.add-to-cart div.form-actions {
-  padding-left: 80px;
+  padding-left: 90px;
 }
 
 /* line 95, ../scss/sections/_shop.scss */
