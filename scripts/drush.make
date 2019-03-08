@@ -52,7 +52,7 @@ projects[ckeditor_link][version] = 2.4
 
 projects[colorbox][version] = 2.10
 
-projects[context][version] = 3.6
+projects[context][version] = 3.10
 
 projects[ctools][version] = 1.15
 
@@ -126,7 +126,7 @@ projects[token][version] = 1.7
 
 projects[token_filter][version] = 1.1
 
-projects[ubercart][version] = 3.11
+projects[ubercart][version] = 3.12
 
 projects[uc_coupon][version] = 2.1-alpha7
 
