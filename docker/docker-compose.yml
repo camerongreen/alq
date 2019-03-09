@@ -3,7 +3,7 @@
 #
 
 db:
-    container_name: alq_db
+    container_name: alq-db
     build: .
     dockerfile: Dockerfile-db
     ports:
@@ -17,7 +17,7 @@ db:
         - /var/lib/mysql
 
 web:
-    container_name: alq_web
+    container_name: alq-web
     build: .
     environment:
         - XDEBUG_CONFIG

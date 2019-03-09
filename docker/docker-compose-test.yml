@@ -3,7 +3,7 @@
 #
 
 selenium-fx:
-    container_name: alq_selenium_fx
+    container_name: alq-selenium-fx
     image: selenium/standalone-firefox-debug:3.10
     ports:
         - "26944:4444"
@@ -13,7 +13,7 @@ selenium-fx:
         - web
 
 test-runner:
-    container_name: alq_test_runner
+    container_name: alq-test-runner
     build: .
     dockerfile: Dockerfile-test
     tty: true

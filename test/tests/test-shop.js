@@ -9,6 +9,9 @@ this.testAddToCart = function (browser) {
       .url(siteUrl + '/' + pageUrl);
   browser.useXpath();
   browser.click('//a[text()="Apparel"]');
+  browser.useCss();
+  browser.waitForElementVisible('.view-uc-catalog', 1000)
+  browser.useXpath();
   browser.click('//a[text()="ALQ Hoodie"]');
   browser.useCss();
   browser.click('select[id="edit-attributes-38"] option[value="129"]')

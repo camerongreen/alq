@@ -28,11 +28,11 @@ Start the docker environment by running the following (sudo the docker commands 
 
 Create the empty site:
 
-    docker exec -ti alq_web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
+    docker exec -ti alq-web bash -c "cd /var/www/html/public_html && ADMIN=admin ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/create_site.sh"
     
 If you have a copy of the ALQ database (see Backups below), copy your gzipped sql file (by default called alq_latest.sql.gz) into a directory named sql at the same level as the alq git directory otherwise grab the one from the .circleci/data directory:
 
-    docker exec -ti alq_web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
+    docker exec -ti alq-web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_db.sh'
     
 To get the rodeos website going, you will need to do the following in the sites directory:
 
@@ -52,7 +52,7 @@ Now Create the rodeos_db database in MySQL
 
 You will need a copy of the Rodeos database (see Backups below) which you can get from the backups on the website, copy your gzipped sql file (by default called rodeos_latest.sql.gz) into a directory named sql at the same level as the alq git directory:
 
-    docker exec -ti alq_web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_rodeos_db.sh'
+    docker exec -ti alq-web bash -c 'cd /var/www/html/public_html && ADMIN_EMAIL=alq@camerongreen.org ../alq/scripts/import_prod_rodeos_db.sh'
 
     
 # Running
@@ -63,7 +63,7 @@ Once the initialisation code has been run the first time, from then on you can v
     
 If you want to drush etc, in the docker directory:
 
-    docker exec -ti alq_web bash -c 'cd public_html && drush cc all'
+    docker exec -ti alq-web bash -c 'cd public_html && drush cc all'
     
     
 ## Emailing
@@ -113,8 +113,8 @@ Note to stop all containers you will need to specify the same thing, eg:
 
 To run the nightwatch tests (after making sure selenium has had time to startup) from the docker directory:
 
-    docker exec -ti alq_test_runner bash -c "./run-tests.sh"
-    docker exec -ti alq_test_runner bash -c "./run-tests.sh tests/test-membership-form.js"
+    docker exec -ti alq-test-runner bash -c "./run-tests.sh"
+    docker exec -ti alq-test-runner bash -c "./run-tests.sh tests/test-membership-form.js"
     
     
 You can inspect the running tests, by using VNC.  For me that involved:
@@ -130,11 +130,11 @@ We build and test this automatically on CircleCI.  Current build status is:
 
 To create a subset of the test database, run the following:
 
-docker exec -ti alq_web bash -c 'cd public_html && ../alq/scripts/create_test_database.sh'
+docker exec -ti alq-web bash -c 'cd public_html && ../alq/scripts/create_test_database.sh'
 
 Check it for leaking any private information (passwords, api keys etc).
 
-    docker exec -ti alq_web bash -c 'zcat alq/.circleci/data/test-data.sql.gz'
+    docker exec -ti alq-web bash -c 'zcat alq/.circleci/data/test-data.sql.gz'
 
 To debug CircleCI builds rebuild via ssh then:
                          
@@ -166,7 +166,7 @@ Then use an xdebug extension in your browser to turn it on.
 
 All I had to do in PHPStorm was to set up a normal debug server called alq.test as per the web debug and send it through to drush as a variable eg:
 
-    docker exec -ti alq_web bash -c 'PHP_IDE_CONFIG="serverName=alq.test" drush -l rodeos alq-import-emailees emailees.json'
+    docker exec -ti alq-web bash -c 'PHP_IDE_CONFIG="serverName=alq.test" drush -l rodeos alq-import-emailees emailees.json'
     
 ## Backups
 
