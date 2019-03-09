@@ -14,7 +14,6 @@
 set -e
 
 DEFAULT_PROD_HOST="http://alq.org.au"
-DEFAULT_DEV_HOST="http://alq.test:26980"
 DEFAULT_PRIVATE_DIR="/tmp/private"
 
 # this is the user who will own the files, so you
@@ -37,8 +36,10 @@ fi
 if [ -z ${CIRCLECI} ]
 then
   DRUSH=../vendor/bin/drush
+  DEFAULT_DEV_HOST="http://alq.test:26980"
 else
   DRUSH=/home/circleci/project/vendor/bin/drush
+  DEFAULT_DEV_HOST="http://alq-web"
 fi
 
 if [ ! -d ${DEFAULT_PRIVATE_DIR} ]
