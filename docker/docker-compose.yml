@@ -26,8 +26,9 @@ web:
         - "26980:80"
     volumes:
         # Linux
-        #- ../../:/var/www/html
+        - ../../:/var/www/html
+        - ./config/php.ini:/usr/local/etc/php/php.ini
         # OSX
-        - ../../:/var/www/html:cached
+        #- ../../:/var/www/html:cached
     links:
         - db:mysql

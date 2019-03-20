@@ -98,7 +98,7 @@ function alq_forms_parse_post_fields() {
     'volunteering',
     'spam',
     'subject',
-    'welcome_pack',
+    'welcome-pack',
   ];
 
   $required = [

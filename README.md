@@ -153,8 +153,7 @@ I set up a server for alq.test for PHPStorm, the most important thing is to get 
 |-------------------|---------------------------------|
 | public_html       | /var/www/html/public_html       |
 | alq/modules       | /var/www/html/alq/modules       | 
-| alq/themes/alq    | /var/www/html/alq/themes/alq    |
-| alq/themes/rodeos | /var/www/html/alq/themes/rodeos |
+| alq/themes        | /var/www/html/alq/themes        |
 
 Then run docker compose with the IP address of your PC according to docker:
 

@@ -20,6 +20,3 @@ RUN pecl install xdebug \
     && a2enmod rewrite
 
 USER root
-
-# Allow php config to be overridden
-COPY config/php.ini /usr/local/etc/php/
