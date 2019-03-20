@@ -82,7 +82,6 @@ function alq_forms_parse_post_fields() {
   $fields = [
     'donationType',
     'amount',
-    'membership',
     'givenName',
     'familyName',
     'email',
@@ -91,7 +90,6 @@ function alq_forms_parse_post_fields() {
     'address2',
     'suburb',
     'postcode',
-    'occupation',
     'membershipType',
     'title',
     'newsletter',
