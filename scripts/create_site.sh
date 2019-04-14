@@ -30,7 +30,7 @@ WEBSERVER_GROUP=www-data
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=alq_db
+DEFAULT_DB_HOST=alq-db
 
 # hosting company work around has custom drush path
 if [ -f ~/.drush_alias ]

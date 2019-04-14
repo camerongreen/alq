@@ -6,7 +6,7 @@ set -e
 # Default settings for DB.
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=alq_db
+DEFAULT_DB_HOST=alq-db
 
 # Relative to public_html.
 DEFAULT_OUTPUT_DIR=../alq/.circleci/data
