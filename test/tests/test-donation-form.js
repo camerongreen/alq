@@ -6,8 +6,9 @@ var pageUrl = '/donate';
 this.testAmountOther = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('#amountOther', 1000);
+      .url(siteUrl + pageUrl)
+      .waitForElementVisible('#donationForm', 500);
+
   browser.expect.element('#amountOtherValue').to.not.be.enabled;
   browser.expect.element('#amountOther input').to.not.be.selected;
   browser.click('#amountOther');
@@ -26,8 +27,8 @@ this.testAmountOther = function (browser) {
 this.testClickDonationType = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('#monthly', 1000);
+      .url(siteUrl + pageUrl)
+      .waitForElementVisible('#monthly', 500);
 
   browser.expect.element('#oneoff input').to.be.selected;
   browser.expect.element('#annual input').to.not.be.selected;
@@ -56,10 +57,10 @@ this.testClickDonationType = function (browser) {
 this.testAmountOtherMinimum = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
-      .waitForElementVisible('#amountOther', 1000)
+      .url(siteUrl + pageUrl)
+      .waitForElementVisible('#amountOther', 500)
       .click('#amountOther')
-      .waitForElementVisible('#amountOtherValue', 1000)
+      .waitForElementVisible('#amountOtherValue', 500)
       .setValue('#amountOtherValue', '1')
       .click('#amountOther') // do this to move the focus
       .assert.containsText('div.has-error', 'Please specify at least')

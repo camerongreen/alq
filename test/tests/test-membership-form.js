@@ -7,7 +7,7 @@ this.testAmountChanges = function (browser) {
   var siteUrl = browser.launch_url;
   var monthlyDonations = [5, 10, 15, 20, 30, 50, 100];
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementVisible('#slider-values', 1000);
 
   for (var i in monthlyDonations) {
@@ -22,7 +22,7 @@ this.testAmountChanges = function (browser) {
 this.testAmountOther = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementVisible('#amountOther', 1000);
 
   browser.expect.element('#slider').to.be.enabled;
@@ -39,7 +39,7 @@ this.testAmountOther = function (browser) {
 this.testAmountOtherMinimum = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementVisible('#amountOther', 1000)
       .setValue('#amountOther', 35)
       .click('#slider') // do this to move the focus
@@ -50,7 +50,7 @@ this.testAmountOtherMinimum = function (browser) {
 this.testAmountOtherMinimumFail = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementVisible('#amountOther', 1000)
       .setValue('#amountOther', 3)
       .click('#slider') // do this to move the focus

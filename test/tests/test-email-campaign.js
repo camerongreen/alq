@@ -10,7 +10,7 @@ var pageUrl = '/ban-greyhound-racing';
 this.testDefaultMinister = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementVisible('#edit-suburb', 1000);
 
   browser.click('#suburb-default');
@@ -23,7 +23,7 @@ this.testDefaultMinister = function (browser) {
 this.testSearchBySuburb = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementPresent('ul.ui-autocomplete', 1000);
 
   browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');
@@ -41,7 +41,7 @@ this.testSearchBySuburb = function (browser) {
 this.testSearchByPostcode = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl)
+      .url(siteUrl + pageUrl)
       .waitForElementPresent('ul.ui-autocomplete', 1000);
 
   browser.expect.element('h1').text.to.equal('BAN GREYHOUND RACING IN QUEENSLAND');

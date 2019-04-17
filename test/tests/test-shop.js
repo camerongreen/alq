@@ -6,7 +6,7 @@ var pageUrl = '/shop';
 this.testAddToCart = function (browser) {
   var siteUrl = browser.launch_url;
   browser
-      .url(siteUrl + '/' + pageUrl);
+      .url(siteUrl + pageUrl);
   browser.useXpath();
   browser.click('//a[text()="Apparel"]');
   browser.useCss();

@@ -19,5 +19,6 @@ test-runner:
     tty: true
     volumes:
         - ../test:/var/www/test
+        - ../tmp:/tmp/screenshots
     links:
         - selenium-fx

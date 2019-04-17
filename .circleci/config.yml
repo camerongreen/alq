@@ -14,6 +14,9 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "scripts/drush.make" }}
       - run: mkdir test-reports
       - run:
           name: Download Selenium
@@ -51,7 +54,10 @@ jobs:
       - save_cache:
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
+          key: v1-dependencies-{{ checksum "scripts/drush.make" }}
         
       # run tests!
       - run: cd test && ./run-tests.sh --env=circleci
+
+      - store_artifacts:
+          path: /tmp/screenshots
