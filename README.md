@@ -113,8 +113,8 @@ Note to stop all containers you will need to specify the same thing, eg:
 
 To run the nightwatch tests (after making sure selenium has had time to startup) from the docker directory:
 
-    docker exec -ti alq-test-runner bash -c "./run-tests.sh"
-    docker exec -ti alq-test-runner bash -c "./run-tests.sh tests/test-membership-form.js"
+    docker exec -ti alq-test bash -c "./run-tests.sh"
+    docker exec -ti alq-test bash -c "./run-tests.sh tests/test-membership-form.js"
     
     
 You can inspect the running tests, by using VNC.  For me that involved:
