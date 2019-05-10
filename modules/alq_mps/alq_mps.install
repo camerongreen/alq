@@ -1,22 +1,23 @@
 <?php
+
 /**
  * @file
- * Installation details for the ALQ MPs module
+ * Installation details for the ALQ MPs module.
  */
 
 // It seems when running a module install, the module file is included
 // thus defines are present, but when you run uninstall it isn't, so define
-// if it doesn't already exist
-if (!defined('ALQ_ELECTORATES_TABLE')) {
-  define('ALQ_ELECTORATES_TABLE', 'alq_electorates');
+// if it doesn't already exist.
+if (!defined('ALQ_MPS_ELECTORATES_TABLE')) {
+  define('ALQ_MPS_ELECTORATES_TABLE', 'alq_electorates');
 }
 
-if (!defined('ALQ_EMAILS_TABLE')) {
-  define('ALQ_EMAILS_TABLE', 'alq_emails');
+if (!defined('ALQ_MPS_EMAILS_TABLE')) {
+  define('ALQ_MPS_EMAILS_TABLE', 'alq_emails');
 }
 
 /**
- * Implements hook_install()
+ * Implements hook_install().
  */
 function alq_mps_install() {
   alq_mps_insert_electorates();
@@ -25,17 +26,19 @@ function alq_mps_install() {
 }
 
 /**
- * Implements hook_uninstall()
+ * Implements hook_uninstall().
+ *
+ * @throws \Exception
  */
 function alq_mps_uninstall() {
-  // delete nodes
+  // Delete nodes.
   $types = ['emailee', 'email_campaign'];
 
   foreach ($types as $type) {
     $nids = [];
 
     $results = db_select('node', 'n')
-      ->fields('n', array('nid'))
+      ->fields('n', ['nid'])
       ->condition('type', $type)
       ->execute();
 
@@ -45,161 +48,162 @@ function alq_mps_uninstall() {
 
     if (!empty($nids)) {
       node_delete_multiple($nids);
-      drupal_set_message(t('%count %type nodes have been deleted.', array('%type' => $type, '%count' => count($nids))));
+      drupal_set_message(t('%count %type nodes have been deleted.', [
+        '%type' => $type,
+        '%count' => count($nids),
+      ]));
     }
   }
 
-  drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_ELECTORATES_TABLE)->execute()]));
+  drupal_set_message(t('Deleted %count rows from electorates table', ['%count' => db_delete(ALQ_MPS_ELECTORATES_TABLE)->execute()]));
 
-  // delete everything else
+  // Delete everything else.
   drupal_uninstall_schema('alq_mps');
 }
 
 /**
- * Implements hook_schema()
- *
- * @return mixed
+ * Implements hook_schema().
  */
 function alq_mps_schema() {
-  $schema[ALQ_ELECTORATES_TABLE] = [
-    'description' => t('Table to list postcodes for electorates.'),
-    'fields' => array(
-      'id' => array(
+  $schema[ALQ_MPS_ELECTORATES_TABLE] = [
+    'description' => 'Table to list postcodes for electorates.',
+    'fields' => [
+      'id' => [
         'description' => 'The primary identifier for a row',
         'type' => 'serial',
         'unsigned' => TRUE,
-        'not null' => TRUE
-      ),
-      'lga_council' => array(
+        'not null' => TRUE,
+      ],
+      'lga_council' => [
         'description' => 'LGA Council',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'default' => ''
-      ),
-      'lga_division' => array(
+        'default' => '',
+      ],
+      'lga_division' => [
         'description' => 'LGA Division',
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
-        'default' => ''
-      ),
-      'state_district' => array(
+        'default' => '',
+      ],
+      'state_district' => [
         'description' => 'State District',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'default' => ''
-      ),
-      'federal_district' => array(
+        'default' => '',
+      ],
+      'federal_district' => [
         'description' => 'Federal District',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'default' => ''
-      ),
-      'locality' => array(
+        'default' => '',
+      ],
+      'locality' => [
         'description' => 'Locality',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'default' => ''
-      ),
-      'postcode' => array(
+        'default' => '',
+      ],
+      'postcode' => [
         'description' => 'Postcode',
         'type' => 'char',
         'length' => 5,
         'not null' => FALSE,
-        'default' => NULL
-      ),
-    ),
-    'indexes' => array(
-      'postcode_index' => array('postcode'),
-      'state_district_index' => array('state_district'),
-    ),
-    'primary key' => array('id'),
+        'default' => NULL,
+      ],
+    ],
+    'indexes' => [
+      'postcode_index' => ['postcode'],
+      'state_district_index' => ['state_district'],
+    ],
+    'primary key' => ['id'],
   ];
 
-  $schema[ALQ_EMAILS_TABLE] = [
-    'description' => t('Table to store emails and their statuses.'),
-    'fields' => array(
-      'id' => array(
+  $schema[ALQ_MPS_EMAILS_TABLE] = [
+    'description' => 'Table to store emails and their statuses.',
+    'fields' => [
+      'id' => [
         'description' => 'The primary identifier for a row',
         'type' => 'serial',
         'unsigned' => TRUE,
-        'not null' => TRUE
-      ),
-      'campaign_id' => array(
+        'not null' => TRUE,
+      ],
+      'campaign_id' => [
         'description' => 'The identifier for the campaign',
         'type' => 'int',
         'unsigned' => TRUE,
-        'not null' => TRUE
-      ),
-      'recipient' => array(
+        'not null' => TRUE,
+      ],
+      'recipient' => [
         'description' => 'ID of intended recipients',
         'type' => 'int',
-        'not null' => TRUE
-      ),
-      'subject' => array(
+        'not null' => TRUE,
+      ],
+      'subject' => [
         'description' => 'Subject of email',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
-      ),
-      'body' => array(
+        'not null' => TRUE,
+      ],
+      'body' => [
         'description' => 'Body of email',
         'type' => 'text',
-        'not null' => TRUE
-      ),
-      'from_name' => array(
+        'not null' => TRUE,
+      ],
+      'from_name' => [
         'description' => 'From name',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
-      ),
-      'from_email' => array(
+        'not null' => TRUE,
+      ],
+      'from_email' => [
         'description' => 'From email',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
-      ),
-      'from_address' => array(
+        'not null' => TRUE,
+      ],
+      'from_address' => [
         'description' => 'From address',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
-      ),
-      'spam' => array(
+        'not null' => TRUE,
+      ],
+      'spam' => [
         'description' => 'Wants spam',
         'type' => 'int',
         'length' => 1,
-        'default' => 0
-      ),
-      'created' => array(
+        'default' => 0,
+      ],
+      'created' => [
         'description' => 'Time created',
         'type' => 'int',
         'unsigned' => TRUE,
-        'not null' => TRUE
-      ),
-      'actioned' => array(
+        'not null' => TRUE,
+      ],
+      'actioned' => [
         'description' => 'Time it was sent/attempted to be sent',
         'type' => 'int',
         'unsigned' => TRUE,
-        'default' => NULL
-      ),
-      'confirmation_sent' => array(
+        'default' => NULL,
+      ],
+      'confirmation_sent' => [
         'description' => 'Confirmation email sent to user',
         'type' => 'int',
         'length' => 1,
-        'default' => 0
-      ),
+        'default' => 0,
+      ],
       'status' => [
         'description' => 'Status if any of attempt to send',
         'type' => 'text',
-        'default' => NULL
-      ]
-    ),
-    'primary key' => array('id'),
+        'default' => NULL,
+      ],
+    ],
+    'primary key' => ['id'],
   ];
   return $schema;
 }
@@ -210,11 +214,11 @@ function alq_mps_schema() {
  * Allow null in lga division.
  */
 function alq_mps_update_7001() {
-  db_change_field(ALQ_ELECTORATES_TABLE, 'lga_division', 'lga_division', [
+  db_change_field(ALQ_MPS_ELECTORATES_TABLE, 'lga_division', 'lga_division', [
     'description' => 'LGA Division',
     'type' => 'varchar',
     'length' => 255,
     'not null' => FALSE,
-    'default' => ''
+    'default' => '',
   ]);
 }
