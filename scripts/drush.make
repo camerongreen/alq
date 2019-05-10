@@ -34,7 +34,7 @@ projects[drupal][version] = 7.x
 ; Modules
 ; --------
 
-projects[addtoany][version] = 4.15
+projects[addtoany][version] = 4.16
 
 projects[admin][version] = 2.0-beta3
 
@@ -50,7 +50,7 @@ projects[ckeditor][version] = 1.18
 
 projects[ckeditor_link][version] = 2.4
 
-projects[colorbox][version] = 2.10
+projects[colorbox][version] = 2.13
 
 projects[context][version] = 3.10
 
@@ -98,7 +98,7 @@ projects[metatag][version] = 1.25
 
 projects[mimemail][version] = 1.1
 
-projects[module_filter][version] = 2.1
+projects[module_filter][version] = 2.2
 
 projects[nice_menus][version] = 3.x-dev
 
@@ -116,7 +116,7 @@ projects[rules][version] = 2.12
 
 projects[site_map][version] = 1.3
 
-projects[stage_file_proxy][version] = 1.8
+projects[stage_file_proxy][version] = 1.9
 
 projects[strongarm][version] = 2.0
 
@@ -130,7 +130,7 @@ projects[ubercart][version] = 3.12
 
 projects[uc_coupon][version] = 2.1-alpha7
 
-projects[views][version] = 3.20
+projects[views][version] = 3.22
 
 projects[views_bootstrap][version] = 3.2
 
