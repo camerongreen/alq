@@ -4,8 +4,10 @@ themes/alq/.sass-cache
 test/node_modules
 test/reports
 test/lib
+test/*.log
 
 /vendor/
 /node_modules/
 /.idea
 .DS_Store
+tmp
