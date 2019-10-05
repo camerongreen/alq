@@ -1,3 +1,9 @@
+<?php
+
+/**
+ * @file
+ */
+?>
 <!DOCTYPE html>
 <html>
 <head>

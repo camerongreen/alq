@@ -1,4 +1,11 @@
-<?php if ($image) { ?>
+<?php
+
+/**
+ * @file
+ */
+
+
+if ($image) { ?>
 <div id="section-home-header">
 <?php
   if (substr($image, 0, 9) !== "public://") {

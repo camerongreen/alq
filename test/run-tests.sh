@@ -11,4 +11,4 @@ then
   npm install
 fi
 
-${NIGHTWATCH_MOD_BASE}/bin/nightwatch $@
+${NIGHTWATCH_MOD_BASE}/bin/nightwatch "$@"

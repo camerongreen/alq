@@ -1,8 +1,9 @@
 <?php
+
 /**
  * @file
  * Provides various functions for rodeos, refactor out if it starts getting
- * silly, into functional oriented modules
+ * silly, into functional oriented modules.
  */
 
 define('ALQ_PLEDGES_TABLE', 'alq_pledges');
@@ -13,7 +14,6 @@ define('ALQ_RODEOS_EXPLAINER_BLOCK', '3');
 define('ALQ_RODEOS_EMAIL_INTRO_BLOCK', '8');
 define('ALQ_RODEOS_DONATION_EXPLAINER_BLOCK', '4');
 define('ALQ_RODEOS_PLEDGE_INTRO_BLOCK', '10');
-
 
 /**
  * Implements hook_block_info().
@@ -34,10 +34,9 @@ function alq_rodeos_block_info() {
     ],
     'alq_rodeos_footer' => [
       'info' => t('ALQ Rodeos footer'),
-    ]
+    ],
   );
 }
-
 
 /**
  * Implements hook_block_view().
@@ -49,15 +48,19 @@ function alq_rodeos_block_view($delta = '') {
     case 'alq_rodeos_email_member':
       $block = alq_rodeos_get_member_email_block();
       break;
+
     case 'alq_rodeos_donation':
       $block = alq_rodeos_get_donation_block();
       break;
+
     case 'alq_rodeos_footer':
       $block = alq_rodeos_get_footer_block();
       break;
+
     case 'alq_rodeos_pledge':
       $block = alq_rodeos_get_pledge_block();
       break;
+
     case 'alq_rodeos_pledge_count':
       $block = alq_rodeos_get_pledge_count_block();
       break;
@@ -67,21 +70,20 @@ function alq_rodeos_block_view($delta = '') {
 }
 
 /**
- * Function to be called which shows the footer
+ * Function to be called which shows the footer.
  *
  * @return string
  */
 function alq_rodeos_get_footer_block() {
   $block = [
-    'content' => theme('alq_rodeos_footer', [])
+    'content' => theme('alq_rodeos_footer', []),
   ];
 
   return $block;
 }
 
-
 /**
- * Function to be called which shows the pledge
+ * Function to be called which shows the pledge.
  *
  * @return string
  */
@@ -92,39 +94,37 @@ function alq_rodeos_get_pledge_block() {
   $block = [
     'content' => theme('alq_rodeos_pledge', [
       'pledge_intro_block' => $pledgeIntro['content'],
-      'pledge_form' => $pledgeForm
-    ])
+      'pledge_form' => $pledgeForm,
+    ]),
   ];
 
   return $block;
 }
 
-
 /**
  * Function to be called which was meant to show the pledge count
- * the spec has changed, now they just want to display emails
+ * the spec has changed, now they just want to display emails.
  *
  * @return string
  */
 function alq_rodeos_get_pledge_count_block() {
-  $query = db_select(ALQ_EMAILS_TABLE, 'p')
-      ->condition('campaign_id', ALQ_RODEOS_CAMPAIGN_ID, '=')
-      ->fields('p')
-      ->execute();
+  $query = db_select(ALQ_MPS_EMAILS_TABLE, 'p')
+    ->condition('campaign_id', ALQ_RODEOS_CAMPAIGN_ID, '=')
+    ->fields('p')
+    ->execute();
   $pledgeCount = $query->rowCount();
 
   $block = [
     'content' => theme('alq_rodeos_pledge_count', [
       'pledge_count' => $pledgeCount,
-    ])
+    ]),
   ];
 
   return $block;
 }
 
-
 /**
- * Function to be called which shows the form, loads up the JS etc libraries
+ * Function to be called which shows the form, loads up the JS etc libraries.
  *
  * @return string
  */
@@ -132,7 +132,7 @@ function alq_rodeos_get_donation_block() {
   global $conf, $base_url;
 
   $explainerBlock = module_invoke('block', 'block_view', ALQ_RODEOS_DONATION_EXPLAINER_BLOCK);
-  
+
   if (module_exists('devel')) {
     $url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
     $business = $conf['paypal_email'];
@@ -152,16 +152,15 @@ function alq_rodeos_get_donation_block() {
       'action' => $url,
       'business' => $business,
       'redirect_url' => $redirect_url,
-      'redirect_url_cancel' => $redirect_url_cancel
-    ])
+      'redirect_url_cancel' => $redirect_url_cancel,
+    ]),
   ];
 
   return $block;
 }
 
-
 /**
- * Function to be called which shows the form, loads up the JS etc libraries
+ * Function to be called which shows the form, loads up the JS etc libraries.
  *
  * @return string
  */
@@ -177,8 +176,8 @@ function alq_rodeos_get_member_email_block() {
       'take_action_block' => $taBlock['content'],
       'email_intro_block' => $emailIntroBlock['content'],
       'email_form' => $emailFormBlock['content'],
-      'explainer_block' => $explainerBlock['content']
-    ])
+      'explainer_block' => $explainerBlock['content'],
+    ]),
   ];
 
   return $block;
@@ -196,7 +195,7 @@ function alq_rodeos_theme() {
         'email_intro_block' => NULL,
         'email_form' => NULL,
         'explainer_block' => NULL,
-      ]
+      ],
     ],
     'alq_rodeos_donation' => [
       'template' => 'theme/donation-section',
@@ -205,35 +204,35 @@ function alq_rodeos_theme() {
         'action' => NULL,
         'business' => NULL,
         'redirect_url' => NULL,
-        'redirect_url_cancel' => NULL
-      ]
+        'redirect_url_cancel' => NULL,
+      ],
     ],
     'alq_rodeos_pledge' => [
       'template' => 'theme/pledge-section',
       'variables' => [
         'pledge_intro_block' => NULL,
         'pledge_form' => NULL,
-      ]
+      ],
     ],
     'alq_rodeos_pledge_count' => [
       'template' => 'theme/pledge-count',
       'variables' => [
         'pledge_count' => NULL,
-      ]
+      ],
     ],
     'alq_rodeos_footer' => [
       'template' => 'theme/footer',
-      'variables' => [
-      ]
+      'variables' => [],
     ],
   ];
 }
 
 /**
- * Implementation of hook form
+ * Implementation of hook form.
  *
  * @param $form
  * @param $form_state
+ *
  * @return mixed
  */
 function alq_rodeos_pledge_form($form, &$form_state) {
@@ -253,8 +252,8 @@ function alq_rodeos_pledge_form($form, &$form_state) {
     '#suffix' => '</div>',
     '#required' => TRUE,
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
   $form['suburb'] = [
     '#type' => 'textfield',
@@ -263,8 +262,8 @@ function alq_rodeos_pledge_form($form, &$form_state) {
     '#suffix' => '</div>',
     '#required' => TRUE,
     '#attributes' => [
-      'class' => ['form-control']
-    ]
+      'class' => ['form-control'],
+    ],
   ];
 
   $form['submit'] = [
@@ -273,8 +272,8 @@ function alq_rodeos_pledge_form($form, &$form_state) {
     '#suffix' => '</div>',
     '#value' => t('Pledge'),
     '#attributes' => [
-      'class' => ['btn btn-primary']
-    ]
+      'class' => ['btn btn-primary'],
+    ],
   ];
 
   return $form;
@@ -291,9 +290,9 @@ function alq_rodeos_pledge_form_validate($form, &$form_state) {
   $values = $form_state['values'];
 
   if (!valid_email_address($values['email'])) {
-    form_set_error('email', t('Invalid email address.'));
+  form_set_error('email', t('Invalid email address.'));
   }
-  */
+   */
 }
 
 /**
@@ -309,10 +308,10 @@ function alq_rodeos_pledge_form_submit($form, &$form_state) {
     'pledge' => 'rodeos',
     'name' => $values['name'],
     'suburb' => $values['suburb'],
-    'created' => getBrizzyTime()
+    'created' => get_brisbane_time(),
   ];
 
-  if (drupal_write_record(ALQ_PLEDGES_TABLE, $insert)) {
+  if (drupal_write_record(ALQ_RODEOS_PLEDGES_TABLE, $insert)) {
     drupal_set_message('You successfully made your pledge');
     $_SESSION['alq_rodeos_pledge_form_submitted'] = TRUE;
   }

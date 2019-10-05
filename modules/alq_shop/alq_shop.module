@@ -7,6 +7,9 @@
 
 include_once 'alq_shop.features.inc';
 
+/**
+ * Add goodies to product page.
+ */
 function alq_shop_node_view($node, $view_mode, $langcode) {
   if ($node->type === 'product') {
     drupal_add_library('jquery_plugin', 'cycle');

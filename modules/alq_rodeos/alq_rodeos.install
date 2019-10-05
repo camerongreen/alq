@@ -1,69 +1,68 @@
 <?php
+
 /**
  * @file
- * Installation details for the ALQ MPs module
+ * Installation details for the ALQ MPs module.
  */
 
 // It seems when running a module install, the module file is included
 // thus defines are present, but when you run uninstall it isn't, so define
-// if it doesn't already exist
+// if it doesn't already exist.
 if (!defined('ALQ_PLEDGES_TABLE')) {
-  define('ALQ_PLEDGES_TABLE', 'alq_pledges');
+  define('ALQ_RODEOS_PLEDGES_TABLE', 'alq_pledges');
 }
 
 /**
- * Implements hook_uninstall()
+ * Implements hook_uninstall().
  */
 function alq_rodeos_uninstall() {
-  // delete everything
+  // Delete everything.
   drupal_uninstall_schema('alq_rodeos');
 }
 
 /**
- * Implements hook_schema()
- *
- * @return mixed
+ * Implements hook_schema().
  */
 function alq_rodeos_schema() {
-  $schema[ALQ_PLEDGES_TABLE] = [
-    'description' => t('Table to list pledges by users.'),
+  $schema[ALQ_RODEOS_PLEDGES_TABLE] = [
+    'description' => 'Table to list pledges by users.',
     'fields' => [
       'id' => [
         'description' => 'The primary identifier for a row',
         'type' => 'serial',
         'unsigned' => TRUE,
-        'not null' => TRUE
+        'not null' => TRUE,
       ],
       'pledge' => [
         'description' => 'Campaign',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'default' => ''
+        'default' => '',
       ],
       'name' => [
         'description' => 'Name of pledger',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
+        'not null' => TRUE,
       ],
       'suburb' => [
         'description' => 'Suburb of pledger',
         'type' => 'varchar',
         'length' => 512,
-        'not null' => TRUE
+        'not null' => TRUE,
       ],
       'spam' => [
         'description' => 'Wants spam',
         'type' => 'int',
         'length' => 1,
-        'default' => 0
+        'default' => 0,
       ],
       'created' => [
         'description' => 'Time created',
         'type' => 'int',
         'unsigned' => TRUE,
-        'not null' => TRUE
+        'not null' => TRUE,
       ],
     ],
     'primary key' => ['id'],

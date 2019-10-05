@@ -1,9 +1,10 @@
 <?php
+
 /**
  * @file
  * Provides blocks for the content type section home
  * initially the image display at the top and the list
- * of related links at the left
+ * of related links at the left.
  */
 
 /**
@@ -24,7 +25,7 @@ function alq_section_home_blocks_block_info() {
  * Implements hook_block_view().
  */
 function alq_section_home_blocks_block_view($delta = "") {
-  $block = null;
+  $block = NULL;
 
   switch ($delta) {
     case "alq_section_home_header":
@@ -34,6 +35,7 @@ function alq_section_home_blocks_block_view($delta = "") {
         $block["content"] = theme("alq_section_home_header", array("image" => $image));
       }
       break;
+
     case "alq_section_home_childtree":
       if (user_access("access content")) {
         $name = menu_get_active_title();
@@ -43,9 +45,9 @@ function alq_section_home_blocks_block_view($delta = "") {
           if (count($submenu["childtree"]) > 0) {
             $block["subject"] = t("Topics");
             $block["content"] = theme("alq_section_home_childtree", array(
-                "title" => $submenu["parent"],
-                "childtree" => $submenu["childtree"]
-              )
+              "title" => $submenu["parent"],
+              "childtree" => $submenu["childtree"],
+            )
             );
           }
         }
@@ -57,45 +59,46 @@ function alq_section_home_blocks_block_view($delta = "") {
 }
 
 /**
- * Implements hook_theme();
+ * Implements hook_theme();.
  */
 function alq_section_home_blocks_theme() {
   return array(
     "alq_section_home_header" => array(
       "template" => "theme/section-home-header",
       "variables" => array(
-        "image" => NULL
-      )
+        "image" => NULL,
+      ),
     ),
     "alq_section_home_childtree" => array(
       "template" => "theme/section-home-childtree",
       "variables" => array(
         "title" => NULL,
-        "childtree" => NULL
-      )
+        "childtree" => NULL,
+      ),
     ),
   );
 }
 
 /**
  * Return the image for the current node we are
- * viewing
+ * viewing.
  *
- * @return  mixed image path or false if no image
+ * @return mixed image path or false if no image
  */
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
   if (is_null($node)) {
-    // Only the shop page at the moment so return
+    // Only the shop page at the moment so return.
     return drupal_get_path('theme', 'alq') . '/images/alq_shop_banner.jpg';
-  } else {
+  }
+  else {
     return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : FALSE;
   }
 }
 
 /**
  * Return the child images for the current node we are
- * viewing
+ * viewing.
  */
 function alq_section_home_blocks_get_childtree($name) {
   $tree = menu_tree_all_data('menu-header-menu');
@@ -113,10 +116,13 @@ function alq_section_home_blocks_get_childtree($name) {
 
   return array(
     "childtree" => $childtree,
-    "parent" => $parent
+    "parent" => $parent,
   );
 }
 
+/**
+ *
+ */
 function _in_below($needle, $haystack) {
   foreach ($haystack as $hay) {
     if ($hay['link']['title'] === $needle) {

@@ -4,10 +4,10 @@
 (function ($) {
   // http://stackoverflow.com/a/3067896/1350475
   function yyyymmdd(date) {
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth() + 1).toString(); // getMonth() is zero-based
-    var dd = date.getDate().toString();
-    return yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]); // padding
+    const yyyy = date.getFullYear().toString();
+    const mm = (date.getMonth() + 1).toString(); // getMonth() is zero-based
+    const dd = date.getDate().toString();
+    return yyyy + '-' + (mm[1] ? mm : '0' + mm[0]) + '-' + (dd[1] ? dd : '0' + dd[0]); // padding
   }
 
   function getStats() {
@@ -33,7 +33,8 @@
           unsent,
           error
         ]);
-      } else {
+      }
+      else {
         stats[stats.length - 1][1]++;
         stats[stats.length - 1][2] += sent;
         stats[stats.length - 1][3] += unsent;
@@ -66,7 +67,7 @@
   // go...
   $(document).ready(function () {
     if (Drupal.settings.hasOwnProperty('alq_mps')) {
-      google.charts.load('current', {'packages': ['corechart']});
+      google.charts.load('current', {packages: ['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       // nl2br for email content

@@ -8,24 +8,24 @@
  */
 
 .fv-has-feedback {
-    position: relative;
+  position: relative;
 }
 .fv-control-feedback {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    display: block;
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
 }
 .fv-has-feedback .fv-control-feedback {
-    /*right: 15px;*/
+  /*right: 15px;*/
 }
 .fv-help-block {
-    display: block;
+  display: block;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -33,21 +33,21 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .fv-form-bootstrap .help-block {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .fv-form-bootstrap .tooltip-inner {
-    text-align: left;
+  text-align: left;
 }
 /* Bootstrap stacked form without label */
 .fv-form-bootstrap .fv-icon-no-label {
-	top: 0;
+  top: 0;
 }
 .fv-form-bootstrap .fv-bootstrap-icon-input-group {
-	z-index: 100;
+  z-index: 100;
 }
 /* Bootstrap inline form */
 .form-inline.fv-form-bootstrap .form-group {
-    vertical-align: top;
+  vertical-align: top;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -55,33 +55,35 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .fv-form-foundation .fv-control-feedback {
-    top: 21px;      /* The height of Foundation label */
-    right: 15px;    /* The padding-right of .columns */
-    width: 37px;
-    height: 37px;
-    line-height: 37px;
+  top: 21px;      /* The height of Foundation label */
+  right: 15px;    /* The padding-right of .columns */
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
 }
 .fv-form-foundation .collapse .fv-control-feedback {
-    top: 0;
-    right: 0;
+  top: 0;
+  right: 0;
 }
 /* Foundation horizontal form */
 .fv-form-horizontal.fv-form-foundation .fv-control-feedback {
-    top: 0;
+  top: 0;
 }
 /* Foundation stacked form without label */
 .fv-form-foundation .fv-icon-no-label {
-	top: 0;
+  top: 0;
 }
 .fv-form-foundation .error .fv-control-feedback {
-    color: #f04124;
+  color: #f04124;
 }
 /**
  * Foundation reset the bottom marin to 0 when the row has '.error' class
  * I need to adjust it when using tooltip to show the error
  */
-.fv-form-foundation .error.fv-has-tooltip input, .error.fv-has-tooltip textarea, .error.fv-has-tooltip select {
-    margin-bottom: 1rem;
+.fv-form-foundation .error.fv-has-tooltip input,
+.error.fv-has-tooltip textarea,
+.error.fv-has-tooltip select {
+  margin-bottom: 1rem;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~ */
@@ -89,30 +91,30 @@
 /* ~~~~~~~~~~~~~~~~~~~~~ */
 
 .fv-form-pure .fv-control-feedback {
-    top: 22px;      /* Height of Pure label */
-    width: 36px;    /* Height of Pure input */
-    height: 36px;
-    line-height: 36px;
+  top: 22px;      /* Height of Pure label */
+  width: 36px;    /* Height of Pure input */
+  height: 36px;
+  line-height: 36px;
 }
 .pure-form-stacked.fv-form-pure .fv-control-feedback {
-    top: 4px;
+  top: 4px;
 }
 .pure-form-aligned .pure-control-group .fv-help-block {
-    margin-top: 5px;
-    margin-left: 180px;
+  margin-top: 5px;
+  margin-left: 180px;
 }
 .pure-form-aligned.fv-form-pure .fv-control-feedback,    /* Pure horizontal form */
 .fv-form-pure .fv-icon-no-label {           /* Pure stacked form without label */
-	top: 0;
+  top: 0;
 }
 .fv-form-pure .fv-has-error label,
 .fv-form-pure .fv-has-error .fv-help-block,
 .fv-form-pure .fv-has-error .fv-control-feedback {
-    color: #CA3C3C;     /* Same as .button-error */
+  color: #ca3c3c;     /* Same as .button-error */
 }
 .fv-form-pure .fv-has-success label,
 .fv-form-pure .fv-has-success .fv-control-feedback {
-    /*color: #1CB841;*/     /* Same as .button-success */
+  /*color: #1CB841;*/     /* Same as .button-success */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -120,14 +122,14 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .fv-form-semantic .fv-control-feedback.icon {
-    right: 7px;
+  right: 7px;
 }
 .fv-form-semantic .error .icon {
-    color: #d95c5c;
+  color: #d95c5c;
 }
 /* Semantic horizontal form */
 .fv-form-horizontal.fv-form-semantic .row {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~ */
@@ -135,30 +137,30 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~ */
 
 .fv-form-uikit .fv-control-feedback {
-    top: 25px;      /* Height of UIKit label */
-    width: 30px;    /* Height of UIKit input */
-    height: 30px;
-    line-height: 30px;
+  top: 25px;      /* Height of UIKit label */
+  width: 30px;    /* Height of UIKit input */
+  height: 30px;
+  line-height: 30px;
 }
 .fv-form-uikit .uk-text-danger {
-    display: block;
+  display: block;
 }
 /* UIKit horizontal form */
 .uk-form-horizontal.fv-form-uikit .fv-control-feedback {
-    /*line-height: normal;*/
-    top: 0;
+  /*line-height: normal;*/
+  top: 0;
 }
 .fv-form-uikit .fv-has-error label,
 .fv-form-uikit .fv-has-error .uk-form-label,
 .fv-form-uikit .fv-has-error .fv-control-feedback {
-    color: #D85030;     /* Same as .uk-form-danger */
+  color: #d85030;     /* Same as .uk-form-danger */
 }
 .fv-form-uikit .fv-has-success label,
 .fv-form-uikit .fv-has-success .uk-form-label,
 .fv-form-uikit .fv-has-success .fv-control-feedback {
-    /*color: #659F13;*/     /* Same as .uk-form-success */
+  /*color: #659F13;*/     /* Same as .uk-form-success */
 }
 /* UIKit stacked form without label */
 .fv-form-uikit .fv-icon-no-label {
-	top: 0;
+  top: 0;
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * alq_slideshow_feature.features.inc

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * alq_menus_feature.features.menu_custom.inc
@@ -28,7 +29,6 @@ function alq_menus_feature_menu_default_menu_custom() {
   t('Links at the bottom of each page');
   t('Site Navigation');
   t('This is the menu which is on every page under the AL Header');
-
 
   return $menus;
 }

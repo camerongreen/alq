@@ -1,6 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Pledge, not sure it was used in end.
+ */
+?>
 <div class="row">
   <div class="col-sm-12">
-    <?= $pledge_intro_block ?>
+    <?php echo $pledge_intro_block ?>
   </div>
 </div>
 <div class="row well" id="pledge-form">
@@ -16,6 +23,6 @@
     &nbsp;
   </div>
   <div class="col-sm-5">
-    <?= $pledge_form ?>
+    <?php echo $pledge_form ?>
   </div>
 </div>

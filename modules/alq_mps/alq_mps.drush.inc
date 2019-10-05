@@ -1,9 +1,12 @@
 <?php
+
 /**
+ * @file
  * Created by PhpStorm.
+ *
  * User: cameron
  * Date: 26/07/16
- * Time: 9:46 PM
+ * Time: 9:46 PM.
  */
 
 /**
@@ -36,23 +39,23 @@ function alq_mps_drush_command() {
 }
 
 /**
- * Callback for the export-emails command
+ * Callback for the export-emails command.
  */
 function drush_alq_mps_alq_export_emailees() {
   alq_mps_export_emailees();
 }
 
 /**
- * Callback for the import-emailees command
+ * Callback for the import-emailees command.
  */
 function drush_alq_mps_alq_import_emailees($file) {
   alq_mps_import_emailees($file);
 }
 
 /**
- * Callback for the import-electorates command
+ * Callback for the import-electorates command.
  */
-function drush_alq_mps_alq_import_electorates($file, $ignore_rows=10) {
+function drush_alq_mps_alq_import_electorates($file, $ignore_rows = 10) {
   module_load_include('inc', 'alq_mps', 'alq_mps_install');
   alq_mps_import_electorates($file, $ignore_rows);
 }

@@ -1,6 +1,4 @@
 name = ALQ Rodeos
 description = Various things for the rodeos microsite
 core = 7.x
-package = ALQ
-version = 7.x-1.0
 dependencies[] = alq_mps

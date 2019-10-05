@@ -1,17 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Donation section.
+ */
+?>
 <div class="row">
   <h2>Please support our work by making a donation today</h2>
   <div class="col-sm-5 col-xs-12" id="donation-form">
     <h2>Donate</h2>
-    <form action="<?= $action ?>">
-      <input type="hidden" name="business" value="<?= $business ?>"/>
+    <form action="<?php echo $action ?>">
+      <input type="hidden" name="business" value="<?php echo $business ?>"/>
       <input type="hidden" name="lc" value="AU"/>
       <input type="hidden" name="item_name" value="Animal Liberation Qld"/>
       <input type="hidden" name="no_note" value="1"/>
       <input type="hidden" name="no_shipping" value="1"/>
       <input type="hidden" name="rm" value="1"/>
-      <input type="hidden" name="return" value="<?= $redirect_url ?>"/>
+      <input type="hidden" name="return" value="<?php echo $redirect_url ?>"/>
       <input type="hidden" name="cancel_return"
-             value="<?= $redirect_url_cancel ?>"/>
+             value="<?php echo $redirect_url_cancel ?>"/>
       <input type="hidden" name="currency_code" value="AUD"/>
       <input type="hidden" name="src" value="1"/>
       <input type="hidden" name="a3" id="a3" value=""/>
@@ -56,6 +63,6 @@
     </form>
   </div>
   <div class="col-sm-7 col-xs-12">
-    <?= $explainer_block ?>
+    <?php echo $explainer_block ?>
   </div>
 </div>

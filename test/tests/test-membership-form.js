@@ -13,7 +13,7 @@ this.testAmountChanges = function (browser) {
   for (var i in monthlyDonations) {
     if (monthlyDonations.hasOwnProperty(i)) {
       browser.click('#slider-values li.value-' + monthlyDonations[i])
-      browser.expect.element('#amount').to.have.value.that.equals(monthlyDonations[i]);
+      browser.expect.element('#amount').to.have.value.that.equals('' + monthlyDonations[i]);
     }
   }
   browser.end();
@@ -41,7 +41,7 @@ this.testAmountOtherMinimum = function (browser) {
   browser
       .url(siteUrl + pageUrl)
       .waitForElementVisible('#amountOther', 1000)
-      .setValue('#amountOther', 35)
+      .setValue('#amountOther', '35')
       .click('#slider') // do this to move the focus
       .assert.elementNotPresent('div.has-error')
       .end();
@@ -52,7 +52,7 @@ this.testAmountOtherMinimumFail = function (browser) {
   browser
       .url(siteUrl + pageUrl)
       .waitForElementVisible('#amountOther', 1000)
-      .setValue('#amountOther', 3)
+      .setValue('#amountOther', '3')
       .click('#slider') // do this to move the focus
       .assert.containsText('div.has-error', 'Must be numeric and the minimum')
       .end();

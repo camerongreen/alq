@@ -33,12 +33,12 @@ if [ -f ~/.drush_alias ]; then
         . ~/.drush_alias
 fi
 
+DRUSH=../vendor/bin/drush
+
 if [ -z ${CIRCLECI} ]
 then
-  DRUSH=../vendor/bin/drush
   DEFAULT_DEV_HOST="http://alq.test:26980"
 else
-  DRUSH=/home/circleci/project/vendor/bin/drush
   DEFAULT_DEV_HOST="http://alq-web"
 fi
 

@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Show footer.
+ */
+?>
 <footer>
   <div class="row">
     <div class="col-sm-4 col-xs-12">
@@ -19,10 +26,8 @@
     </div>
     <div class="col-sm-5 col-xs-12 images">
       <img
-        src="/<?= drupal_get_path('theme', 'alq') ?>/images/alq_logo_white.png"
+        src="/<?php echo drupal_get_path('theme', 'alq') ?>/images/alq_logo_white.png"
         alt="ALQ Logo"/>
-      <img src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/rspca.png"
-           alt="RSPCA Logo"/>
     </div>
   </div>
   <div class="copyright">

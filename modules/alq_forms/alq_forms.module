@@ -1,7 +1,12 @@
 <?php
+
 /**
  * @file
- * Provides functions for the animal liberation donate form
+ * Provides functions for the animal liberation donate form.
+ */
+
+/**
+ *
  */
 function alq_forms_menu() {
   $items['donate/submission'] = [
@@ -20,7 +25,7 @@ function alq_forms_menu() {
 }
 
 /**
- * Callback handler for form submission
+ * Callback handler for form submission.
  */
 function alq_forms_submission() {
   global $user;
@@ -58,7 +63,9 @@ function alq_forms_submission() {
   drupal_json_output($returnVal);
 }
 
-
+/**
+ *
+ */
 function alq_forms_webform_loader($title, $type) {
   $query = new EntityFieldQuery();
   $entities = $query->entityCondition('entity_type', 'node')
@@ -74,11 +81,14 @@ function alq_forms_webform_loader($title, $type) {
   return FALSE;
 }
 
+/**
+ *
+ */
 function alq_forms_parse_post_fields() {
   $data = [];
 
-  // these need to be in the same order as the database table
-  // see - drush sqlq 'SELECT cid, form_key, name FROM webform_component WHERE nid = :webform_nid;'
+  // These need to be in the same order as the database table
+  // see - drush sqlq 'SELECT cid, form_key, name FROM webform_component WHERE nid = :webform_nid;'.
   $fields = [
     'donationType',
     'amount',
@@ -119,7 +129,6 @@ function alq_forms_parse_post_fields() {
 
   return $data;
 }
-
 
 /**
  * Implements hook_block_info().
@@ -173,6 +182,7 @@ function alq_forms_block_view($delta = "") {
         'redirect_url_cancel' => $redirect_url_cancel,
       ]);
       break;
+
     case "alq_membership_form":
       drupal_add_library('system', 'ui.slider');
 
@@ -195,7 +205,7 @@ function alq_forms_block_view($delta = "") {
 }
 
 /**
- * Implements hook_theme();
+ * Implements hook_theme();.
  */
 function alq_forms_theme() {
   return [
@@ -220,18 +230,19 @@ function alq_forms_theme() {
   ];
 }
 
-
 /**
  * Implements hook_cron().
  */
 function alq_forms_cron() {
   $my_module = 'alq_forms';
   $seconds_in_day = 24 * 60 * 60;
-  $days_to_email = 7; // If no submissions since this time email.
+  // If no submissions since this time email.
+  $days_to_email = 7;
 
   // Only run once a day.
   if ((time() - $seconds_in_day) >= variable_get('cron_last', 0)) {
-    $nid = 254; // Donations form.
+    // Donations form.
+    $nid = 254;
 
     $donation_types = [
       'Monthly',
@@ -273,7 +284,6 @@ function alq_forms_cron() {
   }
 }
 
-
 /**
  * Last date webform had submission.
  *
@@ -284,7 +294,6 @@ function alq_forms_cron() {
  *
  * @return array
  *   Details.
- *
  */
 function alq_forms_webform_last_submission($nid, $donation_type) {
   $donation_type_cid = 1;

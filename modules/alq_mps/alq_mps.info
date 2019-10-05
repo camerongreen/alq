@@ -2,6 +2,5 @@ name = ALQ Mps
 description = Module to enable storing, listing, administering and emailing members of parliament
 core = 7.x
 package = ALQ
-version = 7.x-1.0
 dependencies[] = alq_mps_feature
 dependencies[] = mailsystem

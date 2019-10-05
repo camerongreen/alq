@@ -1,8 +1,7 @@
 name = ALQ MPs permissions feature
+description = Walks with a slight limp
 core = 7.x
 package = ALQ
-version = 7.x-1.0
-project = alq_mps_perms_feature
 dependencies[] = alq_mps
 dependencies[] = features
 dependencies[] = node
