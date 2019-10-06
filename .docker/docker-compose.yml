@@ -1,34 +1,38 @@
 #
 # Docker build for alq.org.au
 #
+version: '3.7'
 
-db:
+services:
+  db:
     container_name: alq-db
-    build: .
-    dockerfile: Dockerfile-db
+    build:
+      context: .
+      dockerfile: Dockerfile-db
     ports:
-        - "26906:3306"
+      - "26906:3306"
     environment:
-        - MYSQL_ROOT_PASSWORD
-        - MYSQL_DATABASE
-        - MYSQL_USER
-        - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
     volumes:
-        - /var/lib/mysql
+      - /var/lib/mysql
 
-web:
+  web:
     container_name: alq-web
-    build: .
+    build:
+      context: .
     environment:
-        - XDEBUG_CONFIG
-        - PHP_IDE_CONFIG=serverName=alq.test
+      - XDEBUG_CONFIG
+      - PHP_IDE_CONFIG=serverName=alq.test
     ports:
-        - "26980:80"
+      - "26980:80"
     volumes:
-        # Linux
-        - ../../:/var/www/html
-        - ./config/php.ini:/usr/local/etc/php/php.ini
-        # OSX
-        #- ../../:/var/www/html:cached
-    links:
-        - db:mysql
+      # Linux
+      - ../../:/var/www/html
+      - ./config/php.ini:/usr/local/etc/php/php.ini
+      # OSX
+      #- ../../:/var/www/html:cached
+    depends_on:
+      - db

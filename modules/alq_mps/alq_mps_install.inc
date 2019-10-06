@@ -162,7 +162,7 @@ function alq_mps_parse_title($value) {
  * Parse for office details in the address and phone numbers strings
  * is unstructured data, so not that simple.
  *
- * @param array $officeFields
+ * @param mixed $officeFields
  *   Array of office fields to populated.
  * @param string $address
  *   String representing address.
@@ -172,13 +172,18 @@ function alq_mps_parse_title($value) {
  * @return array|false
  *   Populated office or false.
  */
-function alq_mps_parse_office_details(array $officeFields, $address, $phone) {
+function alq_mps_parse_office_details($officeFields, $address, $phone) {
   // Return an array of office details arrays.
   $return_val = [];
   $emails = [];
   $addresses = [];
 
-  $officeInsert = $officeFields;
+  if (is_array($officeFields)) {
+    $officeInsert = $officeFields;
+  }
+  else {
+    $officeInsert = [];
+  }
   $officeInsert['created'] = time();
 
   $addressValues = explode("\n", $address);
