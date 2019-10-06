@@ -3,20 +3,24 @@
 /**
  * @file
  * Provides functions for the animal liberation donate form.
+ *
+ * This is deprecated.
  */
 
 /**
- *
+ * Implements hook_menu().
  */
 function alq_forms_menu() {
   $items['donate/submission'] = [
     'page callback' => 'alq_forms_submission',
+    // This is a form for everyone.
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   ];
 
   $items['membership/submission'] = [
     'page callback' => 'alq_forms_submission',
+    // This is a form for everyone.
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   ];
@@ -64,7 +68,10 @@ function alq_forms_submission() {
 }
 
 /**
+ * Get the webform.
  *
+ * @return mixed
+ *   Webform or false if not found.
  */
 function alq_forms_webform_loader($title, $type) {
   $query = new EntityFieldQuery();
@@ -82,13 +89,16 @@ function alq_forms_webform_loader($title, $type) {
 }
 
 /**
+ * Check on the posted fields.
  *
+ * @return array
+ *   Posted fields.
  */
 function alq_forms_parse_post_fields() {
   $data = [];
 
   // These need to be in the same order as the database table
-  // see - drush sqlq 'SELECT cid, form_key, name FROM webform_component WHERE nid = :webform_nid;'.
+  // 'SELECT cid, form_key, name FROM webform_component WHERE nid = :wf_nid;'.
   $fields = [
     'donationType',
     'amount',
@@ -205,7 +215,7 @@ function alq_forms_block_view($delta = "") {
 }
 
 /**
- * Implements hook_theme();.
+ * Implements hook_theme().
  */
 function alq_forms_theme() {
   return [

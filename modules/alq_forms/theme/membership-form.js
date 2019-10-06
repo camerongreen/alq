@@ -1,5 +1,5 @@
 /**
- * Membership form
+ * Membership form.
  */
 (function ($) {
   var defaultDonation = 10;

@@ -308,7 +308,7 @@ function alq_mailchimp_add_member($listId, array $config, $subscriber) {
       return TRUE;
     }
     else {
-      watchdog('error', _'@function;code=@code;error=@error', [
+      watchdog('error', '@function;code=@code;error=@error', [
         '@function' => __FUNCTION__,
         '@code' => $request->code,
         '@error' => $request->error,
@@ -515,7 +515,7 @@ function alq_mailchimp_get_members($listId) {
     return $request->data;
   }
   else {
-    watchdog('error', _'@function;code=@code;error=@error', [
+    watchdog('error', '@function;code=@code;error=@error', [
       '@function' => __FUNCTION__,
       '@code' => $request->code,
       '@error' => $request->error,

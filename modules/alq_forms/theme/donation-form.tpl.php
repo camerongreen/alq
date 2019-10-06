@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Donation form template (no longer used).
  */
 ?>
 <div class="tabs-container">

@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * No longer used.
  */
 ?>
 <h2>ALQ Membership Form</h2>

@@ -15,9 +15,9 @@ function alq_misc_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- *
+ * Implements hook_form_submit().
  */
 function _contact_site_form_submit(&$form, &$form_state) {
   $form_state['redirect'] = 'contact';
-  drupal_set_message("Thank you for contacting us, we will reply to your email as soon as possible.");
+  drupal_set_message(t("Thank you for contacting us, we will reply to your email as soon as possible."));
 }
