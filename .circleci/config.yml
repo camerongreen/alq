@@ -53,13 +53,16 @@ jobs:
             - v1-dependencies-{{ checksum "scripts/drush.make" }}-{{ checksum ".docker/config/composer.json" }}
       - run: mkdir ~/test-reports
       - run:
-          # NPM doesn't have an apt package so install it manually.
           name: Set up packages
           command: |
             sudo apt-get update && sudo apt-get upgrade
             sudo apt-get install -y curl vim default-jre mariadb-client libpng-dev build-essential nodejs
-            sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
             sudo docker-php-ext-install pdo_mysql && sudo docker-php-ext-install gd
+      - run:
+          # NPM doesn't have an apt package so install it manually.
+          name: Install node and npm
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
       # Install mod_rewrite and start apache.
       - run: sudo a2enmod rewrite && sudo service apache2 start
       - *install_composer
