@@ -5,67 +5,90 @@
 version: 2
 
 aliases:
-  &cache_key v1-dependencies-{{ checksum "scripts/drush.make" }}
+  &cache_key v1-dependencies-{{ checksum "scripts/drush.make" }}-{{ checksum ".docker/config/composer.json" }}
+
+
+references:
+  web_dir: &web_dir /var/www/html
+  vcs_dir: &vcs_dir ~/project
+
+
+defaults: &defaults
+  docker:
+    - image: circleci/php:7.2-apache-browsers
+    - image: circleci/mysql:5.7
+    - image: selenium/standalone-firefox-debug:3
+  working_directory: *vcs_dir
+
+
+set_env: &set_env
+  run:
+    name: "Setup custom environment variables"
+    command: |
+      echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+      echo 'export GIT_DIR="/home/circleci/project"' >> $BASH_ENV
+      echo 'export ADMIN="testadmin"' >> $BASH_ENV
+      echo 'export DB_FILE="/home/circleci/project/.circleci/data/test-data.sql.gz"' >> $BASH_ENV
+      echo 'export DB_HOST="127.0.0.1"' >> $BASH_ENV
+      echo 'export DB_NAME="circle_test"' >> $BASH_ENV
+      echo 'export DB_USER="root"' >> $BASH_ENV
+      echo 'export SITE_EMAIL="test@camerongreen.org"' >> $BASH_ENV
+
+
+install_composer: &install_composer
+  run:
+    name: Install composer
+    command: |
+      php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+      php composer-setup.php
+      php -r "unlink('composer-setup.php');"
+      sudo mv composer.phar /usr/local/bin/composer
 
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/php:7.2-apache-browsers
-      - image: circleci/mysql:5.7
-
-    working_directory: ~/project
-
+    <<: *defaults
     steps:
       - checkout
+      - *set_env
       - restore_cache:
           keys:
             - *cache_key
+      - run: mkdir ~/test-reports
       - run:
-          name: Set up packages.
+          name: Set up packages
           command: |
             sudo apt-get update && sudo apt-get upgrade
-            sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
+            sudo apt-get install -y curl vim default-jre mariadb-client libpng-dev build-essential
+            sudo docker-php-ext-install pdo_mysql && sudo docker-php-ext-install gd
       - run:
-          name: Install extensions
+          # NPM doesn't have an apt package so install it manually.
+          name: Install node and npm
           command: |
-            sudo docker-php-ext-install pdo_mysql
-            sudo docker-php-ext-install gd
-      - run:
-          name: Install mod_rewrite and start apache.
-          command: |
-            sudo a2enmod rewrite
-            sudo service apache2 start
-      - run:
-          name: Install NPM.
-          command: |
-            sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+            sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
             sudo apt-get install -y nodejs
+      # Install mod_rewrite and start apache.
+      - run: sudo a2enmod rewrite && sudo service apache2 start
+      - *install_composer
       - run:
-          name: Install Composer and Composer Install.
+          name: Install composer dependencies
+          working_directory: ~/project/.docker/config
           command: |
-            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-            php composer-setup.php
-            php -r "unlink('composer-setup.php');"
-            php composer.phar self-update
-            sudo mv composer.phar /usr/local/bin/composer
-            sudo composer self-update
-            cp .docker/config/composer.json .
             composer install --prefer-dist
+            sudo cp -R vendor /var/www
       - run:
           name: Install site
+          working_directory: *web_dir
           command: |
-            cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/create_site.sh"
-            cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test-data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
-            sudo chown -R www-data:www-data /var/www/html
+            sudo -E ~circleci/project/scripts/create_site.sh
+            sudo -E ~circleci/project/scripts/import_prod_db.sh
+      - run: sudo chown -R www-data:www-data /var/www/html
+      - run: cd test && ./run-tests.sh
       - save_cache:
           paths:
-            - ./vendor
+            - ~/project/.docker/config/vendor
+            - ~/.composer/cache
           key: *cache_key
-      - run:
-          name: Run tests!
-          command: |
-            mkdir test-reports
-            cd test && ./run-tests.sh
+
+      # run tests!
       - store_artifacts:
           path: /tmp/screenshots
