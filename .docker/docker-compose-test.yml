@@ -2,23 +2,17 @@
 # Docker test containers for alq.org.au
 #
 
-selenium-fx:
-    container_name: alq-selenium-fx
-    image: selenium/standalone-firefox-debug:3.10
-    ports:
-        - "26944:4444"
-        - "26959:5900"
-    restart: always
-    links:
-        - web
+version: "3.7"
 
-test-runner:
-    container_name: alq-test-runner
-    build: .
-    dockerfile: Dockerfile-test
+services:
+  test:
+    container_name: alq-test
+    build:
+      context: .
+      dockerfile: Dockerfile-test
     tty: true
     volumes:
-        - ../test:/var/www/test
-        - ../tmp:/tmp/screenshots
-    links:
-        - selenium-fx
+      - ../test:/var/www/test
+      - ../tmp:/tmp/screenshots
+    depends_on:
+      - web

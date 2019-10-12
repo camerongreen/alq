@@ -3,6 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
+
+aliases:
+  &cache_key v1-dependencies-{{ checksum "scripts/drush.make" }}
+
 jobs:
   build:
     docker:
@@ -16,48 +20,52 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "scripts/drush.make" }}
-      - run: mkdir test-reports
+            - *cache_key
       - run:
-          name: Download Selenium
+          name: Set up packages.
           command: |
-            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+            sudo apt-get update && sudo apt-get upgrade
+            sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
       - run:
-          name: Start Selenium
+          name: Install extensions
           command: |
-            java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true
-      # Set up some packages we want to use.
-      - run: sudo apt-get update && sudo apt-get upgrade
-      - run: sudo apt-get install -y curl vim default-jre mysql-client libpng-dev build-essential
-      - run: sudo docker-php-ext-install pdo_mysql
-      - run: sudo docker-php-ext-install gd
-      # Install mod_rewrite and start apache.
-      - run: sudo a2enmod rewrite
-      - run: sudo service apache2 start
-      # NPM doesn't have an apt package so install it manually.
-      - run: sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      - run: sudo apt-get install -y nodejs
-      # Get composer working.
-      - run: php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-      - run: php composer-setup.php
-      - run: php -r "unlink('composer-setup.php');"
-      - run: php composer.phar self-update
-      - run: sudo mv composer.phar /usr/local/bin/composer
-      - run: sudo composer self-update
-      - run: cp .docker/config/composer.json .
-      - run: composer install --prefer-dist
-      # Finally... now install the site.
-      - run: cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/create_site.sh"
-      - run: cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test-data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
-      - run: sudo chown -R www-data:www-data /var/www/html
+            sudo docker-php-ext-install pdo_mysql
+            sudo docker-php-ext-install gd
+      - run:
+          name: Install mod_rewrite and start apache.
+          command: |
+            sudo a2enmod rewrite
+            sudo service apache2 start
+      - run:
+          name: Install NPM.
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+      - run:
+          name: Install Composer and Composer Install.
+          command: |
+            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+            php composer-setup.php
+            php -r "unlink('composer-setup.php');"
+            php composer.phar self-update
+            sudo mv composer.phar /usr/local/bin/composer
+            sudo composer self-update
+            cp .docker/config/composer.json .
+            composer install --prefer-dist
+      - run:
+          name: Install site
+          command: |
+            cd /var/www/html && sudo -- sh -c "GIT_DIR=/home/circleci/project ADMIN=testadmin DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/create_site.sh"
+            cd /var/www/html && sudo -- sh -c "DB_FILE=/home/circleci/project/.circleci/data/test-data.sql.gz DB_USER=root DB_NAME=circle_test DB_HOST=127.0.0.1 CIRCLECI=1 SITE_EMAIL=test@camerongreen.org /home/circleci/project/scripts/import_prod_db.sh"
+            sudo chown -R www-data:www-data /var/www/html
       - save_cache:
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "scripts/drush.make" }}
-        
-      # run tests!
-      - run: cd test && ./run-tests.sh --env=circleci
-
+          key: *cache_key
+      - run:
+          name: Run tests!
+          command: |
+            mkdir test-reports
+            cd test && ./run-tests.sh
       - store_artifacts:
           path: /tmp/screenshots

@@ -10,11 +10,12 @@ this.testAddToCart = function (browser) {
   browser.useXpath();
   browser.click('//a[text()="Apparel"]');
   browser.useCss();
-  browser.waitForElementVisible('.view-uc-catalog', 1000)
+  browser.waitForElementVisible('.view-uc-catalog', 1000);
+  browser.assert.containsText('h1.title', 'APPAREL');
   browser.useXpath();
   browser.click('//a[text()="ALQ Hoodie"]');
   browser.useCss();
-  browser.click('select[id="edit-attributes-38"] option[value="129"]')
+  browser.click('select[id="edit-attributes-38"] option[value="129"]');
   var price = null;
   browser.getText('span.uc-price', function (result) {
     price = result.value.substr(1);

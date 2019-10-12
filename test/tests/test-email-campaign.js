@@ -11,11 +11,12 @@ this.testDefaultMinister = function (browser) {
   var siteUrl = browser.launch_url;
   browser
       .url(siteUrl + pageUrl)
-      .waitForElementVisible('#edit-suburb', 1000);
+      .waitForElementVisible('#edit-emailee-name', 1000);
 
-  browser.click('#suburb-default');
-  browser.expect.element('#edit-emailee-name').value.to.equal('Hon Annastacia Palaszczuk');
-  browser.expect.element('#edit-emailee-electorate').to.not.be.visible;
+  browser.click('#suburb-default', function() {
+    this.expect.element('#edit-emailee-electorate').to.not.be.visible;
+    this.expect.element('#edit-emailee-name').to.have.value.that.equals('Hon Annastacia Palaszczuk');
+  });
   browser.end();
 };
 
