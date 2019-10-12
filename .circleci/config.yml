@@ -5,7 +5,7 @@
 version: 2
 
 aliases:
-  - &cache_key v1-dependencies-{{ checksum "scripts/drush.make" }}-{{ checksum ".docker/config/composer.json" }}
+  - &cache_key v1-dependencies-{{ checksum "scripts/drush.make" }}-{{ checksum "composer.json" }}
   - &web_dir /var/www/html
   - &vcs_dir ~/project
 
@@ -27,6 +27,7 @@ set_env: &set_env
       echo 'export DB_NAME="circle_test"' >> $BASH_ENV
       echo 'export DB_USER="root"' >> $BASH_ENV
       echo 'export SITE_EMAIL="test@camerongreen.org"' >> $BASH_ENV
+      echo 'export PATH=${PATH}:~/project/vendor/bin' >> $BASH_ENV
 
 install_composer: &install_composer
   run:
@@ -64,10 +65,8 @@ jobs:
       - *install_composer
       - run:
           name: Install composer dependencies
-          working_directory: ~/project/.docker/config
           command: |
             composer install --prefer-dist
-            sudo cp -R vendor /var/www
       - run:
           name: Install site
           working_directory: *web_dir

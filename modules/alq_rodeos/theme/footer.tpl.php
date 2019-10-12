@@ -21,8 +21,8 @@
       <img
         src="/<?= drupal_get_path('theme', 'alq') ?>/images/alq_logo_white.png"
         alt="ALQ Logo"/>
-      <img src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/rspca.png"
-           alt="RSPCA Logo"/>
+      <!--img src="/<?= drupal_get_path('theme', 'rodeos') ?>/images/rspca.png"
+           alt="RSPCA Logo"/-->
     </div>
   </div>
   <div class="copyright">

@@ -25,7 +25,7 @@ function alq_rodeos_uninstall() {
  * @return mixed
  */
 function alq_rodeos_schema() {
-  $schema[ALQ_PLEDGES_TABLE] = [
+  $schema[ALQ_RODEOS_PLEDGES_TABLE] = [
     'description' => t('Table to list pledges by users.'),
     'fields' => [
       'id' => [
