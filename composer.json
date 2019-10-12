@@ -1,15 +1,29 @@
 {
-    "name": "camerongreen/alq",
-    "require-dev": {
-        "drupal/coder": "^8.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
-    },
-    "authors": [
-        {
-            "name": "Cameron Green",
-            "email": "i@camerongreen.org"
-        }
-    ],
-    "require": {
+  "name": "camerongreen/alq",
+  "require-dev": {
+    "drupal/coder": "^8.3",
+    "drush/drush": "^9.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+    "brainmaestro/composer-git-hooks": "^2.8"
+
+  },
+  "scripts": {
+    "post-install-cmd": "cghooks add --ignore-lock",
+    "post-autoload-dump": "cghooks update"
+  },
+  "authors": [
+    {
+      "name": "Cameron Green",
+      "email": "i@camerongreen.org"
     }
+  ],
+  "require": {
+  },
+  "extra": {
+    "hooks": {
+      "pre-commit": [
+        "phpcs"
+      ]
+    }
+  }
 }
