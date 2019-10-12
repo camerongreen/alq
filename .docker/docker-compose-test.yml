@@ -2,13 +2,17 @@
 # Docker test containers for alq.org.au
 #
 
-test:
+version: "3.7"
+
+services:
+  test:
     container_name: alq-test
-    build: .
-    dockerfile: Dockerfile-test
+    build:
+      context: .
+      dockerfile: Dockerfile-test
     tty: true
     volumes:
-        - ../test:/var/www/test
-        - ../tmp:/tmp/screenshots
-    links:
-        - web
+      - ../test:/var/www/test
+      - ../tmp:/tmp/screenshots
+    depends_on:
+      - web

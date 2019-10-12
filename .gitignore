@@ -11,3 +11,4 @@ test/*.log
 /.idea
 .DS_Store
 tmp
+package-lock.json

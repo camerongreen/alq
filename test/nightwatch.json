@@ -9,13 +9,6 @@
   "globals_path": "",
   "test_settings": {
     "firefox": {
-      "launch_url": "http://alq.test:26980",
-      "screenshots": {
-        "enabled": true,
-        "on_failure": true,
-        "on_error": false,
-        "path": "/tmp/screenshots"
-      },
       "webdriver": {
         "start_process": true,
         "server_path": "node_modules/.bin/geckodriver",
@@ -37,8 +30,8 @@
         }
       }
     },
-    "chrome": {
-      "launch_url": "http://alq.test:26980",
+    "default": {
+      "launch_url": "http://localhost",
       "screenshots": {
         "enabled": true,
         "on_failure": true,
@@ -67,20 +60,6 @@
             "disable-gpu"
           ]
         }
-      }
-    },
-    "circleci": {
-      "launch_url": "http://localhost",
-      "screenshots": {
-        "on_failure": true,
-        "on_error": false,
-        "enabled": true,
-        "path": "/tmp/screenshots"
-      },
-      "desiredCapabilities": {
-        "browserName": "firefox",
-        "javascriptEnabled": true,
-        "acceptSslCerts": true
       }
     }
   }

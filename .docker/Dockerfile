@@ -10,8 +10,33 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # install libraries and utils needed
 # add mbstring next time this is updated
-RUN apt-get update \
-    && apt-get install -y vim ftp git curl libfreetype6-dev libgd3 libjpeg62-turbo-dev libpng-dev libcurl3-dev mysql-client libssl-dev zip unzip
+RUN apt update \
+    && apt install -y \
+    curl \
+    firefox-esr \
+    ftp \
+    git \
+    libcurl3-dev \
+    libfreetype6-dev \
+    libgd3 \
+    libjpeg62-turbo-dev \
+    libnss3-dev \
+    libpng-dev \
+    libssl-dev \
+    mysql-client \
+    unzip \
+    vim \
+    zip
+
+# Install node.
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt install -y nodejs
+RUN ln -s `which nodejs` /usr/bin/node
+
+# Install chrome
+RUN curl -sL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/google-chrome.deb \
+    && dpkg -i /tmp/google-chrome.deb
+    && apt --fix-broken install
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \
     && docker-php-ext-install curl pdo pdo_mysql json ftp gd mbstring

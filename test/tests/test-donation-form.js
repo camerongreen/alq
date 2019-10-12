@@ -1,6 +1,9 @@
 /**
  * Test the donation form.
+ *
+ * These have been deprecated.
  */
+/*
 var pageUrl = '/donate';
 
 this.testAmountOther = function (browser) {
@@ -22,8 +25,10 @@ this.testAmountOther = function (browser) {
       })
       .end();
 };
+*/
 
 // with all this bootstrap magic going on, test trivial things
+/*
 this.testClickDonationType = function (browser) {
   var siteUrl = browser.launch_url;
   browser
@@ -66,3 +71,5 @@ this.testAmountOtherMinimum = function (browser) {
       .assert.containsText('div.has-error', 'Please specify at least')
       .end();
 };
+*/
+

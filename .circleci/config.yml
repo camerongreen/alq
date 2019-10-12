@@ -44,7 +44,6 @@ install_composer: &install_composer
 
 jobs:
   build:
-    <<: *defaults
     steps:
       - checkout
       - *set_env
@@ -80,7 +79,7 @@ jobs:
             sudo -E ~circleci/project/scripts/create_site.sh
             sudo -E ~circleci/project/scripts/import_prod_db.sh
       - run: sudo chown -R www-data:www-data /var/www/html
-      - run: cd test && ./run-tests.sh --env=circleci
+      - run: cd test && ./run-tests.sh
       - save_cache:
           paths:
             - ~/project/.docker/config/vendor

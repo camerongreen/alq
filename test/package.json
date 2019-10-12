@@ -18,10 +18,9 @@
   "bugs": {
     "url": "https://github.com/camerongreen/alq/issues"
   },
+  "dependencies": {},
   "devDependencies": {
-    "nightwatch": "^1"
-  },
-  "dependencies": {
+    "nightwatch": "*",
     "chromedriver": "*",
     "geckodriver": "*"
   }
