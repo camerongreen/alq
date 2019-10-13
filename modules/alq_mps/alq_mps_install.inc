@@ -131,7 +131,7 @@ function alq_mps_insert(array $mp) {
   $address = $mp[$GLOBALS['mpsCvsFields']['address']];
   $phone = $mp[$GLOBALS['mpsCvsFields']['phone']];
 
-  $fields['offices'] = alq_mps_parse_office_details($GLOBALS['officeFields'], $address, $phone);
+  $fields['offices'] = alq_mps_parse_office_details($address, $phone);
 
   alq_mps_create($fields);
 }
@@ -162,8 +162,6 @@ function alq_mps_parse_title($value) {
  * Parse for office details in the address and phone numbers strings
  * is unstructured data, so not that simple.
  *
- * @param array $officeFields
- *   Array of office fields to populated.
  * @param string $address
  *   String representing address.
  * @param string $phone
@@ -172,7 +170,7 @@ function alq_mps_parse_title($value) {
  * @return array|false
  *   Populated office or false.
  */
-function alq_mps_parse_office_details(array $officeFields, $address, $phone) {
+function alq_mps_parse_office_details($address, $phone) {
   // Return an array of office details arrays.
   $return_val = [];
   $emails = [];
