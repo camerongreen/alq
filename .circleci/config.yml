@@ -72,9 +72,8 @@ jobs:
           name: Install site
           working_directory: *web_dir
           command: |
-            echo $PATH
-            ~circleci/project/scripts/create_site.sh
-            ~circleci/project/scripts/import_prod_db.sh
+            sudo env "PATH=$PATH" ~circleci/project/scripts/create_site.sh
+            sudo env "PATH=$PATH" ~circleci/project/scripts/import_prod_db.sh
       - run: sudo chown -R www-data:www-data /var/www/html
       - run: cd test && ./run-tests.sh
       - save_cache:
