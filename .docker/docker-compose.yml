@@ -9,6 +9,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-db
+    networks:
+      - alq_network
     ports:
       - "26906:3306"
     environment:
@@ -26,6 +28,8 @@ services:
     environment:
       - XDEBUG_CONFIG
       - PHP_IDE_CONFIG=serverName=alq.test
+    networks:
+      - alq_network
     ports:
       - "26980:80"
     volumes:
@@ -36,3 +40,6 @@ services:
       #- ../../:/var/www/html:cached
     depends_on:
       - db
+
+networks:
+  alq_network:

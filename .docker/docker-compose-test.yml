@@ -7,6 +7,8 @@ version: "3.7"
 services:
   test:
     container_name: alq-test
+    networks:
+      - alq_network
     build:
       context: .
       dockerfile: Dockerfile-test
