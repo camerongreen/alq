@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * @file
+ * The cosmos knows.
+ */
+
+/**
+ * God knows.
+ */
 function alq_alpha_preprocess_region(&$vars) {
   $theme = alpha_get_theme();
 

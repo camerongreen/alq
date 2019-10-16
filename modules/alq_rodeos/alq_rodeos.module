@@ -1,8 +1,11 @@
 <?php
+
 /**
  * @file
- * Provides various functions for rodeos, refactor out if it starts getting
- * silly, into functional oriented modules
+ * Provides various functions for rodeos.
+ *
+ * Refactor out if it starts getting
+ * silly, into functional oriented modules.
  */
 
 define('ALQ_RODEOS_PLEDGES_TABLE', 'alq_pledges');
@@ -13,7 +16,6 @@ define('ALQ_RODEOS_EXPLAINER_BLOCK', '3');
 define('ALQ_RODEOS_EMAIL_INTRO_BLOCK', '8');
 define('ALQ_RODEOS_DONATION_EXPLAINER_BLOCK', '4');
 define('ALQ_RODEOS_PLEDGE_INTRO_BLOCK', '10');
-
 
 /**
  * Implements hook_block_info().
@@ -38,7 +40,6 @@ function alq_rodeos_block_info() {
   ];
 }
 
-
 /**
  * Implements hook_block_view().
  */
@@ -49,15 +50,19 @@ function alq_rodeos_block_view($delta = '') {
     case 'alq_rodeos_email_member':
       $block = alq_rodeos_get_member_email_block();
       break;
+
     case 'alq_rodeos_donation':
       $block = alq_rodeos_get_donation_block();
       break;
+
     case 'alq_rodeos_footer':
       $block = alq_rodeos_get_footer_block();
       break;
+
     case 'alq_rodeos_pledge':
       $block = alq_rodeos_get_pledge_block();
       break;
+
     case 'alq_rodeos_pledge_count':
       $block = alq_rodeos_get_pledge_count_block();
       break;
@@ -67,9 +72,10 @@ function alq_rodeos_block_view($delta = '') {
 }
 
 /**
- * Function to be called which shows the footer
+ * Function to be called which shows the footer.
  *
  * @return string
+ *   Content.
  */
 function alq_rodeos_get_footer_block() {
   $block = [
@@ -79,11 +85,11 @@ function alq_rodeos_get_footer_block() {
   return $block;
 }
 
-
 /**
- * Function to be called which shows the pledge
+ * Function to be called which shows the pledge.
  *
  * @return string
+ *   Content.
  */
 function alq_rodeos_get_pledge_block() {
   $pledgeIntro = module_invoke('block', 'block_view', ALQ_RODEOS_PLEDGE_INTRO_BLOCK);
@@ -99,12 +105,14 @@ function alq_rodeos_get_pledge_block() {
   return $block;
 }
 
-
 /**
+ * Emails sent.
+ *
  * Function to be called which was meant to show the pledge count
- * the spec has changed, now they just want to display emails
+ * the spec has changed, now they just want to display emails.
  *
  * @return string
+ *   Content.
  */
 function alq_rodeos_get_pledge_count_block() {
   $query = db_select(ALQ_MPS_EMAILS_TABLE, 'p')
@@ -122,11 +130,13 @@ function alq_rodeos_get_pledge_count_block() {
   return $block;
 }
 
-
 /**
- * Function to be called which shows the form, loads up the JS etc libraries
+ * Get donation form.
+ *
+ * Function to be called which shows the form, loads up the JS etc libraries.
  *
  * @return string
+ *   Content.
  */
 function alq_rodeos_get_donation_block() {
   global $conf, $base_url;
@@ -146,7 +156,7 @@ function alq_rodeos_get_donation_block() {
   $redirect_url = $base_url . '/thanks';
 
   $block = [
-    'subject' => t($explainerBlock['subject']),
+    'subject' => $explainerBlock['subject'],
     'content' => theme('alq_rodeos_donation', [
       'explainer_block' => $explainerBlock['content'],
       'action' => $url,
@@ -159,11 +169,13 @@ function alq_rodeos_get_donation_block() {
   return $block;
 }
 
-
 /**
- * Function to be called which shows the form, loads up the JS etc libraries
+ * Email block.
+ *
+ * Function to be called which shows the form, loads up the JS etc libraries.
  *
  * @return string
+ *   Content.
  */
 function alq_rodeos_get_member_email_block() {
   $taBlock = module_invoke('block', 'block_view', ALQ_RODEOS_TAKE_ACTION_BLOCK);
@@ -172,7 +184,7 @@ function alq_rodeos_get_member_email_block() {
   $emailFormBlock = module_invoke('alq_mps', 'block_view', 'alq_mps_email_campaign_display');
 
   $block = [
-    'subject' => t($taBlock['subject']),
+    'subject' => $taBlock['subject'],
     'content' => theme('alq_rodeos_email_member', [
       'take_action_block' => $taBlock['content'],
       'email_intro_block' => $emailIntroBlock['content'],
@@ -185,7 +197,7 @@ function alq_rodeos_get_member_email_block() {
 }
 
 /**
- * Implements of hook_theme()
+ * Implements hook_theme().
  */
 function alq_rodeos_theme() {
   return [
@@ -223,19 +235,13 @@ function alq_rodeos_theme() {
     ],
     'alq_rodeos_footer' => [
       'template' => 'theme/footer',
-      'variables' => [
-      ],
+      'variables' => [],
     ],
   ];
 }
 
 /**
- * Implementation of hook form
- *
- * @param $form
- * @param $form_state
- *
- * @return mixed
+ * Implements hook_form().
  */
 function alq_rodeos_pledge_form($form, &$form_state) {
   $classes = ['form-horizontal'];
@@ -282,26 +288,20 @@ function alq_rodeos_pledge_form($form, &$form_state) {
 }
 
 /**
- * Implements hook_form_validate()
- *
- * @param $form
- * @param $form_state
+ * Implements hook_form_validate().
  */
 function alq_rodeos_pledge_form_validate($form, &$form_state) {
   /*
   $values = $form_state['values'];
 
   if (!valid_email_address($values['email'])) {
-    form_set_error('email', t('Invalid email address.'));
+  form_set_error('email', t('Invalid email address.'));
   }
-  */
+   */
 }
 
 /**
- * Implements hook_form_submit()
- *
- * @param $form
- * @param $form_state
+ * Implements hook_form_submit().
  */
 function alq_rodeos_pledge_form_submit($form, &$form_state) {
   $values = $form_state['values'];
@@ -310,14 +310,14 @@ function alq_rodeos_pledge_form_submit($form, &$form_state) {
     'pledge' => 'rodeos',
     'name' => $values['name'],
     'suburb' => $values['suburb'],
-    'created' => getBrizzyTime(),
+    'created' => get_brisbane_time(),
   ];
 
   if (drupal_write_record(ALQ_RODEOS_PLEDGES_TABLE, $insert)) {
-    drupal_set_message('You successfully made your pledge');
+    drupal_set_message(t('You successfully made your pledge'));
     $_SESSION['alq_rodeos_pledge_form_submitted'] = TRUE;
   }
   else {
-    drupal_set_message('Error making pledge, please Contact ALQ to let us know', 'error');
+    drupal_set_message(t('Error making pledge, please Contact ALQ to let us know'), 'error');
   }
 }

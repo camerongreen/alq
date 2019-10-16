@@ -1,20 +1,22 @@
 <?php
+
 /**
  * @file
- * Well this actual imports and exports, just like Vandalay Industries
+ * Well this actual imports and exports, just like Vandalay Industries.
  */
 
 define('ALQ_MPS_EMAILEE_NODE_TYPE', 'emailee');
 
 /**
- * Callback to export emailees to json
+ * Callback to export emailees to json.
  */
 function alq_mps_export_emailees() {
   $query = db_select('node', 'n');
   $query->join('field_data_field_party', 'fdfp', 'fdfp.entity_id = n.nid');
   $query->fields('n', ['nid'])
     ->condition('n.type', ALQ_MPS_EMAILEE_NODE_TYPE)
-    ->condition('fdfp.field_party_value', 'N/A', '!='); // ignore test users
+  // Ignore test users.
+    ->condition('fdfp.field_party_value', 'N/A', '!=');
   $nids = $query->execute()->fetchCol();
 
   $nodes = node_load_multiple($nids);
@@ -35,16 +37,18 @@ function alq_mps_export_emailees() {
 }
 
 /**
- * Call back to import emailees from json file
+ * Call back to import emailees from json file.
  *
- * @param $file
+ * @param string $file
+ *   Json encoded file.
  *
  * @return bool
+ *   Success.
  */
 function alq_mps_import_emailees($file) {
   alq_mps_check_import($file);
 
-  $jsonNodes = getJsonNodes($file);
+  $jsonNodes = get_json_nodes($file);
 
   $successes = 0;
 
@@ -84,11 +88,15 @@ function alq_mps_import_emailees($file) {
 }
 
 /**
- * @param $file
+ * Get me some nodes.
+ *
+ * @param string $file
+ *   File path.
  *
  * @return mixed
+ *   Return array of NULL.
  */
-function getJsonNodes($file) {
+function get_json_nodes($file) {
   $json = file_get_contents($file);
 
   $jsonNodes = drupal_json_decode($json);
@@ -102,7 +110,10 @@ function getJsonNodes($file) {
 }
 
 /**
- * @param $file
+ * Do some basic checks on import.
+ *
+ * @param string $file
+ *   Pat hto file.
  */
 function alq_mps_check_import($file) {
   if (empty($file)) {
@@ -118,12 +129,15 @@ function alq_mps_check_import($file) {
 /**
  * Update an individual emailee's whole record.
  *
- * @param $node
- * @param $newDetails
+ * @param object $node
+ *   Node to update.
+ * @param array $newDetails
+ *   New details to update.
  *
  * @return bool
+ *   Success.
  */
-function alq_mps_update_emailee($node, $newDetails) {
+function alq_mps_update_emailee($node, array $newDetails) {
   if (alq_mps_update_node($node, $newDetails)) {
     if (alq_mps_update_offices($node, $newDetails)) {
       return TRUE;
@@ -140,13 +154,15 @@ function alq_mps_update_emailee($node, $newDetails) {
 /**
  * Do our best to find each MP, using electorate.
  *
- * @param $details
+ * @param array $details
+ *   Multidimensional details array.
  *
- * @return bool|mixed
+ * @return mixed
+ *   Loaded node or FALSE.
  */
-function alq_mps_find_emailee($details) {
-  $electorate = $details['field_electorate']['und'][0]['value'];
-  $type = $details['field_electorate_type']['und'][0]['value'];
+function alq_mps_find_emailee(array $details) {
+  $electorate = $details['field_electorate'][LANGUAGE_NONE][0]['value'];
+  $type = $details['field_electorate_type'][LANGUAGE_NONE][0]['value'];
 
   drush_print(dt('Searching for @electorate type @type', [
     '@electorate' => $electorate,
@@ -177,11 +193,13 @@ function alq_mps_find_emailee($details) {
 /**
  * Create an emailee.
  *
- * @param $details
+ * @param array $details
+ *   Row details.
  *
  * @return array
+ *   Result of mp create.
  */
-function alq_mps_create_emailee($details) {
+function alq_mps_create_emailee(array $details) {
   $fields['name'] = $details['title'];
 
   $keys = [
@@ -233,14 +251,17 @@ function alq_mps_create_emailee($details) {
 }
 
 /**
- * Update the mps details, excepting office which is a field collection
+ * Update the mps details, excepting office which is a field collection.
  *
- * @param $node
- * @param $details
+ * @param object $node
+ *   Node to update.
+ * @param array $details
+ *   MP details.
  *
  * @return mixed
+ *   Result of saving node.
  */
-function alq_mps_update_node($node, $details) {
+function alq_mps_update_node($node, array $details) {
   $fields = [
     'field_family_name',
     'field_given_names',
@@ -254,24 +275,29 @@ function alq_mps_update_node($node, $details) {
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $node_wrapper->title->set($details['title']);
   foreach ($fields as $field) {
-    if (is_array($details[$field]) && array_key_exists('und', $details[$field])) {
-      $node_wrapper->$field->set($details[$field]['und'][0]['value']);
+    if (is_array($details[$field]) && array_key_exists(LANGUAGE_NONE, $details[$field])) {
+      $node_wrapper->$field->set($details[$field][LANGUAGE_NONE][0]['value']);
     }
   }
   return $node_wrapper->save();
 }
 
 /**
- * Update offices which is an evil field collection
+ * Update offices.
+ *
+ * Which is an evil field collection
  * took me as long to write this function as the whole
  * rest of the import export drush command etc.
  *
- * @param $rawNode
- * @param $newDetails
+ * @param object $rawNode
+ *   Node object.
+ * @param array $newDetails
+ *   New details to be updated.
  *
  * @return bool
+ *   Success.
  */
-function alq_mps_update_offices($rawNode, $newDetails) {
+function alq_mps_update_offices($rawNode, array $newDetails) {
   $node = entity_metadata_wrapper('node', $rawNode);
   $rawOffices = $node->field_office->value();
   $newOffices = $newDetails['offices'];
@@ -281,7 +307,7 @@ function alq_mps_update_offices($rawNode, $newDetails) {
     if (isset($rawOffices[$i])) {
       $office = entity_metadata_wrapper('field_collection_item', $rawOffices[$i]);
       // In json there is an extra level of the array here so double shift
-      // I'm sure there's a good reason for it
+      // I'm sure there's a good reason for it.
       $newOffice = array_shift($newOffices[$i]);
       $fields = [
         'field_address',

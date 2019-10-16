@@ -1,8 +1,7 @@
 name = ALQ MPs feature
+description = ALP MPs things from Drupal core.
 core = 7.x
 package = ALQ
-version = 7.x-1.0
-project = alq_mps_feature
 dependencies[] = ctools
 dependencies[] = email
 dependencies[] = features

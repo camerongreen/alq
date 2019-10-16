@@ -46,7 +46,12 @@ body.front #section-content {
 }
 
 /* line 50, ../scss/global.scss */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Hind", sans-serif;
   color: #333;
 }
@@ -85,11 +90,13 @@ h1, h2, h3, h4, h5, h6 {
   transition-duration: 1s;
 }
 /* line 82, ../scss/global.scss */
-#zone-branding-wrapper ul li:hover, #zone-branding-wrapper ul li:focus-within {
+#zone-branding-wrapper ul li:hover,
+#zone-branding-wrapper ul li:focus-within {
   cursor: pointer;
 }
 /* line 85, ../scss/global.scss */
-#zone-branding-wrapper ul li:hover a, #zone-branding-wrapper ul li:focus-within a {
+#zone-branding-wrapper ul li:hover a,
+#zone-branding-wrapper ul li:focus-within a {
   outline: none;
 }
 /* line 89, ../scss/global.scss */
@@ -145,7 +152,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 /* line 135, ../scss/global.scss */
-#zone-branding-wrapper ul li:hover > ul, #zone-branding-wrapper ul li:focus-within > ul, #zone-branding-wrapper ul li ul:hover, #zone-branding-wrapper ul li ul:focus {
+#zone-branding-wrapper ul li:hover > ul,
+#zone-branding-wrapper ul li:focus-within > ul,
+#zone-branding-wrapper ul li ul:hover,
+#zone-branding-wrapper ul li ul:focus {
   visibility: visible;
   opacity: 1;
   display: block;
@@ -410,7 +420,7 @@ div.viddy > div iframe {
 /* line 375, ../scss/global.scss */
 #pledge-form h2 {
   text-align: center;
-  border-bottom: solid #CCC thin;
+  border-bottom: solid #ccc thin;
 }
 /* line 379, ../scss/global.scss */
 #pledge-form p {

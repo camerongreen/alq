@@ -13,7 +13,7 @@
 
 set -e
 
-DEFAULT_PROD_HOST="http://alq.org.au"
+DEFAULT_PROD_HOST="https://alq.org.au"
 DEFAULT_PRIVATE_DIR="/tmp/private"
 
 # this is the user who will own the files, so you
@@ -25,7 +25,7 @@ WEBSERVER_GROUP=www-data
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
-DEFAULT_DB_HOST=alq_db
+DEFAULT_DB_HOST=alq-db
 DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
 
 # hosting company work around has custom drush path
@@ -33,12 +33,12 @@ if [ -f ~/.drush_alias ]; then
         . ~/.drush_alias
 fi
 
+DRUSH=../vendor/bin/drush
+
 if [ -z ${CIRCLECI} ]
 then
-  DRUSH=../vendor/bin/drush
   DEFAULT_DEV_HOST="http://alq.test:26980"
 else
-  DRUSH=/home/circleci/project/vendor/bin/drush
   DEFAULT_DEV_HOST="http://alq-web"
 fi
 

@@ -1,10 +1,7 @@
 name = ALQ Editor Role Feature
 description = Editor role and permissions
 core = 7.x
-package = ALQ
 php = 5.2.4
-version = 7.x-1.0
-project = alq_editor_role_feature
 dependencies[] = features
 features[features_api][] = api:1
 features[user_role][] = editor

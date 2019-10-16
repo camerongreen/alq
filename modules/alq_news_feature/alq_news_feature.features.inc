@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * alq_news_feature.features.inc

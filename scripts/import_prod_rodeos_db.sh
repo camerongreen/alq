@@ -25,7 +25,7 @@ WEBSERVER_GROUP=www-data
 # default settings for DB
 DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=rodeos_db
-DEFAULT_DB_HOST=alq_db
+DEFAULT_DB_HOST=alq-db
 DEFAULT_DB_FILE=../sql/rodeos_latest.sql.gz
 
 # hosting company work around has custom drush path

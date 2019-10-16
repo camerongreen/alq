@@ -5,7 +5,9 @@ body {
 }
 
 /* line 3, ../scss/sections/_shop-narrow.scss */
-div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
+div.view-uc-catalog-terms div.row .col-sm-6,
+div.view-uc-catalog-terms div.row .col-md-6,
+div.view-uc-catalog-terms div.row .col-lg-6 {
   width: 460px;
 }
 /* line 8, ../scss/sections/_shop-narrow.scss */
@@ -365,6 +367,8 @@ input[type=email] {
 }
 
 /* line 247, ../scss/alq-alpha-default-narrow.scss */
-.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+.fb_iframe_widget,
+.fb_iframe_widget span,
+.fb_iframe_widget span iframe[style] {
   width: 100% !important;
 }

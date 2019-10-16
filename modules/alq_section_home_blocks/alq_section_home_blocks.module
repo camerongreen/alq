@@ -1,39 +1,42 @@
 <?php
+
 /**
  * @file
- * Provides blocks for the content type section home
- * initially the image display at the top and the list
- * of related links at the left
+ * Provides blocks for the content type section home.
+ *
+ * Initially the image display at the top and the list
+ * of related links at the left.
  */
 
 /**
  * Implements hook_block_info().
  */
 function alq_section_home_blocks_block_info() {
-  return array(
-    "alq_section_home_header" => array(
+  return [
+    "alq_section_home_header" => [
       "info" => t("Section Home Header"),
-    ),
-    "alq_section_home_childtree" => array(
+    ],
+    "alq_section_home_childtree" => [
       "info" => t("Section Home childtree"),
-    ),
-  );
+    ],
+  ];
 }
 
 /**
  * Implements hook_block_view().
  */
 function alq_section_home_blocks_block_view($delta = "") {
-  $block = null;
+  $block = NULL;
 
   switch ($delta) {
     case "alq_section_home_header":
       $block["subject"] = t("Header Image");
       if (user_access("access content")) {
         $image = alq_section_home_blocks_get_image();
-        $block["content"] = theme("alq_section_home_header", array("image" => $image));
+        $block["content"] = theme("alq_section_home_header", ["image" => $image]);
       }
       break;
+
     case "alq_section_home_childtree":
       if (user_access("access content")) {
         $name = menu_get_active_title();
@@ -42,11 +45,10 @@ function alq_section_home_blocks_block_view($delta = "") {
 
           if (count($submenu["childtree"]) > 0) {
             $block["subject"] = t("Topics");
-            $block["content"] = theme("alq_section_home_childtree", array(
-                "title" => $submenu["parent"],
-                "childtree" => $submenu["childtree"]
-              )
-            );
+            $block["content"] = theme("alq_section_home_childtree", [
+              "title" => $submenu["parent"],
+              "childtree" => $submenu["childtree"],
+            ]);
           }
         }
       }
@@ -57,50 +59,59 @@ function alq_section_home_blocks_block_view($delta = "") {
 }
 
 /**
- * Implements hook_theme();
+ * Implements hook_theme().
  */
 function alq_section_home_blocks_theme() {
-  return array(
-    "alq_section_home_header" => array(
+  return [
+    "alq_section_home_header" => [
       "template" => "theme/section-home-header",
-      "variables" => array(
-        "image" => NULL
-      )
-    ),
-    "alq_section_home_childtree" => array(
+      "variables" => [
+        "image" => NULL,
+      ],
+    ],
+    "alq_section_home_childtree" => [
       "template" => "theme/section-home-childtree",
-      "variables" => array(
+      "variables" => [
         "title" => NULL,
-        "childtree" => NULL
-      )
-    ),
-  );
+        "childtree" => NULL,
+      ],
+    ],
+  ];
 }
 
 /**
- * Return the image for the current node we are
- * viewing
+ * Get node image.
  *
- * @return  mixed image path or false if no image
+ * Return the image for the current node we are
+ * viewing.
+ *
+ * @return mixed
+ *   Image path or false if no image
  */
 function alq_section_home_blocks_get_image() {
   $node = menu_get_object();
   if (is_null($node)) {
-    // Only the shop page at the moment so return
+    // Only the shop page at the moment so return.
     return drupal_get_path('theme', 'alq') . '/images/alq_shop_banner.jpg';
-  } else {
+  }
+  else {
     return count($node->field_image) ? $node->field_image[$node->language][0]["uri"] : FALSE;
   }
 }
 
 /**
- * Return the child images for the current node we are
- * viewing
+ * Get menu children.
+ *
+ * Return the child menu for the current node we are
+ * viewing.
+ *
+ * return array
+ *   Menu.
  */
 function alq_section_home_blocks_get_childtree($name) {
   $tree = menu_tree_all_data('menu-header-menu');
 
-  $childtree = array();
+  $childtree = [];
   $parent = "";
 
   foreach ($tree as $branch) {
@@ -111,12 +122,18 @@ function alq_section_home_blocks_get_childtree($name) {
     }
   }
 
-  return array(
+  return [
     "childtree" => $childtree,
-    "parent" => $parent
-  );
+    "parent" => $parent,
+  ];
 }
 
+/**
+ * Is link title below this.
+ *
+ * @return bool
+ *   Link is below.
+ */
 function _in_below($needle, $haystack) {
   foreach ($haystack as $hay) {
     if ($hay['link']['title'] === $needle) {

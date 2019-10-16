@@ -1,12 +1,19 @@
+<?php
+
+/**
+ * @file
+ * No longer used.
+ */
+?>
 <h2>ALQ Membership Form</h2>
 
 <form class="form-horizontal" id="membershipForm" method="post"
-      action="<?= $action ?>">
+      action="<?php echo $action ?>">
     <!-- variables from paypal -->
     <input type="hidden" name="a3" id="a3" value=""/>
-    <input type="hidden" name="business" value="<?= $business ?>"/>
+    <input type="hidden" name="business" value="<?php echo $business ?>"/>
     <input type="hidden" name="cancel_return"
-           value="<?= $redirect_url_cancel ?>"/>
+           value="<?php echo $redirect_url_cancel ?>"/>
     <input type="hidden" name="cmd" id="cmd" value="_xclick-subscriptions"/>
     <input type="hidden" name="currency_code" value="AUD"/>
     <input type="hidden" name="item_name" value="Animal Liberation Qld"/>
@@ -15,7 +22,7 @@
     <input type="hidden" name="no_note" value="1"/>
     <input type="hidden" name="no_shipping" value="1"/>
     <input type="hidden" name="p3" value="1"/>
-    <input type="hidden" name="return" value="<?= $redirect_url ?>"/>
+    <input type="hidden" name="return" value="<?php echo $redirect_url ?>"/>
     <input type="hidden" name="rm" value="1"/>
     <input type="hidden" name="sra" value="1"/>
     <input type="hidden" name="src" value="1"/>
@@ -228,7 +235,7 @@
         </div>
         <div class="col-sm-4" id="pp-logo">
             <img
-                    src="/<?= drupal_get_path('theme', 'alq') ?>/images/paypal.jpg"
+                    src="/<?php echo drupal_get_path('theme', 'alq') ?>/images/paypal.jpg"
                     alt="PayPal"/>
         </div>
     </div>

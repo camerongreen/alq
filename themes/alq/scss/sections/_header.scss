@@ -65,7 +65,6 @@ body #block-nice-menus-1 ul.nice-menu ul li a {
   ul.nice-menu-down li.menuparent:hover {
     background-color: $header-background-color;
   }
-
 }
 
 .responsive-menus.responsified {
@@ -96,14 +95,14 @@ body #block-nice-menus-1 ul.nice-menu ul li a {
   border-bottom: solid $alq-purple;
 }
 
-
 #section-home-header {
-  margin: auto;
   @include header-image-border;
+
+  margin: auto;
+
   img {
     max-width: 100% !important;
     height: auto;
     display: block;
   }
 }
-

@@ -1,17 +1,22 @@
 /**
- * Functions to support the alp mps application
+ * @file
+ * Functions to support the alp mps application.
  */
-(function ($) {
-  var cache = [];
+
+(($) => {
+  let cache = []; // eslint-disable-line prefer-const
 
   /**
-   * Takes a list of emailees (currently just one)
-   * and add them to the form
+   * Show emailees.
    *
+   * Takes a list of emailees (currently just one)
+   * and add them to the form.
+   s
    * @param {Array} emailees
+   *   Emails to show (first of).
    */
   function showEmailees(emailees) {
-    var emailee = emailees.shift();
+    const emailee = emailees.shift();
 
     $('#edit-emailee-name').val(emailee.title);
     $('#edit-emailee-electorate').val(emailee.state_district);
@@ -19,14 +24,17 @@
   }
 
   /**
-   * Check if the current value is in the cache
+   * Check if the current value is in the cache.
    *
-   * @param data
-   * @returns {boolean}
+   * @param {mixed} data
+   *   Data to check.
+   *
+   * @return {boolean}
+   *   Return if data is in the cache.
    */
   function inCache(data) {
-    var stringData = JSON.stringify(data);
-    for (var i = 0, l = cache.length; i < l; i++) {
+    const stringData = JSON.stringify(data);
+    for (let i = 0, l = cache.length; i < l; i++) {
       if (stringData === JSON.stringify(cache[i])) {
         return true;
       }
@@ -35,17 +43,21 @@
   }
 
   /**
-   * Take the JSON response and format it for the jQuery autocomplete
+   * Take the JSON response and format it for the jQuery autocomplete.
    *
-   * @param data
-   * @returns {Array}
+   * @param {mixed} data
+   *   Data to modify.
+   *
+   * @return {Array}
+   *   Reformatted response.
    */
   function modifyResponse(data) {
-    var returnVal = [];
-    var seen = []; // only want each suburb to appear once
+    let returnVal = []; // eslint-disable-line prefer-const
+    // Only want each suburb to appear once.
+    let seen = []; // eslint-disable-line prefer-const
 
-    for (var i = 0, l = data.length; i < l; i++) {
-      var ac = data[i].locality + ' - ' + data[i].postcode + ' (State District: ' + data[i].state_district + ')';
+    for (let i = 0, l = data.length; i < l; i++) {
+      const ac = `${data[i].locality} - ${data[i].postcode} (State District: ${data[i].state_district})`;
 
       if (!inCache(data[i])) {
         cache.push(data[i]);
@@ -54,7 +66,7 @@
       if (seen.indexOf(ac) === -1) {
         returnVal.push({
           label: ac,
-          value: data[i]
+          value: data[i],
         });
         seen.push(ac);
       }
@@ -64,19 +76,23 @@
   }
 
   /**
-   * Find all the emailees which correspond the current district
+   * Find all the emailees which correspond the current district.
    *
-   * @param state_district
-   * @param data
-   * @returns {Array}
+   * @param {String} stateDistrict
+   *   District to look for.
+   * @param {Array} data
+   *   Data to look within.
+   *
+   * @return {Array}
+   *   Emailess for district.
    */
-  function getEmailees(state_district, data) {
-    var returnVal = [];
-    var nids = [];
+  function getEmailees(stateDistrict, data) {
+    let returnVal = []; // eslint-disable-line prefer-const
+    let nids = []; // eslint-disable-line prefer-const
 
-    for (var i = 0, l = data.length; i < l; i++) {
-      var place = data[i];
-      if ((place.state_district === state_district) && (nids.indexOf(place.nid) === -1)) {
+    for (let i = 0, l = data.length; i < l; i++) {
+      const place = data[i];
+      if ((place.state_district === stateDistrict) && (nids.indexOf(place.nid) === -1)) {
         returnVal.push(place);
         nids.push(place.nid);
       }
@@ -85,58 +101,58 @@
     return returnVal;
   }
 
-  $(document).ready(function () {
-    // stop enter submitting form
-    $(document).on('keypress', ':input:not(textarea):not([type="submit"])', function (event) {
-      if (event.keyCode == 13) {
+  $(document).ready(() => {
+    // Stop enter submitting form.
+    $(document).on('keypress', ':input:not(textarea):not([type="submit"])', (event) => {
+      if (event.keyCode == 13) { // eslint-disable-line eqeqeq
         event.preventDefault();
       }
     });
 
-    var from_name = $.cookie('Drupal.visitor.from_name');
-    if (from_name) {
-      $('#edit-name').val(from_name);
+    const fromName = $.cookie('Drupal.visitor.from_name');
+    if (fromName) {
+      $('#edit-name').val(fromName);
     }
-    var from_email = $.cookie('Drupal.visitor.from_email');
-    if (from_email) {
-      $('#edit-email').val(from_email);
+    const fromEmail = $.cookie('Drupal.visitor.from_email');
+    if (fromEmail) {
+      $('#edit-email').val(fromEmail);
     }
     $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
     $('.suburb-search').autocomplete({
-      source: function (request, response) {
-        var searchTerm = request.term;
-        $.getJSON('/alq-mps/' + searchTerm, function (data) {
-          var modifedResponse = modifyResponse(data);
+      source: (request, response) => {
+        const searchTerm = request.term;
+        $.getJSON(`/alq-mps/${searchTerm}`, (data) => {
+          const modifedResponse = modifyResponse(data);
           response(modifedResponse);
-        }).fail(function (jqxhr, textStatus, error) {
-          var err = textStatus + ", " + error;
-          console.log("Request Failed: " + err);
+        }).fail((jqxhr, textStatus, error) => {
+          const err = `${textStatus} ${error}`;
+          console.log(`Request Failed: ${err}`); // eslint-disable-line no-console
         });
       },
       minLength: 3,
-      select: function (event, ui) {
+      select: (event, ui) => {
         event.preventDefault();
         // in case it was made invisible by the default user
         $('#edit-emailee-electorate').closest('div.form-group').show();
-        var ac = ui.item.value.locality + ' - ' + ui.item.value.postcode;
+        const ac = `${ui.item.value.locality}  - ${ui.item.value.postcode}`;
         $('.suburb-search').val(ac);
-        var results = getEmailees(ui.item.value.state_district, cache);
+        const results = getEmailees(ui.item.value.state_district, cache);
         showEmailees(results);
       },
-      focus: function (event) {
+      focus: (event) => {
         event.preventDefault();
-      }
+      },
     });
 
-    $('#alq-mps-email-form').submit(function (evt) {
-      var body = $('#edit-body').val();
+    $('#alq-mps-email-form').submit((evt) => {
+      let body = $('#edit-body').val();
       // make it into one line so we can regex it
-      var body = body.replace(/\n/g, '');
-      var re = /^\[.+\]$/;
-      var found = body.search(re);
+      body = body.replace(/\n/g, '');
+      const re = /^[.+]$/;
+      const found = body.search(re);
       if (found !== -1) {
         evt.preventDefault();
-        var modal = '<div class="modal fade" tabindex="-1" role="dialog">' +
+        const modal = '<div class="modal fade" tabindex="-1" role="dialog">' +
             '<div class="modal-dialog">' +
             '<div class="modal-content">' +
             '<div class="modal-header">' +
@@ -156,13 +172,13 @@
         $(modal).modal();
       }
     });
-    $('#suburb-default').click(function () {
+    $('#suburb-default').click(() => {
       // allow them to set and unset the default member
-      var nid = $('#edit-emailee-nid');
-      var defaultNid = $('#edit-emailee-default-nid');
-      var name = $('#edit-emailee-name');
-      var electorate = $('#edit-emailee-electorate');
-      var electorateParent = electorate.closest('div.form-group');
+      const nid = $('#edit-emailee-nid');
+      const defaultNid = $('#edit-emailee-default-nid');
+      const name = $('#edit-emailee-name');
+      const electorate = $('#edit-emailee-electorate');
+      const electorateParent = electorate.closest('div.form-group');
       // unset
       if (nid.val() === defaultNid.val()) {
         name.val('');
@@ -176,7 +192,6 @@
         electorateParent.hide();
         nid.val(defaultNid.val());
       }
-
     });
   });
 })(jQuery);

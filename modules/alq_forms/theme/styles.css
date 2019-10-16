@@ -1,51 +1,64 @@
 /* Styles for the alq forms */
 #donationForm #membershipHeading,
 #donationForm .membershipOptions {
-  display: none; }
+  display: none;
+}
 
 #membershipForm .monthlyOption {
-  display: none; }
+  display: none;
+}
 
 #amountOtherValue {
-  width: 130px; }
+  width: 130px;
+}
 
 div.requiredLegend {
-  text-align: right; }
+  text-align: right;
+}
 
 div.requiredLegend span {
-  color: red; }
+  color: red;
+}
 
 .required label::after {
   color: red;
-  content: '\2605'; }
+  content: '\2605';
+}
 
 #pp-logo > div {
-  text-align: right; }
+  text-align: right;
+}
 
 #pp-logo img {
   width: 150px;
-  margin-top: -14px; }
+  margin-top: -14px;
+}
 
 #annual input {
   float: left;
-  margin-right: 2px; }
+  margin-right: 2px;
+}
 
 #slider {
   width: 87%;
   margin-left: 10px;
-  margin-bottom: 1ex; }
+  margin-bottom: 1ex;
+}
 
 #slider-values {
   margin: 0;
   padding: 0;
   overflow: auto;
-  list-item-type: none; }
-  #slider-values li {
-    margin: 0;
-    padding: 0;
-    list-item-type: none;
-    display: block;
-    float: left;
-    width: 14.28571%; }
-    #slider-values li.active {
-      font-weight: bold; }
+  list-item-type: none;
+}
+#slider-values li {
+  margin: 0;
+  padding: 0;
+  list-item-type: none;
+  display: block;
+  float: left;
+  width: 14.28571%;
+}
+#slider-values li.active {
+  font-weight: bold;
+}

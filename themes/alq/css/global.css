@@ -366,7 +366,8 @@ body.page-catalog #block-system-main div.item-list ul.pager li a {
   color: #666;
 }
 /* line 179, ../scss/sections/_shop.scss */
-body.page-catalog #block-system-main div.item-list ul.pager li.pager-next, body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
+body.page-catalog #block-system-main div.item-list ul.pager li.pager-next,
+body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
   display: none;
 }
 /* line 183, ../scss/sections/_shop.scss */
@@ -390,7 +391,9 @@ div.view-uc-catalog-terms div.row {
   }
 }
 /* line 205, ../scss/sections/_shop.scss */
-div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
+div.view-uc-catalog-terms div.row .col-sm-6,
+div.view-uc-catalog-terms div.row .col-md-6,
+div.view-uc-catalog-terms div.row .col-lg-6 {
   margin-bottom: 10px;
   margin-right: 10px;
   width: 220px;
@@ -463,12 +466,24 @@ body div.logo-img img {
 }
 
 /* line 35, ../scss/global.scss */
-body, h1, h2, h3, h4, h5, h6, p {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-family: Arial, Verdana, Geneva, sans-serif;
 }
 
 /* line 39, ../scss/global.scss */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #502c83;
   text-transform: uppercase;
   line-height: 1.2em;

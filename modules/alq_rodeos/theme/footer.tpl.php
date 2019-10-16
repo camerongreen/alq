@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Show footer.
+ */
+?>
 <footer>
   <div class="row">
     <div class="col-sm-4 col-xs-12">

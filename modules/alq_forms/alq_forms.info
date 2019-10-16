@@ -2,4 +2,3 @@ name = ALQ Forms
 description = Donation and membership forms
 core = 7.x
 package = ALQ
-version = 7.x-1.0

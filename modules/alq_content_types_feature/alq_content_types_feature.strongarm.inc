@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * alq_content_types_feature.strongarm.inc
