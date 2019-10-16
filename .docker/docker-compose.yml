@@ -5,19 +5,20 @@ version: '3.7'
 
 services:
   db:
-    container_name: alq-db
+    container_name: ${MYSQL_HOST}
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile-db
-    networks:
-      - alq_network
     ports:
       - "26906:3306"
+    networks:
+      - ${APP_NAME}_net
     environment:
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TIMEZONE}
     volumes:
       - /var/lib/mysql
 
@@ -26,10 +27,17 @@ services:
     build:
       context: .
     environment:
-      - XDEBUG_CONFIG
-      - PHP_IDE_CONFIG=serverName=alq.test
+      COLUMNS: 160
+      DB_DRIVER: mysql
+      DB_HOST: ${MYSQL_HOST}
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_USER: ${MYSQL_USER}
+      PHP_IDE_CONFIG: serverName=${HOST_NAME}
+      PHP_XDEBUG_REMOTE_HOST: ${REMOTE_HOST}
+      TZ: ${TIMEZONE}
     networks:
-      - alq_network
+      - ${APP_NAME}_net
     ports:
       - "26980:80"
     volumes:
@@ -42,4 +50,4 @@ services:
       - db
 
 networks:
-  alq_network:
+  alq_net:

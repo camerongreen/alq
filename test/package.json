@@ -20,8 +20,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "nightwatch": "*",
     "chromedriver": "*",
-    "geckodriver": "*"
+    "geckodriver": "*",
+    "nightwatch": "*"
   }
 }

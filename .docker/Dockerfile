@@ -31,11 +31,10 @@ RUN apt update \
 # Install node.
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt install -y nodejs
-RUN ln -s `which nodejs` /usr/bin/node
 
 # Install chrome
 RUN curl -sL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/google-chrome.deb \
-    && dpkg -i /tmp/google-chrome.deb
+    && dpkg -i /tmp/google-chrome.deb \
     && apt --fix-broken install
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \

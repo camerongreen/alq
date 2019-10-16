@@ -24,7 +24,7 @@ The prefix of 269 is used for all external ports.  So port 80 on the web contain
 
 Start the docker environment by running the following (sudo the docker commands if you have set it up to require root):
 
-    MYSQL_ROOT_PASSWORD=secret MYSQL_DATABASE=alq_db MYSQL_USER=alq MYSQL_PASSWORD=secret docker-compose up -d
+    docker-compose up -d
 
 Create the empty site:
 
@@ -113,8 +113,8 @@ Note to stop all containers you will need to specify the same thing, eg:
 
 To run the nightwatch tests (after making sure selenium has had time to startup) from the docker directory:
 
-    docker exec -ti alq-web bash -c "./run-tests.sh"
-    docker exec -ti alq-web bash -c "./run-tests.sh tests/test-membership-form.js"
+    docker exec -ti alq-test bash -c "./run-tests.sh"
+    docker exec -ti alq-test bash -c "./run-tests.sh tests/test-membership-form.js"
     
     
 You can inspect the running tests, by using VNC.  For me that involved:

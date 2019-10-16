@@ -40,7 +40,7 @@ fi
 
 if [ -z ${CIRCLECI} ]
 then
-  DRUSH="../vendor/bin/drush -v"
+  DRUSH="/var/www/html/vendor/bin/drush -v"
 else
   DRUSH=~/project/vendor/bin/drush
 fi
