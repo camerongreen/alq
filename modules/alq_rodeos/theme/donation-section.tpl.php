@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Print out the goodies in a row.
+ */
+?>
 <div class="row">
-  <?= $explainer_block ?>
+  <?php echo $explainer_block ?>
 </div>

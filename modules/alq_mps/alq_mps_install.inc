@@ -216,7 +216,7 @@ function alq_mps_parse_office_details($address, $phone) {
           // Start new address.
           $emails = [];
           $addresses = [];
-          $officeInsert = $officeFields;
+          $officeInsert = [];
           $officeInsert['created'] = time();
         }
 
