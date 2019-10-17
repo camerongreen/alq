@@ -33,9 +33,14 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt install -y nodejs
 
 # Install chrome
-RUN curl -sL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/google-chrome.deb \
-    && dpkg -i /tmp/google-chrome.deb \
-    && apt --fix-broken install
+#RUN curl -sL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/google-chrome.deb \
+#    && dpkg -i /tmp/google-chrome.deb \
+#    && apt --fix-broken install
+
+RUN curl -sL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt update
+RUN apt install -y google-chrome-stable
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include \
     && docker-php-ext-install curl pdo pdo_mysql json ftp gd mbstring

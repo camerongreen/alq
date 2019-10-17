@@ -103,25 +103,11 @@ To actually make a payment, you'll want to set up some sandbox personal accounts
 
 ## Local
 
-You need to start the site and the test container at the same time:
+To run the nightwatch tests from the docker directory:
 
-    docker-compose -f docker-compose.yml -f docker-compose-test.yml up -d
-
-Note to stop all containers you will need to specify the same thing, eg:
-
-    docker-compose -f docker-compose.yml -f docker-compose-test.yml stop
-
-To run the nightwatch tests (after making sure selenium has had time to startup) from the docker directory:
-
-    docker exec -ti alq-test bash -c "./run-tests.sh"
-    docker exec -ti alq-test bash -c "./run-tests.sh tests/test-membership-form.js"
+    docker exec -ti alq-web bash -c "./run-tests.sh"
+    docker exec -ti alq-web bash -c "./run-tests.sh tests/test-membership-form.js"
     
-    
-You can inspect the running tests, by using VNC.  For me that involved:
-
-* Installing remmima and the VNC plugin via aptitude
-* Creating a new VNC connection to the exposed port, by setting the server to 0.0.0.0:26959
-
 ## CircleCI
 
 We build and test this automatically on CircleCI.  Current build status is:
