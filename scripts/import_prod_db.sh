@@ -33,13 +33,13 @@ if [ -f ~/.drush_alias ]; then
         . ~/.drush_alias
 fi
 
-DRUSH=../vendor/bin/drush
-
 if [ -z ${CIRCLECI} ]
 then
+  DRUSH="/var/www/html/vendor/bin/drush -v"
   DEFAULT_DEV_HOST="http://alq.test:26980"
 else
   DEFAULT_DEV_HOST="http://alq-web"
+  DRUSH=~/project/vendor/bin/drush
 fi
 
 if [ ! -d ${DEFAULT_PRIVATE_DIR} ]
