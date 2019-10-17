@@ -12,7 +12,7 @@ services:
     ports:
       - "26906:3306"
     networks:
-      - ${APP_NAME}_net
+      - ${COMPOSE_PROJECT_NAME}_net
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -37,7 +37,7 @@ services:
       PHP_XDEBUG_REMOTE_HOST: ${REMOTE_HOST}
       TZ: ${TIMEZONE}
     networks:
-      - ${APP_NAME}_net
+      - ${COMPOSE_PROJECT_NAME}_net
     ports:
       - "26980:80"
     volumes:
