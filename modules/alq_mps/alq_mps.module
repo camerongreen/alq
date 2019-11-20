@@ -692,7 +692,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
     if ($emailee) {
       $form['suburb_default'] = [
         '#type' => 'markup',
-        '#markup' => t('Outside of Queensland? <a href="javascript://" id="suburb-default">Click here to email the responsible minister</a>.'),
+        '#markup' => t('Outside of Queensland? <a href="javascript://" id="suburb-default">Click here</a>.'),
       ];
       $form['emailee_default_name'] = [
         '#type' => 'hidden',
