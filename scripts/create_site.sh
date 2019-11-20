@@ -175,7 +175,6 @@ MODULES=(
   addtoany
   admin
   admin_menu
-  admin_menu
   advanced_help
   captcha
   ckeditor

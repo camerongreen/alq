@@ -73,6 +73,10 @@ jobs:
           working_directory: *web_dir
           command: |
             sudo -E ~circleci/project/scripts/create_site.sh
+      - run:
+          name: Install database
+          working_directory: *web_dir
+          command: |
             sudo -E ~circleci/project/scripts/import_prod_db.sh
       - run: sudo chown -R www-data:www-data /var/www/html
       - run: cd test && ./run-tests.sh
