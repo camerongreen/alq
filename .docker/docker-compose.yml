@@ -27,6 +27,8 @@ services:
     build:
       context: .
     environment:
+      ADMIN: ${ADMIN}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
       COLUMNS: 160
       DB_DRIVER: mysql
       DB_HOST: ${MYSQL_HOST}
@@ -45,6 +47,7 @@ services:
       # Linux
       - ../../:/var/www/html
       - ./config/php.ini:/usr/local/etc/php/php.ini
+      - ./config/.bashrc:/root/.bashrc
       # OSX
       #- ../../:/var/www/html:cached
     depends_on:

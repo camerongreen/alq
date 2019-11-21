@@ -48,6 +48,5 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN pecl install xdebug \
     && a2enmod rewrite
 
-RUN export PATH=${PATH}:/var/www/html/vendor/bin
-
 USER root
+
