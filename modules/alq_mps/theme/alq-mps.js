@@ -21,6 +21,12 @@
     $('#edit-emailee-name').val(emailee.title);
     $('#edit-emailee-electorate').val(emailee.state_district);
     $('#edit-emailee-nid').val(emailee.nid);
+
+    const regex = /^Dear [^,]+,/;
+
+    if (emailee.title) {
+      $('#edit-body').val($('#edit-body').val().replace(regex, 'Dear ' + emailee.title + ','));
+    }
   }
 
   /**
@@ -126,7 +132,8 @@
           response(modifedResponse);
         }).fail((jqxhr, textStatus, error) => {
           const err = `${textStatus} ${error}`;
-          console.log(`Request Failed: ${err}`); // eslint-disable-line no-console
+          console.log(`Request Failed: ${err}`); // eslint-disable-line
+                                                 // no-console
         });
       },
       minLength: 3,
@@ -134,7 +141,7 @@
         event.preventDefault();
         // in case it was made invisible by the default user
         $('#edit-emailee-electorate').closest('div.form-group').show();
-        const ac = `${ui.item.value.locality}  - ${ui.item.value.postcode}`;
+        const ac = `${ui.item.value.locality} - ${ui.item.value.postcode}`;
         $('.suburb-search').val(ac);
         const results = getEmailees(ui.item.value.state_district, cache);
         showEmailees(results);
@@ -184,7 +191,8 @@
         name.val('');
         nid.val('');
         electorateParent.show();
-      } else {
+      }
+      else {
         // set
         name.val($('#edit-emailee-default-name').val());
         electorate.val('');
