@@ -10,7 +10,7 @@
 ; Each makefile should begin by declaring the core version of Drupal that all
 ; projects should be compatible with. 
   
-core = 7.67
+core = 7.x
   
 ; API version
 ; ------------
@@ -27,7 +27,7 @@ api = 2
 ; install profiles *should not* include a core project.
   
 ; Drupal 7.x. Requires the `core` property to be set to 7.x.
-projects[drupal][version] = 7.x
+projects[drupal][version] = 7.67
 
   
   
