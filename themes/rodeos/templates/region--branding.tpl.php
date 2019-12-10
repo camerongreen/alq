@@ -12,7 +12,7 @@
         <ul role="menu" class="menu-cnt col-sm-9 col-xs-12">
           <li class="nobullet"><a href="/#block-alq-rodeos-alq-rodeos-email-member" class="anke">Take Action</a></li>
           <li><a href="/info">Rodeo Info</a></li>
-          <li><a href="/#block-alq-rodeos-alq-rodeos-donation" class="anke">Donate</a></li>
+          <li><a href="http://alq.org.au/donate" target="_new">Donate</a></li>
           <li class="highlight"><a href="/news" aria-haspopup="true">News</a>
               <ul aria-label="submenu">
                   <li><a href="/cruelty-is-not-great">Email Kate Jones</a></li>
