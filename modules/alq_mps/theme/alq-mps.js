@@ -21,12 +21,6 @@
     $('#edit-emailee-name').val(emailee.title);
     $('#edit-emailee-electorate').val(emailee.state_district);
     $('#edit-emailee-nid').val(emailee.nid);
-
-    const regex = /^Dear [^,]+,/;
-
-    if (emailee.title) {
-      $('#edit-body').val($('#edit-body').val().replace(regex, 'Dear ' + emailee.title + ','));
-    }
   }
 
   /**
