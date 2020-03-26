@@ -269,7 +269,7 @@ function alq_mps_email($recipient, $fields) {
   $from = $fields->from_email;
   $ccs = alq_mps_get_ccs($fields->campaign_id);
   if ((count($ccs) > 0) && !module_exists('devel')) {
-    $fields->headers['Cc'] = $ccs;
+    $fields->headers['Cc'] = implode(',', $ccs);
   }
   $fields->headers['Reply-to'] = trim($from);
   $language = language_default();
