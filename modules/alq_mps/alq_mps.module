@@ -288,11 +288,6 @@ function alq_mps_email($recipient, $email) {
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
-  watchdog(WATCHDOG_INFO, "Emailing @to with headers @headers", [
-    '@to' => $to,
-    '@headers' => json_encode($fields['headers']),
-  ]);
-
   return drupal_mail($module, $key, trim($to), $language, $fields, trim($from), $send);
 }
 
@@ -372,6 +367,10 @@ function alq_mps_mail($key, &$message, $params) {
       $message['subject'] = check_plain($response['subject']);
       $message['body'][] = $response['body'];
       break;
+  }
+
+  if (isset($params['headers']) && is_array($params['headers'])) {
+    $message['headers'] += $params['headers'];
   }
 }
 
