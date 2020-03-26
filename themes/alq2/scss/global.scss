@@ -1,0 +1,370 @@
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+$alq-purple: #502c83;
+$header-background-color: #fff;
+$body-background-color: #fff;
+$menu-hover-color: #ddd;
+$tags-color: #666;
+
+@mixin bootstrap-img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@import "sections/header";
+@import "sections/slideshow";
+@import "sections/shop";
+
+body {
+  background-color: $body-background-color;
+
+  #zone-branding,
+  #zone-header,
+  div.zone-content {
+    background-color: $body-background-color;
+  }
+  div.logo-img img {
+    height: 85px;
+    width: 160px;
+  }
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: Arial, Verdana, Geneva, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $alq-purple;
+  text-transform: uppercase;
+  line-height: 1.2em;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+small {
+  font-size: 80%;
+}
+
+.front h1.title {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+#region-branding {
+  background-color: $header-background-color;
+}
+
+#block-block-2 {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  /* override bootstrap style */
+  div::before {
+    display: block;
+  }
+}
+
+/* override some bootstrap styles */
+body div.page div.zone-footer * {
+  box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  -webkit-box-sizing: content-box !important;
+}
+
+div.breadcrumb {
+  padding: 0 0 0.5em;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+/* Blocks we won't show on mobile version */
+#donate-link,
+#block-block-5, /* Donate now block */
+#block-block-1, /* Voiceless block */
+#block-facebook-boxes-fb-like {
+  display: none;
+}
+
+#zone-footer {
+  color: #fff;
+  background-color: $alq-purple;
+  #block-menu-menu-footer-menu ul.menu {
+    padding-top: 1em;
+    padding-bottom: 1ex;
+    li ul {
+      display: none;
+    }
+    li {
+      display: inline;
+      list-style-type: none;
+      padding: 0;
+    }
+    li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    & > li a {
+      border-right: thin solid #fff;
+      padding-right: 10px;
+    }
+    & > li:last-child a {
+      border: none;
+    }
+  }
+}
+
+#block-views-news-block {
+  margin-bottom: 1em;
+}
+
+body.page-in-the-news .view-media-views,
+body.page-media-views .view-media-views,
+.view-news {
+  .views-row {
+    clear: both;
+    .views-field-title a {
+      font-weight: bold;
+      text-decoration: none;
+      color: $alq-purple;
+      text-transform: uppercase;
+      line-height: 1.3em;
+      letter-spacing: -0.05em
+    }
+    .views-field-field-image {
+      float: left;
+      width: 220px;
+      height: 100%;
+      img {
+        @include bootstrap-img-polaroid;
+      }
+    }
+    .field-name-field-tags,
+    .views-label-field-tags {
+      float: left;
+      margin-right: 1ex;
+      font-weight: bold;
+    }
+    .views-more-link {
+      margin-top: 1ex;
+    }
+  }
+  div.more-link {
+    text-align: center;
+    a {
+      font-weight: bold;
+      font-size: 150%;
+      text-decoration: none;
+      color: $alq-purple;
+    }
+    a:after {
+      content: "\25B6"
+    }
+  }
+}
+
+/* search form */
+#block-search-form {
+  h2 {
+    display: none;
+  }
+  .form-submit {
+    background: url("/sites/all/themes/alq/images/search.gif") no-repeat left top;
+    text-indent: -9999px;
+    border: none;
+    margin-right: 0;
+    width: 78px;
+    height: 40px;
+    margin-top: 2px;
+  }
+}
+
+/* email subscribe form */
+#block-block-6 {
+  display: none;
+  margin-bottom: 0;
+}
+
+#mc-embedded-subscribe-form input[type=submit] {
+  background: url("/sites/all/themes/alq/images/subscribe.gif") no-repeat left top;
+  text-indent: -9999px;
+  border: none;
+  width: 96px;
+  height: 43px;
+}
+
+select,
+input[type=text],
+input[type=email] {
+  border: thin solid #ccc;
+}
+
+/* Voiceless box */
+#block-block-1 div p {
+  text-align: center;
+}
+
+#section-home-header {
+  margin: auto;
+  @include header-image-border;
+  img {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+  }
+}
+
+#section-home-childtree {
+  h2 {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    li a {
+      color: #000;
+      text-decoration: none;
+      padding-left: 1ex;
+    }
+    li:before {
+      content: "\25B6"
+    }
+  }
+}
+
+body.node-type-media-article .field-name-field-intro,
+body.node-type-article .field-name-field-intro,
+body.node-type-section-home .field-name-field-intro {
+  color: $alq-purple;
+  font-style: italic;
+}
+
+body.node-type-page .field-type-image,
+body.node-type-media-article .field-type-image,
+body.node-type-article .field-type-image {
+  text-align: center;
+  @include bootstrap-img-polaroid;
+}
+
+body.node-type-media-article div.article-date,
+body.node-type-article div.article-date {
+  font-weight: bold;
+  padding-bottom: 1em;
+}
+
+.page-catalog {
+  table:nth-child(1) {
+    border: none;
+    td {
+      text-align: center;
+    }
+  }
+}
+
+article div.field-name-field-tags {
+  font-weight: bold;
+  color: $tags-color;
+  div.field-items div {
+    margin-right: 1ex;
+    &:after {
+      content: ",";
+    }
+  }
+  div.field-items div:last-child:after {
+    content: "";
+  }
+  margin-bottom: 1ex;
+}
+
+body[class*="page-catalog-"] div.region-content-inner {
+  padding-top: 0;
+  background: none;
+}
+
+/* Contact us form */
+body.page-contact ul {
+  list-style: none;
+}
+
+#uc-coupon-form,
+#uc-cart-pane-coupon {
+  margin-bottom: 1em;
+}
+
+#block-views-media-views-block,
+#block-views-media-views-block-1 {
+  margin: 1em;
+}
+
+div.block-alq-donation-form {
+  h2 {
+    margin-top: 1ex;
+  }
+  #donationForm {
+    div.input-group {
+      margin-top: 5px;
+      span.input-group-addon {
+        font-size: 10px;
+      }
+    }
+    #membershipInfo {
+      display: none;
+    }
+  }
+}
+
+#block-addtoany-addtoany-button {
+  margin-bottom: 1em;
+}
+
+ul.ui-autocomplete {
+  list-style: none;
+}
+
+#block-alq-mps-alq-mps-email-campaign-stats {
+  margin-top: 1em;
+}
+
+body.node-type-product {
+  div.main-product-image {
+    margin-bottom: 1ex;
+  }
+}
+
+body.page-catalog {
+  ul.pager {
+    margin-bottom: 1em;
+
+    li.pager-next,
+    li.pager-previous {
+      display: none;
+    }
+  }
+}
+
+div.view-uc-catalog-terms {
+  td {
+    padding-bottom: 1em;
+  }
+
+  a {
+    font-weight: bold;
+  }
+}
+
+a.btn:link,
+a.btn:visited {
+  text-decoration: none;
+  color: #fff;
+  &.btn-default {
+    color: #000;
+  }
+}

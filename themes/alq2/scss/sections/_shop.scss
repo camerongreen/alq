@@ -1,0 +1,268 @@
+$gray-bg: #eee;
+
+// Styling the main individual product pages.
+body.node-type-product {
+  input[type="submit"] {
+    border: none;
+    background: $alq-purple;
+    color: #fff;
+    border-radius: 0;
+    font-weight: normal;
+    text-shadow: none;
+    font-size: 130%;
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+  }
+
+  #zone-content div.block-main div.content {
+    padding: 1em;
+    margin: 1em;
+    background-color: $gray-bg;
+    border-radius: 4px;
+    overflow: auto;
+  }
+
+  div.field-name-body {
+    font-size: 110%;
+  }
+
+  div.field-items {
+    overflow: auto;
+
+  }
+
+  div.field-type-image {
+    height: auto;
+    margin-right: 1em;
+
+    div.field-item {
+      display: none;
+
+      &:nth-child(1) {
+        display: block;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    #slide-nav {
+      padding: 0;
+      text-align: center;
+
+      li {
+        display: inline;
+        list-style-type: none;
+
+        img {
+          height: 100px;
+          width: auto;
+          border-radius: 2px;
+          margin: 5px;
+        }
+      }
+    }
+  }
+
+  div.display-price {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+  }
+
+  div.add-to-cart {
+    border-top-color: #ccc;
+    border-top-style: solid;
+    border-top-width: thin;
+
+    label {
+      width: 90px;
+    }
+
+    div.form-actions {
+      padding-left: 90px;
+    }
+  }
+}
+
+// Styling pager for products.
+body.page-catalog {
+
+  #block-system-main {
+    div.view-uc-catalog {
+      background-color: $gray-bg;
+      border-radius: 4px;
+
+      div.row {
+        margin: 0;
+        padding-top: 1em;
+
+        & > div:not(.clearfix) {
+          width: 200px;
+          padding: 1ex;
+          margin-left: 16px;
+          margin-right: 16px;
+          text-align: center;
+
+          div.views-field-title {
+            margin-top: 1ex;
+            a {
+              font-size: 110%;
+              color: #000;
+              text-decoration: none;
+            }
+          }
+
+          div.views-field-field-extra-details {
+            font-color: #727272;
+            font-style: italic;
+          }
+
+          div.views-field-display-price {
+            float: left;
+            width: 50%;
+            font-weight: bold;
+            margin-top: 14px;
+            font-size: 110%;
+          }
+
+          div.views-field-buyitnowbutton {
+            text-align: right;
+            float: left;
+            width: 50%;
+          }
+
+          input[type="submit"] {
+            border: none;
+            background: $alq-purple;
+            color: #fff;
+            border-radius: 0;
+            font-weight: normal;
+          }
+
+          img {
+            border-radius: 4px;
+          }
+
+          div.form-wrapper {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    div.item-list {
+      display: flex;
+      justify-content: center;
+
+      ul.pager {
+        margin: 1em 0 1em 0;
+        background: none;
+        border: none;
+        border-radius: 0;
+
+        li {
+          font-size: 11pt;
+          background: none;
+          border: none;
+          border-radius: 0;
+          color: #666;
+          & a {
+            background: none;
+            border: none;
+            border-radius: 0;
+            color: #666;
+          }
+          &.pager-next,
+          &.pager-previous {
+            display: none;
+          }
+          &.pager-last {
+            position: relative;
+          }
+          &.pager-current {
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Product list on front page of shop.
+div.view-uc-catalog-terms {
+  div.row {
+    margin: auto;
+    width: max-content;
+
+    @media only screen and (max-width: 460px) {
+      width: 240px;
+    }
+
+    .col-sm-6, .col-md-6, .col-lg-6 {
+      margin-bottom: 10px;
+      margin-right: 10px;
+      width: 220px;
+    }
+
+    & > div {
+      background-color: $alq-purple;
+      padding: 0;
+
+      div.views-field-entity-id {
+        img {
+          border-color: #000;
+          border-style: solid;
+          border-width: 1px;
+        }
+      }
+
+      div.views-field-name {
+        text-align: center;
+        border-color: $alq-purple;
+        border-style: solid;
+        border-width: 1px;
+        height: 100px;
+
+        span {
+          a {
+            font-size: 30px;
+            text-shadow: 0px 2px #000;
+            font-weight: normal;
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Goodwill wines wide block.
+#block-block-8 {
+  div.content {
+    margin: 1em 0 1em 0;
+    padding: 1em;
+    background-image: none;
+    background-position: right;
+    background-repeat: no-repeat;
+
+    p {
+      font-size: 110%;
+    }
+
+    div.wines-picture {
+      width: 110px;
+      float: left;
+
+      img {
+        height: 136px;
+        width: 100px;
+      }
+    }
+  }
+}
+
