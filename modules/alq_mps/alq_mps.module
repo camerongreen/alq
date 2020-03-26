@@ -177,13 +177,6 @@ function alq_mps_send_emails() {
   foreach ($emails as $email) {
     // Add one each for the email and the confirmation.
     $sentEmails += 2;
-    $ccs = alq_mps_get_ccs($email->campaign_id);
-    if ((count($ccs) > 0) && !module_exists('devel')) {
-      // Not sure how hostgator counts emails, but assume
-      // cc logically results in a sent email.
-      $sentEmails += count($ccs);
-      $email->headers['Cc'] = implode(',', $ccs);
-    }
     // If this would push us over the max emails per run, break out.
     if ($sentEmails > ALQ_MPS_MAX_EMAILS_PER_RUN) {
       break;
@@ -199,6 +192,7 @@ function alq_mps_send_emails() {
     $result = alq_mps_email($recipient, $email);
     $confirmation_sent = 0;
     if ($result['result'] == TRUE) {
+      $emailCount++;
       $confirmation_result = alq_mps_confirmation_email($email);
       if ($confirmation_result['result'] == TRUE) {
         $confirmation_sent = 1;
@@ -211,6 +205,7 @@ function alq_mps_send_emails() {
       watchdog('alq_mps', 'Error sending campaign email - @id', ['@id' => $email->id]);
       $errors++;
     }
+
     // Add email to log.
     alq_mps_record_email_status($email, $result, $confirmation_sent);
   }
@@ -272,6 +267,10 @@ function alq_mps_email($recipient, $fields) {
   $module = 'alq_mps';
   $key = 'campaign_message';
   $from = $fields->from_email;
+  $ccs = alq_mps_get_ccs($fields->campaign_id);
+  if ((count($ccs) > 0) && !module_exists('devel')) {
+    $fields->headers['Cc'] = implode(',', $ccs);
+  }
   $fields->headers['Reply-to'] = trim($from);
   $language = language_default();
   $send = TRUE;
