@@ -273,7 +273,7 @@ function alq_mps_email($recipient, $email) {
     $fields['headers'] = [];
   }
   $fields['headers']['Reply-to'] = trim($from);
-  $ccs = alq_mps_get_ccs($fields->campaign_id);
+  $ccs = alq_mps_get_ccs($email->campaign_id);
   $fields['headers']['Cc'] = implode(',', $ccs);
   $language = language_default();
   $send = TRUE;
