@@ -537,7 +537,7 @@ function alq_mps_get_email_campaign($node) {
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
     if (isset($_SESSION) && array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
       unset($_SESSION['alq_mps_email_form_submitted']);
-      return '<h2>' . t('Thanks for your submission') . '</h2>';
+      return '<h2>' . t('Thanks for your submission') . '</h2><p>' . t('Please share the campaign using the links below') . '</p>';
     }
 
     drupal_add_library('system', 'jquery.cookie');

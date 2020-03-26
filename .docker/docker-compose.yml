@@ -37,7 +37,7 @@ services:
       DB_PASSWORD: ${MYSQL_PASSWORD}
       DB_USER: ${MYSQL_USER}
       PHP_IDE_CONFIG: serverName=${HOST_NAME}
-      PHP_XDEBUG_REMOTE_HOST: ${REMOTE_HOST}
+      XDEBUG_CONFIG: "remote_host=${REMOTE_HOST} idekey=${IDEKEY}"
       TZ: ${TIMEZONE}
     networks:
       - ${COMPOSE_PROJECT_NAME}_net

@@ -143,17 +143,20 @@ I set up a server for alq.test for PHPStorm, the most important thing is to get 
 | alq/modules       | /var/www/html/alq/modules       | 
 | alq/themes        | /var/www/html/alq/themes        |
 
-Then run docker compose with the IP address of your PC according to docker:
+Then run docker compose with the IP address of your PC, set this in the .env file.
 
-    XDEBUG_CONFIG="remote_host=10.1.1.5" docker-compose up -d
+Then use an xdebug extension in your browser to turn it on. 
 
-Then use an xdebug extension in your browser to turn it on.
+I had an issue with having to set xdebug.idekey=PHPSTORM in the ini file, as it wasn't accepting it through the
+environment variables.
 
 ## Command line
 
 All I had to do in PHPStorm was to set up a normal debug server called alq.test as per the web debug and send it through to drush as a variable eg:
 
     docker exec -ti alq-web bash -c 'PHP_IDE_CONFIG="serverName=alq.test" drush -l rodeos alq-import-emailees emailees.json'
+    
+See above debug for weird idekey problem.
     
 ## Backups
 

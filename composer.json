@@ -22,7 +22,7 @@
   "extra": {
     "hooks": {
       "pre-commit": [
-        "phpcs"
+        "composer exec phpcs"
       ]
     }
   }
