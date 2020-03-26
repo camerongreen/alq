@@ -274,9 +274,7 @@ function alq_mps_email($recipient, $email) {
   }
   $fields['headers']['Reply-to'] = trim($from);
   $ccs = alq_mps_get_ccs($fields->campaign_id);
-  if ((count($ccs) > 0) && !module_exists('devel')) {
-    $fields['headers']['Cc'] = implode(',', $ccs);
-  }
+  $fields['headers']['Cc'] = implode(',', $ccs);
   $language = language_default();
   $send = TRUE;
 
@@ -290,7 +288,10 @@ function alq_mps_email($recipient, $email) {
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
-  watchdog(WATCHDOG_INFO, "Emailing @to with headers @headers", ['to' => $to, 'headers' => json_encode($fields['headers'])]);
+  watchdog(WATCHDOG_INFO, "Emailing @to with headers @headers", [
+    '@to' => $to,
+    '@headers' => json_encode($fields['headers']),
+  ]);
 
   return drupal_mail($module, $key, trim($to), $language, $fields, trim($from), $send);
 }
