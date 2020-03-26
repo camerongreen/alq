@@ -196,6 +196,7 @@ function alq_mps_send_emails() {
       $confirmation_result = alq_mps_confirmation_email($email);
       if ($confirmation_result['result'] == TRUE) {
         $confirmation_sent = 1;
+        $emailCount++;
       }
       else {
         watchdog('alq_mps', 'Error sending campaign confirmation email - @id', ['@id' => $email->id]);
@@ -257,13 +258,14 @@ function alq_mps_cleanup_emails() {
  *
  * @param object $recipient
  *   Send node_wrapper from entity api.
- * @param object $fields
+ * @param object $email
  *   Fields for email.
  *
  * @return array
  *   Result of drupal_mail.
  */
-function alq_mps_email($recipient, $fields) {
+function alq_mps_email($recipient, $email) {
+  $fields = clone $email;
   $module = 'alq_mps';
   $key = 'campaign_message';
   $from = $fields->from_email;
@@ -291,13 +293,14 @@ function alq_mps_email($recipient, $fields) {
 /**
  * Sends a confirmation email and records result in ALQ_MPS_EMAIL_TABLE.
  *
- * @param object $fields
+ * @param object $email
  *   Fields to send.
  *
  * @return bool|array
  *   Result of drupal_mail.
  */
-function alq_mps_confirmation_email($fields) {
+function alq_mps_confirmation_email($email) {
+  $fields = clone $email;
   $module = 'alq_mps';
   $key = 'campaign_confirmation_message';
   $from = variable_get('site_mail');
