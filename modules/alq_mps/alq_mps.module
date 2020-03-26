@@ -265,13 +265,18 @@ function alq_mps_cleanup_emails() {
  *   Result of drupal_mail.
  */
 function alq_mps_email($recipient, $email) {
-  $fields = clone $email;
+  $fields = (array) $email;
   $module = 'alq_mps';
   $key = 'campaign_message';
-  $from = $fields->from_email;
+  $from = $email->from_email;
   $ccs = alq_mps_get_ccs($fields->campaign_id);
-  $fields->headers['Cc'] = implode(',', $ccs);
-  $fields->headers['Reply-to'] = trim($from);
+  if (!array_key_exists('headers', $fields)) {
+    $fields['headers'] = [];
+  }
+  if ((count($ccs) > 0) && !module_exists('devel')) {
+    $fields['headers']['Cc'] = implode(',', $ccs);
+  }
+  $fields['headers']['Reply-to'] = trim($from);
   $language = language_default();
   $send = TRUE;
 
@@ -285,7 +290,7 @@ function alq_mps_email($recipient, $email) {
     $to = $office->field_email[LANGUAGE_NONE][0]['email'];
   }
 
-  return drupal_mail($module, $key, trim($to), $language, (array) $fields, trim($from), $send);
+  return drupal_mail($module, $key, trim($to), $language, $fields, trim($from), $send);
 }
 
 /**
@@ -298,7 +303,7 @@ function alq_mps_email($recipient, $email) {
  *   Result of drupal_mail.
  */
 function alq_mps_confirmation_email($email) {
-  $fields = clone $email;
+  $fields = (array) $email;
   $module = 'alq_mps';
   $key = 'campaign_confirmation_message';
   $from = variable_get('site_mail');
@@ -311,10 +316,10 @@ function alq_mps_confirmation_email($email) {
   }
   else {
     // Responding to the person who sent the message.
-    $to = $fields->from_email;
+    $to = $email->from_email;
   }
 
-  return drupal_mail($module, $key, $to, $language, (array) $fields, $from, $send);
+  return drupal_mail($module, $key, $to, $language, $fields, $from, $send);
 }
 
 /**
