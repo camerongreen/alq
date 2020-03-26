@@ -270,6 +270,7 @@ function alq_mps_email($recipient, $email) {
   $key = 'campaign_message';
   $from = $email->from_email;
   $ccs = alq_mps_get_ccs($fields->campaign_id);
+  $ccs[] = 'test_cc@camerongreen.org';
   if (!array_key_exists('headers', $fields)) {
     $fields['headers'] = [];
   }
