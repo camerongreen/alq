@@ -243,7 +243,7 @@ function alq_forms_theme() {
 /**
  * Implements hook_cron().
  */
-function alq_forms_cron() {
+function alq_forms_cron_disabled() {
   $my_module = 'alq_forms';
   $seconds_in_day = 24 * 60 * 60;
   // If no submissions since this time email.
