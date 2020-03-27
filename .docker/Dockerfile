@@ -1,6 +1,6 @@
 # Docker build for alq.org.au
 # Use 269 prefix for ports
-FROM php:7.2-apache
+FROM php:7.3-apache
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public_html
 ENV PATH "${PATH}:/var/www/html/vendor/bin"
@@ -23,7 +23,7 @@ RUN apt update \
     libnss3-dev \
     libpng-dev \
     libssl-dev \
-    mysql-client \
+    default-mysql-client \
     unzip \
     vim \
     zip
