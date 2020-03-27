@@ -44,6 +44,8 @@ projects[advanced_help][version] = 1.5
 
 projects[boost][version] = 1.0
 
+projects[breakpoints][version] = 1.6
+
 projects[captcha][version] = 1.3
 
 projects[ckeditor][version] = 1.18
@@ -105,6 +107,8 @@ projects[nice_menus][version] = 3.x-dev
 projects[omega_tools][version] = 3.0-rc4
 
 projects[pathauto][version] = 1.3
+
+projects[picture][version] = 1.3
 
 projects[references][version] = 2.2
 

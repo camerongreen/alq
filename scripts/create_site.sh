@@ -32,6 +32,9 @@ DEFAULT_DB_USER=alq
 DEFAULT_DB_NAME=alq_db
 DEFAULT_DB_HOST=alq-db
 
+MODULES_DIR=sites/all/modules/custom
+THEMES_DIR=sites/all/themes/custom
+
 # hosting company work around has custom drush path
 if [ -f ~/.drush_alias ]
   then
@@ -141,21 +144,21 @@ ${DRUSH} make ${GIT_DIR}/scripts/drush.make .
 command_status "Drush make failed" "Drush make completed";
 
 # remove link if it exists
-if [ -e sites/all/modules/custom ]
+if [ -e "${MODULES_DIR}" ]
 then
   echo "Removing module link"
-  rm sites/all/modules/custom
+  rm "${MODULES_DIR}"
 fi
 
-if [ -e sites/all/themes/alq ]
+if [ -e "${THEMES_DIR}" ]
 then
   echo "Removing theme link"
-  rm sites/all/themes/alq
+  rm "${THEMES_DIR}"
 fi
 
 echo "Linking directories"
-ln -s ${GIT_DIR}/modules sites/all/modules/custom
-ln -s ${GIT_DIR}/themes/alq sites/all/themes
+ln -s ${GIT_DIR}/modules "${MODULES_DIR}"
+ln -s ${GIT_DIR}/themes "${THEMES_DIR}"
 
 echo "Site install commencing"
 
@@ -207,6 +210,7 @@ MODULES=(
   node_reference
   omega_tools
   pathauto
+  picture
   references
   responsive_menus
   rules
@@ -261,7 +265,7 @@ ${DRUSH} -y pm-enable \
   alq_mps
 
 # enable theme
-${DRUSH} vset theme_default alq
+${DRUSH} vset theme_default alq2
 
 echo "Completed"
 
