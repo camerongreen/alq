@@ -1,83 +1,56 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* Social media block */
-/* line 4, ../scss/alq-alpha-default-normal.scss */
 #block-block-2 {
   top: -10px;
-  right: 40px;
-}
+  right: 40px; }
 
-/* line 12, ../scss/alq-alpha-default-normal.scss */
 #facebook-link img,
 #twitter-link img,
 #instagram-link img {
   margin-left: 4px;
-  margin-top: 4px;
-}
+  margin-top: 4px; }
 
 /* Header menu */
-/* line 19, ../scss/alq-alpha-default-normal.scss */
 #block-nice-menus-1 {
   top: 62px;
   right: 40px;
-  /* don't show home link in reduced mode */
-}
-/* line 23, ../scss/alq-alpha-default-normal.scss */
-#block-nice-menus-1 ul.nice-menu ul,
-#block-nice-menus-1 ul.nice-menu li,
-#block-nice-menus-1 ul.nice-menu li a {
-  font-weight: bold;
-}
-/* line 30, ../scss/alq-alpha-default-normal.scss */
-#block-nice-menus-1 #nice-menu-1 > li.first {
-  display: inherit;
-}
+  /* don't show home link in reduced mode */ }
+  #block-nice-menus-1 ul.nice-menu ul,
+  #block-nice-menus-1 ul.nice-menu li,
+  #block-nice-menus-1 ul.nice-menu li a {
+    font-weight: bold; }
+  #block-nice-menus-1 #nice-menu-1 > li.first {
+    display: inherit; }
 
-/* line 35, ../scss/alq-alpha-default-normal.scss */
 .logo-img {
   background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  margin-left: 40px;
-}
+  margin-left: 40px; }
 
-/* line 40, ../scss/alq-alpha-default-normal.scss */
 #section-home-header {
-  width: 940px !important;
-}
-/* line 42, ../scss/alq-alpha-default-normal.scss */
-#section-home-header img {
-  width: 940px !important;
-  height: 160px !important;
-}
+  width: 940px !important; }
+  #section-home-header img {
+    width: 940px !important;
+    height: 160px !important; }
 
-/* line 48, ../scss/alq-alpha-default-normal.scss */
 #views_slideshow_cycle_teaser_section_slideshow-block,
 .view-slideshow .views-field-field-image img {
   width: 940px !important;
-  height: 340px !important;
-}
+  height: 340px !important; }
 
-/* line 55, ../scss/alq-alpha-default-normal.scss */
 .view-slideshow .views-field-title {
-  top: 180px;
-}
-/* line 58, ../scss/alq-alpha-default-normal.scss */
+  top: 180px; }
+
 .view-slideshow .views-field-view-node {
-  top: 240px;
-}
+  top: 240px; }
 
-/* line 63, ../scss/alq-alpha-default-normal.scss */
 .views-slideshow-controls-text span {
-  top: 300px;
-}
+  top: 300px; }
 
-/* line 67, ../scss/alq-alpha-default-normal.scss */
 #block-views-media-views-block,
 #block-views-media-views-block-1 {
   width: 40%;
   float: left;
-  overflow: auto;
-}
-/* line 72, ../scss/alq-alpha-default-normal.scss */
-#block-views-media-views-block .item-list li,
-#block-views-media-views-block-1 .item-list li {
-  list-style: initial;
-}
+  overflow: auto; }
+  #block-views-media-views-block .item-list li,
+  #block-views-media-views-block-1 .item-list li {
+    list-style: initial; }

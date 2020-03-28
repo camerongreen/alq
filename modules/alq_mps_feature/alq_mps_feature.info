@@ -96,4 +96,6 @@ features[variable][] = node_preview_email_campaign
 features[variable][] = node_preview_emailee
 features[variable][] = node_submitted_email_campaign
 features[variable][] = node_submitted_emailee
+features[variable][] = pathauto_node_email_campaign_pattern
+features[variable][] = pathauto_node_emailee_pattern
 features[views_view][] = emailees

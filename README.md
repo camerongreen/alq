@@ -36,6 +36,8 @@ If you have a copy of the ALQ database (see Backups below), copy your gzipped sq
 
     docker exec -ti alq-web bash -c 'cd /var/www/html/public_html && ../alq/scripts/import_prod_db.sh'
     
+## Rodeos installation
+    
 To get the rodeos website going, you will need to do the following in the sites directory:
 
 * mkdir -p rodeos/files
@@ -67,6 +69,12 @@ If you want to drush etc, in the docker directory:
 
     docker exec -ti alq-web bash -c 'cd public_html && drush cc all'
     
+
+## Compiling styles
+
+From the theme directory:
+
+    npx node-sass --output css/ --recursive scss/
     
 ## Emailing
 

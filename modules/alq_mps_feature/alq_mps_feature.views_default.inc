@@ -71,7 +71,7 @@ function alq_mps_feature_views_default_views() {
   $handler->display->display_options['fields']['field_state']['table'] = 'field_data_field_state';
   $handler->display->display_options['fields']['field_state']['field'] = 'field_state';
   $handler->display->display_options['fields']['field_state']['delta_offset'] = '0';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -81,7 +81,7 @@ function alq_mps_feature_views_default_views() {
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
