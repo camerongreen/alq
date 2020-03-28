@@ -315,6 +315,10 @@ body {
   margin: 1ex 0 1ex 0; }
   body #admin-menu {
     height: auto; }
+  body .page .section-footer,
+  body .page .section-content {
+    width: 1024px;
+    margin: auto; }
   body .page div.logo-img img {
     height: 85px;
     width: 160px; }
