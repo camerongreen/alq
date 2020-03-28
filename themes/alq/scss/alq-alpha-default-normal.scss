@@ -40,15 +40,9 @@
 #section-home-header {
   width: 940px !important;
   img {
-    width: 940px !important;
-    height: 160px !important;
+    width: 100%;
+    height: 100%;
   }
-}
-
-#views_slideshow_cycle_teaser_section_slideshow-block,
-.view-slideshow .views-field-field-image img {
-  width: 940px !important;
-  height: 340px !important;
 }
 
 .view-slideshow {

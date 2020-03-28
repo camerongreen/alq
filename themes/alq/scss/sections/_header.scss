@@ -4,6 +4,23 @@
 }
 
 header {
+  & > * {
+    width: $page-width;
+    margin: auto;
+
+    &.zone-header-wrapper {
+      width: 100%;
+
+      .region-header-first {
+        margin: 0;
+
+        div.view-slideshow .views_slideshow_slide {
+          width: 100%;
+        }
+      }
+    }
+  }
+
   .header-social-media-link {
     display: block;
     float: left;

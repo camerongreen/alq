@@ -2,6 +2,15 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 header {
   /* Header menu */ }
+  header > * {
+    width: 1024px;
+    margin: auto; }
+    header > *.zone-header-wrapper {
+      width: 100%; }
+      header > *.zone-header-wrapper .region-header-first {
+        margin: 0; }
+        header > *.zone-header-wrapper .region-header-first div.view-slideshow .views_slideshow_slide {
+          width: 100%; }
   header .header-social-media-link {
     display: block;
     float: left; }
