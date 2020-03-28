@@ -1,17 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-body {
-  background-image: url("/sites/all/themes/alq/images/lil_fiber.png");
-}
-
+@import 'variables';
 @import 'sections/shop-narrow';
-
-.logo-img {
-  margin-left: 10px;
-}
-
-.region-branding-inner {
-  padding: 1em;
-}
 
 .region-sidebar-first {
   margin-right: 10px;

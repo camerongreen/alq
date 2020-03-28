@@ -1,14 +1,18 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+.view-slideshow .views-field-title {
+  top: 180px; }
+
+.view-slideshow .views-field-view-node {
+  top: 240px; }
+
+.views-slideshow-controls-text span {
+  top: 300px; }
+
 /* Social media block */
 #block-block-2 {
   top: -10px;
   right: 40px; }
-
-#facebook-link img,
-#twitter-link img,
-#instagram-link img {
-  margin-left: 4px;
-  margin-top: 4px; }
 
 /* Header menu */
 #block-nice-menus-1 {
@@ -22,24 +26,11 @@
   #block-nice-menus-1 #nice-menu-1 > li.first {
     display: inherit; }
 
-.logo-img {
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-  margin-left: 40px; }
-
 #section-home-header {
   width: 940px !important; }
   #section-home-header img {
     width: 100%;
     height: 100%; }
-
-.view-slideshow .views-field-title {
-  top: 180px; }
-
-.view-slideshow .views-field-view-node {
-  top: 240px; }
-
-.views-slideshow-controls-text span {
-  top: 300px; }
 
 #block-views-media-views-block,
 #block-views-media-views-block-1 {

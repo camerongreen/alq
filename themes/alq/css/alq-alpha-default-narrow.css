@@ -1,7 +1,5 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-body {
-  background-image: url("/sites/all/themes/alq/images/lil_fiber.png"); }
-
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   width: 460px; }
 
@@ -47,12 +45,6 @@ body.node-type-product div.field-type-image {
 
 body.node-type-product div.add-to-cart {
   margin-left: 42%; }
-
-.logo-img {
-  margin-left: 10px; }
-
-.region-branding-inner {
-  padding: 1em; }
 
 .region-sidebar-first {
   margin-right: 10px; }

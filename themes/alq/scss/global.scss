@@ -1,22 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-$alq-purple: #502c83;
-$header-background-color: #fff;
-$body-background-color: #fff;
-$menu-hover-color: #ddd;
-$tags-color: #666;
-$page-width: 1024px;
-$font-family-header: 'Montserrat', sans-serif;
-$font-family-body: 'Source Sans Pro', sans-serif;
 
-@mixin bootstrap-img-polaroid {
-  padding: 4px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
+@import "variables";
 @import "sections/header";
 @import "sections/slideshow";
 @import "sections/shop";
@@ -24,7 +8,6 @@ $font-family-body: 'Source Sans Pro', sans-serif;
 body {
   background-color: $body-background-color;
   font-family: $font-family-body;
-  margin: 1ex 0 1ex 0;
 
   // Bug, remove when admin menu > 3.0-rc6.
   #admin-menu {
@@ -33,17 +16,6 @@ body {
 
   // This is where most of the stuff should be.
   .page {
-    .section-footer,
-    .section-content {
-      width: $page-width;
-      margin: auto;
-    }
-
-    div.logo-img img {
-      height: 85px;
-      width: 160px;
-    }
-
     h1, h2, h3, h4, h5, h6 {
       font-family: $font-family-header;
       color: $alq-purple;
@@ -79,7 +51,6 @@ body {
     input[type=email] {
       border: thin solid #ccc;
     }
-
   }
 
   #block-block-2 {

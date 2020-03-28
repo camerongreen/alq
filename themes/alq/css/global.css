@@ -1,16 +1,20 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 header {
   /* Header menu */ }
-  header > * {
-    width: 1024px;
-    margin: auto; }
-    header > *.zone-header-wrapper {
+  header > *.zone-header-wrapper {
+    width: 100%;
+    margin: 0; }
+    header > *.zone-header-wrapper .region-header-first {
+      margin: 0; }
+      header > *.zone-header-wrapper .region-header-first div.view-slideshow .views_slideshow_slide {
+        width: 100%; }
+  header div.branding-data {
+    float: left;
+    width: 160px; }
+    header div.branding-data img {
       width: 100%; }
-      header > *.zone-header-wrapper .region-header-first {
-        margin: 0; }
-        header > *.zone-header-wrapper .region-header-first div.view-slideshow .views_slideshow_slide {
-          width: 100%; }
   header .header-social-media-link {
     display: block;
     float: left; }
@@ -311,17 +315,9 @@ div.view-uc-catalog-terms a {
 
 body {
   background-color: #fff;
-  font-family: "Source Sans Pro", sans-serif;
-  margin: 1ex 0 1ex 0; }
+  font-family: "Source Sans Pro", sans-serif; }
   body #admin-menu {
     height: auto; }
-  body .page .section-footer,
-  body .page .section-content {
-    width: 1024px;
-    margin: auto; }
-  body .page div.logo-img img {
-    height: 85px;
-    width: 160px; }
   body .page h1, body .page h2, body .page h3, body .page h4, body .page h5, body .page h6 {
     font-family: "Montserrat", sans-serif;
     color: #502c83;
