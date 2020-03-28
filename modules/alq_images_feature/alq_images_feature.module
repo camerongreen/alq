@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the ALQ Images feature feature.
+ */
+
+include_once 'alq_images_feature.features.inc';

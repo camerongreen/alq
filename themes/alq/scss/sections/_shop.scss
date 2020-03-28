@@ -109,6 +109,7 @@ body.page-catalog {
 
           div.views-field-title {
             margin-top: 1ex;
+
             a {
               font-size: 110%;
               color: #000;
@@ -170,19 +171,23 @@ body.page-catalog {
           border: none;
           border-radius: 0;
           color: #666;
+
           & a {
             background: none;
             border: none;
             border-radius: 0;
             color: #666;
           }
+
           &.pager-next,
           &.pager-previous {
             display: none;
           }
+
           &.pager-last {
             position: relative;
           }
+
           &.pager-current {
             color: #000;
           }
@@ -264,4 +269,51 @@ div.view-uc-catalog-terms {
       }
     }
   }
+}
+
+body.node-type-product {
+  div.main-product-image {
+    margin-bottom: 1ex;
+  }
+}
+
+.page-catalog {
+  ul.pager {
+    margin-bottom: 1em;
+
+    li.pager-next,
+    li.pager-previous {
+      display: none;
+    }
+  }
+
+  table:nth-child(1) {
+    border: none;
+
+    td {
+      text-align: center;
+    }
+  }
+}
+
+body[class*="page-catalog-"] div.region-content-inner {
+  padding-top: 0;
+  background: none;
+}
+
+
+
+div.view-uc-catalog-terms {
+  td {
+    padding-bottom: 1em;
+  }
+
+  a {
+    font-weight: bold;
+  }
+}
+
+#uc-coupon-form,
+#uc-cart-pane-coupon {
+  margin-bottom: 1em;
 }

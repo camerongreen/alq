@@ -1,0 +1,9 @@
+name = ALQ Images feature
+core = 7.x
+package = ALQ
+dependencies[] = image
+features[features_api][] = api:2
+features[image][] = alq_section_header
+features[image][] = article_style
+features[image][] = news_list
+features[image][] = slideshow

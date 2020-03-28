@@ -25,6 +25,12 @@ function alq_preprocess_html(&$vars) {
   // Make sure boostrap appears after existing CSS.
   $weight = 200;
 
+  // Add fonts.
+  drupal_add_css('//fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,400&display=swap', [
+    'type' => 'external',
+    'weight' => $weight,
+  ]);
+
   // Add bootstrap cdn.
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', [
     'type' => 'external',
