@@ -1,0 +1,14 @@
+name = ALQ Text Formats feature
+core = 7.x
+package = ALQ
+dependencies[] = ckeditor_link
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = php
+dependencies[] = token_filter
+features[features_api][] = api:2
+features[filter][] = filtered_html
+features[filter][] = full_html
+features[filter][] = php_code
+features[filter][] = plain_text
+features[filter][] = straight_html

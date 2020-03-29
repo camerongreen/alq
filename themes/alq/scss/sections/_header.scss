@@ -21,24 +21,44 @@ header {
 
   div.branding-data {
     float: left;
-    width: 160px;
+    width: 180px;
+    margin: 1rem;
+
     img {
       width: 100%;
+      float: none;
+      margin: 0;
     }
   }
 
-  .header-social-media-link {
-    display: block;
-    float: left;
+  ul.social-media {
+    list-style-type: none;
+    margin: 1em;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      i {
+        font-size: 30px;
+        color: #888;
+      }
+
+      &:last-child {
+        a {
+          margin-left: 12px;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
   /* Header menu */
-  #block-nice-menus-1 ul.nice-menu ul li a {
-    font-weight: normal;
-  }
-
   #block-nice-menus-1 {
-    position: relative;
+    ul.nice-menu ul li a {
+      font-weight: normal;
+    }
 
     ul.nice-menu {
       ul,

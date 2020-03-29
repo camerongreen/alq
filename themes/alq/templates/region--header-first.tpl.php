@@ -8,7 +8,6 @@
  * have full width for the slideshow.
  */
 ?>
-<?php if ($wrapper): ?>
 <div class="region-header-first">
   <?php print $content; ?>
 </div>
