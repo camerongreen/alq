@@ -3,6 +3,9 @@
   border-bottom: solid $alq-purple;
 }
 
+$social-media-icons-color: #888;
+$menu-links-color: #444;
+
 header {
   & > * {
     &.zone-header-wrapper {
@@ -12,106 +15,132 @@ header {
       .region-header-first {
         margin: 0;
 
-        div.view-slideshow .views_slideshow_slide {
+        .view-slideshow .views_slideshow_slide {
           width: 100%;
         }
       }
     }
   }
 
-  div.branding-data {
-    float: left;
-    width: 180px;
-    margin: 1rem;
+  .zone-branding {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
-    img {
-      width: 100%;
-      float: none;
-      margin: 0;
-    }
-  }
+    .region-branding-inner {
+      display: grid;
+      grid-template-columns: [logo] 220px 20px [menus] auto;
+      grid-template-rows: [social] 50% [navigation] 50%;
+      grid-gap: 10px;
 
-  ul.social-media {
-    list-style-type: none;
-    margin: 1em;
-    padding: 0;
+      .branding-data {
+        grid-column: logo;
+        grid-row: 1 / span 2;
 
-    li {
-      display: inline;
+        .logo-img {
+          float: none;
+          margin: 0;
 
-      i {
-        font-size: 30px;
-        color: #888;
-      }
-
-      &:last-child {
-        a {
-          margin-left: 12px;
-          font-size: 20px;
-          font-weight: bold;
+          img {
+            width: 100%;
+          }
         }
       }
-    }
-  }
 
-  /* Header menu */
-  #block-nice-menus-1 {
-    ul.nice-menu ul li a {
-      font-weight: normal;
-    }
+      // Social block.
+      #block-block-2 {
+        grid-column: menus;
+        grid-row: social;
 
-    ul.nice-menu {
-      ul,
-      li,
-      li a {
-        border: 0;
-        color: $alq-purple;
-        text-decoration: none;
-        padding: 0.3em 2px 0.3em 2px;
-        font-weight: normal;
+        ul.social-media {
+          list-style-type: none;
+          margin: 1em 0;
+          padding: 0;
+
+          li {
+            display: inline;
+
+            i {
+              font-size: 30px;
+              color: $social-media-icons-color;
+            }
+
+            &:last-child {
+              a {
+                margin-left: 12px;
+                font-size: 20px;
+                font-weight: 600;
+              }
+            }
+          }
+        }
       }
 
-      li.menuparent,
-      li {
-        background-color: $header-background-color;
+      // Navigation block.
+      #block-nice-menus-1 {
+        grid-column: menus;
+        grid-row: navigation;
+        align-self: end;
+
+        .block-inner {
+          align-self: end;
+
+          /* Header menu */
+          .nice-menu {
+            width: 100%;
+            border: 0;
+            background: none;
+
+            // Top menu links.
+            & > li {
+              width: 20%;
+              text-align: center;
+
+              a {
+                padding: 15px 0;
+                text-decoration: none;
+                color: $menu-links-color;
+                font-family: $font-family-header;
+                font-size: medium;
+                font-weight: 600;
+              }
+
+            }
+
+            // Make hovered links white with a black background:
+            li a:hover {
+              background: #dedede;
+            }
+
+            // Make the link to the current page that you're on black with yellow text:
+            li a.active {
+              background: #f6f6f6;
+            }
+
+            // Get rid of all borders:
+            ul,
+            li {
+              border: 0;
+              background: none;
+            }
+
+            // Submenus.
+            li.menuparent {
+              ul {
+                margin-top: 30px;
+                background: #fff;
+
+                li {
+                  background: #fff;
+
+                  a {
+                    padding: 10px 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-
-      li.menuparent a:hover,
-      li a:hover {
-        background-color: $menu-hover-color;
-      }
-
-      ul {
-        background-color: #fff;
-        display: none !important;
-        box-shadow: 2px 1px 2px #666;
-      }
-    }
-
-    ul.nice-menu-down .menuparent a {
-      padding-right: 0;
-    }
-
-    ul.nice-menu-down li.menuparent {
-      background: $header-background-color none;
-    }
-
-    ul.nice-menu-down li.menuparent:hover {
-      background-color: $header-background-color;
-    }
-  }
-
-  .responsive-menus.responsified {
-    .responsive-menus-simple {
-      background-color: $alq-purple;
-    }
-
-    span.toggler {
-      background-color: $body-background-color;
-      color: $alq-purple;
-      box-shadow: none;
-      text-align: right;
-      margin-right: 2em;
     }
   }
 

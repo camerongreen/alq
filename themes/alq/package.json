@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap-flat": "^3.3.4",
     "node-sass": "^4.13.1"
   }
 }

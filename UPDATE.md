@@ -3,7 +3,7 @@
 1. Enable, disable modules and sync features.
     drush en -y picture
     drush en -y alq_images_feature
-    drush en -y alq_text_formats
+    drush en -y alq_text_formats_feature
     drush features-revert -y alq_menus_feature
     drush pm-disable -y extlink
 

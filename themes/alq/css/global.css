@@ -1,77 +1,90 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-header {
-  /* Header menu */ }
-  header > *.zone-header-wrapper {
-    width: 100%;
+header > *.zone-header-wrapper {
+  width: 100%;
+  margin: 0; }
+  header > *.zone-header-wrapper .region-header-first {
     margin: 0; }
-    header > *.zone-header-wrapper .region-header-first {
-      margin: 0; }
-      header > *.zone-header-wrapper .region-header-first div.view-slideshow .views_slideshow_slide {
-        width: 100%; }
-  header div.branding-data {
-    float: left;
-    width: 180px;
-    margin: 1rem; }
-    header div.branding-data img {
-      width: 100%;
-      float: none;
-      margin: 0; }
-  header ul.social-media {
-    list-style-type: none;
-    margin: 1em;
-    padding: 0; }
-    header ul.social-media li {
-      display: inline; }
-      header ul.social-media li i {
-        font-size: 30px;
-        color: #888; }
-      header ul.social-media li:last-child a {
-        margin-left: 12px;
-        font-size: 20px;
-        font-weight: bold; }
-  header #block-nice-menus-1 ul.nice-menu ul li a {
-    font-weight: normal; }
-  header #block-nice-menus-1 ul.nice-menu ul,
-  header #block-nice-menus-1 ul.nice-menu li,
-  header #block-nice-menus-1 ul.nice-menu li a {
-    border: 0;
-    color: #502c83;
-    text-decoration: none;
-    padding: 0.3em 2px 0.3em 2px;
-    font-weight: normal; }
-  header #block-nice-menus-1 ul.nice-menu li.menuparent,
-  header #block-nice-menus-1 ul.nice-menu li {
-    background-color: #fff; }
-  header #block-nice-menus-1 ul.nice-menu li.menuparent a:hover,
-  header #block-nice-menus-1 ul.nice-menu li a:hover {
-    background-color: #ddd; }
-  header #block-nice-menus-1 ul.nice-menu ul {
-    background-color: #fff;
-    display: none !important;
-    box-shadow: 2px 1px 2px #666; }
-  header #block-nice-menus-1 ul.nice-menu-down .menuparent a {
-    padding-right: 0; }
-  header #block-nice-menus-1 ul.nice-menu-down li.menuparent {
-    background: #fff none; }
-  header #block-nice-menus-1 ul.nice-menu-down li.menuparent:hover {
-    background-color: #fff; }
-  header .responsive-menus.responsified .responsive-menus-simple {
-    background-color: #502c83; }
-  header .responsive-menus.responsified span.toggler {
-    background-color: #fff;
-    color: #502c83;
-    box-shadow: none;
-    text-align: right;
-    margin-right: 2em; }
-  header #section-home-header {
-    margin: auto;
-    border-bottom: solid #502c83; }
-    header #section-home-header img {
-      max-width: 100% !important;
-      height: auto;
-      display: block; }
+    header > *.zone-header-wrapper .region-header-first .view-slideshow .views_slideshow_slide {
+      width: 100%; }
+
+header .zone-branding {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+  header .zone-branding .region-branding-inner {
+    display: grid;
+    grid-template-columns: [logo] 220px 20px [menus] auto;
+    grid-template-rows: [social] 50% [navigation] 50%;
+    grid-gap: 10px; }
+    header .zone-branding .region-branding-inner .branding-data {
+      grid-column: logo;
+      grid-row: 1 / span 2; }
+      header .zone-branding .region-branding-inner .branding-data .logo-img {
+        float: none;
+        margin: 0; }
+        header .zone-branding .region-branding-inner .branding-data .logo-img img {
+          width: 100%; }
+    header .zone-branding .region-branding-inner #block-block-2 {
+      grid-column: menus;
+      grid-row: social; }
+      header .zone-branding .region-branding-inner #block-block-2 ul.social-media {
+        list-style-type: none;
+        margin: 1em 0;
+        padding: 0; }
+        header .zone-branding .region-branding-inner #block-block-2 ul.social-media li {
+          display: inline; }
+          header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i {
+            font-size: 30px;
+            color: #888; }
+          header .zone-branding .region-branding-inner #block-block-2 ul.social-media li:last-child a {
+            margin-left: 12px;
+            font-size: 20px;
+            font-weight: 600; }
+    header .zone-branding .region-branding-inner #block-nice-menus-1 {
+      grid-column: menus;
+      grid-row: navigation;
+      align-self: end; }
+      header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner {
+        align-self: end;
+        /* Header menu */ }
+        header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu {
+          width: 100%;
+          border: 0;
+          background: none; }
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu > li {
+            width: 20%;
+            text-align: center; }
+            header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu > li a {
+              padding: 15px 0;
+              text-decoration: none;
+              color: #444;
+              font-family: "Montserrat", sans-serif;
+              font-size: medium;
+              font-weight: 600; }
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li a:hover {
+            background: #dedede; }
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li a.active {
+            background: #f6f6f6; }
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu ul,
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li {
+            border: 0;
+            background: none; }
+          header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul {
+            margin-top: 30px;
+            background: #fff; }
+            header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li {
+              background: #fff; }
+              header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li a {
+                padding: 10px 15px; }
+
+header #section-home-header {
+  margin: auto;
+  border-bottom: solid #502c83; }
+  header #section-home-header img {
+    max-width: 100% !important;
+    height: auto;
+    display: block; }
 
 #views_slideshow_cycle_teaser_section_slideshow-block {
   overflow: auto; }

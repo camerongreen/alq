@@ -26,7 +26,7 @@ function alq_preprocess_html(&$vars) {
   $weight = 200;
 
   // Add fonts.
-  drupal_add_css('//fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,400&display=swap', [
+  drupal_add_css('//fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,400&display=swap', [
     'type' => 'external',
     'weight' => $weight,
   ]);
@@ -38,6 +38,12 @@ function alq_preprocess_html(&$vars) {
   ]);
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', [
     'type' => 'external',
+    'weight' => $weight + 1,
+  ]);
+  drupal_add_css(path_to_theme() . '/css/bootstrap-flat.min.css', [
+    'weight' => $weight + 1,
+  ]);
+  drupal_add_css(path_to_theme() . '/css/bootstrap-flat-extras.min.css', [
     'weight' => $weight + 1,
   ]);
   drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', ['type' => 'external']);
