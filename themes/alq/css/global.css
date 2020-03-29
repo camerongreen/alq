@@ -14,40 +14,70 @@ header .zone-branding {
   margin-bottom: 1rem; }
   header .zone-branding .region-branding-inner {
     display: grid;
-    grid-template-columns: [logo] 220px 20px [menus] auto;
-    grid-template-rows: [social] 50% [navigation] 50%;
     grid-gap: 10px; }
+    @media only screen and (min-width: 1000px) {
+      header .zone-branding .region-branding-inner {
+        grid-template-columns: [logo] 220px 20px [menus] auto;
+        grid-template-rows: [social] 50% [navigation] 50%; } }
+    @media only screen and (max-width: 1000px) {
+      header .zone-branding .region-branding-inner {
+        grid-template-columns: [logo] 220px 10px [socialcol] auto [menus] 120px; } }
     header .zone-branding .region-branding-inner .branding-data {
-      grid-column: logo;
-      grid-row: 1 / span 2; }
+      grid-column: logo; }
+      @media only screen and (min-width: 1000px) {
+        header .zone-branding .region-branding-inner .branding-data {
+          grid-row: 1 / span 2; } }
       header .zone-branding .region-branding-inner .branding-data .logo-img {
         float: none;
         margin: 0; }
         header .zone-branding .region-branding-inner .branding-data .logo-img img {
           width: 100%; }
-    header .zone-branding .region-branding-inner #block-block-2 {
-      grid-column: menus;
-      grid-row: social; }
-      header .zone-branding .region-branding-inner #block-block-2 ul.social-media {
-        list-style-type: none;
-        margin: 1em 0;
-        padding: 0; }
-        header .zone-branding .region-branding-inner #block-block-2 ul.social-media li {
-          display: inline; }
-          header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i {
-            font-size: 30px;
-            color: #888; }
-          header .zone-branding .region-branding-inner #block-block-2 ul.social-media li:last-child a {
-            margin-left: 12px;
-            font-size: 20px;
-            font-weight: 600; }
+    @media only screen and (min-width: 1000px) {
+      header .zone-branding .region-branding-inner #block-block-2 {
+        grid-column: menus;
+        grid-row: social; }
+        header .zone-branding .region-branding-inner #block-block-2 .block-inner {
+          text-align: right; } }
+    @media only screen and (max-width: 1000px) {
+      header .zone-branding .region-branding-inner #block-block-2 {
+        grid-column: socialcol;
+        align-self: center;
+        justify-self: end; } }
+    header .zone-branding .region-branding-inner #block-block-2 ul.social-media {
+      list-style-type: none;
+      margin: 1em 0;
+      padding: 0; }
+      header .zone-branding .region-branding-inner #block-block-2 ul.social-media li {
+        display: inline; }
+        header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i {
+          font-size: 30px;
+          color: #888; }
+        header .zone-branding .region-branding-inner #block-block-2 ul.social-media li:last-child a {
+          margin-left: 12px;
+          font-size: 20px;
+          font-weight: 600; }
     header .zone-branding .region-branding-inner #block-nice-menus-1 {
-      grid-column: menus;
-      grid-row: navigation;
-      align-self: end; }
+      grid-column: menus; }
+      @media only screen and (min-width: 1000px) {
+        header .zone-branding .region-branding-inner #block-nice-menus-1 {
+          grid-row: navigation;
+          align-self: end; } }
+      @media only screen and (max-width: 1000px) {
+        header .zone-branding .region-branding-inner #block-nice-menus-1 {
+          align-self: center; } }
       header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner {
         align-self: end;
         /* Header menu */ }
+        header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
+          background-color: unset;
+          color: #444;
+          font-size: 30px;
+          font-weight: 600;
+          box-shadow: none;
+          text-align: right; }
+          @media only screen and (max-width: 1000px) {
+            header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
+              color: #888; } }
         header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu {
           width: 100%;
           border: 0;
@@ -365,13 +395,6 @@ body {
   body .page input[type=text],
   body .page input[type=email] {
     border: thin solid #ccc; }
-  body #block-block-2 {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    /* override bootstrap style */ }
-    body #block-block-2 div::before {
-      display: block; }
 
 /* Blocks we won't show on mobile version */
 #donate-link,

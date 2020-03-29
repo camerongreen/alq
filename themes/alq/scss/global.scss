@@ -52,16 +52,6 @@ body {
       border: thin solid #ccc;
     }
   }
-
-  #block-block-2 {
-    position: absolute;
-    top: 0;
-    right: 10px;
-    /* override bootstrap style */
-    div::before {
-      display: block;
-    }
-  }
 }
 
 

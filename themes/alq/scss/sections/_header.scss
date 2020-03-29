@@ -5,6 +5,7 @@
 
 $social-media-icons-color: #888;
 $menu-links-color: #444;
+$header-toggle-width: 1000px;
 
 header {
   & > * {
@@ -28,13 +29,23 @@ header {
 
     .region-branding-inner {
       display: grid;
-      grid-template-columns: [logo] 220px 20px [menus] auto;
-      grid-template-rows: [social] 50% [navigation] 50%;
+
+      @media only screen and (min-width: $header-toggle-width) {
+        grid-template-columns: [logo] 220px 20px [menus] auto;
+        grid-template-rows: [social] 50% [navigation] 50%;
+      }
+
+      @media only screen and (max-width: $header-toggle-width) {
+        grid-template-columns: [logo] 220px 10px [socialcol] auto [menus] 120px;
+      }
+
       grid-gap: 10px;
 
       .branding-data {
         grid-column: logo;
-        grid-row: 1 / span 2;
+        @media only screen and (min-width: $header-toggle-width) {
+          grid-row: 1 / span 2;
+        }
 
         .logo-img {
           float: none;
@@ -48,8 +59,18 @@ header {
 
       // Social block.
       #block-block-2 {
-        grid-column: menus;
-        grid-row: social;
+        @media only screen and (min-width: $header-toggle-width) {
+          grid-column: menus;
+          grid-row: social;
+          .block-inner {
+            text-align: right;
+          }
+        }
+        @media only screen and (max-width: $header-toggle-width) {
+          grid-column: socialcol;
+          align-self: center;
+          justify-self: end;
+        }
 
         ul.social-media {
           list-style-type: none;
@@ -78,11 +99,29 @@ header {
       // Navigation block.
       #block-nice-menus-1 {
         grid-column: menus;
-        grid-row: navigation;
-        align-self: end;
+
+        @media only screen and (min-width: $header-toggle-width) {
+          grid-row: navigation;
+          align-self: end;
+        }
+        @media only screen and (max-width: $header-toggle-width) {
+          align-self: center;
+        }
 
         .block-inner {
           align-self: end;
+
+          .toggler {
+            background-color: unset;
+            color: $menu-links-color;
+            @media only screen and (max-width: $header-toggle-width) {
+              color: $social-media-icons-color;
+            }
+            font-size: 30px;
+            font-weight: 600;
+            box-shadow: none;
+            text-align: right;
+          }
 
           /* Header menu */
           .nice-menu {
