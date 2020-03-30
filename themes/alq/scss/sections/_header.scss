@@ -6,6 +6,7 @@
 $social-media-icons-color: #888;
 $menu-links-color: #333;
 $header-toggle-width: 1000px;
+$header-toggle-width-small: 700px;
 
 header {
   & > * {
@@ -16,7 +17,7 @@ header {
       .region-header-first {
         margin: 0;
 
-        .view-slideshow .views_slideshow_slide {
+        div {
           width: 100%;
         }
       }
@@ -59,6 +60,9 @@ header {
 
       // Social block.
       #block-block-2 {
+        @media only screen and (max-width: $header-toggle-width-small) {
+          display: none;
+        }
         @media only screen and (min-width: $header-toggle-width) {
           grid-column: menus;
           grid-row: social;
@@ -74,7 +78,6 @@ header {
 
         ul.social-media {
           list-style-type: none;
-          margin: 1em 0;
           padding: 0;
 
           li {
@@ -116,6 +119,7 @@ header {
             color: $menu-links-color;
             @media only screen and (max-width: $header-toggle-width) {
               color: $social-media-icons-color;
+              margin-bottom: 20px;
             }
             font-size: 30px;
             font-weight: 600;
