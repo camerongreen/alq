@@ -108,6 +108,11 @@ header .zone-branding {
             background: #fff; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li {
               background: #fff; }
+              header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li:first-child {
+                display: none; }
+              @media (pointer: coarse) {
+                header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li:first-child {
+                  display: block; } }
               header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li a {
                 padding: 10px 15px;
                 text-align: left; }

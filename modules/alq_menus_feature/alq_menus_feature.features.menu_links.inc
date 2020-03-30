@@ -111,6 +111,27 @@ function alq_menus_feature_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-header-menu_about-us-main:node/110.
+  $menu_links['menu-header-menu_about-us-main:node/110'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'node/110',
+    'router_path' => 'node/%',
+    'link_title' => 'About Us main',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_about-us-main:node/110',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu_about-us:node/110',
+  );
   // Exported menu link: menu-header-menu_about-us:node/110.
   $menu_links['menu-header-menu_about-us:node/110'] = array(
     'menu_name' => 'menu-header-menu',
@@ -143,8 +164,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -43,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_become-a-regular-giver:node/479.
@@ -161,8 +182,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
-    'customized' => 0,
+    'weight' => -49,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_get-involved:node/115',
   );
   // Exported menu link: menu-header-menu_brisbane-animal-save:node/414.
@@ -179,8 +200,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -5,
-    'customized' => 0,
+    'weight' => -47,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_broiler-chickens:node/243.
@@ -200,6 +221,27 @@ function alq_menus_feature_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 0,
     'parent_identifier' => 'menu-header-menu_factsheets:node/112',
+  );
+  // Exported menu link: menu-header-menu_campaigns-main:node/111.
+  $menu_links['menu-header-menu_campaigns-main:node/111'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'node/111',
+    'router_path' => 'node/%',
+    'link_title' => 'Campaigns main',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_campaigns-main:node/111',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_campaigns:node/111.
   $menu_links['menu-header-menu_campaigns:node/111'] = array(
@@ -233,8 +275,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 10,
-    'customized' => 0,
+    'weight' => -40,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_circuses:node/95.
@@ -251,8 +293,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 4,
-    'customized' => 0,
+    'weight' => -41,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_companion-animals:node/246.
@@ -290,7 +332,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
-    'weight' => -50,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_about-us:node/110',
   );
@@ -308,8 +350,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -42,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_donate:node/478.
@@ -326,8 +368,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 0,
+    'weight' => -48,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_get-involved:node/115',
   );
   // Exported menu link: menu-header-menu_eggs:node/244.
@@ -362,8 +404,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -18,
-    'customized' => 0,
+    'weight' => -48,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_factsheets:node/112.
@@ -434,9 +476,30 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -47,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_about-us:node/110',
+  );
+  // Exported menu link: menu-header-menu_get-involved-main:node/115.
+  $menu_links['menu-header-menu_get-involved-main:node/115'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'node/115',
+    'router_path' => 'node/%',
+    'link_title' => 'Get Involved main',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_get-involved-main:node/115',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu_get-involved:node/115',
   );
   // Exported menu link: menu-header-menu_get-involved:node/115.
   $menu_links['menu-header-menu_get-involved:node/115'] = array(
@@ -469,8 +532,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -3,
-    'customized' => 0,
+    'weight' => -45,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_home:<front>.
@@ -510,7 +573,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_media:node/196',
   );
@@ -528,9 +591,30 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -46,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_get-involved:node/115',
+  );
+  // Exported menu link: menu-header-menu_media-main:node/196.
+  $menu_links['menu-header-menu_media-main:node/196'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'node/196',
+    'router_path' => 'node/%',
+    'link_title' => 'Media main',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_media-main:node/196',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu_media:node/196',
   );
   // Exported menu link: menu-header-menu_media-releases:media-releases.
   $menu_links['menu-header-menu_media-releases:media-releases'] = array(
@@ -546,7 +630,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -50,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_media:node/196',
   );
@@ -581,7 +665,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_about-us:node/110',
   );
@@ -599,8 +683,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 45,
-    'customized' => 0,
+    'weight' => -39,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_pigs:node/245.
@@ -635,8 +719,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -2,
-    'customized' => 0,
+    'weight' => -44,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_rodeos:node/100.
@@ -653,8 +737,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -4,
-    'customized' => 0,
+    'weight' => -46,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_shop:catalog.
@@ -691,8 +775,8 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -20,
-    'customized' => 0,
+    'weight' => -49,
+    'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
   // Exported menu link: menu-header-menu_volunteer:node/116.
@@ -728,39 +812,21 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 20,
+    'weight' => -45,
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_get-involved:node/115',
-  );
-  // Exported menu link: navigation_:sitemap.
-  $menu_links['navigation_:sitemap'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'sitemap',
-    'router_path' => 'sitemap',
-    'link_title' => '',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Display a site map with RSS feeds.',
-      ),
-      'identifier' => 'navigation_:sitemap',
-    ),
-    'module' => 'system',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('About Us');
+  t('About Us main');
   t('Animal Experiments');
   t('Become a regular giver');
   t('Brisbane Animal Save');
   t('Broiler Chickens');
   t('Campaigns');
+  t('Campaigns main');
   t('Chicken Hatching');
   t('Circuses');
   t('Companion Animals');
@@ -774,12 +840,14 @@ function alq_menus_feature_menu_default_menu_links() {
   t('Flying Foxes');
   t('Frequently Asked Questions');
   t('Get Involved');
+  t('Get Involved main');
   t('Greyhound Racing');
   t('Home');
   t('In the news');
   t('Join our Mailing List');
   t('Media');
   t('Media Releases');
+  t('Media main');
   t('News');
   t('Our office');
   t('Petting Zoos');

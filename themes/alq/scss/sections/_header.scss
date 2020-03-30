@@ -173,6 +173,18 @@ header {
                 background: #fff;
 
                 li {
+                  // When touch events are enabled, you can't click on the parent
+                  // menu items, so we duplicate them for mobile in the menu.
+                  &:first-child {
+                    display: none;
+                  }
+
+                  @media (pointer: coarse) {
+                    &:first-child {
+                      display: block;
+                    }
+                  }
+
                   background: #fff;
 
                   a {
