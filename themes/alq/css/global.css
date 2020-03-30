@@ -61,7 +61,7 @@ header .zone-branding {
       @media only screen and (min-width: 1000px) {
         header .zone-branding .region-branding-inner #block-nice-menus-1 {
           grid-row: navigation;
-          align-self: end; } }
+          margin-top: 6px; } }
       @media only screen and (max-width: 1000px) {
         header .zone-branding .region-branding-inner #block-nice-menus-1 {
           align-self: center; } }
@@ -70,7 +70,7 @@ header .zone-branding {
         /* Header menu */ }
         header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
           background-color: unset;
-          color: #444;
+          color: #333;
           font-size: 30px;
           font-weight: 600;
           box-shadow: none;
@@ -88,7 +88,7 @@ header .zone-branding {
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu > li a {
               padding: 15px 0;
               text-decoration: none;
-              color: #444;
+              color: #333;
               font-family: "Montserrat", sans-serif;
               font-size: medium;
               font-weight: 600; }
@@ -106,7 +106,8 @@ header .zone-branding {
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li {
               background: #fff; }
               header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li a {
-                padding: 10px 15px; }
+                padding: 10px 15px;
+                text-align: left; }
 
 header #section-home-header {
   margin: auto;

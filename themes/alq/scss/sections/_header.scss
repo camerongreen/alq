@@ -4,7 +4,7 @@
 }
 
 $social-media-icons-color: #888;
-$menu-links-color: #444;
+$menu-links-color: #333;
 $header-toggle-width: 1000px;
 
 header {
@@ -102,7 +102,7 @@ header {
 
         @media only screen and (min-width: $header-toggle-width) {
           grid-row: navigation;
-          align-self: end;
+          margin-top: 6px;
         }
         @media only screen and (max-width: $header-toggle-width) {
           align-self: center;
@@ -173,6 +173,7 @@ header {
 
                   a {
                     padding: 10px 15px;
+                    text-align: left;
                   }
                 }
               }
