@@ -1,7 +1,8 @@
-(function($){
+(function ($) {
   "use strict";
 
-  // Fix for https://stackoverflow.com/questions/14923301/uncaught-typeerror-cannot-read-property-msie-of-undefined-jquery-tools
+  // Fix for
+  // https://stackoverflow.com/questions/14923301/uncaught-typeerror-cannot-read-property-msie-of-undefined-jquery-tools
   jQuery.browser = {};
   (function () {
     jQuery.browser.msie = false;
@@ -20,11 +21,30 @@
 
     if ($("body.front").length) {
       $("body.front .view-slideshow").hover(function () {
-        $(".views-slideshow-controls-text span:not(:eq(1))").fadeIn();
-      },
-      function () {
-        $(".views-slideshow-controls-text span:not(:eq(1))").fadeOut();
-      });
+          $(".views-slideshow-controls-text span:not(:eq(1))").fadeIn();
+        },
+        function () {
+          $(".views-slideshow-controls-text span:not(:eq(1))").fadeOut();
+        });
     }
+
+    $(window).resize(function () {
+      $('.views-slideshow-cycle-main-frame').each(function () {
+        var heightNow = '';
+
+        $(this).find('.views-slideshow-cycle-main-frame-row').each(function () {
+          var thisDisplay = $(this).css('display');
+          var thisHeight = $(this).find('img').height();
+          if (thisDisplay == 'block') {
+            heightNow = thisHeight;
+          }
+        });
+
+        if (heightNow != '') {
+          // set div height    = now image height.
+          $(this).height(heightNow);
+        }
+      });
+    });
   });
 })(jQuery);

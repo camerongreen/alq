@@ -61,7 +61,16 @@ function alq_images_feature_image_default_styles() {
   // Exported image style: slideshow.
   $styles['slideshow'] = array(
     'label' => 'slideshow',
-    'effects' => array(),
+    'effects' => array(
+      15 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 940,
+          'height' => 340,
+        ),
+        'weight' => 1,
+      ),
+    ),
   );
 
   return $styles;

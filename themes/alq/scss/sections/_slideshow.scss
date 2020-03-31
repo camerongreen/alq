@@ -1,61 +1,48 @@
-#views_slideshow_cycle_teaser_section_slideshow-block {
-  overflow: auto;
-}
+.views-slideshow-cycle-processed {
+  position: relative;
 
-div.view-slideshow .views-field-field-slideshow-image img {
-  width: 100% !important;
-  height: auto !important;
-}
-
-span.views-slideshow-controls-text-next,
-span.views-slideshow-controls-text-previous {
-  text-decoration: none !important;
-}
-
-.views-slideshow-controls-text,
-.view-slideshow .views-field-view-node {
-  display: none;
-}
-
-.view-slideshow {
-  @include header-image-border;
-  margin-top: 1em;
-  .views-field-title {
+  .views-slideshow-controls-bottom {
+    z-index: 10;
     position: absolute;
-    background-color: rgba(66, 66, 66, 0.6);
-  }
-  .views-field-title a {
-    color: #fff;
-    text-decoration: none;
-  }
-  .views-field-view-node {
-    display: none;
-    position: absolute;
-  }
-  .views-field-title {
-    display: none;
-    top: 70px;
-    left: 10px;
-    padding: 2px;
-  }
-}
+    bottom: 5%;
 
-.views-slideshow-controls-text span {
-  position: absolute;
-  overflow: hidden;
-  z-index: 10;
-  background-color: rgba(66, 66, 66, 0.6);
-  color: #fff;
-  display: none;
-  a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-  }
-  &.views-slideshow-controls-text-previous:before {
-    content: "\25C0"
-  }
-  &.views-slideshow-controls-text-next:after {
-    content: "\25B6"
+    span {
+      margin: 1em;
+      overflow: hidden;
+      color: #fff;
+      background-color: rgba(66, 66, 66, 0.6);
+      font-weight: bold;
+      font-size: large;
+      padding: 1ex;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      &.views-slideshow-controls-text-previous {
+        float: left;
+        &:before {
+          content: "\25C0"
+        }
+        a {
+          padding-left: 1ex;
+        }
+      }
+
+      &.views-slideshow-controls-text-next {
+        float: right;
+        &:after {
+          content: " \25B6"
+        }
+        a {
+          padding-right: 1ex;
+        }
+      }
+    }
   }
 }

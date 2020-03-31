@@ -72,48 +72,6 @@ body.page-media-views .view-media-views {
   }
 }
 
-#views_slideshow_cycle_teaser_section_slideshow-block,
-.view-slideshow .views-field-field-image img {
-  width: 700px !important;
-  height: 253px !important;
-}
-
-.view-slideshow {
-  .views-field-title {
-    top: 140px;
-    left: 30px;
-    padding: 1ex;
-    a {
-      font-size: 25px;
-    }
-  }
-  .views-field-view-node {
-    top: 200px;
-    left: 30px;
-    display: none;
-  }
-}
-
-.views-slideshow-controls-text {
-  display: inherit;
-  span {
-    top:20px;
-    padding: 5px;
-    font-size: 15px;
-    &.views-slideshow-controls-text-previous {
-      left:4px;
-    }
-    &.views-slideshow-controls-text-previous a {
-      padding-left: 6px;
-    }
-    &.views-slideshow-controls-text-next {
-      right:4px;
-    }
-    &.views-slideshow-controls-text-next a {
-      padding-right: 6px;
-    }
-  }
-}
 
 /* email subscribe form */
 #mc-embedded-subscribe-form input[type=email] {
