@@ -25,29 +25,31 @@ function alq_preprocess_html(&$vars) {
   // Make sure boostrap appears after existing CSS.
   $weight = 200;
 
+  drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', ['type' => 'external']);
+
   // Add fonts.
-  drupal_add_css('//fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,400&display=swap', [
+  drupal_add_css('//fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;1,400&display=swap', [
     'type' => 'external',
-    'weight' => $weight,
+  ]);
+  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [
+    'type' => 'external',
   ]);
 
   // Add bootstrap cdn.
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', [
     'type' => 'external',
-    'weight' => $weight,
+    'weight' => ++$weight,
   ]);
   drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', [
     'type' => 'external',
-    'weight' => $weight + 1,
+    'weight' => ++$weight,
   ]);
   drupal_add_css(path_to_theme() . '/css/bootstrap-flat.min.css', [
-    'weight' => $weight + 1,
+    'weight' => ++$weight,
   ]);
   drupal_add_css(path_to_theme() . '/css/bootstrap-flat-extras.min.css', [
-    'weight' => $weight + 1,
+    'weight' => ++$weight,
   ]);
-  drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', ['type' => 'external']);
-  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', ['type' => 'external']);
 }
 
 /**
@@ -91,4 +93,30 @@ function alq_breadcrumb($variables) {
     $breadcrumb = preg_replace("/Catalog/", "Shop", $breadcrumb);
     return '<div class="breadcrumb">' . implode(' &raquo; ', $breadcrumb) . '</div>';
   }
+}
+
+/**
+ * Implements theme_menu_link().
+ */
+function alq_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  if ($element['#title'] === 'Search') {
+    $element['#title'] = '<i' . drupal_attributes([
+      'class' => [
+        'fa',
+        'fa-lg',
+        'fa-search',
+      ],
+    ]) . '></i> <span class="sr-only">' . check_plain($element['#title']) . '</span>';
+
+    $element['#localized_options']['html'] = TRUE;
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }

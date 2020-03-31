@@ -69,25 +69,20 @@ body.node-type-product div.add-to-cart {
     margin-bottom: 1ex; }
 
 body.page-in-the-news .view-media-views .views-row,
-body.page-media-views .view-media-views .views-row,
-.view-news .views-row {
+body.page-media-views .view-media-views .views-row {
   margin-bottom: 30px;
   overflow: auto; }
   body.page-in-the-news .view-media-views .views-row .views-field-title a,
-  body.page-media-views .view-media-views .views-row .views-field-title a,
-  .view-news .views-row .views-field-title a {
+  body.page-media-views .view-media-views .views-row .views-field-title a {
     font-size: 17px; }
   body.page-in-the-news .view-media-views .views-row .views-field-body p:last-child,
-  body.page-media-views .view-media-views .views-row .views-field-body p:last-child,
-  .view-news .views-row .views-field-body p:last-child {
+  body.page-media-views .view-media-views .views-row .views-field-body p:last-child {
     margin-bottom: 1ex; }
   body.page-in-the-news .view-media-views .views-row .views-field-field-image,
-  body.page-media-views .view-media-views .views-row .views-field-field-image,
-  .view-news .views-row .views-field-field-image {
+  body.page-media-views .view-media-views .views-row .views-field-field-image {
     width: 220px; }
     body.page-in-the-news .view-media-views .views-row .views-field-field-image img,
-    body.page-media-views .view-media-views .views-row .views-field-field-image img,
-    .view-news .views-row .views-field-field-image img {
+    body.page-media-views .view-media-views .views-row .views-field-field-image img {
       max-width: 200px; }
 
 .region-sidebar-first-inner {
@@ -136,13 +131,6 @@ body.page-media-views .view-media-views .views-row,
       right: 4px; }
     .views-slideshow-controls-text span.views-slideshow-controls-text-next a {
       padding-right: 6px; }
-
-/* search form */
-#block-search-form h2 {
-  display: inherit; }
-
-#block-search-form input[type=text] {
-  width: 100%; }
 
 /* email subscribe form */
 #mc-embedded-subscribe-form input[type=email] {

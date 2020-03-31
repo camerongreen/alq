@@ -24,9 +24,39 @@ header {
     }
   }
 
+  #block-search-form {
+    display: none;
+    margin-bottom: 1rem;
+
+    h2 {
+      display: none;
+    }
+
+    input[type=text] {
+      width: 80%;
+      margin: 10px auto;
+    }
+
+    i {
+      color: $social-media-icons-color;
+    }
+
+    input[type="submit"] {
+      display: none;
+    }
+  }
+
   .zone-branding {
     margin-top: 1rem;
     margin-bottom: 1rem;
+
+    @media only screen and (max-width: $header-toggle-width) {
+      .responsive-menus.responsified .responsive-menus-simple {
+        li.menu-path-search {
+          display: none;
+        }
+      }
+    }
 
     .region-branding-inner {
       display: grid;
@@ -79,9 +109,16 @@ header {
         ul.social-media {
           list-style-type: none;
           padding: 0;
+          margin: 0;
 
           li {
             display: inline;
+
+            @media only screen and (min-width: $header-toggle-width) {
+              .menu-path-search {
+                display: none;
+              }
+            }
 
             i {
               font-size: 30px;
@@ -112,15 +149,9 @@ header {
         }
 
         .block-inner {
-          align-self: end;
-
           .toggler {
             background-color: unset;
-            color: $menu-links-color;
-            @media only screen and (max-width: $header-toggle-width) {
-              color: $social-media-icons-color;
-              margin-bottom: 20px;
-            }
+            color: $social-media-icons-color;
             font-size: 30px;
             font-weight: 600;
             box-shadow: none;
@@ -132,14 +163,13 @@ header {
             width: 100%;
             border: 0;
             background: none;
+            display: flex;
+            justify-content: space-between;
 
             // Top menu links.
             & > li {
-              width: 20%;
-              text-align: center;
-
               a {
-                padding: 15px 0;
+                padding: 15px;
                 text-decoration: none;
                 color: $menu-links-color;
                 font-family: $font-family-header;
@@ -199,6 +229,7 @@ header {
       }
     }
   }
+
 
   #section-home-header {
     margin: auto;

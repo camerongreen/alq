@@ -13,20 +13,12 @@
   })();
 
   $(document).ready(function () {
-    $("body.front .views-slideshow-controls-text span").hide();
-
-    $('#search-block-form input[type=text]').attr('placeholder', 'Search');
     $('#webform-client-form-114 input[type=email]').attr('placeholder', 'Your email');
 
-    // Mobile
-    if (!$("#block-facebook-boxes-fb-like:visible").length) {
-    }
+    // Slideshow controls..
+    $("body.front .views-slideshow-controls-text span").hide();
 
-
-    $(".view-news .views-field-field-image img").addClass("img-polaroid");
-
-    // desktop
-    if ($("#block-facebook-boxes-fb-like:visible").length) {
+    if ($("body.front").length) {
       $("body.front .view-slideshow").hover(function () {
         $(".views-slideshow-controls-text span:not(:eq(1))").fadeIn();
       },

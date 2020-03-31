@@ -49,6 +49,7 @@ features[menu_links][] = menu-header-menu_petting-zoos:node/484
 features[menu_links][] = menu-header-menu_pigs:node/245
 features[menu_links][] = menu-header-menu_puppy-farms:node/276
 features[menu_links][] = menu-header-menu_rodeos:node/100
+features[menu_links][] = menu-header-menu_search:search
 features[menu_links][] = menu-header-menu_shop:catalog
 features[menu_links][] = menu-header-menu_veganism:node/124
 features[menu_links][] = menu-header-menu_volunteer:node/116

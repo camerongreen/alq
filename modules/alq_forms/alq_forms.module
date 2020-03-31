@@ -317,3 +317,18 @@ function alq_forms_webform_last_submission($nid, $donation_type) {
   $result = $query->execute();
   return $result->fetchField();
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function alq_forms_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id === 'search_block_form') {
+    $form['search_block_form']['#attributes']['class'] = ['form-control'];
+    $form['search_block_form']['#attributes']['placeholder'] = ['Search'];
+
+    $form['#attached']['js'][] = [
+      'data' => drupal_get_path('module', 'alq_forms') . '/theme/search-form.js',
+      'type' => 'file',
+    ];
+  }
+}

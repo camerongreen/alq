@@ -741,6 +741,26 @@ function alq_menus_feature_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-header-menu_campaigns:node/111',
   );
+  // Exported menu link: menu-header-menu_search:search.
+  $menu_links['menu-header-menu_search:search'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'search',
+    'router_path' => 'search',
+    'link_title' => 'Search',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_search:search',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 10,
+    'customized' => 1,
+  );
   // Exported menu link: menu-header-menu_shop:catalog.
   $menu_links['menu-header-menu_shop:catalog'] = array(
     'menu_name' => 'menu-header-menu',
@@ -855,6 +875,7 @@ function alq_menus_feature_menu_default_menu_links() {
   t('Privacy policy');
   t('Puppy Farms');
   t('Rodeos');
+  t('Search');
   t('Shop');
   t('Sitemap');
   t('Veganism');

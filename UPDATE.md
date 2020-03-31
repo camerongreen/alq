@@ -7,13 +7,16 @@
     drush features-revert -y alq_menus_feature
     drush pm-disable -y extlink
 
-2. Set omega to fluid width and set scalable by user to true.
+2. Disable formalize library in theme.
     /admin/appearance/settings/alq
     
 3. Set the social media block to text format "Straight HTML" and paste this into the contents:
 
 ```html
 <ul class="social-media">
+    <li>
+        <a href="/search" class="btn menu-path-search"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
+    </li>
     <li>
         <a href="https://facebook.com/animalliberationqld" target="_blank" class="btn"><i class="fa fa-lg fa-facebook-official" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
     </li>
@@ -29,6 +32,8 @@
 </ul>
 ```
     
-    
+4. Move search block to be in Menu zone.  Show on all pages and content types.
 
+5. Set all blocks in sidebar first to not display.
+    
     

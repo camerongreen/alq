@@ -34,8 +34,7 @@
 }
 
 body.page-in-the-news .view-media-views,
-body.page-media-views .view-media-views,
-.view-news {
+body.page-media-views .view-media-views {
   .views-row {
     margin-bottom: 30px;
     overflow: auto;
@@ -114,15 +113,6 @@ body.page-media-views .view-media-views,
       padding-right: 6px;
     }
   }
-}
-
-/* search form */
-#block-search-form h2 {
-  display: inherit;
-}
-
-#block-search-form input[type=text] {
-  width: 100%;
 }
 
 /* email subscribe form */
