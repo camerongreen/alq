@@ -144,10 +144,16 @@ function alq_text_formats_feature_filter_default_formats() {
   $formats['straight_html'] = array(
     'format' => 'straight_html',
     'name' => 'Straight HTML',
-    'cache' => 1,
+    'cache' => 0,
     'status' => 1,
     'weight' => 0,
-    'filters' => array(),
+    'filters' => array(
+      'filter_tokens' => array(
+        'weight' => 0,
+        'status' => 1,
+        'settings' => array(),
+      ),
+    ),
   );
 
   return $formats;

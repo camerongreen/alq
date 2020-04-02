@@ -1,8 +1,34 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* Global variables */
 /* Global mixins */
+.zone-footer {
+  color: #fff;
+  background-color: #502D82;
+  padding: 2em 1em; }
+  .zone-footer div.region-footer-first {
+    width: 55%; }
+  .zone-footer div.region-footer-second {
+    padding: 0;
+    width: 40%; }
+    .zone-footer div.region-footer-second div {
+      text-align: right; }
+  .zone-footer ul.menu li ul {
+    display: none; }
+  .zone-footer ul.menu li {
+    display: inline;
+    list-style-type: none;
+    padding: 0; }
+  .zone-footer ul.menu li a {
+    color: #fff;
+    text-decoration: none; }
+  .zone-footer ul.menu > li a {
+    border-right: thin solid #fff;
+    padding-right: 10px; }
+  .zone-footer ul.menu > li:last-child a {
+    border: none; }
+
 .block-views-news-block {
-  margin-bottom: 1em; }
+  margin: 1rem 0; }
   @media only screen and (min-width: 700px) {
     .block-views-news-block .view-content {
       display: flex;
@@ -251,7 +277,7 @@ header .zone-branding {
 
 header #section-home-header {
   margin: auto;
-  border-bottom: solid #502c83; }
+  border-bottom: solid #502D82; }
   header #section-home-header img {
     max-width: 100% !important;
     height: auto;
@@ -290,7 +316,7 @@ header #section-home-header {
 
 body.node-type-product input[type="submit"] {
   border: none;
-  background: #502c83;
+  background: #502D82;
   color: #fff;
   border-radius: 0;
   font-weight: normal;
@@ -382,7 +408,7 @@ body.page-catalog #block-system-main div.view-uc-catalog {
         width: 50%; }
       body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) input[type="submit"] {
         border: none;
-        background: #502c83;
+        background: #502D82;
         color: #fff;
         border-radius: 0;
         font-weight: normal; }
@@ -428,7 +454,7 @@ div.view-uc-catalog-terms div.row {
     margin-right: 10px;
     width: 220px; }
   div.view-uc-catalog-terms div.row > div {
-    background-color: #502c83;
+    background-color: #502D82;
     padding: 0; }
     div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
       border-color: #000;
@@ -436,7 +462,7 @@ div.view-uc-catalog-terms div.row {
       border-width: 1px; }
     div.view-uc-catalog-terms div.row > div div.views-field-name {
       text-align: center;
-      border-color: #502c83;
+      border-color: #502D82;
       border-style: solid;
       border-width: 1px;
       height: 100px; }
@@ -534,7 +560,7 @@ body {
     display: none; }
   body .page h1, body .page h2, body .page h3, body .page h4, body .page h5, body .page h6 {
     font-family: "Montserrat", sans-serif;
-    color: #502c83;
+    color: #502D82;
     line-height: 1.2em; }
   body .page small {
     font-size: 80%; }
@@ -555,42 +581,6 @@ body {
   body .page input[type=text],
   body .page input[type=email] {
     border: thin solid #ccc; }
-
-#zone-footer {
-  /* override some bootstrap styles */
-  color: #fff;
-  background-color: #502c83; }
-  #zone-footer * {
-    box-sizing: content-box !important;
-    -moz-box-sizing: content-box !important;
-    -webkit-box-sizing: content-box !important; }
-  #zone-footer #block-menu-menu-footer-menu ul.menu {
-    padding-top: 1em;
-    padding-bottom: 1ex; }
-    #zone-footer #block-menu-menu-footer-menu ul.menu li ul {
-      display: none; }
-    #zone-footer #block-menu-menu-footer-menu ul.menu li {
-      display: inline;
-      list-style-type: none;
-      padding: 0; }
-    #zone-footer #block-menu-menu-footer-menu ul.menu li a {
-      color: #fff;
-      text-decoration: none; }
-    #zone-footer #block-menu-menu-footer-menu ul.menu > li a {
-      border-right: thin solid #fff;
-      padding-right: 10px; }
-    #zone-footer #block-menu-menu-footer-menu ul.menu > li:last-child a {
-      border: none; }
-
-/* Voiceless box */
-#block-block-1 div p {
-  text-align: center; }
-
-body.node-type-media-article .field-name-field-intro,
-body.node-type-article .field-name-field-intro,
-body.node-type-section-home .field-name-field-intro {
-  color: #502c83;
-  font-style: italic; }
 
 body.node-type-page .field-type-image,
 body.node-type-media-article .field-type-image,

@@ -2,10 +2,9 @@
 
 
 .block-views-news-block {
-  margin-bottom: 1em;
+  margin: 1rem 0;
 
   .view-content {
-
     @media only screen and (min-width: $header-toggle-width-small) {
       display: flex;
       justify-content: space-around;
@@ -112,6 +111,7 @@
     a {
       color: white;
       color: #f8931d;
+
       &.btn {
         @include bold-link(#fff);
       }

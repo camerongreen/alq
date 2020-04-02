@@ -1,0 +1,43 @@
+.zone-footer {
+  div.region-footer-first {
+    width: 55%;
+  }
+
+  div.region-footer-second {
+    padding: 0;
+    width: 40%;
+    div {
+      text-align: right;
+    }
+  }
+
+  color: #fff;
+  background-color: $alq-purple;
+  padding: 2em 1em;
+
+  ul.menu {
+    li ul {
+      display: none;
+    }
+
+    li {
+      display: inline;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    & > li a {
+      border-right: thin solid #fff;
+      padding-right: 10px;
+    }
+
+    & > li:last-child a {
+      border: none;
+    }
+  }
+}

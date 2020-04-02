@@ -2,45 +2,11 @@
 @import 'variables';
 @import 'sections/shop-narrow';
 
-.region-sidebar-first {
-  margin-right: 10px;
-  .region-sidebar-first-inner {
-    padding: 4px;
-  }
-
-  .region-sidebar-first-inner section {
-    margin-bottom: 1.5em;
-  }
-}
-
-#donate-link {
-  display: inherit;
-}
-
-#zone-footer {
-  height: 60px;
-}
-
-#zone-content {
-  padding-top: 1.5em;
-}
-
-#block-menu-menu-footer-menu {
-  padding-left: 40px;
-  ul.menu {
-    margin-top: 1ex;
-    margin-bottom: 1ex;
-  }
-}
-
-#section-home-header,
-.view-slideshow {
+#section-home-header {
   border-bottom-width: 4px;
   margin-bottom: 1em;
   margin-top: 0;
-}
 
-#section-home-header {
   width: 700px !important;
   img {
     width: 700px !important;
@@ -53,11 +19,6 @@ input[type=text],
 input[type=email] {
   border-radius: 3px;
   height: 31px;
-}
-
-/* Copyright box */
-#block-block-3 div p {
-  padding-top: 20px; 
 }
 
 #section-home-childtree {
@@ -87,23 +48,4 @@ input[type=email] {
   border-radius: 4px;
   padding: 3px;
   float: right;
-}
-
-/* Voiceless block */
-#block-block-1 {
-  display: inherit;
-}
-
-
-
-/* Facebook widget, trying to make responsive */
-#block-facebook-boxes-fb-like {
-  display: inherit;
-  h2 {
-    margin-bottom: 4px;
-  }
-}
-
-.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
-    width: 100% !important;
 }

@@ -44,5 +44,7 @@
 <p>We rely on your generous donations to fund our vital work. Please <a href="/content/donate">donate now</a>.</p>
 <p><a href="/content/donate" class="btn btn-lg btn-warning">Donate Now</a></p>
 ```
+
+8. Remove P tags from copyright block and change to straight html.
     
     
