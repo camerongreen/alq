@@ -2,36 +2,11 @@
 @import 'variables';
 @import 'sections/shop-narrow';
 
-#section-home-header {
-  border-bottom-width: 4px;
-  margin-bottom: 1em;
-  margin-top: 0;
-
-  width: 700px !important;
-  img {
-    width: 700px !important;
-    height: 120px !important;
-  }
-}
-
 select,
 input[type=text],
 input[type=email] {
   border-radius: 3px;
   height: 31px;
-}
-
-#section-home-childtree {
-  h2 {
-    margin-bottom: 5px;
-    display: inherit;
-  }
-  ul {
-    margin-left: 1em;
-    li a {
-      font-size: 130%;
-    }
-  }
 }
 
 .node-type-media-article article .field-name-field-intro,

@@ -4,12 +4,14 @@
 }
 
 header {
+  background-color: $header-background-color;
   & > * {
     &.zone-header-wrapper {
       width: 100%;
       margin: 0;
 
       .region-header-first {
+        background-color: $body-background-color;
         margin: 0;
 
         div {
@@ -223,11 +225,12 @@ header {
 
 
   #section-home-header {
-    margin: auto;
+    margin: 1ex auto;
+    width: $grid-width;
     @include header-image-border;
 
     img {
-      max-width: 100% !important;
+      width: 100%;
       height: auto;
       display: block;
     }

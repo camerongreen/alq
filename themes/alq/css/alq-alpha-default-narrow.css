@@ -25,17 +25,18 @@ div.view-uc-catalog-terms div.row > div div.views-field-name {
     div.view-uc-catalog-terms div.row > div div.views-field-name span a {
       font-size: 24pt; }
 
-#block-block-8 div.content {
-  margin: 2em 0 2em 0;
-  padding: 2em 200px 2em 2em;
-  background-image: url("/sites/all/themes/alq/images/goodwill-wines-bg.png"); }
-  #block-block-8 div.content h2 {
-    margin-top: 2em; }
-  #block-block-8 div.content div.wines-picture {
-    width: 220px; }
-    #block-block-8 div.content div.wines-picture img {
-      height: 272px;
-      width: 200px; }
+#block-block-8 {
+  margin: 2em 0 2em 0; }
+  #block-block-8 div.content {
+    padding: 2em 200px 2em 2em;
+    background-image: url("/sites/all/themes/custom/alq/images/goodwill-wines-bg.png"); }
+    #block-block-8 div.content h2 {
+      margin-top: 2em; }
+    #block-block-8 div.content div.wines-picture {
+      width: 220px; }
+      #block-block-8 div.content div.wines-picture img {
+        height: 272px;
+        width: 200px; }
 
 body.node-type-product div.content > div.field-name-body {
   margin-left: 42%; }
@@ -47,29 +48,11 @@ body.node-type-product div.field-type-image {
 body.node-type-product div.add-to-cart {
   margin-left: 42%; }
 
-#section-home-header {
-  border-bottom-width: 4px;
-  margin-bottom: 1em;
-  margin-top: 0;
-  width: 700px !important; }
-  #section-home-header img {
-    width: 700px !important;
-    height: 120px !important; }
-
 select,
 input[type=text],
 input[type=email] {
   border-radius: 3px;
   height: 31px; }
-
-#section-home-childtree h2 {
-  margin-bottom: 5px;
-  display: inherit; }
-
-#section-home-childtree ul {
-  margin-left: 1em; }
-  #section-home-childtree ul li a {
-    font-size: 130%; }
 
 .node-type-media-article article .field-name-field-intro,
 .node-type-article article .field-name-field-intro,
