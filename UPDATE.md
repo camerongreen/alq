@@ -32,8 +32,10 @@
 </ul>
 ```
     
-4. Move search block to be in Menu zone.  Show on all pages and content types.
+4. Move search block to be bottom of Menu zone.  Show on all pages and content types.
 
-5. Set all blocks in sidebar first to not display.
+5. Move mail chimp signup block to content zone under news.  Show only on <front> page, but on all content types.
+
+6. Set all blocks in sidebar first to not display.
     
     

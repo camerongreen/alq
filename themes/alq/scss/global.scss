@@ -10,6 +10,7 @@
 body {
   background-color: $body-background-color;
   font-family: $font-family-body;
+  font-size: 15px;
 
   // Bug, remove when admin menu > 3.0-rc6.
   #admin-menu {
@@ -117,19 +118,6 @@ body {
   }
 }
 
-/* email subscribe form */
-#block-block-6 {
-  display: none;
-  margin-bottom: 0;
-}
-
-#mc-embedded-subscribe-form input[type=submit] {
-  background: url("/sites/all/themes/custom/alq/images/subscribe.gif") no-repeat left top;
-  text-indent: -9999px;
-  border: none;
-  width: 96px;
-  height: 43px;
-}
 
 /* Voiceless box */
 #block-block-1 div p {

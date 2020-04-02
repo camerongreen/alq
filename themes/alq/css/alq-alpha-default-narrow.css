@@ -81,15 +81,6 @@ body.node-type-product div.add-to-cart {
     width: 700px !important;
     height: 120px !important; }
 
-/* email subscribe form */
-#mc-embedded-subscribe-form input[type=email] {
-  width: 100%; }
-
-#block-block-6 {
-  display: inherit; }
-  #block-block-6 div {
-    margin-bottom: 1ex; }
-
 select,
 input[type=text],
 input[type=email] {
