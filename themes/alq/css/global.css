@@ -2,6 +2,9 @@
 /* Global variables */
 /* Global mixins */
 /* Contact us form */
+body.page-contact .contact-form label {
+  width: 20%; }
+
 body.page-contact ul {
   list-style: none; }
 

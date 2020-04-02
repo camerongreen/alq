@@ -1,5 +1,12 @@
 
 /* Contact us form */
-body.page-contact ul {
-  list-style: none;
+body.page-contact {
+  .contact-form {
+    label {
+      width: 20%;
+    }
+  }
+  ul {
+    list-style: none;
+  }
 }
