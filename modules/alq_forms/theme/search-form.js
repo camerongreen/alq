@@ -7,7 +7,12 @@
     let searchBlock = $('#block-search-form');
 
     $(searchLink).click(() => {
-      $(searchBlock).slideToggle();
+      $(searchBlock).slideToggle("slow", function() {
+        if ($(this).is(':visible'))
+        {
+          $(searchBlock).find('input[type="text"]').focus();
+        }
+      });
       return false;
     });
 
