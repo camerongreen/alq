@@ -17,6 +17,7 @@
         .views-field-title {
           margin: 1em 0;
           text-align: center;
+
           a {
             @include bold-link();
           }
@@ -60,8 +61,8 @@
 .block-6 {
   height: 220px;
   display: flex;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
-  background-blend-mode: multiply,multiply;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+  background-blend-mode: multiply, multiply;
 
   align-items: center;
   justify-content: center;
@@ -78,6 +79,7 @@
     form {
       div {
         margin: 1rem;
+        font-size: 110%;
 
         input {
           height: 35px;
@@ -91,6 +93,27 @@
           @include bold-link();
           margin-left: 1rem;
         }
+      }
+    }
+  }
+}
+
+// Donate now block.
+/* Donate now block */
+#block-block-5 {
+  padding: 5em;
+  text-align: center;
+
+  p {
+    color: #f8931d;
+    font-size: 150%;
+    font-weight: bold;
+
+    a {
+      color: white;
+      color: #f8931d;
+      &.btn {
+        @include bold-link(#fff);
       }
     }
   }

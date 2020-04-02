@@ -118,15 +118,6 @@ input[type=email] {
 #block-block-1 {
   display: inherit; }
 
-/* Donate now block */
-#block-block-5 {
-  display: inherit;
-  color: #f8931d;
-  font-size: 200%;
-  font-weight: bold; }
-  #block-block-5 a {
-    color: #f8931d; }
-
 /* Facebook widget, trying to make responsive */
 #block-facebook-boxes-fb-like {
   display: inherit; }

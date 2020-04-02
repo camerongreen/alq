@@ -36,7 +36,12 @@
         grid-column: image;
         grid-row: 1 / span 3; }
         .block-views-news-block .view-content .views-row .views-field-field-image img {
-          margin-right: 10px; }
+          margin-right: 10px; } }
+      @media only screen and (max-width: 700px) and (max-width: 700px) {
+        .block-views-news-block .view-content .views-row .views-field-field-image img {
+          width: 200px;
+          height: 100%; } }
+  @media only screen and (max-width: 700px) {
       .block-views-news-block .view-content .views-row .views-field-title {
         grid-column: content;
         grid-row: title; }
@@ -69,7 +74,7 @@
   height: 220px;
   display: flex;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898;
-  background-blend-mode: multiply,multiply;
+  background-blend-mode: multiply, multiply;
   align-items: center;
   justify-content: center; }
   .block-6 .block-inner {
@@ -79,7 +84,8 @@
       color: #fff;
       margin-top: 1rem; }
     .block-6 .block-inner form div {
-      margin: 1rem; }
+      margin: 1rem;
+      font-size: 110%; }
       .block-6 .block-inner form div input {
         height: 35px;
         border: none;
@@ -93,6 +99,24 @@
         font-size: medium;
         font-weight: 600;
         margin-left: 1rem; }
+
+/* Donate now block */
+#block-block-5 {
+  padding: 5em;
+  text-align: center; }
+  #block-block-5 p {
+    color: #f8931d;
+    font-size: 150%;
+    font-weight: bold; }
+    #block-block-5 p a {
+      color: white;
+      color: #f8931d; }
+      #block-block-5 p a.btn {
+        text-decoration: none;
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+        font-size: medium;
+        font-weight: 600; }
 
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 header > *.zone-header-wrapper {
@@ -244,6 +268,10 @@ header #section-home-header {
     grid-row: 1 / span 3; }
     .alq-list .views-row .views-field-field-image img {
       margin-right: 10px; }
+      @media only screen and (max-width: 700px) {
+        .alq-list .views-row .views-field-field-image img {
+          width: 200px;
+          height: 100%; } }
   .alq-list .views-row .views-field-title {
     grid-column: content;
     grid-row: title; }
@@ -527,13 +555,6 @@ body {
   body .page input[type=text],
   body .page input[type=email] {
     border: thin solid #ccc; }
-
-/* Blocks we won't show on mobile version */
-#donate-link,
-#block-block-5,
-#block-block-1,
-#block-facebook-boxes-fb-like {
-  display: none; }
 
 #zone-footer {
   /* override some bootstrap styles */

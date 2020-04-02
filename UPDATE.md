@@ -37,5 +37,12 @@
 5. Move mail chimp signup block to content zone under news.  Show only on <front> page, but on all content types.
 
 6. Set all blocks in sidebar first to not display.
+
+7. Change donate block text format to Straight HTML and contents to this:
+
+```html
+<p>We rely on your generous donations to fund our vital work. Please <a href="/content/donate">donate now</a>.</p>
+<p><a href="/content/donate" class="btn btn-lg btn-warning">Donate Now</a></p>
+```
     
     

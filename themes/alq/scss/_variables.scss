@@ -12,9 +12,9 @@ $header-toggle-width: 1000px;
 $header-toggle-width-small: 700px;
 
 /* Global mixins */
-@mixin bold-link {
+@mixin bold-link($color: $bold-link-color) {
   text-decoration: none;
-  color: $bold-link-color;
+  color: $color;
   font-family: $font-family-header;
   font-size: medium;
   font-weight: 600;
@@ -34,6 +34,10 @@ $header-toggle-width-small: 700px;
 
       img {
         margin-right: 10px;
+        @media only screen and (max-width: $header-toggle-width-small) {
+          width: 200px;
+          height: 100%;
+        }
       }
     }
 
