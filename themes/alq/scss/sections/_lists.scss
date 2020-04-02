@@ -1,39 +1,5 @@
 // News, media etc.
 
 .alq-list {
-  .views-row {
-    margin: 2em 0;
-    display: grid;
-    grid-template-columns: [image] auto [content] 1fr;
-    grid-template-rows: [title] auto [body] auto [more] auto;
-    grid-row-gap: 10px;
-
-    .views-field-field-image {
-      grid-column: image;
-      grid-row: 1 / span 3;
-      img {
-        margin-right: 10px;
-      }
-    }
-
-    .views-field-title {
-      grid-column: content;
-      grid-row: title;
-
-      a {
-        @include bold-link();
-      }
-    }
-
-    .views-field-body {
-      grid-column: content;
-      grid-row: body;
-    }
-
-    .views-field-view-node {
-      grid-column: content;
-      grid-row: more;
-    }
-
-  }
+  @include article-list();
 }

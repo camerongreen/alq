@@ -1,27 +1,56 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* Global variables */
+/* Global mixins */
 .block-views-news-block {
   margin-bottom: 1em; }
-  .block-views-news-block .view-content {
-    display: flex;
-    justify-content: space-around; }
+  @media only screen and (min-width: 700px) {
+    .block-views-news-block .view-content {
+      display: flex;
+      justify-content: space-around; }
+      .block-views-news-block .view-content .views-row {
+        margin: 1em;
+        max-width: 300px; }
+        .block-views-news-block .view-content .views-row .views-field-title {
+          text-align: center; }
+          .block-views-news-block .view-content .views-row .views-field-title a {
+            text-decoration: none;
+            color: #333;
+            font-family: "Montserrat", sans-serif;
+            font-size: medium;
+            font-weight: 600; }
+        .block-views-news-block .view-content .views-row .views-field-title,
+        .block-views-news-block .view-content .views-row .views-field-view-node {
+          margin: 1ex 0; }
+        .block-views-news-block .view-content .views-row .views-field-field-image img {
+          width: 100%;
+          height: 100%; } }
+  @media only screen and (max-width: 700px) {
     .block-views-news-block .view-content .views-row {
-      margin: 1em;
-      max-width: 300px; }
+      margin: 2em 0;
+      display: grid;
+      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-rows: [title] auto [body] auto [more] auto;
+      grid-row-gap: 15px; }
+      .block-views-news-block .view-content .views-row .views-field-field-image {
+        grid-column: image;
+        grid-row: 1 / span 3; }
+        .block-views-news-block .view-content .views-row .views-field-field-image img {
+          margin-right: 10px; }
       .block-views-news-block .view-content .views-row .views-field-title {
-        text-align: center; }
+        grid-column: content;
+        grid-row: title; }
         .block-views-news-block .view-content .views-row .views-field-title a {
           text-decoration: none;
           color: #333;
           font-family: "Montserrat", sans-serif;
           font-size: medium;
           font-weight: 600; }
-      .block-views-news-block .view-content .views-row .views-field-title,
+      .block-views-news-block .view-content .views-row .views-field-body {
+        grid-column: content;
+        grid-row: body; }
       .block-views-news-block .view-content .views-row .views-field-view-node {
-        margin: 1ex 0; }
-      .block-views-news-block .view-content .views-row .views-field-field-image img {
-        width: 100%;
-        height: 100%; }
+        grid-column: content;
+        grid-row: more; } }
   .block-views-news-block .more-link a {
     font-size: 120%;
     text-decoration: none;
@@ -178,7 +207,7 @@ header #section-home-header {
   display: grid;
   grid-template-columns: [image] auto [content] 1fr;
   grid-template-rows: [title] auto [body] auto [more] auto;
-  grid-row-gap: 10px; }
+  grid-row-gap: 15px; }
   .alq-list .views-row .views-field-field-image {
     grid-column: image;
     grid-row: 1 / span 3; }

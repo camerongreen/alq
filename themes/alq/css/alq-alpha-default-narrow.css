@@ -1,5 +1,6 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* Global variables */
+/* Global mixins */
 div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
   width: 460px; }
 

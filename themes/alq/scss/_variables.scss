@@ -1,4 +1,4 @@
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* Global variables */
 $alq-purple: #502c83;
 $header-background-color: #fff;
 $body-background-color: #fff;
@@ -7,11 +7,54 @@ $tags-color: #666;
 $bold-link-color: #333;
 $font-family-header: 'Montserrat', sans-serif;
 $font-family-body: 'Source Sans Pro', sans-serif;
+$social-media-icons-color: #888;
+$header-toggle-width: 1000px;
+$header-toggle-width-small: 700px;
 
+/* Global mixins */
 @mixin bold-link {
   text-decoration: none;
   color: $bold-link-color;
   font-family: $font-family-header;
   font-size: medium;
   font-weight: 600;
+}
+
+@mixin article-list {
+  .views-row {
+    margin: 2em 0;
+    display: grid;
+    grid-template-columns: [image] auto [content] 1fr;
+    grid-template-rows: [title] auto [body] auto [more] auto;
+    grid-row-gap: 15px;
+
+    .views-field-field-image {
+      grid-column: image;
+      grid-row: 1 / span 3;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+
+    .views-field-title {
+      grid-column: content;
+      grid-row: title;
+
+      a {
+        @include bold-link();
+      }
+    }
+
+    .views-field-body {
+      grid-column: content;
+      grid-row: body;
+    }
+
+    .views-field-view-node {
+      grid-column: content;
+      grid-row: more;
+    }
+
+  }
 }
