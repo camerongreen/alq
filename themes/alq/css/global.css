@@ -43,7 +43,7 @@
             text-decoration: none;
             color: #333;
             font-family: "Montserrat", sans-serif;
-            font-size: medium;
+            font-size: 105%;
             font-weight: 600; }
         .block-views-news-block .view-content .views-row .views-field-view-node {
           margin-top: 1em;
@@ -75,7 +75,7 @@
           text-decoration: none;
           color: #333;
           font-family: "Montserrat", sans-serif;
-          font-size: medium;
+          font-size: 105%;
           font-weight: 600; }
       .block-views-news-block .view-content .views-row .views-field-body {
         grid-column: content;
@@ -88,7 +88,7 @@
     text-decoration: none;
     color: #333;
     font-family: "Montserrat", sans-serif;
-    font-size: medium;
+    font-size: 105%;
     font-weight: 600; }
     .block-views-news-block .more-link a:hover {
       background-color: #eee; }
@@ -125,7 +125,7 @@
         text-decoration: none;
         color: #333;
         font-family: "Montserrat", sans-serif;
-        font-size: medium;
+        font-size: 105%;
         font-weight: 600;
         margin-left: 1rem; }
 
@@ -144,7 +144,7 @@
         text-decoration: none;
         color: #fff;
         font-family: "Montserrat", sans-serif;
-        font-size: medium;
+        font-size: 105%;
         font-weight: 600; }
 
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
@@ -220,11 +220,14 @@ header {
             header .zone-branding .region-branding-inner #block-block-2 ul.social-media li .menu-path-search {
               display: none; } }
           header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i {
-            font-size: 30px;
+            font-size: 220%;
             color: #888; }
           header .zone-branding .region-branding-inner #block-block-2 ul.social-media li:last-child a {
             margin-left: 12px;
-            font-size: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-family: "Montserrat", sans-serif;
+            font-size: 105%;
             font-weight: 600; }
       header .zone-branding .region-branding-inner #block-nice-menus-1 {
         grid-column: menus; }
@@ -240,7 +243,7 @@ header {
           header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
             background-color: unset;
             color: #888;
-            font-size: 30px;
+            font-size: 200%;
             font-weight: 600;
             box-shadow: none;
             text-align: right; }
@@ -255,7 +258,7 @@ header {
               text-decoration: none;
               color: #333;
               font-family: "Montserrat", sans-serif;
-              font-size: medium;
+              font-size: 105%;
               font-weight: 600; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li a:hover {
               background: #dedede; }
@@ -266,7 +269,7 @@ header {
               border: 0;
               background: none; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul {
-              margin-top: 30px;
+              margin-top: 25px;
               background: #fff; }
               header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li {
                 background: #fff; }
@@ -309,7 +312,7 @@ header {
       text-decoration: none;
       color: #333;
       font-family: "Montserrat", sans-serif;
-      font-size: medium;
+      font-size: 105%;
       font-weight: 600; }
   .alq-list .views-row .views-field-body {
     grid-column: content;
@@ -430,7 +433,7 @@ body.page-catalog #block-system-main div.item-list {
     border: none;
     border-radius: 0; }
     body.page-catalog #block-system-main div.item-list ul.pager li {
-      font-size: 11pt;
+      font-size: 80%;
       background: none;
       border: none;
       border-radius: 0;
@@ -471,7 +474,7 @@ div.view-uc-catalog-terms div.row {
       border-width: 1px;
       height: 100px; }
       div.view-uc-catalog-terms div.row > div div.views-field-name span a {
-        font-size: 30px;
+        font-size: 170%;
         text-shadow: 0px 2px #000;
         font-weight: normal;
         text-decoration: none;
@@ -533,7 +536,6 @@ div.view-uc-catalog-terms a {
       color: #fff;
       background-color: rgba(66, 66, 66, 0.6);
       font-weight: bold;
-      font-size: large;
       padding: 1ex; }
       .views-slideshow-cycle-processed .views-slideshow-controls-bottom span:hover {
         text-decoration: none; }
@@ -556,7 +558,7 @@ div.view-uc-catalog-terms a {
 body {
   background-color: #fff;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 15px; }
+  font-size: 18px; }
   body #admin-menu {
     height: auto; }
   body .btn {

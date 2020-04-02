@@ -118,15 +118,14 @@ header {
             }
 
             i {
-              font-size: 30px;
+              font-size: 220%;
               color: $social-media-icons-color;
             }
 
             &:last-child {
               a {
                 margin-left: 12px;
-                font-size: 20px;
-                font-weight: 600;
+                @include bold-link(#fff);
               }
             }
           }
@@ -149,7 +148,7 @@ header {
           .toggler {
             background-color: unset;
             color: $social-media-icons-color;
-            font-size: 30px;
+            font-size: 200%;
             font-weight: 600;
             box-shadow: none;
             text-align: right;
@@ -192,7 +191,7 @@ header {
             // Submenus.
             li.menuparent {
               ul {
-                margin-top: 30px;
+                margin-top: 25px;
                 background: #fff;
 
                 li {
