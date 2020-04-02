@@ -1,0 +1,50 @@
+// News!
+
+
+.block-views-news-block {
+  margin-bottom: 1em;
+
+  .view-content {
+    display: flex;
+    justify-content: space-around;
+
+    .views-row {
+      margin: 1em;
+      max-width: 300px;
+
+      .views-field-title {
+        text-align: center;
+
+        a {
+          @include bold-link();
+        }
+      }
+
+      .views-field-title,
+      .views-field-view-node {
+        margin: 1ex 0;
+      }
+
+      .views-field-field-image {
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .more-link {
+    a {
+      font-size: 120%;
+      @include bold-link();
+      &:hover {
+        background-color: #eee;
+      }
+      &:after {
+        content: " \25B6"
+      }
+    }
+  }
+
+}

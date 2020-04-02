@@ -1,9 +1,11 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 @import "variables";
+@import "sections/front";
 @import "sections/header";
-@import "sections/slideshow";
+@import "sections/lists";
 @import "sections/shop";
+@import "sections/slideshow";
 
 body {
   background-color: $body-background-color;
@@ -115,61 +117,6 @@ body {
   }
 }
 
-#block-views-news-block {
-  margin-bottom: 1em;
-}
-
-body.page-in-the-news .view-media-views,
-body.page-media-views .view-media-views {
-  .views-row {
-    clear: both;
-
-    .views-field-title a {
-      font-weight: bold;
-      text-decoration: none;
-      color: $alq-purple;
-      line-height: 1.3em;
-      letter-spacing: -0.05em
-    }
-
-    .views-field-field-image {
-      float: left;
-      width: 220px;
-      height: 100%;
-
-      img {
-        @include bootstrap-img-polaroid;
-      }
-    }
-
-    .field-name-field-tags,
-    .views-label-field-tags {
-      float: left;
-      margin-right: 1ex;
-      font-weight: bold;
-    }
-
-    .views-more-link {
-      margin-top: 1ex;
-    }
-  }
-
-  div.more-link {
-    text-align: center;
-
-    a {
-      font-weight: bold;
-      font-size: 150%;
-      text-decoration: none;
-      color: $alq-purple;
-    }
-
-    a:after {
-      content: "\25B6"
-    }
-  }
-}
-
 /* email subscribe form */
 #block-block-6 {
   display: none;
@@ -200,7 +147,6 @@ body.node-type-page .field-type-image,
 body.node-type-media-article .field-type-image,
 body.node-type-article .field-type-image {
   text-align: center;
-  @include bootstrap-img-polaroid;
 }
 
 body.node-type-media-article div.article-date,

@@ -68,26 +68,6 @@ body.node-type-product div.add-to-cart {
     margin-top: 1ex;
     margin-bottom: 1ex; }
 
-body.page-in-the-news .view-media-views .views-row,
-body.page-media-views .view-media-views .views-row {
-  margin-bottom: 30px;
-  overflow: auto; }
-  body.page-in-the-news .view-media-views .views-row .views-field-title a,
-  body.page-media-views .view-media-views .views-row .views-field-title a {
-    font-size: 17px; }
-  body.page-in-the-news .view-media-views .views-row .views-field-body p:last-child,
-  body.page-media-views .view-media-views .views-row .views-field-body p:last-child {
-    margin-bottom: 1ex; }
-  body.page-in-the-news .view-media-views .views-row .views-field-field-image,
-  body.page-media-views .view-media-views .views-row .views-field-field-image {
-    width: 220px; }
-    body.page-in-the-news .view-media-views .views-row .views-field-field-image img,
-    body.page-media-views .view-media-views .views-row .views-field-field-image img {
-      max-width: 200px; }
-
-.region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/left-bg.jpg"); }
-
 #section-home-header,
 .view-slideshow {
   border-bottom-width: 4px;

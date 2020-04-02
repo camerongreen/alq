@@ -33,30 +33,6 @@
   }
 }
 
-body.page-in-the-news .view-media-views,
-body.page-media-views .view-media-views {
-  .views-row {
-    margin-bottom: 30px;
-    overflow: auto;
-    .views-field-title a {
-      font-size: 17px;
-    }
-    .views-field-body p:last-child {
-      margin-bottom: 1ex;
-    }
-    .views-field-field-image {
-      width: 220px;
-      img {
-        max-width: 200px;
-      }
-    }
-  }
-}
-
-.region-sidebar-first-inner {
-  background: url("/sites/all/themes/alq/images/left-bg.jpg");
-}
-
 #section-home-header,
 .view-slideshow {
   border-bottom-width: 4px;

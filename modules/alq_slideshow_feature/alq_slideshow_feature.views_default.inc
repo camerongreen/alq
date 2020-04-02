@@ -97,6 +97,7 @@ function alq_slideshow_feature_views_default_views() {
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['view_node']['alter']['text'] = '<a href="[path]" title="Read More"><img src="/sites/all/themes/alq/images/read-more.gif" alt="Read More"></a>';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;

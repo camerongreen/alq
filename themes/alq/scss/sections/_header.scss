@@ -4,7 +4,6 @@
 }
 
 $social-media-icons-color: #888;
-$menu-links-color: #333;
 $header-toggle-width: 1000px;
 $header-toggle-width-small: 700px;
 
@@ -170,11 +169,7 @@ header {
             & > li {
               a {
                 padding: 15px;
-                text-decoration: none;
-                color: $menu-links-color;
-                font-family: $font-family-header;
-                font-size: medium;
-                font-weight: 600;
+                @include bold-link();
               }
 
             }

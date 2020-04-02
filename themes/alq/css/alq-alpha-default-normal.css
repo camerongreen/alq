@@ -1,10 +1,1 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-#block-views-media-views-block,
-#block-views-media-views-block-1 {
-  width: 40%;
-  float: left;
-  overflow: auto; }
-  #block-views-media-views-block .item-list li,
-  #block-views-media-views-block-1 .item-list li {
-    list-style: initial; }
