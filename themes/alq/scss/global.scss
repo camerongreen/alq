@@ -1,10 +1,11 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 @import "variables";
+@import "sections/contact";
 @import "sections/footer";
 @import "sections/front";
 @import "sections/header";
-@import "sections/lists";
+@import "sections/news-media";
 @import "sections/shop";
 @import "sections/slideshow";
 
@@ -34,7 +35,6 @@ body {
     h1, h2, h3, h4, h5, h6 {
       font-family: $font-family-header;
       color: $alq-purple;
-      line-height: 1.2em;
     }
 
     small {
@@ -101,15 +101,6 @@ article div.field-name-field-tags {
   margin-bottom: 1ex;
 }
 
-/* Contact us form */
-body.page-contact ul {
-  list-style: none;
-}
-
-#block-views-media-views-block,
-#block-views-media-views-block-1 {
-  margin: 1em;
-}
 
 #block-addtoany-addtoany-button {
   margin-bottom: 1em;

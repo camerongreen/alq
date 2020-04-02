@@ -150,6 +150,27 @@ function alq_menus_feature_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
+  // Exported menu link: menu-header-menu_alq-in-the-news:in-the-news.
+  $menu_links['menu-header-menu_alq-in-the-news:in-the-news'] = array(
+    'menu_name' => 'menu-header-menu',
+    'link_path' => 'in-the-news',
+    'router_path' => 'in-the-news',
+    'link_title' => 'ALQ in the news',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu_alq-in-the-news:in-the-news',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu_media:node/196',
+  );
   // Exported menu link: menu-header-menu_animal-experiments:node/460.
   $menu_links['menu-header-menu_animal-experiments:node/460'] = array(
     'menu_name' => 'menu-header-menu',
@@ -556,27 +577,6 @@ function alq_menus_feature_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-header-menu_in-the-news:in-the-news.
-  $menu_links['menu-header-menu_in-the-news:in-the-news'] = array(
-    'menu_name' => 'menu-header-menu',
-    'link_path' => 'in-the-news',
-    'router_path' => 'in-the-news',
-    'link_title' => 'In the news',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-header-menu_in-the-news:in-the-news',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'parent_identifier' => 'menu-header-menu_media:node/196',
-  );
   // Exported menu link: menu-header-menu_join-our-mailing-list:node/413.
   $menu_links['menu-header-menu_join-our-mailing-list:node/413'] = array(
     'menu_name' => 'menu-header-menu',
@@ -839,6 +839,7 @@ function alq_menus_feature_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('ALQ in the news');
   t('About Us');
   t('About Us main');
   t('Animal Experiments');
@@ -863,7 +864,6 @@ function alq_menus_feature_menu_default_menu_links() {
   t('Get Involved main');
   t('Greyhound Racing');
   t('Home');
-  t('In the news');
   t('Join our Mailing List');
   t('Media');
   t('Media Releases');
