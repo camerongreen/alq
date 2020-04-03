@@ -2,7 +2,7 @@
 
 /* Email subsctiption form. */
 .block-6 {
-  height: 220px;
+  padding: 2em;
   display: flex;
   background-blend-mode: multiply, multiply;
   background-image: url('/sites/all/themes/custom/alq/images/email-signup-bg.jpg');
@@ -13,7 +13,7 @@
   justify-content: center;
 
   .block-inner {
-    background-color: rgba(50, 50, 50, 0.95);
+    background-color: $alq-purple;
     h2 {
       color: #fff;
       margin-top: 1rem;
@@ -28,16 +28,7 @@
         font-size: 110%;
 
         input {
-          height: 35px;
-          border: none;
-          border-radius: 0;
-          padding: 7px;
-        }
-
-        input[type=submit] {
-          background-color: #fff;
-          @include bold-link();
-          margin-left: 1rem;
+          margin: .5rem 0;
         }
       }
     }
