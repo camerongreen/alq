@@ -1,5 +1,6 @@
 .views-slideshow-cycle-processed {
   position: relative;
+  @include header-image-border();
 
   .views-slideshow-controls-bottom {
     z-index: 10;

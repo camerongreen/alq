@@ -60,7 +60,7 @@ body.page-contact ul {
   height: 220px;
   display: flex;
   background-blend-mode: multiply, multiply;
-  background-image: url("/sites/all/themes/custom/alq/images/stop-animal-cruelty-protest.jpg");
+  background-image: url("/sites/all/themes/custom/alq/images/email-signup-bg.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   align-items: center;
@@ -299,7 +299,7 @@ header {
         margin: 1em;
         max-width: 300px; }
         .block-views-news-block .view-content .views-row .views-field-title {
-          margin: 1em 0;
+          margin: 1em 1ex 1ex 1ex;
           text-align: center; }
           .block-views-news-block .view-content .views-row .views-field-title a {
             text-decoration: none;
@@ -307,8 +307,10 @@ header {
             font-family: "Montserrat", sans-serif;
             font-size: 105%;
             font-weight: 600; }
+        .block-views-news-block .view-content .views-row .views-field-body {
+          margin: 0 1ex; }
         .block-views-news-block .view-content .views-row .views-field-view-node {
-          margin-top: 1em;
+          margin: 1em 1ex 0 1ex;
           text-align: center; }
         .block-views-news-block .view-content .views-row .views-field-field-image img {
           width: 100%;
@@ -562,7 +564,8 @@ div.view-uc-catalog-terms a {
   margin-bottom: 1em; }
 
 .views-slideshow-cycle-processed {
-  position: relative; }
+  position: relative;
+  border-bottom: solid #502D82; }
   .views-slideshow-cycle-processed .views-slideshow-controls-bottom {
     z-index: 10;
     position: absolute;

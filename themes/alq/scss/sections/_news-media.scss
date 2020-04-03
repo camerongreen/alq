@@ -22,7 +22,7 @@
         max-width: 300px;
 
         .views-field-title {
-          margin: 1em 0;
+          margin: 1em 1ex 1ex 1ex;
           text-align: center;
 
           a {
@@ -30,8 +30,12 @@
           }
         }
 
+        .views-field-body {
+          margin: 0 1ex;
+        }
+
         .views-field-view-node {
-          margin-top: 1em;
+          margin: 1em 1ex 0 1ex;
           text-align: center;
         }
 
