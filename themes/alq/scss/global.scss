@@ -1,6 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 @import "variables";
+@import "sections/articles-pages";
 @import "sections/contact";
 @import "sections/footer";
 @import "sections/front";
@@ -69,37 +70,6 @@ body {
   }
 }
 
-
-body.node-type-page .field-type-image,
-body.node-type-media-article .field-type-image,
-body.node-type-article .field-type-image {
-  text-align: center;
-}
-
-body.node-type-media-article div.article-date,
-body.node-type-article div.article-date {
-  font-weight: bold;
-  padding-bottom: 1em;
-}
-
-article div.field-name-field-tags {
-  font-weight: bold;
-  color: $tags-color;
-
-  div.field-items div {
-    margin-right: 1ex;
-
-    &:after {
-      content: ",";
-    }
-  }
-
-  div.field-items div:last-child:after {
-    content: "";
-  }
-
-  margin-bottom: 1ex;
-}
 
 
 #block-addtoany-addtoany-button {

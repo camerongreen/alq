@@ -1,6 +1,27 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 /* Global variables */
 /* Global mixins */
+body.node-type-page div.field-name-field-tags,
+body.node-type-media-article div.field-name-field-tags,
+body.node-type-article div.field-name-field-tags {
+  font-weight: bold;
+  color: #666;
+  margin: 1em 0;
+  margin-bottom: 1ex; }
+  body.node-type-page div.field-name-field-tags div.field-items div,
+  body.node-type-media-article div.field-name-field-tags div.field-items div,
+  body.node-type-article div.field-name-field-tags div.field-items div {
+    margin-right: 1ex;
+    display: inline-block; }
+    body.node-type-page div.field-name-field-tags div.field-items div:after,
+    body.node-type-media-article div.field-name-field-tags div.field-items div:after,
+    body.node-type-article div.field-name-field-tags div.field-items div:after {
+      content: ","; }
+  body.node-type-page div.field-name-field-tags div.field-items div:last-child:after,
+  body.node-type-media-article div.field-name-field-tags div.field-items div:last-child:after,
+  body.node-type-article div.field-name-field-tags div.field-items div:last-child:after {
+    content: ""; }
+
 /* Contact us form */
 body.page-contact .contact-form label {
   width: 20%; }
@@ -95,8 +116,6 @@ header {
     header > *.zone-header-wrapper .region-header-first {
       background-color: #fff;
       margin: 0; }
-      header > *.zone-header-wrapper .region-header-first div {
-        width: 100%; }
   header #block-search-form {
     display: none;
     margin-bottom: 1rem; }
@@ -120,7 +139,7 @@ header {
       grid-gap: 10px; }
       @media only screen and (min-width: 1000px) {
         header .zone-branding .region-branding-inner {
-          grid-template-columns: [logo] 220px 20px [menus] auto;
+          grid-template-columns: [logo] 200px 20px [menus] auto;
           grid-template-rows: [social] 50% [navigation] 50%; } }
       @media only screen and (max-width: 1000px) {
         header .zone-branding .region-branding-inner {
@@ -208,7 +227,7 @@ header {
               border: 0;
               background: none; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul {
-              margin-top: 25px;
+              margin-top: 20px;
               background: #fff; }
               header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li {
                 background: #fff; }
@@ -220,14 +239,20 @@ header {
                 header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li.menuparent ul li a {
                   padding: 10px 15px;
                   text-align: left; }
+  header .block-node-image-block,
   header #section-home-header {
     margin: 1ex auto;
-    width: 960px;
-    border-bottom: solid #502D82; }
+    width: 960px; }
+    @media only screen and (max-width: 960px) {
+      header .block-node-image-block,
+      header #section-home-header {
+        width: 100%; } }
+    header .block-node-image-block img,
     header #section-home-header img {
       width: 100%;
       height: auto;
-      display: block; }
+      display: block;
+      border-bottom: solid #502D82; }
 
 .alq-list .views-row {
   margin: 2em 0;
@@ -541,7 +566,8 @@ div.view-uc-catalog-terms a {
   .views-slideshow-cycle-processed .views-slideshow-controls-bottom {
     z-index: 10;
     position: absolute;
-    bottom: 5%; }
+    bottom: 5%;
+    width: 100%; }
     .views-slideshow-cycle-processed .views-slideshow-controls-bottom span {
       margin: 1em;
       overflow: hidden;
@@ -599,27 +625,6 @@ body {
   body .page input[type=text],
   body .page input[type=email] {
     border: thin solid #ccc; }
-
-body.node-type-page .field-type-image,
-body.node-type-media-article .field-type-image,
-body.node-type-article .field-type-image {
-  text-align: center; }
-
-body.node-type-media-article div.article-date,
-body.node-type-article div.article-date {
-  font-weight: bold;
-  padding-bottom: 1em; }
-
-article div.field-name-field-tags {
-  font-weight: bold;
-  color: #666;
-  margin-bottom: 1ex; }
-  article div.field-name-field-tags div.field-items div {
-    margin-right: 1ex; }
-    article div.field-name-field-tags div.field-items div:after {
-      content: ","; }
-  article div.field-name-field-tags div.field-items div:last-child:after {
-    content: ""; }
 
 #block-addtoany-addtoany-button {
   margin-bottom: 1em; }

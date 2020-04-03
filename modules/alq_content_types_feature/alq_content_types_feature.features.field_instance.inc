@@ -23,7 +23,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -66,7 +66,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_table',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -119,19 +119,9 @@ function alq_content_types_feature_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'colorbox',
-        'settings' => array(
-          'colorbox_caption' => 'auto',
-          'colorbox_caption_custom' => '',
-          'colorbox_gallery' => 'post',
-          'colorbox_gallery_custom' => '',
-          'colorbox_image_style' => '',
-          'colorbox_multivalue_index' => NULL,
-          'colorbox_node_style' => 'article_style',
-          'colorbox_node_style_first' => '',
-        ),
-        'type' => 'colorbox',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -192,46 +182,6 @@ function alq_content_types_feature_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_intro'.
-  $field_instances['node-article-field_intro'] = array(
-    'bundle' => 'article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This text will appear in purple at the top of the article',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_intro',
-    'label' => 'Intro',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'node-article-field_slideshow'.
   $field_instances['node-article-field_slideshow'] = array(
     'bundle' => 'article',
@@ -247,7 +197,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -284,7 +234,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -353,7 +303,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -377,48 +327,6 @@ function alq_content_types_feature_field_default_field_instances() {
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-article-field_thumbnail_only'.
-  $field_instances['node-article-field_thumbnail_only'] = array(
-    'bundle' => 'article',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'If selected, image will not be displayed on article, rather only as thumbnail',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_thumbnail_only',
-    'label' => 'Thumbnail only',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 5,
     ),
   );
 
@@ -853,7 +761,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -896,7 +804,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -949,19 +857,9 @@ function alq_content_types_feature_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'colorbox',
-        'settings' => array(
-          'colorbox_caption' => 'auto',
-          'colorbox_caption_custom' => '',
-          'colorbox_gallery' => 'post',
-          'colorbox_gallery_custom' => '',
-          'colorbox_image_style' => '',
-          'colorbox_multivalue_index' => NULL,
-          'colorbox_node_style' => 'article_style',
-          'colorbox_node_style_first' => '',
-        ),
-        'type' => 'colorbox',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1033,7 +931,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1070,7 +968,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1139,7 +1037,7 @@ function alq_content_types_feature_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1319,7 +1217,6 @@ function alq_content_types_feature_field_default_field_instances() {
   t('Enter a comma-separated list of words to describe your content.');
   t('Files');
   t('Have this appear in the slidehow.');
-  t('If selected, image will not be displayed on article, rather only as thumbnail');
   t('Image');
   t('Intro');
   t('Larger text which appears at top of section home in purple');
@@ -1329,7 +1226,6 @@ function alq_content_types_feature_field_default_field_instances() {
   t('These files will appear as a list at the bottom of the article to download');
   t('This image will be used on the front page slideshow');
   t('This text will appear in purple at the top of the article');
-  t('Thumbnail only');
   t('Upload an image to go with this article.');
   t('What type of article is this?');
 

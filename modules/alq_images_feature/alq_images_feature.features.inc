@@ -6,10 +6,32 @@
  */
 
 /**
+ * Implements hook_views_api().
+ */
+function alq_images_feature_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_image_default_styles().
  */
 function alq_images_feature_image_default_styles() {
   $styles = array();
+
+  // Exported image style: alq_page_header.
+  $styles['alq_page_header'] = array(
+    'label' => 'ALQ Page Header',
+    'effects' => array(
+      17 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 940,
+          'height' => 340,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
 
   // Exported image style: alq_section_header.
   $styles['alq_section_header'] = array(
@@ -67,6 +89,21 @@ function alq_images_feature_image_default_styles() {
         'data' => array(
           'width' => 940,
           'height' => 340,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: vertical_teaser.
+  $styles['vertical_teaser'] = array(
+    'label' => 'Vertical teaser',
+    'effects' => array(
+      16 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 300,
+          'height' => 200,
         ),
         'weight' => 1,
       ),

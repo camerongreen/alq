@@ -46,5 +46,7 @@
 ```
 
 8. Remove P tags from copyright block and change to straight html.
+
+9. Move Node image header block to under section home block.
     
     

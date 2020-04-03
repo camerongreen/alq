@@ -13,10 +13,6 @@ header {
       .region-header-first {
         background-color: $body-background-color;
         margin: 0;
-
-        div {
-          width: 100%;
-        }
       }
     }
   }
@@ -59,7 +55,7 @@ header {
       display: grid;
 
       @media only screen and (min-width: $header-toggle-width) {
-        grid-template-columns: [logo] 220px 20px [menus] auto;
+        grid-template-columns: [logo] 200px 20px [menus] auto;
         grid-template-rows: [social] 50% [navigation] 50%;
       }
 
@@ -191,7 +187,7 @@ header {
             // Submenus.
             li.menuparent {
               ul {
-                margin-top: 25px;
+                margin-top: 20px;
                 background: #fff;
 
                 li {
@@ -223,15 +219,20 @@ header {
   }
 
 
+  .block-node-image-block,
   #section-home-header {
     margin: 1ex auto;
     width: $grid-width;
-    @include header-image-border;
+
+    @media only screen and (max-width: $grid-width) {
+      width: 100%;
+    }
 
     img {
       width: 100%;
       height: auto;
       display: block;
+      @include header-image-border;
     }
   }
 }
