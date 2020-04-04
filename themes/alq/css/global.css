@@ -367,6 +367,7 @@ header {
   color: #fff;
   background: url("/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg");
   background-size: cover;
+  background-position: center center;
   padding: 2em; }
   .jumbotron .container {
     background-color: rgba(0, 0, 0, 0.7);
