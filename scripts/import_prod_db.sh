@@ -186,7 +186,6 @@ ${DRUSH} vset stage_file_proxy_origin ${DEFAULT_PROD_HOST}
 ${DRUSH} vset preprocess_css 0
 ${DRUSH} vset preprocess_js 0
 ${DRUSH} vset error_level 2
-${DRUSH} vset extlink_exclude ${DEFAULT_DEV_HOST}
 
 # Now anonymise the users
 echo "Anonymising users (set password to default sql-sanitize password of...password)"
