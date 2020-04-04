@@ -1,10 +1,7 @@
 # Update log for new theme.
 
 1. Enable, disable modules and sync features.
-    drush en -y views_bootstrap
-    drush en -y picture
-    drush en -y alq_images_feature
-    drush en -y alq_text_formats_feature
+    drush en -y views_bootstrap alq_images_feature alq_text_formats_feature metatag_opengraph
     drush features-revert-all -y
 
 2. Disable formalize library in theme.
@@ -77,5 +74,8 @@ Display only on front
   </div>
 </div>
 ```
-
 11. Delete old menu link -> Media -> in the news.
+
+12. Add open graph tags to metatag configuration: 
+  Article, Basic page: [node:field_image]
+  Product: [node:uc_product_image]
