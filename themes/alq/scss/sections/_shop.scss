@@ -1,5 +1,33 @@
 $gray-bg: #eee;
 
+
+// Shop block on front page.
+.jumbotron {
+  margin: 2em 0;
+  color: #fff;
+  background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
+  background-size: cover;
+  padding: 2em;
+
+  .container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+    width: 90%;
+    margin: 5em auto;
+
+    h1 {
+      color: #fff;
+    }
+
+    .text {
+      p {
+        font-size: 110%;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
 // Styling the main individual product pages.
 body.node-type-product {
   input[type="submit"] {
@@ -301,7 +329,6 @@ body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0;
   background: none;
 }
-
 
 
 div.view-uc-catalog-terms {

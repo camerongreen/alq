@@ -1,22 +1,22 @@
-
-
-/* Email subsctiption form. */
+// Email subsctiption form.
 .block-6 {
-  padding: 2em;
   display: flex;
-  background-blend-mode: multiply, multiply;
-  background-image: url('/sites/all/themes/custom/alq/images/email-signup-bg.jpg');
+  // background-image: url('/sites/all/themes/custom/alq/images/email-signup-bg.jpg');
   background-repeat: no-repeat;
   background-position: center center;
+  font-size: 140%;
 
   align-items: center;
   justify-content: center;
 
   .block-inner {
-    background-color: $alq-purple;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     h2 {
       color: #fff;
       margin-top: 1rem;
+      font-size: 140%;
     }
 
     color: #fff;
@@ -25,10 +25,14 @@
     form {
       div {
         margin: 1rem;
-        font-size: 110%;
 
         input {
-          margin: .5rem 0;
+          margin: 1rem 0;
+        }
+
+        input[type="email"] {
+          width: 60%;
+          margin: auto;
         }
       }
     }
@@ -36,14 +40,13 @@
 }
 
 // Donate now block.
-/* Donate now block */
 #block-block-5 {
-  padding: 3em;
+  padding: 2em;
   text-align: center;
 
   p {
     color: #f8931d;
-    font-size: 150%;
+    font-size: 125%;
     font-weight: bold;
 
     a {
@@ -52,6 +55,7 @@
 
       &.btn {
         @include bold-link(#fff);
+        font-size: 80%;
       }
     }
   }

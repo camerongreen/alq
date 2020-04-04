@@ -5,7 +5,6 @@
     drush en -y alq_images_feature
     drush en -y alq_text_formats_feature
     drush features-revert -y alq_menus_feature
-    drush pm-disable -y extlink
 
 2. Disable formalize library in theme.
     /admin/appearance/settings/alq
@@ -49,4 +48,20 @@
 
 9. Move Node image header block to under section home block.
     
-    
+10. Create a new block to go under mail chimp signup form in content region.
+title: <none>
+description: Front page shop
+Display only on front
+
+```html
+<div class="jumbotron">
+  <div class="container">
+      <h1>ALQ Shop</h1>
+      <div class="text">
+        <p>Looking for the perfect gift for the animal lover in your life, or just treating yourself?</p>
+        <p>The ALQ shop has you covered.</p>
+        <p><a class="btn btn-primary btn-lg" href="/shop" role="button">View shop</a></p>
+      </div>
+  </div>
+</div>
+```
