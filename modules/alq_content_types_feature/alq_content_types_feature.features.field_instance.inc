@@ -560,46 +560,6 @@ function alq_content_types_feature_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-media_article-field_intro'.
-  $field_instances['node-media_article-field_intro'] = array(
-    'bundle' => 'media_article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'This text will appear in purple at the top of the article',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_intro',
-    'label' => 'Intro',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'node-media_article-field_slideshow'.
   $field_instances['node-media_article-field_slideshow'] = array(
     'bundle' => 'media_article',
@@ -1178,13 +1138,11 @@ function alq_content_types_feature_field_default_field_instances() {
   t('Files');
   t('Have this appear in the slidehow.');
   t('Image');
-  t('Intro');
   t('Slideshow');
   t('Slideshow Image');
   t('Tags');
   t('These files will appear as a list at the bottom of the article to download');
   t('This image will be used on the front page slideshow');
-  t('This text will appear in purple at the top of the article');
   t('Upload an image to go with this article.');
   t('What type of article is this?');
 

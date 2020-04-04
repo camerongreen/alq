@@ -84,3 +84,5 @@ Display only on front
   
 13. Update front page:
   Set title to "Front page"
+  
+14. Delete intro fields from all content types.
