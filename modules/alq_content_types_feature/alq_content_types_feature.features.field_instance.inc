@@ -1169,46 +1169,6 @@ function alq_content_types_feature_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-section_home-field_intro'.
-  $field_instances['node-section_home-field_intro'] = array(
-    'bundle' => 'section_home',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Larger text which appears at top of section home in purple',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_intro',
-    'label' => 'Intro',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 2,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Article Type');
@@ -1219,7 +1179,6 @@ function alq_content_types_feature_field_default_field_instances() {
   t('Have this appear in the slidehow.');
   t('Image');
   t('Intro');
-  t('Larger text which appears at top of section home in purple');
   t('Slideshow');
   t('Slideshow Image');
   t('Tags');

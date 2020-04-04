@@ -77,5 +77,10 @@ Display only on front
 11. Delete old menu link -> Media -> in the news.
 
 12. Add open graph tags to metatag configuration: 
-  Article, Basic page: [node:field_image]
+  Article, Basic page, Section Home: [node:field_image]
   Product: [node:uc_product_image]
+  Front page: [site:url]/sites/all/themes/custom/alq/images/alq_logo_with_tagline_and_url_on_white.png
+              Also manually set description tags to about us page intro.
+  
+13. Update front page:
+  Set title to "Front page"

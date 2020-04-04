@@ -42,7 +42,6 @@ features[field_instance][] = node-page-field_slideshow_image
 features[field_instance][] = node-page-field_tags
 features[field_instance][] = node-section_home-body
 features[field_instance][] = node-section_home-field_image
-features[field_instance][] = node-section_home-field_intro
 features[node][] = article
 features[node][] = media_article
 features[node][] = page
