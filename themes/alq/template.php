@@ -53,26 +53,6 @@ function alq_preprocess_html(&$vars) {
 }
 
 /**
- * Alter the page.
- */
-function alq_page_alter($page) {
-  global $base_url;
-
-  if (drupal_is_front_page()) {
-    $meta_og_image = [
-      '#type' => 'html_tag',
-      '#tag' => 'meta',
-      '#attributes' => [
-        'property' => 'og:image',
-        'content' => $base_url . '/' . drupal_get_path('theme', 'alq') . '/screenshot.jpg',
-      ],
-    ];
-
-    drupal_add_html_head($meta_og_image, 'meta_og_image');
-  }
-}
-
-/**
  * Process variables for search-result.tpl.php.
  *
  * @see search-result.tpl.php
