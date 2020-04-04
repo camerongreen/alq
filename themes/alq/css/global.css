@@ -80,23 +80,29 @@ body.page-contact ul {
         width: 60%;
         margin: auto; }
 
-#block-block-5 {
-  padding: 2em;
-  text-align: center; }
-  #block-block-5 p {
-    color: #f8931d;
-    font-size: 125%;
-    font-weight: bold; }
-    #block-block-5 p a {
-      color: white;
-      color: #f8931d; }
-      #block-block-5 p a.btn {
-        text-decoration: none;
-        color: #fff;
-        font-family: "Montserrat", sans-serif;
-        font-size: 105%;
-        font-weight: 600;
-        font-size: 80%; }
+.donate-block {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  align-items: center; }
+  .donate-block img {
+    width: 100%; }
+  .donate-block .text {
+    padding-left: 2em; }
+    .donate-block .text p {
+      color: #f8931d;
+      font-size: 125%;
+      font-weight: bold; }
+      .donate-block .text p a {
+        color: white;
+        color: #f8931d; }
+        .donate-block .text p a.btn {
+          text-decoration: none;
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-size: 105%;
+          font-weight: 600;
+          font-size: 80%; }
 
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 header {

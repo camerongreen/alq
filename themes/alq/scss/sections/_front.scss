@@ -13,6 +13,7 @@
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+
     h2 {
       color: #fff;
       margin-top: 1rem;
@@ -40,22 +41,33 @@
 }
 
 // Donate now block.
-#block-block-5 {
-  padding: 2em;
-  text-align: center;
+.donate-block {
+  padding: 1em;
 
-  p {
-    color: #f8931d;
-    font-size: 125%;
-    font-weight: bold;
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  align-items: center;
 
-    a {
-      color: white;
+  img {
+    width: 100%;
+  }
+
+  .text {
+    padding-left: 2em;
+
+    p {
       color: #f8931d;
+      font-size: 125%;
+      font-weight: bold;
 
-      &.btn {
-        @include bold-link(#fff);
-        font-size: 80%;
+      a {
+        color: white;
+        color: #f8931d;
+
+        &.btn {
+          @include bold-link(#fff);
+          font-size: 80%;
+        }
       }
     }
   }
