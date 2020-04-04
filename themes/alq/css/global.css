@@ -140,7 +140,7 @@ header {
           grid-template-rows: [social] 50% [navigation] 50%; } }
       @media only screen and (max-width: 1000px) {
         header .zone-branding .region-branding-inner {
-          grid-template-columns: [logo] 220px 10px [socialcol] auto [menus] 120px; } }
+          grid-template-columns: [logo] 150px 10px [socialcol] auto [menus] auto; } }
       header .zone-branding .region-branding-inner .branding-data {
         grid-column: logo; }
         @media only screen and (min-width: 1000px) {
@@ -254,18 +254,31 @@ header {
 .alq-list .views-row {
   margin: 2em 0;
   display: grid;
-  grid-template-columns: [image] auto [content] 1fr;
-  grid-template-rows: [title] auto [body] auto [more] auto;
   grid-row-gap: 15px; }
+  @media only screen and (min-width: 700px) {
+    .alq-list .views-row {
+      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-rows: [title] auto [body] auto [more] auto; } }
+  @media only screen and (max-width: 700px) {
+    .alq-list .views-row {
+      grid-template-columns: [image content] auto;
+      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      width: 300px;
+      margin: 1em auto; } }
   .alq-list .views-row .views-field-field-image {
-    grid-column: image;
-    grid-row: 1 / span 3; }
+    grid-column: image; }
+    @media only screen and (min-width: 700px) {
+      .alq-list .views-row .views-field-field-image {
+        grid-row: 1 / span 3;
+        margin-right: 10px; } }
+    @media only screen and (max-width: 700px) {
+      .alq-list .views-row .views-field-field-image {
+        grid-row: image; } }
     .alq-list .views-row .views-field-field-image img {
-      margin-right: 10px; }
-      @media only screen and (max-width: 700px) {
-        .alq-list .views-row .views-field-field-image img {
-          width: 200px;
-          height: 100%; } }
+      height: 100%;
+      width: 100%;
+      max-width: 300px;
+      margin: auto; }
   .alq-list .views-row .views-field-title {
     grid-column: content;
     grid-row: title; }
@@ -325,19 +338,33 @@ header {
     .block-views-news-block .view-content .views-row {
       margin: 2em 0;
       display: grid;
+      grid-row-gap: 15px; } }
+  @media only screen and (max-width: 700px) and (min-width: 700px) {
+    .block-views-news-block .view-content .views-row {
       grid-template-columns: [image] auto [content] 1fr;
-      grid-template-rows: [title] auto [body] auto [more] auto;
-      grid-row-gap: 15px; }
-      .block-views-news-block .view-content .views-row .views-field-field-image {
-        grid-column: image;
-        grid-row: 1 / span 3; }
-        .block-views-news-block .view-content .views-row .views-field-field-image img {
-          margin-right: 10px; } }
-      @media only screen and (max-width: 700px) and (max-width: 700px) {
-        .block-views-news-block .view-content .views-row .views-field-field-image img {
-          width: 200px;
-          height: 100%; } }
+      grid-template-rows: [title] auto [body] auto [more] auto; } }
+  @media only screen and (max-width: 700px) and (max-width: 700px) {
+    .block-views-news-block .view-content .views-row {
+      grid-template-columns: [image content] auto;
+      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      width: 300px;
+      margin: 1em auto; } }
   @media only screen and (max-width: 700px) {
+      .block-views-news-block .view-content .views-row .views-field-field-image {
+        grid-column: image; } }
+    @media only screen and (max-width: 700px) and (min-width: 700px) {
+      .block-views-news-block .view-content .views-row .views-field-field-image {
+        grid-row: 1 / span 3;
+        margin-right: 10px; } }
+    @media only screen and (max-width: 700px) and (max-width: 700px) {
+      .block-views-news-block .view-content .views-row .views-field-field-image {
+        grid-row: image; } }
+  @media only screen and (max-width: 700px) {
+        .block-views-news-block .view-content .views-row .views-field-field-image img {
+          height: 100%;
+          width: 100%;
+          max-width: 300px;
+          margin: auto; }
       .block-views-news-block .view-content .views-row .views-field-title {
         grid-column: content;
         grid-row: title; }

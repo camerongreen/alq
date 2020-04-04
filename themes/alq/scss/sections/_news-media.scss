@@ -1,5 +1,61 @@
 // News and media etc.
 
+@mixin article-list {
+  .views-row {
+    margin: 2em 0;
+    display: grid;
+    @media only screen and (min-width: $header-toggle-width-small) {
+      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-rows: [title] auto [body] auto [more] auto;
+    }
+    @media only screen and (max-width: $header-toggle-width-small) {
+      grid-template-columns: [image content] auto;
+      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      width: 300px;
+      margin: 1em auto;
+    }
+    grid-row-gap: 15px;
+
+    .views-field-field-image {
+      grid-column: image;
+      @media only screen and (min-width: $header-toggle-width-small) {
+        grid-row: 1 / span 3;
+        margin-right: 10px;
+      }
+      @media only screen and (max-width: $header-toggle-width-small) {
+        grid-row: image;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+      }
+    }
+
+    .views-field-title {
+      grid-column: content;
+      grid-row: title;
+
+      a {
+        @include bold-link();
+      }
+    }
+
+    .views-field-body {
+      grid-column: content;
+      grid-row: body;
+    }
+
+    .views-field-view-node {
+      grid-column: content;
+      grid-row: more;
+    }
+
+  }
+}
+
 .alq-list {
   @include article-list();
 }
@@ -27,6 +83,7 @@
 
         .views-field-field-image {
           grid-row: image;
+
           img {
             width: 100%;
             height: 100%;
@@ -44,6 +101,7 @@
 
         .views-field-body {
           grid-row: body;
+
           span {
             display: block;
           }

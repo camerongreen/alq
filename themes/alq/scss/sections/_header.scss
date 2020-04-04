@@ -60,7 +60,7 @@ header {
       }
 
       @media only screen and (max-width: $header-toggle-width) {
-        grid-template-columns: [logo] 220px 10px [socialcol] auto [menus] 120px;
+        grid-template-columns: [logo] 150px 10px [socialcol] auto [menus] auto;
       }
 
       grid-gap: 10px;
