@@ -28,7 +28,11 @@ function alq_news_feature_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -437,7 +441,11 @@ function alq_news_feature_views_default_views() {
   $handler->display->display_options['title'] = 'News';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -465,7 +473,7 @@ function alq_news_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Intro */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_intro']['id'] = 'field_intro';
   $handler->display->display_options['fields']['field_intro']['table'] = 'field_data_field_intro';
   $handler->display->display_options['fields']['field_intro']['field'] = 'field_intro';
@@ -474,10 +482,6 @@ function alq_news_feature_views_default_views() {
   $handler->display->display_options['fields']['field_intro']['alter']['max_length'] = '500';
   $handler->display->display_options['fields']['field_intro']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_intro']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_intro']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_intro']['settings'] = array(
-    'trim_length' => '600',
-  );
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';

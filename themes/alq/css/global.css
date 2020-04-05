@@ -8216,6 +8216,7 @@ body.page-contact ul {
           font-family: "Montserrat", sans-serif;
           font-size: 105%;
           font-weight: 600;
+          font-display: swap;
           font-size: 80%; }
 
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
@@ -8297,7 +8298,8 @@ header {
             color: #fff;
             font-family: "Montserrat", sans-serif;
             font-size: 105%;
-            font-weight: 600; }
+            font-weight: 600;
+            font-display: swap; }
       header .zone-branding .region-branding-inner #block-nice-menus-1 {
         grid-column: menus; }
         @media only screen and (min-width: 1000px) {
@@ -8328,7 +8330,8 @@ header {
               color: #333;
               font-family: "Montserrat", sans-serif;
               font-size: 105%;
-              font-weight: 600; }
+              font-weight: 600;
+              font-display: swap; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li a:hover {
               background: #dedede; }
             header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu li a.active {
@@ -8401,7 +8404,8 @@ header {
       color: #333;
       font-family: "Montserrat", sans-serif;
       font-size: 105%;
-      font-weight: 600; }
+      font-weight: 600;
+      font-display: swap; }
   .alq-list .views-row .views-field-body {
     grid-column: content;
     grid-row: body; }
@@ -8439,7 +8443,8 @@ header {
             color: #333;
             font-family: "Montserrat", sans-serif;
             font-size: 105%;
-            font-weight: 600; }
+            font-weight: 600;
+            font-display: swap; }
         .block-views-news-block .view-content .views-row .views-field-body {
           grid-row: body; }
           .block-views-news-block .view-content .views-row .views-field-body span {
@@ -8487,7 +8492,8 @@ header {
           color: #333;
           font-family: "Montserrat", sans-serif;
           font-size: 105%;
-          font-weight: 600; }
+          font-weight: 600;
+          font-display: swap; }
       .block-views-news-block .view-content .views-row .views-field-body {
         grid-column: content;
         grid-row: body; }
@@ -8503,7 +8509,8 @@ header {
     color: #333;
     font-family: "Montserrat", sans-serif;
     font-size: 105%;
-    font-weight: 600; }
+    font-weight: 600;
+    font-display: swap; }
     .more-link a:hover {
       background-color: #eee; }
     .more-link a:after {
@@ -8766,7 +8773,8 @@ div.view-uc-catalog-terms a {
 body {
   background-color: #fff;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 18px; }
+  font-size: 18px;
+  font-display: swap; }
   body #admin-menu {
     height: auto; }
   body .btn {
@@ -8775,6 +8783,7 @@ body {
     display: none; }
   body .page h1, body .page h2, body .page h3, body .page h4, body .page h5, body .page h6 {
     font-family: "Montserrat", sans-serif;
+    font-display: swap;
     color: #502D82; }
   body .page small {
     font-size: 80%; }

@@ -23,6 +23,7 @@ body {
   background-color: $body-background-color;
   font-family: $font-family-body;
   font-size: 18px;
+  font-display: swap;
 
   // Bug, remove when admin menu > 3.0-rc6.
   #admin-menu {
@@ -44,6 +45,7 @@ body {
   .page {
     h1, h2, h3, h4, h5, h6 {
       font-family: $font-family-header;
+      font-display: swap;
       color: $alq-purple;
     }
 
