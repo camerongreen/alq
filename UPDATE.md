@@ -32,7 +32,10 @@
 4. Move search block to be bottom of Menu zone.  Show on all pages and content types.
 
 5. Move mail chimp signup block to content zone under news.  Show only on <front> page, but on all content types.
-   Change the input class to "form-control" and the button class to "btn btn-default"'
+   Change the inputs line to:
+```html
+<div><label for="EMAIL" class="sr-only">Email:</label><input class="form-control" id="mce-EMAIL" name="EMAIL" placeholder="Email address" required type="email" /> <input class="btn btn-default" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe" /></div>
+```
 
 
 6. Set all blocks in sidebar first to not display. Remove user menu block.
@@ -86,3 +89,5 @@ Display only on front
   Set title to "Front page"
   
 14. Delete intro fields from all content types.
+
+15. Swap jquery and jquery ui to local versions.

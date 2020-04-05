@@ -1,29 +1,24 @@
 // Email subsctiption form.
 .block-6 {
-  display: flex;
-  // background-image: url('/sites/all/themes/custom/alq/images/email-signup-bg.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  font-size: 140%;
-
-  align-items: center;
-  justify-content: center;
-
   .block-inner {
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
     background-color: rgba(0, 0, 0, 0.7);
+
+    align-items: center;
 
     h2 {
       color: #fff;
       margin-top: 1rem;
-      font-size: 140%;
+      font-size: 150%;
     }
 
     color: #fff;
     text-align: center;
 
     form {
+      font-size: 130%;
       div {
         margin: 1rem;
 
