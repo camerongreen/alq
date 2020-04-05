@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-flat": "^3.3.4",
+    "bootstrap-sass": "^3.4.1",
+    "font-awesome": "^4.7.0",
     "node-sass": "^4.13.1"
   }
 }

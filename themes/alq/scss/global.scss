@@ -1,5 +1,14 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
+// External scss, ensure npm install has been run in the theme dir.
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Local scss.
 @import "variables";
 @import "sections/articles-pages";
 @import "sections/contact";
