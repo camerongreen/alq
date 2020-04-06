@@ -32,9 +32,24 @@
 4. Move search block to be bottom of Menu zone.  Show on all pages and content types.
 
 5. Move mail chimp signup block to content zone under news.  Show only on <front> page, but on all content types.
-   Change the inputs line to:
+   Change the contents to:
 ```html
-<div><label for="EMAIL" class="sr-only">Email:</label><input class="form-control" id="mce-EMAIL" name="EMAIL" placeholder="Email address" required type="email" /> <input class="btn btn-default" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe" /></div>
+<div>Help us protect animals. Sign up to our free email newsletter.</div>
+<form action="https://alq.us4.list-manage.com/subscribe/post?u=49be60bd0cc5154fbb09720b1&amp;id=f71a11210c" method="post" target="_blank" class="form-inline">
+<div class="form-group">
+	<label for="mce-EMAIL" class="sr-only">Email Address</label>
+	<input type="email" value="" name="EMAIL" class="form-control" required type="email" placeholder="Email address" />
+</div>
+<div class="form-group">
+	<label for="mce-FNAME" class="sr-only">First Name </label>
+	<input type="text" value="" name="FNAME" class="form-control" placeholder="Given name" />
+</div>
+<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_49be60bd0cc5154fbb09720b1_f71a11210c" tabindex="-1" value=""></div>
+<div>
+<input type="submit" value="Subscribe" name="subscribe" class="form-control btn btn-default" />
+</div>
+</form>
 ```
 
 

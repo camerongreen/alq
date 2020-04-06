@@ -4,34 +4,27 @@
     display: flex;
     flex-direction: column;
     padding: 1em;
-    background-color: rgba(0, 0, 0, 0.7);
-
+    // background-color: rgba(0, 0, 0, 0.7);
+    background-color: $alq-purple;
     align-items: center;
+    font-size: 130%;
 
     h2 {
       color: #fff;
       margin-top: 1rem;
-      font-size: 150%;
+      font-size: 130%;
+    }
+
+    form {
+      margin: 1ex;
+
+      input[type="submit"] {
+        margin-top: 1rem;
+      }
     }
 
     color: #fff;
     text-align: center;
-
-    form {
-      font-size: 130%;
-      div {
-        margin: 1rem;
-
-        input {
-          margin: 1rem 0;
-        }
-
-        input[type="email"] {
-          width: 60%;
-          margin: auto;
-        }
-      }
-    }
   }
 }
 

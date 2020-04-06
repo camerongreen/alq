@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+/* This file will hold styles for all ALQ stuff */
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -8176,23 +8176,19 @@ body.page-contact ul {
   display: flex;
   flex-direction: column;
   padding: 1em;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #502D82;
   align-items: center;
+  font-size: 130%;
   color: #fff;
   text-align: center; }
   .block-6 .block-inner h2 {
     color: #fff;
     margin-top: 1rem;
-    font-size: 150%; }
-  .block-6 .block-inner form {
     font-size: 130%; }
-    .block-6 .block-inner form div {
-      margin: 1rem; }
-      .block-6 .block-inner form div input {
-        margin: 1rem 0; }
-      .block-6 .block-inner form div input[type="email"] {
-        width: 60%;
-        margin: auto; }
+  .block-6 .block-inner form {
+    margin: 1ex; }
+    .block-6 .block-inner form input[type="submit"] {
+      margin-top: 1rem; }
 
 .donate-block {
   padding: 1em;
