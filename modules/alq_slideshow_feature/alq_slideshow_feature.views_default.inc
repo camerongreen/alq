@@ -109,27 +109,8 @@ function alq_slideshow_feature_views_default_views() {
   $handler->display->display_options['fields']['field_slideshow_image']['label'] = '';
   $handler->display->display_options['fields']['field_slideshow_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slideshow_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_slideshow_image']['type'] = 'picture_sizes_formatter';
   $handler->display->display_options['fields']['field_slideshow_image']['settings'] = array(
-    'sizes' => '100vw',
-    'image_styles' => array(
-      'slideshow' => 'slideshow',
-      '_original image_' => '_original image_',
-      'alq_section_header' => 0,
-      'article_style' => 0,
-      'news_list' => 0,
-      'thumbnail' => 0,
-      'medium' => 0,
-      'large' => 0,
-      'uc_cart' => 0,
-      'uc_category' => 0,
-      'uc_product' => 0,
-      'uc_product_full' => 0,
-      'uc_product_list' => 0,
-      'uc_thumbnail' => 0,
-      '_empty image_' => 0,
-    ),
-    'fallback_image_style' => '_original image_',
+    'image_style' => 'slideshow',
     'image_link' => 'content',
   );
   /* Sort criterion: Content: Post date */

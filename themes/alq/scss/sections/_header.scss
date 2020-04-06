@@ -4,17 +4,8 @@
 }
 
 header {
-  background-color: $header-background-color;
-  & > * {
-    &.zone-header-wrapper {
-      width: 100%;
-      margin: 0;
-
-      .region-header-first {
-        background-color: $body-background-color;
-        margin: 0;
-      }
-    }
+  .zone-wrapper {
+    margin: 1rem auto;
   }
 
   #block-search-form {
@@ -40,8 +31,6 @@ header {
   }
 
   .zone-branding {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
 
     @media only screen and (max-width: $header-toggle-width) {
       .responsive-menus.responsified .responsive-menus-simple {
@@ -221,13 +210,6 @@ header {
 
   .block-node-image-block,
   #section-home-header {
-    margin: 1ex auto;
-    width: $grid-width;
-
-    @media only screen and (max-width: $grid-width) {
-      width: 100%;
-    }
-
     img {
       width: 100%;
       height: auto;

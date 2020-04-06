@@ -4,7 +4,7 @@
     drush en -y views_bootstrap alq_images_feature alq_text_formats_feature metatag_opengraph
     drush features-revert-all -y
 
-2. Disable formalize library in theme.
+2. Set maximum scale to 10 and disable formalize library in theme.
     /admin/appearance/settings/alq
     
 3. Set the social media block to text format "Straight HTML" and paste this into the contents:

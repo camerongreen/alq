@@ -2,8 +2,6 @@
   "use strict";
 
   $(document).ready(function () {
-    $('#webform-client-form-114 input[type=email]').attr('placeholder', 'Your email');
-
     // Slideshow controls..
     $("body.front .views-slideshow-controls-text span").hide();
 
