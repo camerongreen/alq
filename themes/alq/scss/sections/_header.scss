@@ -49,7 +49,7 @@ header {
       }
 
       @media only screen and (max-width: $header-toggle-width) {
-        grid-template-columns: [logo] 150px 10px [socialcol] auto [menus] auto;
+        grid-template-columns: [logo] 150px 10px [socialcol] 1fr [menus] auto;
       }
 
       grid-gap: 10px;
@@ -73,7 +73,9 @@ header {
       // Social block.
       #block-block-2 {
         @media only screen and (max-width: $header-toggle-width-small) {
-          display: none;
+          .social-media li:not(.small) {
+            display: none;
+          }
         }
         @media only screen and (min-width: $header-toggle-width) {
           grid-column: menus;
@@ -133,10 +135,11 @@ header {
           .toggler {
             background-color: unset;
             color: $social-media-icons-color;
-            font-size: 200%;
+            font-size: 180%;
             font-weight: 600;
             box-shadow: none;
             text-align: right;
+            margin-left: 15px;
           }
 
           /* Header menu */
