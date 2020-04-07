@@ -7,7 +7,11 @@ test/lib
 test/*.log
 
 vendor
-node_modules
+/node_modules
+/themes/alq/node_modules/*
+!/themes/alq/node_modules/font-awesome
+/themes/alq/node_modules/font-awesome/*
+!/themes/alq/node_modules/font-awesome/fonts
 /.idea
 .DS_Store
 tmp
