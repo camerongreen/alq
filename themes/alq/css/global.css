@@ -8253,7 +8253,7 @@ header .zone-branding .region-branding-inner {
       grid-template-rows: [social] 50% [navigation] 50%; } }
   @media only screen and (max-width: 1000px) {
     header .zone-branding .region-branding-inner {
-      grid-template-columns: [logo] 150px 10px [socialcol] auto [menus] auto; } }
+      grid-template-columns: [logo] 150px 10px [socialcol] 1fr [menus] auto; } }
   header .zone-branding .region-branding-inner .branding-data {
     grid-column: logo; }
     @media only screen and (min-width: 1000px) {
@@ -8265,7 +8265,7 @@ header .zone-branding .region-branding-inner {
       header .zone-branding .region-branding-inner .branding-data .logo-img img {
         width: 100%; }
   @media only screen and (max-width: 700px) {
-    header .zone-branding .region-branding-inner #block-block-2 {
+    header .zone-branding .region-branding-inner #block-block-2 .social-media li:not(.small) {
       display: none; } }
   @media only screen and (min-width: 1000px) {
     header .zone-branding .region-branding-inner #block-block-2 {
@@ -8312,10 +8312,11 @@ header .zone-branding .region-branding-inner {
       header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
         background-color: unset;
         color: #888;
-        font-size: 200%;
+        font-size: 180%;
         font-weight: 600;
         box-shadow: none;
-        text-align: right; }
+        text-align: right;
+        margin-left: 15px; }
       header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu {
         width: 100%;
         border: 0;

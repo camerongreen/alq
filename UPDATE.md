@@ -11,7 +11,7 @@
 
 ```html
 <ul class="social-media">
-    <li>
+    <li class="small">
         <a href="/search" class="btn menu-path-search"><i class="fa fa-lg fa-search" aria-hidden="true"></i><span class="sr-only">Search</span></a>
     </li>
     <li>
