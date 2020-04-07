@@ -8150,27 +8150,35 @@ body.page-contact ul {
   color: #fff;
   background-color: #502D82;
   padding: 2em 1em; }
-  .zone-footer div.region-footer-first {
-    width: 55%; }
-  .zone-footer div.region-footer-second {
-    padding: 0;
-    width: 40%; }
-    .zone-footer div.region-footer-second div {
-      text-align: right; }
+  @media only screen and (min-width: 700px) {
+    .zone-footer div.region-footer-first {
+      width: 55%; }
+    .zone-footer div.region-footer-second {
+      padding: 0;
+      width: 40%; }
+      .zone-footer div.region-footer-second div {
+        text-align: right; } }
+  @media only screen and (max-width: 700px) {
+    .zone-footer div.region-footer-first {
+      padding-bottom: 1em; } }
   .zone-footer ul.menu li ul {
     display: none; }
   .zone-footer ul.menu li {
     display: inline;
     list-style-type: none;
-    padding: 0; }
+    padding: 0;
+    margin: 0; }
   .zone-footer ul.menu li a {
     color: #fff;
     text-decoration: none; }
   .zone-footer ul.menu > li a {
     border-right: thin solid #fff;
-    padding-right: 10px; }
+    padding: 0 13px 0 10px; }
+  .zone-footer ul.menu > li:first-child a {
+    padding-left: 0; }
   .zone-footer ul.menu > li:last-child a {
-    border: none; }
+    border: none;
+    padding-right: 0; }
 
 .block-6 .block-inner {
   display: flex;
@@ -8720,7 +8728,12 @@ div.view-uc-catalog-terms a {
 #uc-cart-pane-coupon {
   margin-bottom: 1em; }
 
+div.view-slideshow .views-field-field-slideshow-image img {
+  width: 100% !important;
+  height: auto !important; }
+
 .views-slideshow-cycle-processed {
+  position: relative;
   border-bottom: solid #502D82; }
   .views-slideshow-cycle-processed .views-slideshow-controls-bottom {
     z-index: 10;

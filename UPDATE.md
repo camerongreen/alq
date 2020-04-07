@@ -32,7 +32,7 @@
 4. Move search block to be bottom of Menu zone.  Show on all pages and content types.
 
 5. Move mail chimp signup block to content zone under news.  Show only on <front> page, but on all content types.
-   Change the contents to:
+   Swap it to Straight HTML and change the contents to:
 ```html
 <div>Help us protect animals. Sign up to our free email newsletter.</div>
 <form action="https://alq.us4.list-manage.com/subscribe/post?u=49be60bd0cc5154fbb09720b1&amp;id=f71a11210c" method="post" target="_blank" class="form-inline">
