@@ -106,3 +106,6 @@ Display only on front
 14. Delete intro fields from all content types.
 
 15. Swap jquery and jquery ui to local versions.
+
+16. Set responsive menu to kick in at 1000.
+    /admin/config/user-interface/responsive_menus
