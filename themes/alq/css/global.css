@@ -8198,8 +8198,8 @@ body.page-contact ul {
     .block-6 .block-inner form {
       margin: 1em; }
       .block-6 .block-inner form input {
-        font-size: 105%;
-        height: 50px; }
+        font-size: 80%;
+        height: 45px; }
         @media only screen and (min-width: 1000px) {
           .block-6 .block-inner form input {
             max-width: 10em; } }
