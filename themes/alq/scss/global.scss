@@ -10,7 +10,6 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap";
 
 // Local scss.
 @import "variables";
-@import "sections/articles-pages";
 @import "sections/contact";
 @import "sections/footer";
 @import "sections/front";
@@ -78,6 +77,36 @@ body {
     input[type=email] {
       border: thin solid #ccc;
     }
+  }
+
+  div.field-name-field-tags {
+    font-weight: bold;
+    color: $tags-color;
+    margin: 1em 0;
+
+    div.field-items div {
+      margin-right: 1ex;
+      display: inline-block;
+
+      &:after {
+        content: ",";
+      }
+    }
+
+    div.field-items div:last-child:after {
+      content: "";
+    }
+
+    margin-bottom: 1ex;
+  }
+}
+
+// Allow slideshow to be full width, but all others
+// constrained to grid size.
+body:not(.front) {
+  .region-header-first {
+    max-width: 960px;
+    margin: auto;
   }
 }
 
