@@ -4,6 +4,7 @@ core = 7.x
 package = ALQ
 dependencies[] = ctools
 dependencies[] = views
+dependencies[] = views_bootstrap
 dependencies[] = views_slideshow
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
