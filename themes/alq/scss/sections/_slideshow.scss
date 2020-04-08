@@ -1,24 +1,12 @@
 div.view-slideshow {
   max-width: 1200px;
   margin: auto;
-  // Weird jump frpom slideshow height on load.
-  // Trying to make it less intense.
-  @media only screen and (max-width: $header-toggle-width-small) {
-    min-height: 100px;
-  }
-  @media only screen and (max-width: $header-toggle-width) {
-    min-height: 200px;
-  }
-  @media only screen and (min-width: $header-toggle-width) {
-    min-height: 340px;
-  }
 
   .views-slideshow-cycle-main-frame {
     margin: auto;
 
     .views_slideshow_slide {
       width: 100%;
-      height: 100%;
 
       .views-field-field-slideshow-image {
         @include header-image-border();
