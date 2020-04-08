@@ -8751,47 +8751,13 @@ div.view-uc-catalog-terms a {
 div.view-slideshow {
   max-width: 1200px;
   margin: auto; }
-  div.view-slideshow .views-slideshow-cycle-main-frame {
-    margin: auto; }
-    div.view-slideshow .views-slideshow-cycle-main-frame .views_slideshow_slide {
-      width: 100%; }
-      div.view-slideshow .views-slideshow-cycle-main-frame .views_slideshow_slide .views-field-field-slideshow-image {
-        border-bottom: solid #502D82; }
-        div.view-slideshow .views-slideshow-cycle-main-frame .views_slideshow_slide .views-field-field-slideshow-image img {
-          width: 100%;
-          height: 100%; }
-
-.views-slideshow-cycle-processed {
-  position: relative; }
-  .views-slideshow-cycle-processed .views-slideshow-controls-bottom {
-    z-index: 10;
-    position: absolute;
-    bottom: 5%;
+  div.view-slideshow .slide {
     width: 100%; }
-    .views-slideshow-cycle-processed .views-slideshow-controls-bottom span {
-      margin: 1em;
-      overflow: hidden;
-      color: #fff;
-      background-color: rgba(66, 66, 66, 0.6);
-      font-weight: bold;
-      padding: 1ex; }
-      .views-slideshow-cycle-processed .views-slideshow-controls-bottom span:hover {
-        text-decoration: none; }
-      .views-slideshow-cycle-processed .views-slideshow-controls-bottom span a {
-        text-decoration: none;
-        color: #fff; }
-      .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-previous {
-        float: left; }
-        .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-previous:before {
-          content: "\25C0"; }
-        .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-previous a {
-          padding-left: 1ex; }
-      .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-next {
-        float: right; }
-        .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-next:after {
-          content: " \25B6"; }
-        .views-slideshow-cycle-processed .views-slideshow-controls-bottom span.views-slideshow-controls-text-next a {
-          padding-right: 1ex; }
+    div.view-slideshow .slide .views-field-field-slideshow-image {
+      border-bottom: solid #502D82; }
+      div.view-slideshow .slide .views-field-field-slideshow-image img {
+        width: 100%;
+        height: 100%; }
 
 body {
   background-color: #fff;
