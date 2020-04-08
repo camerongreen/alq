@@ -85,7 +85,7 @@ Display only on front
       <div class="text">
         <p>Looking for the perfect gift for the animal lover in your life, or just treating yourself?</p>
         hopp>The ALQ shop has you covered.</p>
-        <p><a class="btn btn-primary btn-lg" href="/shop" role="button">View shop</a></p>
+        <p><a class="btn btn-warning btn-lg" href="/shop" role="button">View shop</a></p>
       </div>
   </div>
 </div>

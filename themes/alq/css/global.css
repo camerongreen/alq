@@ -8536,6 +8536,14 @@ header #section-home-header img {
     .jumbotron .container .text p {
       font-size: 110%;
       font-weight: normal; }
+    .jumbotron .container a.btn {
+      text-decoration: none;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      font-size: 105%;
+      font-weight: 600;
+      font-display: swap;
+      font-size: 90%; }
 
 body.node-type-product input[type="submit"] {
   border: none;

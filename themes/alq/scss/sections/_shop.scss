@@ -26,6 +26,11 @@ $gray-bg: #eee;
         font-weight: normal;
       }
     }
+
+    a.btn {
+      @include bold-link(#fff);
+      font-size: 90%;
+    }
   }
 }
 
