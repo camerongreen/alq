@@ -8,10 +8,15 @@ test/*.log
 
 vendor
 /node_modules
+# Complidate way to include font-awesome dir.
 /themes/alq/node_modules/*
 !/themes/alq/node_modules/font-awesome
 /themes/alq/node_modules/font-awesome/*
 !/themes/alq/node_modules/font-awesome/fonts
+# Complidate way to include bootstrap font dir.
+!/themes/alq/node_modules/bootstrap-sass
+/themes/alq/node_modules/bootstrap-sass/*
+!/themes/alq/node_modules/bootstrap-sass/assets
 /.idea
 .DS_Store
 tmp
