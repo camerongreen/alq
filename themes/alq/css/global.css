@@ -8180,23 +8180,35 @@ body.page-contact ul {
     border: none;
     padding-right: 0; }
 
-.block-6 .block-inner {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  background-color: #502D82;
-  align-items: center;
-  font-size: 130%;
-  color: #fff;
-  text-align: center; }
-  .block-6 .block-inner h2 {
+.block-6 {
+  margin-top: 1rem; }
+  .block-6 .block-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 2em 1em;
+    background-color: #502D82;
+    align-items: center;
+    font-size: 130%;
     color: #fff;
-    margin-top: 1rem;
-    font-size: 130%; }
-  .block-6 .block-inner form {
-    margin: 1ex; }
-    .block-6 .block-inner form input[type="submit"] {
-      margin-top: 1rem; }
+    text-align: center; }
+    .block-6 .block-inner h2 {
+      color: #fff;
+      margin-top: 1rem;
+      font-size: 130%; }
+    .block-6 .block-inner form {
+      margin: 1em; }
+      .block-6 .block-inner form input {
+        font-size: 105%;
+        height: 50px; }
+        @media only screen and (min-width: 1000px) {
+          .block-6 .block-inner form input {
+            max-width: 10em; } }
+        .block-6 .block-inner form input[type="submit"] {
+          font-weight: bold; }
+      @media only screen and (max-width: 1000px) {
+        .block-6 .block-inner form .form-group {
+          display: block;
+          margin: 1rem; } }
 
 .donate-block {
   padding: 1em;
@@ -8410,17 +8422,16 @@ header #section-home-header img {
   margin: 1em; }
 
 .block-views-news-block {
-  margin: 1rem 0; }
+  margin-top: 1rem; }
   @media only screen and (min-width: 700px) {
     .block-views-news-block .view-content {
-      height: 530px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-column-gap: 2em; }
       .block-views-news-block .view-content .views-row {
         height: 100%;
         display: grid;
-        grid-template-rows: [image] 200px [title] auto [body] 1fr [more] 40px;
+        grid-template-rows: [image] auto [title] auto [body] 1fr [more] 40px;
         grid-row-gap: 1em; }
         .block-views-news-block .view-content .views-row .views-field-field-image {
           grid-row: image; }
@@ -8494,7 +8505,7 @@ header #section-home-header img {
         grid-row: more; } }
 
 .more-link {
-  margin: 1.5em 0; }
+  margin: 1rem 0; }
   .more-link a {
     font-size: 120%;
     text-decoration: none;

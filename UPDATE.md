@@ -44,11 +44,9 @@
 	<label for="mce-FNAME" class="sr-only">First Name </label>
 	<input type="text" value="" name="FNAME" class="form-control" placeholder="Given name" />
 </div>
+<input type="submit" value="Subscribe" name="subscribe" class="form-control btn btn-warning" />
 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_49be60bd0cc5154fbb09720b1_f71a11210c" tabindex="-1" value=""></div>
-<div>
-<input type="submit" value="Subscribe" name="subscribe" class="form-control btn btn-default" />
-</div>
 </form>
 ```
 

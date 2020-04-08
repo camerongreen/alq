@@ -1,9 +1,10 @@
 // Email subsctiption form.
 .block-6 {
+  margin-top: 1rem;
   .block-inner {
     display: flex;
     flex-direction: column;
-    padding: 1em;
+    padding: 2em 1em;
     // background-color: rgba(0, 0, 0, 0.7);
     background-color: $alq-purple;
     align-items: center;
@@ -16,10 +17,26 @@
     }
 
     form {
-      margin: 1ex;
+      margin: 1em;
 
-      input[type="submit"] {
-        margin-top: 1rem;
+      input {
+        font-size: 105%;
+        height: 50px;
+
+        @media only screen and (min-width: $header-toggle-width) {
+          max-width: 10em;
+        }
+
+        &[type="submit"] {
+          font-weight: bold;
+        }
+      }
+
+      @media only screen and (max-width: $header-toggle-width) {
+        .form-group {
+          display: block;
+          margin: 1rem;
+        }
       }
     }
 
