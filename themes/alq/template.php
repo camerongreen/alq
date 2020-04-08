@@ -28,7 +28,8 @@ function alq_preprocess_html(&$vars) {
   ]);
 
   // Add bootstrap and bootstrap flat.
-  drupal_add_js(path_to_theme() . '/js/bootstrap-3.3.7.min.js');
+  drupal_add_js(path_to_theme() . '/node_modules/bootstrap-sass/assets/javascripts/bootstrap.js');
+  drupal_add_js(path_to_theme() . '/node_modules/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js');
 
   // Make sure boostrap appears after existing CSS.
   $weight = 200;

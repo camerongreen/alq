@@ -1,7 +1,12 @@
 
-body.node-type-page,
+body.node-type-page:not(.front),
+body.node-type-section-home,
 body.node-type-media-article,
 body.node-type-article {
+  .region-header-first {
+    max-width: 960px;
+    margin: auto;
+  }
   div.field-name-field-tags {
     font-weight: bold;
     color: $tags-color;

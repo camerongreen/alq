@@ -2570,8 +2570,8 @@ th {
 
 @font-face {
   font-family: "Glyphicons Halflings";
-  src: url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot"));
-  src: url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix")) format("embedded-opentype"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2")) format("woff2"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff")) format("woff"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf")) format("truetype"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular")) format("svg"); }
+  src: url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.eot"));
+  src: url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.eot?#iefix")) format("embedded-opentype"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.woff2")) format("woff2"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.woff")) format("woff"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.ttf")) format("truetype"), url(font-path("../node_modules/bootstrap-sass/assets/fonts/bootstrapglyphicons-halflings-regular.svg#glyphicons_halflingsregular")) format("svg"); }
 
 .glyphicon {
   position: relative;
@@ -8118,23 +8118,34 @@ button.close {
 
 /* Global variables */
 /* Global mixins */
-body.node-type-page div.field-name-field-tags,
+body.node-type-page:not(.front) .region-header-first,
+body.node-type-section-home .region-header-first,
+body.node-type-media-article .region-header-first,
+body.node-type-article .region-header-first {
+  max-width: 960px;
+  margin: auto; }
+
+body.node-type-page:not(.front) div.field-name-field-tags,
+body.node-type-section-home div.field-name-field-tags,
 body.node-type-media-article div.field-name-field-tags,
 body.node-type-article div.field-name-field-tags {
   font-weight: bold;
   color: #666;
   margin: 1em 0;
   margin-bottom: 1ex; }
-  body.node-type-page div.field-name-field-tags div.field-items div,
+  body.node-type-page:not(.front) div.field-name-field-tags div.field-items div,
+  body.node-type-section-home div.field-name-field-tags div.field-items div,
   body.node-type-media-article div.field-name-field-tags div.field-items div,
   body.node-type-article div.field-name-field-tags div.field-items div {
     margin-right: 1ex;
     display: inline-block; }
-    body.node-type-page div.field-name-field-tags div.field-items div:after,
+    body.node-type-page:not(.front) div.field-name-field-tags div.field-items div:after,
+    body.node-type-section-home div.field-name-field-tags div.field-items div:after,
     body.node-type-media-article div.field-name-field-tags div.field-items div:after,
     body.node-type-article div.field-name-field-tags div.field-items div:after {
       content: ","; }
-  body.node-type-page div.field-name-field-tags div.field-items div:last-child:after,
+  body.node-type-page:not(.front) div.field-name-field-tags div.field-items div:last-child:after,
+  body.node-type-section-home div.field-name-field-tags div.field-items div:last-child:after,
   body.node-type-media-article div.field-name-field-tags div.field-items div:last-child:after,
   body.node-type-article div.field-name-field-tags div.field-items div:last-child:after {
     content: ""; }
@@ -8750,7 +8761,8 @@ div.view-uc-catalog-terms a {
 
 div.view-slideshow {
   max-width: 1200px;
-  margin: auto; }
+  margin: auto;
+  font-size: 200%; }
   div.view-slideshow .slide {
     width: 100%; }
     div.view-slideshow .slide .views-field-field-slideshow-image {
