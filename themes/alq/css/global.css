@@ -8834,6 +8834,10 @@ body {
         content: ","; }
     body div.field-name-field-tags div.field-items div:last-child:after {
       content: ""; }
+  body a,
+  body a:link,
+  body a:visited {
+    color: #502D82; }
 
 body:not(.front) .region-header-first {
   max-width: 960px;
