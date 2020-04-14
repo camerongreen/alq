@@ -1,7 +1,12 @@
-.zone-footer {
+footer.section-footer {
   color: #fff;
   background-color: $alq-purple;
   padding: 2em 1em;
+
+  .zone-wrapper {
+    max-width: 960px;
+    margin: auto;
+  }
 
   @media only screen and (min-width: $header-toggle-width-small) {
     div.region-footer-first {

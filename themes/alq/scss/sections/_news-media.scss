@@ -117,6 +117,13 @@
       @include article-list();
     }
   }
+
+  .more-link {
+    text-align: center;
+    a {
+      color: #999;
+    }
+  }
 }
 
 .more-link {

@@ -1,9 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
-@mixin header-image-border {
-  border-bottom: solid $alq-purple;
-}
+header.section-header {
+  padding-bottom: 1rem;
 
-header {
   .zone-wrapper {
     margin: 1rem auto;
   }
@@ -34,6 +32,10 @@ header {
 
     @media only screen and (max-width: $header-toggle-width) {
       .responsive-menus.responsified .responsive-menus-simple {
+        // Seems make menu the width of header icon, so don't let that happen.
+        min-width: 13ex;
+        // And then you make it wider it pushes it off to the right, so fix that.
+        margin-left: -7ex;
         li.menu-path-search {
           display: none;
         }
@@ -217,7 +219,6 @@ header {
       width: 100%;
       height: auto;
       display: block;
-      @include header-image-border;
     }
   }
 }

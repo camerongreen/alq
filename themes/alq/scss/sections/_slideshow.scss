@@ -8,8 +8,6 @@ div.view-slideshow {
     width: 100%;
 
     .views-field-field-slideshow-image {
-      @include header-image-border();
-
       img {
         width: 100%;
         height: 100%;
