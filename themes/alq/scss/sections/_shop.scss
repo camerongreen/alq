@@ -218,19 +218,8 @@ div.view-uc-catalog-terms {
       background-color: $alq-purple;
       padding: 0;
 
-      div.views-field-entity-id {
-        img {
-          border-color: #000;
-          border-style: solid;
-          border-width: 1px;
-        }
-      }
-
       div.views-field-name {
         text-align: center;
-        border-color: $alq-purple;
-        border-style: solid;
-        border-width: 1px;
         height: 100px;
 
         span {

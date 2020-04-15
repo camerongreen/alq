@@ -8648,15 +8648,8 @@ div.view-uc-catalog-terms div.row {
   div.view-uc-catalog-terms div.row > div {
     background-color: #502D82;
     padding: 0; }
-    div.view-uc-catalog-terms div.row > div div.views-field-entity-id img {
-      border-color: #000;
-      border-style: solid;
-      border-width: 1px; }
     div.view-uc-catalog-terms div.row > div div.views-field-name {
       text-align: center;
-      border-color: #502D82;
-      border-style: solid;
-      border-width: 1px;
       height: 100px; }
       div.view-uc-catalog-terms div.row > div div.views-field-name span a {
         font-size: 170%;
