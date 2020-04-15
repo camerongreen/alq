@@ -107,3 +107,15 @@ Display only on front
 
 16. Set responsive menu to kick in at 1000.
     /admin/config/user-interface/responsive_menus
+    
+ 17.  Update Shop ciew:
+    /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
+    Format: Unformatted list, no row striping.  
+    Remove: buy it now button.
+    Add: Content path, exlcude from display
+    Reorder: path to be before price
+    Rewrite price: 
+    ```html
+    <a href="[path]" class="btn btn-default">[display_price]</a>
+    ```
+    
