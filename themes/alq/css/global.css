@@ -8595,44 +8595,35 @@ body.node-type-product div.add-to-cart {
 
 body.page-catalog #block-system-main div.view-uc-catalog {
   background-color: #eee;
-  border-radius: 4px; }
-  body.page-catalog #block-system-main div.view-uc-catalog div.row {
-    margin: 0;
-    padding-top: 1em; }
-    body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) {
-      width: 200px;
-      padding: 1ex;
-      margin-left: 16px;
-      margin-right: 16px;
+  border-radius: 4px;
+  padding: 1ex; }
+  body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1ex; }
+    body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row {
+      display: grid;
+      grid-template-rows: [image] auto [title] auto [description] 1fr [price] auto;
       text-align: center; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title {
-        margin-top: 1ex; }
-        body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-title a {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-entity-id {
+        grid-row: image; }
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title {
+        grid-row: title; }
+        body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title a {
           font-size: 110%;
           color: #000;
           text-decoration: none; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-field-extra-details {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-field-extra-details {
+        grid-row: description;
         font-color: #727272;
         font-style: italic; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-display-price {
-        float: left;
-        width: 50%;
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-display-price {
         font-weight: bold;
         margin-top: 14px;
         font-size: 110%; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.views-field-buyitnowbutton {
-        text-align: right;
-        float: left;
-        width: 50%; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) input[type="submit"] {
-        border: none;
-        background: #502D82;
-        color: #fff;
-        border-radius: 0;
-        font-weight: normal; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) img {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row img {
         border-radius: 4px; }
-      body.page-catalog #block-system-main div.view-uc-catalog div.row > div:not(.clearfix) div.form-wrapper {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.form-wrapper {
         text-align: left; }
 
 body.page-catalog #block-system-main div.item-list {
@@ -8644,7 +8635,6 @@ body.page-catalog #block-system-main div.item-list {
     border: none;
     border-radius: 0; }
     body.page-catalog #block-system-main div.item-list ul.pager li {
-      font-size: 80%;
       background: none;
       border: none;
       border-radius: 0;
@@ -8659,6 +8649,7 @@ body.page-catalog #block-system-main div.item-list {
       body.page-catalog #block-system-main div.item-list ul.pager li.pager-last {
         position: relative; }
       body.page-catalog #block-system-main div.item-list ul.pager li.pager-current {
+        background-color: #fff;
         color: #000; }
 
 div.view-uc-catalog-terms div.row {

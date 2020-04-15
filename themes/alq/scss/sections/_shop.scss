@@ -129,20 +129,25 @@ body.page-catalog {
     div.view-uc-catalog {
       background-color: $gray-bg;
       border-radius: 4px;
+      padding: 1ex;
 
-      div.row {
-        margin: 0;
-        padding-top: 1em;
+      .view-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1ex;
 
-        & > div:not(.clearfix) {
-          width: 200px;
-          padding: 1ex;
-          margin-left: 16px;
-          margin-right: 16px;
+        .views-row {
+          display: grid;
+          grid-template-rows: [image] auto [title] auto [description] 1fr [price] auto;
+
           text-align: center;
 
+          div.views-field-entity-id {
+            grid-row: image;
+          }
+
           div.views-field-title {
-            margin-top: 1ex;
+            grid-row: title;
 
             a {
               font-size: 110%;
@@ -152,30 +157,15 @@ body.page-catalog {
           }
 
           div.views-field-field-extra-details {
+            grid-row: description;
             font-color: #727272;
             font-style: italic;
           }
 
           div.views-field-display-price {
-            float: left;
-            width: 50%;
             font-weight: bold;
             margin-top: 14px;
             font-size: 110%;
-          }
-
-          div.views-field-buyitnowbutton {
-            text-align: right;
-            float: left;
-            width: 50%;
-          }
-
-          input[type="submit"] {
-            border: none;
-            background: $alq-purple;
-            color: #fff;
-            border-radius: 0;
-            font-weight: normal;
           }
 
           img {
@@ -200,7 +190,6 @@ body.page-catalog {
         border-radius: 0;
 
         li {
-          font-size: 80%;
           background: none;
           border: none;
           border-radius: 0;
@@ -223,6 +212,7 @@ body.page-catalog {
           }
 
           &.pager-current {
+            background-color: #fff;
             color: #000;
           }
         }
