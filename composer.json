@@ -22,7 +22,7 @@
   "extra": {
     "hooks": {
       "pre-commit": [
-        "phpcs"
+        "./vendor/bin/phpcs"
       ]
     }
   }
