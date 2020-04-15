@@ -8506,32 +8506,6 @@ header.section-header {
     .more-link a:after {
       content: " \25B6"; }
 
-.jumbotron {
-  margin: 2em 0;
-  color: #fff;
-  background: url("/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg");
-  background-size: cover;
-  background-position: center center;
-  padding: 2em; }
-  .jumbotron .container {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 2em;
-    width: 90%;
-    margin: 5em auto; }
-    .jumbotron .container h1 {
-      color: #fff; }
-    .jumbotron .container .text p {
-      font-size: 110%;
-      font-weight: normal; }
-    .jumbotron .container a.btn {
-      text-decoration: none;
-      color: #fff;
-      font-family: "Montserrat", sans-serif;
-      font-size: 105%;
-      font-weight: 600;
-      font-display: swap;
-      font-size: 90%; }
-
 body.node-type-product input[type="submit"] {
   border: none;
   background: #502D82;
@@ -8593,16 +8567,27 @@ body.node-type-product div.add-to-cart {
 
 body.page-catalog #block-system-main div.view-uc-catalog {
   background-color: #eee;
-  border-radius: 4px;
-  padding: 1ex; }
+  border-radius: 4px; }
   body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+    padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1ex; }
+    @media only screen and (min-width: 1000px) {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+        grid-template-columns: repeat(4, 1fr); } }
+    @media only screen and (max-width: 1000px) {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+        grid-template-columns: repeat(3, 1fr); } }
+    @media only screen and (max-width: 700px) {
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+        grid-template-columns: repeat(1, 1fr); } }
     body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row {
+      padding: 1ex;
       display: grid;
       grid-template-rows: [image] auto [title] auto [description] 1fr [price] auto;
       text-align: center; }
+      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row:hover {
+        background-color: #ddd; }
       body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-entity-id {
         grid-row: image; }
       body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title {
@@ -8723,6 +8708,32 @@ div.view-uc-catalog-terms a {
 #uc-coupon-form,
 #uc-cart-pane-coupon {
   margin-bottom: 1em; }
+
+.jumbotron {
+  margin: 2em 0;
+  color: #fff;
+  background: url("/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg");
+  background-size: cover;
+  background-position: center center;
+  padding: 2em; }
+  .jumbotron .container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+    width: 90%;
+    margin: 5em auto; }
+    .jumbotron .container h1 {
+      color: #fff; }
+    .jumbotron .container .text p {
+      font-size: 110%;
+      font-weight: normal; }
+    .jumbotron .container a.btn {
+      text-decoration: none;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      font-size: 105%;
+      font-weight: 600;
+      font-display: swap;
+      font-size: 90%; }
 
 div.view-slideshow {
   max-width: 1200px;

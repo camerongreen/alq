@@ -1,39 +1,5 @@
 $gray-bg: #eee;
 
-
-// Shop block on front page.
-.jumbotron {
-  margin: 2em 0;
-  color: #fff;
-  background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
-  background-size: cover;
-  background-position: center center;
-  padding: 2em;
-
-  .container {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 2em;
-    width: 90%;
-    margin: 5em auto;
-
-    h1 {
-      color: #fff;
-    }
-
-    .text {
-      p {
-        font-size: 110%;
-        font-weight: normal;
-      }
-    }
-
-    a.btn {
-      @include bold-link(#fff);
-      font-size: 90%;
-    }
-  }
-}
-
 // Styling the main individual product pages.
 body.node-type-product {
   input[type="submit"] {
@@ -60,7 +26,6 @@ body.node-type-product {
 
   div.field-items {
     overflow: auto;
-
   }
 
   div.field-type-image {
@@ -127,14 +92,28 @@ body.page-catalog {
     div.view-uc-catalog {
       background-color: $gray-bg;
       border-radius: 4px;
-      padding: 1ex;
 
       .view-content {
+        padding: 1rem;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+
+        @media only screen and (min-width: $header-toggle-width) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        @media only screen and (max-width: $header-toggle-width) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media only screen and (max-width: $header-toggle-width-small) {
+          grid-template-columns: repeat(1, 1fr);
+        }
         grid-gap: 1ex;
 
         .views-row {
+          padding: 1ex;
+          &:hover {
+            background-color: #ddd;
+          }
+
           display: grid;
           grid-template-rows: [image] auto [title] auto [description] 1fr [price] auto;
 
@@ -338,4 +317,37 @@ div.view-uc-catalog-terms {
 #uc-coupon-form,
 #uc-cart-pane-coupon {
   margin-bottom: 1em;
+}
+
+// Shop block on front page.
+.jumbotron {
+  margin: 2em 0;
+  color: #fff;
+  background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
+  background-size: cover;
+  background-position: center center;
+  padding: 2em;
+
+  .container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2em;
+    width: 90%;
+    margin: 5em auto;
+
+    h1 {
+      color: #fff;
+    }
+
+    .text {
+      p {
+        font-size: 110%;
+        font-weight: normal;
+      }
+    }
+
+    a.btn {
+      @include bold-link(#fff);
+      font-size: 90%;
+    }
+  }
 }
