@@ -16,6 +16,7 @@
     }
     grid-row-gap: 15px;
 
+    .views-field-field-thumbnail,
     .views-field-field-image {
       grid-column: image;
       @media only screen and (min-width: $header-toggle-width-small) {
@@ -80,6 +81,7 @@
         grid-template-rows: [image] auto [title] auto [body] 1fr [more] 40px;
         grid-row-gap: 1em;
 
+        .views-field-field-thumbnail,
         .views-field-field-image {
           grid-row: image;
 
@@ -120,6 +122,7 @@
 
   .more-link {
     text-align: center;
+
     a {
       color: #999;
     }

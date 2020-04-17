@@ -238,16 +238,16 @@ function alq_content_types_feature_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -277,6 +277,9 @@ function alq_content_types_feature_strongarm() {
         'custom_settings' => FALSE,
       ),
       'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
     ),
@@ -337,7 +340,7 @@ function alq_content_types_feature_strongarm() {
           'weight' => '3',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
           'weight' => '2',
