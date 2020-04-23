@@ -37,12 +37,12 @@
 <div>Help us protect animals. Sign up to our free email newsletter.</div>
 <form action="https://alq.us4.list-manage.com/subscribe/post?u=49be60bd0cc5154fbb09720b1&amp;id=f71a11210c" method="post" target="_blank" class="form-inline">
 <div class="form-group">
-	<label for="mce-EMAIL" class="sr-only">Email Address</label>
-	<input type="email" value="" name="EMAIL" class="form-control" required type="email" placeholder="Email address" />
-</div>
-<div class="form-group">
 	<label for="mce-FNAME" class="sr-only">First Name </label>
 	<input type="text" value="" name="FNAME" class="form-control" placeholder="Given name" />
+</div>
+<div class="form-group">
+	<label for="mce-EMAIL" class="sr-only">Email Address</label>
+	<input type="email" value="" name="EMAIL" class="form-control" required type="email" placeholder="Email address" />
 </div>
 <input type="submit" value="Subscribe" name="subscribe" class="form-control btn btn-warning" />
 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->

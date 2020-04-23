@@ -67,8 +67,6 @@
 }
 
 .block-views-news-block {
-  margin-top: 1rem;
-
   .view-content {
     @media only screen and (min-width: $header-toggle-width-small) {
       display: grid;
@@ -83,6 +81,7 @@
 
         .views-field-field-thumbnail,
         .views-field-field-image {
+          margin-top: 2rem;
           grid-row: image;
 
           img {
