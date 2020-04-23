@@ -5,12 +5,12 @@
     margin: 2em 0;
     display: grid;
     @media only screen and (min-width: $header-toggle-width-small) {
-      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-columns: [content] 1fr [image] auto;
       grid-template-rows: [title] auto [body] auto [more] auto;
     }
     @media only screen and (max-width: $header-toggle-width-small) {
       grid-template-columns: [image content] auto;
-      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      grid-template-rows: [title] auto [body] auto [more] auto [image] auto;
       width: 300px;
       margin: 1em auto;
     }
@@ -64,6 +64,10 @@
 #block-views-media-views-block,
 #block-views-media-views-block-1 {
   margin: 1em;
+  @media only screen and (min-width: $header-toggle-width) {
+    width: 45%;
+    float: left;
+  }
 }
 
 .block-views-news-block {

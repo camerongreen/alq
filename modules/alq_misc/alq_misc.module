@@ -21,3 +21,26 @@ function _contact_site_form_submit(&$form, &$form_state) {
   $form_state['redirect'] = 'contact';
   drupal_set_message(t("Thank you for contacting us, we will reply to your email as soon as possible."));
 }
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function alq_misc_node_view_alter(&$build) {
+  $node = $build['#node'];
+
+  // For media articles, we want to add a breadcrumb link to their parent
+  // view.
+  if ($build['#view_mode'] == 'full' && $node->type == 'media_article') {
+    $in_the_news_tid = '4';
+    $breadcrumb = [];
+    $breadcrumb[] = l(t('Home'), '<front>');
+
+    if ($node->field_article_type[LANGUAGE_NONE][0]['tid'] === $in_the_news_tid) {
+      $breadcrumb[] = l(t('In the news'), '/in-the-news');
+    }
+    else {
+      $breadcrumb[] = l(t('Media releases'), '/media-releases');
+    }
+    drupal_set_breadcrumb($breadcrumb);
+  }
+}

@@ -79,6 +79,12 @@ body {
     }
   }
 
+  div.field-name-field-date {
+    margin: 1em 0;
+    font-size: 120%;
+    color: #666;
+  }
+
   div.field-name-field-tags {
     font-weight: bold;
     color: $tags-color;

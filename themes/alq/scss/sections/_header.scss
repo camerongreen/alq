@@ -107,6 +107,9 @@ header.section-header {
             i {
               font-size: 220%;
               color: $social-media-icons-color;
+              &:hover {
+                color: darken($social-media-icons-color, 20%);
+              }
             }
 
             &:last-child {

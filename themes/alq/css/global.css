@@ -8288,6 +8288,8 @@ header.section-header .zone-branding .region-branding-inner {
       header.section-header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i {
         font-size: 220%;
         color: #888; }
+        header.section-header .zone-branding .region-branding-inner #block-block-2 ul.social-media li i:hover {
+          color: #555555; }
       header.section-header .zone-branding .region-branding-inner #block-block-2 ul.social-media li:last-child a {
         margin-left: 12px;
         text-decoration: none;
@@ -8363,12 +8365,12 @@ header.section-header #section-home-header img {
   grid-row-gap: 15px; }
   @media only screen and (min-width: 700px) {
     .alq-list .views-row {
-      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-columns: [content] 1fr [image] auto;
       grid-template-rows: [title] auto [body] auto [more] auto; } }
   @media only screen and (max-width: 700px) {
     .alq-list .views-row {
       grid-template-columns: [image content] auto;
-      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      grid-template-rows: [title] auto [body] auto [more] auto [image] auto;
       width: 300px;
       margin: 1em auto; } }
   .alq-list .views-row .views-field-field-thumbnail,
@@ -8409,6 +8411,11 @@ header.section-header #section-home-header img {
 #block-views-media-views-block,
 #block-views-media-views-block-1 {
   margin: 1em; }
+  @media only screen and (min-width: 1000px) {
+    #block-views-media-views-block,
+    #block-views-media-views-block-1 {
+      width: 45%;
+      float: left; } }
 
 @media only screen and (min-width: 700px) {
   .block-views-news-block .view-content {
@@ -8454,12 +8461,12 @@ header.section-header #section-home-header img {
     grid-row-gap: 15px; } }
   @media only screen and (max-width: 700px) and (min-width: 700px) {
     .block-views-news-block .view-content .views-row {
-      grid-template-columns: [image] auto [content] 1fr;
+      grid-template-columns: [content] 1fr [image] auto;
       grid-template-rows: [title] auto [body] auto [more] auto; } }
   @media only screen and (max-width: 700px) and (max-width: 700px) {
     .block-views-news-block .view-content .views-row {
       grid-template-columns: [image content] auto;
-      grid-template-rows: [image] auto [title] auto [body] auto [more] auto;
+      grid-template-rows: [title] auto [body] auto [more] auto [image] auto;
       width: 300px;
       margin: 1em auto; } }
 
@@ -8834,6 +8841,10 @@ body {
   body .page input[type=text],
   body .page input[type=email] {
     border: thin solid #ccc; }
+  body div.field-name-field-date {
+    margin: 1em 0;
+    font-size: 120%;
+    color: #666; }
   body div.field-name-field-tags {
     font-weight: bold;
     color: #666;
