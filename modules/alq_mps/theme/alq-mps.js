@@ -117,7 +117,7 @@
     if (fromEmail) {
       $('#edit-email').val(fromEmail);
     }
-    $('div.field-name-field-tags').parent().insertAfter('.block-alq-mps');
+    $('.field-name-field-tags').insertAfter('.block-alq-mps');
     $('.suburb-search').autocomplete({
       source: (request, response) => {
         const searchTerm = request.term;
