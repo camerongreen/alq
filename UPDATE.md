@@ -1,7 +1,7 @@
 # Update log for new theme.
 
 1. Enable, disable modules and sync features.
-    drush en -y views_bootstrap alq_images_feature alq_text_formats_feature metatag_opengraph
+    drush en -y views_bootstrap alq_images_feature alq_blocks alq_text_formats_feature metatag_opengraph
     drush features-revert-all -y
 
 2. Set maximum scale to 10 and disable formalize library in theme.
@@ -73,23 +73,11 @@
   Email campaign
   Media article
     
-10. Create a new block to go under mail chimp signup form in content region.
+10. Put ALQ Promo block onto front page under News View
 title: <none>
 description: Front page shop
 Display only on front
 
-```html
-<div class="jumbotron">
-  <div class="container">
-      <h1>ALQ Shop</h1>
-      <div class="text">
-        <p>Looking for the perfect gift for the animal lover in your life, or just treating yourself?</p>
-        hopp>The ALQ shop has you covered.</p>
-        <p><a class="btn btn-warning btn-lg" href="/shop" role="button">View shop</a></p>
-      </div>
-  </div>
-</div>
-```
 11. Delete old menu link -> Media -> in the news.
 
 12. Add open graph tags to metatag configuration: 
@@ -119,10 +107,10 @@ Display only on front
     <a href="[path]" class="btn btn-default">[display_price]</a>
     ```
     
-    /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
-    Format: Unformatted list, no row striping.  
-    
+    /admin/structure/views/view/uc_catalog_terms/edit/default
+    Format: Unformatted list, no row striping.
     
  18. Edit Image category:
      http://alq.test:26980/admin/config/media/image-styles/edit/uc_category
      Scale and crop 450x300
+     
