@@ -67,7 +67,7 @@ function alq_images_feature_image_default_styles() {
 
   // Exported image style: news_list.
   $styles['news_list'] = array(
-    'label' => 'news_list',
+    'label' => 'news_list (200x150)',
     'effects' => array(
       4 => array(
         'name' => 'image_scale_and_crop',

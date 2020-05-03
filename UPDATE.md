@@ -106,16 +106,23 @@ Display only on front
 15. Swap jquery and jquery ui to local versions.
 
 16. Set responsive menu to kick in at 1000.
-    /admin/config/user-interface/responsive_menus
+  /admin/config/user-interface/responsive_menus
     
-17.  Update Shop view:
-    /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
-    Format: Unformatted list, no row striping.  
-    Remove: buy it now button.
-    Add: Content path, exlcude from display
-    Reorder: path to be before price
-    Rewrite price: 
+17. Update Shop views:
+  /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
+  Format: Unformatted list, no row striping.  
+  Remove: buy it now button.
+  Add: Content path, exclude from display
+  Reorder: path to be before price
+  Rewrite price: 
     ```html
     <a href="[path]" class="btn btn-default">[display_price]</a>
     ```
     
+    /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
+    Format: Unformatted list, no row striping.  
+    
+    
+ 18. Edit Image category:
+     http://alq.test:26980/admin/config/media/image-styles/edit/uc_category
+     Scale and crop 450x300
