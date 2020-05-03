@@ -8723,24 +8723,24 @@ div.view-uc-catalog-terms a {
 #uc-cart-pane-coupon {
   margin-bottom: 1em; }
 
-.jumbotron {
+.block-block-9 .jumbotron {
   margin: 2em 0;
   color: #fff;
   background: url("/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg");
   background-size: cover;
   background-position: center center;
   padding: 2em; }
-  .jumbotron .container {
+  .block-block-9 .jumbotron .container {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 2em;
     width: 90%;
     margin: 5em auto; }
-    .jumbotron .container h1 {
+    .block-block-9 .jumbotron .container h1 {
       color: #fff; }
-    .jumbotron .container .text p {
+    .block-block-9 .jumbotron .container .text p {
       font-size: 110%;
       font-weight: normal; }
-    .jumbotron .container a.btn {
+    .block-block-9 .jumbotron .container a.btn {
       text-decoration: none;
       color: #fff;
       font-family: "Montserrat", sans-serif;
@@ -8816,6 +8816,8 @@ body {
     height: auto; }
   body .btn {
     background-image: none; }
+    body .btn.btn-primary {
+      background-color: #502D82; }
   body.front h1.title {
     display: none; }
   body .page h1, body .page h2, body .page h3, body .page h4, body .page h5, body .page h6 {

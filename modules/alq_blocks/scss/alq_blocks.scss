@@ -1,0 +1,31 @@
+.block-alq-blocks-promo-block {
+  .jumbotron {
+    margin: 2em 0;
+    color: #fff;
+    background-size: cover;
+    background-position: center center;
+    padding: 2em;
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      width: 90%;
+      margin: 5em auto;
+
+      h1 {
+        color: #fff;
+      }
+
+      .text {
+        p {
+          font-size: 110%;
+          font-weight: normal;
+        }
+      }
+
+      a.btn {
+        font-size: 90%;
+      }
+    }
+  }
+}

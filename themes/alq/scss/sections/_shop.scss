@@ -110,6 +110,7 @@ body.page-catalog {
 
         .views-row {
           padding: 1ex;
+
           &:hover {
             background-color: #ddd;
           }
@@ -308,34 +309,36 @@ div.view-uc-catalog-terms {
 }
 
 // Shop block on front page.
-.jumbotron {
-  margin: 2em 0;
-  color: #fff;
-  background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
-  background-size: cover;
-  background-position: center center;
-  padding: 2em;
-
-  .container {
-    background-color: rgba(0, 0, 0, 0.7);
+.block-block-9 {
+  .jumbotron {
+    margin: 2em 0;
+    color: #fff;
+    background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
+    background-size: cover;
+    background-position: center center;
     padding: 2em;
-    width: 90%;
-    margin: 5em auto;
 
-    h1 {
-      color: #fff;
-    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 2em;
+      width: 90%;
+      margin: 5em auto;
 
-    .text {
-      p {
-        font-size: 110%;
-        font-weight: normal;
+      h1 {
+        color: #fff;
       }
-    }
 
-    a.btn {
-      @include bold-link(#fff);
-      font-size: 90%;
+      .text {
+        p {
+          font-size: 110%;
+          font-weight: normal;
+        }
+      }
+
+      a.btn {
+        @include bold-link(#fff);
+        font-size: 90%;
+      }
     }
   }
 }

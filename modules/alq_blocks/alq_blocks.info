@@ -1,0 +1,6 @@
+name = ALQ Blocks
+description = Shop promo etc.
+core = 7.x
+package = ALQ
+
+stylesheets[all][]=css/alq_blocks.css

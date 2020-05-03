@@ -32,6 +32,10 @@ body {
   // Not sure why bootstrap flat doesn't do this.
   .btn {
     background-image: none;
+
+    &.btn-primary {
+      background-color: $alq-purple;
+    }
   }
 
   &.front {

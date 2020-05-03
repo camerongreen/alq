@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * @file
+ * Provides blocks which don't fit in other sections.
+ */
+
+define('ALQ_BLOCKS_PROMO_BLOCK', 'alq_blocks_promo_block');
+
+/**
+ * Implements hook_block_info().
+ */
+function alq_blocks_block_info() {
+  return [
+    ALQ_BLOCKS_PROMO_BLOCK => [
+      "info" => t("ALQ Promo block"),
+    ],
+  ];
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function alq_blocks_block_view($delta = "") {
+  $block = NULL;
+
+  switch ($delta) {
+    case ALQ_BLOCKS_PROMO_BLOCK:
+      $block["subject"] = t("Promo block");
+      $promo_block_config = variable_get(ALQ_BLOCKS_PROMO_BLOCK, []);
+      $block["content"] = theme("alq_promo_block", $promo_block_config);
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function alq_blocks_theme() {
+  return [
+    "alq_promo_block" => [
+      "template" => "theme/promo-block",
+      "variables" => [
+        "alignment" => NULL,
+        "button_text" => NULL,
+        "button_url" => NULL,
+        "html" => NULL,
+        "image" => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function alq_blocks_block_configure($delta = '') {
+  $form = [];
+  switch ($delta) {
+    case ALQ_BLOCKS_PROMO_BLOCK:
+      $promo_block_config = variable_get(ALQ_BLOCKS_PROMO_BLOCK, []);
+      $form['image'] = [
+        '#title' => t('Image'),
+        '#type' => 'managed_file',
+        '#default_value' => $promo_block_config['image'],
+        '#upload_location' => 'public://promo_block/',
+      ];
+      $form['text'] = [
+        '#type' => 'text_format',
+        '#title' => t('Text'),
+        '#default_value' => $promo_block_config['text'],
+        '#format' => $promo_block_config['text_format'],
+      ];
+      $form['button_text'] = [
+        '#type' => 'textfield',
+        '#title' => t('Text on button'),
+        '#default_value' => $promo_block_config['button_text'],
+        '#size' => 15,
+      ];
+      $form['button_url'] = [
+        '#type' => 'textfield',
+        '#title' => t('URL for button'),
+        '#default_value' => $promo_block_config['button_url'],
+        '#size' => 60,
+      ];
+      $form['alignment'] = [
+        '#type' => 'select',
+        '#title' => t('Alignment of block'),
+        '#default_value' => $promo_block_config['alignment'],
+        '#options' => [
+          'left' => t('Left'),
+          'right' => t('Right'),
+          'centre' => t('Centre'),
+        ],
+      ];
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function alq_blocks_block_save($delta = '', $edit = []) {
+  switch ($delta) {
+    case ALQ_BLOCKS_PROMO_BLOCK:
+      variable_set(ALQ_BLOCKS_PROMO_BLOCK, $edit);
+      break;
+  }
+}
