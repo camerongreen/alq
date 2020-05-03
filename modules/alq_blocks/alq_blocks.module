@@ -44,6 +44,7 @@ function alq_blocks_theme() {
       "template" => "theme/promo-block",
       "variables" => [
         "alignment" => NULL,
+        "background" => NULL,
         "button_text" => NULL,
         "button_url" => NULL,
         "html" => NULL,
@@ -70,8 +71,8 @@ function alq_blocks_block_configure($delta = '') {
       $form['text'] = [
         '#type' => 'text_format',
         '#title' => t('Text'),
-        '#default_value' => $promo_block_config['text'],
-        '#format' => $promo_block_config['text_format'],
+        '#default_value' => $promo_block_config['text']['value'],
+        '#format' => $promo_block_config['text']['format'],
       ];
       $form['button_text'] = [
         '#type' => 'textfield',
@@ -85,6 +86,16 @@ function alq_blocks_block_configure($delta = '') {
         '#default_value' => $promo_block_config['button_url'],
         '#size' => 60,
       ];
+      $form['button_type'] = [
+        '#type' => 'select',
+        '#title' => t('Type'),
+        '#default_value' => $promo_block_config['button_type'],
+        '#options' => [
+          'warning' => t('Orange'),
+          'primary' => t('Purple'),
+          'default' => t('White'),
+        ],
+      ];
       $form['alignment'] = [
         '#type' => 'select',
         '#title' => t('Alignment of block'),
@@ -92,7 +103,17 @@ function alq_blocks_block_configure($delta = '') {
         '#options' => [
           'left' => t('Left'),
           'right' => t('Right'),
-          'centre' => t('Centre'),
+          'center' => t('Centre'),
+        ],
+      ];
+      $form['background'] = [
+        '#type' => 'select',
+        '#title' => t('Background'),
+        '#default_value' => $promo_block_config['background'],
+        '#options' => [
+          'none' => t('None'),
+          'tint' => t('Tint'),
+          'gradient' => t('Gradient'),
         ],
       ];
   }
