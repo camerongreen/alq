@@ -108,7 +108,7 @@ Display only on front
 16. Set responsive menu to kick in at 1000.
     /admin/config/user-interface/responsive_menus
     
- 17.  Update Shop ciew:
+17.  Update Shop view:
     /admin/structure/views/view/uc_catalog/edit/catalog_grid?destination=catalog/14
     Format: Unformatted list, no row striping.  
     Remove: buy it now button.

@@ -8550,6 +8550,9 @@ body.node-type-product div.field-name-body {
 body.node-type-product div.field-items {
   overflow: auto; }
 
+body.node-type-product div.main-product-image {
+  margin-bottom: 1ex; }
+
 body.node-type-product div.field-type-image {
   height: auto;
   margin-right: 1em; }
@@ -8587,97 +8590,101 @@ body.node-type-product div.add-to-cart {
   body.node-type-product div.add-to-cart div.form-actions {
     padding-left: 90px; }
 
-body.page-catalog #block-system-main div.view-uc-catalog {
+.page-catalog .block-system-main div.view-uc-catalog {
   background-color: #eee;
   border-radius: 4px; }
-  body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+  .page-catalog .block-system-main div.view-uc-catalog .view-content {
     padding: 1rem;
     display: grid;
     grid-gap: 1ex; }
     @media only screen and (min-width: 1000px) {
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content {
         grid-template-columns: repeat(4, 1fr); } }
     @media only screen and (max-width: 1000px) {
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content {
         grid-template-columns: repeat(3, 1fr); } }
     @media only screen and (max-width: 700px) {
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content {
         grid-template-columns: repeat(1, 1fr); } }
-    body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row {
+    .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row {
       padding: 1ex;
       display: grid;
       grid-template-rows: [image] auto [title] auto [description] 1fr [price] auto;
       text-align: center; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row:hover {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row:hover {
         background-color: #ddd; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-entity-id {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.views-field-entity-id {
         grid-row: image; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title {
         grid-row: title; }
-        body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title a {
+        .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.views-field-title a {
           font-size: 110%;
           color: #000;
           text-decoration: none; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-field-extra-details {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.views-field-field-extra-details {
         grid-row: description;
         font-color: #727272;
         font-style: italic; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.views-field-display-price {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.views-field-display-price {
         font-weight: bold;
         margin-top: 14px;
         font-size: 110%; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row img {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row img {
         border-radius: 4px; }
-      body.page-catalog #block-system-main div.view-uc-catalog .view-content .views-row div.form-wrapper {
+      .page-catalog .block-system-main div.view-uc-catalog .view-content .views-row div.form-wrapper {
         text-align: left; }
 
-body.page-catalog #block-system-main div.item-list {
+.page-catalog .block-system-main div.item-list {
   display: flex;
   justify-content: center; }
-  body.page-catalog #block-system-main div.item-list ul.pager {
+  .page-catalog .block-system-main div.item-list ul.pager {
     margin: 1em 0 1em 0;
     background: none;
     border: none;
     border-radius: 0; }
-    body.page-catalog #block-system-main div.item-list ul.pager li {
+    .page-catalog .block-system-main div.item-list ul.pager li {
       background: none;
       border: none;
       border-radius: 0;
       color: #666; }
-      body.page-catalog #block-system-main div.item-list ul.pager li a {
+      .page-catalog .block-system-main div.item-list ul.pager li a {
         background: none;
         border: none;
         border-radius: 0;
         color: #666; }
-      body.page-catalog #block-system-main div.item-list ul.pager li.pager-next, body.page-catalog #block-system-main div.item-list ul.pager li.pager-previous {
+      .page-catalog .block-system-main div.item-list ul.pager li.pager-next, .page-catalog .block-system-main div.item-list ul.pager li.pager-previous {
         display: none; }
-      body.page-catalog #block-system-main div.item-list ul.pager li.pager-last {
+      .page-catalog .block-system-main div.item-list ul.pager li.pager-last {
         position: relative; }
-      body.page-catalog #block-system-main div.item-list ul.pager li.pager-current {
+      .page-catalog .block-system-main div.item-list ul.pager li.pager-current {
         background-color: #fff;
         color: #000; }
 
-div.view-uc-catalog-terms div.row {
-  margin: auto;
-  width: max-content; }
-  @media only screen and (max-width: 460px) {
-    div.view-uc-catalog-terms div.row {
-      width: 240px; } }
-  div.view-uc-catalog-terms div.row .col-sm-6, div.view-uc-catalog-terms div.row .col-md-6, div.view-uc-catalog-terms div.row .col-lg-6 {
-    margin-bottom: 10px;
-    margin-right: 10px;
-    width: 220px; }
-  div.view-uc-catalog-terms div.row > div {
-    background-color: #502D82;
-    padding: 0; }
-    div.view-uc-catalog-terms div.row > div div.views-field-name {
-      text-align: center;
-      height: 100px; }
-      div.view-uc-catalog-terms div.row > div div.views-field-name span a {
-        font-size: 170%;
-        font-weight: normal;
-        text-decoration: none;
-        color: #fff; }
+.page-catalog .block-system-main .view-uc-catalog-terms .view-content {
+  padding: 1rem;
+  display: grid;
+  grid-gap: 1em; }
+  @media only screen and (min-width: 1000px) {
+    .page-catalog .block-system-main .view-uc-catalog-terms .view-content {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media only screen and (max-width: 700px) {
+    .page-catalog .block-system-main .view-uc-catalog-terms .view-content {
+      grid-template-columns: repeat(1, 1fr); } }
+  .page-catalog .block-system-main .view-uc-catalog-terms .view-content .views-row {
+    position: relative;
+    max-width: 450px;
+    margin: auto; }
+    .page-catalog .block-system-main .view-uc-catalog-terms .view-content .views-row div.views-field-name {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      background-color: #502D82;
+      padding: .5ex 1ex; }
+      .page-catalog .block-system-main .view-uc-catalog-terms .view-content .views-row div.views-field-name a {
+        font-size: 150%;
+        font-weight: 900;
+        color: #fff;
+        text-decoration: none; }
 
 #block-block-8 {
   margin: 2em 0 2em 0;
@@ -8695,29 +8702,9 @@ div.view-uc-catalog-terms div.row {
         height: 136px;
         width: 100px; }
 
-body.node-type-product div.main-product-image {
-  margin-bottom: 1ex; }
-
-.page-catalog ul.pager {
-  margin-bottom: 1em; }
-  .page-catalog ul.pager li.pager-next,
-  .page-catalog ul.pager li.pager-previous {
-    display: none; }
-
-.page-catalog table:nth-child(1) {
-  border: none; }
-  .page-catalog table:nth-child(1) td {
-    text-align: center; }
-
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0;
   background: none; }
-
-div.view-uc-catalog-terms td {
-  padding-bottom: 1em; }
-
-div.view-uc-catalog-terms a {
-  font-weight: bold; }
 
 #uc-coupon-form,
 #uc-cart-pane-coupon {

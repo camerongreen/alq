@@ -28,6 +28,10 @@ body.node-type-product {
     overflow: auto;
   }
 
+  div.main-product-image {
+    margin-bottom: 1ex;
+  }
+
   div.field-type-image {
     height: auto;
     margin-right: 1em;
@@ -85,10 +89,9 @@ body.node-type-product {
   }
 }
 
-// Styling pager for products.
-body.page-catalog {
-
-  #block-system-main {
+.page-catalog {
+  // Styling product category listings/view.
+  .block-system-main {
     div.view-uc-catalog {
       background-color: $gray-bg;
       border-radius: 4px;
@@ -161,6 +164,7 @@ body.page-catalog {
       display: flex;
       justify-content: center;
 
+      // Styling pager for product listings.
       ul.pager {
         margin: 1em 0 1em 0;
         background: none;
@@ -196,39 +200,40 @@ body.page-catalog {
         }
       }
     }
-  }
-}
 
-// Product list on front page of shop.
-div.view-uc-catalog-terms {
-  div.row {
-    margin: auto;
-    width: max-content;
+    // Category list on front page of shop.
+    .view-uc-catalog-terms {
+      .view-content {
+        padding: 1rem;
+        display: grid;
 
-    @media only screen and (max-width: 460px) {
-      width: 240px;
-    }
+        @media only screen and (min-width: $header-toggle-width) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media only screen and (max-width: $header-toggle-width-small) {
+          grid-template-columns: repeat(1, 1fr);
+        }
 
-    .col-sm-6, .col-md-6, .col-lg-6 {
-      margin-bottom: 10px;
-      margin-right: 10px;
-      width: 220px;
-    }
+        grid-gap: 1em;
 
-    & > div {
-      background-color: $alq-purple;
-      padding: 0;
+        .views-row {
+          position: relative;
+          max-width: 450px;
+          margin: auto;
 
-      div.views-field-name {
-        text-align: center;
-        height: 100px;
+          div.views-field-name {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background-color: $alq-purple;
+            padding: .5ex 1ex;
 
-        span {
-          a {
-            font-size: 170%;
-            font-weight: normal;
-            text-decoration: none;
-            color: #fff;
+            a {
+              font-size: 150%;
+              font-weight: 900;
+              color: #fff;
+              text-decoration: none;
+            }
           }
         }
       }
@@ -262,45 +267,10 @@ div.view-uc-catalog-terms {
   }
 }
 
-body.node-type-product {
-  div.main-product-image {
-    margin-bottom: 1ex;
-  }
-}
-
-.page-catalog {
-  ul.pager {
-    margin-bottom: 1em;
-
-    li.pager-next,
-    li.pager-previous {
-      display: none;
-    }
-  }
-
-  table:nth-child(1) {
-    border: none;
-
-    td {
-      text-align: center;
-    }
-  }
-}
 
 body[class*="page-catalog-"] div.region-content-inner {
   padding-top: 0;
   background: none;
-}
-
-
-div.view-uc-catalog-terms {
-  td {
-    padding-bottom: 1em;
-  }
-
-  a {
-    font-weight: bold;
-  }
 }
 
 #uc-coupon-form,
