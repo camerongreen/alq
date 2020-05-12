@@ -8253,7 +8253,10 @@ header.section-header .zone-branding .region-branding-inner {
       header.section-header .zone-branding .region-branding-inner .branding-data .logo-img img {
         width: 100%; }
   @media only screen and (max-width: 700px) {
-    header.section-header .zone-branding .region-branding-inner #block-block-2 .social-media li:not(.small) {
+    header.section-header .zone-branding .region-branding-inner #block-block-2 .social-media li:not(.small):not(.very-small) {
+      display: none; } }
+  @media only screen and (max-width: 450px) {
+    header.section-header .zone-branding .region-branding-inner #block-block-2 .social-media li:not(.very-small) {
       display: none; } }
   @media only screen and (min-width: 1000px) {
     header.section-header .zone-branding .region-branding-inner #block-block-2 {
@@ -8664,6 +8667,9 @@ body.node-type-product div.add-to-cart {
     position: relative;
     max-width: 450px;
     margin: auto; }
+    .page-catalog .block-system-main .view-uc-catalog-terms .view-content .views-row div.views-field-entity-id img {
+      width: 100%;
+      height: 100%; }
     .page-catalog .block-system-main .view-uc-catalog-terms .view-content .views-row div.views-field-name {
       position: absolute;
       bottom: 40px;

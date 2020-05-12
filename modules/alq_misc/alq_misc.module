@@ -11,6 +11,8 @@
 function alq_misc_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'contact_site_form') {
     $form['#submit'][] = '_contact_site_form_submit';
+    $form['actions']['submit']['#attributes']['class'][] = 'btn';
+    $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
   }
 }
 

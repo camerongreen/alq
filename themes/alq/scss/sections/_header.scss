@@ -34,6 +34,7 @@ header.section-header {
         min-width: 13ex;
         // And then you make it wider it pushes it off to the right, so fix that.
         margin-left: -7ex;
+
         li.menu-path-search {
           display: none;
         }
@@ -73,10 +74,17 @@ header.section-header {
       // Social block.
       #block-block-2 {
         @media only screen and (max-width: $header-toggle-width-small) {
-          .social-media li:not(.small) {
+          .social-media li:not(.small):not(.very-small) {
             display: none;
           }
         }
+
+        @media only screen and (max-width: $header-toggle-width-very-small) {
+          .social-media li:not(.very-small) {
+            display: none;
+          }
+        }
+
         @media only screen and (min-width: $header-toggle-width) {
           grid-column: menus;
           grid-row: social;
@@ -84,6 +92,7 @@ header.section-header {
             text-align: right;
           }
         }
+
         @media only screen and (max-width: $header-toggle-width) {
           grid-column: socialcol;
           align-self: center;
@@ -107,6 +116,7 @@ header.section-header {
             i {
               font-size: 220%;
               color: $social-media-icons-color;
+
               &:hover {
                 color: darken($social-media-icons-color, 20%);
               }
