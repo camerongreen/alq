@@ -126,6 +126,15 @@ function alq_blocks_block_configure($delta = '') {
 function alq_blocks_block_save($delta = '', $edit = []) {
   switch ($delta) {
     case ALQ_BLOCKS_PROMO_BLOCK:
+      // Load the file via file.fid.
+      $file = file_load($edit['image']);
+      // Change status to permanent.
+      $file->status = FILE_STATUS_PERMANENT;
+      // Save.
+      file_save($file);
+      // Record that the module (in this example, user module)
+      // is using the file.
+      file_usage_add($file, 'alq_blocks', 'file', 1);
       variable_set(ALQ_BLOCKS_PROMO_BLOCK, $edit);
       break;
   }
