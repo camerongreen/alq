@@ -8186,8 +8186,6 @@ footer.section-footer {
         @media only screen and (min-width: 1000px) {
           .block-6 .block-inner form input {
             max-width: 10em; } }
-        .block-6 .block-inner form input[type="submit"] {
-          font-weight: bold; }
       @media only screen and (max-width: 1000px) {
         .block-6 .block-inner form .form-group {
           display: block;
@@ -8209,14 +8207,6 @@ footer.section-footer {
       .donate-block .text p a {
         color: white;
         color: #f8931d; }
-        .donate-block .text p a.btn {
-          text-decoration: none;
-          color: #fff;
-          font-family: "Montserrat", sans-serif;
-          font-size: 105%;
-          font-weight: 600;
-          font-display: swap;
-          font-size: 80%; }
 
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 header.section-header .zone-wrapper {

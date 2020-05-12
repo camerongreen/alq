@@ -26,10 +26,6 @@
         @media only screen and (min-width: $header-toggle-width) {
           max-width: 10em;
         }
-
-        &[type="submit"] {
-          font-weight: bold;
-        }
       }
 
       @media only screen and (max-width: $header-toggle-width) {
@@ -68,11 +64,6 @@
       a {
         color: white;
         color: #f8931d;
-
-        &.btn {
-          @include bold-link(#fff);
-          font-size: 80%;
-        }
       }
     }
   }
