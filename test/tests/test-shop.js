@@ -11,7 +11,7 @@ this.testAddToCart = function (browser) {
   browser.click('//a[text()="Apparel"]');
   browser.useCss();
   browser.waitForElementVisible('.view-uc-catalog', 1000);
-  browser.assert.containsText('h1.title', 'APPAREL');
+  browser.assert.containsText('h1.title', 'Apparel');
   browser.useXpath();
   browser.click('//a[text()="ALQ Hoodie"]');
   browser.useCss();

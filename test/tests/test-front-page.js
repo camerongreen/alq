@@ -7,7 +7,7 @@ module.exports = {
     browser
         .url(siteUrl)
         .waitForElementVisible('body', 1000)
-        .assert.containsText('h1', 'OUR LATEST NEWS')
+        .assert.containsText('.view-news .more-link', 'Read more updates')
         .end();
   },
   'Check footer year current': function (browser) {
