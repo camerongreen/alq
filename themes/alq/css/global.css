@@ -8300,16 +8300,22 @@ header.section-header .zone-branding .region-branding-inner {
     @media only screen and (max-width: 1000px) {
       header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 {
         align-self: center; } }
+    header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .mean-bar {
+      min-width: 48px;
+      padding: 0px;
+      margin-left: 4px;
+      background-color: #fff; }
+      header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .mean-bar .mean-nav ul li {
+        background-color: #502D82; }
+    header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .meanmenu-reveal {
+      color: #888;
+      font-size: 180%;
+      font-weight: 600;
+      box-shadow: none;
+      text-align: right;
+      margin-left: 15px; }
     header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner {
       /* Header menu */ }
-      header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .toggler {
-        background-color: unset;
-        color: #888;
-        font-size: 180%;
-        font-weight: 600;
-        box-shadow: none;
-        text-align: right;
-        margin-left: 15px; }
       header.section-header .zone-branding .region-branding-inner #block-nice-menus-1 .block-inner .nice-menu {
         width: 100%;
         border: 0;

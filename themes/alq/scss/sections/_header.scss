@@ -144,17 +144,32 @@ header.section-header {
           align-self: center;
         }
 
-        .block-inner {
-          .toggler {
-            background-color: unset;
-            color: $social-media-icons-color;
-            font-size: 180%;
-            font-weight: 600;
-            box-shadow: none;
-            text-align: right;
-            margin-left: 15px;
-          }
+        // Mobile menu styling.
+        .mean-bar {
+          min-width: 48px;
+          padding: 0px;
+          margin-left: 4px;
+          background-color: #fff;
 
+          .mean-nav {
+            ul {
+              li {
+                background-color: $alq-purple;
+              }
+            }
+          }
+        }
+
+        .meanmenu-reveal {
+          color: $social-media-icons-color;
+          font-size: 180%;
+          font-weight: 600;
+          box-shadow: none;
+          text-align: right;
+          margin-left: 15px;
+        }
+
+        .block-inner {
           /* Header menu */
           .nice-menu {
             width: 100%;
