@@ -8133,6 +8133,9 @@ footer.section-footer {
   footer.section-footer .zone-wrapper {
     max-width: 960px;
     margin: auto; }
+  footer.section-footer div.region-footer-bottom {
+    text-align: center;
+    padding: 3em 2em 0 2em; }
   @media only screen and (min-width: 700px) {
     footer.section-footer div.region-footer-first {
       width: 55%; }
@@ -8143,7 +8146,9 @@ footer.section-footer {
         text-align: right; } }
   @media only screen and (max-width: 700px) {
     footer.section-footer div.region-footer-first {
-      padding-bottom: 1em; } }
+      padding-bottom: 1em; }
+    footer.section-footer div.region-footer-bottom {
+      padding: 1em; } }
   footer.section-footer ul.menu li ul {
     display: none; }
   footer.section-footer ul.menu li {

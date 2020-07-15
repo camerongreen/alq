@@ -8,6 +8,11 @@ footer.section-footer {
     margin: auto;
   }
 
+  div.region-footer-bottom {
+    text-align: center;
+    padding: 3em 2em 0 2em;
+  }
+
   @media only screen and (min-width: $header-toggle-width-small) {
     div.region-footer-first {
       width: 55%;
@@ -26,6 +31,10 @@ footer.section-footer {
   @media only screen and (max-width: $header-toggle-width-small) {
     div.region-footer-first {
       padding-bottom: 1em;
+    }
+
+    div.region-footer-bottom {
+      padding: 1em;
     }
   }
 
