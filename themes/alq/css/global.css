@@ -8135,7 +8135,7 @@ footer.section-footer {
     margin: auto; }
   footer.section-footer div.region-footer-bottom {
     text-align: center;
-    padding: 3em 2em 0 2em; }
+    padding: 1em 2em 0 2em; }
   @media only screen and (min-width: 700px) {
     footer.section-footer div.region-footer-first {
       width: 55%; }
