@@ -21,3 +21,5 @@ vendor
 .DS_Store
 tmp
 package-lock.json
+
+variables*
