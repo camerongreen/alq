@@ -3,7 +3,6 @@
  *
  * These have been deprecated.
  */
-/*
 var pageUrl = '/membership';
 
 this.testAmountChanges = function (browser) {
@@ -60,4 +59,3 @@ this.testAmountOtherMinimumFail = function (browser) {
       .assert.containsText('div.has-error', 'Must be numeric and the minimum')
       .end();
 };
- */

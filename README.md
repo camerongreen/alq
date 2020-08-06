@@ -116,12 +116,15 @@ To actually make a payment, you'll want to set up some sandbox personal accounts
 To run the nightwatch tests from the docker directory:
 
     docker exec -ti alq-web bash -c "cd alq/test && ./run-tests.sh"
-    docker exec -ti alq-web bash -c "cd alq/test && ./run-tests.sh tests/test-membership-form.js"
+    docker exec -ti alq-web bash -c "cd alq/test && ./run-tests.sh tests/test-email-campaign.js"
  
 Note the main issue with running the tests is chrome and chromedriver versions.  
 
 Try running apt install google-chrome-stable and check the version number, then make sure that matches
 the package.json and run npm install.
+
+Note II Tests which refer to older functionality which has been changed such as the membership and donation forms
+have been moved to the old-test directory.
     
 ## CircleCI
 
