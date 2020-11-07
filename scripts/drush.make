@@ -86,6 +86,8 @@ projects[flexslider_views_slideshow][version] = 2.x-dev
 
 projects[google_analytics][version] = 1.4
 
+projects[google_tag][version] = 2.1
+
 projects[imageapi][version] = 1.x-dev
 
 projects[imce][version] = 1.11

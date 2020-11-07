@@ -240,6 +240,7 @@ done
 
 # not enabled prod modules
 # googleanalytics
+# google_tag
 # uc_googleanalytics
 # boost
 

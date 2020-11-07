@@ -110,11 +110,11 @@ else
   echo "Imported db"
 fi
 
+# disable production modules
+${DRUSH} -y pm-disable googleanalytics google_tag captcha
+
 # enable all your dev modules
 ${DRUSH} -y pm-enable devel stage_file_proxy features_diff smtp
-
-# disable production modules
-${DRUSH} -y pm-disable googleanalytics captcha
 
 # set site variables to development values
 ${DRUSH} vset site_mail ${SITE_EMAIL}
