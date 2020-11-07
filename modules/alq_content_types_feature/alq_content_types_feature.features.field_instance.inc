@@ -398,6 +398,48 @@ function alq_content_types_feature_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-field_thumbnail_only'.
+  $field_instances['node-article-field_thumbnail_only'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If selected, image will not be displayed on article, rather only as thumbnail',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_thumbnail_only',
+    'label' => 'Thumbnail only',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-media_article-body'.
   $field_instances['node-media_article-body'] = array(
     'bundle' => 'media_article',
@@ -1387,6 +1429,7 @@ function alq_content_types_feature_field_default_field_instances() {
   t('Enter a comma-separated list of words to describe your content.');
   t('Files');
   t('Have this appear in the slidehow.');
+  t('If selected, image will not be displayed on article, rather only as thumbnail');
   t('Image');
   t('Slideshow');
   t('Slideshow Image');
@@ -1395,6 +1438,7 @@ function alq_content_types_feature_field_default_field_instances() {
   t('This image is optional.  If this is empty, the site will use a scaled down version of the main image. ');
   t('This image will be used on the front page slideshow');
   t('Thumbnail');
+  t('Thumbnail only');
   t('Upload an image to go with this article.');
   t('What type of article is this?');
 

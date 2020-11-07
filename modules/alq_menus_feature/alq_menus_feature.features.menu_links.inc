@@ -31,37 +31,37 @@ function alq_menus_feature_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-footer-menu_donate:node/113.
-  $menu_links['menu-footer-menu_donate:node/113'] = array(
+  // Exported menu link: menu-footer-menu_donate:node/478.
+  $menu_links['menu-footer-menu_donate:node/478'] = array(
     'menu_name' => 'menu-footer-menu',
-    'link_path' => 'node/113',
+    'link_path' => 'node/478',
     'router_path' => 'node/%',
     'link_title' => 'Donate',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-footer-menu_donate:node/113',
+      'identifier' => 'menu-footer-menu_donate:node/478',
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 1,
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: menu-footer-menu_news:news.
-  $menu_links['menu-footer-menu_news:news'] = array(
+  // Exported menu link: menu-footer-menu_latest-updates:news.
+  $menu_links['menu-footer-menu_latest-updates:news'] = array(
     'menu_name' => 'menu-footer-menu',
     'link_path' => 'news',
     'router_path' => 'news',
-    'link_title' => 'News',
+    'link_title' => 'Latest Updates',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-footer-menu_news:news',
+      'identifier' => 'menu-footer-menu_latest-updates:news',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -76,11 +76,9 @@ function alq_menus_feature_menu_default_menu_links() {
     'menu_name' => 'menu-footer-menu',
     'link_path' => 'node/195',
     'router_path' => 'node/%',
-    'link_title' => 'Privacy policy',
+    'link_title' => 'Privacy Policy',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'identifier' => 'menu-footer-menu_privacy-policy:node/195',
     ),
     'module' => 'menu',
@@ -147,7 +145,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 1,
-    'weight' => -49,
+    'weight' => -50,
     'customized' => 1,
   );
   // Exported menu link: menu-header-menu_alq-in-the-news:in-the-news.
@@ -279,7 +277,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 1,
-    'weight' => -47,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-header-menu_chicken-hatching:node/127.
@@ -536,7 +534,7 @@ function alq_menus_feature_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-header-menu_greyhound-racing:node/125.
@@ -705,24 +703,6 @@ function alq_menus_feature_menu_default_menu_links() {
     'customized' => 0,
     'parent_identifier' => 'menu-header-menu_factsheets:node/112',
   );
-  // Exported menu link: menu-header-menu_puppy-farms:node/276.
-  $menu_links['menu-header-menu_puppy-farms:node/276'] = array(
-    'menu_name' => 'menu-header-menu',
-    'link_path' => 'node/276',
-    'router_path' => 'node/%',
-    'link_title' => 'Puppy Farms',
-    'options' => array(
-      'identifier' => 'menu-header-menu_puppy-farms:node/276',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-    'parent_identifier' => 'menu-header-menu_campaigns:node/111',
-  );
   // Exported menu link: menu-header-menu_rodeos:node/100.
   $menu_links['menu-header-menu_rodeos:node/100'] = array(
     'menu_name' => 'menu-header-menu',
@@ -865,15 +845,14 @@ function alq_menus_feature_menu_default_menu_links() {
   t('Greyhound Racing');
   t('Home');
   t('Join our Mailing List');
+  t('Latest Updates');
   t('Media');
   t('Media Releases');
   t('Media main');
-  t('News');
   t('Our office');
   t('Petting Zoos');
   t('Pigs');
-  t('Privacy policy');
-  t('Puppy Farms');
+  t('Privacy Policy');
   t('Rodeos');
   t('Search');
   t('Shop');
