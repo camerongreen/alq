@@ -88,6 +88,8 @@ projects[google_analytics][version] = 1.4
 
 projects[google_tag][version] = 2.1
 
+projects[honeypot][version] = 1.26
+
 projects[imageapi][version] = 1.x-dev
 
 projects[imce][version] = 1.11

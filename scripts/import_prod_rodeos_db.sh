@@ -111,7 +111,7 @@ else
 fi
 
 # disable production modules
-${DRUSH} -y pm-disable googleanalytics google_tag captcha
+${DRUSH} -y pm-disable googleanalytics google_tag captcha honeypot
 
 # enable all your dev modules
 ${DRUSH} -y pm-enable devel stage_file_proxy features_diff smtp
