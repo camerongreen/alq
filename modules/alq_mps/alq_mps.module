@@ -650,6 +650,13 @@ function alq_mps_get_default_emailee($nid) {
  * With additional campaign node to load fields.
  */
 function alq_mps_email_form($form, &$form_state, $cnode) {
+  if (module_exists('honeypot')) {
+    honeypot_add_form_protection($form, $form_state, [
+      'honeypot',
+      'time_restriction',
+    ]);
+  }
+
   $classes = ['form-horizontal'];
 
   if (!isset($form['#attributes']['class'])) {
