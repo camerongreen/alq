@@ -118,6 +118,8 @@ projects[pathauto][version] = 1.3
 
 projects[picture][version] = 2.13
 
+projects[recaptcha][version] = 2.3
+
 projects[references][version] = 2.2
 
 projects[registry_rebuild][version] = 2.5
