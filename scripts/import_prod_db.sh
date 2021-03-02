@@ -162,7 +162,7 @@ else
 fi
 
 # disable production modules
-${DRUSH} -y pm-disable googleanalytics google_tag boost captcha honeypot
+${DRUSH} -y pm-disable googleanalytics google_tag boost captcha honeypot recaptcha
 
 # enable all your dev modules
 if [ -z ${CIRCLECI} ]
