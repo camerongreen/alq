@@ -47,6 +47,15 @@ function alq_mps_menu() {
     'access arguments' => ['administer email campaigns'],
     'type' => MENU_CALLBACK,
   ];
+
+  $items['admin/workbench/alq-mps/emailees/csv'] = [
+    'title' => 'Download Emailees as CSV',
+    'page callback' => 'alq_mps_admin_emailees_csv',
+    'access callback' => 'user_access',
+    'access arguments' => ['administer email campaigns'],
+    'type' => MENU_CALLBACK,
+  ];
+
   return $items;
 }
 
@@ -990,6 +999,7 @@ function alq_mps_admin() {
 
   $links = [
     l(t('View all emailees'), 'admin/workbench/alq-mps/emailees'),
+    l(t('Download all emailees'), 'admin/workbench/alq-mps/emailees/csv'),
     l(t('Download emails for current month'), 'admin/workbench/alq-mps/csv/' . date('Y-M'), [
       'attributes' => [
         'target' => '_blank',
@@ -1106,6 +1116,84 @@ function alq_mps_admin_csv($date = NULL) {
       $result->actioned ? date('Y-m-d h:m:s', $result->actioned) : $result->actioned,
       $result->confirmation_sent,
       $result->status,
+    ];
+    fputcsv($out, $row);
+  }
+
+  fclose($out);
+  drupal_exit();
+}
+
+/**
+ * Menu callback for downloading emailees .
+ *
+ * @throws \Exception
+ */
+function alq_mps_admin_emailees_csv() {
+  $emailees = node_load_multiple([], ['type' => 'emailee']);
+
+  $date = date('Y-M-d', get_brisbane_time());
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment;filename=alq-emailees-' . $date . '.csv');
+  drupal_add_http_header('Expires', '0');
+  drupal_add_http_header('Pragma', 'no-cache');
+
+  // Maybe t these.
+  $keys = [
+    'ID',
+    'Name',
+    'Family name',
+    'Given names',
+    'Preferred name',
+    'Title',
+    'Position',
+    'Qualifications',
+    'Party',
+    'Electorate',
+    'Electorate type',
+    'State',
+    'Office 1',
+    'Office 2',
+    'Comments',
+    'URL',
+  ];
+
+  $out = fopen('php://output', 'wb');
+  fputcsv($out, $keys);
+
+  foreach ($emailees as $emailee) {
+    $emailee_wrapper = entity_metadata_wrapper('node', $emailee);
+    $offices = [];
+    foreach ($emailee_wrapper->field_office as $office) {
+      $office = [
+        'Address: ' . $office->field_address->value(),
+        'Postcode: ' . $office->field_postcode->value(),
+        'Email/s: ' . implode(', ', $office->field_email->value()),
+        'Phone/s: ' . implode(', ', $office->field_phone->value()),
+        'Toll Free Phone: ' . $office->field_toll_free_phone->value(),
+        'Fax/s: ' . implode(', ', $office->field_phone->value()),
+      ];
+      $offices[] = $office;
+    }
+
+    $row = [
+      $emailee->nid,
+      $emailee->title,
+      $emailee_wrapper->field_family_name->value(),
+      $emailee_wrapper->field_given_names->value(),
+      $emailee_wrapper->field_preferred_name->value(),
+      $emailee_wrapper->field_title->value(),
+      $emailee_wrapper->field_position->value(),
+      $emailee_wrapper->field_qualifications->value(),
+      $emailee_wrapper->field_party->value(),
+      $emailee_wrapper->field_electorate->value(),
+      $emailee_wrapper->field_electorate_type->value(),
+      $emailee_wrapper->field_state->value()[0],
+      isset($offices[0]) ? implode("\n", $offices[0]) : '',
+      isset($offices[1]) ? implode("\n", $offices[1]) : '',
+      $emailee_wrapper->body->value(),
+      'https://alq.org.au/node/' . $emailee->nid . '/edit',
     ];
     fputcsv($out, $row);
   }
