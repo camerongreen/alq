@@ -931,6 +931,7 @@ function alq_mps_email_form_validate($form, &$form_state) {
   $checkHtml = [
     'body',
     'subject',
+    'address',
     'suburb',
     'email',
     'name',
@@ -966,13 +967,23 @@ function alq_mps_email_form_submit($form, &$form_state) {
   ]);
   $body .= "\n\n" . ($footer ?: '');
 
+  $address = [];
+
+  if (isset($values['address'])) {
+    $address[] = trim($values['address']);
+  }
+
+  if (isset($values['suburb'])) {
+    $address[] = trim($values['suburb']);
+  }
+
   $insert = [
     'campaign_id' => $values['campaign_id'],
     'recipient' => $values['emailee_nid'],
     'body' => $body,
     'subject' => trim($values['subject']),
     'from_email' => trim($values['email']),
-    'from_address' => trim($values['suburb']),
+    'from_address' => implode(', ', $address),
     'from_name' => trim($values['name']),
     'spam' => $values['spam'],
     'created' => get_brisbane_time(),
