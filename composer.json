@@ -3,7 +3,7 @@
   "require-dev": {
     "drupal/coder": "^8.3",
     "drush/drush": "^8.2.0",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
     "brainmaestro/composer-git-hooks": "^2.8"
 
   },

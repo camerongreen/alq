@@ -235,7 +235,7 @@ function alq_mps_send_emails() {
  *   Return email batch.
  */
 function alq_mps_get_email_batch() {
-  /* @var \SelectQueryInterface $query */
+  /*** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_EMAILS_TABLE, 'emt');
   $query->isNull('emt.actioned')
     ->fields('emt')
@@ -437,7 +437,7 @@ function alq_mps_search($search) {
   if (strlen($search) > 2) {
     // First we get a listing of electorates which map
     // to the postcode or suburb.
-    /* @var \SelectQueryInterface $query */
+    /*** @var \SelectQueryInterface $query */
     $query = db_select(ALQ_MPS_ELECTORATES_TABLE, 'ele');
     $query->join('field_data_field_electorate', 'fel', 'ele.state_district = fel.field_electorate_value');
     $query->join('node', 'n', 'n.nid = fel.entity_id');
@@ -531,7 +531,7 @@ function alq_mps_get_email_campaign_stats($node) {
  *   List of emails.
  */
 function alq_mps_get_email_campaign_emails($campaignId) {
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_EMAILS_TABLE, 'aet');
   $query->condition('aet.campaign_id', $campaignId, '=');
   $query->fields('aet');
@@ -578,7 +578,7 @@ function alq_mps_get_email_campaign($node) {
  *   False or campaign id.
  */
 function alq_mps_has_email_campaign($nid) {
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_NODE_REF_TABLE, 'nrf');
   $query->condition('nrf.entity_type', 'node', '=')
     ->condition('nrf.field_parent_article_nid', $nid, '=');
@@ -610,7 +610,7 @@ function alq_mps_has_email_campaign($nid) {
  */
 function alq_mps_get_campaign_type($nid) {
   // Not sure why I did it like this and didn't just load the node.
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_CAMPAIGN_TYPE_TABLE, 'fdfct');
   $query->condition('fdfct.entity_type', 'node', '=')
     ->condition('fdfct.entity_id', $nid, '=');
@@ -655,7 +655,7 @@ function alq_mps_get_ask_for_address($nid) {
  *   Emailee nid or FALSE.
  */
 function alq_mps_get_default_emailee($nid) {
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_EMAILEE_REF_TABLE, 'erf');
   $query->condition('erf.entity_type', 'node', '=')
     ->condition('erf.entity_id', $nid, '=');
@@ -1009,7 +1009,7 @@ function alq_mps_email_form_submit($form, &$form_state) {
  * @throws \Exception
  */
 function alq_mps_admin() {
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_EMAILS_TABLE, 'emt');
   $num_rows = $query->countQuery()->execute()->fetchField();
   $num_per_page = 40;
@@ -1113,7 +1113,7 @@ function alq_mps_admin_csv($date = NULL) {
 
   $unixTimeFrom = strtotime($date);
 
-  /* @var \SelectQueryInterface $query */
+  /** @var \SelectQueryInterface $query */
   $query = db_select(ALQ_MPS_EMAILS_TABLE, 'emt');
   $query->fields('emt');
   $query->condition('emt.created', $unixTimeFrom, '>=');
@@ -1285,7 +1285,7 @@ function alq_mps_create(array $mp) {
 
   $entity = entity_create('node', $values);
 
-  /* @var \EntityMetadataWrapper $ewrapper */
+  /** @var \EntityMetadataWrapper $ewrapper */
   $ewrapper = entity_metadata_wrapper('node', $entity);
 
   $ewrapper->field_electorate_type->set($mp['electorate_type']);
