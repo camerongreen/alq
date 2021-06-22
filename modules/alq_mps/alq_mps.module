@@ -624,6 +624,25 @@ function alq_mps_get_campaign_type($nid) {
 }
 
 /**
+ * Get whether address required.
+ *
+ * Should the user be asked for an address line.
+ *
+ * @param int $nid
+ *   Nid of campaign.
+ *
+ * @return bool
+ *   Whether to ask for address.
+ */
+function alq_mps_get_ask_for_address($nid) {
+  $node = node_load($nid);
+
+  $ask_for_address = field_get_items('node', $node, 'field_ask_for_address');
+
+  return isset($ask_for_address[0]["value"]) && $ask_for_address[0]["value"] === "1";
+}
+
+/**
  * Return default emailess for campaign.
  *
  * Email campaigns may have a emailee reference in them
@@ -676,6 +695,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   }
 
   $campaign_type = alq_mps_get_campaign_type($cnode->nid);
+  $ask_for_address = alq_mps_get_ask_for_address($cnode->nid);
 
   // Check if there is a default emailer.
   $eid = alq_mps_get_default_emailee($cnode->nid);
@@ -818,6 +838,20 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control'],
     ],
   ];
+
+  // Should we ask the emailer for an address line?
+  if ($ask_for_address) {
+    $form['address'] = [
+      '#type' => 'textfield',
+      '#title' => t('Address'),
+      '#required' => TRUE,
+      '#attributes' => [
+        'placeholder' => t('Street address'),
+        'class' => ['form-control'],
+      ],
+    ];
+  }
+
   // If the email is to a defined email/s then ask the user
   // to manually enter their postcode.
   if ($campaign_type === 'single') {

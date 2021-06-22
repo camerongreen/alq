@@ -21,6 +21,7 @@ $fields = [
   'body',
   'email',
   'name',
+  'address',
   'spam',
   'captcha',
   'submit',
@@ -37,7 +38,7 @@ if ($suburbSearch) {
   array_unshift($fields, 'suburb');
 }
 else {
-  array_splice($fields, 7, 0, 'suburb');
+  array_splice($fields, 8, 0, 'suburb');
 }
 
 // This is all pretty nuts, but I wanted to use bootstrap for the form and this
@@ -103,7 +104,7 @@ foreach ($fields as $field) {
               class="<?php echo implode(' ', $ff['#attributes']['class']) ?> form-textarea required"
               id="<?php echo $ff['#id'] ?>" name="<?php echo $ff['#name'] ?>"
               cols="60"
-              rows="5"><?php echo $ff['#value'] ?></textarea>
+              rows="10"><?php echo $ff['#value'] ?></textarea>
           </div>
         <?php }
         ?></div><!-- .col-sm-9 --><?php

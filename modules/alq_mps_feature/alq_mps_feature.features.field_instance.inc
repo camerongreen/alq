@@ -217,6 +217,49 @@ function alq_mps_feature_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_campaign-field_ask_for_address'.
+  $field_instances['node-email_campaign-field_ask_for_address'] = array(
+    'bundle' => 'email_campaign',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Ask the person emailing for an address line.',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ask_for_address',
+    'label' => 'Ask for address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-email_campaign-field_body'.
   $field_instances['node-email_campaign-field_body'] = array(
     'bundle' => 'email_campaign',
@@ -229,7 +272,7 @@ function alq_mps_feature_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_plain',
-        'weight' => 7,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -265,11 +308,11 @@ function alq_mps_feature_field_default_field_instances() {
     'description' => 'What sort of email campaign is this, just to one person, or to a group of MPs etc',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 9,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -302,11 +345,11 @@ function alq_mps_feature_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
-        'weight' => 12,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -353,7 +396,7 @@ function alq_mps_feature_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -377,7 +420,7 @@ function alq_mps_feature_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -393,11 +436,11 @@ function alq_mps_feature_field_default_field_instances() {
     'description' => 'The subject for the confirmation email to be sent to the user filling out the form',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -421,7 +464,7 @@ function alq_mps_feature_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -433,11 +476,11 @@ function alq_mps_feature_field_default_field_instances() {
     'description' => 'Add people who will be emailed by this form.  For a single campaign this person will be emailed, for a search campaign the user will be given  choice to email this person if they can\'t find a person by searching.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 8,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -478,7 +521,7 @@ function alq_mps_feature_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -514,11 +557,11 @@ function alq_mps_feature_field_default_field_instances() {
     'description' => 'This is the article which this should appear under',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1043,6 +1086,8 @@ function alq_mps_feature_field_default_field_instances() {
   t('ALP, LNP, LIB, GRN etc');
   t('Add people who will be emailed by this form.  For a single campaign this person will be emailed, for a search campaign the user will be given  choice to email this person if they can\'t find a person by searching.');
   t('Address');
+  t('Ask for address');
+  t('Ask the person emailing for an address line.');
   t('CC');
   t('Campaign Type');
   t('Comments');
