@@ -161,13 +161,6 @@ else
   echo "Imported db"
 fi
 
-if [ -z ${CIRCLECI} ]
-then
-  ${DRUSH} -y rr
-fi
-# disable production modules
-${DRUSH} -y pm-disable googleanalytics google_tag boost captcha recaptcha
-
 # enable all your dev modules
 if [ -z ${CIRCLECI} ]
 then
@@ -178,6 +171,9 @@ else
   php registry_rebuild.php
   popd
 fi
+
+# disable production modules
+${DRUSH} -y pm-disable googleanalytics google_tag boost captcha recaptcha
 
 # set site variables to development values
 ${DRUSH} vset site_mail ${SITE_EMAIL}
