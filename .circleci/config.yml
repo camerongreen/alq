@@ -11,7 +11,7 @@ aliases:
 
 defaults: &defaults
   docker:
-    - image: circleci/php:7.2-apache-browsers
+    - image: circleci/php:7.4-apache-browsers
     - image: circleci/mysql:5.7
   working_directory: *vcs_dir
 
