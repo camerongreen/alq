@@ -174,7 +174,7 @@ libraries[jqueryui][download][type] = "file"
 libraries[jqueryui][download][url] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"
 
 libraries[jquery.cycle][download][type] = "file"
-libraries[jquery.cycle][download][url] = "http://malsup.github.com/jquery.cycle.all.js"
+libraries[jquery.cycle][download][url] = "http://malsup.github.io/jquery.cycle.all.js"
 libraries[jquery.cycle][download][filename] = "jquery.cycle.all.min.js"
 
 libraries[ckeditor][download][type] = get
