@@ -161,6 +161,10 @@ else
   echo "Imported db"
 fi
 
+if [ -z ${CIRCLECI} ]
+then
+  ${DRUSH} -y rr
+fi
 # disable production modules
 ${DRUSH} -y pm-disable googleanalytics google_tag boost captcha recaptcha
 
