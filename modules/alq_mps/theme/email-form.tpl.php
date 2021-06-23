@@ -41,7 +41,7 @@ if ($suburbSearch) {
   array_unshift($fields, 'suburb');
 }
 else {
-  array_splice($fields, 11, 0, 'suburb');
+  array_splice($fields, 8, 0, 'suburb');
 }
 
 // This is all pretty nuts, but I wanted to use bootstrap for the form and this
