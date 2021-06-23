@@ -28,7 +28,7 @@ this.testSearchBySuburb = function (browser) {
       .url(siteUrl + pageUrl)
       .waitForElementPresent('ul.ui-autocomplete', 1000);
 
-  browser.expect.element('h1').text.to.be.present.
+  browser.expect.element('h1').text.to.be.present;
   browser.expect.element('ul.ui-autocomplete').to.be.present;
   browser.setValue('#edit-suburb', 'Highgate')
   browser.waitForElementVisible('ul.ui-autocomplete li a', 30000);
