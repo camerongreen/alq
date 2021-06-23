@@ -4,7 +4,7 @@
  * Note to run these you will need to ln -s docs/demo . in the public_html
  * directory
  */
-var pageUrl = '/ban-greyhound-racing';
+var pageUrl = '/signium';
 
 
 this.testDefaultMinister = function (browser) {
