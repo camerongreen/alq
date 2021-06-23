@@ -125,7 +125,7 @@ function alq_mps_permission() {
  */
 function alq_mps_cron() {
   alq_mps_send_emails();
-  // alq_mps_cleanup_emails();
+  alq_mps_cleanup_emails();
 }
 
 /**
@@ -249,9 +249,17 @@ function alq_mps_get_email_batch() {
  * Cleans up actioned emails older than a year.
  */
 function alq_mps_cleanup_emails() {
-  $query = db_delete(ALQ_MPS_EMAILS_TABLE)
-    ->isNotNull('actioned')
-    ->condition('actioned', strtotime('-1 year'), '<');
+  // Anonymize all emails successfully sent.
+  $query = db_update(ALQ_MPS_EMAILS_TABLE)
+    ->fields([
+      'subject' => 'anon',
+      'body' => 'anon',
+      'from_name' => 'anon',
+      'from_email' => 'anon',
+      'from_address' => 'anon',
+    ])
+    ->condition('status', ALQ_MPS_EMAIL_SUCCESS_STATUS)
+    ->condition('actioned', strtotime('-6 months'), '<');
 
   $emails = $query->execute();
 
@@ -853,14 +861,51 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
   }
 
   // If the email is to a defined email/s then ask the user
-  // to manually enter their postcode.
+  // to manually enter their suburb.
   if ($campaign_type === 'single') {
     $form['suburb'] = [
       '#type' => 'textfield',
       '#title' => t('Suburb'),
       '#required' => TRUE,
       '#attributes' => [
-        'placeholder' => t('Suburb or postcode'),
+        'placeholder' => t('Suburb'),
+        'class' => ['form-control'],
+      ],
+    ];
+  }
+
+  // Should we ask the emailer for an address line?
+  if ($ask_for_address) {
+    $form['state'] = [
+      '#type' => 'textfield',
+      '#title' => t('State'),
+      '#required' => TRUE,
+      '#attributes' => [
+        'placeholder' => t('State'),
+        'class' => ['form-control'],
+      ],
+    ];
+
+    $form['postcode'] = [
+      '#type' => 'textfield',
+      '#title' => t('Postcode'),
+      '#required' => TRUE,
+      '#attributes' => [
+        'placeholder' => t('Postcode/Zipcode'),
+        'class' => ['form-control'],
+      ],
+    ];
+
+    $countries = country_get_list();
+
+    $form['country'] = [
+      '#type' => 'select',
+      '#title' => t('Country'),
+      '#required' => TRUE,
+      '#default_value' => 'AU',
+      '#options' => $countries,
+      '#attributes' => [
+        'placeholder' => t('Country'),
         'class' => ['form-control'],
       ],
     ];
@@ -933,6 +978,9 @@ function alq_mps_email_form_validate($form, &$form_state) {
     'subject',
     'address',
     'suburb',
+    'postcode',
+    'country',
+    'state',
     'email',
     'name',
   ];
@@ -969,12 +1017,24 @@ function alq_mps_email_form_submit($form, &$form_state) {
 
   $address = [];
 
-  if (isset($values['address'])) {
-    $address[] = trim($values['address']);
-  }
+  $address_elements = [
+    'address',
+    'suburb',
+    'state',
+    'postcode',
+    'country',
+  ];
 
-  if (isset($values['suburb'])) {
-    $address[] = trim($values['suburb']);
+  foreach ($address_elements as $address_element) {
+    if (isset($values[$address_element])) {
+      if ($address_element === 'country') {
+        $countries = country_get_list();
+        $address[] = $countries[$values[$address_element]];
+      }
+      else {
+        $address[] = trim($values[$address_element]);
+      }
+    }
   }
 
   $insert = [

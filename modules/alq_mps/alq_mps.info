@@ -5,3 +5,4 @@ package = ALQ
 dependencies[] = alq_mps_feature
 dependencies[] = mailsystem
 dependencies[] = honeypot
+dependencies[] = locale

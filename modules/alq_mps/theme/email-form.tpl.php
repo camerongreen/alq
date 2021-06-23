@@ -22,6 +22,9 @@ $fields = [
   'email',
   'name',
   'address',
+  'state',
+  'postcode',
+  'country',
   'spam',
   'captcha',
   'submit',
@@ -38,7 +41,7 @@ if ($suburbSearch) {
   array_unshift($fields, 'suburb');
 }
 else {
-  array_splice($fields, 8, 0, 'suburb');
+  array_splice($fields, 11, 0, 'suburb');
 }
 
 // This is all pretty nuts, but I wanted to use bootstrap for the form and this
@@ -49,67 +52,78 @@ foreach ($fields as $field) {
   }
   $ff = $form[$field];
   ?>
-  <div class="form-group form-item">
-    <?php
-    if ($ff['#type'] === 'checkbox') {
-      ?>
-      <div class="col-sm-offset-3 col-sm-9">
-        <div class="checkbox">
-          <label><input
-              class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>"
-              type="checkbox" <?php echo array_key_exists('checked', $ff['#attributes']) && $ff['#attributes']['checked'] ? 'checked="checked" ' : '' ?>
-              id="<?php echo $ff['#id'] ?>" name="<?php echo $ff['#name'] ?>"
-              value="1"><?php echo $ff['#title'] ?></label>
-        </div>
-      </div>
-    <?php }
-    elseif (in_array($ff['#type'], ['captcha', 'markup'])) {
-      ?>
-      <div class="col-sm-offset-3 col-sm-9 <?php echo $ff['#type'] ?>">
-        <?php echo render($ff) ?>
-      </div>
+    <div class="form-group form-item">
       <?php
-    }
-    elseif ($ff['#type'] === 'submit') {
-      ?>
-      <div class="col-sm-offset-3 col-sm-9">
-        <button class="btn btn-primary" type="submit" id="<?php echo $ff['#id'] ?>"
-                name="<?php echo $ff['#name'] ?>">
-          <?php echo $ff['#value'] ?>
-        </button>
-      </div>
-    <?php }
-    else { ?>
-      <label for="<?php echo $ff['#id'] ?>"
-             class="col-sm-3"><?php echo $ff['#title'] ?><?php echo $ff['#required'] ? '<span class="form-required" title="This field is required.">*</span>' : '' ?></label>
-      <div class="col-sm-9">
-        <?php
-        if ($ff['#type'] === 'textfield') {
-          ?>
-          <input
-            <?php echo $field === 'suburb' ? 'autocomplete="off" ' : '' ?><?php echo array_key_exists('readonly', $ff['#attributes']) && $ff['#attributes']['readonly'] ? 'readonly="readonly" ' : '' ?><?php echo array_key_exists('placeholder', $ff['#attributes']) && $ff['#attributes']['placeholder'] ? ' placeholder="' . $ff['#attributes']['placeholder'] . '"' : '' ?>
-            class="<?php echo implode(' ', $ff['#attributes']['class']) ?> form-text<?php echo $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>"
-            type="text"
-            id="<?php echo $ff['#id'] ?>" name="<?php echo $ff['#name'] ?>"
-            value="<?php echo $ff['#value'] ?>"><span
-            role="status" aria-live="polite"
-            class="ui-helper-hidden-accessible"></span>
-          <?php
-        }
-        elseif ($ff['#type'] === 'textarea') {
-          ?>
-          <div
-            class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
-            <textarea
-              class="<?php echo implode(' ', $ff['#attributes']['class']) ?> form-textarea required"
-              id="<?php echo $ff['#id'] ?>" name="<?php echo $ff['#name'] ?>"
-              cols="60"
-              rows="10"><?php echo $ff['#value'] ?></textarea>
+      if ($ff['#type'] === 'checkbox') {
+        ?>
+          <div class="col-sm-offset-3 col-sm-9">
+              <div class="checkbox">
+                  <label><input
+                              class="form-checkbox<?php form_get_error($form[$field]) ? ' error' : '' ?>"
+                              type="checkbox" <?php echo array_key_exists('checked', $ff['#attributes']) && $ff['#attributes']['checked'] ? 'checked="checked" ' : '' ?>
+                              id="<?php echo $ff['#id'] ?>"
+                              name="<?php echo $ff['#name'] ?>"
+                              value="1"><?php echo $ff['#title'] ?></label>
+              </div>
           </div>
-        <?php }
-        ?></div><!-- .col-sm-9 --><?php
-    } ?>
-  </div><!-- ./form-group -->
+      <?php }
+      elseif (in_array($ff['#type'], ['captcha', 'markup'])) {
+        ?>
+          <div class="col-sm-offset-3 col-sm-9 <?php echo $ff['#type'] ?>">
+            <?php echo render($ff) ?>
+          </div>
+        <?php
+      }
+      elseif ($ff['#type'] === 'submit') {
+        ?>
+          <div class="col-sm-offset-3 col-sm-9">
+              <button class="btn btn-primary" type="submit"
+                      id="<?php echo $ff['#id'] ?>"
+                      name="<?php echo $ff['#name'] ?>">
+                <?php echo $ff['#value'] ?>
+              </button>
+          </div>
+      <?php }
+      else { ?>
+          <label for="<?php echo $ff['#id'] ?>"
+                 class="col-sm-3"><?php echo $ff['#title'] ?><?php echo $ff['#required'] ? '<span class="form-required" title="This field is required.">*</span>' : '' ?></label>
+          <div class="col-sm-9">
+            <?php
+            if ($ff['#type'] === 'textfield') {
+              ?>
+                <input
+                  <?php echo $field === 'suburb' ? 'autocomplete="off" ' : '' ?><?php echo array_key_exists('readonly', $ff['#attributes']) && $ff['#attributes']['readonly'] ? 'readonly="readonly" ' : '' ?><?php echo array_key_exists('placeholder', $ff['#attributes']) && $ff['#attributes']['placeholder'] ? ' placeholder="' . $ff['#attributes']['placeholder'] . '"' : '' ?>
+                        class="<?php echo implode(' ', $ff['#attributes']['class']) ?> form-text<?php echo $ff['#required'] ? ' required' : '' ?><?php print form_get_error($ff) ? ' error' : '' ?>"
+                        type="text"
+                  <?php echo $ff['#required'] ? 'required="required"' : '' ?>
+                        id="<?php echo $ff['#id'] ?>"
+                        name="<?php echo $ff['#name'] ?>"
+                        value="<?php echo $ff['#value'] ?>"><span
+                        role="status" aria-live="polite"
+                        class="ui-helper-hidden-accessible"></span>
+              <?php
+            }
+            elseif ($ff['#type'] === 'textarea') {
+              ?>
+                <div
+                        class="form-textarea-wrapper resizable textarea-processed resizable-textarea">
+            <textarea
+                    class="<?php echo implode(' ', $ff['#attributes']['class']) ?> form-textarea<?php echo $ff['#required'] ? ' required' : '' ?>"
+                    id="<?php echo $ff['#id'] ?>"
+                    name="<?php echo $ff['#name'] ?>"
+                    cols="60"
+                    <?php echo $ff['#required'] ? 'required="required"' : '' ?>
+                    rows="10"><?php echo $ff['#value'] ?></textarea>
+                </div>
+            <?php }
+            else {
+              $ff['#theme_wrappers'] = [];
+              $ff['#title_display'] = 'invisible';
+              echo render($ff);
+            }
+            ?></div><!-- .col-sm-9 --><?php
+      } ?>
+    </div><!-- ./form-group -->
   <?php
 
   unset($form[$field]);
