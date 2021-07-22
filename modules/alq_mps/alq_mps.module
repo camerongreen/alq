@@ -259,7 +259,7 @@ function alq_mps_cleanup_emails() {
       'from_address' => 'anon',
     ])
     ->condition('status', ALQ_MPS_EMAIL_SUCCESS_STATUS)
-    ->condition('actioned', strtotime('-6 months'), '<');
+    ->condition('actioned', strtotime('-3 months'), '<');
 
   $emails = $query->execute();
 
