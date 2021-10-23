@@ -129,6 +129,9 @@ else
   echo "Imported db"
 fi
 
+${DRUSH} vset file_temporary_path /tmp
+${DRUSH} vset file_private_path /tmp/private
+
 # disable production modules
 ${DRUSH} -y pm-disable googleanalytics google_tag captcha honeypot recaptcha
 
@@ -137,9 +140,7 @@ ${DRUSH} -y pm-enable devel stage_file_proxy features_diff smtp
 
 # set site variables to development values
 ${DRUSH} vset site_mail ${SITE_EMAIL}
-${DRUSH} vset file_private_path /tmp/private
-${DRUSH} vset file_temporary_path /tmp
-${DRUSH} variable-set stage_file_proxy_origin $DEFAULT_PROD_HOST
+${DRUSH} vset stage_file_proxy_origin $DEFAULT_PROD_HOST
 ${DRUSH} vset preprocess_css 0
 ${DRUSH} vset preprocess_js 0
 ${DRUSH} vset error_level 2
