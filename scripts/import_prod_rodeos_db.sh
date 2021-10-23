@@ -34,28 +34,47 @@ if [ -f ~/.drush_alias ]; then
 fi
 
 # first set up the database
-read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
+# first set up the database
 if [ -z ${DB_USER} ]
-  then
-    DB_USER=${DEFAULT_DB_USER}
+then
+  read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
+  if [ -z ${DB_USER} ]
+    then
+      DB_USER=${DEFAULT_DB_USER}
+  fi
 fi
-read -s -p "Database passwd:" DB_PASSWD
-# need a newline in the output here as -s swallows it
-echo ""
-if [ -z ${DB_PASSWD} ]
+
+if [ -z ${CIRCLECI} ]
+then
+  if [ -z ${DB_PASSWD} ]
   then
-    echo "DB Password is required";
-    exit 1
+    read -s -p "Database passwd:" DB_PASSWD
+    # need a newline in the output here as -s swallows it
+    echo ""
+    if [ -z ${DB_PASSWD} ]
+    then
+      echo "DB Password is required";
+      exit 1
+    fi
+  fi
 fi
-read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
+
 if [ -z ${DB_HOST} ]
   then
-    DB_HOST=${DEFAULT_DB_HOST}
+    read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
+    if [ -z ${DB_HOST} ]
+      then
+        DB_HOST=${DEFAULT_DB_HOST}
+    fi
 fi
-read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
-if [ -z ${DB_NAME} ]
+
+if [ -z ${DB_NAME_RODEOS} ]
   then
-    DB_NAME=${DEFAULT_DB_NAME}
+    read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME_RODEOS
+    if [ -z ${DB_NAME_RODEOS} ]
+      then
+        DB_NAME_RODEOS=${DEFAULT_DB_NAME}
+    fi
 fi
 
 echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} > /dev/null
@@ -63,7 +82,7 @@ echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} > /dev/null
 if [ $? -ne 0 ]
   then
     echo "Unable to connect to database"
-    echo "Please ensure you have granted access to ${DB_NAME} for ${DB_USER}@${DB_HOST}"
+    echo "Please ensure you have granted access to ${DB_NAME_RODEOS} for ${DB_USER}@${DB_HOST}"
     exit 1
 else
   echo "Connected to db"
@@ -95,12 +114,12 @@ if [ ! -e ${DB_FILE} ]
 fi
 
 # drop and recreate database so that any rubbish hanging around, extra tables etc, is removed
-echo "Dropping database ${DB_NAME}";
-echo "DROP DATABASE IF EXISTS ${DB_NAME}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
-echo "Recreating database ${DB_NAME}";
-echo "CREATE DATABASE ${DB_NAME}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
+echo "Dropping database ${DB_NAME_RODEOS}";
+echo "DROP DATABASE IF EXISTS ${DB_NAME_RODEOS}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
+echo "Recreating database ${DB_NAME_RODEOS}";
+echo "CREATE DATABASE ${DB_NAME_RODEOS}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
 echo "Importing database";
-gunzip -c ${DB_FILE} | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME}
+gunzip -c ${DB_FILE} | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME_RODEOS}
 
 if [ $? -ne 0 ]
   then
