@@ -45,9 +45,9 @@ services:
       - "26980:80"
     volumes:
       # Linux
-      - ../../:/var/www/html:Z
-      - ./config/php.ini:/usr/local/etc/php/php.ini:Z
-      - ./config/.bashrc:/root/.bashrc:Z
+      - ../../:/var/www/html:z
+      - ./config/php.ini:/usr/local/etc/php/php.ini:z
+      - ./config/.bashrc:/root/.bashrc:z
       # OSX
       #- ../../:/var/www/html:cached
     depends_on:
