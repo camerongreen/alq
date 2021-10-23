@@ -12,7 +12,7 @@ services:
     ports:
       - "26906:3306"
     networks:
-      - ${COMPOSE_PROJECT_NAME}_net
+      - ${COMPOSE_PROJECT_NAME}
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -20,10 +20,10 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: ${TIMEZONE}
     volumes:
-      - /var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d:Z
 
   web:
-    container_name: alq-web
+    container_name: ${HTTP_HOST}
     build:
       context: .
     environment:
@@ -40,7 +40,7 @@ services:
       XDEBUG_CONFIG: "remote_host=${REMOTE_HOST} idekey=${IDEKEY}"
       TZ: ${TIMEZONE}
     networks:
-      - ${COMPOSE_PROJECT_NAME}_net
+      - ${COMPOSE_PROJECT_NAME}
     ports:
       - "26980:80"
     volumes:
@@ -54,4 +54,4 @@ services:
       - db
 
 networks:
-  alq_net:
+  alq:
