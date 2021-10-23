@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/camerongreen/alq#readme",
   "devDependencies": {
-    "eslint": "^6.5.1",
-    "node-sass": "^4.9.2"
+    "eslint": "^7.0",
+    "node-sass": "^6.0"
   },
   "dependencies": {}
 }
