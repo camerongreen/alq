@@ -18,7 +18,7 @@ body:not(.front) {
     border-radius: 4px; }
 
 body.front {
-  background: url(../images/DayboroRodeo2019-0005.jpg) no-repeat center center fixed #666;
+  background: url(../images/alq-eliterodeo-townsville-2021-0059.jpg) no-repeat center center fixed #666;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -308,7 +308,7 @@ div.viddy {
   #block-alq-rodeos-alq-rodeos-pledge-count div.content {
     margin-top: 44px; }
     #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count {
-      font-size: 300%;
+      font-size: 250%;
       line-height: 30px; }
       #block-alq-rodeos-alq-rodeos-pledge-count div.content #pledge-count a {
         color: white;
