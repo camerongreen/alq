@@ -235,6 +235,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #section-content {
+  #zone-preface-wrapper {
+    width: 80%;
+    margin: auto;
+  }
   div.block-alq-rodeos {
     h2 {
       font-size: 150%;
@@ -466,6 +470,7 @@ body.page-node-92 h2 {
     }
   }
   #section-content {
+    #zone-preface-wrapper,
     div.block-alq-rodeos {
       width: 100%;
     }

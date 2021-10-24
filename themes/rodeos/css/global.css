@@ -183,6 +183,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 80%;
     margin: auto; }
 
+#section-content #zone-preface-wrapper {
+  width: 80%;
+  margin: auto; }
+
 #section-content div.block-alq-rodeos {
   background-color: white;
   width: 80%;
@@ -347,6 +351,7 @@ body.page-node-92 h2 {
     padding-right: 3px; }
   #zone-branding-wrapper ul li:nth-child(3) {
     display: none; }
+  #section-content #zone-preface-wrapper,
   #section-content div.block-alq-rodeos {
     width: 100%; }
   #region-footer-second footer div.images {
