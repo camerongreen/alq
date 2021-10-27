@@ -31,6 +31,16 @@ function alq_preprocess_html(&$vars) {
   drupal_add_js(path_to_theme() . '/node_modules/bootstrap-sass/assets/javascripts/bootstrap.js');
   drupal_add_js(path_to_theme() . '/node_modules/bootstrap-sass/assets/javascripts/bootstrap-sprockets.js');
 
+  // Add bootstrap cdn.
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css', [
+    'type' => 'external',
+    'weight' => $weight,
+  ]);
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css', [
+    'type' => 'external',
+    'weight' => $weight + 1,
+  ]);
+
   // Make sure boostrap appears after existing CSS.
   $weight = 200;
 
