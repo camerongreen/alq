@@ -45,6 +45,46 @@ function rodeos_preprocess_html(&$vars) {
 }
 
 /**
+ * Implements hook_menu_tree__MENU().
+ */
+function rodeos_menu_tree__main_menu($variables) {
+  global $_rodeos_cur_level_menu_main_menu;
+  if ($_rodeos_cur_level_menu_main_menu === "1") {
+    $output = '<ul role="menu" class="main-menu menu-cnt col-sm-9 col-xs-12">' . $variables['tree'] . '</ul>';
+  }
+  else {
+    $output = '<ul role="menu" class="menu-cnt">' . $variables['tree'] . '</ul>';
+  }
+  $_rodeos_cur_level_menu_main_menu--;
+  return $output;
+}
+
+/**
+ * Implements hook_menu_link__MENU().
+ */
+function rodeos_menu_link__main_menu($variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  global $_rodeos_cur_level_menu_main_menu;
+  $_rodeos_cur_level_menu_main_menu = $element['#original_link']['depth'];
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  if (strtolower($element['#title']) === 'home') {
+    $title = '<icon class="fa fa-home"></icon>';
+  }
+  else {
+    $title = htmlspecialchars($element['#title']);
+  }
+
+  $output = l($title, $element['#href'], array_merge($element['#localized_options'], ['html' => TRUE]));
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
  * Alter the page.
  */
 function rodeos_page_alter($page) {

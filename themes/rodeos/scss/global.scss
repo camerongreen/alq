@@ -68,6 +68,10 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
+  .main-menu > .first:before {
+      content: none;
+  }
+
   ul {
     list-style: none;
     display: block;
@@ -90,9 +94,6 @@ h1, h2, h3, h4, h5, h6 {
         content: "\00b7";
         padding-left: 11px;
         padding-right: 9px;
-      }
-      &.nobullet:before {
-        content: none;
       }
       a {
         font-family: $header-font;

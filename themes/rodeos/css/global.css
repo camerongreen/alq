@@ -48,6 +48,8 @@ h1, h2, h3, h4, h5, h6 {
     #zone-branding-wrapper div.logo-img img {
       margin-top: 12px;
       max-height: 50px; }
+  #zone-branding-wrapper .main-menu > .first:before {
+    content: none; }
   #zone-branding-wrapper ul {
     list-style: none;
     display: block; }
@@ -66,8 +68,6 @@ h1, h2, h3, h4, h5, h6 {
         content: "\00b7";
         padding-left: 11px;
         padding-right: 9px; }
-      #zone-branding-wrapper ul li.nobullet:before {
-        content: none; }
       #zone-branding-wrapper ul li a {
         font-family: "Hind", sans-serif;
         font-size: 110%;
