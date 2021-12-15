@@ -135,7 +135,7 @@ fi
 
 if [[ ! -e ${DB_FILE} ]]
 then
-  echo "Backup doesn't exist.  Looking for ${DB_FILE}"
+  echo "Backup does not exist.  Looking for ${DB_FILE}"
   exit 1
 fi
 
