@@ -29,11 +29,11 @@ DEFAULT_DB_HOST=alq-db
 DEFAULT_DB_FILE=../sql/alq_latest.sql.gz
 
 # hosting company work around has custom drush path
-if [ -f ~/.drush_alias ]; then
+if [[ -f ~/.drush_alias ]]; then
         . ~/.drush_alias
 fi
 
-if [ -z ${CIRCLECI} ]
+if [[ -z ${CIRCLECI} ]]
 then
   DRUSH="/var/www/html/vendor/bin/drush -v"
   DEFAULT_DEV_HOST="http://alq.test:26980"
@@ -42,7 +42,7 @@ else
   DRUSH=~/project/vendor/bin/drush
 fi
 
-if [ ! -d ${DEFAULT_PRIVATE_DIR} ]
+if [[ ! -d ${DEFAULT_PRIVATE_DIR} ]]
 then
   mkdir ${DEFAULT_PRIVATE_DIR}
   chgrp ${WEBSERVER_GROUP} ${DEFAULT_PRIVATE_DIR}
@@ -50,23 +50,23 @@ then
 fi
 
 # first set up the database
-if [ -z ${DB_USER} ]
+if [[ -z ${DB_USER} ]]
 then
   read -p "Database user [${DEFAULT_DB_USER}]:" DB_USER
-  if [ -z ${DB_USER} ]
+  if [[ -z ${DB_USER} ]]
     then
       DB_USER=${DEFAULT_DB_USER}
   fi
 fi
 
-if [ -z ${CIRCLECI} ]
+if [[ -z ${CIRCLECI} ]]
 then
-  if [ -z ${DB_PASSWD} ]
+  if [[ -z ${DB_PASSWD} ]]
   then
     read -s -p "Database passwd:" DB_PASSWD
     # need a newline in the output here as -s swallows it
     echo ""
-    if [ -z ${DB_PASSWD} ]
+    if [[ -z ${DB_PASSWD} ]]
     then
       echo "DB Password is required";
       exit 1
@@ -74,32 +74,32 @@ then
   fi
 fi
 
-if [ -z ${DB_HOST} ]
+if [[ -z ${DB_HOST} ]]
   then
     read -p "Database host [${DEFAULT_DB_HOST}]:" DB_HOST
-    if [ -z ${DB_HOST} ]
+    if [[ -z ${DB_HOST} ]]
       then
         DB_HOST=${DEFAULT_DB_HOST}
     fi
 fi
 
-if [ -z ${DB_NAME} ]
+if [[ -z ${DB_NAME} ]]
   then
     read -p "Database name [${DEFAULT_DB_NAME}]:" DB_NAME
-    if [ -z ${DB_NAME} ]
+    if [[ -z ${DB_NAME} ]]
       then
         DB_NAME=${DEFAULT_DB_NAME}
     fi
 fi
 
-if [ -z ${CIRCLECI} ]
+if [[ -z ${CIRCLECI} ]]
 then
   echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} > /dev/null
 else
   echo "SELECT 1;" | mysql -h ${DB_HOST} -u ${DB_USER} ${DB_NAME} > /dev/null
 fi
 
-if [ $? -ne 0 ]
+if [[ $? -ne 0 ]]
   then
     echo "Unable to connect to database"
     echo "Please ensure you have granted access to ${DB_NAME} for ${DB_USER}@${DB_HOST}"
@@ -108,12 +108,12 @@ else
   echo "Connected to db"
 fi
 
-if [ -z ${SITE_EMAIL} ]
+if [[ -z ${SITE_EMAIL} ]]
   then
   read -p "Site email [${ADMIN_EMAIL}]:" SITE_EMAIL
-  if [ -z ${SITE_EMAIL} ]
+  if [[ -z ${SITE_EMAIL} ]]
   then
-    if [ -z ${ADMIN_EMAIL} ]
+    if [[ -z ${ADMIN_EMAIL} ]]
     then
       echo "Site needs an email, see the comments at the top of"
       echo "this script for how to put a default one on command line"
@@ -124,23 +124,23 @@ if [ -z ${SITE_EMAIL} ]
   fi
 fi
 
-if [ -z ${DB_FILE} ]
+if [[ -z ${DB_FILE} ]]
   then
   read -p "Database sql gzipped file [${DEFAULT_DB_FILE}]:" DB_FILE
-  if [ -z ${DB_FILE} ]
+  if [[ -z ${DB_FILE} ]]
   then
     DB_FILE=${DEFAULT_DB_FILE}
   fi
 fi
 
-if [ ! -e ${DB_FILE} ]
+if [[ ! -e ${DB_FILE} ]]
 then
   echo "Backup doesn't exist.  Looking for ${DB_FILE}"
   exit 1
 fi
 
 # drop and recreate database so that any rubbish hanging around, extra tables etc, is removed
-if [ -z ${CIRCLECI} ]
+if [[ -z ${CIRCLECI} ]]
 then
   echo "Dropping database ${DB_NAME}";
   echo "DROP DATABASE IF EXISTS ${DB_NAME}" | mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD}
@@ -153,7 +153,7 @@ else
   gunzip -c $DB_FILE | mysql -h $DB_HOST -u ${DB_USER} ${DB_NAME}
 fi
 
-if [ $? -ne 0 ]
+if [[ $? -ne 0 ]]
   then
     echo "Unable to import database"
     exit 1
@@ -161,18 +161,21 @@ else
   echo "Imported db"
 fi
 
-${DRUSH} vset file_temporary_path /tmp
-${DRUSH} vset file_private_path ${DEFAULT_PRIVATE_DIR}
-
 # enable all your dev modules
-if [ -z ${CIRCLECI} ]
+if [[ -n ${CIRCLECI} ]]
 then
-  ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
-else
   # Do the whole annoying registry rebuild thing.
   pushd sites/all/modules/registry_rebuild
   php registry_rebuild.php
   popd
+fi
+
+${DRUSH} vset file_temporary_path /tmp
+${DRUSH} vset file_private_path ${DEFAULT_PRIVATE_DIR}
+
+if [[ -z ${CIRCLECI} ]]
+then
+  ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
 fi
 
 # set site variables to development values
