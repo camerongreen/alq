@@ -177,6 +177,6 @@ mysqldump --no-create-info --where='uid = 0' -h ${DB_HOST} -u ${DB_USER} -p${DB_
 echo "INSERT INTO users (uid, name, pass, mail, status) VALUES (1, 'testadmin', '', 'test@example.com', 1);" >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME};
 
 # Add variables to database.  Note high probabilty of leaking information.
-mysqldump --no-create-info --where='name NOT IN ("drupal_private_key", "googleanalytics_account", "mimemail_key",  "uc_paypal_api_password", "uc_paypal_api_signature", "uc_paypal_api_username")' -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} variable >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}
+mysqldump --no-create-info --where='name NOT LIKE "%key%" AND name NOT LIKE "%pass%" AND name NOT LIKE "%account%" AND name NOT LIKE  "%user%" AND name NOT LIKE "%signature%" AND name NOT LIKE "%email%" AND name NOT LIKE "%private%"' -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWD} ${DB_NAME} variable >> ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}
 
 gzip ${DEFAULT_OUTPUT_DIR}/${DEFAULT_OUTPUT_FILENAME}
