@@ -170,13 +170,19 @@ then
   popd
 fi
 
+echo 173
+
 ${DRUSH} vset file_temporary_path /tmp
 ${DRUSH} vset file_private_path ${DEFAULT_PRIVATE_DIR}
+
+echo 174
 
 if [[ -z ${CIRCLECI} ]]
 then
   ${DRUSH} -y pm-enable context_ui devel views_ui stage_file_proxy features_diff smtp
 fi
+
+echo 175
 
 # set site variables to development values
 ${DRUSH} vset site_mail ${SITE_EMAIL}
