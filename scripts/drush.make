@@ -140,7 +140,7 @@ projects[token][version] = 1.8
 
 projects[token_filter][version] = 1.1
 
-projects[10bercart][version] = 3.13
+projects[ubercart][version] = 3.13
 
 projects[uc_coupon][version] = 2.1-alpha7
 
