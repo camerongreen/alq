@@ -26,15 +26,15 @@ class Blocks {
 
     foreach ($query as $block) {
       $rows[] = [
-        'name' => $block->title,
-        'delta' => $block->delta,
-        'status' => $block->status,
-        'region' => $block->region,
-        'weight' => $block->weight,
-        'theme' => $block->theme,
-        'module' => $block->module,
-        'visibility' => $block->visibility,
-        'pages' => json_encode($block->pages),
+        dt('Title') => $block->title,
+        dt('Delta') => $block->delta,
+        dt('Status') => $block->status,
+        dt('Region') => $block->region,
+        dt('Weight') => $block->weight,
+        dt('Theme') => $block->theme,
+        dt('Module') => $block->module,
+        dt('Visibility') => $block->visibility,
+        dt('Pages') => json_encode($block->pages),
       ];
     }
 

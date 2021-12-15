@@ -17,7 +17,8 @@ function structure_reports_drush_command() {
     'structure-reports-blocks' => [
       'description' => 'Show active blocks on the site.',
       'aliases' => ['srbl'],
-      'options' => [
+      'outputformat' => [
+        'default' => 'table',
         'csv' => 'Output CSV format',
       ],
     ],
@@ -31,6 +32,13 @@ function structure_reports_drush_command() {
  */
 function drush_structure_reports_blocks() {
   $blocks = Blocks::report();
+
+  if (drush_get_option('format', FALSE) === 'csv') {
+    if (count($blocks)) {
+      $headers = array_keys($blocks[0]);
+      array_unshift($blocks, $headers);
+    }
+  }
 
   return $blocks;
 }
