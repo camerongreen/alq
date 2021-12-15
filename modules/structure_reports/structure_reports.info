@@ -1,0 +1,5 @@
+name = Structure reports
+description = Module to report on various things Drupal.
+core = 7.x
+package = Custom
+dependencies[] = xautoload
