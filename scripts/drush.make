@@ -156,7 +156,7 @@ projects[workbench][version] = 1.2
 
 projects[wysiwyg][version] = 2.2
 
-projects[xutoload][version] = 5.8
+projects[xautoload][version] = 5.8
 
 projects[xmlsitemap][version] = 2.6
 
