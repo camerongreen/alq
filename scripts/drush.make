@@ -40,7 +40,7 @@ projects[admin][version] = 2.0-beta3
 
 projects[admin_menu][version] = 3.0-rc6
 
-projects[advanced_help][version] = 1.5
+projects[advanced_help][version] = 1.6
 
 projects[breakpoints][version] = 1.6
 
@@ -50,17 +50,17 @@ projects[breakpoints][version] = 1.6
 
 projects[captcha][version] = 1.3
 
-projects[ckeditor][version] = 1.18
+projects[ckeditor][version] = 1.21
 
 projects[ckeditor_link][version] = 2.4
 
-projects[colorbox][version] = 2.13
+projects[colorbox][version] = 2.15
 
 projects[context][version] = 3.10
 
-projects[ctools][version] = 1.15
+projects[ctools][version] = 1.19
 
-projects[date][version] = 2.10
+projects[date][version] = 2.12
 
 projects[devel][version] = 1.7
 
@@ -72,11 +72,11 @@ projects[entity][version] = 1.9
 
 projects[facebook_boxes][version] = 1.0
 
-projects[features][version] = 2.11
+projects[features][version] = 2.13
 
 projects[features_diff][version] = 1.0-beta2
 
-projects[field_collection][version] = 1.1
+projects[field_collection][version] = 1.2
 
 projects[filefield_sources][version] = 1.11
 
@@ -104,7 +104,7 @@ projects[libraries][version] = 2.5
 
 projects[mailsystem][version] = 2.35
 
-projects[metatag][version] = 1.27
+projects[metatag][version] = 1.28
 
 projects[mimemail][version] = 1.1
 
@@ -130,27 +130,27 @@ projects[rules][version] = 2.12
 
 projects[site_map][version] = 1.3
 
-projects[stage_file_proxy][version] = 1.9
+projects[stage_file_proxy][version] = 1.10
 
 projects[strongarm][version] = 2.0
 
 projects[smtp][version] = 1.7
 
-projects[token][version] = 1.7
+projects[token][version] = 1.8
 
 projects[token_filter][version] = 1.1
 
-projects[ubercart][version] = 3.13
+projects[10bercart][version] = 3.13
 
 projects[uc_coupon][version] = 2.1-alpha7
 
-projects[views][version] = 3.24
+projects[views][version] = 3.25
 
-projects[views_bootstrap][version] = 3.2
+projects[views_bootstrap][version] = 3.5
 
-projects[views_slideshow][version] = 3.9
+projects[views_slideshow][version] = 3.10
 
-projects[webform][version] = 4.22
+projects[webform][version] = 4.24
 
 projects[workbench][version] = 1.2
 
