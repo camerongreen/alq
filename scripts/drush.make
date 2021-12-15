@@ -50,7 +50,7 @@ projects[breakpoints][version] = 1.6
 
 projects[captcha][version] = 1.3
 
-projects[ckeditor][version] = 1.21
+projects[ckeditor][version] = 1.22
 
 projects[ckeditor_link][version] = 2.4
 
@@ -68,7 +68,7 @@ projects[diff][version] = 3.4
 
 projects[email][version] = 1.3
 
-projects[entity][version] = 1.9
+projects[entity][version] = 1.10
 
 projects[facebook_boxes][version] = 1.0
 
@@ -106,7 +106,7 @@ projects[mailsystem][version] = 2.35
 
 projects[metatag][version] = 1.28
 
-projects[mimemail][version] = 1.1
+projects[mimemail][version] = 1.2
 
 projects[module_filter][version] = 2.2
 
@@ -126,7 +126,7 @@ projects[registry_rebuild][version] = 2.5
 
 projects[responsive_menus][version] = 1.7
 
-projects[rules][version] = 2.12
+projects[rules][version] = 2.13
 
 projects[site_map][version] = 1.3
 
