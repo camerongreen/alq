@@ -105,7 +105,7 @@ if [[ $? -ne 0 ]]
     echo "Please ensure you have granted access to ${DB_NAME} for ${DB_USER}@${DB_HOST}"
     exit 1
 else
-  echo "Connected to db8
+  echo "Connected to db"
 fi
 
 if [[ -z ${SITE_EMAIL} ]]
