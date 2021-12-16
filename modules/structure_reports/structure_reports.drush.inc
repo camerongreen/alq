@@ -17,6 +17,9 @@ function structure_reports_drush_command() {
     'structure-reports-blocks' => [
       'description' => 'Show active blocks on the site.',
       'aliases' => ['srbl'],
+      'options' => [
+        'status' => '1 for enabled, 0 for disabled, default is to list all',
+      ],
       'outputformat' => [
         'default' => 'table',
         'csv' => 'Output CSV format',
@@ -31,7 +34,7 @@ function structure_reports_drush_command() {
  * Callback for the structure-reports-blocks command.
  */
 function drush_structure_reports_blocks() {
-  $blocks = Blocks::report();
+  $blocks = Blocks::report(drush_get_option('status', NULL));
 
   if (drush_get_option('format', FALSE) === 'csv') {
     if (count($blocks)) {
