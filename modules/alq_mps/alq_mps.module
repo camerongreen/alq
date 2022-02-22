@@ -129,17 +129,36 @@ function alq_mps_cron() {
 }
 
 /**
+ * The campaign can override the from email field.
+ *
+ * @param object $campaign
+ *   Campaign to check.
+ * @param string $user_email
+ *   Users email address.
+ *
+ * @return string
+ *   From address to use.
+ */
+function alq_mps_get_from($campaign, $user_email) {
+  if (isset($campaign->field_from_email[LANGUAGE_NONE][0]['email'])
+   && !empty($campaign->field_from_email[LANGUAGE_NONE][0]['email'])
+  ) {
+    return $campaign->field_from_email[LANGUAGE_NONE][0]['email'];
+  }
+  return $user_email;
+}
+
+/**
  * Loads up the CC fields for an email campaign.
  *
- * @param int $campaign_id
+ * @param object $campaign
  *   Campaign to check.
  *
  * @return array
  *   Return CCs to email.
  */
-function alq_mps_get_ccs($campaign_id) {
+function alq_mps_get_ccs($campaign) {
   $emails = [];
-  $campaign = node_load($campaign_id);
   if (property_exists($campaign, 'field_cc')
     && array_key_exists(LANGUAGE_NONE, $campaign->field_cc)
   ) {
@@ -282,15 +301,16 @@ function alq_mps_cleanup_emails() {
  *   Result of drupal_mail.
  */
 function alq_mps_email($recipient, $email) {
+  $campaign = node_load($email->campaign_id);
   $fields = (array) $email;
   $module = 'alq_mps';
   $key = 'campaign_message';
-  $from = $email->from_email;
+  $from = alq_mps_get_from($campaign, $email->from_email);
   if (!array_key_exists('headers', $fields)) {
     $fields['headers'] = [];
   }
   $fields['headers']['Reply-to'] = trim($from);
-  $ccs = alq_mps_get_ccs($email->campaign_id);
+  $ccs = alq_mps_get_ccs($campaign);
   $fields['headers']['Cc'] = implode(',', $ccs);
   $language = language_default();
   $send = TRUE;
@@ -816,6 +836,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control'],
     ],
   ];
+
   $form['body'] = [
     '#type' => 'textarea',
     '#title' => t('Email text'),
@@ -825,6 +846,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control'],
     ],
   ];
+
   $form['default_body'] = [
     '#type' => 'hidden',
     '#default_value' => $cnode->field_body[LANGUAGE_NONE][0]['value'],
@@ -838,6 +860,7 @@ function alq_mps_email_form($form, &$form_state, $cnode) {
       'class' => ['form-control'],
     ],
   ];
+
   $form['email'] = [
     '#type' => 'textfield',
     '#title' => t('Your email'),
