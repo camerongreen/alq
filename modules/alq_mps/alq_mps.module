@@ -141,7 +141,7 @@ function alq_mps_cron() {
  */
 function alq_mps_get_from($campaign, $user_email) {
   if (isset($campaign->field_from_email[LANGUAGE_NONE][0]['email'])
-   && !empty($campaign->field_from_email[LANGUAGE_NONE][0]['email'])
+    && !empty($campaign->field_from_email[LANGUAGE_NONE][0]['email'])
   ) {
     return $campaign->field_from_email[LANGUAGE_NONE][0]['email'];
   }
@@ -578,19 +578,30 @@ function alq_mps_get_email_campaign_emails($campaignId) {
  *   Themed form.
  */
 function alq_mps_get_email_campaign($node) {
+  $html = '';
+
   if ($cid = alq_mps_has_email_campaign($node->nid)) {
+    $cnode = node_load($cid);
+
     if (isset($_SESSION) && array_key_exists('alq_mps_email_form_submitted', $_SESSION)) {
       unset($_SESSION['alq_mps_email_form_submitted']);
-      return '<h2>' . t('Thanks for your submission') . '</h2><p>' . t('Please share the campaign using the links below') . '</p>';
+      $html = '<h2>' . t('Thanks for your submission!') . '</h2><p>' . t('Please share this campaign.') . '</p>';
+    }
+    else {
+      drupal_add_library('system', 'jquery.cookie');
+      drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
+      $form = drupal_get_form('alq_mps_email_form', $cnode);
+      $html = drupal_render($form);
     }
 
-    drupal_add_library('system', 'jquery.cookie');
-    drupal_add_js(drupal_get_path('module', 'alq_mps') . '/theme/alq-mps.js');
-    $cnode = node_load($cid);
-    $form = drupal_get_form('alq_mps_email_form', $cnode);
-    return drupal_render($form);
+    $add_hidden_element = field_get_items('node', $cnode, 'field_no_site_branding');
+
+    if ($add_hidden_element) {
+      $html .= '<span class="alq-hide-branding"></span>';
+    }
   }
-  return '';
+
+  return $html;
 }
 
 /**
