@@ -119,6 +119,30 @@ function alq_mps_feature_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Emailees';
   $handler->display->display_options['menu']['name'] = 'devel';
+  $translatables['emailees'] = array(
+    t('Master'),
+    t('Emailees'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Party'),
+    t('Electorate'),
+    t('Electorate Type'),
+    t('State'),
+    t('Edit'),
+    t('Name'),
+    t('Page'),
+  );
   $export['emailees'] = $view;
 
   return $export;

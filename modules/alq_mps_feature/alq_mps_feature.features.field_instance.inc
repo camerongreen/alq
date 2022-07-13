@@ -502,6 +502,7 @@ function alq_mps_feature_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'limit' => 10,
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
@@ -549,6 +550,92 @@ function alq_mps_feature_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-email_campaign-field_from_email'.
+  $field_instances['node-email_campaign-field_from_email'] = array(
+    'bundle' => 'email_campaign',
+    'default_value' => array(
+      0 => array(
+        'email' => 'no-reply@alq.org.au',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If set, the emails which are sent will always have this from address, and the user\'s email address will instead be included in the body of the email.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_from_email',
+    'label' => 'From email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-email_campaign-field_no_site_branding'.
+  $field_instances['node-email_campaign-field_no_site_branding'] = array(
+    'bundle' => 'email_campaign',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Selecting this option will remove all ALQ website branding from the form.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_no_site_branding',
+    'label' => 'No site branding',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-email_campaign-field_parent_article'.
   $field_instances['node-email_campaign-field_parent_article'] = array(
     'bundle' => 'email_campaign',
@@ -583,6 +670,7 @@ function alq_mps_feature_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
+        'limit' => 10,
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
@@ -1102,9 +1190,12 @@ function alq_mps_feature_field_default_field_instances() {
   t('Emailee');
   t('Family Name');
   t('Fax');
+  t('From email');
   t('Given Names');
+  t('If set, the emails which are sent will always have this from address, and the user\'s email address will instead be included in the body of the email.');
   t('MP, DipEd, BiT etc.');
   t('Nick name etc');
+  t('No site branding');
   t('Office');
   t('Parent article');
   t('Party');
@@ -1113,6 +1204,7 @@ function alq_mps_feature_field_default_field_instances() {
   t('Postcode');
   t('Preferred Name');
   t('Qualifications');
+  t('Selecting this option will remove all ALQ website branding from the form.');
   t('State');
   t('The subject for the confirmation email to be sent to the user filling out the form');
   t('This is the article which this should appear under');
