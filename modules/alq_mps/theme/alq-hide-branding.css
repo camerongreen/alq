@@ -1,5 +1,5 @@
 /* Hide things. */
-h1.page-title, h2.block-title, .section-header, .section-footer, #breadcrumb, .block-addtoany {
+h1.page-title, h1.title, h2.block-title, .section-header, .section-footer, #breadcrumb, .block-addtoany {
   display: none;
 }
 
