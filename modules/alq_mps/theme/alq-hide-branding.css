@@ -1,0 +1,9 @@
+/* Hide things. */
+h1.page-title, h2.block-title, .section-header, .section-footer, #breadcrumb, .block-addtoany {
+  display: none;
+}
+
+/* Reset margins */
+.zone-content {
+  margin: 1rem;
+}
