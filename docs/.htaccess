@@ -155,4 +155,5 @@ DirectoryIndex index.php index.html index.htm
   RequestHeader unset Proxy
   # Allow cross origin requests
   Header always set Access-Control-Allow-Origin "*"
+  Header always set X-Frame-Options "ALLOWALL"
 </IfModule>
