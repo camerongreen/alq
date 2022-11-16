@@ -144,6 +144,10 @@ projects[ubercart][version] = 3.13
 
 projects[uc_coupon][version] = 2.1-alpha7
 
+projects[uc_out_of_stock][version] = 1.1
+
+projects[uc_stock][version] = 3.13
+
 projects[views][version] = 3.25
 
 projects[views_bootstrap][version] = 3.5

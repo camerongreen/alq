@@ -1,3 +1,5 @@
+@import '../variables';
+
 $gray-bg: #eee;
 
 // Styling the main individual product pages.
@@ -83,8 +85,12 @@ body.node-type-product {
       width: 90px;
     }
 
-    div.form-actions {
+    .form-actions {
       padding-left: 90px;
+    }
+
+    .out_of_stock_throbbing {
+      height: 20px;
     }
   }
 }
@@ -139,7 +145,7 @@ body.node-type-product {
 
           div.views-field-field-extra-details {
             grid-row: description;
-            font-color: #727272;
+            color: #727272;
             font-style: italic;
           }
 
@@ -292,9 +298,8 @@ body[class*="page-catalog-"] div.region-content-inner {
   .jumbotron {
     margin: 2em 0;
     color: #fff;
-    background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg');
     background-size: cover;
-    background-position: center center;
+    background: url('/sites/all/themes/custom/alq/images/alq-shop-block-background.jpg') center center;
     padding: 2em;
 
     .container {
